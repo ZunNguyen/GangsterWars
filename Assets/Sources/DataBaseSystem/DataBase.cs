@@ -14,6 +14,7 @@ namespace Sources.DataBaseSystem
     {
         private const string _defaultConfigPath = "Assets/Resources/DataBaseConfigs";
         private static DataBase _editorInstance;
+        [InlineEditor]
         [SerializeField] private List<DataBaseConfig> _configs;
 
         public static DataBase EditorInstance
@@ -53,17 +54,17 @@ namespace Sources.DataBaseSystem
             if (scriptName.Length == 0) return;
             if (scriptName.Where(c => Char.IsLetter(c)).Count() != scriptName.Length) return;
 
-            string folderPatrh = $"{_defaultConfigPath}/{scriptName}";
-            string scriptPath = $"{folderPatrh}/{scriptName}.cs";
+            string folderPath = $"{_defaultConfigPath}/{scriptName}";
+            string scriptPath = $"{folderPath}/{scriptName}.cs";
             if (!Directory.Exists(_defaultConfigPath)) Directory.CreateDirectory(_defaultConfigPath);
 
-            if (Directory.Exists(folderPatrh))
+            if (Directory.Exists(folderPath))
             {
                 Debug.LogError($"DataBase Config with name <color=red>{scriptName}</color> aldready exist");
                 return;
             }
 
-            Directory.CreateDirectory(folderPatrh);
+            Directory.CreateDirectory(folderPath);
 
             string templatePath = Path.Combine(Application.dataPath, "Sources/DataBaseSystem/DataBaseConfigGenerator/DataBaseConfigTemplate.txt");
             string dataTemplateContent = File.ReadAllText(templatePath);
