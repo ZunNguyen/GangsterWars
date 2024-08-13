@@ -66,7 +66,7 @@ namespace Sources.DataBaseSystem
 
             Directory.CreateDirectory(folderPath);
 
-            string templatePath = Path.Combine(Application.dataPath, "Sources/DataBaseSystem/DataBaseConfigGenerator/DataBaseConfigTemplate.txt");
+            string templatePath = Path.Combine(Application.dataPath, "Sources/DataBaseSystem/DataBaseConfigTemplate/DataBaseConfigTemplate.txt");
             string dataTemplateContent = File.ReadAllText(templatePath);
             dataTemplateContent = dataTemplateContent.Replace("@ScriptName", scriptName);
             dataTemplateContent = dataTemplateContent.Replace("@NameSpace", typeof(DataBase).Namespace);
