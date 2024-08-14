@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using Sources.Utils.Singleton;
+using Sources.UI;
 
 namespace Sources.UISystem
 {
@@ -40,6 +41,11 @@ namespace Sources.UISystem
         {
             if (_uiLayers.Count == 0) _uiLayers.Add("Default");
             return _uiLayers;
+        }
+        [SerializeField] private List<BaseUI> uis = new List<BaseUI>();
+        public BaseUI Get(string uiName)
+        {
+            return uis.FirstOrDefault(ui => ui.uiName == uiName);
         }
 
         [Button]
