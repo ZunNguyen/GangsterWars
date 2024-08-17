@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.Windows;
 using Sirenix.OdinInspector;
 using UnityEditor.Callbacks;
 using System.Collections.Generic;
@@ -8,13 +7,23 @@ using System.Linq;
 using Unity.VisualScripting;
 using Sources.Utils.Singleton;
 using Sources.UI;
+using System.IO;
+using Sources.DataBaseSystem;
+using UnityEditor.Compilation;
+using Cysharp.Threading.Tasks;
+using System;
 
 namespace Sources.UISystem
 {
     public class UIData : ScriptableObject
     {
-        private const string _defaultPathHolderUIData = "Assets/Resources/UIData";
+        private const string _defaultKeySavePlayerPrefs = "NewUI";
+
+        private const string _defaultPathHolderUIData = "Assets/Resources/UI/UIData";
         private const string _defaultPathHolderUIChildren = "Assets/Game/Screens";
+        private const string _pathHolderUITemplatePrefab = "Assets/Resources/UI/UITemplate/UITemplate.prefab";
+        private const string _pathHolderUITemplateScript = "Assets/Sources/UISystem/UITemplate/UITemplate.txt";
+        private const string _nameSpace = "Game.Screens";
 
         [SerializeField] private List<MonoBehaviour> _uis;
         [SerializeField] private List<string> _uiLayers;
@@ -42,17 +51,14 @@ namespace Sources.UISystem
             if (_uiLayers.Count == 0) _uiLayers.Add("Default");
             return _uiLayers;
         }
+        
         [SerializeField] private List<BaseUI> uis = new List<BaseUI>();
-        public BaseUI Get(string uiName)
-        {
-            return uis.FirstOrDefault(ui => ui.uiName == uiName);
-        }
 
         [Button]
         private void CreateNewUI(string uiName)
         {
             if(HaveNameUiInList(uiName)) return;
-            CreateScript(uiName);
+            CreateScriptAndPrefab(uiName);
         }
 
         private bool HaveNameUiInList(string uiName)
@@ -68,16 +74,51 @@ namespace Sources.UISystem
             return false;
         }
 
-        private void CreateScript(string uiName)
+        private void CreateScriptAndPrefab(string uiName)
         {
             if (uiName.Length == 0) return;
             if (uiName.Where(c => char.IsLetter(c)).Count() != uiName.Length) return;
 
-            string pathHolder = $"{_defaultPathHolderUIChildren}/{uiName}";
-            Directory.CreateDirectory(pathHolder);
+            string pathHolderFolder = $"{_defaultPathHolderUIChildren}/{uiName}";
+            var pathHolderPrefab = $"{pathHolderFolder}/{uiName}.prefab";
+            var pathHolderScript = $"{pathHolderFolder}/{uiName}.cs";
 
-            var go = PrefabUtility.LoadPrefabContents($"{_defaultPathHolderUIChildren}/{uiName}.prefab");
-            PrefabUtility.SaveAsPrefabAsset(go, $"{_defaultPathHolderUIChildren}/{uiName}.prefab");
+            Directory.CreateDirectory(pathHolderFolder);
+
+            string dataUITemplateScript = File.ReadAllText(_pathHolderUITemplateScript);
+            dataUITemplateScript = dataUITemplateScript.Replace("@ScriptName", uiName);
+            dataUITemplateScript = dataUITemplateScript.Replace("@NameSpace", $"{_nameSpace}.{uiName}");
+
+            using (StreamWriter writer = new StreamWriter(pathHolderScript))
+            {
+                writer.Write(dataUITemplateScript);
+            }
+            AssetDatabase.ImportAsset(pathHolderScript);
+            AssetDatabase.Refresh();
+            
+            AssetDatabase.CopyAsset(_pathHolderUITemplatePrefab, pathHolderPrefab);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+
+            PlayerPrefs.SetString(_defaultKeySavePlayerPrefs, uiName);
+        }
+
+        [DidReloadScripts]
+        private static void OnReloadScriptFinish()
+        {
+            string uiName = PlayerPrefs.GetString(_defaultKeySavePlayerPrefs);
+            PlayerPrefs.DeleteKey(_defaultKeySavePlayerPrefs);
+
+            string pathHolderFolder = $"{_defaultPathHolderUIChildren}/{uiName}";
+            var pathHolderPrefab = $"{pathHolderFolder}/{uiName}.prefab";
+            var pathHolderScript = $"{pathHolderFolder}/{uiName}.cs";
+
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(pathHolderPrefab);
+            var script = AssetDatabase.LoadAssetAtPath<MonoScript>(pathHolderScript);
+
+            var scriptType = script.GetClass();
+            prefab.AddComponent(scriptType);
+            PrefabUtility.SavePrefabAsset(prefab);
         }
 
         [MenuItem("Assets/Create/Eren/UI/Create UI Data")]

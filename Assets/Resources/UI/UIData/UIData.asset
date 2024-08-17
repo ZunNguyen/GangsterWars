@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: UIData
   m_EditorClassIdentifier: 
   _uis: []
-  _uiLayers: []
+  _uiLayers:
+  - Default
   uis: []
