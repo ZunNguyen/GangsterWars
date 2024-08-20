@@ -15,4 +15,6 @@ MonoBehaviour:
   _uis: []
   _uiLayers:
   - Default
+  - Screen
+  - Dialog
   uis: []
