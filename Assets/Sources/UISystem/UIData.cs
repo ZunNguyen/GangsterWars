@@ -25,7 +25,7 @@ namespace Sources.UISystem
         private const string _pathHolderUITemplateScript = "Assets/Sources/UISystem/UITemplate/UITemplate.txt";
         private const string _nameSpace = "Game.Screens";
 
-        [SerializeField] private List<MonoBehaviour> _uis;
+        [SerializeField] private List<BaseUI> _uis = new List<BaseUI>();
         [SerializeField] private List<string> _uiLayers;
 
         public static UIData ActiveUIData
@@ -51,8 +51,11 @@ namespace Sources.UISystem
             if (_uiLayers.Count == 0) _uiLayers.Add("Default");
             return _uiLayers;
         }
-        
-        [SerializeField] private List<BaseUI> uis = new List<BaseUI>();
+
+        public BaseUI GetBaseUI(string uiName)
+        {
+            return _uis.FirstOrDefault(ui => ui.name == uiName);
+        }
 
         [Button]
         private void CreateNewUI(string uiName)
@@ -107,6 +110,7 @@ namespace Sources.UISystem
         private static void OnReloadScriptFinish()
         {
             string uiName = PlayerPrefs.GetString(_defaultKeySavePlayerPrefs);
+            if (string.IsNullOrEmpty(uiName)) return;
             PlayerPrefs.DeleteKey(_defaultKeySavePlayerPrefs);
 
             string pathHolderFolder = $"{_defaultPathHolderUIChildren}/{uiName}";

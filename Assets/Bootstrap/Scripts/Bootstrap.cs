@@ -9,8 +9,11 @@ namespace Game.Bootstrap
 {
     public class Bootstrap : MonoBehaviour
     {
-        [SerializeField] private DataBase _dataBase;
+        [Header("UI")]
         [SerializeField] private UIData _uiData;
+        [SerializeField] private UIManager _uiManagerPrefab;
+
+        [SerializeField] private DataBase _dataBase;
 
         private async void Start()
         {
@@ -21,6 +24,16 @@ namespace Game.Bootstrap
         private Service CreateBootstrapServiceGroup()
         {
             var serviceGroup = new SequenceServiceGroup();
+            serviceGroup.Add(CreateEssentialSericeGroup());
+            return serviceGroup;
+        }
+
+        private Service CreateEssentialSericeGroup()
+        {
+            var serviceGroup = new SequenceServiceGroup();
+
+            serviceGroup.Add(new InitUISystemService(_uiData, _uiManagerPrefab));
+            
             return serviceGroup;
         }
     }

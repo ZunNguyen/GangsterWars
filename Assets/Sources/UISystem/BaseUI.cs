@@ -17,6 +17,7 @@ namespace Sources.UI
         [ValueDropdown(nameof(FetchAllUILayers))]
         [SerializeField]
         private string layer;
+        public string Layer => layer;
 
         private UITransitionHandler _uiTransitionHandler;
 

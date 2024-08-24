@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60824398534fdfe45be9c18830022bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dataBase: {fileID: 11400000, guid: e7541877ee0508d4abaf14b065c6d3f2, type: 2}
   _uiData: {fileID: 11400000, guid: 5d5c828c2a1e66a41a0822a67a51515f, type: 2}
+  _uiManagerPrefab: {fileID: 5257015634405984256, guid: 68aa987d92200bf4cb86e89157df18bd, type: 3}
+  _dataBase: {fileID: 11400000, guid: e7541877ee0508d4abaf14b065c6d3f2, type: 2}
