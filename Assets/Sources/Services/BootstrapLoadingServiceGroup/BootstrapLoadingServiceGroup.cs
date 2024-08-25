@@ -14,13 +14,10 @@ namespace Sources.Services.BootstrapLoadingService
 
         public override async UniTask<IService.Result> Excute()
         {
-            await _uiManager.Show<LoadingScreen>(Progress);
-            Debug.Log("1");
+            _uiManager.Show<LoadingScreen>(Progress);
 
             await base.Excute();
-            Debug.Log("2");
-
-            await UniTask.Delay(10000);
+            
             return IService.Result.Success;
         }
     }

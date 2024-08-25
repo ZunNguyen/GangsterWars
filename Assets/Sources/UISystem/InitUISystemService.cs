@@ -23,7 +23,7 @@ namespace Sources.UISystem
             uiManager.name = "UI Manager";
 
             Locator<UIData>.Set(_uiData);
-            Locator<UIManager>.Set(_uiManagerPrefab);
+            Locator<UIManager>.Set(uiManager);
 
             uiManager.Init();
 

@@ -70,14 +70,13 @@ namespace Sources.UISystem
             }
 
             var layer = GetCorrectLayer(uiPrefab.Layer);
-            if (layer != null) Debug.LogError($"Don't find correct layer");
+            if (layer.SafeIsUnityNull()) Debug.LogError($"Don't find correct layer");
 
-            return Instantiate(uiPrefab, _holderPlayer);
+            return Instantiate(uiPrefab, layer);
         }
 
         private Transform GetCorrectLayer(string layerName)
         {
-            _layers.Count();
             return _layers[layerName];
         }
     }
