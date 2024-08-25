@@ -30,6 +30,11 @@ namespace Sources.UI
         {
             return UIData.ActiveUIData.GetUILayers();
         }
+
+        public virtual void OnSetUp(object paramater = null)
+        {
+
+        }
     }
 }
 

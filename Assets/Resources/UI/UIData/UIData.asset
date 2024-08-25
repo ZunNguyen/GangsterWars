@@ -17,4 +17,4 @@ MonoBehaviour:
   - Default
   - Screen
   - Dialog
-  uis: []
+  - View

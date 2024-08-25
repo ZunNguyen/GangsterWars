@@ -20,7 +20,7 @@ namespace Sources.UISystem
         [SerializeField] private GameObject _layerPrefab;
         [SerializeField] private Transform _holderPlayer;
 
-        public void Initialize()
+        public void Init()
         {
             InitializeUILayer();
         }
@@ -36,15 +36,17 @@ namespace Sources.UISystem
 
                 _layers.Add(uiLayer, newLayer.transform);
             }
+
+            _layers.Count();
         }
 
-        public void Show<T>(object parameter = null) where T : BaseUI
+        public async UniTask Show<T>(object parameter = null) where T : BaseUI
         {
             var uiName = typeof(T).Name;
-            Show(uiName);
+            await Show(uiName, parameter);
         }
 
-        public void Show(string uiName)
+        public async UniTask Show(string uiName, object parameter = null)
         {
             if (_uiShowing.ContainsKey(uiName))
             {
@@ -52,24 +54,30 @@ namespace Sources.UISystem
                 return;
             }
 
-            CreateUI(uiName);
+            var ui = CreateUI(uiName);
+            if (!ui.SafeIsUnityNull()) ui.OnSetUp(parameter);
+
+            
         }
 
-        private void CreateUI(string uiName)
+        private BaseUI CreateUI(string uiName)
         {
             var uiPrefab = _uiData.GetBaseUI(uiName);
             if (uiPrefab.SafeIsUnityNull())
             {
                 Debug.LogError($"UI: {uiName} doesn't exits in UIData");
-                return;
+                return null;
             }
 
             var layer = GetCorrectLayer(uiPrefab.Layer);
-            Instantiate(uiPrefab, _holderPlayer);
+            if (layer != null) Debug.LogError($"Don't find correct layer");
+
+            return Instantiate(uiPrefab, _holderPlayer);
         }
 
         private Transform GetCorrectLayer(string layerName)
         {
+            _layers.Count();
             return _layers[layerName];
         }
     }

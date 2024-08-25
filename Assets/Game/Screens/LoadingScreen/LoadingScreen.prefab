@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer: Screen
+  _slider: {fileID: 9127329360306458591}
 --- !u!1 &8798296847012898955
 GameObject:
   m_ObjectHideFlags: 0

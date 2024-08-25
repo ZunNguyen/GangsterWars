@@ -25,9 +25,9 @@ namespace Sources.UISystem
             Locator<UIData>.Set(_uiData);
             Locator<UIManager>.Set(_uiManagerPrefab);
 
-            uiManager.Initialize();
+            uiManager.Init();
 
-            //Object.DontDestroyOnLoad(uiManager);
+            Object.DontDestroyOnLoad(uiManager);
 
             return IService.Result.Success;
         }

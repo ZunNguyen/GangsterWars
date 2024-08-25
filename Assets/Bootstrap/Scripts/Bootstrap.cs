@@ -1,5 +1,6 @@
 using Sources.DataBaseSystem;
 using Sources.Services;
+using Sources.Services.BootstrapLoadingService;
 using Sources.UISystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,7 +25,10 @@ namespace Game.Bootstrap
         private Service CreateBootstrapServiceGroup()
         {
             var serviceGroup = new SequenceServiceGroup();
+
             serviceGroup.Add(CreateEssentialSericeGroup());
+            serviceGroup.Add(CreateBootstrapLoadingServiceGroup());
+            
             return serviceGroup;
         }
 
@@ -34,6 +38,13 @@ namespace Game.Bootstrap
 
             serviceGroup.Add(new InitUISystemService(_uiData, _uiManagerPrefab));
             
+            return serviceGroup;
+        }
+
+        private Service CreateBootstrapLoadingServiceGroup()
+        {
+            var serviceGroup = new BootstrapLoadingServiceGroup();
+
             return serviceGroup;
         }
     }
