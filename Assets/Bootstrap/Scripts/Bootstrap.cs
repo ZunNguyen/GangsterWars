@@ -14,6 +14,7 @@ namespace Game.Bootstrap
         [SerializeField] private UIData _uiData;
         [SerializeField] private UIManager _uiManagerPrefab;
 
+        [Header("DataBase")]
         [SerializeField] private DataBase _dataBase;
 
         private async void Start()

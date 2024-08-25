@@ -10,19 +10,19 @@ namespace Sources.Services
             Failure
         }
 
-        UniTask<Result> Excute();
+        UniTask<Result> Execute();
     }
 
     public abstract class Service : IService
     {
-        public abstract UniTask<IService.Result> Excute();
+        public abstract UniTask<IService.Result> Execute();
 
         public async UniTask Run()
         {
             var result = IService.Result.Failure;
             try
             {
-                result = await Excute();
+                result = await Execute();
             }
             catch
             {

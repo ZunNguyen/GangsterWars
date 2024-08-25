@@ -10,21 +10,22 @@ namespace Sources.Services
     {
         private Queue<Service> _queueService = new Queue<Service>();
         public FloatReactiveProperty Progress {  get; private set; } = new FloatReactiveProperty();
-        
+        private int totalServices;
+
         public void Add(Service service)
         {
             _queueService.Enqueue(service);
         }
 
-        public override async UniTask<IService.Result> Excute()
+        public override async UniTask<IService.Result> Execute()
         {
             Progress.Value = 0;
-            var totalService = _queueService.Count;
+            totalServices = _queueService.Count;
             while (_queueService.Count != 0)
             {
                 var service = _queueService.Dequeue();
                 await service.Run();
-                Progress.Value = (float)(1 - (_queueService.Count - totalService));
+                Progress.Value = 1 - ((float)_queueService.Count / totalServices);
             }
             return IService.Result.Success;
         }

@@ -19,10 +19,12 @@ namespace Sources.UISystem
 
         [SerializeField] private GameObject _layerPrefab;
         [SerializeField] private Transform _holderPlayer;
+        [SerializeField] private Transform _mainCamera;
 
         public void Init()
         {
             InitializeUILayer();
+            InitializeCamera();
         }
 
         private void InitializeUILayer()
@@ -38,6 +40,13 @@ namespace Sources.UISystem
             }
 
             _layers.Count();
+        }
+
+        private void InitializeCamera()
+        {
+            var mainCamera = Instantiate(_mainCamera);
+            mainCamera.name = "UI Camera";
+            DontDestroyOnLoad(mainCamera);
         }
 
         public async UniTask Show<T>(object parameter = null) where T : BaseUI

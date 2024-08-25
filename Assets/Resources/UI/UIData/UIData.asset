@@ -15,7 +15,6 @@ MonoBehaviour:
   _uis:
   - {fileID: -5890212864275270156, guid: d0ecb0bf574bd9c4fb5ac4aaf7eb67ba, type: 3}
   _uiLayers:
-  - Default
   - Screen
   - Dialog
   - View

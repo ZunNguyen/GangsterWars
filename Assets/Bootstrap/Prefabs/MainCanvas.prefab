@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layerPrefab: {fileID: 8905556797841573357, guid: 95b004dc76346104a863bf92cf7b9d2f, type: 3}
   _holderPlayer: {fileID: 7272471107772454838}
+  _mainCamera: {fileID: 730796242815565449, guid: 0ff158bbb0f38c84abd473ae6ac64b6e, type: 3}
 --- !u!223 &7272471107772454837
 Canvas:
   m_ObjectHideFlags: 0

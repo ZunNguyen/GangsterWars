@@ -17,7 +17,7 @@ namespace Sources.UISystem
             _uiManagerPrefab = uiManagerPrefab;
         }
 
-        public override async UniTask<IService.Result> Excute()
+        public override async UniTask<IService.Result> Execute()
         {
             var uiManager = Object.Instantiate(_uiManagerPrefab);
             uiManager.name = "UI Manager";

@@ -12,11 +12,11 @@ namespace Sources.Services.BootstrapLoadingService
     {
         private UIManager _uiManager => Locator<UIManager>.Instance;
 
-        public override async UniTask<IService.Result> Excute()
+        public override async UniTask<IService.Result> Execute()
         {
-            _uiManager.Show<LoadingScreen>(Progress);
+            await _uiManager.Show<LoadingScreen>(Progress);
 
-            await base.Excute();
+            await base.Execute();
             
             return IService.Result.Success;
         }
