@@ -18,7 +18,6 @@ namespace Sources.UISystem
     public class UIData : ScriptableObject
     {
         private const string _defaultKeySavePlayerPrefs = "NewUI";
-
         private const string _defaultPathHolderUIData = "Assets/Resources/UI/UIData";
         private const string _defaultPathHolderUIChildren = "Assets/Game/Screens";
         private const string _pathHolderUITemplatePrefab = "Assets/Resources/UI/UITemplate/UITemplate.prefab";
@@ -123,6 +122,13 @@ namespace Sources.UISystem
             var scriptType = script.GetClass();
             prefab.AddComponent(scriptType);
             PrefabUtility.SavePrefabAsset(prefab);
+
+            UIData.ActiveUIData.AddBaseUI(prefab);
+        }
+
+        public void AddBaseUI(GameObject ui)
+        {
+            _uis.Add(ui.GetComponent<BaseUI>());
         }
 
         [MenuItem("Assets/Create/Eren/UI/Create UI Data")]

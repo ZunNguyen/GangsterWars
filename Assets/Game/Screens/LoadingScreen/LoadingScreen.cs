@@ -9,8 +9,9 @@ namespace Game.Screens.LoadingScreen
     {
         [SerializeField] private Slider _slider;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _slider.value = 0;
         }
 

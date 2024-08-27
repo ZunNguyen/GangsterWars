@@ -27,7 +27,7 @@ namespace Sources.DataBaseSystem
             }
         }
 
-        public void Add(DataBaseConfig config)
+        private void Add(DataBaseConfig config)
         {
             ClearNull();
 
