@@ -19,7 +19,8 @@ namespace Sources.Services.BootstrapLoadingService
             var loadingScreen = await _uiManager.Show<LoadingScreen>(Progress);
 
             await base.Execute();
-            
+            await loadingScreen.Close();
+
             return IService.Result.Success;
         }
     }

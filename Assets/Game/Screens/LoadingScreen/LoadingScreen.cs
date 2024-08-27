@@ -22,8 +22,10 @@ namespace Game.Screens.LoadingScreen
             progress.Subscribe(UpdateLoadingProgress).AddTo(this);
         }
 
+
         private void UpdateLoadingProgress(float value)
         {
+            Debug.Log(value);
             _slider.value = value;
         }
     }

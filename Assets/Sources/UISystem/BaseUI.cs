@@ -16,14 +16,16 @@ namespace Sources.UI
     {
         [ValueDropdown(nameof(FetchAllUILayers))]
         [SerializeField]
-        private string layer;
-        public string Layer => layer;
+        private string _layer;
+        public string Layer => _layer;
 
+        private UIManager _uiManager => Locator<UIManager>.Instance;
         private UITransitionHandler _uiTransitionHandler;
+        private string _uiName => GetType().Name;
 
-        private void Awake()
+        protected virtual void Awake()
         {
-            _uiTransitionHandler = GetComponent<UITransitionHandler>();
+            _uiTransitionHandler = this.GetComponent<UITransitionHandler>();
         }
 
         private List<string> FetchAllUILayers()
@@ -34,6 +36,22 @@ namespace Sources.UI
         public virtual void OnSetUp(object paramater = null)
         {
 
+        }
+
+        public virtual async UniTask OnTransitionEnter()
+        {
+            if (_uiTransitionHandler == null) _uiTransitionHandler = GetComponent<UITransitionHandler>();
+            await _uiTransitionHandler.DoTransition(true);
+        }
+
+        public virtual async UniTask OnTransitionExit()
+        {
+            await _uiTransitionHandler.DoTransition(false);
+        }
+
+        public virtual async UniTask Close()
+        {
+            await _uiManager.Close(_uiName);
         }
     }
 }

@@ -40,13 +40,20 @@ namespace Game.Bootstrap
             var serviceGroup = new SequenceServiceGroup("Essential Service Group");
 
             serviceGroup.Add(new InitUISystemService(_uiData, _uiManagerPrefab));
-            
+
             return serviceGroup;
         }
 
         private Service CreateBootstrapLoadingServiceGroup()
         {
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
+
+            serviceGroup.Add(new TestService_1());
+            serviceGroup.Add(new TestService_1());
+            serviceGroup.Add(new TestService_1());
+            serviceGroup.Add(new TestService_1());
+            serviceGroup.Add(new TestService_1());
+            serviceGroup.Add(new TestService_1());
 
             return serviceGroup;
         }

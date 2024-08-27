@@ -52,10 +52,10 @@ namespace Sources.UISystem
         public async UniTask<T> Show<T>(object parameter = null) where T : BaseUI
         {
             var uiName = typeof(T).Name;
-            return Show(uiName, parameter) as T;
+            return await Show(uiName, parameter) as T;
         }
 
-        public BaseUI Show(string uiName, object parameter = null)
+        public async UniTask<BaseUI> Show(string uiName, object parameter = null)
         {
             if (_uiShowing.ContainsKey(uiName))
             {
@@ -64,7 +64,12 @@ namespace Sources.UISystem
             }
 
             var ui = CreateUI(uiName);
-            if (!ui.SafeIsUnityNull()) ui.OnSetUp(parameter);
+            if (!ui.SafeIsUnityNull())
+            {
+                ui.OnSetUp(parameter);
+                await ui.OnTransitionEnter();
+            }
+            _uiShowing.Add(uiName, ui);
 
             return ui;
         }
@@ -87,6 +92,27 @@ namespace Sources.UISystem
             var layer = _layers[layerName];
             if (layer == null) Debug.LogWarning($"Don't find correct layer");
             return _layers[layerName];
+        }
+
+        public async UniTask Close(string uiName)
+        {
+            if (_uiShowing.TryGetValue(uiName, out BaseUI ui))
+            {
+                _uiShowing.Remove(uiName);
+                if (ui.SafeIsUnityNull()) return;
+
+                await ui.OnTransitionExit();
+                DestroyUI(ui);
+            }
+            else
+            {
+                Debug.Log($"UI {uiName} aldready closed");
+            }
+        }
+
+        private void DestroyUI(BaseUI ui)
+        {
+            Destroy(ui);
         }
     }
 }

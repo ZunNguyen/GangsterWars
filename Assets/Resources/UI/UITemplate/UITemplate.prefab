@@ -114,7 +114,7 @@ MonoBehaviour:
     TransitionExit: 2
     EaseEnter: 9
     EaseExit: 9
-  _rootCanvasGroup: {fileID: 0}
+  _rootCanvasGroup: {fileID: 7705955339711572878}
   _duration: 0.5
 --- !u!1 &8820068018295451461
 GameObject:

@@ -1305,7 +1305,7 @@ MonoBehaviour:
     TransitionExit: 2
     EaseEnter: 9
     EaseExit: 9
-  _rootCanvasGroup: {fileID: 0}
+  _rootCanvasGroup: {fileID: 7705955339711572878}
   _duration: 0.5
 --- !u!114 &4498912390214106619
 MonoBehaviour:
@@ -1319,7 +1319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664e3005de330a64da8e1d0beddcc175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layer: Screen
+  _layer: Screen
+  _uiTransitionHandler: {fileID: 0}
 --- !u!1 &8019879548932037661
 GameObject:
   m_ObjectHideFlags: 0

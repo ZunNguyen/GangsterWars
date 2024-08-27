@@ -21,6 +21,7 @@ namespace Sources.UISystem
             {
                 case UITransition.Transition.None:
                     SetCanvasGroup(isTransitionEnter ? 1 : 0, true);
+                    await UniTask.Delay((int)(_duration * 1000));
                     break;
 
                 case UITransition.Transition.FadeIn:
