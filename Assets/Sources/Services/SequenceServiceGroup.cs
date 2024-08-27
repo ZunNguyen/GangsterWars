@@ -9,8 +9,17 @@ namespace Sources.Services
     public class SequenceServiceGroup : Service
     {
         private Queue<Service> _queueService = new Queue<Service>();
-        public FloatReactiveProperty Progress {  get; private set; } = new FloatReactiveProperty();
         private int totalServices;
+        private string _nameServiceGroup;
+
+        protected override string _nameService => _nameServiceGroup;
+        
+        public FloatReactiveProperty Progress { get; private set; } = new FloatReactiveProperty();
+
+        public SequenceServiceGroup(string nameServiceGroup)
+        {
+            _nameServiceGroup = nameServiceGroup;
+        }
 
         public void Add(Service service)
         {

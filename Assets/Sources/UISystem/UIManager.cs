@@ -49,24 +49,24 @@ namespace Sources.UISystem
             DontDestroyOnLoad(mainCamera);
         }
 
-        public async UniTask Show<T>(object parameter = null) where T : BaseUI
+        public async UniTask<T> Show<T>(object parameter = null) where T : BaseUI
         {
             var uiName = typeof(T).Name;
-            await Show(uiName, parameter);
+            return Show(uiName, parameter) as T;
         }
 
-        public async UniTask Show(string uiName, object parameter = null)
+        public BaseUI Show(string uiName, object parameter = null)
         {
             if (_uiShowing.ContainsKey(uiName))
             {
                 Debug.LogError($"Base UI: {uiName} already showed");
-                return;
+                return null;
             }
 
             var ui = CreateUI(uiName);
             if (!ui.SafeIsUnityNull()) ui.OnSetUp(parameter);
 
-            
+            return ui;
         }
 
         private BaseUI CreateUI(string uiName)
@@ -79,13 +79,13 @@ namespace Sources.UISystem
             }
 
             var layer = GetCorrectLayer(uiPrefab.Layer);
-            if (layer.SafeIsUnityNull()) Debug.LogError($"Don't find correct layer");
-
             return Instantiate(uiPrefab, layer);
         }
 
         private Transform GetCorrectLayer(string layerName)
         {
+            var layer = _layers[layerName];
+            if (layer == null) Debug.LogWarning($"Don't find correct layer");
             return _layers[layerName];
         }
     }

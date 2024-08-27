@@ -10,11 +10,13 @@ namespace Sources.Services.BootstrapLoadingService
 {
     public class BootstrapLoadingServiceGroup : SequenceServiceGroup
     {
+        public BootstrapLoadingServiceGroup(string nameServiceGroup) : base(nameServiceGroup) { }
+
         private UIManager _uiManager => Locator<UIManager>.Instance;
 
         public override async UniTask<IService.Result> Execute()
         {
-            await _uiManager.Show<LoadingScreen>(Progress);
+            var loadingScreen = await _uiManager.Show<LoadingScreen>(Progress);
 
             await base.Execute();
             

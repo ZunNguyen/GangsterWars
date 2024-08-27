@@ -1,3 +1,4 @@
+using Sources.Command;
 using Sources.DataBaseSystem;
 using Sources.Services;
 using Sources.Services.BootstrapLoadingService;
@@ -25,17 +26,18 @@ namespace Game.Bootstrap
 
         private Service CreateBootstrapServiceGroup()
         {
-            var serviceGroup = new SequenceServiceGroup();
+            var serviceGroup = new SequenceServiceGroup("Bootstrap Service Group");
 
             serviceGroup.Add(CreateEssentialSericeGroup());
             serviceGroup.Add(CreateBootstrapLoadingServiceGroup());
-            
+            serviceGroup.Add(CreateAfterBootstrapLoadingScreen());
+
             return serviceGroup;
         }
 
         private Service CreateEssentialSericeGroup()
         {
-            var serviceGroup = new SequenceServiceGroup();
+            var serviceGroup = new SequenceServiceGroup("Essential Service Group");
 
             serviceGroup.Add(new InitUISystemService(_uiData, _uiManagerPrefab));
             
@@ -44,9 +46,18 @@ namespace Game.Bootstrap
 
         private Service CreateBootstrapLoadingServiceGroup()
         {
-            var serviceGroup = new BootstrapLoadingServiceGroup();
+            var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
 
             return serviceGroup;
+        }
+
+        private Service CreateAfterBootstrapLoadingScreen()
+        {
+            var commandServiceGroup = new SequenceServiceCommandGroup("After Bootstrap Loading");
+
+            commandServiceGroup.Add(new LoadMainMenuScenceCommand());
+
+            return commandServiceGroup;
         }
     }
 }
