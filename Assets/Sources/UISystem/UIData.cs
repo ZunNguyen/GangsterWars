@@ -151,5 +151,28 @@ namespace Sources.UISystem
             AssetDatabase.CreateAsset(uiData, uiDataPath);
             AssetDatabase.SaveAssets();
         }
+
+        [Button]
+        public void FetchAll()
+        {
+            ClearNull();
+            string[] guids = AssetDatabase.FindAssets("t:prefab");
+
+            foreach (string guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                var gameObject = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+
+                if (gameObject.TryGetComponent<BaseUI>(out BaseUI ui))
+                {
+                    if(!_uis.Contains(ui)) _uis.Add(ui);
+                }
+            }
+        }
+
+        private void ClearNull()
+        {
+            _uis.RemoveAll(ui => ui == null);
+        }
     }
 }
