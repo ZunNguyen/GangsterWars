@@ -53,6 +53,12 @@ namespace Sources.UI
         {
             await _uiManager.Close(_uiName);
         }
+
+        [Button]
+        public void UpdateToUIData()
+        {
+            UIData.ActiveUIData.AddBaseUI(GetComponent<BaseUI>());
+        }
     }
 }
 

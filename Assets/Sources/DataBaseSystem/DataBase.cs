@@ -130,6 +130,26 @@ namespace Sources.DataBaseSystem
             AssetDatabase.CreateAsset(dataBase, "Assets/Resources/DataBase.asset");
             AssetDatabase.SaveAssets();
         }
+
+        [Button]
+        public void FecthAll()
+        {
+            string[] guilds = AssetDatabase.FindAssets("t:ScriptableObject");
+
+            foreach (string guild in guilds)
+            {
+                var path = AssetDatabase.GUIDToAssetPath(guild);
+                var config = AssetDatabase.LoadAssetAtPath<DataBaseConfig>(path);
+                if (!_configs.Contains(config)) _configs.Add(config);
+            }
+            _configs.RemoveAll(config => config == null);
+        }
+
+        [Button]
+        public void RemoveAll()
+        {
+            _configs.Clear();
+        }
     }
 #endif
 }

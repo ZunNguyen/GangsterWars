@@ -49,11 +49,6 @@ namespace Game.Bootstrap
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
 
             serviceGroup.Add(new TestService_1());
-            serviceGroup.Add(new TestService_1());
-            serviceGroup.Add(new TestService_1());
-            serviceGroup.Add(new TestService_1());
-            serviceGroup.Add(new TestService_1());
-            serviceGroup.Add(new TestService_1());
 
             return serviceGroup;
         }

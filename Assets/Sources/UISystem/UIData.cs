@@ -123,11 +123,13 @@ namespace Sources.UISystem
             prefab.AddComponent(scriptType);
             PrefabUtility.SavePrefabAsset(prefab);
 
-            UIData.ActiveUIData.AddBaseUI(prefab);
+            UIData.ActiveUIData.AddBaseUI(prefab.GetComponent<BaseUI>());
         }
 
-        public void AddBaseUI(GameObject ui)
+        public void AddBaseUI(BaseUI ui)
         {
+            if (_uis.Contains(ui)) return;
+            ClearNull();
             _uis.Add(ui.GetComponent<BaseUI>());
         }
 
@@ -165,7 +167,7 @@ namespace Sources.UISystem
 
                 if (gameObject.TryGetComponent<BaseUI>(out BaseUI ui))
                 {
-                    if(!_uis.Contains(ui)) _uis.Add(ui);
+                    AddBaseUI(ui);
                 }
             }
         }

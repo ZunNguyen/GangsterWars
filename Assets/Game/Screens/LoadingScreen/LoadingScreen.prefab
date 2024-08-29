@@ -372,7 +372,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _layer: Screen
-  _uiTransitionHandler: {fileID: 0}
   _slider: {fileID: 9127329360306458591}
 --- !u!225 &7705955339711572878
 CanvasGroup:
