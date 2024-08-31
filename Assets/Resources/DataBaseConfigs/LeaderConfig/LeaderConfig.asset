@@ -13,22 +13,6 @@ MonoBehaviour:
   m_Name: LeaderConfig
   m_EditorClassIdentifier: 
   _weaponInfo:
-  - Id: pistol
-    Icon: {fileID: 21300000, guid: de808f26d17b1e5449bb66be5a9cbed2, type: 3}
-    DamageWeapon:
-    - Level: 1
-      Damage: 10
-    - Level: 2
-      Damage: 20
-  - Id: dual-pistol
-    Icon: {fileID: 21300000, guid: 365676944dbbcc749b7bc45758a396d4, type: 3}
-    DamageWeapon: []
-  - Id: shotgun
-    Icon: {fileID: 21300000, guid: 369e90ac1ad79bc46a5a336f88fb88b9, type: 3}
-    DamageWeapon: []
-  - Id: aka
-    Icon: {fileID: 21300000, guid: 996a43b95025abf4ab1011f20720b51a, type: 3}
-    DamageWeapon: []
-  - Id: minigun
-    Icon: {fileID: 21300000, guid: 9a42506ef7c7ec044921d4d267e3d849, type: 3}
-    DamageWeapon: []
+  - Id: 
+    Icon: {fileID: 0}
+    DamageWeapons: []
