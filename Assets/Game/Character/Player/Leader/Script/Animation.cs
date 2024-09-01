@@ -1,4 +1,4 @@
-using Game.Character.Controller;
+﻿using Game.Character.Controller;
 using Sources.DataBaseSystem.Leader;
 using System;
 using UniRx;
@@ -39,11 +39,17 @@ namespace Game.Character.Leader
 
         private void Awake()
         {
-            CurrentState.Subscribe(value =>
-            {
-                var state = value.ConvertToString();
-                animator.SetTrigger(state);
-            }).AddTo(this);
+            //CurrentState.Subscribe(value =>
+            //{
+            //    var state = value.ConvertToString();
+            //    animator.SetTrigger(state);
+            //}).AddTo(this);
+        }
+
+        public void AnimationShoot()
+        {
+            var state = AnimationStateLeader.Shoot_7_sprite.ConvertToString();
+            animator.SetTrigger(state);
         }
     }
 }

@@ -2,6 +2,7 @@ using Sources.Command;
 using Sources.DataBaseSystem;
 using Sources.Services;
 using Sources.Services.BootstrapLoadingService;
+using Sources.SpawnerSystem;
 using Sources.UISystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace Game.Bootstrap
             var serviceGroup = new SequenceServiceGroup("Essential Service Group");
 
             serviceGroup.Add(new InitUISystemService(_uiData, _uiManagerPrefab));
+            serviceGroup.Add(new InitSpawnerManagerService());
 
             return serviceGroup;
         }
@@ -48,8 +50,6 @@ namespace Game.Bootstrap
         {
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
 
-            serviceGroup.Add(new TestService_1());
-
             return serviceGroup;
         }
 
@@ -57,7 +57,8 @@ namespace Game.Bootstrap
         {
             var commandServiceGroup = new SequenceServiceCommandGroup("After Bootstrap Loading");
 
-            commandServiceGroup.Add(new LoadMainMenuScenceCommand());
+            //commandServiceGroup.Add(new LoadMainMenuScenceCommand());
+            commandServiceGroup.Add(new LoadSenceCommand("GamePlay"));
 
             return commandServiceGroup;
         }

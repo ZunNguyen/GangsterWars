@@ -26,7 +26,7 @@ namespace Game.Screens.LoadingScreen
 
         private void UpdateLoadingProgress(float value)
         {
-            Debug.Log(value);
+            Debug.Log($"Progress loading {value}");
             _slider.value = value;
         }
     }
