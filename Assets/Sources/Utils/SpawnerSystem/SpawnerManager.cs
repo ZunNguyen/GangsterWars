@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Sources.SpawnerSystem
 {
-    public class SpawnerManager : MonoBehaviour
+    public class SpawnerManager
     {
         public static readonly string Indicator = " [Clone]-";
 
@@ -60,7 +60,7 @@ namespace Sources.SpawnerSystem
 
             if (!_spawners.ContainsKey(key))
             {
-                Destroy(prefab);
+                Object.Destroy(prefab);
             }
 
             _spawners[key].Pool.Release(prefab);

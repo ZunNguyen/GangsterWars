@@ -1,4 +1,5 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
 using System;
@@ -11,6 +12,7 @@ namespace Game.Weapon.Bullet
 {
     public class BulletMoveMent : MonoBehaviour
     {
+        private const float _speed = 30f;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         private Vector2 _originalPos;
@@ -23,23 +25,17 @@ namespace Game.Weapon.Bullet
             _originalPos = transform.position;
         }
 
-        public async UniTask MoveMent(Vector3 clickMousePos)
+        public void MoveMent(Vector3 clickMousePos)
         {
-            var direction = (clickMousePos - transform.position).normalized;
-            _rb.velocity = direction * 10f;
+            Vector2 direction = (clickMousePos - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            while (true)
-            {
-                distance = Math.Abs(Vector2.Distance(_originalPos, _rb.position));
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-                if (distance > 15f)
-                {
-                    _spawnerManager.Release<BulletMoveMent>(this);
-                    break;
-                }
+            var duration = Vector3.Distance(clickMousePos, _originalPos) / _speed;
 
-                await UniTask.Yield(PlayerLoopTiming.Update);
-            }
+            transform.DOMove(clickMousePos, duration).SetEase(Ease.InSine)
+                .OnComplete(() => _spawnerManager.Release<BulletMoveMent>(this));
         }
     }
 }

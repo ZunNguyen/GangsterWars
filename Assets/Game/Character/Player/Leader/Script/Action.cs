@@ -4,6 +4,7 @@ using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 namespace Game.Character.Leader
 {
@@ -13,6 +14,7 @@ namespace Game.Character.Leader
 
         [SerializeField] private Animation _animation;
         [SerializeField] private BulletMoveMent _bulletMoveMent;
+        [SerializeField] private GameObject _muzzleFlash;
         [SerializeField] private Transform _posSpawnBullet;
 
         private void Update()
@@ -26,7 +28,10 @@ namespace Game.Character.Leader
 
                 var bullet = _spawnerManager.Get<BulletMoveMent>(_bulletMoveMent);
                 bullet.transform.position = _posSpawnBullet.position;
-                bullet.MoveMent(clickPosition).Forget();
+                bullet.MoveMent(clickPosition);
+
+                var muzzleFlash = _spawnerManager.Get<GameObject>(_muzzleFlash);
+                muzzleFlash.transform.position = _posSpawnBullet.position;
             }
         }
     }
