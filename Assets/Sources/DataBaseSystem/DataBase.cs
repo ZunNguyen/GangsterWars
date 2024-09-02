@@ -7,6 +7,7 @@ using System.IO;
 using UnityEditor.Compilation;
 using UnityEditor.Callbacks;
 using System.Collections.Generic;
+using Sources.Utils.Singleton;
 
 namespace Sources.DataBaseSystem
 {
@@ -14,8 +15,15 @@ namespace Sources.DataBaseSystem
     {
         private const string _defaultConfigPath = "Assets/Resources/DataBaseConfigs";
         private static DataBase _editorInstance;
+        private Dictionary<string, DataBaseConfig> _configCache = new Dictionary<string, DataBaseConfig>();
+
         [InlineEditor]
         [SerializeField] private List<DataBaseConfig> _configs;
+
+        public void Init()
+        {
+            Locator<DataBase>.Set(this);
+        }
 
         public static DataBase EditorInstance
         {
@@ -45,6 +53,24 @@ namespace Sources.DataBaseSystem
         public void ClearNull()
         {
             _configs.RemoveAll(item => item == null);
+        }
+
+        public T GetConfig<T>() where T : DataBaseConfig
+        {
+            var nameType = typeof(T).Name;
+            return GetConfig(nameType) as T;
+        }
+
+        public DataBaseConfig GetConfig(string id)
+        {
+            if (!_configCache.ContainsKey(id))
+            {
+                var config = _configs.Find(x => x.ID == id);
+                _configCache.Add(id, config);
+                return config;
+            }
+
+            return _configCache[id];
         }
 
 #if UNITY_EDITOR

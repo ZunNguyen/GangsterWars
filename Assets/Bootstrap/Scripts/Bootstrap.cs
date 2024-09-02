@@ -1,5 +1,6 @@
 using Sources.Command;
 using Sources.DataBaseSystem;
+using Sources.GamePlaySystem.Leader;
 using Sources.Services;
 using Sources.Services.BootstrapLoadingService;
 using Sources.SpawnerSystem;
@@ -42,6 +43,7 @@ namespace Game.Bootstrap
 
             serviceGroup.Add(new InitUISystemService(_uiData, _uiManagerPrefab));
             serviceGroup.Add(new InitSpawnerManagerService());
+            serviceGroup.Add(new InitDataBaseService(_dataBase));
 
             return serviceGroup;
         }
@@ -49,6 +51,8 @@ namespace Game.Bootstrap
         private Service CreateBootstrapLoadingServiceGroup()
         {
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
+
+            serviceGroup.Add(new InitLeaderSystemService());
 
             return serviceGroup;
         }

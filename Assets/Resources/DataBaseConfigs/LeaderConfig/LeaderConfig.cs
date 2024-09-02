@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 namespace Sources.DataBaseSystem.Leader
 {
@@ -19,7 +20,8 @@ namespace Sources.DataBaseSystem.Leader
         
         [PreviewField(100, ObjectFieldAlignment.Left)]
         public Sprite Icon;
-        
+
+        public SpriteLibraryAsset SpriteLibraryAsset;
         public List<DamageWeapon> DamageWeapons;
     }
 

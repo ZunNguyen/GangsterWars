@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: LeaderConfig
   m_EditorClassIdentifier: 
   _weaponInfo:
-  - Id: 
-    Icon: {fileID: 0}
-    DamageWeapons: []
+  - Id: Gun-01
+    Icon: {fileID: 21300000, guid: 9a42506ef7c7ec044921d4d267e3d849, type: 3}
+    SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 1a836783a0ac26d4987d9c5d44be3b8c, type: 3}
+    DamageWeapons:
+    - Level: level-0
+      Damage: 0
