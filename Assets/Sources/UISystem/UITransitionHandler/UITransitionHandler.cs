@@ -8,9 +8,16 @@ namespace Sources.UISystem
 {
     public class UITransitionHandler : MonoBehaviour
     {
+        [SerializeField] private bool _useBlackBackGround;
         [SerializeField] private UITransition _uiTransition;
         [SerializeField] private CanvasGroup _rootCanvasGroup;
+        [SerializeField] private GameObject _blackBackGround;
         [SerializeField] private float _duration = 0.5f;
+
+        private void Awake()
+        {
+            _blackBackGround.gameObject.SetActive(_useBlackBackGround);
+        }
 
         public async UniTask DoTransition(bool isTransitionEnter)
         {

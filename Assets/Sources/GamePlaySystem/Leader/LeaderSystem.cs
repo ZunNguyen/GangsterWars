@@ -10,13 +10,13 @@ using UnityEngine;
 
 namespace Sources.GamePlaySystem.Leader
 {
-    public class InitLeaderSystemService : InitSystemService<LeaderSystem> { };
-
     public class GunModel
     {
         public string GunId;
         public string LevelDamage;
     }
+
+    public class InitLeaderSystemService : InitSystemService<LeaderSystem> { };
 
     public class LeaderSystem : BaseSystem
     {

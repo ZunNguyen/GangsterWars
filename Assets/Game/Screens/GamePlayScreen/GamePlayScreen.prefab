@@ -188,12 +188,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4bf0a0d99ff9c499980fac54d1661c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _useBlackBackGround: 0
   _uiTransition:
     TransitionEnter: 1
     TransitionExit: 2
     EaseEnter: 9
     EaseExit: 9
   _rootCanvasGroup: {fileID: 7705955339711572878}
+  _blackBackGround: {fileID: 8820068018295451461}
   _duration: 0.5
 --- !u!114 &7948935682707709649
 MonoBehaviour:
@@ -451,6 +453,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3928771106737198066, guid: 893dbf80bf055704b9370ccc151bdb82, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281234148234497425, guid: 893dbf80bf055704b9370ccc151bdb82, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281234148234497425, guid: 893dbf80bf055704b9370ccc151bdb82, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8213497439521808126, guid: 893dbf80bf055704b9370ccc151bdb82, type: 3}
