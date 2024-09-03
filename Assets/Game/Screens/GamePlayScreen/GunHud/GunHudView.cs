@@ -39,7 +39,7 @@ namespace Game.Screens.GamePlayScreen
 
         public void OnChoseClicked()
         {
-            _leaderSystem.UpdateGunModel(_gunId);
+            _leaderSystem.ChangeGunModel(_gunId);
         }
     }
 }

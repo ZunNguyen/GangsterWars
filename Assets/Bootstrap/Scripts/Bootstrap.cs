@@ -46,6 +46,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitSpawnerManagerService());
             serviceGroup.Add(new InitDataBaseService(_dataBase));
             serviceGroup.Add(new InitGameDataService());
+            serviceGroup.Add(new InitEventSystemService());
 
             return serviceGroup;
         }

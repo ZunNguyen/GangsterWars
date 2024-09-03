@@ -1,8 +1,13 @@
 ﻿using Game.Character.Controller;
+using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
+using Sources.GamePlaySystem.Leader;
+using Sources.Utils.Singleton;
 using System;
 using UniRx;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
+using UnityEngine.U2D.Animation;
 
 namespace Game.Character.Leader
 {
@@ -34,11 +39,23 @@ namespace Game.Character.Leader
 
     public class Animation : AnimationController
     {
-        public ReactiveProperty<AnimationStateLeader> CurrentState { get; }
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
+        private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
+
+        public ReactiveProperty<AnimationStateLeader> CurrentState { get; private set; }
             = new ReactiveProperty<AnimationStateLeader>(AnimationStateLeader.None);
+
+        [SerializeField] private SpriteLibrary _spriteLibrary;
 
         private void Awake()
         {
+            _leaderSystem.GunIdCurrent.Subscribe(value =>
+            {
+                var gunModel = _leaderConfig.GetWeaponInfo(value);
+                _spriteLibrary.spriteLibraryAsset = gunModel.SpriteLibraryAsset;
+            }).AddTo(this);
+
             //CurrentState.Subscribe(value =>
             //{
             //    var state = value.ConvertToString();

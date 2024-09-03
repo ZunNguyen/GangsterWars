@@ -5,6 +5,7 @@ using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
 using UniRx;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Game.Character.Leader
 {
@@ -30,7 +31,7 @@ namespace Game.Character.Leader
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 if (!_isCanShoot) return;
 

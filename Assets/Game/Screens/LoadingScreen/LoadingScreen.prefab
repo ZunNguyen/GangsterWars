@@ -408,7 +408,7 @@ MonoBehaviour:
   _useBlackBackGround: 0
   _uiTransition:
     TransitionEnter: 0
-    TransitionExit: 2
+    TransitionExit: 0
     EaseEnter: 9
     EaseExit: 9
   _rootCanvasGroup: {fileID: 7705955339711572878}

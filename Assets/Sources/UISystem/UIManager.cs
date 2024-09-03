@@ -112,7 +112,7 @@ namespace Sources.UISystem
 
         private void DestroyUI(BaseUI ui)
         {
-            Destroy(ui);
+            Destroy(ui.gameObject);
         }
     }
 }

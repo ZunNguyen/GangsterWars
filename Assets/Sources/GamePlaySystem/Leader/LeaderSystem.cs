@@ -24,9 +24,8 @@ namespace Sources.GamePlaySystem.Leader
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
 
-        private string GunIdCurrent;
-
         public ReactiveDictionary<string, GunModel> GunModels { get; private set; } = new ();
+        public ReactiveProperty<string> GunIdCurrent { get; private set; } = new();
         public ReactiveProperty<bool> IsCanShoot { get; private set; } = new ();
         
         public override async UniTask Init()
@@ -49,24 +48,25 @@ namespace Sources.GamePlaySystem.Leader
 
         private void LoadGunCurrent()
         {
-            GunIdCurrent = _gunIdDefault;
+            GunIdCurrent.Value = _gunIdDefault;
         }
 
         private void CheckCanShoot()
         {
-            var bulletCountCurrent = GunModels[GunIdCurrent].BulletCount.Value;
+            var bulletCountCurrent = GunModels[GunIdCurrent.Value].BulletCount.Value;
             IsCanShoot.Value = bulletCountCurrent > 0;
         }
 
         public void UpdateBullet()
         {
-            GunModels[GunIdCurrent].BulletCount.Value -= 1;
+            GunModels[GunIdCurrent.Value].BulletCount.Value -= 1;
             CheckCanShoot();
         }
 
-        public void UpdateGunModel(string gunId)
+        public void ChangeGunModel(string gunId)
         {
-            GunIdCurrent = gunId;
+            GunIdCurrent.Value = gunId;
+            CheckCanShoot();
         }
     }
 }
