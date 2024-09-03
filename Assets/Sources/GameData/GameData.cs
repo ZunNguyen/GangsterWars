@@ -1,0 +1,40 @@
+using Sources.DataBaseSystem;
+using Sources.DataBaseSystem.Leader;
+using Sources.GamePlaySystem.Leader;
+using Sources.Utils.Singleton;
+using System;
+using System.Collections.Generic;
+
+namespace Sources.GameData
+{
+    [Serializable]
+    public class GameData
+    {
+        public void Init()
+        {
+            Locator<GameData>.Set(this);
+        }
+
+        public List<GunModel> LeaderData { get; private set; } = new();
+
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
+
+        public List<GunModel> SetDataLeaderData()
+        {
+            var weapons = _leaderConfig.Weapons;
+            foreach (var weapon in weapons)
+            {
+                var weaponData = new GunModel
+                {
+                    GunId = weapon.Id,
+                    BulletCount = new UniRx.ReactiveProperty<int>(weapon.BulletCount),
+                };
+
+                LeaderData.Add(weaponData);
+            }
+
+            return LeaderData;
+        }
+    }
+}

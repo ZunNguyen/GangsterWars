@@ -22,12 +22,41 @@ namespace Sources.DataBaseSystem.Leader
         public Sprite Icon;
 
         public SpriteLibraryAsset SpriteLibraryAsset;
+        public int BulletCount;
         public List<DamageWeapon> DamageWeapons;
+
+        public Dictionary<string, DamageWeapon> DamageWeaponCache { get; private set; }
+
+        public DamageWeapon GetDamageWeapon(string id)
+        {
+            if (!DamageWeaponCache.ContainsKey(id))
+            {
+                var damageWeapon = DamageWeapons.Find(x => x.Level == id);
+                DamageWeaponCache.Add(id, damageWeapon);
+                return damageWeapon;
+            }
+
+            return DamageWeaponCache[id];
+        }
     }
 
     public class LeaderConfig : DataBaseConfig
     {
-        [SerializeField] private List<WeaponInfo> _weaponInfo;
-        public List<WeaponInfo > Weapons => _weaponInfo;
+        [SerializeField] private List<WeaponInfo> _weapons;
+        public List<WeaponInfo > Weapons => _weapons;
+
+        public Dictionary<string, WeaponInfo> WeaponInfoCache { get; private set; } = new Dictionary<string, WeaponInfo>();
+
+        public WeaponInfo GetWeaponInfo(string id)
+        {
+            if (!WeaponInfoCache.ContainsKey(id))
+            {
+                var weaponInfo = _weapons.Find(x => x.Id == id);
+                WeaponInfoCache.Add(id, weaponInfo);
+                return weaponInfo;
+            }
+
+            return WeaponInfoCache[id];
+        }
     }
 }

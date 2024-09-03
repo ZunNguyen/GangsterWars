@@ -3,10 +3,7 @@ using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UniRx;
 
 namespace Sources.GamePlaySystem.Leader
 {
@@ -14,38 +11,62 @@ namespace Sources.GamePlaySystem.Leader
     {
         public string GunId;
         public string LevelDamage;
+        public ReactiveProperty<int> BulletCount = new ReactiveProperty<int>(0);
     }
 
     public class InitLeaderSystemService : InitSystemService<LeaderSystem> { };
 
     public class LeaderSystem : BaseSystem
     {
-        private const string _levelDamageDefault = "level-0";
+        private const string _gunIdDefault = "gun-01";
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
+        private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
 
-        public Action<GunModel> GunModel;
+        private string GunIdCurrent;
 
+        public ReactiveDictionary<string, GunModel> GunModels { get; private set; } = new ();
+        public ReactiveProperty<bool> IsCanShoot { get; private set; } = new ();
+        
         public override async UniTask Init()
         {
-            LoadGunModel();
+            LoadGunModels();
+            LoadGunCurrent();
+            CheckCanShoot();
         }
 
-        private void LoadGunModel()
+        private void LoadGunModels()
         {
-            var gunModel = new GunModel
+            var gunModels = _gameData.SetDataLeaderData();
+        
+            foreach(var gunModel in gunModels)
             {
-                GunId = _leaderConfig.Weapons[0].Id,
-                LevelDamage = _levelDamageDefault
-            };
-
-            GunModel?.Invoke(gunModel);
+                var key = gunModel.GunId;
+                GunModels.Add(key, gunModel);
+            }
         }
 
-        public void UpDateGunModel(GunModel gunModel)
+        private void LoadGunCurrent()
         {
-            GunModel?.Invoke(gunModel);
+            GunIdCurrent = _gunIdDefault;
+        }
+
+        private void CheckCanShoot()
+        {
+            var bulletCountCurrent = GunModels[GunIdCurrent].BulletCount.Value;
+            IsCanShoot.Value = bulletCountCurrent > 0;
+        }
+
+        public void UpdateBullet()
+        {
+            GunModels[GunIdCurrent].BulletCount.Value -= 1;
+            CheckCanShoot();
+        }
+
+        public void UpdateGunModel(string gunId)
+        {
+            GunIdCurrent = gunId;
         }
     }
 }
