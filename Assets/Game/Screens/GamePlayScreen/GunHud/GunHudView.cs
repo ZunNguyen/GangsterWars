@@ -31,7 +31,7 @@ namespace Game.Screens.GamePlayScreen
 
             _icon.sprite = weaponInfo.Icon;
 
-            _leaderSystem.GunModels[gunId].BulletCount.Subscribe(value =>
+            _leaderSystem.GunModels[gunId].BulletTotal.Subscribe(value =>
             {
                 _countText.text = value.ToString();
             }).AddTo(this);

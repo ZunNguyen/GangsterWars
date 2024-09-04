@@ -22,7 +22,12 @@ namespace Sources.DataBaseSystem.Leader
         public Sprite Icon;
 
         public SpriteLibraryAsset SpriteLibraryAsset;
-        public int BulletCount;
+        public int MaxBullet;
+        public int BulletsPerClip;
+
+        [Header("Time to reload one bullet - millisecond")] 
+        public int ReloadTime;
+        
         public List<DamageWeapon> DamageWeapons;
 
         public Dictionary<string, DamageWeapon> DamageWeaponCache { get; private set; }

@@ -28,7 +28,7 @@ namespace Sources.GameData
                 var weaponData = new GunModel
                 {
                     GunId = weapon.Id,
-                    BulletCount = new UniRx.ReactiveProperty<int>(weapon.BulletCount),
+                    BulletTotal = new UniRx.ReactiveProperty<int>(weapon.MaxBullet),
                 };
 
                 LeaderData.Add(weaponData);
