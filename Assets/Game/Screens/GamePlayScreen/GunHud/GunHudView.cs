@@ -3,12 +3,10 @@ using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.GamePlaySystem.Leader;
 using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
-using UniRx;
 
 namespace Game.Screens.GamePlayScreen
 {
@@ -18,6 +16,7 @@ namespace Game.Screens.GamePlayScreen
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
 
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
+        private GunHandler _gunHandler;
 
         private string _gunId;
 
@@ -28,18 +27,28 @@ namespace Game.Screens.GamePlayScreen
         {
             _gunId = gunId;
             var weaponInfo = _leaderConfig.GetWeaponInfo(_gunId);
-
             _icon.sprite = weaponInfo.Icon;
 
-            _leaderSystem.GunModels[gunId].BulletTotal.Subscribe(value =>
+            _gunHandler = _leaderSystem.GunHandler;
+            if (_gunHandler.GunModels.ContainsKey(gunId))
             {
-                _countText.text = value.ToString();
-            }).AddTo(this);
+                _gunHandler.GunModels[gunId].BulletTotal.Subscribe(value =>
+                {
+                    _countText.text = value.ToString();
+                }).AddTo(this);
+            }
+            else
+            {
+                _gunHandler.GunModelCurrent.Value.BulletTotal.Subscribe(value =>
+                {
+                    _countText.text = value.ToString();
+                }).AddTo(this);
+            }    
         }
 
         public void OnChoseClicked()
         {
-            _leaderSystem.ChangeGunModel(_gunId);
+            _gunHandler.ChangeGunModel(_gunId);
         }
     }
 }

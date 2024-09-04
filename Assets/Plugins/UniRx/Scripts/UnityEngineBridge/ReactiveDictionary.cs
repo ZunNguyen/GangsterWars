@@ -143,7 +143,7 @@ namespace UniRx
         {
             get
             {
-                return inner[key];
+                return inner[key]; 
             }
 
             set

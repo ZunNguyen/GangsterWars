@@ -50,17 +50,11 @@ namespace Game.Character.Leader
 
         private void Awake()
         {
-            _leaderSystem.GunIdCurrent.Subscribe(value =>
+            _leaderSystem.GunHandler.GunModelCurrent.Subscribe(value =>
             {
-                var gunModel = _leaderConfig.GetWeaponInfo(value);
-                _spriteLibrary.spriteLibraryAsset = gunModel.SpriteLibraryAsset;
+                var gunInfo = _leaderConfig.GetWeaponInfo(value.GunId);
+                _spriteLibrary.spriteLibraryAsset = gunInfo.SpriteLibraryAsset;
             }).AddTo(this);
-
-            //CurrentState.Subscribe(value =>
-            //{
-            //    var state = value.ConvertToString();
-            //    animator.SetTrigger(state);
-            //}).AddTo(this);
         }
 
         public void AnimationShoot()

@@ -25,8 +25,8 @@ namespace Sources.DataBaseSystem.Leader
         public int MaxBullet;
         public int BulletsPerClip;
 
-        [Header("Time to reload one bullet - millisecond")] 
-        public int ReloadTime;
+        [Header("Time to reload one bullet - second")] 
+        public float ReloadTime;
         
         public List<DamageWeapon> DamageWeapons;
 

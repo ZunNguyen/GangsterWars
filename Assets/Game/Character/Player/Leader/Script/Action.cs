@@ -23,7 +23,7 @@ namespace Game.Character.Leader
 
         private void Awake()
         {
-            _leaderSystem.IsCanShoot.Subscribe(value =>
+            _leaderSystem.GunHandler.IsCanShoot.Subscribe(value =>
             {
                 _isCanShoot = value;
             }).AddTo(this);
@@ -47,7 +47,7 @@ namespace Game.Character.Leader
                 var muzzleFlash = _spawnerManager.Get<GameObject>(_muzzleFlash);
                 muzzleFlash.transform.position = _posSpawnBullet.position;
 
-                _leaderSystem.UpdateBullet();
+                _leaderSystem.GunHandler.UpdateBullet();
             }
         }
     }
