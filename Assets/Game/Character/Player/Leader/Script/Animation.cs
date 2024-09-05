@@ -62,5 +62,17 @@ namespace Game.Character.Leader
             var state = AnimationStateLeader.Shoot_7_sprite.ConvertToString();
             animator.SetTrigger(state);
         }
+
+        public void AnimationReload()
+        {
+            var state = AnimationStateLeader.Reload.ConvertToString();
+            animator.SetTrigger(state);
+        }
+
+        public void AnimationIdle()
+        {
+            var state = AnimationStateLeader.Idle.ConvertToString();
+            animator.SetTrigger(state);
+        }
     }
 }

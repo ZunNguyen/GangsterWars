@@ -22,7 +22,8 @@ namespace Sources.GamePlaySystem.Leader
         private float _timeToReloadOneBullet;
         private CancellationTokenSource _reloadCancellationTokenSource;
 
-        public ReactiveProperty<float> TimeReloadCurrent = new ();
+        public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new ();
+        public ReactiveProperty<bool> IsReloading { get; private set; } = new (false);
 
         public void OnSetUp()
         {
@@ -46,7 +47,7 @@ namespace Sources.GamePlaySystem.Leader
             _currentSubscription = _gunHandler.GunModelCurrent.Value.BulletAvailable.Subscribe(OnBulletAvailableChanged);
         }
 
-        private async void OnBulletAvailableChanged(int bulletCurrent)
+        private void OnBulletAvailableChanged(int bulletCurrent)
         {
             _reloadCancellationTokenSource?.Cancel();
             _reloadCancellationTokenSource = new CancellationTokenSource();
@@ -55,12 +56,14 @@ namespace Sources.GamePlaySystem.Leader
 
         private async UniTask CountTimeToReLoad(int bulletCurrent, CancellationToken cancellationToken)
         {
-            await UniTask.Delay(2000, cancellationToken : cancellationToken);
+            await UniTask.Delay(1000, cancellationToken : cancellationToken);
             while (bulletCurrent < _maxBulletPerClip)
             {
+                IsReloading.Value = true;
                 TimeReloadCurrent.Value += Time.deltaTime;
                 if (Math.Abs(TimeReloadCurrent.Value - _timeToReloadOneBullet) < 0.01f)
                 {
+                    IsReloading.Value = false;
                     _gunHandler.AddBullet();
                     ResetTimeReloadCurrent();
                     bulletCurrent += 1;
@@ -72,8 +75,7 @@ namespace Sources.GamePlaySystem.Leader
 
         private void ResetTimeReloadCurrent()
         {
-            TimeReloadCurrent.Value = 0; 
+            TimeReloadCurrent.Value = 0;
         }
     }
 }
-
