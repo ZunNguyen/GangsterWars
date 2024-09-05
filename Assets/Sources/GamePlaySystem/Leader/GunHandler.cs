@@ -83,7 +83,8 @@ namespace Sources.GamePlaySystem.Leader
             if (GunModelCurrent.Value.BulletTotal.Value != 0)
             {
                 GunModelCurrent.Value.BulletAvailable.Value += 1;
-                GunModelCurrent.Value.BulletTotal.Value -= 1;
+
+                Debug.Log($"BulletAvailable: {GunModelCurrent.Value.BulletAvailable.Value}");
             }
             
             CheckCanShoot();
