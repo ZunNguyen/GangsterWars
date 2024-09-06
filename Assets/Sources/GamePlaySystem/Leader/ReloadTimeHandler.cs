@@ -23,7 +23,10 @@ namespace Sources.GamePlaySystem.Leader
         private CancellationTokenSource _reloadCancellationTokenSource;
 
         public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new ();
-        public ReactiveProperty<bool> IsReloading { get; private set; } = new (false);
+
+        private float startTime;
+        private float reloadDuration;
+        private float nextBulletReloadTime;
 
         public void OnSetUp()
         {
@@ -49,6 +52,10 @@ namespace Sources.GamePlaySystem.Leader
 
         private void OnBulletAvailableChanged(int bulletCurrent)
         {
+            startTime = Time.realtimeSinceStartup;
+            reloadDuration = (_maxBulletPerClip - bulletCurrent) * _timeToReloadOneBullet;
+            nextBulletReloadTime = startTime + _timeToReloadOneBullet;
+
             _reloadCancellationTokenSource?.Cancel();
             _reloadCancellationTokenSource = new CancellationTokenSource();
             CountTimeToReLoad(bulletCurrent, _reloadCancellationTokenSource.Token).Forget();
@@ -56,21 +63,21 @@ namespace Sources.GamePlaySystem.Leader
 
         private async UniTask CountTimeToReLoad(int bulletCurrent, CancellationToken cancellationToken)
         {
-            await UniTask.Delay(1000, cancellationToken : cancellationToken);
             while (bulletCurrent < _maxBulletPerClip)
             {
-                IsReloading.Value = true;
-                TimeReloadCurrent.Value += Time.deltaTime;
-                if (Math.Abs(TimeReloadCurrent.Value - _timeToReloadOneBullet) < 0.01f)
+                float elapsedTime = Time.realtimeSinceStartup - startTime;
+                TimeReloadCurrent.Value = reloadDuration - elapsedTime;
+                if (Time.realtimeSinceStartup >= nextBulletReloadTime)
                 {
-                    IsReloading.Value = false;
                     _gunHandler.AddBullet();
-                    ResetTimeReloadCurrent();
                     bulletCurrent += 1;
+                    nextBulletReloadTime += _timeToReloadOneBullet;
                 }
 
                 await UniTask.DelayFrame(1, cancellationToken: cancellationToken);
             }
+
+            ResetTimeReloadCurrent();
         }
 
         private void ResetTimeReloadCurrent()

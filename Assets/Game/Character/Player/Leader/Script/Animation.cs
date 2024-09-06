@@ -55,6 +55,11 @@ namespace Game.Character.Leader
                 var gunInfo = _leaderConfig.GetWeaponInfo(value.GunId);
                 _spriteLibrary.spriteLibraryAsset = gunInfo.SpriteLibraryAsset;
             }).AddTo(this);
+
+            _leaderSystem.ReloadTimeHandler.TimeReloadCurrent.Subscribe(value =>
+            {
+                animator.SetFloat("Reload", value);
+            }).AddTo(this);
         }
 
         public void AnimationShoot()

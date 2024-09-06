@@ -27,12 +27,6 @@ namespace Game.Character.Leader
             {
                 _isCanShoot = value;
             }).AddTo(this);
-
-            _leaderSystem.ReloadTimeHandler.IsReloading.Subscribe(value =>
-            {
-                if (value == false) _animation.AnimationIdle();
-                else if (value == true) _animation.AnimationReload();
-            }).AddTo(this);
         }
 
         private void Update()

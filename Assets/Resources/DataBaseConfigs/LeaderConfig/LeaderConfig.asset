@@ -16,7 +16,7 @@ MonoBehaviour:
   - Id: gun-01
     Icon: {fileID: 21300000, guid: 9a42506ef7c7ec044921d4d267e3d849, type: 3}
     SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 1a836783a0ac26d4987d9c5d44be3b8c, type: 3}
-    MaxBullet: 50
+    MaxBullet: 10
     BulletsPerClip: 5
     ReloadTime: 1
     DamageWeapons:
@@ -25,7 +25,7 @@ MonoBehaviour:
   - Id: gun-02
     Icon: {fileID: 21300000, guid: 369e90ac1ad79bc46a5a336f88fb88b9, type: 3}
     SpriteLibraryAsset: {fileID: 7108339969198208228, guid: e5ea23211d9e50744ac7421dc80e366b, type: 3}
-    MaxBullet: 50
+    MaxBullet: 10
     BulletsPerClip: 5
     ReloadTime: 1
     DamageWeapons:
