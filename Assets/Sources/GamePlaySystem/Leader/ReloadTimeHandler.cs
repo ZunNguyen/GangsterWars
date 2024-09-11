@@ -5,6 +5,7 @@ using Sources.Utils.Singleton;
 using System;
 using System.Threading;
 using UniRx;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Sources.GamePlaySystem.Leader
@@ -24,9 +25,9 @@ namespace Sources.GamePlaySystem.Leader
 
         public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new ();
 
-        private float startTime;
-        private float reloadDuration;
-        private float nextBulletReloadTime;
+        private float _startTime;
+        private float _reloadDuration;
+        private float _nextBulletReloadTime;
 
         public void OnSetUp()
         {
@@ -34,7 +35,7 @@ namespace Sources.GamePlaySystem.Leader
 
             _gunHandler.GunModelCurrent.Subscribe(OnGunModelChanged);
 
-            _gunHandler.Shooting += ResetTimeReloadCurrent;
+            _gunHandler.IsShooting += AddTimeReloadCurrent;
         }
 
         private void OnGunModelChanged(GunModel gunModel)
@@ -50,39 +51,37 @@ namespace Sources.GamePlaySystem.Leader
             _currentSubscription = _gunHandler.GunModelCurrent.Value.BulletAvailable.Subscribe(OnBulletAvailableChanged);
         }
 
-        private void OnBulletAvailableChanged(int bulletCurrent)
+        private void OnBulletAvailableChanged(int bulletAvailableCurrent)
         {
-            startTime = Time.realtimeSinceStartup;
-            reloadDuration = (_maxBulletPerClip - bulletCurrent) * _timeToReloadOneBullet;
-            nextBulletReloadTime = startTime + _timeToReloadOneBullet;
+            _startTime = Time.realtimeSinceStartup;
+            _reloadDuration = (_maxBulletPerClip - bulletAvailableCurrent) * _timeToReloadOneBullet;
+            _nextBulletReloadTime = _startTime + _timeToReloadOneBullet;
 
             _reloadCancellationTokenSource?.Cancel();
             _reloadCancellationTokenSource = new CancellationTokenSource();
-            CountTimeToReLoad(bulletCurrent, _reloadCancellationTokenSource.Token).Forget();
+            CountTimeToReLoad(bulletAvailableCurrent, _reloadCancellationTokenSource.Token).Forget();
         }
 
         private async UniTask CountTimeToReLoad(int bulletCurrent, CancellationToken cancellationToken)
         {
             while (bulletCurrent < _maxBulletPerClip)
             {
-                float elapsedTime = Time.realtimeSinceStartup - startTime;
-                TimeReloadCurrent.Value = reloadDuration - elapsedTime;
-                if (Time.realtimeSinceStartup >= nextBulletReloadTime)
+                float elapsedTime = Time.realtimeSinceStartup - _startTime;
+                TimeReloadCurrent.Value = (float)Math.Round(_reloadDuration - elapsedTime, 1);
+
+                if (Time.realtimeSinceStartup >= _nextBulletReloadTime)
                 {
-                    _gunHandler.AddBullet();
+                    _gunHandler.AddBulletAvailable();
                     bulletCurrent += 1;
-                    nextBulletReloadTime += _timeToReloadOneBullet;
                 }
 
                 await UniTask.DelayFrame(1, cancellationToken: cancellationToken);
             }
-
-            ResetTimeReloadCurrent();
         }
 
-        private void ResetTimeReloadCurrent()
+        private void AddTimeReloadCurrent()
         {
-            TimeReloadCurrent.Value = 0;
+            TimeReloadCurrent.Value += _timeToReloadOneBullet;
         }
     }
 }

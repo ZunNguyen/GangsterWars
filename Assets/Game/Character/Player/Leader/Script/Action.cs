@@ -14,8 +14,6 @@ namespace Game.Character.Leader
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
-        private bool _isCanShoot;
-
         [SerializeField] private Animation _animation;
         [SerializeField] private BulletMoveMent _bulletMoveMent;
         [SerializeField] private GameObject _muzzleFlash;
@@ -23,32 +21,35 @@ namespace Game.Character.Leader
 
         private void Awake()
         {
-            _leaderSystem.GunHandler.IsCanShoot.Subscribe(value =>
-            {
-                _isCanShoot = value;
-            }).AddTo(this);
+            _leaderSystem.GunHandler.IsShooting += AnimationShooting;
         }
 
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
-                if (!_isCanShoot) return;
-
-                _animation.AnimationShoot();
-
-                Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                clickPosition.z = 0;
-
-                var bullet = _spawnerManager.Get<BulletMoveMent>(_bulletMoveMent);
-                bullet.transform.position = _posSpawnBullet.position;
-                bullet.MoveMent(clickPosition);
-
-                var muzzleFlash = _spawnerManager.Get<GameObject>(_muzzleFlash);
-                muzzleFlash.transform.position = _posSpawnBullet.position;
-
-                _leaderSystem.GunHandler.UpdateBullet();
+                _leaderSystem.GunHandler.Shooting();
             }
+        }
+
+        private void AnimationShooting()
+        {
+            _animation.AnimationShoot();
+
+            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            clickPosition.z = 0;
+
+            var bullet = _spawnerManager.Get<BulletMoveMent>(_bulletMoveMent);
+            bullet.transform.position = _posSpawnBullet.position;
+            bullet.MoveMent(clickPosition);
+
+            var muzzleFlash = _spawnerManager.Get<GameObject>(_muzzleFlash);
+            muzzleFlash.transform.position = _posSpawnBullet.position;
+        }
+
+        private void OnDestroy()
+        {
+            _leaderSystem.GunHandler.IsShooting -= AnimationShooting;
         }
     }
 }

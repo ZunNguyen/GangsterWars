@@ -20,9 +20,9 @@ namespace Sources.GamePlaySystem.Leader
 
         public ReactiveDictionary<string, GunModel> GunModels { get; private set; } = new();
         public ReactiveProperty<GunModel> GunModelCurrent { get; private set; } = new();
-        public ReactiveProperty<bool> IsCanShoot { get; private set; } = new();
+        private bool _isCanShoot;
 
-        public Action Shooting;
+        public Action IsShooting;
 
         public void OnSetUp()
         {
@@ -56,19 +56,19 @@ namespace Sources.GamePlaySystem.Leader
         private void CheckCanShoot()
         {
             var bulletCurrent = GunModelCurrent.Value.BulletAvailable.Value;
-            IsCanShoot.Value = bulletCurrent > 0;
+            _isCanShoot = bulletCurrent > 0;
         }
 
-        public void UpdateBullet()
+        public void SubtractBullet()
         {
             if (GunModelCurrent.Value.BulletTotal.Value != 0)
             {
                 GunModelCurrent.Value.BulletAvailable.Value -= 1;
                 GunModelCurrent.Value.BulletTotal.Value -= 1;
+                IsShooting?.Invoke();
             }
 
             CheckCanShoot();
-            Shooting?.Invoke();
         }
 
         public void ChangeGunModel(string gunId)
@@ -78,16 +78,22 @@ namespace Sources.GamePlaySystem.Leader
             CheckCanShoot();
         }
 
-        public void AddBullet()
+        public void AddBulletAvailable()
         {
-            if (GunModelCurrent.Value.BulletTotal.Value != 0)
+            if (GunModelCurrent.Value.BulletTotal.Value > 0)
             {
                 GunModelCurrent.Value.BulletAvailable.Value += 1;
 
-                Debug.Log($"BulletAvailable: {GunModelCurrent.Value.BulletAvailable.Value}");
+                //Debug.Log($"BulletAvailable: {GunModelCurrent.Value.BulletAvailable.Value}");
             }
             
             CheckCanShoot();
+        }
+
+        public void Shooting()
+        {
+            if (!_isCanShoot) return;
+            SubtractBullet();
         }
     }
 }
