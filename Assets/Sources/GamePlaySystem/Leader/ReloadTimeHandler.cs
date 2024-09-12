@@ -10,6 +10,11 @@ using UnityEngine;
 
 namespace Sources.GamePlaySystem.Leader
 {
+    public class ReloadTimeInfo
+    {
+
+    }
+
     public class ReloadTimeHandler
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
@@ -46,6 +51,8 @@ namespace Sources.GamePlaySystem.Leader
 
         private void UpdateReloadInfo(string gunId)
         {
+            UpdateTimeReload();
+
             _maxBulletPerClip = _leaderConfig.WeaponInfoCache[gunId].BulletsPerClip;
             _timeToReloadOneBullet = _leaderConfig.WeaponInfoCache[gunId].ReloadTime;
             _currentSubscription = _gunHandler.GunModelCurrent.Value.BulletAvailable.Subscribe(OnBulletAvailableChanged);
@@ -77,6 +84,11 @@ namespace Sources.GamePlaySystem.Leader
 
                 await UniTask.DelayFrame(1, cancellationToken: cancellationToken);
             }
+        }
+
+        private void UpdateTimeReload()
+        {
+
         }
 
         private void AddTimeReloadCurrent()
