@@ -3,6 +3,7 @@ using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.Utils.Singleton;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using UniRx;
 using Unity.Mathematics;
@@ -12,11 +13,14 @@ namespace Sources.GamePlaySystem.Leader
 {
     public class ReloadTimeInfo
     {
-
+        public float SaveTimeReloadCurrent = 0;
+        public float SaveReloadDuration = 0;
     }
 
     public class ReloadTimeHandler
     {
+        private const string _gunIdCurrentDefault = "";
+
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
 
@@ -27,11 +31,13 @@ namespace Sources.GamePlaySystem.Leader
         private int _maxBulletPerClip;
         private float _timeToReloadOneBullet;
         private CancellationTokenSource _reloadCancellationTokenSource;
+        private Dictionary<string, ReloadTimeInfo> _reloadTimeInfos = new Dictionary<string, ReloadTimeInfo>();
 
-        public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new ();
+        public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new (0);
 
+        private string _gunIdCurrent = "";
         private float _startTime;
-        private float _reloadDuration;
+        private float _reloadDuration = 0;
         private float _nextBulletReloadTime;
 
         public void OnSetUp()
@@ -45,16 +51,17 @@ namespace Sources.GamePlaySystem.Leader
 
         private void OnGunModelChanged(GunModel gunModel)
         {
+            _gunIdCurrent = gunModel.GunId;
             _currentSubscription?.Dispose();
-            UpdateReloadInfo(gunModel.GunId);
+            UpdateReloadInfo();
         }
 
-        private void UpdateReloadInfo(string gunId)
+        private void UpdateReloadInfo()
         {
-            UpdateTimeReload();
+            SaveTimeReloadCurrent();
 
-            _maxBulletPerClip = _leaderConfig.WeaponInfoCache[gunId].BulletsPerClip;
-            _timeToReloadOneBullet = _leaderConfig.WeaponInfoCache[gunId].ReloadTime;
+            _maxBulletPerClip = _leaderConfig.WeaponInfoCache[_gunIdCurrent].BulletsPerClip;
+            _timeToReloadOneBullet = _leaderConfig.WeaponInfoCache[_gunIdCurrent].ReloadTime;
             _currentSubscription = _gunHandler.GunModelCurrent.Value.BulletAvailable.Subscribe(OnBulletAvailableChanged);
         }
 
@@ -62,7 +69,9 @@ namespace Sources.GamePlaySystem.Leader
         {
             _startTime = Time.realtimeSinceStartup;
             _reloadDuration = (_maxBulletPerClip - bulletAvailableCurrent) * _timeToReloadOneBullet;
-            _nextBulletReloadTime = _startTime + _timeToReloadOneBullet;
+            _nextBulletReloadTime = Math.Max(0, _reloadDuration - _timeToReloadOneBullet);
+
+            LoadTimeReloadCurrent();
 
             _reloadCancellationTokenSource?.Cancel();
             _reloadCancellationTokenSource = new CancellationTokenSource();
@@ -76,7 +85,7 @@ namespace Sources.GamePlaySystem.Leader
                 float elapsedTime = Time.realtimeSinceStartup - _startTime;
                 TimeReloadCurrent.Value = (float)Math.Round(_reloadDuration - elapsedTime, 1);
 
-                if (Time.realtimeSinceStartup >= _nextBulletReloadTime)
+                if (TimeReloadCurrent.Value <= _nextBulletReloadTime)
                 {
                     _gunHandler.AddBulletAvailable();
                     bulletCurrent += 1;
@@ -86,9 +95,26 @@ namespace Sources.GamePlaySystem.Leader
             }
         }
 
-        private void UpdateTimeReload()
+        private void SaveTimeReloadCurrent()
         {
+            if (_gunIdCurrent == _gunIdCurrentDefault) return;
 
+            if (!_reloadTimeInfos.ContainsKey(_gunIdCurrent))
+            {
+                var newReloadTimeInfo = new ReloadTimeInfo();
+                _reloadTimeInfos.Add(_gunIdCurrent, newReloadTimeInfo);
+            }
+
+            _reloadTimeInfos[_gunIdCurrent].SaveTimeReloadCurrent = TimeReloadCurrent.Value;
+            _reloadTimeInfos[_gunIdCurrent].SaveReloadDuration = _reloadDuration;
+        }
+
+        private void LoadTimeReloadCurrent()
+        {
+            if (_gunIdCurrent == _gunIdCurrentDefault) return;
+
+            TimeReloadCurrent.Value = _reloadTimeInfos[_gunIdCurrent].SaveTimeReloadCurrent;
+            _reloadDuration = _reloadTimeInfos[_gunIdCurrent].SaveReloadDuration;
         }
 
         private void AddTimeReloadCurrent()

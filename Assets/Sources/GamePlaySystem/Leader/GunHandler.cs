@@ -84,7 +84,7 @@ namespace Sources.GamePlaySystem.Leader
             {
                 GunModelCurrent.Value.BulletAvailable.Value += 1;
 
-                //Debug.Log($"BulletAvailable: {GunModelCurrent.Value.BulletAvailable.Value}");
+                Debug.Log($"BulletAvailable: {GunModelCurrent.Value.BulletAvailable.Value}");
             }
             
             CheckCanShoot();
