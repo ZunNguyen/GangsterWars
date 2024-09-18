@@ -51,6 +51,8 @@ namespace Sources.GamePlaySystem.Leader
 
         private void OnGunModelChanged(GunModel gunModel)
         {
+            SaveTimeReloadCurrent();
+
             _gunIdCurrent = gunModel.GunId;
             _currentSubscription?.Dispose();
             UpdateReloadInfo();
@@ -58,8 +60,6 @@ namespace Sources.GamePlaySystem.Leader
 
         private void UpdateReloadInfo()
         {
-            SaveTimeReloadCurrent();
-
             _maxBulletPerClip = _leaderConfig.WeaponInfoCache[_gunIdCurrent].BulletsPerClip;
             _timeToReloadOneBullet = _leaderConfig.WeaponInfoCache[_gunIdCurrent].ReloadTime;
             _currentSubscription = _gunHandler.GunModelCurrent.Value.BulletAvailable.Subscribe(OnBulletAvailableChanged);
@@ -71,7 +71,7 @@ namespace Sources.GamePlaySystem.Leader
             _reloadDuration = (_maxBulletPerClip - bulletAvailableCurrent) * _timeToReloadOneBullet;
             _nextBulletReloadTime = Math.Max(0, _reloadDuration - _timeToReloadOneBullet);
 
-            LoadTimeReloadCurrent();
+            LoadTimeReloadCurrent(bulletAvailableCurrent);
 
             _reloadCancellationTokenSource?.Cancel();
             _reloadCancellationTokenSource = new CancellationTokenSource();
@@ -109,12 +109,25 @@ namespace Sources.GamePlaySystem.Leader
             _reloadTimeInfos[_gunIdCurrent].SaveReloadDuration = _reloadDuration;
         }
 
-        private void LoadTimeReloadCurrent()
+        private void LoadTimeReloadCurrent(int bulletCurrent)
         {
-            if (_gunIdCurrent == _gunIdCurrentDefault) return;
+            if (!_reloadTimeInfos.ContainsKey(_gunIdCurrent))
+            {
+                TimeReloadCurrent.Value = 0;
+                return;
+            }
 
-            TimeReloadCurrent.Value = _reloadTimeInfos[_gunIdCurrent].SaveTimeReloadCurrent;
-            _reloadDuration = _reloadTimeInfos[_gunIdCurrent].SaveReloadDuration;
+            if (bulletCurrent != _maxBulletPerClip)
+            {
+                TimeReloadCurrent.Value = _reloadTimeInfos[_gunIdCurrent].SaveTimeReloadCurrent;
+            }
+            
+            if (_reloadTimeInfos[_gunIdCurrent].SaveReloadDuration == 0) return;
+            
+            if (_reloadTimeInfos[_gunIdCurrent].SaveReloadDuration < _reloadDuration)
+            {
+                _reloadDuration = _reloadTimeInfos[_gunIdCurrent].SaveReloadDuration;
+            }
         }
 
         private void AddTimeReloadCurrent()
