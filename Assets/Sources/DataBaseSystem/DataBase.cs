@@ -29,13 +29,13 @@ namespace Sources.DataBaseSystem
         {
             get
             {
-                if (_editorInstance == null) _editorInstance = Resources.Load<DataBase>(nameof(DataBase));
+                if (_editorInstance == null) _editorInstance = Resources.Load<DataBase>($"{nameof(DataBase)}/{nameof(DataBase)}");
 
                 return _editorInstance;
             }
         }
 
-        private void Add(DataBaseConfig config)
+        private void AddConfig(DataBaseConfig config)
         {
             ClearNull();
 
@@ -140,8 +140,8 @@ namespace Sources.DataBaseSystem
 
             DataBaseConfig asset = (DataBaseConfig)ScriptableObject.CreateInstance(type);
             AssetDatabase.CreateAsset(asset, $"{_defaultConfigPath}/{scriptName}/{type.Name}.asset");
-            DataBase.EditorInstance.Add(asset);
             AssetDatabase.SaveAssets();
+            DataBase.EditorInstance.AddConfig(asset);
         }
 
         [MenuItem("Assets/Create/Eren/DataBase/Create DataBase System")]

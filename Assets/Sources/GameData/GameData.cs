@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 namespace Sources.GameData
 {
-    [Serializable]
     public class GameData
     {
         public void Init()
@@ -16,6 +15,8 @@ namespace Sources.GameData
         }
 
         public List<GunModel> LeaderData { get; private set; } = new();
+
+        public List<string> WavesPassed;
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
