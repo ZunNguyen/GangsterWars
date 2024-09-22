@@ -33,7 +33,7 @@ namespace Sources.GamePlaySystem.Leader
 
         private void LoadGunModels()
         {
-            var gunModels = _gameData.SetDataLeaderData();
+            var gunModels = _gameData.UserData.SetDataLeaderData();
 
             foreach (var gunModel in gunModels)
             {

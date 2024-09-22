@@ -12,10 +12,13 @@ namespace Sources.GamePlaySystem.MainGamePlay
     public class MainGamePlaySystem : BaseSystem
     {
         public SpawnEnemiesHandler _spawnEnemiesHandler;
+        public UserRecieveDamageHandler _userRecieveDamageHandler;
 
         public override async UniTask Init()
         {
             _spawnEnemiesHandler = new SpawnEnemiesHandler();
+            _userRecieveDamageHandler = new UserRecieveDamageHandler();
+            _userRecieveDamageHandler.OnSetUp();
         }
     }
 }

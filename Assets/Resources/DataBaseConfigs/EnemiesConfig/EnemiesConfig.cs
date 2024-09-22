@@ -17,6 +17,6 @@ namespace Sources.DataBaseSystem
 
     public class EnemiesConfig : DataBaseConfig
     {
-        public List<EnemyInfo> Enemies;
+        [SerializeField] private List<EnemyInfo> Enemies;
     }
 }
