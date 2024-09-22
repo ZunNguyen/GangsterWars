@@ -25,7 +25,7 @@ namespace Sources.DataBaseSystem
     public class LevelInfo
     {
         public string Id;
-        public float Hp;
+        public int Hp;
     }
 
     [Serializable]

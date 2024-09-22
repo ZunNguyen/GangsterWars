@@ -35,7 +35,7 @@ namespace Sources.DataBaseSystem
         public string EnemyId;
         public List<int> IndexPos;
         public int Damage;
-        public int HP;
+        public int Hp;
     }
 
     public class EnemySpawnConfig : DataBaseConfig

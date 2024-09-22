@@ -20,12 +20,14 @@ MonoBehaviour:
       - PhaseId: 
         Enemy:
           EnemyId: 
-          Quatity: 
-          Damage: 
-          HP: 
+          IndexPos: 
+          Damage: 0
+          Hp: 0
+        SpawnAfterMiliSeccond: 0
       - PhaseId: 
         Enemy:
           EnemyId: 
-          Quatity: 
-          Damage: 
-          HP: 
+          IndexPos: 
+          Damage: 0
+          Hp: 0
+        SpawnAfterMiliSeccond: 0
