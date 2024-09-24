@@ -25,6 +25,14 @@ namespace Sources.GamePlaySystem.MainGamePlay
             UserRecieveDamageHandler.OnSetUp();
 
             EnemiesController = new EnemiesController();
+
+            Test();
+        }
+
+        private void Test()
+        {
+            SetWaveId("wave-01");
+            StartBattle();
         }
 
         public void StartBattle()

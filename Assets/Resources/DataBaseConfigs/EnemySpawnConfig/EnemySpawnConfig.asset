@@ -13,21 +13,14 @@ MonoBehaviour:
   m_Name: EnemySpawnConfig
   m_EditorClassIdentifier: 
   _waves:
-  - Id: wave-1
+  - Id: wave-01
     Turns:
-    - Id: turn-1
+    - Id: turn-01
       Phases:
-      - PhaseId: 
+      - PhaseId: phase-01
         Enemy:
-          EnemyId: 
-          IndexPos: 000000000000000000000000
-          Damage: 0
-          Hp: 0
-        SpawnAfterMiliSeccond: 0
-      - PhaseId: 
-        Enemy:
-          EnemyId: 
-          IndexPos: 
+          EnemyId: enemy-01
+          IndexPos: 01000000
           Damage: 0
           Hp: 0
         SpawnAfterMiliSeccond: 0

@@ -40,7 +40,7 @@ namespace Sources.DataBaseSystem
     {
         [SerializeField] private List<ShieldInfo> _shieldInfos;
 
-        private Dictionary<string, ShieldInfo> _shieldInfoCache;
+        private Dictionary<string, ShieldInfo> _shieldInfoCache = new();
 
         public ShieldInfo GetShieldInfo(string id)
         {
@@ -70,7 +70,7 @@ namespace Sources.DataBaseSystem
                     if (string.IsNullOrEmpty(level.Id))
                     {
                         // Automatically generate the Id based on shield and level index
-                        level.Id = $"Level_{i + 1}";
+                        level.Id = $"level-{i + 1}";
                     }
                 }
             }

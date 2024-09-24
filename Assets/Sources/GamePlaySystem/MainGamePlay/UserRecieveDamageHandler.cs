@@ -28,7 +28,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private ShieldConfig _shieldConfig => Locator<ShieldConfig>.Instance;
+        private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
         private int _hpCurrentShield;
 
         public ReactiveProperty<ShieldState> ShieldCurrentState { get;} = new ReactiveProperty<ShieldState>();

@@ -13,7 +13,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private EnemySpawnConfig _enemySpawnConfig => Locator<EnemySpawnConfig>.Instance;
+        private EnemySpawnConfig _enemySpawnConfig => _dataBase.GetConfig<EnemySpawnConfig>();
 
         private string _waveId;
         private Wave _waveInfo;
@@ -38,6 +38,8 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         public async void SpawnEnemies()
         {
+            await UniTask.Delay(2000);
+
             while (!_endWave)
             {
                 var phaseCurrent = _waveInfo.Turns[_turnIndexCurrent].Phases[_phaseIndexCurrent];

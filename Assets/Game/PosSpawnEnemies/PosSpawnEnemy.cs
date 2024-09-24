@@ -27,6 +27,7 @@ namespace Game.PosSpawnEnemies
 
             _mainGamePlaySystem.SpawnEnemiesHandler.EnemyModel.Subscribe(value =>
             {
+                if (value == null) return;
                 SpawnEnemy(value);
             }).AddTo(this);
         }
@@ -36,26 +37,27 @@ namespace Game.PosSpawnEnemies
             if (!enemy.IndexPos.Contains(_indexPos)) return;
 
             var enemyId = enemy.EnemyId;
+
             if (!_enemiesCache.ContainsKey(enemyId))
             {
                 var enemyPrefab = _enemiesConfig.GetEnemyInfo(enemyId).EnemyPrefab;
                 var enemyController = enemyPrefab.GetComponent<EnemyController>();
                 _enemiesCache.Add(enemyId, enemyController);
 
-                Spawning(enemyController);
+                Spawning(enemyController, enemy);
                 return;
             }
 
             var enemyTarget = _enemiesCache[enemyId];
-            Spawning(enemyTarget);
+            Spawning(enemyTarget, enemy);
         }
 
-        private void Spawning(EnemyController enemyController)
+        private void Spawning(EnemyController enemyController, Enemy enemy)
         {
             var enemyPrefab = _spawnerManager.Get<EnemyController>(enemyController);
 
             enemyPrefab.transform.position = this.transform.position;
-            enemyPrefab.OnSetUp();
+            enemyPrefab.OnSetUp(enemy);
         }
     }
 }

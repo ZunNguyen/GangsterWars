@@ -41,7 +41,7 @@ namespace Sources.DataBaseSystem
     public class EnemySpawnConfig : DataBaseConfig
     {
         [SerializeField] private List<Wave> _waves;
-        public Dictionary<string, Wave> WavesCache;
+        public Dictionary<string, Wave> WavesCache = new();
 
         public Wave GetWaveInfo(string id)
         {

@@ -6,7 +6,7 @@ namespace Game.PosSpawnEnemies
 {
     public class PosSpawnEnemiesController : MonoBehaviour
     {
-        private List<PosSpawnEnemy> _posSpawnEnemies;
+        [SerializeField] private List<PosSpawnEnemy> _posSpawnEnemies;
 
         private void Awake()
         {

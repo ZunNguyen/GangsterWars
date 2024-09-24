@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a58d0f24c5f98479eb5b6423873433, type: 3}
   m_Name: ShieldConfig
   m_EditorClassIdentifier: 
-  _shieldInfos: []
+  _shieldInfos:
+  - Id: shield-01
+    Icons:
+    - ShieldStates: 100
+      Icon: {fileID: 21300000, guid: 5d55571707dfe974c8c80ee3312e7899, type: 3}
+    Levels:
+    - Id: level-01
+      Hp: 100

@@ -1,13 +1,13 @@
-using Cysharp.Threading.Tasks;
-using Sources.GamePlaySystem.MainGamePlay.Enemies;
-using UnityEngine;
-using UniRx;
-using System;
-using Sources.Extension;
 using Game.Weapon.Bullet;
+using Sources.DataBaseSystem;
+using Sources.Extension;
 using Sources.GamePlaySystem.MainGamePlay;
-using Sources.Utils.Singleton;
+using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.SpawnerSystem;
+using Sources.Utils.Singleton;
+using System;
+using UniRx;
+using UnityEngine;
 
 namespace Game.Character.Enemy
 {
@@ -24,9 +24,10 @@ namespace Game.Character.Enemy
 
         [SerializeField] private Rigidbody2D _rb;
 
-        public void OnSetUp()
+        public void OnSetUp(Sources.DataBaseSystem.Enemy enemy)
         {
             _enemyHandler = _mainGamePlaySystem.EnemiesController.GetAvailableEnemyHandler();
+            _enemyHandler.OnSetUp(enemy);
 
             SubcribeDirection();
             SubcribeAniamtionState();
