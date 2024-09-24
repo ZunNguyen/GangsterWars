@@ -2,6 +2,7 @@ using Sources.Command;
 using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.GamePlaySystem.Leader;
+using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Services;
 using Sources.Services.BootstrapLoadingService;
 using Sources.SpawnerSystem;
@@ -56,6 +57,7 @@ namespace Game.Bootstrap
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
 
             serviceGroup.Add(new InitLeaderSystemService());
+            serviceGroup.Add(new InitMainGamePlaySystemService());
 
             return serviceGroup;
         }

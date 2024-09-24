@@ -7,7 +7,7 @@ namespace Game.Character.Leader
 {
     public class SpawnBullet : MonoBehaviour
     {
-        [SerializeField] private BulletMoveMent _bulletMoveMent;
+        [SerializeField] private BulletController _bulletMoveMent;
 
     }
 }

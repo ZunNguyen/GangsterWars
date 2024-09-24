@@ -15,7 +15,7 @@ namespace Game.Character.Leader
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
         [SerializeField] private Animation _animation;
-        [SerializeField] private BulletMoveMent _bulletMoveMent;
+        [SerializeField] private BulletController _bulletMoveMent;
         [SerializeField] private GameObject _muzzleFlash;
         [SerializeField] private Transform _posSpawnBullet;
 
@@ -39,7 +39,7 @@ namespace Game.Character.Leader
             Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             clickPosition.z = 0;
 
-            var bullet = _spawnerManager.Get<BulletMoveMent>(_bulletMoveMent);
+            var bullet = _spawnerManager.Get<BulletController>(_bulletMoveMent);
             bullet.transform.position = _posSpawnBullet.position;
             bullet.MoveMent(clickPosition);
 

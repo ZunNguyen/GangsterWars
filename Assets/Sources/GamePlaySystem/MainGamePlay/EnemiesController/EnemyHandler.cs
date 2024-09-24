@@ -60,7 +60,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         public void OnAttack()
         {
-            _mainGamePlaySystem._userRecieveDamageHandler.SubstractHp(Damage.Value);
+            _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value);
         }
     }
 }

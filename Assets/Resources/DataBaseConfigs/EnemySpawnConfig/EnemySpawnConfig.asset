@@ -20,7 +20,7 @@ MonoBehaviour:
       - PhaseId: 
         Enemy:
           EnemyId: 
-          IndexPos: 
+          IndexPos: 000000000000000000000000
           Damage: 0
           Hp: 0
         SpawnAfterMiliSeccond: 0

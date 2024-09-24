@@ -10,15 +10,16 @@ using UnityEngine;
 
 namespace Game.Weapon.Bullet
 {
-    public class BulletMoveMent : MonoBehaviour
+    public class BulletController : MonoBehaviour
     {
         private const float _speed = 30f;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         private Vector2 _originalPos;
 
+        public int Damage {  get; private set; }
+
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float distance;
 
         private void Awake()
         {
@@ -35,7 +36,7 @@ namespace Game.Weapon.Bullet
             var duration = Vector3.Distance(clickMousePos, _originalPos) / _speed;
 
             transform.DOMove(clickMousePos, duration).SetEase(Ease.InSine)
-                .OnComplete(() => _spawnerManager.Release<BulletMoveMent>(this));
+                .OnComplete(() => _spawnerManager.Release<BulletController>(this));
         }
     }
 }
