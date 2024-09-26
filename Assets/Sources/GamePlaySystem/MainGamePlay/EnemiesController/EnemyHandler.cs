@@ -46,6 +46,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public ReactiveProperty<int> Damage { get; } = new ReactiveProperty<int>();
         public ReactiveProperty<Vector2> Direction { get; } = new ReactiveProperty<Vector2>(Vector2.zero);
         public ReactiveProperty<AnimationState> AniamtionState { get;} = new ReactiveProperty<AnimationState>(AnimationState.Idle);
+        public ReactiveProperty<bool> IsAttacking { get;} = new ReactiveProperty<bool>(false);
 
         public void OnSetUp(Enemy enemyInfo)
         {
@@ -62,12 +63,6 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             Direction.Value = Vector2.left;
         }
 
-        public void Stop()
-        {
-            AniamtionState.Value = AnimationState.Idle;
-            Direction.Value = Vector2.zero;
-        }
-
         public void SubstractHp(int hp)
         {
             HpCurrent.Value -= hp;
@@ -81,8 +76,22 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         public void OnAttack()
         {
+            IsAttacking.Value = true;
+
+            AniamtionState.Value = AnimationState.Idle;
+            Direction.Value = Vector2.zero;
+
             AniamtionState.Value = AnimationState.Attack;
+        }
+
+        public async void DamageUser()
+        {
+            AniamtionState.Value = AnimationState.Idle;
             _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value);
+
+            await UniTask.Delay(1000);
+
+            IsAttacking.Value = false;
         }
     }
 }

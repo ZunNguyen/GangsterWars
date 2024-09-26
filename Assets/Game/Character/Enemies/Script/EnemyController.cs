@@ -23,11 +23,12 @@ namespace Game.Character.Enemy
         private bool _isAttacking = false;
 
         private IDisposable _disposableDirection;
-        private IDisposable _disposableAniamtionState;
+        private IDisposable _disposableIsAttacking;
 
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _hpBarPos;
+        [SerializeField] private AnimationHander _animationHander;
 
         public void OnSetUp(Sources.DataBaseSystem.Enemy enemy, CanvasInGamePlayController canvasInGamePlayController)
         {
@@ -36,7 +37,7 @@ namespace Game.Character.Enemy
             canvasInGamePlayController.OnSetUpHpBar(_hpBarPos, _enemyHandler);
 
             SubcribeDirection();
-            SubcribeAniamtionState();
+            _animationHander.OnSetUp(_enemyHandler, OnDeath);
         }
 
         private void SubcribeDirection()
@@ -45,19 +46,10 @@ namespace Game.Character.Enemy
             {
                 _direction = value;
             });
-        }
 
-        private void SubcribeAniamtionState()
-        {
-            _disposableAniamtionState = _enemyHandler.AniamtionState.Subscribe(value =>
+            _disposableIsAttacking = _enemyHandler.IsAttacking.Subscribe(value =>
             {
-                var state = value.ConvertToString();
-                _animator.SetTrigger(state);
-
-                if (value == Sources.GamePlaySystem.MainGamePlay.Enemies.AnimationState.Death)
-                {
-                    OnDeath();
-                }
+                _isAttacking = value;
             });
         }
 
@@ -66,18 +58,11 @@ namespace Game.Character.Enemy
             _rb.velocity = _direction * 1f;
         }
 
-        private async void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.tag == CollisionTagKey.Shield && !_isAttacking)
             {
-                _isAttacking = true;
-
-                _enemyHandler.Stop();
-                await UniTask.Delay(1000);
                 _enemyHandler.OnAttack();
-                await UniTask.Delay(500);
-
-                _isAttacking = false;
             }
 
             if (collision.tag == CollisionTagKey.Bullet)
@@ -98,7 +83,7 @@ namespace Game.Character.Enemy
         private void OnDisposable()
         {
             _disposableDirection?.Dispose();
-            _disposableAniamtionState?.Dispose();
+            _animationHander.OnDisposable();
         }
     }
 }
