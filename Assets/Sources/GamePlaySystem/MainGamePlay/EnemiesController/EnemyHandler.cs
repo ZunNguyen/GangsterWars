@@ -1,5 +1,8 @@
+using Cysharp.Threading.Tasks;
+using Game.Character.Leader;
 using Sources.DataBaseSystem;
 using Sources.Utils.Singleton;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
@@ -16,10 +19,28 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         Death
     }
 
+    public static class AnimationStateEx
+    {
+        public static string ConvertToString(this AnimationState state)
+        {
+            return state switch
+            {
+                AnimationState.None => "None",
+                AnimationState.Idle => "Idle",
+                AnimationState.Walk => "Walk",
+                AnimationState.Attack => "Attack",
+                AnimationState.Death => "Death",
+
+                _ => throw new ArgumentOutOfRangeException(nameof(state), state, null)
+            };
+        }
+    }
+
     public class EnemyHandler
     {
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
+        public int HpMax { get; private set; }
         public string EnemyId { get; private set; }
         public ReactiveProperty<int> HpCurrent { get; } = new ReactiveProperty<int>();
         public ReactiveProperty<int> Damage { get; } = new ReactiveProperty<int>();
@@ -29,7 +50,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public void OnSetUp(Enemy enemyInfo)
         {
             EnemyId = enemyInfo.EnemyId;
-            HpCurrent.Value = enemyInfo.Hp;
+            HpCurrent.Value = HpMax = enemyInfo.Hp;
             Damage.Value = enemyInfo.Damage;
 
             OnStart();
@@ -60,6 +81,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         public void OnAttack()
         {
+            AniamtionState.Value = AnimationState.Attack;
             _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value);
         }
     }

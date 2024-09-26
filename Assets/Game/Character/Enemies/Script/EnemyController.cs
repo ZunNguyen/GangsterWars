@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using Game.CanvasInGamePlay.Controller;
 using Game.Weapon.Bullet;
 using Sources.DataBaseSystem;
 using Sources.Extension;
@@ -18,16 +20,20 @@ namespace Game.Character.Enemy
 
         private EnemyHandler _enemyHandler;
         private Vector2 _direction;
+        private bool _isAttacking = false;
 
         private IDisposable _disposableDirection;
         private IDisposable _disposableAniamtionState;
 
         [SerializeField] private Rigidbody2D _rb;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private Transform _hpBarPos;
 
-        public void OnSetUp(Sources.DataBaseSystem.Enemy enemy)
+        public void OnSetUp(Sources.DataBaseSystem.Enemy enemy, CanvasInGamePlayController canvasInGamePlayController)
         {
             _enemyHandler = _mainGamePlaySystem.EnemiesController.GetAvailableEnemyHandler();
             _enemyHandler.OnSetUp(enemy);
+            canvasInGamePlayController.OnSetUpHpBar(_hpBarPos, _enemyHandler);
 
             SubcribeDirection();
             SubcribeAniamtionState();
@@ -45,6 +51,9 @@ namespace Game.Character.Enemy
         {
             _disposableAniamtionState = _enemyHandler.AniamtionState.Subscribe(value =>
             {
+                var state = value.ConvertToString();
+                _animator.SetTrigger(state);
+
                 if (value == Sources.GamePlaySystem.MainGamePlay.Enemies.AnimationState.Death)
                 {
                     OnDeath();
@@ -57,11 +66,18 @@ namespace Game.Character.Enemy
             _rb.velocity = _direction * 1f;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private async void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == CollisionTagKey.Shield)
+            if (collision.tag == CollisionTagKey.Shield && !_isAttacking)
             {
+                _isAttacking = true;
+
                 _enemyHandler.Stop();
+                await UniTask.Delay(1000);
+                _enemyHandler.OnAttack();
+                await UniTask.Delay(500);
+
+                _isAttacking = false;
             }
 
             if (collision.tag == CollisionTagKey.Bullet)

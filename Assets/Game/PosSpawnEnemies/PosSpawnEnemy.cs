@@ -7,6 +7,8 @@ using Sources.DataBaseSystem;
 using Sources.SpawnerSystem;
 using System.Collections.Generic;
 using Game.Character.Enemy;
+using Sources.GamePlaySystem.MainGamePlay.Enemies;
+using Game.CanvasInGamePlay.Controller;
 
 namespace Game.PosSpawnEnemies
 {
@@ -20,6 +22,8 @@ namespace Game.PosSpawnEnemies
 
         private Dictionary<string, EnemyController> _enemiesCache = new Dictionary<string, EnemyController>();
         private int _indexPos;
+
+        [SerializeField] private CanvasInGamePlayController _canvasInGamePlayController;
 
         public void OnSetUp(int index)
         {
@@ -55,9 +59,8 @@ namespace Game.PosSpawnEnemies
         private void Spawning(EnemyController enemyController, Enemy enemy)
         {
             var enemyPrefab = _spawnerManager.Get<EnemyController>(enemyController);
-
             enemyPrefab.transform.position = this.transform.position;
-            enemyPrefab.OnSetUp(enemy);
+            enemyPrefab.OnSetUp(enemy, _canvasInGamePlayController);
         }
     }
 }
