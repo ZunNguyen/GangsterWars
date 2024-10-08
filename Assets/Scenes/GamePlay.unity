@@ -1106,7 +1106,7 @@ PrefabInstance:
     - target: {fileID: 2008264988, guid: a0b4856f051eab544953f437cbbacdd9, type: 3}
       propertyPath: _bullet
       value: 
-      objectReference: {fileID: 4745913065104844923, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
+      objectReference: {fileID: 2151270990288060351, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
     - target: {fileID: 2008264988, guid: a0b4856f051eab544953f437cbbacdd9, type: 3}
       propertyPath: _muzzleFlash
       value: 

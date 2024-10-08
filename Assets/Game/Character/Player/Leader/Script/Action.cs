@@ -15,7 +15,7 @@ namespace Game.Character.Leader
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
         [SerializeField] private Animation _animation;
-        [SerializeField] private GameObject _bullet;
+        [SerializeField] private BulletWeapon _bullet;
         [SerializeField] private GameObject _muzzleFlash;
         [SerializeField] private Transform _posSpawnBullet;
 
@@ -41,8 +41,7 @@ namespace Game.Character.Leader
 
             var bullet = _spawnerManager.Get(_bullet);
             bullet.transform.position = _posSpawnBullet.position;
-            var bulletScript = bullet.GetComponent<BulletWeapon>();
-            bulletScript.MoveMent(clickPosition);
+            bullet.MoveMent(clickPosition);
 
             var muzzleFlash = _spawnerManager.Get(_muzzleFlash);
             muzzleFlash.transform.position = _posSpawnBullet.position;
