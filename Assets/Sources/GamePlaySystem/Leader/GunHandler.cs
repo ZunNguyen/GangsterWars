@@ -17,18 +17,19 @@ namespace Sources.GamePlaySystem.Leader
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private bool _isCanShoot;
 
         public ReactiveDictionary<string, GunModel> GunModels { get; private set; } = new();
         public ReactiveProperty<GunModel> GunModelCurrent { get; private set; } = new();
-        private bool _isCanShoot;
-
         public Action IsShooting;
+        public int DamageBulletCurrent { get; private set; }
 
         public void OnSetUp()
         {
             LoadGunModels();
-            LoadGunCurrent(_gunIdDefault);
+            LoadGunInfoCurrent(_gunIdDefault);
             CheckCanShoot();
+            LoadDamageBulletCurrent();
         }
 
         private void LoadGunModels()
@@ -45,12 +46,19 @@ namespace Sources.GamePlaySystem.Leader
             }
         }
 
-        private void LoadGunCurrent(string gunId)
+        private void LoadGunInfoCurrent(string gunId)
         {
             if (GunModels.Remove(gunId, out GunModel gunModel))
             {
                 GunModelCurrent.Value = gunModel;
             }
+        }
+
+        private void LoadDamageBulletCurrent()
+        {
+            var gunInfo = _leaderConfig.GetWeaponInfo(GunModelCurrent.Value.GunId);
+            var damageInfo = gunInfo.GetDamageWeapon(GunModelCurrent.Value.LevelDamage);
+            DamageBulletCurrent = damageInfo.Damage;
         }
 
         private void CheckCanShoot()
@@ -74,8 +82,9 @@ namespace Sources.GamePlaySystem.Leader
         public void ChangeGunModel(string gunId)
         {
             GunModels.Add(GunModelCurrent.Value.GunId, GunModelCurrent.Value);
-            LoadGunCurrent(gunId);
+            LoadGunInfoCurrent(gunId);
             CheckCanShoot();
+            LoadDamageBulletCurrent();
         }
 
         public void AddBulletAvailable()

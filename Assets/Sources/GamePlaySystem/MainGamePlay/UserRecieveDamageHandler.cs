@@ -31,9 +31,10 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
         private int _hpCurrentShield;
 
-        public ReactiveProperty<ShieldState> ShieldCurrentState { get;} = new ReactiveProperty<ShieldState>();
+        public ReactiveProperty<ShieldState> ShieldCurrentState { get;} = new ReactiveProperty<ShieldState>(ShieldState.Full);
         public ReactiveProperty<int> HpCurrentUser {  get;} = new ReactiveProperty<int>();
         public Action IsDead { get; private set; }
+        public string ShieldId {  get; private set; }
 
         public UserRecieveDamageHandler()
         {
@@ -45,7 +46,8 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         private int GetMaxHp()
         {
-            var shieldInfo = _shieldConfig.GetShieldInfo(_gameData.StoreData.ShieldIdCurrent);
+            ShieldId = _gameData.StoreData.ShieldIdCurrent;
+            var shieldInfo = _shieldConfig.GetShieldInfo(ShieldId);
             var levelInfo = shieldInfo.GetLevelInfo(_gameData.StoreData.GetLevelShieldCurrent());
             return levelInfo.Hp;
         }

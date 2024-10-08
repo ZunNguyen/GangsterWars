@@ -20,8 +20,8 @@ MonoBehaviour:
     BulletsPerClip: 5
     ReloadTime: 1
     DamageWeapons:
-    - Level: 
-      Damage: 0
+    - Level: level-01
+      Damage: 100
   - Id: gun-02
     Icon: {fileID: 21300000, guid: 369e90ac1ad79bc46a5a336f88fb88b9, type: 3}
     SpriteLibraryAsset: {fileID: 7108339969198208228, guid: e5ea23211d9e50744ac7421dc80e366b, type: 3}
@@ -29,5 +29,32 @@ MonoBehaviour:
     BulletsPerClip: 5
     ReloadTime: 1
     DamageWeapons:
-    - Level: 
-      Damage: 0
+    - Level: level-01
+      Damage: 100
+  - Id: gun-03
+    Icon: {fileID: 21300000, guid: 365676944dbbcc749b7bc45758a396d4, type: 3}
+    SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 2e308fd8d7718af4da716a3f51c9e0a2, type: 3}
+    MaxBullet: 50
+    BulletsPerClip: 5
+    ReloadTime: 1
+    DamageWeapons:
+    - Level: level-01
+      Damage: 100
+  - Id: gun-04
+    Icon: {fileID: 21300000, guid: 996a43b95025abf4ab1011f20720b51a, type: 3}
+    SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 7dd686c26dec3e84bafe7f78c587dd85, type: 3}
+    MaxBullet: 50
+    BulletsPerClip: 5
+    ReloadTime: 1
+    DamageWeapons:
+    - Level: level-01
+      Damage: 100
+  - Id: gun-05
+    Icon: {fileID: 21300000, guid: de808f26d17b1e5449bb66be5a9cbed2, type: 3}
+    SpriteLibraryAsset: {fileID: 7108339969198208228, guid: fc796774f33fd6546abd7c1895275c75, type: 3}
+    MaxBullet: 50
+    BulletsPerClip: 5
+    ReloadTime: 1
+    DamageWeapons:
+    - Level: level-01
+      Damage: 100

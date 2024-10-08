@@ -15,17 +15,16 @@ namespace Sources.DataBaseSystem
         public List<IconInfo> Icons;
         public List<LevelInfo> Levels = new List<LevelInfo>();
 
+        public Sprite GetIconShield(ShieldState shieldStates)
+        {
+            var iconInfo = Icons.Find(x => x.ShieldStates == shieldStates);
+            return iconInfo.Icon;
+        }
+
         public LevelInfo GetLevelInfo(string id)
         {
             return Levels.Find(x => x.Id == id);
         }
-    }
-
-    [Serializable]
-    public class LevelInfo
-    {
-        public string Id;
-        public int Hp;
     }
 
     [Serializable]
@@ -36,6 +35,13 @@ namespace Sources.DataBaseSystem
         public Sprite Icon;
     }
 
+    [Serializable]
+    public class LevelInfo
+    {
+        public string Id;
+        public int Hp;
+    }
+    
     public class ShieldConfig : DataBaseConfig
     {
         [SerializeField] private List<ShieldInfo> _shieldInfos;

@@ -25,6 +25,7 @@ namespace Sources.GameData
                 var weaponData = new GunModel
                 {
                     GunId = weapon.Id,
+                    LevelDamage = "level-01",
                     BulletTotal = new UniRx.ReactiveProperty<int>(weapon.MaxBullet),
                 };
 

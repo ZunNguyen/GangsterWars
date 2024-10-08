@@ -14,7 +14,7 @@ namespace Sources.DataBaseSystem.Leader
     }
 
     [Serializable]
-    public class WeaponInfo
+    public class GunInfo
     {
         public string Id;
         
@@ -30,7 +30,7 @@ namespace Sources.DataBaseSystem.Leader
         
         public List<DamageWeapon> DamageWeapons;
 
-        public Dictionary<string, DamageWeapon> DamageWeaponCache { get; private set; }
+        public Dictionary<string, DamageWeapon> DamageWeaponCache { get; private set; } = new();
 
         public DamageWeapon GetDamageWeapon(string id)
         {
@@ -47,12 +47,12 @@ namespace Sources.DataBaseSystem.Leader
 
     public class LeaderConfig : DataBaseConfig
     {
-        [SerializeField] private List<WeaponInfo> _weapons;
-        public List<WeaponInfo > Weapons => _weapons;
+        [SerializeField] private List<GunInfo> _weapons;
+        public List<GunInfo > Weapons => _weapons;
 
-        public Dictionary<string, WeaponInfo> WeaponInfoCache { get; private set; } = new Dictionary<string, WeaponInfo>();
+        public Dictionary<string, GunInfo> WeaponInfoCache { get; private set; } = new Dictionary<string, GunInfo>();
 
-        public WeaponInfo GetWeaponInfo(string id)
+        public GunInfo GetWeaponInfo(string id)
         {
             if (!WeaponInfoCache.ContainsKey(id))
             {

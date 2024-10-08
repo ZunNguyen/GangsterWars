@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Sources.GamePlaySystem.Leader;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
 using System;
@@ -10,20 +11,22 @@ using UnityEngine;
 
 namespace Game.Weapon.Bullet
 {
-    public class BulletController : MonoBehaviour
+    public class BulletWeapon : MonoBehaviour
     {
         private const float _speed = 30f;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
+        private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
         private Vector2 _originalPos;
 
-        public int Damage {  get; private set; }
+        public int Damage { get; private set; }
 
         [SerializeField] private Rigidbody2D _rb;
 
         private void Awake()
         {
             _originalPos = transform.position;
+            Damage = _leaderSystem.GunHandler.DamageBulletCurrent;
         }
 
         public void MoveMent(Vector3 clickMousePos)
@@ -36,7 +39,12 @@ namespace Game.Weapon.Bullet
             var duration = Vector3.Distance(clickMousePos, _originalPos) / _speed;
 
             transform.DOMove(clickMousePos, duration).SetEase(Ease.InSine)
-                .OnComplete(() => _spawnerManager.Release<BulletController>(this));
+                .OnComplete(() => ReleaseBullet());
+        }
+
+        public void ReleaseBullet()
+        {
+            _spawnerManager.Release<BulletWeapon>(this);
         }
     }
 }

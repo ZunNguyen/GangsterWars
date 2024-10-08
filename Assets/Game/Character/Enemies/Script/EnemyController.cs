@@ -67,16 +67,16 @@ namespace Game.Character.Enemy
 
             if (collision.tag == CollisionTagKey.Bullet)
             {
-                var damage = collision.GetComponent<BulletController>().Damage;
-                _enemyHandler.SubstractHp(damage);
+                var bulletCtrl = collision.GetComponent<BulletWeapon>();
+                bulletCtrl.ReleaseBullet();
+                _enemyHandler.SubstractHp(bulletCtrl.Damage);
             }
         }
 
         private void OnDeath()
         {
-            _spawnerManager.Release<EnemyController>(this);
             Debug.Log($"Enemy death");
-
+            AnimationDeath();
             OnDisposable();
         }
 
@@ -84,6 +84,13 @@ namespace Game.Character.Enemy
         {
             _disposableDirection?.Dispose();
             _animationHander.OnDisposable();
+        }
+
+        private async void AnimationDeath()
+        {
+            await UniTask.Delay(2000);
+
+            _spawnerManager.Release<EnemyController>(this);
         }
     }
 }

@@ -5,11 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using Unity.VisualScripting;
+using Sources.SpawnerSystem;
+using Sources.Utils.Singleton;
 
 namespace Game.CanvasInGamePlay.HPBar
 {
     public class HpBar : MonoBehaviour
     {
+        private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private Transform _worldTransformObject;
         private Canvas _canvas;
 
@@ -29,6 +32,11 @@ namespace Game.CanvasInGamePlay.HPBar
             enemyHandler.HpCurrent.Subscribe(value =>
             {
                 _slider.value = value;
+                if (value <= 0)
+                {
+                    _spawnerManager.Release<HpBar>(this);
+                }
+
             }).AddTo(this);
         }
 

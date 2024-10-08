@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 6647753796887287716}
-  _bulletMoveMent: {fileID: 733989611009615863, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
+  _bulletMoveMent: {fileID: 999650894781339808, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
   _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
   _posSpawnBullet: {fileID: 353417649}
 --- !u!114 &3429079679559175139

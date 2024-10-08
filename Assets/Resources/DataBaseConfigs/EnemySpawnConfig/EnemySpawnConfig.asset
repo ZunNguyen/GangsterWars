@@ -21,6 +21,6 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-01
           IndexPos: 000000000100000002000000
-          Damage: 0
+          Damage: 10
           Hp: 100
         SpawnAfterMiliSeccond: 0

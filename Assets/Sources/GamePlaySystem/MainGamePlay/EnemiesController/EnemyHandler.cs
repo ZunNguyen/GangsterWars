@@ -39,6 +39,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
     public class EnemyHandler
     {
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+        private IDisposable _disposableShieldState;
 
         public int HpMax { get; private set; }
         public string EnemyId { get; private set; }
@@ -55,12 +56,24 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             Damage.Value = enemyInfo.Damage;
 
             OnStart();
+            SubscribeShieldState();
         }
 
         private void OnStart()
         {
             AniamtionState.Value = AnimationState.Walk;
             Direction.Value = Vector2.left;
+        }
+        
+        private void SubscribeShieldState()
+        {
+            _disposableShieldState = _mainGamePlaySystem.UserRecieveDamageHandler.ShieldCurrentState.Subscribe(value =>
+            {
+                if (value == ShieldState.Empty)
+                {
+                    OnStart();
+                }
+            });
         }
 
         public void SubstractHp(int hp)
@@ -71,7 +84,11 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         private void CheckDeath()
         {
-            if (HpCurrent.Value <= 0) AniamtionState.Value = AnimationState.Death;
+            if (HpCurrent.Value <= 0)
+            {
+                Direction.Value = Vector2.zero;
+                AniamtionState.Value = AnimationState.Death;
+            }
         }
 
         public void OnAttack()
@@ -92,6 +109,11 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             await UniTask.Delay(1000);
 
             IsAttacking.Value = false;
+        }
+
+        public void Disposable()
+        {
+            _disposableShieldState.Dispose();
         }
     }
 }

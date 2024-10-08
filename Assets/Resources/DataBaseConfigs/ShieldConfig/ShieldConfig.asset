@@ -17,6 +17,12 @@ MonoBehaviour:
     Icons:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 5d55571707dfe974c8c80ee3312e7899, type: 3}
+    - ShieldStates: 75
+      Icon: {fileID: 21300000, guid: e69282aa3f7a80b40a0d36196fd2ee44, type: 3}
+    - ShieldStates: 50
+      Icon: {fileID: 21300000, guid: a94521452155e9343bb2c9f1899468c5, type: 3}
+    - ShieldStates: 25
+      Icon: {fileID: 21300000, guid: e086f9f599b5f2443a214c8b3c97443f, type: 3}
     Levels:
     - Id: level-01
       Hp: 100
