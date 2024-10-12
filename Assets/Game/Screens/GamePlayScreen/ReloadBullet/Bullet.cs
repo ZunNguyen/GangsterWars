@@ -31,7 +31,7 @@ namespace Game.Screens.GamePlayScreen
 
         public void TurnOffBullet()
         {
-            _bulletIcon.SetActive(true);
+            _bulletIcon.SetActive(false);
         }
     }
 }

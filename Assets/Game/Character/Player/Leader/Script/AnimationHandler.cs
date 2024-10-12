@@ -37,7 +37,7 @@ namespace Game.Character.Leader
         }
     }
 
-    public class Animation : AnimationController
+    public class AnimationHandler : AnimationController
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();

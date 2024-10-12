@@ -58,7 +58,8 @@ namespace Game.PosSpawnEnemies
 
         private void Spawning(EnemyController enemyController, Enemy enemy)
         {
-            var enemyPrefab = _spawnerManager.Get<EnemyController>(enemyController);
+            var enemyPrefab = _spawnerManager.Get(enemyController);
+            _mainGamePlaySystem.SpawnEnemiesHandler.AddEnemyToList(enemyPrefab);
             enemyPrefab.transform.position = this.transform.position;
             enemyPrefab.OnSetUp(enemy, _canvasInGamePlayController);
         }

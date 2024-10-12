@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Game.Character.Enemy;
 using Sources.DataBaseSystem;
 using Sources.Utils.Singleton;
 using System.Collections;
@@ -23,6 +24,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         public ReactiveProperty<Enemy> EnemyModel { get; private set; } = new();
         public ReactiveProperty<int> CountEnemy { get; private set; } = new();
+        public List<EnemyController> Enemies { get; private set; } = new();
 
         public void SetWaveId(string id)
         {
@@ -78,6 +80,16 @@ namespace Sources.GamePlaySystem.MainGamePlay
                     CountEnemy.Value += enemyCount;
                 }
             }
+        }
+
+        public void AddEnemyToList(EnemyController enemy)
+        {
+            Enemies.Add(enemy);
+        }
+
+        public void RemoveEnemyToList(EnemyController enemy)
+        {
+            Enemies.Remove(enemy);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Sources.GameData
 {
-    public class StoreData
+    public class StoreData : IProfileData
     {
         public Dictionary<string, string> ShieldData = new();
         public string ShieldIdCurrent;

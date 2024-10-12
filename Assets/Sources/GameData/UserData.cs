@@ -2,17 +2,25 @@ using Sources.DataBaseSystem.Leader;
 using Sources.DataBaseSystem;
 using Sources.GamePlaySystem.Leader;
 using Sources.Utils.Singleton;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UniRx;
 
 namespace Sources.GameData
 {
-    public class UserData
+    public class BomberData
+    {
+        public string BomId;
+        public ReactiveProperty<int> Quatity;
+        public string LevelDamage;
+    }
+
+    public class UserData : IProfileData
     {
         public List<GunModel> LeaderData { get; private set; } = new();
 
         public List<string> WavesPassedData;
+        
+        public List<BomberData> BomberData { get; private set; } = new();
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();

@@ -120,6 +120,7 @@ namespace Sources.GamePlaySystem.Leader
             if (bulletCurrent != _maxBulletPerClip)
             {
                 TimeReloadCurrent.Value = _reloadTimeInfos[_gunIdCurrent].SaveTimeReloadCurrent;
+                return;
             }
             
             if (_reloadTimeInfos[_gunIdCurrent].SaveReloadDuration == 0) return;
@@ -127,6 +128,7 @@ namespace Sources.GamePlaySystem.Leader
             if (_reloadTimeInfos[_gunIdCurrent].SaveReloadDuration < _reloadDuration)
             {
                 _reloadDuration = _reloadTimeInfos[_gunIdCurrent].SaveReloadDuration;
+                return;
             }
         }
 

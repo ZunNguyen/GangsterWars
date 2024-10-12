@@ -17,6 +17,7 @@ namespace Game.Screens.GamePlayScreen
     {
         private const float _widthPanelDefault = 300;
         private const float _widthOneBullet = 100;
+        private const float _heightPanel = 60;
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
@@ -45,7 +46,7 @@ namespace Game.Screens.GamePlayScreen
                 var gunInfo = _leaderConfig.GetWeaponInfo(gunModel.GunId);
                 _bulletPerClip = gunInfo.BulletsPerClip;
                 var sizeTarget = _widthPanelDefault + _bulletPerClip * _widthOneBullet;
-                _panel.sizeDelta = new Vector2(sizeTarget, 0);
+                _panel.sizeDelta = new Vector2(sizeTarget, _heightPanel);
 
                 ReleaseBullet();
                 GetBullet(gunModel);
@@ -53,12 +54,12 @@ namespace Game.Screens.GamePlayScreen
 
             if (gunModel.GunId == LeaderKey.GunId_04)
             {
-
+                return;
             }
 
             if (gunModel.GunId == LeaderKey.GunId_05)
             {
-
+                return;
             }
         }
 
@@ -74,6 +75,7 @@ namespace Game.Screens.GamePlayScreen
 
         private void GetBullet(GunModel gunModel)
         {
+            _bullets.Clear();
             for (int i = 0; i < _bulletPerClip; i++)
             {
                 var bullet = _spawnerManager.Get(_bullet);

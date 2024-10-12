@@ -90,7 +90,8 @@ namespace Game.Character.Enemy
         {
             await UniTask.Delay(2000);
 
-            _spawnerManager.Release<EnemyController>(this);
+            _spawnerManager.Release(this);
+            _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
         }
     }
 }
