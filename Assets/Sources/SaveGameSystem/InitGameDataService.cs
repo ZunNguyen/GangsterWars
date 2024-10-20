@@ -1,12 +1,6 @@
 using Cysharp.Threading.Tasks;
-using Sources.GameData;
 using Sources.Services;
-using Sources.SystemService;
 using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
 
 namespace Sources.SaveGame
 {
@@ -14,8 +8,8 @@ namespace Sources.SaveGame
     {
         public override async UniTask<IService.Result> Execute()
         {
-            GameDataSave gameDataSave = new GameDataSave();
-            Locator<GameDataSave>.Set(gameDataSave);
+            GameData.GameData gameDataSave = new GameData.GameData();
+            Locator<GameData.GameData>.Set(gameDataSave);
 
             return IService.Result.Success;
         }

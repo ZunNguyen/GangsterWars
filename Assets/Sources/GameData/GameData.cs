@@ -1,6 +1,9 @@
+﻿using Newtonsoft.Json;
+using Sources.GameData;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 namespace Sources.GameData
@@ -19,13 +22,15 @@ namespace Sources.GameData
 
         public void SaveData(IProfileData profileData)
         {
-            var filePath = Application.persistentDataPath + $"/{typeof(IProfileData).Name}.json";
+            var fileName = profileData.GetType().Name;
 
-            string jsonData = JsonUtility.ToJson(profileData);
+            var filePath = Application.persistentDataPath + $"/{fileName}.json";
+
+            string jsonData = JsonConvert.SerializeObject(profileData, Formatting.Indented);
             File.WriteAllText(filePath, jsonData);
         }
 
-        public T GetProfileData<T>() where T : IProfileData
+        public T GetProfileData<T>() where T : IProfileData , new()
         {
             var nameFileProfile = typeof(T).Name;
             if (_profileDatasCache.ContainsKey(nameFileProfile)) 
@@ -38,7 +43,7 @@ namespace Sources.GameData
                 if (Path.GetFileNameWithoutExtension(file.Name) == typeof(T).Name)
                 {
                     string json = File.ReadAllText(file.FullName);
-                    T profileData = JsonUtility.FromJson<T>(json);
+                    T profileData = JsonConvert.DeserializeObject<T>(json);
 
                     _profileDatasCache.Add(typeof(T).Name, profileData);
 
@@ -46,7 +51,10 @@ namespace Sources.GameData
                 }
             }
 
-            throw new System.Exception($"Don't find profile data' name is: {typeof(T).Name}");
+            var newProfileData = new T();
+            _profileDatasCache.Add(typeof(T).Name, newProfileData);
+            newProfileData.Save();
+            return newProfileData;
         }
     }
 }

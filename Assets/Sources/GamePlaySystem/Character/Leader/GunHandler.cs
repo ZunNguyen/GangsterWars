@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using System;
+using Sources.GameData;
 
 namespace Sources.GamePlaySystem.Leader
 {
@@ -17,6 +18,8 @@ namespace Sources.GamePlaySystem.Leader
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
+
         private bool _isCanShoot;
 
         public ReactiveDictionary<string, GunModel> GunModels { get; private set; } = new();
@@ -34,7 +37,12 @@ namespace Sources.GamePlaySystem.Leader
 
         private void LoadGunModels()
         {
-            var gunModels = _gameData.UserData.SetDataLeaderData();
+            if (_userProfile.LeaderData.Count == 0)
+            {
+                _userProfile.SetLeaderDataDefault();
+            }
+
+            var gunModels = _userProfile.LeaderData;
 
             foreach (var gunModel in gunModels)
             {
@@ -76,6 +84,7 @@ namespace Sources.GamePlaySystem.Leader
                 IsShooting?.Invoke();
             }
 
+            _userProfile.Save();
             CheckCanShoot();
         }
 

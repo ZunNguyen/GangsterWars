@@ -20,7 +20,7 @@ namespace Game.CanvasInGamePlay.Controller
         private HpBarModel _hpBarModel = new();
 
         [SerializeField] private Canvas _canvas;
-        [SerializeField] private ReloadTime _reloadTime;
+        [SerializeField] private ReloadTimeHandler _reloadTime;
         [SerializeField] private HpBar _hpBar;
 
         public void OnSetUpHpBar(Transform transformObject, EnemyHandler enemyHandler)

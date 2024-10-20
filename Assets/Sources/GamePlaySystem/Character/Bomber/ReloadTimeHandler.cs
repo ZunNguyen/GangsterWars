@@ -29,11 +29,12 @@ namespace Sources.GamePlaySystem.Bomber
         public async void Reloading()
         {
             var startTime = Time.realtimeSinceStartup;
+            TimeReloadCurrent.Value = _timeReload;
 
-            while (TimeReloadCurrent.Value < _timeReload)
+            while (TimeReloadCurrent.Value >= 0)
             {
                 float elapsedTime = Time.realtimeSinceStartup - startTime;
-                TimeReloadCurrent.Value = (float)Math.Round(elapsedTime, 1);
+                TimeReloadCurrent.Value = (float)Math.Round(_timeReload - elapsedTime, 1);
 
                 await UniTask.DelayFrame(1);
             }

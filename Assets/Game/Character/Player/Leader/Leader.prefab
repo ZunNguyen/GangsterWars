@@ -177,7 +177,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3429079678563366038}
-  - component: {fileID: 6647753796887287716}
   - component: {fileID: 2008264988}
   - component: {fileID: 3429079679559175139}
   m_Layer: 0
@@ -204,20 +203,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6647753796887287716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3429079678563366039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a1d6753b46eb9144b044b60e17e3980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 3429079678083620888}
-  _spriteLibrary: {fileID: 3429079678083620889}
 --- !u!114 &2008264988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,8 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49670947beca6354b9f5e5886dfdcf8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 6647753796887287716}
-  _bulletMoveMent: {fileID: 999650894781339808, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
+  _animation: {fileID: 3429079679559175139}
+  _bullet: {fileID: 2151270990288060351, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
   _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
   _posSpawnBullet: {fileID: 353417649}
 --- !u!114 &3429079679559175139
@@ -243,7 +228,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3429079678563366039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 316b85e0eb7326a4da3041d0ca99fa0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bd118e26409f8245aa22492d8b17e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletMoveMent: {fileID: 733989611009615863, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
+  animator: {fileID: 3429079678083620888}
+  _spriteLibrary: {fileID: 3429079678083620889}

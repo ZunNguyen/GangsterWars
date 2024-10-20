@@ -21,9 +21,15 @@ namespace Game.Character.Bomber
             {
                 _animator.SetFloat(BomberKey.AnimationKey_Reloading, value);
             }).AddTo(this);
+
+            _bomberSystem.BomHandler.EnemyTarget.Subscribe(value =>
+            {
+                if (value == null) return;
+                AnimationThrowing();
+            }).AddTo(this);
         }
 
-        public void AnimtionThrowing()
+        public void AnimationThrowing()
         {
             _animator.SetTrigger(BomberKey.AnimationKey_Throwing);
         }

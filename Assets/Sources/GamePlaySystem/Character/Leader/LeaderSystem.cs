@@ -9,6 +9,7 @@ using UniRx;
 
 namespace Sources.GamePlaySystem.Leader
 {
+    [Serializable]
     public class GunModel
     {
         public string GunId;

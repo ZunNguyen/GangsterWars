@@ -1,10 +1,10 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Sources.GameData
 {
-    public class StoreData : IProfileData
+    public class StoreProfile : IProfileData
     {
         public Dictionary<string, string> ShieldData = new();
         public string ShieldIdCurrent;
@@ -15,7 +15,7 @@ namespace Sources.GameData
         }
 
         // For Test
-        public StoreData()
+        public void SetStoreDefault()
         {
             ShieldData.Add("shield-01", "level-01");
             ShieldIdCurrent = "shield-01";

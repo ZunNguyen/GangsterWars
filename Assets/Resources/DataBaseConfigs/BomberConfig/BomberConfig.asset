@@ -28,4 +28,4 @@ MonoBehaviour:
     DamageWeapons:
     - Level: level-01
       Damage: 10
-  _reloadingTime: 2000
+  _reloadingTime: 5

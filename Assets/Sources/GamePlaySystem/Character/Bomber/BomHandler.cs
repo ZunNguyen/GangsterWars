@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using Game.Character.Enemy;
 using Sources.GameData;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Utils;
@@ -10,8 +12,10 @@ namespace Sources.GamePlaySystem.Bomber
 {
     public class BomHandler
     {
-        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
+
+        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private BomberSystem _bomberSystem => Locator<BomberSystem>.Instance;
 
         private bool _outOfAmmo = false;
@@ -20,16 +24,21 @@ namespace Sources.GamePlaySystem.Bomber
 
         public List<BomberData> BomberModel { private set; get; } = new ();
         public ReactiveProperty<BomberData> BomberModelCurrent = new ();
+        public ReactiveProperty<EnemyController> EnemyTarget = new ();
 
         public void OnSetUp()
         {
-            BomberModel = _gameData.UserData.BomberData;
+            if (!_userProfile.IsActiveBomber) return;
+            if (_userProfile.BomberData.Count == 0) _userProfile.SetBomberDataDefault();
+
+            BomberModel = _userProfile.BomberData;
             _bomberSystem.ReloadTimeHandler.CompleteReload += Start;
         }
 
         public void Start()
         {
             BomberModelCurrent.Value = GetRandomBomberModel();
+            GetEnemyToAttack();
         }
 
         private bool IsEndBattle()
@@ -40,19 +49,24 @@ namespace Sources.GamePlaySystem.Bomber
 
         private BomberData GetRandomBomberModel()
         {
-            while (true)
+            var model = GetRandom.FromList(BomberModel);
+            if (model.Quatity.Value != 0)
             {
-                var model = GetRandom.FromList(BomberModel);
-                if (model.Quatity.Value != 0)
-                {
-                    return model;
-                }
+                return model;
             }
+            return null;
+        }
+
+        private void GetEnemyToAttack()
+        {
+            if (_mainGamePlaySystem.SpawnEnemiesHandler.Enemies.Count == 0) return;
+            EnemyTarget.Value = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
         }
 
         public void EndActionThrow()
         {
-            BomberModelCurrent.Value.BomId = null;
+            BomberModelCurrent.Value = null;
+            EnemyTarget.Value = null;
             _bomberSystem.ReloadTimeHandler.Reloading();
         }
 

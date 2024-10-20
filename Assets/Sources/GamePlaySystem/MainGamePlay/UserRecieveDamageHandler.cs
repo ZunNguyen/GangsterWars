@@ -26,6 +26,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private readonly int _maxHpUser;
 
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private StoreProfile _storeProfile => _gameData.GetProfileData<StoreProfile>();
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
@@ -46,9 +47,15 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         private int GetMaxHp()
         {
-            ShieldId = _gameData.StoreData.ShieldIdCurrent;
+            if(_storeProfile.ShieldData.Count == 0)
+            {
+                _storeProfile.SetStoreDefault();
+                _storeProfile.Save();
+            }
+
+            ShieldId = _storeProfile.ShieldIdCurrent;
             var shieldInfo = _shieldConfig.GetShieldInfo(ShieldId);
-            var levelInfo = shieldInfo.GetLevelInfo(_gameData.StoreData.GetLevelShieldCurrent());
+            var levelInfo = shieldInfo.GetLevelInfo(_storeProfile.GetLevelShieldCurrent());
             return levelInfo.Hp;
         }
 
