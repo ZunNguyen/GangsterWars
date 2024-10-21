@@ -21,16 +21,16 @@ namespace Sources.DataBaseSystem
 
         public Dictionary<string, DamageWeapon> DamageWeaponCache { get; private set; } = new();
 
-        public DamageWeapon GetDamageWeapon(string id)
+        public int GetDamageWeapon(string id)
         {
             if (!DamageWeaponCache.ContainsKey(id))
             {
                 var damageWeapon = DamageWeapons.Find(x => x.Level == id);
                 DamageWeaponCache.Add(id, damageWeapon);
-                return damageWeapon;
+                return damageWeapon.Damage;
             }
 
-            return DamageWeaponCache[id];
+            return DamageWeaponCache[id].Damage;
         }
     }
 

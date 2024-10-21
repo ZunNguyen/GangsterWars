@@ -1,5 +1,8 @@
-﻿using DG.Tweening;
+﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Sources.DataBaseSystem;
+using Sources.GameData;
+using Sources.SpawnerSystem;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using UnityEngine;
@@ -10,17 +13,38 @@ namespace Game.Character.Bomber
     {
         private const float _throwSpeed = 20f;
         private const float _height = 10f;
-        private readonly Vector3 _offsetPosTarget = new Vector3(-3f,0,0);
+        private readonly Vector3 _offsetPosTarget = new Vector3(-1f,0,0);
 
+        private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
 
-        [SerializeField] private SpriteRenderer _sprite;
+        private int _damage;
+        public int Damage => _damage;
 
-        public void GetIconWeapon(string bomId)
+        [SerializeField] private SpriteRenderer _sprite;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private Collider2D _collider;
+
+        private void Awake()
         {
-            var bomInfo = _bomberConfig.GetWeaponInfo(bomId);
+            SetEnabled(false);
+        }
+
+        private void SetEnabled(bool status)
+        {
+            _animator.enabled = status;
+            _collider.enabled = status;
+        }
+
+        public void OnSetUp(BomberData bomberData)
+        {
+            SetEnabled(false);
+
+            var bomInfo = _bomberConfig.GetWeaponInfo(bomberData.BomId);
+
             _sprite.sprite = bomInfo.Icon;
+            _damage = bomInfo.GetDamageWeapon(bomberData.LevelDamage);
         }
 
         public void ThrowBomb(Vector3 posTarget)
@@ -39,9 +63,15 @@ namespace Game.Character.Bomber
             transform.DOPath(path, duration, PathType.CatmullRom).SetEase(Ease.Linear).OnComplete(OnBombHit);
         }
 
-        private void OnBombHit()
+        private async void OnBombHit()
         {
-            Debug.Log("Bomb hit target!");
+            await UniTask.Delay(500);
+            SetEnabled(true);
+        }
+
+        public void OnCompletAnimation()
+        {
+            _spawnerManager.Release(this);
         }
     }
 }

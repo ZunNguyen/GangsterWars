@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Game.CanvasInGamePlay.Controller;
+using Game.Character.Bomber;
 using Game.Weapon.Bullet;
-using Sources.DataBaseSystem;
 using Sources.Extension;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
@@ -70,6 +70,12 @@ namespace Game.Character.Enemy
                 var bulletCtrl = collision.GetComponent<BulletWeapon>();
                 bulletCtrl.ReleaseBullet();
                 _enemyHandler.SubstractHp(bulletCtrl.Damage);
+            }
+
+            if (collision.tag == CollisionTagKey.Boom)
+            {
+                var boom = collision.GetComponent<Bomber.Weapon>();
+                _enemyHandler.SubstractHp(boom.Damage);
             }
         }
 

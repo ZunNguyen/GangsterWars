@@ -7,6 +7,7 @@ TagManager:
   - Bootstrap
   - Shield
   - Bullet
+  - Boom
   layers:
   - Default
   - TransparentFX

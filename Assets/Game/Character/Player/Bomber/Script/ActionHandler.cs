@@ -34,7 +34,7 @@ namespace Game.Character.Bomber
             {
                 if (value == null) return;
                 _weapon = _spawnerManager.Get(_weaponPrefab);
-                _weapon.GetIconWeapon(value.BomId);
+                _weapon.OnSetUp(value);
                 _weapon.transform.position = _weaponPos.position;
                 _weapon.gameObject.SetActive(false);
 
