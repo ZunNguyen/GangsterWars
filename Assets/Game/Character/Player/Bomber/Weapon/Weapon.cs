@@ -37,7 +37,7 @@ namespace Game.Character.Bomber
             _collider.enabled = status;
         }
 
-        public void OnSetUp(BomberData bomberData)
+        public void OnSetUp(CharacterData bomberData)
         {
             SetEnabled(false);
 

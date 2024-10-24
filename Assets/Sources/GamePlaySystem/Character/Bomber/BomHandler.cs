@@ -22,8 +22,8 @@ namespace Sources.GamePlaySystem.Bomber
         private bool _isLose = false;
         private bool _outOfEnemies = false;
 
-        public List<BomberData> BomberModel { private set; get; } = new ();
-        public ReactiveProperty<BomberData> BomberModelCurrent = new ();
+        public List<CharacterData> BomberModel { private set; get; } = new ();
+        public ReactiveProperty<CharacterData> BomberModelCurrent = new ();
         public ReactiveProperty<EnemyController> EnemyTarget = new ();
 
         public void OnSetUp()
@@ -47,7 +47,7 @@ namespace Sources.GamePlaySystem.Bomber
             else return false;
         }
 
-        private BomberData GetRandomBomberModel()
+        private CharacterData GetRandomBomberModel()
         {
             var model = GetRandom.FromList(BomberModel);
             if (model.Quatity.Value != 0)

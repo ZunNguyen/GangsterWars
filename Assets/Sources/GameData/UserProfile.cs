@@ -11,7 +11,7 @@ using System;
 namespace Sources.GameData
 {
     [Serializable]
-    public class BomberData
+    public class CharacterData
     {
         public string BomId;
         public ReactiveProperty<int> Quatity = new ReactiveProperty<int>(0);
@@ -21,10 +21,10 @@ namespace Sources.GameData
     public class UserProfile : IProfileData
     {
         public List<GunModel> LeaderData = new();
+        public List<CharacterData> BomberData = new();
+        public List<CharacterData> SniperData = new();
 
         public List<string> WavesPassedData;
-        
-        public List<BomberData> BomberData = new();
 
         public bool IsActiveBomber = true;
 
@@ -41,7 +41,7 @@ namespace Sources.GameData
 
         public void SetBomberDataDefault()
         {
-            var bomberData = new BomberData();
+            var bomberData = new CharacterData();
             bomberData.BomId = BomberKey.BomberId_Default;
             bomberData.Quatity.Value = 20;
             bomberData.LevelDamage = BomberKey.LevelDamage_Default;

@@ -15,3 +15,9 @@ MonoBehaviour:
   _enemies:
   - Id: enemy-01
     EnemyPrefab: {fileID: 418380563315780808, guid: cefb970d02136db44aff9b0332bfac71, type: 3}
+    WaveEnemies:
+    - Id: 
+      Damage: 0
+      Hp: 0
+      range: {x: 0, y: 0}
+      PercentChance: 0

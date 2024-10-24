@@ -1,8 +1,6 @@
-using Sirenix.OdinInspector;
-using Sources.DataBaseSystem;
+﻿using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Sources.DataBaseSystem
@@ -13,6 +11,21 @@ namespace Sources.DataBaseSystem
         public string Id;
         [PreviewField(100, ObjectFieldAlignment.Center)]
         public GameObject EnemyPrefab;
+        public List<WaveEnemy> WaveEnemies;
+    }
+
+    [Serializable]
+    public class WaveEnemy
+    {
+        public string Id;
+        public int Damage;
+        public int Hp;
+
+        [GD.MinMaxSlider.MinMaxSlider(0, 10000)]
+        public Vector2Int coinReward;
+
+        [ProgressBar(0, 100)]
+        public int PercentChance;
     }
 
     public class EnemiesConfig : DataBaseConfig
