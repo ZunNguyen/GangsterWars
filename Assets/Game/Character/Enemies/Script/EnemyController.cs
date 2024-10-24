@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Game.CanvasInGamePlay.Controller;
 using Game.Character.Bomber;
 using Game.Weapon.Bullet;
+using Sources.DataBaseSystem;
 using Sources.Extension;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
@@ -30,10 +31,10 @@ namespace Game.Character.Enemy
         [SerializeField] private Transform _hpBarPos;
         [SerializeField] private AnimationHander _animationHander;
 
-        public void OnSetUp(Sources.DataBaseSystem.Enemy enemy, CanvasInGamePlayController canvasInGamePlayController)
+        public void OnSetUp(CanvasInGamePlayController canvasInGamePlayController, string enemyId)
         {
             _enemyHandler = _mainGamePlaySystem.EnemiesController.GetAvailableEnemyHandler();
-            _enemyHandler.OnSetUp(enemy);
+            _enemyHandler.OnSetUp(enemyId);
             canvasInGamePlayController.OnSetUpHpBar(_hpBarPos, _enemyHandler);
 
             SubcribeDirection();
@@ -82,8 +83,8 @@ namespace Game.Character.Enemy
         private void OnDeath()
         {
             Debug.Log($"Enemy death");
-            AnimationDeath();
             OnDisposable();
+            AnimationDeath();
         }
 
         private void OnDisposable()

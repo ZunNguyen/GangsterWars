@@ -16,11 +16,12 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EnemySpawnConfig _enemySpawnConfig => _dataBase.GetConfig<EnemySpawnConfig>();
 
-        private string _waveId;
         private Wave _waveInfo;
         private int _turnIndexCurrent = 0;
         private int _phaseIndexCurrent = 0;
         private bool _endWave = false;
+        private string _waveIdCurrent;
+        public string WaveIdCurrent => _waveIdCurrent;
 
         public ReactiveProperty<Enemy> EnemyModel { get; private set; } = new();
         public ReactiveProperty<int> CountEnemy { get; private set; } = new();
@@ -28,13 +29,13 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         public void SetWaveId(string id)
         {
-            _waveId = id;
+            _waveIdCurrent = id;
             GetWaveInfo();
         }
 
         public void GetWaveInfo()
         {
-            _waveInfo = _enemySpawnConfig.GetWaveInfo(_waveId);
+            _waveInfo = _enemySpawnConfig.GetWaveInfo(_waveIdCurrent);
             GetMaxEnemy();
         }
 

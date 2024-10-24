@@ -12,6 +12,17 @@ namespace Sources.DataBaseSystem
         [PreviewField(100, ObjectFieldAlignment.Center)]
         public GameObject EnemyPrefab;
         public List<WaveEnemy> WaveEnemies;
+        public Dictionary<string, WaveEnemy> WaveEnemyCache { get; private set; } = new();
+
+        public WaveEnemy GetWaveEnemy(string id)
+        {
+            if (!WaveEnemyCache.ContainsKey(id))
+            {
+                var waveEnemy = WaveEnemies.Find(x => x.Id == id);
+                WaveEnemyCache.Add(id, waveEnemy);
+            }
+            return WaveEnemyCache[id];
+        }
     }
 
     [Serializable]
