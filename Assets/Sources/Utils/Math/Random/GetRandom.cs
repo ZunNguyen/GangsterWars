@@ -7,6 +7,8 @@ namespace Sources.Utils
     public static class GetRandom
     {
         private static readonly int _coinValueDefault = 0;
+        private static readonly int _percentChanceMin = 0;
+        private static readonly int _percentChanceMax = 100;
 
         private static System.Random _random = new System.Random();
 
@@ -22,7 +24,7 @@ namespace Sources.Utils
         public static int GetCoinRandom(Vector2Int valueRange, int percentChance)
         {
             var valueRandom = _random.Next(valueRange.x, valueRange.y);
-            var percentChanceRandom = _random.Next(0, percentChance);
+            var percentChanceRandom = _random.Next(_percentChanceMin, _percentChanceMax);
             
             if (percentChanceRandom > percentChance) return _coinValueDefault;
             return valueRandom;

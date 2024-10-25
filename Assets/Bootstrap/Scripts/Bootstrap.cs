@@ -2,6 +2,7 @@ using Sources.Command;
 using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.GamePlaySystem.Bomber;
+using Sources.GamePlaySystem.CoinController;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SaveGame;
@@ -9,8 +10,6 @@ using Sources.Services;
 using Sources.Services.BootstrapLoadingService;
 using Sources.SpawnerSystem;
 using Sources.UISystem;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Bootstrap
@@ -62,6 +61,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitLeaderSystemService());
             serviceGroup.Add(new InitBomberSystemService());
             serviceGroup.Add(new InitMainGamePlaySystemService());
+            serviceGroup.Add(new InitCoinControllerSystemService());
 
             return serviceGroup;
         }
@@ -70,8 +70,8 @@ namespace Game.Bootstrap
         {
             var commandServiceGroup = new SequenceServiceCommandGroup("After Bootstrap Loading");
 
-            //commandServiceGroup.Add(new LoadMainMenuScenceCommand());
-            commandServiceGroup.Add(new LoadSenceCommand("GamePlay"));
+            commandServiceGroup.Add(new LoadMainMenuScenceCommand());
+            //commandServiceGroup.Add(new LoadSenceCommand("GamePlay"));
 
             return commandServiceGroup;
         }

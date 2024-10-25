@@ -28,6 +28,8 @@ namespace Sources.GameData
 
         public bool IsActiveBomber = true;
 
+        public int Coins;
+
         public void SetLeaderDataDefault()
         {
             var weaponData = new GunModel();

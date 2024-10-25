@@ -1,9 +1,8 @@
 using Cysharp.Threading.Tasks;
 using Game.CanvasInGamePlay.Controller;
-using Game.Character.Bomber;
 using Game.Weapon.Bullet;
-using Sources.DataBaseSystem;
 using Sources.Extension;
+using Sources.GamePlaySystem.CoinController;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.SpawnerSystem;
@@ -18,6 +17,7 @@ namespace Game.Character.Enemy
     {
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
+        private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
 
         private EnemyHandler _enemyHandler;
         private Vector2 _direction;
@@ -82,7 +82,13 @@ namespace Game.Character.Enemy
 
         private void OnDeath()
         {
-            Debug.Log($"Enemy death");
+            var coinRewardInfo = new CoinRewardInfo()
+            {
+                PosSpawn = transform,
+                Coins = _enemyHandler.CoinsReward,
+            };
+
+            _coinControllerSystem.SpawnCoinReward(coinRewardInfo);
             OnDisposable();
             AnimationDeath();
         }

@@ -14,23 +14,13 @@ namespace Game.Screens.GamePlayScreen
     {
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
-        [SerializeField] private GameObject a;
-
         [SerializeField] private GunHudViewController _gunHudViewController;
         [SerializeField] private UserHpController _userHpController;
 
         private void Start()
         {
-            var x = _spawnerManager.Get(a);
-            _spawnerManager.Release(x);
-
             _gunHudViewController.OnSetUp();
             _userHpController.OnSetUp();
-        }
-
-        public override UniTask OnTransitionEnter()
-        {
-            return base.OnTransitionEnter();
         }
     }
 }

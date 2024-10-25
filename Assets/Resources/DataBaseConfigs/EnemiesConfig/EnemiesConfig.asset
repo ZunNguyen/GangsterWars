@@ -20,4 +20,4 @@ MonoBehaviour:
       Damage: 10
       Hp: 100
       coinReward: {x: 279, y: 1359}
-      PercentChance: 50
+      PercentChance: 100

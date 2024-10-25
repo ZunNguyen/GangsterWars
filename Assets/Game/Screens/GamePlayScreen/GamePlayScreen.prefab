@@ -207,8 +207,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858916796696541408}
+  - component: {fileID: 94128816669339403}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: CoinCollection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,6 +237,19 @@ RectTransform:
   m_AnchoredPosition: {x: 187.41284, y: 0}
   m_SizeDelta: {x: 206.8256, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &94128816669339403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785846006127502926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e959e123a0d1e3459258982a5944dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 3261402965000026688}
 --- !u!1 &2207440150478705136
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +377,7 @@ GameObject:
   - component: {fileID: 7140870793545981731}
   - component: {fileID: 902193621782687721}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1170,7 +1184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _layer: Screen
-  a: {fileID: 8820068018295451461}
   _gunHudViewController: {fileID: 5722885235697798405}
   _userHpController: {fileID: 8132502398456731073}
 --- !u!114 &8132502398456731073

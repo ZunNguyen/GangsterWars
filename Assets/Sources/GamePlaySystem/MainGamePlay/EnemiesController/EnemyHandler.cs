@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Game.Character.Leader;
 using Game.PosSpawnEnemies;
 using Sources.DataBaseSystem;
+using Sources.GamePlaySystem.CoinController;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using System;
@@ -45,7 +46,6 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         
         private IDisposable _disposableShieldState;
-        private int _coins;
 
         public int HpMax { get; private set; }
         public ReactiveProperty<int> HpCurrent { get; } = new ReactiveProperty<int>();
@@ -53,6 +53,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public ReactiveProperty<Vector2> Direction { get; } = new ReactiveProperty<Vector2>(Vector2.zero);
         public ReactiveProperty<AnimationState> AniamtionState { get;} = new ReactiveProperty<AnimationState>(AnimationState.Idle);
         public ReactiveProperty<bool> IsAttacking { get;} = new ReactiveProperty<bool>(false);
+        public int CoinsReward { get; private set; }
 
         public void OnSetUp(string enemyId)
         {
@@ -69,7 +70,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             HpCurrent.Value = HpMax = enemyWaveInfo.Hp;
             Damage.Value = enemyWaveInfo.Damage;
 
-            _coins = GetRandom.GetCoinRandom(enemyWaveInfo.coinReward, enemyWaveInfo.PercentChance);
+            CoinsReward = GetRandom.GetCoinRandom(enemyWaveInfo.coinReward, enemyWaveInfo.PercentChance);
         }
 
         private void OnStart()
@@ -107,7 +108,6 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         {
             Direction.Value = Vector2.zero;
             AniamtionState.Value = AnimationState.Death;
-            Debug.Log($"You recieve coin: {_coins}");
         }
 
         public void OnAttack()

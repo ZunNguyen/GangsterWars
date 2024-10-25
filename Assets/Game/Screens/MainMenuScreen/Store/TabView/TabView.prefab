@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1012765038613144259}
   m_Layer: 0
-  m_Name: TabGun
+  m_Name: TabView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
