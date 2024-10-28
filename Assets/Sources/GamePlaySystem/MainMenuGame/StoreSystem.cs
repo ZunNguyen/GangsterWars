@@ -12,19 +12,28 @@ namespace Sources.GamePlaySystem.MainMenuGame
 {
     public class InitStoreSystemService : InitSystemService<StoreSystem> { }
 
+    public enum WeaponState
+    {
+        AlreadyHave,
+        CanUnlock,
+        CanNotUnlock
+    }
+
     public class StoreSystem : BaseSystem
     {
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private StoreProfile _storeProfile => _gameData.GetProfileData<StoreProfile>();
+
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private StoreConfig _storeConfig => _dataBase.GetConfig<StoreConfig>();
 
-        public ReactiveProperty<string> LeaderStoreIds { get; private set; }
-        public bool HadStoreBomber { get; private set; } = false;
+        public StoreWeaponHandler StoreLeaderWeaponHandler = new();
+        public StoreWeaponHandler StoreBomberWeaponHandler = new();
 
         public override async UniTask Init()
         {
-            HadStoreBomber = _storeProfile.BomberWeapon != null;
+            StoreLeaderWeaponHandler.OnSetUp(_storeProfile.LeaderWeapons, _storeConfig.LeaderWeapons);
+            StoreBomberWeaponHandler.OnSetUp(_storeProfile.BomberWeapons, _storeConfig.BomberWeapons);
         }
     }
 }

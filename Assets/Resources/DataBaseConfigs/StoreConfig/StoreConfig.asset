@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: StoreConfig
   m_EditorClassIdentifier: 
   _leaderWeapons:
-  - Id: 
-    Icon: {fileID: 0}
+  - Id: gun-01
+    Icon: {fileID: 21300000, guid: 9a42506ef7c7ec044921d4d267e3d849, type: 3}
     UnlockFee: 0
     LevelUpgrades:
-    - Id: 
+    - Id: level-01
       LevelUpFee: 0
-      ReloadFee: 0
+      ReloadFee: 50
   _bomberWeapons:
-  - Id: 
-    Icon: {fileID: 0}
+  - Id: bom-01
+    Icon: {fileID: 21300000, guid: 1010f902bcb655241a349b7969f49c84, type: 3}
     UnlockFee: 0
     LevelUpgrades:
-    - Id: 
+    - Id: level-01
       LevelUpFee: 0
-      ReloadFee: 0
+      ReloadFee: 50

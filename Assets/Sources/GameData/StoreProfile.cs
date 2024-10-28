@@ -1,6 +1,5 @@
-using System;
+using Sources.Utils;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Sources.GameData
 {
@@ -12,8 +11,8 @@ namespace Sources.GameData
 
     public class StoreProfile : IProfileData
     {
-        public WeaponModel LeaderWeapon;
-        public WeaponModel BomberWeapon;
+        public List<WeaponModel> LeaderWeapons;
+        public List<WeaponModel> BomberWeapons;
 
         public Dictionary<string, string> ShieldData = new();
         public string ShieldIdCurrent;
