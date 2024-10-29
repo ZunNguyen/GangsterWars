@@ -1,4 +1,6 @@
 ﻿using Sirenix.OdinInspector;
+using Sources.CSV;
+using Sources.S;
 using Sources.Utils.String;
 using System;
 using System.Collections.Generic;
@@ -41,7 +43,7 @@ namespace Sources.DataBaseSystem
         public int ReloadFee;
     }
 
-    public class StoreConfig : DataBaseConfig
+    public class StoreConfig : DataBaseConfig, ReadCSVData
     {
         [TabGroup("LeaderStore")]
         [SerializeField] private List<WeaponInfo> _leaderWeapons;

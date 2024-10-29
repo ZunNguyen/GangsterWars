@@ -28,4 +28,9 @@ MonoBehaviour:
     DamageWeapons:
     - Level: level-01
       Damage: 10
+  - Id: bom-04
+    Icon: {fileID: 21300000, guid: 96aba9edde2299c41a16ac96f7a136df, type: 3}
+    DamageWeapons:
+    - Level: level-01
+      Damage: 10
   _reloadingTime: 5
