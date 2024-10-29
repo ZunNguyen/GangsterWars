@@ -18,6 +18,8 @@ namespace Game.Screens.MainMenuScreen
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
 
         [SerializeField] private TMP_Text _text;
+        [SerializeField] private StoreController _storeController;
+        [SerializeField] private TabHandler _tabHandler;
 
         protected override void Awake()
         {
@@ -26,6 +28,9 @@ namespace Game.Screens.MainMenuScreen
             {
                 _text.text = value.ToString();
             }).AddTo(this);
+
+            _storeController.OnSetUp();
+            _tabHandler.OnSetUp();
         }
 
         public async void OnPlayGameClicked()

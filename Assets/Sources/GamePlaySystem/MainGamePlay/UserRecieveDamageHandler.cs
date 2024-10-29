@@ -49,7 +49,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         {
             if(_storeProfile.ShieldData.Count == 0)
             {
-                _storeProfile.SetStoreDefault();
+                _storeProfile.SetStoreShieldDefault();
                 _storeProfile.Save();
             }
 

@@ -85,6 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 881376957319364425}
+  - component: {fileID: 970411644876183259}
   m_Layer: 0
   m_Name: LevelUpgrade
   m_TagString: Untagged
@@ -114,6 +115,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &970411644876183259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4207120008527381042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a458a4d3e0e3d5e4fb342af22972ab90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emptyBullet: {fileID: 575787161783417573}
 --- !u!1 &6510596311235215755
 GameObject:
   m_ObjectHideFlags: 0

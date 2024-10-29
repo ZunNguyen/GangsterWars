@@ -14,6 +14,23 @@ namespace Sources.DataBaseSystem
         public Sprite Icon;
         public int UnlockFee;
         public List<LevelUpgradeInfo> LevelUpgrades;
+        private Dictionary<string, LevelUpgradeInfo> _levelUpgradeCache = new();
+    
+        public int GetIndexLevelUpgrade(string id)
+        {
+            var levelUpgrade = LevelUpgrades.Find(x => x.Id == id);
+            return LevelUpgrades.IndexOf(levelUpgrade);
+        }
+
+        public LevelUpgradeInfo GetLevelUpgradeInfo(string id)
+        {
+            if (!_levelUpgradeCache.ContainsKey(id))
+            {
+                var levelUpgrade = LevelUpgrades.Find(x => x.Id == id);
+                _levelUpgradeCache.Add(id, levelUpgrade);
+            }
+            return _levelUpgradeCache[id];
+        }
     }
 
     [Serializable]

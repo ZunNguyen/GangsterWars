@@ -14,14 +14,14 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private StoreProfile _storeProfile => _gameData.GetProfileData<StoreProfile>();
 
-        private List<WeaponModel> _weaponsData = new();
+        private List<WeaponData> _weaponsData;
         private List<WeaponInfo> _weaponsConfig = new();
         private int _weaponIndexMaxCurrent;
 
         public bool HadStore { get; private set; } = false;
         public Action<string> NewWeapon;
 
-        public void OnSetUp(List<WeaponModel> weaponsData, List<WeaponInfo> weaponsConfig)
+        public void OnSetUp(List<WeaponData> weaponsData, List<WeaponInfo> weaponsConfig)
         {
             _weaponsData = weaponsData;
             _weaponsConfig = weaponsConfig;
@@ -58,6 +58,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
             var weaponData = _weaponsData.FirstOrDefault(weapon => weapon.WeaponId == weaponId);
             var weaponDataIndex = _weaponsData.IndexOf(weaponData);
             _weaponsData[weaponDataIndex].LevelUpgradeId = levelCurrent;
+
+            _storeProfile.Save();
         }
 
         private int GetIndexInList(string id, List<WeaponInfo> weaponsConfig)

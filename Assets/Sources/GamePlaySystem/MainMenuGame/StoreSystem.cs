@@ -23,6 +23,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
     {
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private StoreProfile _storeProfile => _gameData.GetProfileData<StoreProfile>();
+        private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private StoreConfig _storeConfig => _dataBase.GetConfig<StoreConfig>();
@@ -31,6 +32,29 @@ namespace Sources.GamePlaySystem.MainMenuGame
         public StoreWeaponHandler StoreBomberWeaponHandler = new();
 
         public override async UniTask Init()
+        {
+            CheckLeaderData();
+            CheckBomberData();
+            OnSetUp();
+        }
+
+        private void CheckLeaderData()
+        {
+            if (_storeProfile.LeaderWeapons == null)
+            {
+                _storeProfile.SetStoreLeaderDefault();
+            }
+        }
+
+        private void CheckBomberData()
+        {
+            if (_storeProfile.BomberWeapons == null && _userProfile.IsActiveBomber)
+            {
+                _storeProfile.SetStoreBomberDefault();
+            }
+        }
+
+        private void OnSetUp()
         {
             StoreLeaderWeaponHandler.OnSetUp(_storeProfile.LeaderWeapons, _storeConfig.LeaderWeapons);
             StoreBomberWeaponHandler.OnSetUp(_storeProfile.BomberWeapons, _storeConfig.BomberWeapons);

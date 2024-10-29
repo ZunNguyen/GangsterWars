@@ -35,7 +35,7 @@ namespace Sources.GameData
             var weaponData = new GunModel();
             weaponData.GunId = LeaderKey.GunId_01;
             weaponData.BulletTotal.Value = 50;
-            weaponData.LevelDamage = LeaderKey.LevelDamage_01;
+            weaponData.LevelDamage = LeaderKey.Level_01;
 
             LeaderData.Add(weaponData);
             Save();
@@ -46,7 +46,7 @@ namespace Sources.GameData
             var bomberData = new CharacterData();
             bomberData.BomId = BomberKey.BomberId_Default;
             bomberData.Quatity.Value = 20;
-            bomberData.LevelDamage = BomberKey.LevelDamage_Default;
+            bomberData.LevelDamage = BomberKey.Level_Default;
 
             BomberData.Add(bomberData);
             Save();

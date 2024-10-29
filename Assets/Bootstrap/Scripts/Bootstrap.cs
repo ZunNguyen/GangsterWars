@@ -5,6 +5,7 @@ using Sources.GamePlaySystem.Bomber;
 using Sources.GamePlaySystem.CoinController;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
+using Sources.GamePlaySystem.MainMenuGame;
 using Sources.SaveGame;
 using Sources.Services;
 using Sources.Services.BootstrapLoadingService;
@@ -62,6 +63,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitBomberSystemService());
             serviceGroup.Add(new InitMainGamePlaySystemService());
             serviceGroup.Add(new InitCoinControllerSystemService());
+            serviceGroup.Add(new InitStoreSystemService());
 
             return serviceGroup;
         }

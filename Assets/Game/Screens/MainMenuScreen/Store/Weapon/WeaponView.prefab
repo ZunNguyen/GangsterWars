@@ -882,6 +882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6528214400779771501}
+  - component: {fileID: 5273541460729744390}
   m_Layer: 0
   m_Name: WeaponView
   m_TagString: Untagged
@@ -916,6 +917,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 133.8}
   m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5273541460729744390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2900769970705754341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fce631d9330741b3d5c1b0a60d8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelUpgradePrefab: {fileID: 970411644876183259, guid: 3bc138126b8690941951aeba72731306, type: 3}
+  _levelUpgradeHolder: {fileID: 3284751545162187271}
+  _icon: {fileID: 4592423985529313965}
+  _unlock: {fileID: 4678786684908458960}
+  _iconlock: {fileID: 3867235780409302838}
+  _levelUp: {fileID: 7783790627733148648}
+  _reload: {fileID: 6033116233681565499}
 --- !u!1 &3867235780409302838
 GameObject:
   m_ObjectHideFlags: 0
