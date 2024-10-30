@@ -59,5 +59,12 @@ namespace Sources.GamePlaySystem.MainMenuGame
             StoreLeaderWeaponHandler.OnSetUp(_storeProfile.LeaderWeapons, _storeConfig.LeaderWeapons);
             StoreBomberWeaponHandler.OnSetUp(_storeProfile.BomberWeapons, _storeConfig.BomberWeapons);
         }
+
+        public StoreWeaponHandler GetWeaponHandlerSystem(string weaponId)
+        {
+            if (StoreLeaderWeaponHandler.IsHandlerSystem(weaponId)) return StoreLeaderWeaponHandler;
+            if (StoreBomberWeaponHandler.IsHandlerSystem(weaponId)) return StoreBomberWeaponHandler;
+            else return null;
+        }
     }
 }

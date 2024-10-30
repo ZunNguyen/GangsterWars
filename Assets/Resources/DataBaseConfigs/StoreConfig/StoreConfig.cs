@@ -1,16 +1,14 @@
-﻿using Sirenix.OdinInspector;
-using Resources.CSV;
+﻿using Resources.CSV;
+using Sirenix.OdinInspector;
 using Sources.Utils.String;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using BestHTTP.SecureProtocol.Org.BouncyCastle.Ocsp;
 
 namespace Sources.DataBaseSystem
 {
     [Serializable]
-    public class WeaponInfo
+    public class WeaponInfo : IReadCSVData
     {
         public string Id;
         [PreviewField(100, ObjectFieldAlignment.Left)]
@@ -34,6 +32,32 @@ namespace Sources.DataBaseSystem
             }
             return _levelUpgradeCache[id];
         }
+
+        [Button]
+        public void ReadFile(TextAsset csvFile)
+        {
+            LevelUpgrades.Clear();
+            string[] datas = csvFile.text.Split(new string[] { ",", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            
+            string[] lines = csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            // 4
+            var rowCount = lines.Length;
+            // 11
+            var columnCount = datas.Length / rowCount;
+
+            for (int column = 1; column < columnCount; column++)
+            {
+                var rowCurrent = 1;
+                var newLevelUpgrade = new LevelUpgradeInfo();
+                var indexData = columnCount * rowCurrent + column;
+
+                newLevelUpgrade.Id = datas[indexData];
+                newLevelUpgrade.LevelUpFee = int.Parse(datas[indexData + columnCount]);
+                newLevelUpgrade.ReloadFee = int.Parse(datas[indexData + 2 * columnCount]);
+
+                LevelUpgrades.Add(newLevelUpgrade);
+            }
+        }
     }
 
     [Serializable]
@@ -44,7 +68,7 @@ namespace Sources.DataBaseSystem
         public int ReloadFee;
     }
 
-    public class StoreConfig : DataBaseConfig, IReadCSVData
+    public class StoreConfig : DataBaseConfig
     {
         [TabGroup("LeaderStore", TabName = "LeaderStore")]
         [SerializeField] private List<WeaponInfo> _leaderWeapons;
@@ -87,12 +111,6 @@ namespace Sources.DataBaseSystem
             }
 
             return (null, null);
-        }
-
-        [Button]
-        public void ReadFile(string path)
-        {
-            var textAssetData = UnityEngine.Resources.Load<TextAsset>(path);
         }
     }
 }

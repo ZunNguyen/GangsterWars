@@ -2,6 +2,7 @@ using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.Utils;
 using Sources.Utils.Singleton;
+using Sources.Utils.String;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,6 +67,14 @@ namespace Sources.GamePlaySystem.MainMenuGame
         {
             var weapon = weaponsConfig.FirstOrDefault(weapon => weapon.Id == id);
             return weaponsConfig.IndexOf(weapon);
+        }
+
+        public bool IsHandlerSystem(string weaponId)
+        {
+            var baseWeapon = StringUtils.GetBaseName(weaponId);
+            var baseWeaponSystem = StringUtils.GetBaseName(_weaponsData[0].WeaponId);
+
+            return baseWeaponSystem == baseWeapon;
         }
     }
 }

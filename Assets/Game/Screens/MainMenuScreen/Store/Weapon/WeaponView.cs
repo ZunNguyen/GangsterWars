@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector.Editor.Validation;
 using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.GamePlaySystem.MainMenuGame;
@@ -36,10 +35,11 @@ namespace Game.Screens.MainMenuScreen
         public void OnSetUp(WeaponData weaponData)
         {
             _weaponInfo = _storeConfig.GetWeaponInfo(weaponData.WeaponId);
+            var storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(weaponData.WeaponId);
 
             _icon.sprite = _weaponInfo.Icon;
 
-            var weaponState = _storeSystem.StoreLeaderWeaponHandler.GetWeaponState(weaponData.WeaponId);
+            var weaponState = storeWeaponHandler.GetWeaponState(weaponData.WeaponId);
             if (weaponState == WeaponState.AlreadyHave)
             {
                 _unlock.SetActive(false);
@@ -61,7 +61,7 @@ namespace Game.Screens.MainMenuScreen
             {
                 var newLevelUpgrade = Instantiate(_levelUpgradePrefab, _levelUpgradeHolder);
 
-                if (levelUpgradeIndex <= i) _levelsUpgardeAvailable.Value.Add(_weaponInfo.LevelUpgrades[i].Id);
+                if (i <= levelUpgradeIndex) _levelsUpgardeAvailable.Value.Add(_weaponInfo.LevelUpgrades[i].Id);
 
                 newLevelUpgrade.OnSetUp(_weaponInfo.LevelUpgrades[i].Id, _levelsUpgardeAvailable);
             }

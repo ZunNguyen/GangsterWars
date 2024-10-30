@@ -24,7 +24,12 @@ namespace Game.Screens.MainMenuScreen
             {
                 var newWeaponPrefab = Instantiate(_weaponViewPrefab, _holderWeaponView);
 
-                if (weaponsData[i] == null)
+                try
+                {
+                    var weaponData = weaponsData[i];
+                }
+
+                catch (ArgumentOutOfRangeException)
                 {
                     var newWeaponData = new WeaponData();
                     newWeaponData.WeaponId = weaponsConfig[i].Id;
