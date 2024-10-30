@@ -29,7 +29,7 @@ namespace Sources.DataBaseSystem
         {
             get
             {
-                if (_editorInstance == null) _editorInstance = Resources.Load<DataBase>($"{nameof(DataBase)}/{nameof(DataBase)}");
+                if (_editorInstance == null) _editorInstance = UnityEngine.Resources.Load<DataBase>($"{nameof(DataBase)}/{nameof(DataBase)}");
 
                 return _editorInstance;
             }

@@ -1,10 +1,11 @@
 ﻿using Sirenix.OdinInspector;
-using Sources.CSV;
-using Sources.S;
+using Resources.CSV;
 using Sources.Utils.String;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using BestHTTP.SecureProtocol.Org.BouncyCastle.Ocsp;
 
 namespace Sources.DataBaseSystem
 {
@@ -43,14 +44,14 @@ namespace Sources.DataBaseSystem
         public int ReloadFee;
     }
 
-    public class StoreConfig : DataBaseConfig, ReadCSVData
+    public class StoreConfig : DataBaseConfig, IReadCSVData
     {
-        [TabGroup("LeaderStore")]
+        [TabGroup("LeaderStore", TabName = "LeaderStore")]
         [SerializeField] private List<WeaponInfo> _leaderWeapons;
         public List<WeaponInfo> LeaderWeapons => _leaderWeapons;
         private Dictionary<string, WeaponInfo> _leaderWeaponCache = new();
 
-        [TabGroup("BomberStore")]
+        [TabGroup("BomberStore", TabName = "BomberStore")]
         [SerializeField] private List<WeaponInfo> _bomberWeapons;
         public List<WeaponInfo> BomberWeapons => _bomberWeapons;
         private Dictionary<string, WeaponInfo> _bomberWeaponCache = new();
@@ -86,6 +87,12 @@ namespace Sources.DataBaseSystem
             }
 
             return (null, null);
+        }
+
+        [Button]
+        public void ReadFile(string path)
+        {
+            var textAssetData = UnityEngine.Resources.Load<TextAsset>(path);
         }
     }
 }
