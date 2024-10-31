@@ -931,10 +931,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelUpgradePrefab: {fileID: 970411644876183259, guid: 3bc138126b8690941951aeba72731306, type: 3}
   _levelUpgradeHolder: {fileID: 3284751545162187271}
+  _levelUp: {fileID: 7783790627733148648}
+  _valueLevelUp: {fileID: 5199281352099682813}
   _icon: {fileID: 4592423985529313965}
   _unlock: {fileID: 4678786684908458960}
   _iconlock: {fileID: 3867235780409302838}
-  _levelUp: {fileID: 7783790627733148648}
   _reload: {fileID: 6033116233681565499}
 --- !u!1 &3867235780409302838
 GameObject:

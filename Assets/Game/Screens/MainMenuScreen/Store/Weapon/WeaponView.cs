@@ -4,6 +4,7 @@ using Sources.GamePlaySystem.MainMenuGame;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,19 +27,30 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private LevelUpgradeView _levelUpgradePrefab;
         [SerializeField] private Transform _levelUpgradeHolder;
 
+        [Header("Level Up")]
+        [SerializeField] private GameObject _levelUp;
+        [SerializeField] private TMP_Text _valueLevelUp;
+
+        [Header("Another")]
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _unlock;
         [SerializeField] private GameObject _iconlock;
-        [SerializeField] private GameObject _levelUp;
         [SerializeField] private GameObject _reload;
 
         public void OnSetUp(WeaponData weaponData)
         {
             _weaponInfo = _storeConfig.GetWeaponInfo(weaponData.WeaponId);
-            var storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(weaponData.WeaponId);
 
+            var levelUpradeInfo = _weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
+            _valueLevelUp.text = levelUpradeInfo.LevelUpFee.ToString();
             _icon.sprite = _weaponInfo.Icon;
 
+            SubscriceWeaponSate(weaponData);
+        }
+
+        private void SubscriceWeaponSate(WeaponData weaponData)
+        {
+            var storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(weaponData.WeaponId);
             var weaponState = storeWeaponHandler.GetWeaponState(weaponData.WeaponId);
             if (weaponState == WeaponState.AlreadyHave)
             {
