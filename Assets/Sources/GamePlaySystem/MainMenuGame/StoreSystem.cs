@@ -22,7 +22,6 @@ namespace Sources.GamePlaySystem.MainMenuGame
     public class StoreSystem : BaseSystem
     {
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
-        private StoreProfile _storeProfile => _gameData.GetProfileData<StoreProfile>();
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
@@ -35,29 +34,38 @@ namespace Sources.GamePlaySystem.MainMenuGame
         {
             CheckLeaderData();
             CheckBomberData();
+            CheckShieldData();
             OnSetUp();
         }
 
         private void CheckLeaderData()
         {
-            if (_storeProfile.LeaderWeapons == null)
+            if (_userProfile.LeaderDatas == null)
             {
-                _storeProfile.SetStoreLeaderDefault();
+                _userProfile.SetLeaderDataDefault();
             }
         }
 
         private void CheckBomberData()
         {
-            if (_storeProfile.BomberWeapons == null && _userProfile.IsActiveBomber)
+            if (_userProfile.BomberDatas == null)
             {
-                _storeProfile.SetStoreBomberDefault();
+                _userProfile.SetBomberDataDefault();
+            }
+        }
+
+        private void CheckShieldData()
+        {
+            if (_userProfile.ShieldDatas == null)
+            {
+                _userProfile.SetShieldDataDefault();
             }
         }
 
         private void OnSetUp()
         {
-            StoreLeaderWeaponHandler.OnSetUp(_storeProfile.LeaderWeapons, _storeConfig.LeaderWeapons);
-            StoreBomberWeaponHandler.OnSetUp(_storeProfile.BomberWeapons, _storeConfig.BomberWeapons);
+            StoreLeaderWeaponHandler.OnSetUp(_userProfile.LeaderDatas, _storeConfig.LeaderWeapons);
+            StoreBomberWeaponHandler.OnSetUp(_userProfile.BomberDatas, _storeConfig.BomberWeapons);
         }
 
         public StoreWeaponHandler GetWeaponHandlerSystem(string weaponId)

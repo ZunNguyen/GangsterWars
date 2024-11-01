@@ -9,15 +9,6 @@ using UniRx;
 
 namespace Sources.GamePlaySystem.Leader
 {
-    [Serializable]
-    public class GunModel
-    {
-        public string GunId;
-        public string LevelDamage;
-        public ReactiveProperty<int> BulletTotal = new ReactiveProperty<int>(0);
-        public ReactiveProperty<int> BulletAvailable = new ReactiveProperty<int>(0);
-    }
-
     public class InitLeaderSystemService : InitSystemService<LeaderSystem> { };
 
     public class LeaderSystem : BaseSystem

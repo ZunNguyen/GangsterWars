@@ -10,7 +10,6 @@ namespace Sources.GameData
     {
         private GameData _gameData => Locator<GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
-        private StoreProfile _storeProfile => _gameData.GetProfileData<StoreProfile>();
 
         public override async UniTask Init()
         {
@@ -20,7 +19,6 @@ namespace Sources.GameData
         private void OnApplicationQuit()
         {
             _userProfile.Save();
-            _storeProfile.Save();
         }
     }
 }

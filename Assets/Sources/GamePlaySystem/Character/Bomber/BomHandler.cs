@@ -22,16 +22,15 @@ namespace Sources.GamePlaySystem.Bomber
         private bool _isLose = false;
         private bool _outOfEnemies = false;
 
-        public List<CharacterData> BomberModel { private set; get; } = new ();
-        public ReactiveProperty<CharacterData> BomberModelCurrent = new ();
+        public List<WeaponData> BomberModel { private set; get; } = new ();
+        public ReactiveProperty<WeaponData> BomberModelCurrent = new ();
         public ReactiveProperty<EnemyController> EnemyTarget = new ();
 
         public void OnSetUp()
         {
-            if (!_userProfile.IsActiveBomber) return;
-            if (_userProfile.BomberData.Count == 0) _userProfile.SetBomberDataDefault();
+            if (_userProfile.BomberDatas == null) return;
 
-            BomberModel = _userProfile.BomberData;
+            BomberModel = _userProfile.BomberDatas;
             _bomberSystem.ReloadTimeHandler.CompleteReload += Start;
         }
 
@@ -47,10 +46,10 @@ namespace Sources.GamePlaySystem.Bomber
             else return false;
         }
 
-        private CharacterData GetRandomBomberModel()
+        private WeaponData GetRandomBomberModel()
         {
             var model = GetRandom.FromList(BomberModel);
-            if (model.Quatity.Value != 0)
+            if (model.Quatity != 0)
             {
                 return model;
             }

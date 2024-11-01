@@ -49,7 +49,7 @@ namespace Sources.GamePlaySystem.Leader
             _gunHandler.IsShooting += AddTimeReloadCurrent;
         }
 
-        private void OnGunModelChanged(GunModel gunModel)
+        private void OnGunModelChanged(GunModelView gunModel)
         {
             SaveTimeReloadCurrent();
 

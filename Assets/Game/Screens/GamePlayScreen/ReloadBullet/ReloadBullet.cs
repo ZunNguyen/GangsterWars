@@ -39,9 +39,9 @@ namespace Game.Screens.GamePlayScreen
             }).AddTo(this);
         }
 
-        private void SetUpViewReloadBullet(GunModel gunModel)
+        private void SetUpViewReloadBullet(GunModelView gunModel)
         {
-            if (gunModel.GunId == LeaderKey.GunId_01 || gunModel.GunId == LeaderKey.GunId_02 || gunModel.GunId == LeaderKey.GunId_03)
+            if (gunModel.GunId == LeaderKey.GunId_Default || gunModel.GunId == LeaderKey.GunId_02 || gunModel.GunId == LeaderKey.GunId_03)
             {
                 var gunInfo = _leaderConfig.GetWeaponInfo(gunModel.GunId);
                 _bulletPerClip = gunInfo.BulletsPerClip;
@@ -73,7 +73,7 @@ namespace Game.Screens.GamePlayScreen
             }
         }
 
-        private void GetBullet(GunModel gunModel)
+        private void GetBullet(GunModelView gunModel)
         {
             _bullets.Clear();
             for (int i = 0; i < _bulletPerClip; i++)

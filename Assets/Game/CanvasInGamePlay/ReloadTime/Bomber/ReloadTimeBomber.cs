@@ -17,7 +17,7 @@ namespace Game.CanvasInGamePlay.Reload
 
         protected override void GetSystem()
         {
-            if (_userProfile.BomberData.Count == 0) return;
+            if (_userProfile.BomberDatas == null) return;
 
             _timeReload = _bomberSystem.ReloadTimeHandler.TimeReloadCurrent;
             base.GetSystem();

@@ -11,6 +11,14 @@ using Sources.GameData;
 
 namespace Sources.GamePlaySystem.Leader
 {
+    public class GunModelView
+    {
+        public string GunId;
+        public string LevelUpgradeId;
+        public ReactiveProperty<int> BulletTotal = new ReactiveProperty<int>(0);
+        public ReactiveProperty<int> BulletAvailable = new ReactiveProperty<int>(0);
+    }
+
     public class GunHandler
     {
         private const string _gunIdDefault = "gun-01";
@@ -22,8 +30,8 @@ namespace Sources.GamePlaySystem.Leader
 
         private bool _isCanShoot;
 
-        public ReactiveDictionary<string, GunModel> GunModels { get; private set; } = new();
-        public ReactiveProperty<GunModel> GunModelCurrent { get; private set; } = new();
+        public ReactiveDictionary<string, GunModelView> GunModels { get; private set; } = new();
+        public ReactiveProperty<GunModelView> GunModelCurrent { get; private set; } = new();
         public Action IsShooting;
         public int DamageBulletCurrent { get; private set; }
 
@@ -37,26 +45,28 @@ namespace Sources.GamePlaySystem.Leader
 
         private void LoadGunModels()
         {
-            if (_userProfile.LeaderData.Count == 0)
+            var gunDatas = _userProfile.LeaderDatas;
+
+            foreach (var gunData in gunDatas)
             {
-                _userProfile.SetLeaderDataDefault();
-            }
+                var gunModelView = new GunModelView
+                {
+                    GunId = gunData.WeaponId,
+                    LevelUpgradeId = gunData.LevelUpgradeId,
+                };
 
-            var gunModels = _userProfile.LeaderData;
+                gunModelView.BulletTotal.Value = gunData.Quatity;
 
-            foreach (var gunModel in gunModels)
-            {
-                var key = gunModel.GunId;
-                var gunInfo = _leaderConfig.GetWeaponInfo(key);
-                gunModel.BulletAvailable.Value = gunInfo.BulletsPerClip;
+                var gunInfo = _leaderConfig.GetWeaponInfo(gunData.WeaponId);
+                gunModelView.BulletAvailable.Value = gunInfo.BulletsPerClip;
 
-                GunModels.Add(key, gunModel);
+                GunModels.Add(gunData.WeaponId, gunModelView);
             }
         }
 
         private void LoadGunInfoCurrent(string gunId)
         {
-            if (GunModels.Remove(gunId, out GunModel gunModel))
+            if (GunModels.Remove(gunId, out GunModelView gunModel))
             {
                 GunModelCurrent.Value = gunModel;
             }
@@ -65,7 +75,7 @@ namespace Sources.GamePlaySystem.Leader
         private void LoadDamageBulletCurrent()
         {
             var gunInfo = _leaderConfig.GetWeaponInfo(GunModelCurrent.Value.GunId);
-            var damageInfo = gunInfo.GetDamageWeapon(GunModelCurrent.Value.LevelDamage);
+            var damageInfo = gunInfo.GetDamageWeapon(GunModelCurrent.Value.LevelUpgradeId);
             DamageBulletCurrent = damageInfo.Damage;
         }
 

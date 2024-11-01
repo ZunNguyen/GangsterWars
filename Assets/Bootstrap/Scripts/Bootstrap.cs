@@ -59,11 +59,11 @@ namespace Game.Bootstrap
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
 
             serviceGroup.Add(new InitSaveGameDataSystemService());
+            serviceGroup.Add(new InitStoreSystemService());
             serviceGroup.Add(new InitLeaderSystemService());
             serviceGroup.Add(new InitBomberSystemService());
             serviceGroup.Add(new InitMainGamePlaySystemService());
             serviceGroup.Add(new InitCoinControllerSystemService());
-            serviceGroup.Add(new InitStoreSystemService());
 
             return serviceGroup;
         }

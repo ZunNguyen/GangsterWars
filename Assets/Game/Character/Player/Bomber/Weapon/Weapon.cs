@@ -37,14 +37,14 @@ namespace Game.Character.Bomber
             _collider.enabled = status;
         }
 
-        public void OnSetUp(CharacterData bomberData)
+        public void OnSetUp(WeaponData weaponData)
         {
             SetEnabled(false);
 
-            var bomInfo = _bomberConfig.GetWeaponInfo(bomberData.BomId);
+            var bomInfo = _bomberConfig.GetWeaponInfo(weaponData.WeaponId);
 
             _sprite.sprite = bomInfo.Icon;
-            _damage = bomInfo.GetDamageWeapon(bomberData.LevelDamage);
+            _damage = bomInfo.GetDamageWeapon(weaponData.LevelUpgradeId);
         }
 
         public void ThrowBomb(Vector3 posTarget)

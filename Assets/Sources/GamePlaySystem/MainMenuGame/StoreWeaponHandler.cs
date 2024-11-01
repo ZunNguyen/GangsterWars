@@ -27,7 +27,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private const int _levelUpgardeFeeDefault = 0;
 
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
-        private StoreProfile _storeProfile => _gameData.GetProfileData<StoreProfile>();
+        private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private StoreConfig _storeConfig => _dataBase.GetConfig<StoreConfig>();
@@ -121,10 +121,10 @@ namespace Sources.GamePlaySystem.MainMenuGame
                 var newWeaponData = new WeaponData
                 {
                     WeaponId = weaponId,
-                    LevelUpgradeId = LeaderKey.Level_01
+                    LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
                 };
                 _weaponDatas.Add(newWeaponData);
-                _storeProfile.Save();
+                _userProfile.Save();
 
                 var weaponLargest = _weaponDatas[_weaponDatas.Count - 1];
                 _weaponIndexMaxCurrent = GetIndexInList(weaponLargest.WeaponId, _weaponConfigs);
@@ -168,10 +168,10 @@ namespace Sources.GamePlaySystem.MainMenuGame
             var levelNextId = weaponConfig.LevelUpgrades[levelInfoIndexCurrent + 1].Id;
 
             weaponModel.LevelUpgradeIdsPassed.Add(levelNextId);
-            var weaponData = _storeProfile.GetWeaponInfo(weaponId);
+            var weaponData = _userProfile.GetWeaponData(weaponId);
             weaponData.LevelUpgradeId = levelNextId;
 
-            _storeProfile.Save();
+            _userProfile.Save();
         }
 
         private int GetIndexInList(string id, List<WeaponInfo> weaponsConfig)
