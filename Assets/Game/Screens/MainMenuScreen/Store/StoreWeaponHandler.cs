@@ -18,26 +18,12 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private WeaponView _weaponViewPrefab;
         [SerializeField] private Transform _holderWeaponView;
 
-        public void OnSetUp(List<WeaponData> weaponsData, List<WeaponInfo> weaponsConfig)
+        public void OnSetUp(List<WeaponInfo> weaponsConfig)
         {
             for (int i = 0; i < weaponsConfig.Count; i++)
             {
                 var newWeaponPrefab = Instantiate(_weaponViewPrefab, _holderWeaponView);
-
-                try
-                {
-                    var weaponData = weaponsData[i];
-                }
-
-                catch (ArgumentOutOfRangeException)
-                {
-                    var newWeaponData = new WeaponData();
-                    newWeaponData.WeaponId = weaponsConfig[i].Id;
-                    newWeaponData.LevelUpgradeId = weaponsConfig[i].LevelUpgrades[0].Id;
-                    weaponsData.Add(newWeaponData);
-                }
-
-                newWeaponPrefab.OnSetUp(weaponsData[i]);
+                newWeaponPrefab.OnSetUp(weaponsConfig[i].Id);
             }
         }
 

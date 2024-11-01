@@ -54,6 +54,19 @@ namespace Sources.GamePlaySystem.CoinController
 
             CoinReward?.Invoke(coinRewardInfo);
         }
+
+        public bool PurchaseItem(int itemCoin)
+        {
+            if (itemCoin <= Coins.Value)
+            {
+                Coins.Value -= itemCoin;
+                _userProfile.Coins = Coins.Value;
+                _userProfile.Save();
+                return true;
+            }
+
+            else return false;
+        }
     }
 }
 

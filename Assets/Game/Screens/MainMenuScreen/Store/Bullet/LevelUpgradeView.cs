@@ -1,3 +1,4 @@
+using Sources.GamePlaySystem.MainMenuGame;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
@@ -11,14 +12,15 @@ namespace Game.Screens.MainMenuScreen
 
         [SerializeField] private GameObject _emptyBullet;
 
-        public void OnSetUp(string levelUpgradeId, ReactiveProperty<List<string>> levelsUpgradeAvailable)
+        public void OnSetUp(string levelUpgradeId, WeaponViewModel weaponViewModel)
         {
             _levelUpgradeId = levelUpgradeId;
 
-            levelsUpgradeAvailable.Subscribe(value  =>
+            weaponViewModel.LevelUpgradeFee.Subscribe(value  =>
             {
-                if (value.Contains(levelUpgradeId)) _emptyBullet.SetActive(false);
+                if(weaponViewModel.LevelUpgradeIdsPassed.Contains(levelUpgradeId)) _emptyBullet.SetActive(false);
                 else _emptyBullet.SetActive(true);
+
             }).AddTo(this);
         }
     }

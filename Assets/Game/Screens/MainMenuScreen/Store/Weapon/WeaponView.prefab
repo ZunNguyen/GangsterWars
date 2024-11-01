@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4377512668425675685}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5273541460729744390}
+        m_TargetAssemblyTypeName: Game.Screens.MainMenuScreen.WeaponView, Assembly-CSharp
+        m_MethodName: OnUnlockWeaponClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &714870961439963665
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -931,12 +943,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelUpgradePrefab: {fileID: 970411644876183259, guid: 3bc138126b8690941951aeba72731306, type: 3}
   _levelUpgradeHolder: {fileID: 3284751545162187271}
-  _levelUp: {fileID: 7783790627733148648}
-  _valueLevelUp: {fileID: 5199281352099682813}
-  _icon: {fileID: 4592423985529313965}
-  _unlock: {fileID: 4678786684908458960}
-  _iconlock: {fileID: 3867235780409302838}
+  _levelUpFee: {fileID: 7783790627733148648}
+  _valueLevelUpFee: {fileID: 5199281352099682813}
   _reload: {fileID: 6033116233681565499}
+  _valueReload: {fileID: 6717404633519215471}
+  _unlock: {fileID: 4678786684908458960}
+  _valueUnlock: {fileID: 2686776345435279017}
+  _icon: {fileID: 4592423985529313965}
+  _iconlock: {fileID: 3867235780409302838}
 --- !u!1 &3867235780409302838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,7 +1279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1854,7 +1868,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5316657929392724039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5273541460729744390}
+        m_TargetAssemblyTypeName: Game.Screens.MainMenuScreen.WeaponView, Assembly-CSharp
+        m_MethodName: OnLevelUpgradeClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7783790627733148648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,7 +1978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

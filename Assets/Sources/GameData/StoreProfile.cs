@@ -1,5 +1,7 @@
+using Sources.DataBaseSystem;
 using Sources.Extension;
 using Sources.Utils;
+using Sources.Utils.String;
 using System.Collections.Generic;
 
 namespace Sources.GameData
@@ -13,10 +15,46 @@ namespace Sources.GameData
     public class StoreProfile : IProfileData
     {
         public List<WeaponData> LeaderWeapons;
+        private Dictionary<string, WeaponData> _leaderWeaponCache = new();
+
         public List<WeaponData> BomberWeapons;
+        private Dictionary<string, WeaponData> _bomberWeaponCache = new();
 
         public Dictionary<string, string> ShieldData = new();
         public string ShieldIdCurrent;
+
+        public WeaponData GetWeaponInfo(string weaponId)
+        {
+            var weapons = GetCorrectListWeapon(weaponId).weapons;
+            var weaponCache = GetCorrectListWeapon(weaponId).weaponCache;
+
+            if (!weaponCache.ContainsKey(weaponId))
+            {
+                var weapon = weapons.Find(x => x.WeaponId == weaponId);
+                weaponCache.Add(weaponId, weapon);
+            }
+
+            return weaponCache[weaponId];
+        }
+
+        private (List<WeaponData> weapons, Dictionary<string, WeaponData> weaponCache) GetCorrectListWeapon(string weaponId)
+        {
+            var baseWeaponId = StringUtils.GetBaseName(weaponId);
+
+            var baseWeaponLeaderId = StringUtils.GetBaseName(LeaderWeapons[0].WeaponId);
+            if (baseWeaponId == baseWeaponLeaderId)
+            {
+                return (LeaderWeapons, _leaderWeaponCache);
+            }
+
+            var baseWeaponBomberId = StringUtils.GetBaseName(BomberWeapons[0].WeaponId);
+            if (baseWeaponId == baseWeaponBomberId)
+            {
+                return (BomberWeapons, _bomberWeaponCache);
+            }
+
+            return (null, null);
+        }
 
         public string GetLevelShieldCurrent()
         {

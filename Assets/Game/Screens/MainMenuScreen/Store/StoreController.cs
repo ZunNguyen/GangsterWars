@@ -7,9 +7,6 @@ namespace Game.Screens.MainMenuScreen
 {
     public class StoreController : MonoBehaviour
     {
-        private GameData _gameData => Locator<GameData>.Instance;
-        private StoreProfile _storeProfile => _gameData.GetProfileData<StoreProfile>();
-
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private StoreConfig _storeConfig => _dataBase.GetConfig<StoreConfig>();
 
@@ -19,10 +16,10 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnSetUp()
         {
-            _storeLeaderHandler.OnSetUp(_storeProfile.LeaderWeapons, _storeConfig.LeaderWeapons);
+            _storeLeaderHandler.OnSetUp(_storeConfig.LeaderWeapons);
             _storeLeaderHandler.SetState(TabState.TabGun);
 
-            _storeBomberHandler.OnSetUp(_storeProfile.BomberWeapons, _storeConfig.BomberWeapons);
+            _storeBomberHandler.OnSetUp(_storeConfig.BomberWeapons);
             _storeBomberHandler.SetState(TabState.TabBom);
 
             _storeShieldHandler.SetState(TabState.TabShield);

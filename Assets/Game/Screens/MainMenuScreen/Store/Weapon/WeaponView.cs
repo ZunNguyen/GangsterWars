@@ -1,5 +1,6 @@
 using Sources.DataBaseSystem;
 using Sources.GameData;
+using Sources.GamePlaySystem.CoinController;
 using Sources.GamePlaySystem.MainMenuGame;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
@@ -15,68 +16,115 @@ namespace Game.Screens.MainMenuScreen
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private StoreConfig _storeConfig => _dataBase.GetConfig<StoreConfig>();
+
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         private WeaponInfo _weaponInfo;
-
-        public ReactiveProperty<List<string>> _levelsUpgardeAvailable { get; private set; } 
-            = new ReactiveProperty<List<string>>(new List<string>());
+        private WeaponViewModel _weaponViewModel;
+        private Sources.GamePlaySystem.MainMenuGame.StoreWeaponHandler _storeWeaponHandler;
+        private string _weaponId;
+        
 
         [Header("Level Upgrade")]
         [SerializeField] private LevelUpgradeView _levelUpgradePrefab;
         [SerializeField] private Transform _levelUpgradeHolder;
 
         [Header("Level Up")]
-        [SerializeField] private GameObject _levelUp;
-        [SerializeField] private TMP_Text _valueLevelUp;
+        [SerializeField] private GameObject _levelUpFee;
+        [SerializeField] private TMP_Text _valueLevelUpFee;
+
+        [Header("Reload")]
+        [SerializeField] private GameObject _reload;
+        [SerializeField] private TMP_Text _valueReload;
+
+        [Header("Unlock")]
+        [SerializeField] private GameObject _unlock;
+        [SerializeField] private TMP_Text _valueUnlock;
 
         [Header("Another")]
         [SerializeField] private Image _icon;
-        [SerializeField] private GameObject _unlock;
         [SerializeField] private GameObject _iconlock;
-        [SerializeField] private GameObject _reload;
 
-        public void OnSetUp(WeaponData weaponData)
+        public void OnSetUp(string weaponId)
         {
-            _weaponInfo = _storeConfig.GetWeaponInfo(weaponData.WeaponId);
-
-            var levelUpradeInfo = _weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
-            _valueLevelUp.text = levelUpradeInfo.LevelUpFee.ToString();
+            _weaponId = weaponId;
+            _storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(weaponId);
+            _weaponViewModel = _storeWeaponHandler.WeaponWiewModels[weaponId];
+            
+            _weaponInfo = _storeConfig.GetWeaponInfo(weaponId);
             _icon.sprite = _weaponInfo.Icon;
-
-            SubscriceWeaponSate(weaponData);
+            
+            GetWeaponSate();
+            GetLevelUpgrade();
+            GetReloadFee();
+            GetUnlockFee();
         }
 
-        private void SubscriceWeaponSate(WeaponData weaponData)
+        private void GetWeaponSate()
         {
-            var storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(weaponData.WeaponId);
-            var weaponState = storeWeaponHandler.GetWeaponState(weaponData.WeaponId);
-            if (weaponState == WeaponState.AlreadyHave)
+            _weaponViewModel.State.Subscribe(state =>
             {
-                _unlock.SetActive(false);
-                _iconlock.SetActive(false);
-                GetLevelUpgrade(weaponData.LevelUpgradeId);
-            }
-            if (weaponState == WeaponState.CanUnlock || weaponState == WeaponState.CanNotUnlock)
-            {
-                _levelUp.SetActive(false);
-                _reload.SetActive(false);
-            }
+                if (state == WeaponState.AlreadyHave)
+                {
+                    _iconlock.SetActive(false);
+                    _unlock.SetActive(false);
+
+                    _levelUpgradeHolder.gameObject.SetActive(true);
+                    _levelUpFee.SetActive(true);
+                    _reload.SetActive(true);
+                }
+                if (state == WeaponState.CanUnlock)
+                {
+                    _iconlock.SetActive(true);
+                    _unlock.SetActive(true);
+
+                    _levelUpgradeHolder.gameObject.SetActive(false);
+                    _levelUpFee.SetActive(false);
+                    _reload.SetActive(false);
+                }
+                if (state == WeaponState.CanNotUnlock)
+                {
+                    _iconlock.SetActive(true);
+
+                    _unlock.SetActive(false);
+                    _levelUpgradeHolder.gameObject.SetActive(false);
+                    _levelUpFee.SetActive(false);
+                    _reload.SetActive(false);
+                }
+
+            }).AddTo(this);
         }
 
-        private void GetLevelUpgrade(string levelUpgradeId)
+        private void GetLevelUpgrade()
         {
-            var levelUpgradeIndex = _weaponInfo.GetIndexLevelUpgrade(levelUpgradeId);
+            _valueLevelUpFee.text = _weaponViewModel.LevelUpgradeFee.ToString();
 
             for (int i = 0; i < _weaponInfo.LevelUpgrades.Count; i++)
             {
                 var newLevelUpgrade = Instantiate(_levelUpgradePrefab, _levelUpgradeHolder);
-
-                if (i <= levelUpgradeIndex) _levelsUpgardeAvailable.Value.Add(_weaponInfo.LevelUpgrades[i].Id);
-
-                newLevelUpgrade.OnSetUp(_weaponInfo.LevelUpgrades[i].Id, _levelsUpgardeAvailable);
+                newLevelUpgrade.OnSetUp(_weaponInfo.LevelUpgrades[i].Id, _weaponViewModel);
             }
+        }
+
+        private void GetUnlockFee()
+        {
+            _valueUnlock.text = _weaponViewModel.UnlockFee.ToString();
+        }
+
+        private void GetReloadFee()
+        {
+            _valueReload.text = _weaponViewModel.ReloadFee.ToString();
+        }
+
+        public void OnUnlockWeaponClicked()
+        {
+            _storeWeaponHandler.UnlockNewWeapon(_weaponId);
+        }
+
+        public void OnLevelUpgradeClicked()
+        {
+            _storeWeaponHandler.UpgradeNewLevelWeapon(_weaponId);
         }
     }
 }
