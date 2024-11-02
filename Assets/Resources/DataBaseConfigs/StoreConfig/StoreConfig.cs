@@ -37,7 +37,7 @@ namespace Sources.DataBaseSystem
         public void ReadFile(TextAsset csvFile)
         {
             LevelUpgrades.Clear();
-            string[] datas = csvFile.text.Split(new string[] { ",", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] datas = csvFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
             
             string[] lines = csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
             // 4

@@ -19,10 +19,10 @@ namespace Game.Screens.MainMenuScreen
             _storeLeaderHandler.OnSetUp(_storeConfig.LeaderWeapons);
             _storeLeaderHandler.SetState(TabState.TabGun);
 
-            _storeBomberHandler.OnSetUp(_storeConfig.BomberWeapons);
-            _storeBomberHandler.SetState(TabState.TabBom);
+            //_storeBomberHandler.OnSetUp(_storeConfig.BomberWeapons);
+            //_storeBomberHandler.SetState(TabState.TabBom);
 
-            _storeShieldHandler.SetState(TabState.TabShield);
+            //_storeShieldHandler.SetState(TabState.TabShield);
         }
     }
 }

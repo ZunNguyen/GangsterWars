@@ -83,12 +83,18 @@ namespace Sources.GamePlaySystem.MainMenuGame
             weaponViewModel.UnlockFee = weaponInfo.UnlockFee;
 
             var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
+            var bulletRemain = _userProfile.GetWeaponData(weaponData.WeaponId).Quatity;
+            var reloadFee = levelUpgradeInfo.ReloadFee;
             weaponViewModel.ReloadFee = levelUpgradeInfo.ReloadFee;
 
+
+
+
+
             var indexLevelUpgradeCurrent = weaponInfo.GetIndexLevelUpgrade(weaponData.LevelUpgradeId);
-            var levelUpgradeNextInfo = weaponInfo.LevelUpgrades[indexLevelUpgradeCurrent + 1];
             if (indexLevelUpgradeCurrent != weaponInfo.LevelUpgrades.Count - 1)
             {
+                var levelUpgradeNextInfo = weaponInfo.LevelUpgrades[indexLevelUpgradeCurrent + 1];
                 weaponViewModel.LevelUpgradeFee.Value = levelUpgradeNextInfo.LevelUpFee;
             }
             else weaponViewModel.LevelUpgradeFee.Value = _levelUpgardeFeeDefault;
@@ -163,15 +169,21 @@ namespace Sources.GamePlaySystem.MainMenuGame
                 return;
             }
 
-            var weaponConfig = _storeConfig.GetWeaponInfo(weaponId);
-            var levelInfoIndexCurrent = weaponConfig.GetIndexLevelUpgrade(weaponModel.LevelUpgradeIdsPassed[weaponModel.LevelUpgradeIdsPassed.Count - 1]);
-            var levelNextId = weaponConfig.LevelUpgrades[levelInfoIndexCurrent + 1].Id;
+            var result = _coinControllerSystem.PurchaseItem(weaponModel.LevelUpgradeFee.Value);
+            if (result)
+            {
+                var weaponConfig = _storeConfig.GetWeaponInfo(weaponId);
+                var levelInfoIndexCurrent = weaponConfig.GetIndexLevelUpgrade(weaponModel.LevelUpgradeIdsPassed[weaponModel.LevelUpgradeIdsPassed.Count - 1]);
+                var levelNextId = weaponConfig.LevelUpgrades[levelInfoIndexCurrent + 1].Id;
 
-            weaponModel.LevelUpgradeIdsPassed.Add(levelNextId);
-            var weaponData = _userProfile.GetWeaponData(weaponId);
-            weaponData.LevelUpgradeId = levelNextId;
+                weaponModel.LevelUpgradeIdsPassed.Add(levelNextId);
+                var weaponData = _userProfile.GetWeaponData(weaponId);
+                weaponData.LevelUpgradeId = levelNextId;
 
-            _userProfile.Save();
+                UpdateWeaponViewModel(weaponData);
+                _userProfile.Save();
+            }
+            else Debug.Log("Not enough money!");
         }
 
         private int GetIndexInList(string id, List<WeaponInfo> weaponsConfig)

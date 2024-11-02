@@ -98,6 +98,14 @@ namespace Game.Screens.MainMenuScreen
 
         private void GetLevelUpgrade()
         {
+            _weaponViewModel.LevelUpgradeFee.Subscribe(value =>
+            {
+                if(value == 0)
+                {
+                    _levelUpFee.SetActive(false);
+                }
+            }).AddTo(this);
+
             _valueLevelUpFee.text = _weaponViewModel.LevelUpgradeFee.ToString();
 
             for (int i = 0; i < _weaponInfo.LevelUpgrades.Count; i++)

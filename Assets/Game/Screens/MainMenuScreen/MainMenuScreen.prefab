@@ -2096,6 +2096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShieldHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 8545591812324870716, guid: 49637c66dcabae349b1963fb96d6a289, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8747762120688898004, guid: 49637c66dcabae349b1963fb96d6a289, type: 3}
       propertyPath: _tabHandler
       value: 

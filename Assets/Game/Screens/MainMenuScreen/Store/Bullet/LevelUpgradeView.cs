@@ -18,6 +18,8 @@ namespace Game.Screens.MainMenuScreen
 
             weaponViewModel.LevelUpgradeFee.Subscribe(value  =>
             {
+                Debug.Log(_levelUpgradeId);
+
                 if(weaponViewModel.LevelUpgradeIdsPassed.Contains(levelUpgradeId)) _emptyBullet.SetActive(false);
                 else _emptyBullet.SetActive(true);
 
