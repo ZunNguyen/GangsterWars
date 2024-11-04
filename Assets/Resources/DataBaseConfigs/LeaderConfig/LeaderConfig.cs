@@ -1,58 +1,95 @@
+using Game.Character.Bomber;
+using Resources.CSV;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
 namespace Sources.DataBaseSystem.Leader
 {
     [Serializable]
-    public class DamageWeapon
+    public class LevelUpgradeInfo
     {
-        public string Level;
+        public string Id;
+        public int LevelUpFee;
+        public int ReloadFee;
         public int Damage;
     }
 
     [Serializable]
-    public class GunInfo
+    public class WeaponInfo : IReadCSVData
     {
         public string Id;
         
         [PreviewField(100, ObjectFieldAlignment.Left)]
         public Sprite Icon;
-
         public SpriteLibraryAsset SpriteLibraryAsset;
+        public int UnlockFee;
         public int MaxBullet;
         public int BulletsPerClip;
 
         [Header("Time to reload one bullet - second")] 
         public float ReloadTime;
         
-        public List<DamageWeapon> DamageWeapons;
+        public List<LevelUpgradeInfo> LevelUpgrades;
 
-        public Dictionary<string, DamageWeapon> DamageWeaponCache { get; private set; } = new();
+        public Dictionary<string, LevelUpgradeInfo> LevelUpgradeCache { get; private set; } = new();
 
-        public DamageWeapon GetDamageWeapon(string id)
+        [Button]
+        public void ReadFile(TextAsset csvFile)
         {
-            if (!DamageWeaponCache.ContainsKey(id))
+            LevelUpgrades.Clear();
+            string[] datas = csvFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+
+            string[] lines = csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            // 4
+            var rowCount = lines.Length;
+            // 11
+            var columnCount = datas.Length / rowCount;
+
+            for (int column = 1; column < columnCount; column++)
             {
-                var damageWeapon = DamageWeapons.Find(x => x.Level == id);
-                DamageWeaponCache.Add(id, damageWeapon);
+                var rowCurrent = 1;
+                var newLevelUpgrade = new LevelUpgradeInfo();
+                var indexData = columnCount * rowCurrent + column;
+
+                newLevelUpgrade.Id = datas[indexData];
+                newLevelUpgrade.LevelUpFee = int.Parse(datas[indexData + columnCount]);
+                newLevelUpgrade.ReloadFee = int.Parse(datas[indexData + 2 * columnCount]);
+
+                LevelUpgrades.Add(newLevelUpgrade);
+            }
+        }
+
+        public LevelUpgradeInfo GetLevelUpgradeInfo(string id)
+        {
+            if (!LevelUpgradeCache.ContainsKey(id))
+            {
+                var damageWeapon = LevelUpgrades.Find(x => x.Id == id);
+                LevelUpgradeCache.Add(id, damageWeapon);
                 return damageWeapon;
             }
 
-            return DamageWeaponCache[id];
+            return LevelUpgradeCache[id];
+        }
+
+        public int GetLevelUpgardeIndex(string levelUpgradeId)
+        {
+            var levelUpgradeInfo = LevelUpgrades.FirstOrDefault(level => level.Id == levelUpgradeId);
+            return LevelUpgrades.IndexOf(levelUpgradeInfo);
         }
     }
 
     public class LeaderConfig : DataBaseConfig
     {
-        [SerializeField] private List<GunInfo> _weapons;
-        public List<GunInfo > Weapons => _weapons;
+        [SerializeField] private List<WeaponInfo> _weapons;
+        public List<WeaponInfo> Weapons => _weapons;
 
-        public Dictionary<string, GunInfo> WeaponInfoCache { get; private set; } = new Dictionary<string, GunInfo>();
+        public Dictionary<string, WeaponInfo> WeaponInfoCache { get; private set; } = new Dictionary<string, WeaponInfo>();
 
-        public GunInfo GetWeaponInfo(string id)
+        public WeaponInfo GetWeaponInfo(string id)
         {
             if (!WeaponInfoCache.ContainsKey(id))
             {
@@ -62,6 +99,12 @@ namespace Sources.DataBaseSystem.Leader
             }
 
             return WeaponInfoCache[id];
+        }
+
+        public int GetWeaponIndex(string weaponId)
+        {
+            var weaponInfo = _weapons.FirstOrDefault(weapon => weapon.Id == weaponId);
+            return _weapons.IndexOf(weaponInfo);
         }
     }
 }

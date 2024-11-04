@@ -12,18 +12,18 @@ namespace Game.Screens.MainMenuScreen
 
         [SerializeField] private GameObject _emptyBullet;
 
-        public void OnSetUp(string levelUpgradeId, WeaponViewModel weaponViewModel)
-        {
-            _levelUpgradeId = levelUpgradeId;
+        //public void OnSetUp(string levelUpgradeId, WeaponViewModel weaponViewModel)
+        //{
+        //    _levelUpgradeId = levelUpgradeId;
 
-            weaponViewModel.LevelUpgradeFee.Subscribe(value  =>
-            {
-                Debug.Log(_levelUpgradeId);
+        //    weaponViewModel.LevelUpgradeFee.Subscribe(value  =>
+        //    {
+        //        Debug.Log(_levelUpgradeId);
 
-                if(weaponViewModel.LevelUpgradeIdsPassed.Contains(levelUpgradeId)) _emptyBullet.SetActive(false);
-                else _emptyBullet.SetActive(true);
+        //        if(weaponViewModel.LevelUpgradeIdsPassed.Contains(levelUpgradeId)) _emptyBullet.SetActive(false);
+        //        else _emptyBullet.SetActive(true);
 
-            }).AddTo(this);
-        }
+        //    }).AddTo(this);
+        //}
     }
 }

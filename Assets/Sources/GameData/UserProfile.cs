@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 namespace Sources.GameData
 {
+    public interface IWeaponData { }
+
     public class ShieldData
     {
         public string ShieldId;
@@ -12,7 +14,7 @@ namespace Sources.GameData
         public bool IsChosed;
     }
 
-    public class WeaponData
+    public class WeaponData : IWeaponData
     {
         public string WeaponId;
         public string LevelUpgradeId;

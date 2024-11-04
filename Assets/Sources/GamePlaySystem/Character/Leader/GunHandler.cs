@@ -75,7 +75,7 @@ namespace Sources.GamePlaySystem.Leader
         private void LoadDamageBulletCurrent()
         {
             var gunInfo = _leaderConfig.GetWeaponInfo(GunModelCurrent.Value.GunId);
-            var damageInfo = gunInfo.GetDamageWeapon(GunModelCurrent.Value.LevelUpgradeId);
+            var damageInfo = gunInfo.GetLevelUpgradeInfo(GunModelCurrent.Value.LevelUpgradeId);
             DamageBulletCurrent = damageInfo.Damage;
         }
 

@@ -21,8 +21,8 @@ namespace Game.Screens.MainMenuScreen
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         private WeaponInfo _weaponInfo;
-        private WeaponViewModel _weaponViewModel;
-        private Sources.GamePlaySystem.MainMenuGame.StoreWeaponHandler _storeWeaponHandler;
+        private Sources.GamePlaySystem.MainMenuGame.Store.WeaponViewModel _weaponViewModel;
+        private Sources.GamePlaySystem.MainMenuGame.LeaderStoreHandler _storeWeaponHandler;
         private string _weaponId;
         
 

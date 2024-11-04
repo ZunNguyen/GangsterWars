@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Sources.DataBaseSystem;
 using Sources.GameData;
+using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
 using System.Collections;
@@ -24,11 +25,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
-        private DataBase _dataBase => Locator<DataBase>.Instance;
-        private StoreConfig _storeConfig => _dataBase.GetConfig<StoreConfig>();
-
-        public StoreWeaponHandler StoreLeaderWeaponHandler = new();
-        public StoreWeaponHandler StoreBomberWeaponHandler = new();
+        public LeaderStoreHandler LeaderStoreHandler = new();
+        public BomberStoreHandler BomberStoreHandler = new();
 
         public override async UniTask Init()
         {
@@ -64,14 +62,14 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         private void OnSetUp()
         {
-            StoreLeaderWeaponHandler.OnSetUp(_userProfile.LeaderDatas, _storeConfig.LeaderWeapons);
-            StoreBomberWeaponHandler.OnSetUp(_userProfile.BomberDatas, _storeConfig.BomberWeapons);
+            LeaderStoreHandler.OnSetUp(_userProfile.LeaderDatas, _storeConfig.LeaderWeapons);
+            BomberStoreHandler.OnSetUp(_userProfile.BomberDatas, _storeConfig.BomberWeapons);
         }
 
-        public StoreWeaponHandler GetWeaponHandlerSystem(string weaponId)
+        public StoreHandlerBase GetWeaponHandlerSystem(string weaponId)
         {
-            if (StoreLeaderWeaponHandler.IsHandlerSystem(weaponId)) return StoreLeaderWeaponHandler;
-            if (StoreBomberWeaponHandler.IsHandlerSystem(weaponId)) return StoreBomberWeaponHandler;
+            if (LeaderStoreHandler.IsHandlerSystem(weaponId)) return LeaderStoreHandler;
+            if (BomberStoreHandler.IsHandlerSystem(weaponId)) return BomberStoreHandler;
             else return null;
         }
     }

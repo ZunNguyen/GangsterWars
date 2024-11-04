@@ -1,3 +1,4 @@
+using Resources.CSV;
 using Sirenix.OdinInspector;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
@@ -9,43 +10,18 @@ using UnityEngine.U2D.Animation;
 
 namespace Sources.DataBaseSystem
 {
-    [Serializable]
-    public class BomInfo
-    {
-        public string Id;
-
-        [PreviewField(100, ObjectFieldAlignment.Left)]
-        public Sprite Icon;
-
-        public List<DamageWeapon> DamageWeapons;
-
-        public Dictionary<string, DamageWeapon> DamageWeaponCache { get; private set; } = new();
-
-        public int GetDamageWeapon(string id)
-        {
-            if (!DamageWeaponCache.ContainsKey(id))
-            {
-                var damageWeapon = DamageWeapons.Find(x => x.Level == id);
-                DamageWeaponCache.Add(id, damageWeapon);
-                return damageWeapon.Damage;
-            }
-
-            return DamageWeaponCache[id].Damage;
-        }
-    }
-
     public class BomberConfig : DataBaseConfig
     {
-        [SerializeField] private List<BomInfo> _weapons;
-        public List<BomInfo> Weapons => _weapons;
+        [SerializeField] private List<WeaponInfo> _weapons;
+        public List<WeaponInfo> Weapons => _weapons;
 
         [Header("Milisecond")]
         [SerializeField] private float _reloadingTime;
         public float ReloadingTime => _reloadingTime;
 
-        public Dictionary<string, BomInfo> WeaponInfoCache { get; private set; } = new Dictionary<string, BomInfo>();
+        public Dictionary<string, WeaponInfo> WeaponInfoCache { get; private set; } = new Dictionary<string, WeaponInfo>();
 
-        public BomInfo GetWeaponInfo(string id)
+        public WeaponInfo GetWeaponInfo(string id)
         {
             if (!WeaponInfoCache.ContainsKey(id))
             {
@@ -55,6 +31,12 @@ namespace Sources.DataBaseSystem
             }
 
             return WeaponInfoCache[id];
+        }
+
+        public int GetWeaponIndex(string weaponId)
+        {
+            var weaponInfo = _weapons.FirstOrDefault(weapon => weapon.Id == weaponId);
+            return _weapons.IndexOf(weaponInfo);
         }
     }
 }

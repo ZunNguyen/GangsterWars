@@ -1,4 +1,5 @@
 using Sources.DataBaseSystem;
+using Sources.DataBaseSystem.Leader;
 using Sources.GameData;
 using Sources.Utils.Singleton;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Game.Screens.MainMenuScreen
     public class StoreController : MonoBehaviour
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private StoreConfig _storeConfig => _dataBase.GetConfig<StoreConfig>();
+        private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
 
         [SerializeField] private StoreWeaponHandler _storeLeaderHandler;
         [SerializeField] private StoreWeaponHandler _storeBomberHandler;
