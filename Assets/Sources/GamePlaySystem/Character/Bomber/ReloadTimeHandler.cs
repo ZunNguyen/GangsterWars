@@ -23,7 +23,7 @@ namespace Sources.GamePlaySystem.Bomber
 
         public void OnSetUp()
         {
-            _timeReload = _bomberConfig.ReloadingTime;
+            _timeReload = 5;
         }
 
         public async void Reloading()

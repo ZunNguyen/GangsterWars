@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Sources.DataBaseSystem;
+using Sources.DataBaseSystem.Leader;
 using Sources.GameData;
 using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.SystemService;
@@ -25,8 +26,12 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
-        public LeaderStoreHandler LeaderStoreHandler = new();
-        public BomberStoreHandler BomberStoreHandler = new();
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
+        private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
+
+        public StoreHandlerBase LeaderStoreHandler = new();
+        public StoreHandlerBase BomberStoreHandler = new();
 
         public override async UniTask Init()
         {
@@ -62,8 +67,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         private void OnSetUp()
         {
-            LeaderStoreHandler.OnSetUp(_userProfile.LeaderDatas, _storeConfig.LeaderWeapons);
-            BomberStoreHandler.OnSetUp(_userProfile.BomberDatas, _storeConfig.BomberWeapons);
+            LeaderStoreHandler.OnSetUp(_leaderConfig);
+            BomberStoreHandler.OnSetUp(_bomberConfig);
         }
 
         public StoreHandlerBase GetWeaponHandlerSystem(string weaponId)

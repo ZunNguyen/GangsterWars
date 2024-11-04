@@ -1,10 +1,9 @@
 using Sources.DataBaseSystem;
-using Sources.GameData;
-using Sources.GamePlaySystem.CoinController;
+using Sources.DataBaseSystem.Leader;
 using Sources.GamePlaySystem.MainMenuGame;
+using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using System.Collections.Generic;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -14,15 +13,12 @@ namespace Game.Screens.MainMenuScreen
 {
     public class WeaponView : MonoBehaviour
     {
-        private DataBase _dataBase => Locator<DataBase>.Instance;
-        private StoreConfig _storeConfig => _dataBase.GetConfig<StoreConfig>();
-
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         private WeaponInfo _weaponInfo;
         private Sources.GamePlaySystem.MainMenuGame.Store.WeaponViewModel _weaponViewModel;
-        private Sources.GamePlaySystem.MainMenuGame.LeaderStoreHandler _storeWeaponHandler;
+        private StoreHandlerBase _storeWeaponHandler;
         private string _weaponId;
         
 
@@ -46,13 +42,13 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _iconlock;
 
-        public void OnSetUp(string weaponId)
+        public void OnSetUp(WeaponInfo weaponInfo)
         {
-            _weaponId = weaponId;
-            _storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(weaponId);
-            _weaponViewModel = _storeWeaponHandler.WeaponWiewModels[weaponId];
+            _weaponId = weaponInfo.Id;
+            _storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(_weaponId);
+            _weaponViewModel = _storeWeaponHandler.WeaponWiewModels[_weaponId];
             
-            _weaponInfo = _storeConfig.GetWeaponInfo(weaponId);
+            _weaponInfo = weaponInfo;
             _icon.sprite = _weaponInfo.Icon;
             
             GetWeaponSate();

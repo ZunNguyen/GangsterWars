@@ -15,22 +15,97 @@ MonoBehaviour:
   _weapons:
   - Id: bom-01
     Icon: {fileID: 21300000, guid: 2230a67b86f1f8e479116952622b12ab, type: 3}
-    DamageWeapons:
-    - Level: level-01
-      Damage: 10
+    SpriteLibraryAsset: {fileID: 0}
+    UnlockFee: 0
+    MaxBullet: 50
+    BulletsPerClip: 1
+    ReloadTime: 0
+    LevelUpgrades:
+    - Id: level-01
+      LevelUpFee: 1
+      ReloadFee: 3
+      Damage: 0
+    - Id: level-02
+      LevelUpFee: 2
+      ReloadFee: 4
+      Damage: 0
+    - Id: level-03
+      LevelUpFee: 3
+      ReloadFee: 5
+      Damage: 0
+    - Id: level-04
+      LevelUpFee: 4
+      ReloadFee: 6
+      Damage: 0
+    - Id: level-05
+      LevelUpFee: 5
+      ReloadFee: 7
+      Damage: 0
+    - Id: level-06
+      LevelUpFee: 6
+      ReloadFee: 8
+      Damage: 0
+    - Id: level-07
+      LevelUpFee: 7
+      ReloadFee: 9
+      Damage: 0
+    - Id: level-08
+      LevelUpFee: 8
+      ReloadFee: 10
+      Damage: 0
+    - Id: level-09
+      LevelUpFee: 9
+      ReloadFee: 11
+      Damage: 0
+    - Id: level-10
+      LevelUpFee: 10
+      ReloadFee: 12
+      Damage: 0
   - Id: bom-02
     Icon: {fileID: 21300000, guid: 050c660586d6f4247a9edfcfd1ccaf47, type: 3}
-    DamageWeapons:
-    - Level: level-01
-      Damage: 10
-  - Id: bom-03
-    Icon: {fileID: 21300000, guid: 3ff2ebe4375f6d44c9d1bb9b402a99cd, type: 3}
-    DamageWeapons:
-    - Level: level-01
-      Damage: 10
-  - Id: bom-04
-    Icon: {fileID: 21300000, guid: 96aba9edde2299c41a16ac96f7a136df, type: 3}
-    DamageWeapons:
-    - Level: level-01
-      Damage: 10
-  _reloadingTime: 5
+    SpriteLibraryAsset: {fileID: 0}
+    UnlockFee: 0
+    MaxBullet: 0
+    BulletsPerClip: 0
+    ReloadTime: 0
+    LevelUpgrades:
+    - Id: level-01
+      LevelUpFee: 1
+      ReloadFee: 3
+      Damage: 0
+    - Id: level-02
+      LevelUpFee: 2
+      ReloadFee: 4
+      Damage: 0
+    - Id: level-03
+      LevelUpFee: 3
+      ReloadFee: 5
+      Damage: 0
+    - Id: level-04
+      LevelUpFee: 4
+      ReloadFee: 6
+      Damage: 0
+    - Id: level-05
+      LevelUpFee: 5
+      ReloadFee: 7
+      Damage: 0
+    - Id: level-06
+      LevelUpFee: 6
+      ReloadFee: 8
+      Damage: 0
+    - Id: level-07
+      LevelUpFee: 7
+      ReloadFee: 9
+      Damage: 0
+    - Id: level-08
+      LevelUpFee: 8
+      ReloadFee: 10
+      Damage: 0
+    - Id: level-09
+      LevelUpFee: 9
+      ReloadFee: 11
+      Damage: 0
+    - Id: level-10
+      LevelUpFee: 10
+      ReloadFee: 12
+      Damage: 0

@@ -1,4 +1,5 @@
 using Sources.DataBaseSystem;
+using Sources.DataBaseSystem.Leader;
 using Sources.GameData;
 using Sources.Utils.Singleton;
 using System;
@@ -23,7 +24,7 @@ namespace Game.Screens.MainMenuScreen
             for (int i = 0; i < weaponsConfig.Count; i++)
             {
                 var newWeaponPrefab = Instantiate(_weaponViewPrefab, _holderWeaponView);
-                newWeaponPrefab.OnSetUp(weaponsConfig[i].Id);
+                newWeaponPrefab.OnSetUp(weaponsConfig[i]);
             }
         }
 

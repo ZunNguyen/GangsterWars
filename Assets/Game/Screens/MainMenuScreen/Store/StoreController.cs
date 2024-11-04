@@ -10,6 +10,7 @@ namespace Game.Screens.MainMenuScreen
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
+        private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
 
         [SerializeField] private StoreWeaponHandler _storeLeaderHandler;
         [SerializeField] private StoreWeaponHandler _storeBomberHandler;
@@ -17,11 +18,11 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnSetUp()
         {
-            _storeLeaderHandler.OnSetUp(_storeConfig.LeaderWeapons);
+            _storeLeaderHandler.OnSetUp(_leaderConfig.Weapons);
             _storeLeaderHandler.SetState(TabState.TabGun);
 
-            //_storeBomberHandler.OnSetUp(_storeConfig.BomberWeapons);
-            //_storeBomberHandler.SetState(TabState.TabBom);
+            _storeBomberHandler.OnSetUp(_bomberConfig.Weapons);
+            _storeBomberHandler.SetState(TabState.TabBom);
 
             //_storeShieldHandler.SetState(TabState.TabShield);
         }
