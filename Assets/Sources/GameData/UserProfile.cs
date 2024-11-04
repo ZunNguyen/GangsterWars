@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 namespace Sources.GameData
 {
-    public interface IWeaponData { }
-
     public class ShieldData
     {
         public string ShieldId;
@@ -14,7 +12,7 @@ namespace Sources.GameData
         public bool IsChosed;
     }
 
-    public class WeaponData : IWeaponData
+    public class WeaponData
     {
         public string WeaponId;
         public string LevelUpgradeId;
@@ -35,7 +33,7 @@ namespace Sources.GameData
 
         public List<string> WavesPassedDatas;
 
-        public int Coins;
+        public int Coins = 1000;
 
         public void SetLeaderDataDefault()
         {

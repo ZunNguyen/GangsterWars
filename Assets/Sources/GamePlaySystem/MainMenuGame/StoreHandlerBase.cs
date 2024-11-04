@@ -104,10 +104,10 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             weaponViewModel.UnlockFee = weaponInfo.UnlockFee;
 
             // Update reload fee
-            var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
-            var weaponDataProfile = _userProfile.GetWeaponData(weaponData.WeaponId);
-            if (weaponDataProfile != null)
+            if (weaponViewModel.State.Value == WeaponState.AlreadyHave)
             {
+                var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
+                var weaponDataProfile = _userProfile.GetWeaponData(weaponData.WeaponId);
                 var bulletRemain = weaponDataProfile.Quatity;
                 var maxBullet = weaponInfo.MaxBullet;
                 var reloadFee = levelUpgradeInfo.ReloadFee;
@@ -121,11 +121,18 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             {
                 var levelUpgradeNextInfo = weaponInfo.LevelUpgrades[indexLevelUpgradeCurrent + 1];
                 weaponViewModel.LevelUpgradeFee.Value = levelUpgradeNextInfo.LevelUpFee;
-
-                // Update level upgrade id
-                weaponViewModel.LevelUpgradeIdsPassed.Add(levelUpgradeNextInfo.Id);
             }
             else weaponViewModel.LevelUpgradeFee.Value = _levelUpgardeFeeDefault;
+
+            // Update level upgrade id
+            for (int i = 0; i <= indexLevelUpgradeCurrent; i++)
+            {
+                var levelUpgrdePassed = weaponInfo.LevelUpgrades[i].Id;
+                if (!weaponViewModel.LevelUpgradeIdsPassed.Contains(levelUpgrdePassed))
+                {
+                    weaponViewModel.LevelUpgradeIdsPassed.Add(weaponInfo.LevelUpgrades[i].Id);
+                }
+            }
         }
 
         public WeaponState GetWeaponState(string weaponId)
@@ -153,6 +160,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 _weaponDatas.Add(newWeaponData);
                 _userProfile.Save();
 
+                UpdateWeaponIndexMaxCurrent();
                 foreach (var weaponConfig in _weaponConfigs)
                 {
                     var weaponData = new WeaponData
