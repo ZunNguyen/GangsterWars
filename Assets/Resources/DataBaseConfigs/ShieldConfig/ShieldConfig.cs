@@ -1,9 +1,7 @@
 ﻿using Sirenix.OdinInspector;
-using Sources.DataBaseSystem;
 using Sources.GamePlaySystem.MainGamePlay;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Sources.DataBaseSystem
@@ -13,7 +11,9 @@ namespace Sources.DataBaseSystem
     {
         public string Id;
         public List<IconInfo> Icons;
-        public List<LevelInfo> Levels = new List<LevelInfo>();
+        public int UnlockFee;
+        public List<LevelUpgradeInfo> LevelUpgrades = new List<LevelUpgradeInfo>();
+        private Dictionary<string, LevelUpgradeInfo> _levelUpgradesCache = new(); 
 
         public Sprite GetIconShield(ShieldState shieldStates)
         {
@@ -21,9 +21,20 @@ namespace Sources.DataBaseSystem
             return iconInfo.Icon;
         }
 
-        public LevelInfo GetLevelInfo(string id)
+        public LevelUpgradeInfo GetLevelUpgradeInfo(string id)
         {
-            return Levels.Find(x => x.Id == id);
+            if (!_levelUpgradesCache.ContainsKey(id))
+            {
+                var levelInfo = LevelUpgrades.Find(x => x.Id == id);
+                _levelUpgradesCache.Add(id, levelInfo);
+            }
+            return _levelUpgradesCache[id];
+        }
+
+        public int GetLevelUpgradeIndex(string id)
+        {
+            var levelInfo = GetLevelUpgradeInfo(id);
+            return LevelUpgrades.IndexOf(levelInfo);
         }
     }
 
@@ -36,15 +47,18 @@ namespace Sources.DataBaseSystem
     }
 
     [Serializable]
-    public class LevelInfo
+    public class LevelUpgradeInfo
     {
         public string Id;
+        public int LevelUpFee;
+        public int ReloadFee;
         public int Hp;
     }
     
     public class ShieldConfig : DataBaseConfig
     {
         [SerializeField] private List<ShieldInfo> _shieldInfos;
+        public List<ShieldInfo> ShieldInfos => _shieldInfos;
 
         private Dictionary<string, ShieldInfo> _shieldInfoCache = new();
 
@@ -59,27 +73,10 @@ namespace Sources.DataBaseSystem
             return _shieldInfoCache[id];
         }
 
-
-
-
-
-
-
-
-        private void OnValidate()
+        public int GetShieldIndex(string id)
         {
-            foreach (var shieldInfo in _shieldInfos)
-            {
-                for (int i = 0; i < shieldInfo.Levels.Count; i++)
-                {
-                    var level = shieldInfo.Levels[i];
-                    if (string.IsNullOrEmpty(level.Id))
-                    {
-                        // Automatically generate the Id based on shield and level index
-                        level.Id = $"level-{i + 1}";
-                    }
-                }
-            }
+            var shieldInfo = GetShieldInfo(id);
+            return _shieldInfos.IndexOf(shieldInfo);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 {
     public class WeaponViewModel
     {
-        public ReactiveProperty<WeaponState> State = new();
+        public ReactiveProperty<ItemState> State = new();
         public ReactiveProperty<int> LevelUpgradeFee = new(0);
         public List<string> LevelUpgradeIdsPassed = new();
         public int UnlockFee;
@@ -104,7 +104,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             weaponViewModel.UnlockFee = weaponInfo.UnlockFee;
 
             // Update reload fee
-            if (weaponViewModel.State.Value == WeaponState.AlreadyHave)
+            if (weaponViewModel.State.Value == ItemState.AlreadyHave)
             {
                 var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
                 var weaponDataProfile = _userProfile.GetWeaponData(weaponData.WeaponId);
@@ -135,13 +135,13 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             }
         }
 
-        public WeaponState GetWeaponState(string weaponId)
+        public ItemState GetWeaponState(string weaponId)
         {
             var weaponIndex = _weaponConfig.GetWeaponIndex(weaponId);
 
-            if (weaponIndex <= _weaponIndexMaxCurrent) return WeaponState.AlreadyHave;
-            if (weaponIndex == _weaponIndexMaxCurrent + 1) return WeaponState.CanUnlock;
-            else return WeaponState.CanNotUnlock;
+            if (weaponIndex <= _weaponIndexMaxCurrent) return ItemState.AlreadyHave;
+            if (weaponIndex == _weaponIndexMaxCurrent + 1) return ItemState.CanUnlock;
+            else return ItemState.CanNotUnlock;
         }
 
         public void UnlockNewWeapon(string weaponId)

@@ -19,7 +19,7 @@ namespace Sources.DataBaseSystem.Leader
     }
 
     [Serializable]
-    public class WeaponInfo : IReadCSVData
+    public class WeaponInfo : IReadCSVData 
     {
         public string Id;
         
@@ -36,6 +36,7 @@ namespace Sources.DataBaseSystem.Leader
         public List<LevelUpgradeInfo> LevelUpgrades;
 
         public Dictionary<string, LevelUpgradeInfo> LevelUpgradeCache { get; private set; } = new();
+        
 
         [Button]
         public void ReadFile(TextAsset csvFile)

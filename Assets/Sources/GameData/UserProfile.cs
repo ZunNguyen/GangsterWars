@@ -27,9 +27,8 @@ namespace Sources.GameData
         public List<WeaponData> BomberDatas;
         private Dictionary<string, WeaponData> _bomberDatasCache = new();
 
-        public List<WeaponData> SniperDatas;
-        
         public List<ShieldData> ShieldDatas;
+        private Dictionary<string, ShieldData> _shieldDatasCache = new();
 
         public List<string> WavesPassedDatas;
 
@@ -111,6 +110,17 @@ namespace Sources.GameData
             }
 
             return (null, null);
+        }
+
+        public ShieldData GetShieldData(string shieldId)
+        {
+            if (!_shieldDatasCache.ContainsKey(shieldId))
+            {
+                var shield = ShieldDatas.Find(x => x.ShieldId == shieldId);
+                _shieldDatasCache.Add(shieldId, shield);
+            }
+
+            return _shieldDatasCache[shieldId];
         }
 
         public ShieldData GetShieldDataCurrent()

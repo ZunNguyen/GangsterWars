@@ -14,7 +14,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
 {
     public class InitStoreSystemService : InitSystemService<StoreSystem> { }
 
-    public enum WeaponState
+    public enum ItemState
     {
         AlreadyHave,
         CanUnlock,

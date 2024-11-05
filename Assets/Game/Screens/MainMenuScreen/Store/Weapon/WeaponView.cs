@@ -61,7 +61,7 @@ namespace Game.Screens.MainMenuScreen
         {
             _weaponViewModel.State.Subscribe(state =>
             {
-                if (state == WeaponState.AlreadyHave)
+                if (state == ItemState.AlreadyHave)
                 {
                     _iconlock.SetActive(false);
                     _unlock.SetActive(false);
@@ -70,7 +70,7 @@ namespace Game.Screens.MainMenuScreen
                     _levelUpFee.SetActive(true);
                     _reload.SetActive(true);
                 }
-                if (state == WeaponState.CanUnlock)
+                if (state == ItemState.CanUnlock)
                 {
                     _iconlock.SetActive(true);
                     _unlock.SetActive(true);
@@ -79,7 +79,7 @@ namespace Game.Screens.MainMenuScreen
                     _levelUpFee.SetActive(false);
                     _reload.SetActive(false);
                 }
-                if (state == WeaponState.CanNotUnlock)
+                if (state == ItemState.CanNotUnlock)
                 {
                     _iconlock.SetActive(true);
 

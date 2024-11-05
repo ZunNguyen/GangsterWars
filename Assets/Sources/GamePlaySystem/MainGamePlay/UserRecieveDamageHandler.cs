@@ -50,7 +50,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
             var shieldData = _userProfile.GetShieldDataCurrent();
             ShieldId = shieldData.ShieldId;
             var shieldInfo = _shieldConfig.GetShieldInfo(ShieldId);
-            var levelInfo = shieldInfo.GetLevelInfo(shieldData.LevelUpgradeId);
+            var levelInfo = shieldInfo.GetLevelUpgradeInfo(shieldData.LevelUpgradeId);
             return levelInfo.Hp;
         }
 
