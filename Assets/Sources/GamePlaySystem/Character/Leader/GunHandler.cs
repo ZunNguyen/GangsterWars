@@ -51,16 +51,16 @@ namespace Sources.GamePlaySystem.Leader
             {
                 var gunModelView = new GunModelView
                 {
-                    GunId = gunData.WeaponId,
+                    GunId = gunData.Id,
                     LevelUpgradeId = gunData.LevelUpgradeId,
                 };
 
                 gunModelView.BulletTotal.Value = gunData.Quatity;
 
-                var gunInfo = _leaderConfig.GetWeaponInfo(gunData.WeaponId) as LeaderWeaponInfo;
+                var gunInfo = _leaderConfig.GetWeaponInfo(gunData.Id) as LeaderWeaponInfo;
                 gunModelView.BulletAvailable.Value = gunInfo.BulletsPerClip;
 
-                GunModels.Add(gunData.WeaponId, gunModelView);
+                GunModels.Add(gunData.Id, gunModelView);
             }
         }
 

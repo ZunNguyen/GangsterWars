@@ -31,7 +31,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         protected WeaponConfig _weaponConfig;
-        protected List<WeaponData> _weaponDatas;
+        protected List<BaseData> _weaponDatas;
 
         private IEnumerable<WeaponInfoBase> _weaponInfoConfigs;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
@@ -40,7 +40,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public Dictionary<string, WeaponViewModel> WeaponWiewModels { get; private set; } = new();
         public bool HadStore { get; private set; } = false;
 
-        public async void OnSetUp()
+        public virtual async void OnSetUp()
         {
             SetData();
             await UniTask.DelayFrame(1);
@@ -57,7 +57,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private void UpdateWeaponIndexMaxCurrent()
         {
             var weaponLargest = _weaponDatas[_weaponDatas.Count - 1];
-            _weaponIndexMaxCurrent = _weaponConfig.GetWeaponIndex(weaponLargest.WeaponId);
+            _weaponIndexMaxCurrent = _weaponConfig.GetWeaponIndex(weaponLargest.Id);
         }
 
         private void SetWeaponViewModels()
@@ -66,9 +66,9 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             {
                 var newWeaponViewModel = new WeaponViewModel();
                 WeaponWiewModels.Add(weaponConfig.Id, newWeaponViewModel);
-                var weaponData = new WeaponData
+                var weaponData = new BaseData
                 {
-                    WeaponId = weaponConfig.Id,
+                    Id = weaponConfig.Id,
                     LevelUpgradeId = weaponConfig.LevelUpgrades[0].Id,
                 };
                 UpdateWeaponViewModel(weaponData);
@@ -76,31 +76,23 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
             for (int i = 0; i < _weaponDatas.Count; i++)
             {
-                UpdateWeaponViewModel(_weaponDatas[i]);
+                UpdateWeaponViewModel(_weaponDatas[i] as WeaponData);
             }
         }
 
-        private void UpdateWeaponViewModel(WeaponData weaponData)
+        private void UpdateWeaponViewModel(BaseData weaponData)
         {
-            var weaponViewModel = WeaponWiewModels[weaponData.WeaponId];
-            var weaponInfo = _weaponConfig.GetWeaponInfo(weaponData.WeaponId);
+            var weaponViewModel = WeaponWiewModels[weaponData.Id];
+            var weaponInfo = _weaponConfig.GetWeaponInfo(weaponData.Id);
 
             // Update state
-            weaponViewModel.State.Value = GetWeaponState(weaponData.WeaponId);
+            weaponViewModel.State.Value = GetWeaponState(weaponData.Id);
 
             // Update unlockFee
             weaponViewModel.UnlockFee = weaponInfo.UnlockFee;
 
             // Update reload fee
-            if (weaponViewModel.State.Value == ItemState.AlreadyHave)
-            {
-                //var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
-                //var weaponDataProfile = _userProfile.GetWeaponData(weaponData.WeaponId);
-                //var bulletRemain = weaponDataProfile.Quatity;
-                //var maxBullet = weaponInfo.MaxBullet;
-                //var reloadFee = levelUpgradeInfo.ReloadFee;
-                //weaponViewModel.ReloadFee = (reloadFee * bulletRemain) / maxBullet;
-            }
+            UpdateReloadFee(weaponData);
 
             // Update level upgrade fee
             var indexLevelUpgradeCurrent = weaponInfo.GetLevelUpgardeIndex(weaponData.LevelUpgradeId);
@@ -123,6 +115,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             }
         }
 
+        protected abstract void UpdateReloadFee(BaseData weaponData);
+
         public ItemState GetWeaponState(string weaponId)
         {
             var weaponIndex = _weaponConfig.GetWeaponIndex(weaponId);
@@ -140,9 +134,9 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
             if (result)
             {
-                var newWeaponData = new WeaponData
+                var newWeaponData = new BaseData
                 {
-                    WeaponId = weaponId,
+                    Id = weaponId,
                     LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
                 };
                 _weaponDatas.Add(newWeaponData);
@@ -151,9 +145,9 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 UpdateWeaponIndexMaxCurrent();
                 foreach (var weaponConfig in _weaponInfoConfigs)
                 {
-                    var weaponData = new WeaponData
+                    var weaponData = new BaseData
                     {
-                        WeaponId = weaponConfig.Id,
+                        Id = weaponConfig.Id,
                         LevelUpgradeId = weaponConfig.LevelUpgrades[0].Id,
                     };
                     UpdateWeaponViewModel(weaponData);
@@ -161,7 +155,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
                 for (int i = 0; i < _weaponDatas.Count; i++)
                 {
-                    UpdateWeaponViewModel(_weaponDatas[i]);
+                    UpdateWeaponViewModel(_weaponDatas[i] as BaseData);
                 }
 
                 foreach (var weaponModel in WeaponWiewModels)
@@ -192,7 +186,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 var levelNextId = weaponConfig.LevelUpgrades[++levelInfoIndexCurrent].Id;
 
                 weaponModel.LevelUpgradeIdsPassed.Add(levelNextId);
-                var weaponData = _userProfile.GetWeaponData(weaponId);
+                var weaponData = _userProfile.GetWeaponBaseData(weaponId);
                 weaponData.LevelUpgradeId = levelNextId;
 
                 UpdateWeaponViewModel(weaponData);
@@ -204,7 +198,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public bool IsHandlerSystem(string weaponId)
         {
             var baseWeapon = StringUtils.GetBaseName(weaponId);
-            var baseWeaponSystem = StringUtils.GetBaseName(_weaponDatas[0].WeaponId);
+            var baseWeaponSystem = StringUtils.GetBaseName(_weaponDatas[0].Id);
 
             return baseWeaponSystem == baseWeapon;
         }

@@ -21,10 +21,27 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
 
+        protected new List<WeaponData> _weaponDatas;
+
         protected override void SetData()
         {
             _weaponConfig = _leaderConfig;
             _weaponDatas = _userProfile.LeaderDatas;
+        }
+
+        protected override void UpdateReloadFee(BaseData weaponData)
+        {
+            var weaponViewModel = WeaponWiewModels[weaponData.Id];
+            if (weaponViewModel.State.Value != ItemState.AlreadyHave) return;
+
+            var weaponInfo = _weaponConfig.GetWeaponInfo(weaponData.Id) as LeaderWeaponInfo;
+            var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
+            var weaponDataProfile = _userProfile.GetWeaponBaseData(weaponData.Id) as WeaponData;
+            var bulletRemain = weaponDataProfile.Quatity;
+            var maxBullet = weaponInfo.MaxBullet;
+            var reloadFee = levelUpgradeInfo.ReloadFee;
+
+            weaponViewModel.ReloadFee = (reloadFee * bulletRemain) / maxBullet;
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Game.Character.Bomber
         {
             SetEnabled(false);
 
-            var bomInfo = _bomberConfig.GetWeaponInfo(weaponData.WeaponId) as BomberWeaponInfo;
+            var bomInfo = _bomberConfig.GetWeaponInfo(weaponData.Id) as BomberWeaponInfo;
 
             _sprite.sprite = bomInfo.Icon;
             var levelInfo = bomInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);

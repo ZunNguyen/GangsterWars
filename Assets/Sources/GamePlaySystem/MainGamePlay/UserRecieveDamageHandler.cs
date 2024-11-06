@@ -48,7 +48,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private int GetMaxHp()
         {
             var shieldData = _userProfile.GetShieldDataCurrent();
-            ShieldId = shieldData.ShieldId;
+            ShieldId = shieldData.Id;
             var shieldInfo = _shieldConfig.GetWeaponInfo(ShieldId) as ShieldWeaponInfo;
             var levelInfo = shieldInfo.GetLevelUpgradeInfo(shieldData.LevelUpgradeId);
             return levelInfo.Damage;
