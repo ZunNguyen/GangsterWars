@@ -19,7 +19,7 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private WeaponView _weaponViewPrefab;
         [SerializeField] private Transform _holderWeaponView;
 
-        public void OnSetUp(List<WeaponInfo> weaponsConfig)
+        public void OnSetUp(List<WeaponLeaderInfo> weaponsConfig)
         {
             for (int i = 0; i < weaponsConfig.Count; i++)
             {

@@ -16,7 +16,7 @@ namespace Game.Screens.MainMenuScreen
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
-        private WeaponInfo _weaponInfo;
+        private WeaponLeaderInfo _weaponInfo;
         private Sources.GamePlaySystem.MainMenuGame.Store.WeaponViewModel _weaponViewModel;
         private StoreHandlerBase _storeWeaponHandler;
         private string _weaponId;
@@ -42,7 +42,7 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _iconlock;
 
-        public void OnSetUp(WeaponInfo weaponInfo)
+        public void OnSetUp(WeaponLeaderInfo weaponInfo)
         {
             _weaponId = weaponInfo.Id;
             _storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(_weaponId);

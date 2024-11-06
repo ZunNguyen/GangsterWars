@@ -13,6 +13,16 @@ namespace Sources.GamePlaySystem.MainMenuGame
 {
     public class BomberStoreHandler : StoreHandlerBase
     {
-        
+        private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
+
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
+
+        protected override void SetData()
+        {
+            _weaponConfig = _bomberConfig;
+            _weaponDatas = _userProfile.BomberDatas;
+        }
     }
 }

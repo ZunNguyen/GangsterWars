@@ -53,7 +53,7 @@ namespace Game.Character.Leader
             _leaderSystem.GunHandler.GunModelCurrent.Subscribe(value =>
             {
                 var gunInfo = _leaderConfig.GetWeaponInfo(value.GunId);
-                _spriteLibrary.spriteLibraryAsset = gunInfo.SpriteLibraryAsset;
+                //_spriteLibrary.spriteLibraryAsset = gunInfo.SpriteLibraryAsset;
             }).AddTo(this);
 
             _leaderSystem.ReloadTimeHandler.TimeReloadCurrent.Subscribe(value =>

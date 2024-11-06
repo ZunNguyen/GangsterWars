@@ -27,7 +27,7 @@ namespace Game.Screens.GamePlayScreen
         {
             _gunId = gunId;
             var weaponInfo = _leaderConfig.GetWeaponInfo(_gunId);
-            _icon.sprite = weaponInfo.Icon;
+            //_icon.sprite = weaponInfo.Icon;
 
             _gunHandler = _leaderSystem.GunHandler;
             if (_gunHandler.GunModels.ContainsKey(gunId))

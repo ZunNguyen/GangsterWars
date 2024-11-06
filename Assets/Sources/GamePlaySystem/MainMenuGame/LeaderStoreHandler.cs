@@ -15,6 +15,16 @@ namespace Sources.GamePlaySystem.MainMenuGame
 {
     public class LeaderStoreHandler : StoreHandlerBase
     {
-        
+        private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
+
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
+
+        protected override void SetData()
+        {
+            _weaponConfig = _leaderConfig;
+            _weaponDatas = _userProfile.LeaderDatas;
+        }
     }
 }

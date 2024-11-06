@@ -18,11 +18,11 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnSetUp()
         {
-            _storeLeaderHandler.OnSetUp(_leaderConfig.Weapons);
-            _storeLeaderHandler.SetState(TabState.TabGun);
+            //_storeLeaderHandler.OnSetUp(_leaderConfig.Weapons);
+            //_storeLeaderHandler.SetState(TabState.TabGun);
 
-            _storeBomberHandler.OnSetUp(_bomberConfig.Weapons);
-            _storeBomberHandler.SetState(TabState.TabBom);
+            //_storeBomberHandler.OnSetUp(_bomberConfig.Weapons);
+            //_storeBomberHandler.SetState(TabState.TabBom);
 
             //_storeShieldHandler.SetState(TabState.TabShield);
         }

@@ -30,8 +30,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
 
-        public StoreHandlerBase LeaderStoreHandler = new();
-        public StoreHandlerBase BomberStoreHandler = new();
+        public LeaderStoreHandler LeaderStoreHandler = new();
+        public BomberStoreHandler BomberStoreHandler = new();
 
         public override async UniTask Init()
         {
@@ -67,8 +67,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         private void OnSetUp()
         {
-            LeaderStoreHandler.OnSetUp(_leaderConfig);
-            BomberStoreHandler.OnSetUp(_bomberConfig);
+            LeaderStoreHandler.OnSetUp();
+            BomberStoreHandler.OnSetUp();
         }
 
         public StoreHandlerBase GetWeaponHandlerSystem(string weaponId)

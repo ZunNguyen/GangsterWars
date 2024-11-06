@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.Extension;
@@ -22,59 +23,46 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public int ReloadFee;
     }
 
-    public class StoreHandlerBase
+    public abstract class StoreHandlerBase
     {
         private const int _levelUpgardeFeeDefault = 0;
 
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
-        private DataBase _dataBase => Locator<DataBase>.Instance;
-        private WeaponConfig _weaponConfig;
+        protected WeaponConfig _weaponConfig;
+        protected List<WeaponData> _weaponDatas;
 
+        private IEnumerable<WeaponInfoBase> _weaponInfoConfigs;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
-
-        private List<WeaponData> _weaponDatas;
-        private List<DataBaseSystem.Leader.WeaponInfo> _weaponConfigs;
         private int _weaponIndexMaxCurrent;
 
         public Dictionary<string, WeaponViewModel> WeaponWiewModels { get; private set; } = new();
         public bool HadStore { get; private set; } = false;
 
-        public void OnSetUp(DataBaseConfig config)
+        public async void OnSetUp()
         {
-            if (config is LeaderConfig leaderConfig)
-            {
-                _weaponConfig = leaderConfig;
-                _weaponConfig = _dataBase.GetConfig<LeaderConfig>();
+            SetData();
+            await UniTask.DelayFrame(1);
+            _weaponInfoConfigs = _weaponConfig.GetAllWeapons();
 
-                _weaponDatas = _userProfile.LeaderDatas;
-            }
-            else if (config is BomberConfig bomberConfig)
-            {
-                _weaponConfig = bomberConfig;
-                _weaponConfig = _dataBase.GetConfig<BomberConfig>();
-
-                _weaponDatas = _userProfile.BomberDatas;
-            }
-
-            _weaponConfigs = _weaponConfig.Weapons;
             HadStore = _weaponDatas != null;
-
+            if (!HadStore) return;
             UpdateWeaponIndexMaxCurrent();
             SetWeaponViewModels();
         }
 
+        protected abstract void SetData();
+
         private void UpdateWeaponIndexMaxCurrent()
         {
-            if (!HadStore) return;
             var weaponLargest = _weaponDatas[_weaponDatas.Count - 1];
             _weaponIndexMaxCurrent = _weaponConfig.GetWeaponIndex(weaponLargest.WeaponId);
         }
 
         private void SetWeaponViewModels()
         {
-            foreach (var weaponConfig in _weaponConfigs)
+            foreach (var weaponConfig in _weaponInfoConfigs)
             {
                 var newWeaponViewModel = new WeaponViewModel();
                 WeaponWiewModels.Add(weaponConfig.Id, newWeaponViewModel);
@@ -106,12 +94,12 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             // Update reload fee
             if (weaponViewModel.State.Value == ItemState.AlreadyHave)
             {
-                var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
-                var weaponDataProfile = _userProfile.GetWeaponData(weaponData.WeaponId);
-                var bulletRemain = weaponDataProfile.Quatity;
-                var maxBullet = weaponInfo.MaxBullet;
-                var reloadFee = levelUpgradeInfo.ReloadFee;
-                weaponViewModel.ReloadFee = (reloadFee * bulletRemain) / maxBullet;
+                //var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
+                //var weaponDataProfile = _userProfile.GetWeaponData(weaponData.WeaponId);
+                //var bulletRemain = weaponDataProfile.Quatity;
+                //var maxBullet = weaponInfo.MaxBullet;
+                //var reloadFee = levelUpgradeInfo.ReloadFee;
+                //weaponViewModel.ReloadFee = (reloadFee * bulletRemain) / maxBullet;
             }
 
             // Update level upgrade fee
@@ -161,7 +149,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 _userProfile.Save();
 
                 UpdateWeaponIndexMaxCurrent();
-                foreach (var weaponConfig in _weaponConfigs)
+                foreach (var weaponConfig in _weaponInfoConfigs)
                 {
                     var weaponData = new WeaponData
                     {
