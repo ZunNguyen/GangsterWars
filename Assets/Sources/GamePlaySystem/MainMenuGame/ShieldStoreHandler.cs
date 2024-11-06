@@ -33,7 +33,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
 
         private List<ShieldData> _shieldDatas;
-        private List<ShieldInfo> _shieldConfigs;
+        private IEnumerable<WeaponInfoBase> _shieldConfigs;
         private int _shieldIndexMaxCurrent;
 
         public Dictionary<string, WeaponViewModel> ShieldWiewModels { get; private set; } = new();
@@ -42,7 +42,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public void OnSetUp(DataBaseConfig config)
         {
             _shieldDatas = _userProfile.ShieldDatas;
-            _shieldConfigs = _shieldConfig.ShieldInfos;
+            _shieldConfigs = _shieldConfig.GetAllWeapons();
 
             HadStore = _shieldDatas != null;
 
@@ -54,7 +54,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             if (!HadStore) return;
             var shieldLargest = _shieldDatas[_shieldDatas.Count - 1];
-            _shieldIndexMaxCurrent = _shieldConfig.GetShieldIndex(shieldLargest.ShieldId);
+            _shieldIndexMaxCurrent = _shieldConfig.GetWeaponIndex(shieldLargest.ShieldId);
         }
 
         private void SetShieldViewModels()
@@ -81,7 +81,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private void UpdateShieldViewModel(ShieldData shieldData)
         {
             var shieldViewModel = ShieldWiewModels[shieldData.ShieldId];
-            var shieldInfo = _shieldConfig.GetShieldInfo(shieldData.ShieldId);
+            var shieldInfo = _shieldConfig.GetWeaponInfo(shieldData.ShieldId);
 
             // Update state
             shieldViewModel.State.Value = GetItemState(shieldData.ShieldId);
@@ -101,7 +101,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             }
 
             // Update level upgrade fee
-            var indexLevelUpgradeCurrent = shieldInfo.GetLevelUpgradeIndex(shieldData.LevelUpgradeId);
+            var indexLevelUpgradeCurrent = shieldInfo.GetLevelUpgardeIndex(shieldData.LevelUpgradeId);
             var indexLevelUpgardeMax = shieldInfo.LevelUpgrades.Count - 1;
             if (indexLevelUpgradeCurrent != indexLevelUpgardeMax)
             {
@@ -123,7 +123,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         public ItemState GetItemState(string weaponId)
         {
-            var shieldIndex = _shieldConfig.GetShieldIndex(weaponId);
+            var shieldIndex = _shieldConfig.GetWeaponIndex(weaponId);
 
             if (shieldIndex <= _shieldIndexMaxCurrent) return ItemState.AlreadyHave;
             if (shieldIndex == _shieldIndexMaxCurrent + 1) return ItemState.CanUnlock;
@@ -186,8 +186,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             var result = _coinControllerSystem.PurchaseItem(levelUpgradeFee);
             if (result)
             {
-                var shieldConfig = _shieldConfig.GetShieldInfo(weaponId);
-                var levelInfoIndexCurrent = shieldConfig.GetLevelUpgradeIndex(shieldModel.LevelUpgradeIdsPassed[shieldModel.LevelUpgradeIdsPassed.Count - 1]);
+                var shieldConfig = _shieldConfig.GetWeaponInfo(weaponId);
+                var levelInfoIndexCurrent = shieldConfig.GetLevelUpgardeIndex(shieldModel.LevelUpgradeIdsPassed[shieldModel.LevelUpgradeIdsPassed.Count - 1]);
                 var levelNextId = shieldConfig.LevelUpgrades[++levelInfoIndexCurrent].Id;
 
                 shieldModel.LevelUpgradeIdsPassed.Add(levelNextId);

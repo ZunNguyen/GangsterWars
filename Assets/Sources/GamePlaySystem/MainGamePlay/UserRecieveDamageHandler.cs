@@ -49,7 +49,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         {
             var shieldData = _userProfile.GetShieldDataCurrent();
             ShieldId = shieldData.ShieldId;
-            var shieldInfo = _shieldConfig.GetShieldInfo(ShieldId);
+            var shieldInfo = _shieldConfig.GetWeaponInfo(ShieldId) as ShieldWeaponInfo;
             var levelInfo = shieldInfo.GetLevelUpgradeInfo(shieldData.LevelUpgradeId);
             return levelInfo.Damage;
         }

@@ -15,7 +15,7 @@ namespace Game.UserReceiveDamage.Shield
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
-        private ShieldInfo _shieldInfo;
+        private ShieldWeaponInfo _shieldInfo;
 
         [SerializeField] private SpriteRenderer _iconShield;
 
@@ -27,7 +27,7 @@ namespace Game.UserReceiveDamage.Shield
 
         private void GetShieldInfo()
         {
-            _shieldInfo = _shieldConfig.GetShieldInfo(_mainGamePlaySystem.UserRecieveDamageHandler.ShieldId);
+            _shieldInfo = _shieldConfig.GetWeaponInfo(_mainGamePlaySystem.UserRecieveDamageHandler.ShieldId) as ShieldWeaponInfo;
         }
 
         private void SubscribeShieldData()

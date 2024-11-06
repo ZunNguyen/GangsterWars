@@ -7,13 +7,9 @@ using UnityEngine;
 namespace Sources.DataBaseSystem
 {
     [Serializable]
-    public class ShieldInfo
+    public class ShieldWeaponInfo : WeaponInfoBase
     {
-        public string Id;
         public List<IconInfo> Icons;
-        public int UnlockFee;
-        public List<LevelUpgradeInfo> LevelUpgrades = new List<LevelUpgradeInfo>();
-        private Dictionary<string, LevelUpgradeInfo> _levelUpgradesCache = new(); 
 
         public Sprite GetIconShield(ShieldState shieldStates)
         {
@@ -21,20 +17,9 @@ namespace Sources.DataBaseSystem
             return iconInfo.Icon;
         }
 
-        public LevelUpgradeInfo GetLevelUpgradeInfo(string id)
+        protected override void SetValue(string[] datas, string[] lines)
         {
-            if (!_levelUpgradesCache.ContainsKey(id))
-            {
-                var levelInfo = LevelUpgrades.Find(x => x.Id == id);
-                _levelUpgradesCache.Add(id, levelInfo);
-            }
-            return _levelUpgradesCache[id];
-        }
-
-        public int GetLevelUpgradeIndex(string id)
-        {
-            var levelInfo = GetLevelUpgradeInfo(id);
-            return LevelUpgrades.IndexOf(levelInfo);
+            throw new NotImplementedException();
         }
     }
 
@@ -46,23 +31,17 @@ namespace Sources.DataBaseSystem
         public Sprite Icon;
     }
 
-    [Serializable]
-    public class LevelUpgradeShieldInfo
+    public class ShieldConfig : WeaponConfig
     {
-        public string Id;
-        public int LevelUpFee;
-        public int ReloadFee;
-        public int Hp;
-    }
+        [SerializeField] private List<ShieldWeaponInfo> _shieldInfos;
+        private Dictionary<string, ShieldWeaponInfo> _shieldInfoCache = new();
 
-    public class ShieldConfig : DataBaseConfig
-    {
-        [SerializeField] private List<ShieldInfo> _shieldInfos;
-        public List<ShieldInfo> ShieldInfos => _shieldInfos;
+        public override IEnumerable<WeaponInfoBase> GetAllWeapons()
+        {
+            return _shieldInfos;
+        }
 
-        private Dictionary<string, ShieldInfo> _shieldInfoCache = new();
-
-        public ShieldInfo GetShieldInfo(string id)
+        public override WeaponInfoBase GetWeaponInfo(string id)
         {
             if (!_shieldInfoCache.ContainsKey(id))
             {
@@ -73,9 +52,9 @@ namespace Sources.DataBaseSystem
             return _shieldInfoCache[id];
         }
 
-        public int GetShieldIndex(string id)
+        public override int GetWeaponIndex(string id)
         {
-            var shieldInfo = GetShieldInfo(id);
+            var shieldInfo = GetWeaponInfo(id) as ShieldWeaponInfo;
             return _shieldInfos.IndexOf(shieldInfo);
         }
     }
