@@ -25,7 +25,7 @@ MonoBehaviour:
       Icon: {fileID: 21300000, guid: e086f9f599b5f2443a214c8b3c97443f, type: 3}
     UnlockFee: 0
     LevelUpgrades:
-    - Id: 
+    - Id: level-01
       LevelUpFee: 0
-      ReloadFee: 0
-      Hp: 0
+      ReloadFee: 100
+      Damage: 100

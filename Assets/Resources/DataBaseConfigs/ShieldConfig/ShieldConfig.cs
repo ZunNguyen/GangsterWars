@@ -46,15 +46,15 @@ namespace Sources.DataBaseSystem
         public Sprite Icon;
     }
 
-    //[Serializable]
-    //public class LevelUpgradeInfo
-    //{
-    //    public string Id;
-    //    public int LevelUpFee;
-    //    public int ReloadFee;
-    //    public int Hp;
-    //}
-    
+    [Serializable]
+    public class LevelUpgradeShieldInfo
+    {
+        public string Id;
+        public int LevelUpFee;
+        public int ReloadFee;
+        public int Hp;
+    }
+
     public class ShieldConfig : DataBaseConfig
     {
         [SerializeField] private List<ShieldInfo> _shieldInfos;

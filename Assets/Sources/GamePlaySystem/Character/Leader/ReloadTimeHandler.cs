@@ -59,9 +59,10 @@ namespace Sources.GamePlaySystem.Leader
         }
 
         private void UpdateReloadInfo()
-        {
-            //_maxBulletPerClip = _leaderConfig.WeaponInfoCache[_gunIdCurrent].BulletsPerClip;
-            //_timeToReloadOneBullet = _leaderConfig.WeaponInfoCache[_gunIdCurrent].ReloadTime;
+        { 
+            var weaponInfo = _leaderConfig.GetWeaponInfo(_gunIdCurrent) as LeaderWeaponInfo;
+            _maxBulletPerClip = weaponInfo.BulletsPerClip;
+            _timeToReloadOneBullet = weaponInfo.ReloadTime;
             _currentSubscription = _gunHandler.GunModelCurrent.Value.BulletAvailable.Subscribe(OnBulletAvailableChanged);
         }
 

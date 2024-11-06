@@ -10,7 +10,7 @@ using UnityEngine.U2D.Animation;
 namespace Sources.DataBaseSystem.Leader
 {
     [Serializable]
-    public class WeaponLeaderInfo : WeaponInfoBase
+    public class LeaderWeaponInfo : WeaponInfoBase
     {
         [PreviewField(100, ObjectFieldAlignment.Left)]
         public Sprite Icon;
@@ -45,8 +45,8 @@ namespace Sources.DataBaseSystem.Leader
     public class LeaderConfig : WeaponConfig
     {
         [SerializeField]
-        private List<WeaponLeaderInfo> _weaponInfos;
-        private Dictionary<string, WeaponLeaderInfo> _weaponInfoCache = new();
+        private List<LeaderWeaponInfo> _weaponInfos;
+        private Dictionary<string, LeaderWeaponInfo> _weaponInfoCache = new();
 
         public override IEnumerable<WeaponInfoBase> GetAllWeapons()
         {
@@ -66,7 +66,7 @@ namespace Sources.DataBaseSystem.Leader
 
         public override int GetWeaponIndex(string id)
         {
-            var weaponInfo = GetWeaponInfo(id) as WeaponLeaderInfo;
+            var weaponInfo = GetWeaponInfo(id) as LeaderWeaponInfo;
             return _weaponInfos.IndexOf(weaponInfo);
         }
     }

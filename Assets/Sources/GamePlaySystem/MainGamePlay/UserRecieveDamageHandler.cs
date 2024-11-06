@@ -51,8 +51,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
             ShieldId = shieldData.ShieldId;
             var shieldInfo = _shieldConfig.GetShieldInfo(ShieldId);
             var levelInfo = shieldInfo.GetLevelUpgradeInfo(shieldData.LevelUpgradeId);
-            return 0;
-            //return levelInfo.Hp;
+            return levelInfo.Damage;
         }
 
         public void OnSetUp()

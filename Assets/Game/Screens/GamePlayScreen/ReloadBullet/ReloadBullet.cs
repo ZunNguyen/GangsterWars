@@ -43,8 +43,8 @@ namespace Game.Screens.GamePlayScreen
         {
             if (gunModel.GunId == LeaderKey.GunId_Default || gunModel.GunId == LeaderKey.GunId_02 || gunModel.GunId == LeaderKey.GunId_03)
             {
-                var gunInfo = _leaderConfig.GetWeaponInfo(gunModel.GunId);
-                //_bulletPerClip = gunInfo.BulletsPerClip;
+                var gunInfo = _leaderConfig.GetWeaponInfo(gunModel.GunId) as LeaderWeaponInfo;
+                _bulletPerClip = gunInfo.BulletsPerClip;
                 var sizeTarget = _widthPanelDefault + _bulletPerClip * _widthOneBullet;
                 _panel.sizeDelta = new Vector2(sizeTarget, _heightPanel);
 

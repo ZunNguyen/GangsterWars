@@ -16,7 +16,7 @@ namespace Game.Screens.MainMenuScreen
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
-        private WeaponLeaderInfo _weaponInfo;
+        private WeaponInfoBase _weaponInfo;
         private Sources.GamePlaySystem.MainMenuGame.Store.WeaponViewModel _weaponViewModel;
         private StoreHandlerBase _storeWeaponHandler;
         private string _weaponId;
@@ -42,14 +42,21 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _iconlock;
 
-        public void OnSetUp(WeaponLeaderInfo weaponInfo)
+        public void OnSetUp(WeaponInfoBase weaponInfo)
         {
             _weaponId = weaponInfo.Id;
             _storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(_weaponId);
             _weaponViewModel = _storeWeaponHandler.WeaponWiewModels[_weaponId];
             
             _weaponInfo = weaponInfo;
-            _icon.sprite = _weaponInfo.Icon;
+            if (weaponInfo is LeaderWeaponInfo leaderWeaponInfo)
+            {
+                _icon.sprite = leaderWeaponInfo.Icon;
+            }
+            else if (weaponInfo is BomberWeaponInfo bomberWeaponInfo)
+            {
+                _icon.sprite = bomberWeaponInfo.Icon;
+            }
             
             GetWeaponSate();
             GetLevelUpgrade();

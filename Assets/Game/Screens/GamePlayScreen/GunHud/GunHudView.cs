@@ -26,8 +26,8 @@ namespace Game.Screens.GamePlayScreen
         public void OnSetUp(string gunId)
         {
             _gunId = gunId;
-            var weaponInfo = _leaderConfig.GetWeaponInfo(_gunId);
-            //_icon.sprite = weaponInfo.Icon;
+            var weaponInfo = _leaderConfig.GetWeaponInfo(_gunId) as LeaderWeaponInfo;
+            _icon.sprite = weaponInfo.Icon;
 
             _gunHandler = _leaderSystem.GunHandler;
             if (_gunHandler.GunModels.ContainsKey(gunId))

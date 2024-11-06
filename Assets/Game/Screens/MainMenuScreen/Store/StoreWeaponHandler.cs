@@ -19,12 +19,12 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private WeaponView _weaponViewPrefab;
         [SerializeField] private Transform _holderWeaponView;
 
-        public void OnSetUp(List<WeaponLeaderInfo> weaponsConfig)
+        public void OnSetUp(IEnumerable<WeaponInfoBase> weaponsConfig)
         {
-            for (int i = 0; i < weaponsConfig.Count; i++)
+            foreach (var weapon in weaponsConfig)
             {
                 var newWeaponPrefab = Instantiate(_weaponViewPrefab, _holderWeaponView);
-                newWeaponPrefab.OnSetUp(weaponsConfig[i]);
+                newWeaponPrefab.OnSetUp(weapon);
             }
         }
 

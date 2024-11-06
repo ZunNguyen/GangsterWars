@@ -57,8 +57,8 @@ namespace Sources.GamePlaySystem.Leader
 
                 gunModelView.BulletTotal.Value = gunData.Quatity;
 
-                var gunInfo = _leaderConfig.GetWeaponInfo(gunData.WeaponId);
-                //gunModelView.BulletAvailable.Value = gunInfo.BulletsPerClip;
+                var gunInfo = _leaderConfig.GetWeaponInfo(gunData.WeaponId) as LeaderWeaponInfo;
+                gunModelView.BulletAvailable.Value = gunInfo.BulletsPerClip;
 
                 GunModels.Add(gunData.WeaponId, gunModelView);
             }
