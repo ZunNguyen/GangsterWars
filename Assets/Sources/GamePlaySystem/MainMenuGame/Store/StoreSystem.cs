@@ -32,6 +32,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         public LeaderStoreHandler LeaderStoreHandler = new();
         public BomberStoreHandler BomberStoreHandler = new();
+        public ShieldStoreHandler ShieldStoreHandler = new();
 
         public override async UniTask Init()
         {
@@ -69,12 +70,14 @@ namespace Sources.GamePlaySystem.MainMenuGame
         {
             LeaderStoreHandler.OnSetUp();
             BomberStoreHandler.OnSetUp();
+            ShieldStoreHandler.OnSetUp();
         }
 
         public StoreHandlerBase GetWeaponHandlerSystem(string weaponId)
         {
             if (LeaderStoreHandler.IsHandlerSystem(weaponId)) return LeaderStoreHandler;
             if (BomberStoreHandler.IsHandlerSystem(weaponId)) return BomberStoreHandler;
+            if (ShieldStoreHandler.IsHandlerSystem(weaponId)) return ShieldStoreHandler;
             else return null;
         }
     }

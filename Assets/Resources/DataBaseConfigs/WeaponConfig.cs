@@ -20,6 +20,8 @@ namespace Sources.DataBaseSystem
     public abstract class WeaponInfoBase : IReadCSVData
     {
         public string Id;
+        [PreviewField(100, ObjectFieldAlignment.Left)]
+        public Sprite Icon;
         [PropertyOrder(1)]
         public int UnlockFee;
 

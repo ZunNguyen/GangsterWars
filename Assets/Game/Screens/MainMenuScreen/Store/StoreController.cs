@@ -11,6 +11,7 @@ namespace Game.Screens.MainMenuScreen
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
+        private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
 
         [SerializeField] private StoreWeaponHandler _storeLeaderHandler;
         [SerializeField] private StoreWeaponHandler _storeBomberHandler;
@@ -21,10 +22,11 @@ namespace Game.Screens.MainMenuScreen
             _storeLeaderHandler.OnSetUp(_leaderConfig.GetAllWeapons());
             _storeLeaderHandler.SetState(TabState.TabGun);
 
-            //_storeBomberHandler.OnSetUp(_bomberConfig.Weapons);
-            //_storeBomberHandler.SetState(TabState.TabBom);
+            _storeBomberHandler.OnSetUp(_bomberConfig.GetAllWeapons());
+            _storeBomberHandler.SetState(TabState.TabBom);
 
-            //_storeShieldHandler.SetState(TabState.TabShield);
+            _storeBomberHandler.OnSetUp(_shieldConfig.GetAllWeapons());
+            _storeShieldHandler.SetState(TabState.TabShield);
         }
     }
 }

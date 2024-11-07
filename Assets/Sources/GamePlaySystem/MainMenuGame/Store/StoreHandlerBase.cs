@@ -32,19 +32,20 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         protected WeaponConfig _weaponConfig;
         protected List<BaseData> _weaponDatas;
-
-        private IEnumerable<WeaponInfoBase> _weaponInfoConfigs;
+        protected IEnumerable<BaseData> _iEnumerableWeaponDatas;
+        protected IEnumerable<WeaponInfoBase> _weaponInfoConfigs;
+        
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
         private int _weaponIndexMaxCurrent;
 
         public Dictionary<string, WeaponViewModel> WeaponWiewModels { get; private set; } = new();
         public bool HadStore { get; private set; } = false;
 
-        public virtual async void OnSetUp()
+        public virtual void OnSetUp()
         {
             SetData();
-            await UniTask.DelayFrame(1);
             _weaponInfoConfigs = _weaponConfig.GetAllWeapons();
+            _weaponDatas = _iEnumerableWeaponDatas.ToList();
 
             HadStore = _weaponDatas != null;
             if (!HadStore) return;
@@ -60,7 +61,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             _weaponIndexMaxCurrent = _weaponConfig.GetWeaponIndex(weaponLargest.Id);
         }
 
-        private void SetWeaponViewModels()
+        protected virtual void SetWeaponViewModels()
         {
             foreach (var weaponConfig in _weaponInfoConfigs)
             {
@@ -71,31 +72,31 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                     Id = weaponConfig.Id,
                     LevelUpgradeId = weaponConfig.LevelUpgrades[0].Id,
                 };
-                UpdateWeaponViewModel(weaponData);
+                UpdateWeaponViewModel(weaponData.Id, weaponData.LevelUpgradeId);
             }
 
             for (int i = 0; i < _weaponDatas.Count; i++)
             {
-                UpdateWeaponViewModel(_weaponDatas[i] as WeaponData);
+                UpdateWeaponViewModel(_weaponDatas[i].Id, _weaponDatas[i].LevelUpgradeId);
             }
         }
 
-        private void UpdateWeaponViewModel(BaseData weaponData)
+        protected virtual void UpdateWeaponViewModel(string weaponId, string levelUpgradeId)
         {
-            var weaponViewModel = WeaponWiewModels[weaponData.Id];
-            var weaponInfo = _weaponConfig.GetWeaponInfo(weaponData.Id);
+            var weaponViewModel = WeaponWiewModels[weaponId];
+            var weaponInfo = _weaponConfig.GetWeaponInfo(weaponId);
 
             // Update state
-            weaponViewModel.State.Value = GetWeaponState(weaponData.Id);
+            weaponViewModel.State.Value = GetWeaponState(weaponId);
 
             // Update unlockFee
             weaponViewModel.UnlockFee = weaponInfo.UnlockFee;
 
             // Update reload fee
-            UpdateReloadFee(weaponData);
+            UpdateReloadFee(weaponId, levelUpgradeId);
 
             // Update level upgrade fee
-            var indexLevelUpgradeCurrent = weaponInfo.GetLevelUpgardeIndex(weaponData.LevelUpgradeId);
+            var indexLevelUpgradeCurrent = weaponInfo.GetLevelUpgardeIndex(levelUpgradeId);
             var indexLevelUpgardeMax = weaponInfo.LevelUpgrades.Count - 1;
             if (indexLevelUpgradeCurrent != indexLevelUpgardeMax)
             {
@@ -115,7 +116,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             }
         }
 
-        protected abstract void UpdateReloadFee(BaseData weaponData);
+        protected abstract void UpdateReloadFee(string weaponId, string levelUpgradeId);
 
         public ItemState GetWeaponState(string weaponId)
         {
@@ -145,17 +146,12 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 UpdateWeaponIndexMaxCurrent();
                 foreach (var weaponConfig in _weaponInfoConfigs)
                 {
-                    var weaponData = new BaseData
-                    {
-                        Id = weaponConfig.Id,
-                        LevelUpgradeId = weaponConfig.LevelUpgrades[0].Id,
-                    };
-                    UpdateWeaponViewModel(weaponData);
+                    UpdateWeaponViewModel(weaponConfig.Id, weaponConfig.LevelUpgrades[0].Id);
                 }
 
                 for (int i = 0; i < _weaponDatas.Count; i++)
                 {
-                    UpdateWeaponViewModel(_weaponDatas[i] as BaseData);
+                    UpdateWeaponViewModel(_weaponDatas[i].Id, _weaponDatas[i].LevelUpgradeId);
                 }
 
                 foreach (var weaponModel in WeaponWiewModels)
@@ -189,7 +185,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 var weaponData = _userProfile.GetWeaponBaseData(weaponId);
                 weaponData.LevelUpgradeId = levelNextId;
 
-                UpdateWeaponViewModel(weaponData);
+                UpdateWeaponViewModel(weaponData.Id, weaponData.LevelUpgradeId);
                 _userProfile.Save();
             }
             else Debug.Log("Not enough money!");

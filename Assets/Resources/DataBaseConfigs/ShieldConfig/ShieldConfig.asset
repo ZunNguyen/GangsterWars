@@ -14,18 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shieldInfos:
   - Id: shield-01
-    Icons:
-    - ShieldStates: 100
-      Icon: {fileID: 21300000, guid: 5d55571707dfe974c8c80ee3312e7899, type: 3}
-    - ShieldStates: 75
-      Icon: {fileID: 21300000, guid: e69282aa3f7a80b40a0d36196fd2ee44, type: 3}
-    - ShieldStates: 50
-      Icon: {fileID: 21300000, guid: a94521452155e9343bb2c9f1899468c5, type: 3}
-    - ShieldStates: 25
-      Icon: {fileID: 21300000, guid: e086f9f599b5f2443a214c8b3c97443f, type: 3}
+    Icon: {fileID: 21300000, guid: 1e9857fc7263db1429082853344d0f1b, type: 3}
     UnlockFee: 0
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 0
       ReloadFee: 100
       Damage: 100
+    IconStates:
+    - ShieldStates: 100
+      Icon: {fileID: 21300000, guid: 422529b59dc9d0f479e7d138558ee94c, type: 3}
+    - ShieldStates: 75
+      Icon: {fileID: 21300000, guid: 4959d4c6dd3c30b418290f46e1796627, type: 3}
+    - ShieldStates: 50
+      Icon: {fileID: 21300000, guid: 68fedda4970ae3e46848946d41ab83c5, type: 3}
+    - ShieldStates: 25
+      Icon: {fileID: 21300000, guid: 02fe7d470fb50ef4aa710c368a4217ea, type: 3}

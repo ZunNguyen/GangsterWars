@@ -12,8 +12,6 @@ namespace Sources.DataBaseSystem.Leader
     [Serializable]
     public class LeaderWeaponInfo : WeaponInfoBase
     {
-        [PreviewField(100, ObjectFieldAlignment.Left)]
-        public Sprite Icon;
         public SpriteLibraryAsset SpriteLibraryAsset;
         public int MaxBullet;
         public int BulletsPerClip;

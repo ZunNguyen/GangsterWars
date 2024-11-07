@@ -10,8 +10,6 @@ namespace Sources.DataBaseSystem
     [Serializable]
     public class BomberWeaponInfo : WeaponInfoBase
     {
-        [PreviewField(100, ObjectFieldAlignment.Left)]
-        public Sprite Icon;
         public int MaxBullet;
         public int BulletsPerClip;
 

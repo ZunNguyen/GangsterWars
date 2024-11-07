@@ -9,11 +9,11 @@ namespace Sources.DataBaseSystem
     [Serializable]
     public class ShieldWeaponInfo : WeaponInfoBase
     {
-        public List<IconInfo> Icons;
+        public List<IconStateInfo> IconStates;
 
         public Sprite GetIconShield(ShieldState shieldStates)
         {
-            var iconInfo = Icons.Find(x => x.ShieldStates == shieldStates);
+            var iconInfo = IconStates.Find(x => x.ShieldStates == shieldStates);
             return iconInfo.Icon;
         }
 
@@ -24,7 +24,7 @@ namespace Sources.DataBaseSystem
     }
 
     [Serializable]
-    public class IconInfo
+    public class IconStateInfo
     {
         public ShieldState ShieldStates = ShieldState.Full;
         [PreviewField(100, ObjectFieldAlignment.Center)]
