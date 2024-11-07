@@ -76,7 +76,7 @@ namespace Sources.GamePlaySystem.Leader
         {
             var gunInfo = _leaderConfig.GetWeaponInfo(GunModelCurrent.Value.GunId);
             var damageInfo = gunInfo.GetLevelUpgradeInfo(GunModelCurrent.Value.LevelUpgradeId);
-            DamageBulletCurrent = damageInfo.Damage;
+            DamageBulletCurrent = damageInfo.DamageOrHp;
         }
 
         private void CheckCanShoot()

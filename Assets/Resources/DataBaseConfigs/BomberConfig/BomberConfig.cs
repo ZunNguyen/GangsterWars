@@ -15,26 +15,6 @@ namespace Sources.DataBaseSystem
 
         [Header("Time to reload one bullet - second")]
         public float ReloadTime;
-
-        protected override void SetValue(string[] datas, string[] lines)
-        {
-            var rowCount = lines.Length;
-
-            var columnCount = datas.Length / rowCount;
-
-            for (int column = 1; column < columnCount; column++)
-            {
-                var rowCurrent = 1;
-                var newLevelUpgrade = new LevelUpgradeInfo();
-                var indexData = columnCount * rowCurrent + column;
-
-                newLevelUpgrade.Id = datas[indexData];
-                newLevelUpgrade.LevelUpFee = int.Parse(datas[indexData + columnCount]);
-                newLevelUpgrade.ReloadFee = int.Parse(datas[indexData + 2 * columnCount]);
-
-                LevelUpgrades.Add(newLevelUpgrade);
-            }
-        }
     }
 
     public class BomberConfig : WeaponConfig

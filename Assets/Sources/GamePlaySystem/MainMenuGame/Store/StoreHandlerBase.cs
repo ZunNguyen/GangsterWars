@@ -6,6 +6,7 @@ using Sources.GameData;
 using Sources.GamePlaySystem.CoinController;
 using Sources.Utils.Singleton;
 using Sources.Utils.String;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public List<string> LevelUpgradeIdsPassed = new();
         public int UnlockFee;
         public int ReloadFee;
+        public Action<bool> IsChosed;
     }
 
     public abstract class StoreHandlerBase

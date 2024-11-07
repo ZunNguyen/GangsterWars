@@ -14,7 +14,8 @@ namespace Sources.DataBaseSystem
         public string Id;
         public int LevelUpFee;
         public int ReloadFee;
-        public int Damage;
+        [Header("Damage or Hp")]
+        public int DamageOrHp;
     }
 
     public abstract class WeaponInfoBase : IReadCSVData
@@ -38,10 +39,23 @@ namespace Sources.DataBaseSystem
 
             string[] lines = csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-            SetValue(datas, lines);
-        }
+            var rowCount = lines.Length;
 
-        protected abstract void SetValue(string[] datas, string[] lines);
+            var columnCount = datas.Length / rowCount;
+
+            for (int column = 1; column < columnCount; column++)
+            {
+                var rowCurrent = 1;
+                var newLevelUpgrade = new LevelUpgradeInfo();
+                var indexData = columnCount * rowCurrent + column;
+
+                newLevelUpgrade.Id = datas[indexData];
+                newLevelUpgrade.LevelUpFee = int.Parse(datas[indexData + columnCount]);
+                newLevelUpgrade.ReloadFee = int.Parse(datas[indexData + 2 * columnCount]);
+
+                LevelUpgrades.Add(newLevelUpgrade);
+            }
+        }
 
         public LevelUpgradeInfo GetLevelUpgradeInfo(string id)
         {

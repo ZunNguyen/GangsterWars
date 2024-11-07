@@ -57,7 +57,11 @@ namespace Game.Screens.MainMenuScreen
             {
                 _icon.sprite = bomberWeaponInfo.Icon;
             }
-            
+            else if (weaponInfo is ShieldWeaponInfo shieldWeaponInfo)
+            {
+                _icon.sprite = shieldWeaponInfo.Icon;
+            }
+
             GetWeaponSate();
             GetLevelUpgrade();
             GetReloadFee();

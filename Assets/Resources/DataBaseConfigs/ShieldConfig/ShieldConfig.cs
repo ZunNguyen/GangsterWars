@@ -16,11 +16,6 @@ namespace Sources.DataBaseSystem
             var iconInfo = IconStates.Find(x => x.ShieldStates == shieldStates);
             return iconInfo.Icon;
         }
-
-        protected override void SetValue(string[] datas, string[] lines)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     [Serializable]

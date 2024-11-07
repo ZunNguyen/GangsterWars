@@ -45,7 +45,7 @@ namespace Game.Character.Bomber
 
             _sprite.sprite = bomInfo.Icon;
             var levelInfo = bomInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
-            _damage = levelInfo.Damage;
+            _damage = levelInfo.DamageOrHp;
         }
 
         public void ThrowBomb(Vector3 posTarget)

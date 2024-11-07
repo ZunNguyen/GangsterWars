@@ -14,11 +14,6 @@ using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainMenuGame.Store
 {
-    public class ShieldViewModel : WeaponViewModel
-    {
-        public Action<bool> IsChosed;
-    }
-
     public class ShieldStoreHandler : StoreHandlerBase
     {
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
@@ -28,33 +23,40 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
 
         protected new List<ShieldData> _weaponDatas = new();
-        public new Dictionary<string, ShieldViewModel> WeaponWiewModels { get; private set; } = new();
 
         protected override void SetData()
         {
             _weaponConfig = _shieldConfig;
+
             _iEnumerableWeaponDatas = _userProfile.ShieldDatas;
+            var shieldDatas = _userProfile.ShieldDatas;
+            foreach (var shieldData in shieldDatas)
+            {
+                var weaponData = shieldData;
+                _weaponDatas.Add(weaponData);
+            }
         }
 
         public override void OnSetUp()
         {
             base.OnSetUp();
-            ChoseShield(_weaponDatas[0].Id);
+
+            ChoseShield(_userProfile.ShieldDatas[0].Id);
         }
 
         protected override void SetWeaponViewModels()
         {
             foreach (var weaponConfig in _weaponInfoConfigs)
             {
-                var newWeaponViewModel = new ShieldViewModel();
+                var newWeaponViewModel = new WeaponViewModel();
                 WeaponWiewModels.Add(weaponConfig.Id, newWeaponViewModel);
 
                 UpdateWeaponViewModel(weaponConfig.Id, weaponConfig.LevelUpgrades[0].Id);
             }
 
-            for (int i = 0; i < _weaponDatas.Count; i++)
+            foreach (var weaponData in _iEnumerableWeaponDatas)
             {
-                UpdateWeaponViewModel(_weaponDatas[i].Id, _weaponDatas[i].LevelUpgradeId);
+                UpdateWeaponViewModel(weaponData.Id, weaponData.LevelUpgradeId);
             }
         }
 
