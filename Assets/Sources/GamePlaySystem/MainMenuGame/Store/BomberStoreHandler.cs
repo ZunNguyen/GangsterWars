@@ -19,6 +19,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
 
+
         protected new List<WeaponData> _weaponDatas;
 
         protected override void SetData()
@@ -40,6 +41,17 @@ namespace Sources.GamePlaySystem.MainMenuGame
             var reloadFee = levelUpgradeInfo.ReloadFee;
 
             weaponViewModel.ReloadFee = (reloadFee * bulletRemain) / maxBullet;
+        }
+
+        protected override void SaveData(string weaponId)
+        {
+            var newWeaponData = new WeaponData
+            {
+                Id = weaponId,
+                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+            };
+            _weaponDatas.Add(newWeaponData);
+            _userProfile.Save();
         }
     }
 }

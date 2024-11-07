@@ -19,6 +19,7 @@ namespace Game.Screens.MainMenuScreen
         private WeaponInfoBase _weaponInfo;
         private Sources.GamePlaySystem.MainMenuGame.Store.WeaponViewModel _weaponViewModel;
         private StoreHandlerBase _storeWeaponHandler;
+        private ShieldStoreHandler _shieldStoreHandler;
         private string _weaponId;
         
 
@@ -38,9 +39,19 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private GameObject _unlock;
         [SerializeField] private TMP_Text _valueUnlock;
 
+        [Header("Check List")]
+        [SerializeField] private GameObject _checkList;
+        [SerializeField] private GameObject _iconCheckList;
+
         [Header("Another")]
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _iconlock;
+
+        private void Awake()
+        {
+            _checkList.SetActive(false);
+            _iconCheckList.SetActive(false);
+        }
 
         public void OnSetUp(WeaponInfoBase weaponInfo)
         {
@@ -80,6 +91,8 @@ namespace Game.Screens.MainMenuScreen
                     _levelUpgradeHolder.gameObject.SetActive(true);
                     _levelUpFee.SetActive(true);
                     _reload.SetActive(true);
+
+                    GetOnCheckList();
                 }
                 if (state == ItemState.CanUnlock)
                 {
@@ -122,14 +135,37 @@ namespace Game.Screens.MainMenuScreen
             }
         }
 
+        private void GetReloadFee()
+        {
+            _valueReload.text = _weaponViewModel.ReloadFee.ToString();
+        }
+
         private void GetUnlockFee()
         {
             _valueUnlock.text = _weaponViewModel.UnlockFee.ToString();
         }
 
-        private void GetReloadFee()
+        private void GetOnCheckList()
         {
-            _valueReload.text = _weaponViewModel.ReloadFee.ToString();
+            if (_storeWeaponHandler is ShieldStoreHandler shieldStoreHandler)
+            {
+                _shieldStoreHandler = shieldStoreHandler;
+                _checkList.SetActive(true);
+                _weaponViewModel.IsChosed += SubscribeCheckList;
+
+                OnCheckListClicked();
+            }
+        }
+
+        private void SubscribeCheckList(bool isCheck)
+        {
+            if (isCheck) _iconCheckList.SetActive(true);
+            else _iconCheckList.SetActive(false);
+        }
+
+        public void OnCheckListClicked()
+        {
+            _shieldStoreHandler.ChoseShield(_weaponId);
         }
 
         public void OnUnlockWeaponClicked()

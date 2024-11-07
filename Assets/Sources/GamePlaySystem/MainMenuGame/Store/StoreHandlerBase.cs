@@ -47,7 +47,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             SetData();
             _weaponInfoConfigs = _weaponConfig.GetAllWeapons();
-            _weaponDatas = _iEnumerableWeaponDatas.ToList();
+            _weaponDatas = _iEnumerableWeaponDatas.Cast<BaseData>().ToList();
 
             HadStore = _weaponDatas != null;
             if (!HadStore) return;
@@ -137,14 +137,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
             if (result)
             {
-                var newWeaponData = new BaseData
-                {
-                    Id = weaponId,
-                    LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
-                };
-                _weaponDatas.Add(newWeaponData);
-                _userProfile.Save();
-
+                SaveData(weaponId);
                 UpdateWeaponIndexMaxCurrent();
                 foreach (var weaponConfig in _weaponInfoConfigs)
                 {
@@ -165,6 +158,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             }
             else Debug.Log("Not enough money!");
         }
+
+        protected abstract void SaveData(string weaponId);
 
         public void UpgradeNewLevelWeapon(string weaponId)
         {

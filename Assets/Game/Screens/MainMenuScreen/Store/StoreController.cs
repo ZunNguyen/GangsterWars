@@ -19,10 +19,10 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnSetUp()
         {
-            //_storeLeaderHandler.OnSetUp(_leaderConfig.GetAllWeapons());
+            _storeLeaderHandler.OnSetUp(_leaderConfig.GetAllWeapons());
             _storeLeaderHandler.SetState(TabState.TabGun);
 
-            //_storeBomberHandler.OnSetUp(_bomberConfig.GetAllWeapons());
+            _storeBomberHandler.OnSetUp(_bomberConfig.GetAllWeapons());
             _storeBomberHandler.SetState(TabState.TabBom);
 
             _storeShieldHandler.OnSetUp(_shieldConfig.GetAllWeapons());

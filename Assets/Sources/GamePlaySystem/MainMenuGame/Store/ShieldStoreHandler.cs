@@ -1,3 +1,4 @@
+using Game.Character.Bomber;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.Extension;
@@ -123,6 +124,17 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             }
 
             _userProfile.ChoseShield(shieldId);
+        }
+
+        protected override void SaveData(string weaponId)
+        {
+            var newWeaponData = new ShieldData
+            {
+                Id = weaponId,
+                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+            };
+            _weaponDatas.Add(newWeaponData);
+            _userProfile.Save();
         }
     }
 }

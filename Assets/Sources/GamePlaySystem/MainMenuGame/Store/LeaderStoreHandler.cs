@@ -44,5 +44,16 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
             weaponViewModel.ReloadFee = (reloadFee * bulletRemain) / maxBullet;
         }
+
+        protected override void SaveData(string weaponId)
+        {
+            var newWeaponData = new WeaponData
+            {
+                Id = weaponId,
+                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+            };
+            _weaponDatas.Add(newWeaponData);
+            _userProfile.Save();
+        }
     }
 }
