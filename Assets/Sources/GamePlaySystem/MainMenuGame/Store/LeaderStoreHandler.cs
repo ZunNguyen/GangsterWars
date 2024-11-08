@@ -22,12 +22,20 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
 
-        protected new List<WeaponData> _weaponDatas;
-
         protected override void SetData()
         {
             _weaponConfig = _leaderConfig;
-            _iEnumerableWeaponDatas = _userProfile.LeaderDatas;
+
+            var weaponDatas = _userProfile.LeaderDatas;
+            foreach (var weaponData in weaponDatas)
+            {
+                var newWeaponData = new BaseData
+                {
+                    Id = weaponData.Id,
+                    LevelUpgradeId = weaponData.LevelUpgradeId,
+                };
+                _weaponDatas.Add(newWeaponData);
+            }
         }
 
         protected override void UpdateReloadFee(string weaponId, string levelUpgradeId)
@@ -45,14 +53,23 @@ namespace Sources.GamePlaySystem.MainMenuGame
             weaponViewModel.ReloadFee = (reloadFee * bulletRemain) / maxBullet;
         }
 
-        protected override void SaveData(string weaponId)
+        protected override void SaveNewData(string weaponId, string levelUpgradeId)
         {
-            var newWeaponData = new WeaponData
+            var newWeaponData = new BaseData
             {
                 Id = weaponId,
-                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+                LevelUpgradeId = levelUpgradeId,
             };
             _weaponDatas.Add(newWeaponData);
+
+            var newWeaponDataProfile = new WeaponData
+            {
+                Id = weaponId,
+                LevelUpgradeId = levelUpgradeId,
+                Quatity = 50
+            };
+            _userProfile.LeaderDatas.Add(newWeaponDataProfile);
+
             _userProfile.Save();
         }
     }

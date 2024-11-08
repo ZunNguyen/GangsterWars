@@ -23,18 +23,19 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
 
-        protected new List<ShieldData> _weaponDatas = new();
-
         protected override void SetData()
         {
             _weaponConfig = _shieldConfig;
 
-            _iEnumerableWeaponDatas = _userProfile.ShieldDatas;
-            var shieldDatas = _userProfile.ShieldDatas;
-            foreach (var shieldData in shieldDatas)
+            var weaponDatas = _userProfile.ShieldDatas;
+            foreach (var weaponData in weaponDatas)
             {
-                var weaponData = shieldData;
-                _weaponDatas.Add(weaponData);
+                var newWeaponData = new BaseData
+                {
+                    Id = weaponData.Id,
+                    LevelUpgradeId = weaponData.LevelUpgradeId,
+                };
+                _weaponDatas.Add(newWeaponData);
             }
         }
 
@@ -55,7 +56,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 UpdateWeaponViewModel(weaponConfig.Id, weaponConfig.LevelUpgrades[0].Id);
             }
 
-            foreach (var weaponData in _iEnumerableWeaponDatas)
+            foreach (var weaponData in _weaponDatas)
             {
                 UpdateWeaponViewModel(weaponData.Id, weaponData.LevelUpgradeId);
             }
@@ -126,14 +127,23 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             _userProfile.ChoseShield(shieldId);
         }
 
-        protected override void SaveData(string weaponId)
+        protected override void SaveNewData(string weaponId, string levelUpgradeId)
         {
-            var newWeaponData = new ShieldData
+            var newWeaponData = new BaseData
             {
                 Id = weaponId,
                 LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
             };
             _weaponDatas.Add(newWeaponData);
+
+            var newWeaponDataProfile = new ShieldData
+            {
+                Id = weaponId,
+                LevelUpgradeId = levelUpgradeId,
+                IsChosed = true,
+            };
+            _userProfile.ShieldDatas.Add(newWeaponDataProfile);
+
             _userProfile.Save();
         }
     }

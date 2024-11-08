@@ -1,7 +1,5 @@
-using Sources.DataBaseSystem;
 using Sources.Extension;
 using Sources.GamePlaySystem.MainGamePlay;
-using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.Utils.String;
 using System.Collections.Generic;
 using System.Linq;
@@ -142,6 +140,11 @@ namespace Sources.GameData
             }
 
             Save();
+        }
+
+        public void SetDataLeader()
+        {
+
         }
     }
 }

@@ -10,11 +10,14 @@ using Sources.Utils.Singleton;
 using TMPro;
 using Cysharp.Threading.Tasks;
 using UniRx;
+using Sources.UISystem;
+using Game.Screens.JourneyScreen;
 
 namespace Game.Screens.MainMenuScreen
 {
     public class MainMenuScreen : BaseUI
     {
+        private UIManager _uiManager => Locator<UIManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
 
         [SerializeField] private TMP_Text _text;
@@ -35,8 +38,11 @@ namespace Game.Screens.MainMenuScreen
 
         public async void OnPlayGameClicked()
         {
-            await OnTransitionExit();
-            await new LoadSenceCommand("GamePlay").Execute();
+            await Close();
+            await _uiManager.Show<JourneyScreen.JourneyScreen>();
+
+            //await OnTransitionExit();
+            //await new LoadSenceCommand("GamePlay").Execute();
         }
     }
 }

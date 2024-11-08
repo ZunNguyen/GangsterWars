@@ -33,8 +33,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         protected WeaponConfig _weaponConfig;
-        protected List<BaseData> _weaponDatas;
-        protected IEnumerable<BaseData> _iEnumerableWeaponDatas;
+        protected List<BaseData> _weaponDatas = new();
         protected IEnumerable<WeaponInfoBase> _weaponInfoConfigs;
         
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
@@ -47,7 +46,6 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             SetData();
             _weaponInfoConfigs = _weaponConfig.GetAllWeapons();
-            _weaponDatas = _iEnumerableWeaponDatas.Cast<BaseData>().ToList();
 
             HadStore = _weaponDatas != null;
             if (!HadStore) return;
@@ -137,7 +135,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
             if (result)
             {
-                SaveData(weaponId);
+                SaveNewData(weaponId, LevelUpgradeKey.LevelUpgrade_Default);
                 UpdateWeaponIndexMaxCurrent();
                 foreach (var weaponConfig in _weaponInfoConfigs)
                 {
@@ -159,7 +157,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             else Debug.Log("Not enough money!");
         }
 
-        protected abstract void SaveData(string weaponId);
+        protected abstract void SaveNewData(string weaponId, string levelUpgradeId);
 
         public void UpgradeNewLevelWeapon(string weaponId)
         {
