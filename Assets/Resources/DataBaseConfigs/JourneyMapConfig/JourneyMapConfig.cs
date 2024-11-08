@@ -24,6 +24,7 @@ namespace Sources.DataBaseSystem
     {
         [SerializeField] private int rows;
         [SerializeField] private int columns;
+        [SerializeField] private bool isLocked;
         [SerializeField] private List<List<Cell>> matrix = new List<List<Cell>>();
 
         public List<List<Cell>> Matrix => matrix;
@@ -47,6 +48,7 @@ namespace Sources.DataBaseSystem
 
         public void SetRows(int value) => rows = value;
         public void SetColumns(int value) => columns = value;
+        public bool IsLocked { get => isLocked; set => isLocked = value; }
     }
 
     public class JourneyMapConfig : DataBaseConfig
@@ -65,9 +67,7 @@ namespace Sources.DataBaseSystem
 
             SerializedProperty journeyItemViewsProp = serializedObject.FindProperty("JourneyItemViews");
             EditorGUILayout.PropertyField(journeyItemViewsProp, new GUIContent("Journey Item Views"), true);
-
             serializedObject.ApplyModifiedProperties();
-
             EditorGUILayout.Space();
 
             if (GUILayout.Button("Add New Grid"))
@@ -79,26 +79,26 @@ namespace Sources.DataBaseSystem
             for (int i = 0; i < config.grids.Count; i++)
             {
                 EditorGUILayout.Space();
-                EditorGUILayout.LabelField($"Grid {i + 1}", EditorStyles.boldLabel);
-
                 Grid grid = config.grids[i];
 
-                int newRows = EditorGUILayout.IntField("Rows", grid.Rows);
-                int newColumns = EditorGUILayout.IntField("Columns", grid.Columns);
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField($"Grid {i + 1}", EditorStyles.boldLabel);
+                grid.IsLocked = GUILayout.Toggle(grid.IsLocked, grid.IsLocked ? "Unlock" : "Lock", "Button");
+                EditorGUILayout.EndHorizontal();
 
-                if (newRows != grid.Rows)
-                {
-                    grid.SetRows(newRows);
-                }
-                if (newColumns != grid.Columns)
-                {
-                    grid.SetColumns(newColumns);
-                }
+                int newRows = grid.IsLocked ? grid.Rows : EditorGUILayout.IntField("Rows", grid.Rows);
+                int newColumns = grid.IsLocked ? grid.Columns : EditorGUILayout.IntField("Columns", grid.Columns);
 
-                if (GUILayout.Button("Initialize Matrix for Grid " + (i + 1)))
+                if (!grid.IsLocked)
                 {
-                    grid.InitializeMatrix();
-                    Undo.RecordObject(config, "Initialized Matrix");
+                    if (newRows != grid.Rows) grid.SetRows(newRows);
+                    if (newColumns != grid.Columns) grid.SetColumns(newColumns);
+
+                    if (GUILayout.Button("Initialize Matrix for Grid " + (i + 1)))
+                    {
+                        grid.InitializeMatrix();
+                        Undo.RecordObject(config, "Initialized Matrix");
+                    }
                 }
 
                 EditorGUILayout.BeginHorizontal();
@@ -113,24 +113,31 @@ namespace Sources.DataBaseSystem
                 {
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.BeginVertical(GUILayout.Width(60));
-                    EditorGUILayout.LabelField("Giá trị A", GUILayout.Width(60));
-                    EditorGUILayout.LabelField("Giá trị B", GUILayout.Width(60));
+                    EditorGUILayout.LabelField("Journey Id", GUILayout.Width(60));
+                    EditorGUILayout.LabelField("Wave Id", GUILayout.Width(60));
                     EditorGUILayout.EndVertical();
 
-                    
                     for (int col = 0; col < grid.Matrix[row].Count; col++)
                     {
                         var cell = grid.Matrix[row][col];
                         EditorGUILayout.BeginVertical(GUILayout.Width(120));
-                        cell.Value1 = EditorGUILayout.TextField(cell.Value1, GUILayout.Width(60));
-                        cell.Value2 = EditorGUILayout.TextField(cell.Value2, GUILayout.Width(60));
+                        if (grid.IsLocked)
+                        {
+                            EditorGUILayout.LabelField(cell.Value1, GUILayout.Width(60));
+                            EditorGUILayout.LabelField(cell.Value2, GUILayout.Width(60));
+                        }
+                        else
+                        {
+                            cell.Value1 = EditorGUILayout.TextField(cell.Value1, GUILayout.Width(60));
+                            cell.Value2 = EditorGUILayout.TextField(cell.Value2, GUILayout.Width(60));
+                        }
                         EditorGUILayout.EndVertical();
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.Space();
                 }
 
-                if (GUILayout.Button("Remove Grid " + (i + 1)))
+                if (!grid.IsLocked && GUILayout.Button("Remove Grid " + (i + 1)))
                 {
                     config.grids.RemoveAt(i);
                     Undo.RecordObject(config, "Removed Grid");
