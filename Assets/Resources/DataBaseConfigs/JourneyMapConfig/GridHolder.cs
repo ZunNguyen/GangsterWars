@@ -10,9 +10,36 @@ namespace Sources.DataBaseSystem
     public class GridHolder : DataBaseConfig
     {
         [SerializeField]
-        private string[,] matrix = new string[3, 3]; // Ma trận 3x3
+        private int rows;
+        [SerializeField]
+        private int columns;
 
-        public string[,] Matrix => matrix; // Getter cho ma trận
+        [SerializeField]
+        private List<List<string>> matrix = new List<List<string>>(); // Ma trận dưới dạng List
+
+        // Getter để truy cập ma trận
+        public List<List<string>> Matrix => matrix;
+
+        // Hàm khởi tạo lại ma trận theo số hàng và số cột
+        public void InitializeMatrix()
+        {
+            matrix.Clear();
+            for (int i = 0; i < rows; i++)
+            {
+                List<string> row = new List<string>();
+                for (int j = 0; j < columns; j++)
+                {
+                    row.Add(string.Empty); // Khởi tạo với chuỗi rỗng
+                }
+                matrix.Add(row);
+            }
+        }
+
+        public int Rows => rows;
+        public int Columns => columns;
+
+        public void SetRows(int value) => rows = value;
+        public void SetColumns(int value) => columns = value;
     }
 
     [CustomEditor(typeof(GridHolder))]
@@ -22,19 +49,37 @@ namespace Sources.DataBaseSystem
         {
             GridHolder matrixData = (GridHolder)target;
 
-            // Duyệt qua ma trận và cho phép nhập liệu vào các ô
-            for (int i = 0; i < matrixData.Matrix.GetLength(0); i++)
+            // Cho phép thay đổi số hàng và số cột trong Inspector
+            int newRows = EditorGUILayout.IntField("Rows", matrixData.Rows);
+            int newColumns = EditorGUILayout.IntField("Columns", matrixData.Columns);
+
+            if (newRows != matrixData.Rows)
+            {
+                matrixData.SetRows(newRows);
+            }
+
+            if (newColumns != matrixData.Columns)
+            {
+                matrixData.SetColumns(newColumns);
+            }
+
+            if (GUILayout.Button("Initialize Matrix"))
+            {
+                matrixData.InitializeMatrix(); // Khởi tạo lại ma trận khi nhấn nút
+                Undo.RecordObject(matrixData, "Initialized Matrix");
+            }
+
+            for (int i = 0; i < matrixData.Matrix.Count; i++)
             {
                 EditorGUILayout.BeginHorizontal();
-                for (int j = 0; j < matrixData.Matrix.GetLength(1); j++)
+                for (int j = 0; j < matrixData.Matrix[i].Count; j++)
                 {
-                    // Hiển thị mỗi ô trong ma trận dưới dạng TextField
-                    matrixData.Matrix[i, j] = EditorGUILayout.TextField(matrixData.Matrix[i, j]);
+                    matrixData.Matrix[i][j] = EditorGUILayout.TextField(matrixData.Matrix[i][j]);
                 }
                 EditorGUILayout.EndHorizontal();
             }
 
-            // Đảm bảo thay đổi trong ma trận được cập nhật trong Editor
+            // Đảm bảo sự thay đổi trong ma trận được cập nhật trong Editor
             if (GUI.changed)
             {
                 EditorUtility.SetDirty(target);
