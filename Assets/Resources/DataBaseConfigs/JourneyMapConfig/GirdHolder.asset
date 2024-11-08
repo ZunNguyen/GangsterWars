@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429e0182d60415b409e5e147b2ee046f, type: 3}
   m_Name: GirdHolder
   m_EditorClassIdentifier: 
-  grid: []
+  JourneyItemViews:
+  - JourneyItem: {fileID: 467950801623443786, guid: 1a2063ff95c448d44879569accd8d3f8, type: 3}
+  - JourneyItem: {fileID: 2907807851822210679, guid: 67b5b75ea8c510d4ba5818bf604e392a, type: 3}
