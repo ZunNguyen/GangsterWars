@@ -7,6 +7,13 @@ using UnityEngine;
 namespace Sources.DataBaseSystem
 {
     [Serializable]
+    public class Cell
+    {
+        public string Value1;
+        public string Value2;
+    }
+
+    [Serializable]
     public class JourneyItemView
     {
         [PreviewField(Height = 100)]
@@ -17,19 +24,19 @@ namespace Sources.DataBaseSystem
     {
         [SerializeField] private int rows;
         [SerializeField] private int columns;
-        [SerializeField] private List<List<string>> matrix = new List<List<string>>();
+        [SerializeField] private List<List<Cell>> matrix = new List<List<Cell>>();
 
-        public List<List<string>> Matrix => matrix;
+        public List<List<Cell>> Matrix => matrix;
 
         public void InitializeMatrix()
         {
             matrix.Clear();
             for (int i = 0; i < rows; i++)
             {
-                List<string> row = new List<string>();
+                List<Cell> row = new List<Cell>();
                 for (int j = 0; j < columns; j++)
                 {
-                    row.Add(string.Empty);
+                    row.Add(new Cell());
                 }
                 matrix.Add(row);
             }
@@ -48,6 +55,7 @@ namespace Sources.DataBaseSystem
         public List<Grid> grids = new List<Grid>();
     }
 
+#if UNITY_EDITOR
     [CustomEditor(typeof(JourneyMapConfig))]
     public class CustomScriptInscpector : Editor
     {
@@ -55,7 +63,6 @@ namespace Sources.DataBaseSystem
         {
             JourneyMapConfig config = (JourneyMapConfig)target;
 
-            //EditorGUILayout.LabelField("Journey Item Views", EditorStyles.boldLabel);
             SerializedProperty journeyItemViewsProp = serializedObject.FindProperty("JourneyItemViews");
             EditorGUILayout.PropertyField(journeyItemViewsProp, new GUIContent("Journey Item Views"), true);
 
@@ -76,7 +83,6 @@ namespace Sources.DataBaseSystem
 
                 Grid grid = config.grids[i];
 
-                // Hiển thị số hàng và số cột cho từng `Grid`
                 int newRows = EditorGUILayout.IntField("Rows", grid.Rows);
                 int newColumns = EditorGUILayout.IntField("Columns", grid.Columns);
 
@@ -89,51 +95,56 @@ namespace Sources.DataBaseSystem
                     grid.SetColumns(newColumns);
                 }
 
-                // Nút để khởi tạo lại ma trận của từng `Grid`
                 if (GUILayout.Button("Initialize Matrix for Grid " + (i + 1)))
                 {
                     grid.InitializeMatrix();
                     Undo.RecordObject(config, "Initialized Matrix");
                 }
 
-                // Hiển thị số cột ở đầu ma trận của mỗi `Grid`
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("", GUILayout.Width(60));
                 for (int col = 0; col < grid.Columns; col++)
                 {
-                    EditorGUILayout.LabelField($"Col {col + 1}", GUILayout.Width(60));
+                    EditorGUILayout.LabelField($"Col {col + 1}", GUILayout.Width(120));
                 }
                 EditorGUILayout.EndHorizontal();
 
-                // Hiển thị ma trận của `Grid`
                 for (int row = 0; row < grid.Matrix.Count; row++)
                 {
                     EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.LabelField($"Row {row + 1}", GUILayout.Width(60));
+                    EditorGUILayout.BeginVertical(GUILayout.Width(60));
+                    EditorGUILayout.LabelField("Giá trị A", GUILayout.Width(60));
+                    EditorGUILayout.LabelField("Giá trị B", GUILayout.Width(60));
+                    EditorGUILayout.EndVertical();
 
+                    
                     for (int col = 0; col < grid.Matrix[row].Count; col++)
                     {
-                        grid.Matrix[row][col] = EditorGUILayout.TextField(grid.Matrix[row][col], GUILayout.Width(60));
+                        var cell = grid.Matrix[row][col];
+                        EditorGUILayout.BeginVertical(GUILayout.Width(120));
+                        cell.Value1 = EditorGUILayout.TextField(cell.Value1, GUILayout.Width(60));
+                        cell.Value2 = EditorGUILayout.TextField(cell.Value2, GUILayout.Width(60));
+                        EditorGUILayout.EndVertical();
                     }
                     EditorGUILayout.EndHorizontal();
+                    EditorGUILayout.Space();
                 }
 
-                // Nút xóa `Grid`
                 if (GUILayout.Button("Remove Grid " + (i + 1)))
                 {
                     config.grids.RemoveAt(i);
                     Undo.RecordObject(config, "Removed Grid");
-                    break; // Để tránh lỗi khi thay đổi danh sách trong vòng lặp
+                    break;
                 }
 
                 EditorGUILayout.Space();
             }
 
-            // Cập nhật lại thay đổi trên `Inspector`
             if (GUI.changed)
             {
                 EditorUtility.SetDirty(target);
             }
         }
     }
+#endif
 }
