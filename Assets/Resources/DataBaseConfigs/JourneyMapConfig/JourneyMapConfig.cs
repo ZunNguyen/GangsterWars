@@ -16,7 +16,7 @@ namespace Sources.DataBaseSystem
     [Serializable]
     public class JourneyItemView
     {
-        [PreviewField(Height = 100)]
+        public string Id;
         public GameObject JourneyItem;
     }
 
