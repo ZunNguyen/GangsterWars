@@ -33,3 +33,4 @@ MonoBehaviour:
     JourneyItem: {fileID: 8658810952410303331, guid: 0d1c3f61bd97b2149b53dc328a9b0dc1, type: 3}
   - Id: JourView-10
     JourneyItem: {fileID: 3568118831267859724, guid: 3cfae547a2a890743824b6e49385125f, type: 3}
+  JourneyMapDatas: []

@@ -16,14 +16,12 @@ namespace Sources.DataBaseSystem
 
     public class GridMap
     {
-        [SerializeField] private int rows;
-        [SerializeField] private int columns;
         [SerializeField] private bool isLocked;
         [SerializeField] private List<List<Cell>> matrix = new List<List<Cell>>();
 
         public List<List<Cell>> Matrix => matrix;
 
-        public void InitializeMatrix()
+        public void InitializeMatrix(int rows, int columns)
         {
             matrix.Clear();
             for (int i = 0; i < rows; i++)
@@ -36,12 +34,6 @@ namespace Sources.DataBaseSystem
                 matrix.Add(row);
             }
         }
-
-        public int Rows => rows;
-        public int Columns => columns;
-
-        public void SetRows(int value) => rows = value;
-        public void SetColumns(int value) => columns = value;
     }
 
     public class GridMapConfig : DataBaseConfig
@@ -53,6 +45,10 @@ namespace Sources.DataBaseSystem
     [CustomEditor(typeof(GridMapConfig))]
     public class CustomScriptInscpector : Editor
     {
+        private int _rows = 0;
+        private int _columns = 0;
+        private int _journeyMapIndex;
+
         public override void OnInspectorGUI()
         {
             GridMapConfig config = (GridMapConfig)target;
@@ -72,22 +68,20 @@ namespace Sources.DataBaseSystem
                 EditorGUILayout.LabelField($"Grid {i + 1}", EditorStyles.boldLabel);
                 EditorGUILayout.EndHorizontal();
 
-                int newRows = EditorGUILayout.IntField("Rows", grid.Rows);
-                int newColumns = EditorGUILayout.IntField("Columns", grid.Columns);
-
-                if (newRows != grid.Rows) grid.SetRows(newRows);
-                if (newColumns != grid.Columns) grid.SetColumns(newColumns);
+                _rows = EditorGUILayout.IntField("Rows", _rows);
+                _columns = EditorGUILayout.IntField("Columns", _columns);
+                _journeyMapIndex = EditorGUILayout.IntField("Journey Map Index", _journeyMapIndex);
 
                 if (GUILayout.Button("Initialize Matrix for Grid " + (i + 1)))
                 {
-                    grid.InitializeMatrix();
+                    grid.InitializeMatrix(_rows, _columns);
                     Undo.RecordObject(config, "Initialized Matrix");
                 }
                 EditorGUILayout.Space();
 
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("", GUILayout.Width(100));
-                for (int col = 0; col < grid.Columns; col++)
+                for (int col = 0; col < _columns; col++)
                 {
                     EditorGUILayout.LabelField($"Col {col + 1}", GUILayout.Width(120));
                 }
@@ -125,18 +119,57 @@ namespace Sources.DataBaseSystem
                 if (GUILayout.Button("Save Data"))
                 {
                     var gridMapConfig = AssetDatabase.LoadAssetAtPath<JourneyMapConfig>("Assets/Resources/DataBaseConfigs/JourneyMapConfig/JourneyMapConfig.asset");
-                    //gridMapConfig.DataValue_1.Clear();
-                    //gridMapConfig.DataValue_2.Clear();
 
-                    //for (int row = 0; row < grid.Matrix.Count; row++)
-                    //{
-                    //    for (int col = 0; col < grid.Matrix[row].Count; col++)
-                    //    {
-                    //        var cell = grid.Matrix[row][col];
-                    //        gridMapConfig.DataValue_1.Add(cell.Value1);
-                    //        gridMapConfig.DataValue_2.Add(cell.Value2);
-                    //    }
-                    //}
+                    var journeyMapData = new JourneyMapData();
+                    try
+                    {
+                        journeyMapData = gridMapConfig.JourneyMapDatas[_journeyMapIndex];
+                    }
+                    catch
+                    {
+                        var newJourneyMapData = new JourneyMapData();
+                        gridMapConfig.JourneyMapDatas.Add(newJourneyMapData);
+                        journeyMapData = gridMapConfig.JourneyMapDatas[_journeyMapIndex];
+                    }
+
+                    journeyMapData.Data_1.Clear();
+                    journeyMapData.Data_2.Clear();
+                    journeyMapData.Collumns = _columns;
+                    journeyMapData.Rows = _rows;
+
+                    for (int row = 0; row < _rows; row++)
+                    {
+                        for (int col = 0; col < _columns; col++)
+                        {
+                            var cell = grid.Matrix[row][col];
+                            journeyMapData.Data_1.Add(cell.Value1);
+                            journeyMapData.Data_2.Add(cell.Value2);
+                        }
+                    }
+
+                    AssetDatabase.SaveAssets();
+                }
+
+                if (GUILayout.Button("Load Data"))
+                {
+                    var gridMapConfig = AssetDatabase.LoadAssetAtPath<JourneyMapConfig>("Assets/Resources/DataBaseConfigs/JourneyMapConfig/JourneyMapConfig.asset");
+
+                    var journeyMapData = gridMapConfig.JourneyMapDatas[_journeyMapIndex];
+                    var rowCount = journeyMapData.Rows;
+                    var colCount = journeyMapData.Collumns;
+                    grid.InitializeMatrix(rowCount, colCount);
+
+                    //2
+                    for (int row = 0; row < rowCount; row++)
+                    {
+                        //3
+                        for (int col = 0; col < colCount; col++)
+                        {
+                            var cell = grid.Matrix[row][col];
+                            cell.Value1 = journeyMapData.Data_1[row * colCount + col];
+                            cell.Value2 = journeyMapData.Data_2[row * colCount + col];
+                        }
+                    }
 
                     AssetDatabase.SaveAssets();
                 }

@@ -25,14 +25,6 @@ namespace Game.Screens.JourneyScreen
         private void SetUpJourneyMap()
         {
 
-            for (int row = 0; row < _gridMapCurrent.Rows; row++)
-            {
-                for (int col = 0; col < _gridMapCurrent.Columns; col++)
-                {
-                    var cell = _gridMapCurrent.Matrix[row][col];
-                    Debug.Log(cell);
-                }
-            }
         }
     }
 }

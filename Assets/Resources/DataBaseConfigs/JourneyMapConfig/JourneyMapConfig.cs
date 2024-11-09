@@ -11,8 +11,8 @@ namespace Sources.DataBaseSystem
     {
         public int Rows;
         public int Collumns;
-        public List<string> Data_1;
-        public List<string> Data_2;
+        public List<string> Data_1 = new();
+        public List<string> Data_2 = new();
     }
 
     [Serializable]
