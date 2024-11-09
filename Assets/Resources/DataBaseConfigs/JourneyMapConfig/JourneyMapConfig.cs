@@ -146,6 +146,25 @@ namespace Sources.DataBaseSystem
                     break;
                 }
                 EditorGUILayout.Space();
+
+                if (GUILayout.Button("Save Data"))
+                {
+                    var gridMapConfig = AssetDatabase.LoadAssetAtPath<GridMapConfig>("Assets/Resources/DataBaseConfigs/GridMapConfig/GridMapConfig.asset");
+                    gridMapConfig.DataValue_1.Clear();
+                    gridMapConfig.DataValue_2.Clear();
+
+                    for (int row = 0; row < grid.Matrix.Count; row++)
+                    {
+                        for (int col = 0; col < grid.Matrix[row].Count; col++)
+                        {
+                            var cell = grid.Matrix[row][col];
+                            gridMapConfig.DataValue_1.Add(cell.Value1);
+                            gridMapConfig.DataValue_2.Add(cell.Value2);
+                        }
+                    }
+
+                    AssetDatabase.SaveAssets();
+                }
             }
 
             if (GUI.changed)
