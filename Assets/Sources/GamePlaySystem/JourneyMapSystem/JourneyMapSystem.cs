@@ -46,7 +46,7 @@ namespace Sources.GamePlaySystem.JourneyMap
             var journeyItemMaxInOneGrid = _journeyMapConfig.JourneyItemViews.Count;
             var indexGridMapCurrent = IndexWaveCurrent / journeyItemMaxInOneGrid;
 
-            GridMapCurrent = _journeyMapConfig.GridMaps[indexGridMapCurrent];
+            //GridMapCurrent = _journeyMapConfig.GridMaps[indexGridMapCurrent];
         }
     }
 }
