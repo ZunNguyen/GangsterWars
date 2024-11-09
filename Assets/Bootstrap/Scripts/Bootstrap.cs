@@ -3,6 +3,7 @@ using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.GamePlaySystem.Bomber;
 using Sources.GamePlaySystem.CoinController;
+using Sources.GamePlaySystem.JourneyMap;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainMenuGame;
@@ -64,6 +65,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitBomberSystemService());
             serviceGroup.Add(new InitMainGamePlaySystemService());
             serviceGroup.Add(new InitCoinControllerSystemService());
+            serviceGroup.Add(new InitJourneyMapSystemService());
 
             return serviceGroup;
         }

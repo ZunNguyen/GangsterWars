@@ -20,7 +20,7 @@ namespace Sources.DataBaseSystem
         public GameObject JourneyItem;
     }
 
-    public class Grid
+    public class GridMap
     {
         [SerializeField] private int rows;
         [SerializeField] private int columns;
@@ -54,7 +54,7 @@ namespace Sources.DataBaseSystem
     public class JourneyMapConfig : DataBaseConfig
     {
         public List<JourneyItemView> JourneyItemViews = new();
-        public List<Grid> grids = new List<Grid>();
+        public List<GridMap> GridMaps = new List<GridMap>();
     }
 
 #if UNITY_EDITOR
@@ -72,14 +72,14 @@ namespace Sources.DataBaseSystem
 
             if (GUILayout.Button("Add New Grid"))
             {
-                config.grids.Add(new Grid());
+                config.GridMaps.Add(new GridMap());
                 Undo.RecordObject(config, "Added New Grid");
             }
 
-            for (int i = 0; i < config.grids.Count; i++)
+            for (int i = 0; i < config.GridMaps.Count; i++)
             {
                 EditorGUILayout.Space();
-                Grid grid = config.grids[i];
+                GridMap grid = config.GridMaps[i];
 
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField($"Grid {i + 1}", EditorStyles.boldLabel);
@@ -100,9 +100,10 @@ namespace Sources.DataBaseSystem
                         Undo.RecordObject(config, "Initialized Matrix");
                     }
                 }
+                EditorGUILayout.Space();
 
                 EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField("", GUILayout.Width(60));
+                EditorGUILayout.LabelField("", GUILayout.Width(100));
                 for (int col = 0; col < grid.Columns; col++)
                 {
                     EditorGUILayout.LabelField($"Col {col + 1}", GUILayout.Width(120));
@@ -113,8 +114,8 @@ namespace Sources.DataBaseSystem
                 {
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.BeginVertical(GUILayout.Width(60));
-                    EditorGUILayout.LabelField("Journey Id", GUILayout.Width(60));
-                    EditorGUILayout.LabelField("Wave Id", GUILayout.Width(60));
+                    EditorGUILayout.LabelField("Journey Id", GUILayout.Width(80));
+                    EditorGUILayout.LabelField("Wave Id", GUILayout.Width(80));
                     EditorGUILayout.EndVertical();
 
                     for (int col = 0; col < grid.Matrix[row].Count; col++)
@@ -123,13 +124,13 @@ namespace Sources.DataBaseSystem
                         EditorGUILayout.BeginVertical(GUILayout.Width(120));
                         if (grid.IsLocked)
                         {
-                            EditorGUILayout.LabelField(cell.Value1, GUILayout.Width(60));
-                            EditorGUILayout.LabelField(cell.Value2, GUILayout.Width(60));
+                            EditorGUILayout.LabelField(cell.Value1, GUILayout.Width(80));
+                            EditorGUILayout.LabelField(cell.Value2, GUILayout.Width(80));
                         }
                         else
                         {
-                            cell.Value1 = EditorGUILayout.TextField(cell.Value1, GUILayout.Width(60));
-                            cell.Value2 = EditorGUILayout.TextField(cell.Value2, GUILayout.Width(60));
+                            cell.Value1 = EditorGUILayout.TextField(cell.Value1, GUILayout.Width(80));
+                            cell.Value2 = EditorGUILayout.TextField(cell.Value2, GUILayout.Width(80));
                         }
                         EditorGUILayout.EndVertical();
                     }
@@ -137,13 +138,13 @@ namespace Sources.DataBaseSystem
                     EditorGUILayout.Space();
                 }
 
+                EditorGUILayout.Space();
                 if (!grid.IsLocked && GUILayout.Button("Remove Grid " + (i + 1)))
                 {
-                    config.grids.RemoveAt(i);
+                    config.GridMaps.RemoveAt(i);
                     Undo.RecordObject(config, "Removed Grid");
                     break;
                 }
-
                 EditorGUILayout.Space();
             }
 

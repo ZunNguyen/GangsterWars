@@ -51,5 +51,11 @@ namespace Sources.DataBaseSystem
 
             return WavesCache[id];
         }
+
+        public int GetIndexWaveInfo(string id)
+        {
+            var waveInfo = GetWaveInfo(id);
+            return _waves.IndexOf(waveInfo);
+        }
     }
 }

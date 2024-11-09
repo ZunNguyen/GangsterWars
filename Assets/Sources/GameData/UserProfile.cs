@@ -34,8 +34,6 @@ namespace Sources.GameData
         public List<ShieldData> ShieldDatas;
         private Dictionary<string, BaseData> _shieldDatasCache = new();
 
-        public List<string> WavesPassedDatas;
-
         public int Coins = 1000;
 
         public void SetLeaderDataDefault()
