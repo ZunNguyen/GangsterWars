@@ -147,6 +147,7 @@ namespace Sources.DataBaseSystem
                         }
                     }
 
+                    EditorUtility.SetDirty(gridMapConfig);
                     AssetDatabase.SaveAssets();
                 }
 

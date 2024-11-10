@@ -11,12 +11,14 @@ namespace Sources.DataBaseSystem
     {
         public int Rows;
         public int Collumns;
+        // journey view id or link
         public List<string> Data_1 = new();
+        // wave id or vertical/horizontal
         public List<string> Data_2 = new();
     }
 
     [Serializable]
-    public class JourneyItemView
+    public class JourneyItemInfo
     {
         public string Id;
         public GameObject JourneyItem;
@@ -24,7 +26,24 @@ namespace Sources.DataBaseSystem
 
     public class JourneyMapConfig : DataBaseConfig
     {
-        public List<JourneyItemView> JourneyItemViews = new();
+        [SerializeField] private List<JourneyItemInfo> _journeyItemViews;
+        public List<JourneyItemInfo> JourneyItemViews => _journeyItemViews;
+        private Dictionary<string, JourneyItemInfo> _journeyItemViewsCache = new();
+
+        [SerializeField] private string _pathHolderJourneyItemPrefab;
+        public string PathHolderJourneyItemPrefab => _pathHolderJourneyItemPrefab;
+
         public List<JourneyMapData> JourneyMapDatas = new();
+
+        public JourneyItemInfo GetJourneyItemInfo(string id)
+        {
+            if (!_journeyItemViewsCache.ContainsKey(id))
+            {
+                var item = _journeyItemViews.Find(x  => x.Id == id);
+                _journeyItemViewsCache.Add(id, item);
+            }
+
+            return _journeyItemViewsCache[id];
+        }
     }
 }

@@ -12,25 +12,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429e0182d60415b409e5e147b2ee046f, type: 3}
   m_Name: JourneyMapConfig
   m_EditorClassIdentifier: 
-  JourneyItemViews:
-  - Id: JourView-01
+  _journeyItemViews:
+  - Id: JourItem-01
     JourneyItem: {fileID: 467950801623443786, guid: 1a2063ff95c448d44879569accd8d3f8, type: 3}
-  - Id: JourView-02
+  - Id: JourItem-02
     JourneyItem: {fileID: 2907807851822210679, guid: 67b5b75ea8c510d4ba5818bf604e392a, type: 3}
-  - Id: JourView-03
-    JourneyItem: {fileID: 4062566073931748303, guid: f19edb19c5be69a4e9fbb1babc2cdcd6, type: 3}
-  - Id: JourView-04
-    JourneyItem: {fileID: 4662044734941462675, guid: a0128f8a6cc6f984ba92ef8526b938a4, type: 3}
-  - Id: JourView-05
-    JourneyItem: {fileID: 5824259755865000873, guid: abb42addfda1d1245a1e404cc671e4e2, type: 3}
-  - Id: JourView-06
-    JourneyItem: {fileID: 9001656014652665583, guid: bd54f1d5971630c40a9c585d97be0d12, type: 3}
-  - Id: JourView-07
-    JourneyItem: {fileID: 7608063457769181134, guid: 30b3a2088b6e53e4094a70b36ec4ca3f, type: 3}
-  - Id: JourView-08
-    JourneyItem: {fileID: 5610929306538095599, guid: 293b313c5a026514f919f4cee94eb8db, type: 3}
-  - Id: JourView-09
-    JourneyItem: {fileID: 8658810952410303331, guid: 0d1c3f61bd97b2149b53dc328a9b0dc1, type: 3}
-  - Id: JourView-10
-    JourneyItem: {fileID: 3568118831267859724, guid: 3cfae547a2a890743824b6e49385125f, type: 3}
-  JourneyMapDatas: []
+  _pathHolderJourneyItemPrefab: Assets/Game/Screens/JourneyScreen/JourneyView/Variant
+  JourneyMapDatas:
+  - Rows: 3
+    Collumns: 12
+    Data_1:
+    - JourItem-01
+    - Horizontal
+    - JourItem-02
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    Data_2:
+    - Wave-01
+    - 
+    - Wave-02
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 

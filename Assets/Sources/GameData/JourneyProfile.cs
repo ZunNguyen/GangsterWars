@@ -23,6 +23,8 @@ namespace Sources.GameData
                 Id = JourneyKey.WaveDefault,
                 Stars = 0,
             };
+            WavesPassedDatas.Add(newWaveData);
+            Save();
         }
     }
 }

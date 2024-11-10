@@ -352,10 +352,10 @@ RectTransform:
   m_Father: {fileID: 3447554601896464268}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6933305853456619048
 GameObject:
@@ -466,6 +466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5bc31c30ea93e46972079fa353fce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _journeyItemViewHolder: {fileID: 5291105354871683642}
+  _linkBarItemPrefab: {fileID: 1989231955829898057, guid: 7c134640fc9092f48b1800bece8dfdeb, type: 3}
+  _linkBarItemHolder: {fileID: 6517549279261410165}
 --- !u!1 &7711062324932866011
 GameObject:
   m_ObjectHideFlags: 0

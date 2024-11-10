@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 259655174755010813}
   - component: {fileID: 284314992661618248}
   - component: {fileID: 8901134801187106620}
+  - component: {fileID: 2140927680347698436}
   m_Layer: 0
   m_Name: JourneyView
   m_TagString: Untagged
@@ -277,6 +278,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2140927680347698436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650613766052123214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7c769487005e54eb46add5a84ef5dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5099866244058568397
 PrefabInstance:
   m_ObjectHideFlags: 0
