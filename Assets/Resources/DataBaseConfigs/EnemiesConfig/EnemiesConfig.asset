@@ -18,6 +18,11 @@ MonoBehaviour:
     WaveEnemies:
     - Id: wave-01
       Damage: 10
-      Hp: 100
-      coinReward: {x: 279, y: 1359}
+      Hp: 50
+      coinReward: {x: 2, y: 4}
       PercentChance: 100
+    - Id: wave-02
+      Damage: 20
+      Hp: 100
+      coinReward: {x: 4, y: 10}
+      PercentChance: 50
