@@ -36,16 +36,14 @@ namespace Sources.DataBaseSystem
         {
             LevelUpgrades.Clear();
             string[] datas = csvFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
-
             string[] lines = csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             var rowCount = lines.Length;
-
             var columnCount = datas.Length / rowCount;
+            var rowCurrent = 1;
 
             for (int column = 1; column < columnCount; column++)
             {
-                var rowCurrent = 1;
                 var newLevelUpgrade = new LevelUpgradeInfo();
                 var indexData = columnCount * rowCurrent + column;
 

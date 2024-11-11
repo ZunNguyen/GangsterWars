@@ -4,11 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Sources.UI;
+using Sources.GamePlaySystem.JourneyMap;
+using Sources.Utils.Singleton;
+using System.Threading.Tasks;
 
 namespace Game.Screens.JourneyScreen
 {
     public class JourneyScreen : BaseUI
     {
-        
+        private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _journeyMapSystem.OnBattle += CloseScreen;
+        }
+
+        private async Task CloseScreen()
+        {
+            await Close();
+        }
     }
 }

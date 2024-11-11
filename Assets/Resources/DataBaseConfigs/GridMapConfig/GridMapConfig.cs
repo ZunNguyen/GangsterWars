@@ -149,6 +149,8 @@ namespace Sources.DataBaseSystem
 
                     EditorUtility.SetDirty(gridMapConfig);
                     AssetDatabase.SaveAssets();
+
+                    UnityEngine.Debug.Log("Save done");
                 }
 
                 if (GUILayout.Button("Load Data"))
@@ -173,6 +175,7 @@ namespace Sources.DataBaseSystem
                     }
 
                     AssetDatabase.SaveAssets();
+                    UnityEngine.Debug.Log("Load done");
                 }
             }
 

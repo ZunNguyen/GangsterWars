@@ -27,5 +27,11 @@ namespace Sources.Utils.String
 
             return input.Substring(0, splitIndex);
         }
+
+        private static readonly string _specialCharacterSeparate = "-";
+        public static string[] SeparateString(string input)
+        {
+            return input.Split(new[] { _specialCharacterSeparate }, StringSplitOptions.RemoveEmptyEntries);
+        }
     }
 }

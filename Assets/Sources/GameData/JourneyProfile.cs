@@ -15,6 +15,7 @@ namespace Sources.GameData
     public class JourneyProfile : IProfileData
     {
         public List<WaveData> WavesPassedDatas = new();
+        private Dictionary<string, WaveData> _waveDataCache = new();
  
         public void SetJourneyDataDefault()
         {
@@ -25,6 +26,17 @@ namespace Sources.GameData
             };
             WavesPassedDatas.Add(newWaveData);
             Save();
+        }
+
+        public WaveData GetWaveData(string id)
+        {
+            if (!_waveDataCache.ContainsKey(id))
+            {
+                var waveData = WavesPassedDatas.Find(x => x.Id == id);
+                _waveDataCache.Add(id, waveData);
+            }
+
+            return _waveDataCache[id];
         }
     }
 }

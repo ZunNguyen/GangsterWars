@@ -23,8 +23,8 @@ MonoBehaviour:
     Collumns: 12
     Data_1:
     - JourItem-01
-    - Horizontal
-    - JourItem-02
+    - 
+    - 
     - 
     - 
     - 
@@ -59,9 +59,9 @@ MonoBehaviour:
     - 
     - 
     Data_2:
-    - Wave-01
+    - wave-01
     - 
-    - Wave-02
+    - 
     - 
     - 
     - 

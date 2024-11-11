@@ -14,7 +14,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private EnemySpawnConfig _enemySpawnConfig => _dataBase.GetConfig<EnemySpawnConfig>();
+        private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
 
         private Wave _waveInfo;
         private int _turnIndexCurrent = 0;
@@ -33,7 +33,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
             GetWaveInfo();
         }
 
-        public void GetWaveInfo()
+        private void GetWaveInfo()
         {
             _waveInfo = _enemySpawnConfig.GetWaveInfo(_waveIdCurrent);
             GetMaxEnemy();

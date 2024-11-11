@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3852d90333f8ba04390624dbba687370, type: 3}
-  m_Name: EnemySpawnConfig
+  m_Name: SpawnWaveConfig
   m_EditorClassIdentifier: 
   _waves:
   - Id: wave-01
@@ -20,7 +20,10 @@ MonoBehaviour:
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 000000000100000002000000
-          Damage: 10
-          Hp: 100
+          IndexPos: 0000000001000000
         SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 2000

@@ -1,14 +1,15 @@
 using Cysharp.Threading.Tasks;
+using Sources.Command;
 using Sources.DataBaseSystem;
 using Sources.Extension;
 using Sources.GameData;
-using Sources.Services;
+using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
 using Sources.Utils.String;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Sources.GamePlaySystem.JourneyMap
 {
@@ -31,10 +32,12 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private JourneyMapConfig _journeyMapConfig => _dataBase.GetConfig<JourneyMapConfig>();
-        private EnemySpawnConfig _enemySpawnConfig => _dataBase.GetConfig<EnemySpawnConfig>();
+        private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
+        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
         public JourneyMapData JourneyMapDataCurrent { get; private set; }
         public int IndexWaveCurrent {  get; private set; }
+        public Func<Task> OnBattle;
 
         public override async UniTask Init()
         {
@@ -76,6 +79,13 @@ namespace Sources.GamePlaySystem.JourneyMap
             if (baseVericalItem == JourneyKey.BASE_LINK_VERTICAL_ITEM) return DataState.VerticalItem;
 
             else return DataState.Empty;
+        }
+
+        public async void OnBattleWave(string waveId)
+        {
+            _mainGamePlaySystem.SetWaveId(waveId);
+            await OnBattle.Invoke();
+            await new LoadSenceCommand("GamePlay").Execute();
         }
     }
 }

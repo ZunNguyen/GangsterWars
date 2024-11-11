@@ -75,6 +75,10 @@ namespace Game.Screens.JourneyScreen
             var newJourneyItemView = _spawnerManager.Get(journeyItemPrefab);
             newJourneyItemView.transform.SetParent(_journeyItemViewHolder);
 
+            var journeyItemScript = newJourneyItemView.GetComponent<JourneyView>();
+            var waveId = _journeyMapDataCurrent.Data_2[cellIndex];
+            journeyItemScript.OnSetUp(waveId);
+
             var rect = newJourneyItemView.GetComponent<RectTransform>();
             rect.anchorMin = _anchorDefault;
             rect.anchorMax = _anchorDefault;
