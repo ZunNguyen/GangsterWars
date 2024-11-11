@@ -27,9 +27,12 @@ namespace Sources.GamePlaySystem.MainGamePlay
             EnemiesController = new EnemiesController();
         }
 
-        public void SetWaveId(string waveId)
+        public async void SetWaveId(string waveId)
         {
             SpawnEnemiesHandler.SetWaveId(waveId);
+
+            await UniTask.Delay(2000);
+            StartBattle();
         }
 
         public void StartBattle()

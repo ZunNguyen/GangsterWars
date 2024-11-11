@@ -25,6 +25,7 @@ namespace Game.CanvasInGamePlay.HPBar
             _worldTransformObject = hpBarModel.TransformObject;
             SetUpSlider(hpBarModel.EnemyHandler);
         }
+
         private void SetUpSlider(EnemyHandler enemyHandler)
         {
             _slider.maxValue = enemyHandler.HpMax;
@@ -34,7 +35,11 @@ namespace Game.CanvasInGamePlay.HPBar
                 _slider.value = value;
                 if (value <= 0)
                 {
-                    _spawnerManager.Release<HpBar>(this);
+                    try
+                    {
+                        _spawnerManager.Release<HpBar>(this);
+                    }
+                    catch { }
                 }
 
             }).AddTo(this);

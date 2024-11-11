@@ -44,6 +44,7 @@ namespace Game.Weapon.Bullet
 
         public void ReleaseBullet()
         {
+            if (this.isActiveAndEnabled == false) return;
             _spawnerManager.Release<BulletWeapon>(this);
         }
     }

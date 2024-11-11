@@ -140,9 +140,11 @@ namespace Sources.GameData
             Save();
         }
 
-        public void SetDataLeader()
+        public void SubsctractQualityWeapon(string id)
         {
-
+            var weapon = GetWeaponBaseData(id) as WeaponData;
+            weapon.Quatity--;
+            Save();
         }
     }
 }

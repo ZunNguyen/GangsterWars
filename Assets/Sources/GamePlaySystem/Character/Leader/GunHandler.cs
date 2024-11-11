@@ -94,7 +94,7 @@ namespace Sources.GamePlaySystem.Leader
                 IsShooting?.Invoke();
             }
 
-            _userProfile.Save();
+            _userProfile.SubsctractQualityWeapon(GunModelCurrent.Value.GunId);
             CheckCanShoot();
         }
 

@@ -29,6 +29,7 @@ namespace Sources.DataBaseSystem
         [PropertyOrder(2)]
         public List<LevelUpgradeInfo> LevelUpgrades;
         protected Dictionary<string, LevelUpgradeInfo> LevelUpgradeCache { get; private set; } = new();
+        [PropertyOrder(3)]
         public TextAsset CSVFile;
 
         public LevelUpgradeInfo GetLevelUpgradeInfo(string id)
@@ -50,7 +51,7 @@ namespace Sources.DataBaseSystem
         }
 
 #if UNITY_EDITOR
-        [PropertyOrder(3)]
+        [PropertyOrder(4)]
         [Button]
         public void ReadFile()
         {
@@ -64,12 +65,14 @@ namespace Sources.DataBaseSystem
 
             for (int column = 1; column < columnCount; column++)
             {
-                var newLevelUpgrade = new LevelUpgradeInfo();
                 var indexData = columnCount * rowCurrent + column;
-
-                newLevelUpgrade.Id = datas[indexData];
-                newLevelUpgrade.LevelUpFee = int.Parse(datas[indexData + columnCount]);
-                newLevelUpgrade.ReloadFee = int.Parse(datas[indexData + 2 * columnCount]);
+                var newLevelUpgrade = new LevelUpgradeInfo
+                {
+                    Id = datas[indexData],
+                    LevelUpFee = int.Parse(datas[indexData + columnCount]),
+                    ReloadFee = int.Parse(datas[indexData + 2 * columnCount]),
+                    DamageOrHp = int.Parse(datas[indexData + 3 * columnCount])
+                };
 
                 LevelUpgrades.Add(newLevelUpgrade);
             }
