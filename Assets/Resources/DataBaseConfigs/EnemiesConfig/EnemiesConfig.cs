@@ -16,6 +16,8 @@ namespace Sources.DataBaseSystem
         public List<WaveEnemy> WaveEnemies = new();
         public Dictionary<string, WaveEnemy> WaveEnemyCache { get; private set; } = new();
 
+        public TextAsset CSVFile;
+
         public WaveEnemy GetWaveEnemy(string id)
         {
             if (!WaveEnemyCache.ContainsKey(id))
@@ -38,11 +40,11 @@ namespace Sources.DataBaseSystem
         private int _rowCount;
         private int _columnCount;
         [Button]
-        public void ReadFile(TextAsset csvFile)
+        public void ReadFile()
         {
             WaveEnemies.Clear();
-            _datas = csvFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
-            string[] lines = csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            _datas = CSVFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = CSVFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             _rowCount = lines.Length;
             _columnCount = _datas.Length / _rowCount;

@@ -11,6 +11,6 @@ namespace Resources.CSV
 {
     public interface IReadCSVData
     {
-        void ReadFile(TextAsset csvFile);
+        void ReadFile();
     }
 }

@@ -44,6 +44,8 @@ namespace Sources.DataBaseSystem
         [SerializeField] private List<Wave> _waves;
         public Dictionary<string, Wave> WavesCache = new();
 
+        public TextAsset CSVFile;
+
         public Wave GetWaveInfo(string id)
         {
             if (!WavesCache.ContainsKey(id))
@@ -67,12 +69,13 @@ namespace Sources.DataBaseSystem
         private string[] _datas;
         private int _rowCount;
         private int _columnCount;
+
         [Button]
-        public void ReadFile(TextAsset csvFile)
+        public void ReadFile()
         {
             _waves.Clear();
-            _datas = csvFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
-            string[] lines = csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            _datas = CSVFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = CSVFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             _rowCount = lines.Length;
             _columnCount = _datas.Length / _rowCount;

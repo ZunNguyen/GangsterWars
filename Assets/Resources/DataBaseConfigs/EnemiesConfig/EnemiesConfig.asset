@@ -26,3 +26,4 @@ MonoBehaviour:
       Hp: 100
       coinReward: {x: 4, y: 10}
       PercentChance: 50
+    CSVFile: {fileID: 4900000, guid: 6ed66c5a1190ab64cb9db96c9a4f981f, type: 3}

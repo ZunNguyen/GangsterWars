@@ -29,31 +29,7 @@ namespace Sources.DataBaseSystem
         [PropertyOrder(2)]
         public List<LevelUpgradeInfo> LevelUpgrades;
         protected Dictionary<string, LevelUpgradeInfo> LevelUpgradeCache { get; private set; } = new();
-
-        [PropertyOrder(3)]
-        [Button]
-        public void ReadFile(TextAsset csvFile)
-        {
-            LevelUpgrades.Clear();
-            string[] datas = csvFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
-            string[] lines = csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-            var rowCount = lines.Length;
-            var columnCount = datas.Length / rowCount;
-            var rowCurrent = 1;
-
-            for (int column = 1; column < columnCount; column++)
-            {
-                var newLevelUpgrade = new LevelUpgradeInfo();
-                var indexData = columnCount * rowCurrent + column;
-
-                newLevelUpgrade.Id = datas[indexData];
-                newLevelUpgrade.LevelUpFee = int.Parse(datas[indexData + columnCount]);
-                newLevelUpgrade.ReloadFee = int.Parse(datas[indexData + 2 * columnCount]);
-
-                LevelUpgrades.Add(newLevelUpgrade);
-            }
-        }
+        public TextAsset CSVFile;
 
         public LevelUpgradeInfo GetLevelUpgradeInfo(string id)
         {
@@ -72,6 +48,33 @@ namespace Sources.DataBaseSystem
             var levelUpgradeInfo = LevelUpgrades.FirstOrDefault(level => level.Id == levelUpgradeId);
             return LevelUpgrades.IndexOf(levelUpgradeInfo);
         }
+
+#if UNITY_EDITOR
+        [PropertyOrder(3)]
+        [Button]
+        public void ReadFile()
+        {
+            LevelUpgrades.Clear();
+            string[] datas = CSVFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = CSVFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            var rowCount = lines.Length;
+            var columnCount = datas.Length / rowCount;
+            var rowCurrent = 1;
+
+            for (int column = 1; column < columnCount; column++)
+            {
+                var newLevelUpgrade = new LevelUpgradeInfo();
+                var indexData = columnCount * rowCurrent + column;
+
+                newLevelUpgrade.Id = datas[indexData];
+                newLevelUpgrade.LevelUpFee = int.Parse(datas[indexData + columnCount]);
+                newLevelUpgrade.ReloadFee = int.Parse(datas[indexData + 2 * columnCount]);
+
+                LevelUpgrades.Add(newLevelUpgrade);
+            }
+        }
+#endif
     }
 
     public abstract class WeaponConfig : DataBaseConfig
