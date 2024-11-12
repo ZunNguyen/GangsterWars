@@ -8,6 +8,8 @@ TagManager:
   - Shield
   - Bullet
   - Boom
+  - Head
+  - Body
   layers:
   - Default
   - TransparentFX

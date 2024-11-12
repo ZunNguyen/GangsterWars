@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Game.CanvasInGamePlay.Controller;
 using Game.Weapon.Bullet;
 using Sources.Extension;
@@ -56,7 +56,7 @@ namespace Game.Character.Enemy
 
         private void FixedUpdate()
         {
-            _rb.velocity = _direction * 1f;
+            _rb.velocity = _direction * 0.1f;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

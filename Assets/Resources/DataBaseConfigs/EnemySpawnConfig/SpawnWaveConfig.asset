@@ -20,10 +20,6 @@ MonoBehaviour:
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000001000000
+          IndexPos: 01000000
         SpawnAfterMiliSeccond: 0
-      - PhaseId: phase-02
-        Enemy:
-          EnemyId: enemy-01
-          IndexPos: 00000000
-        SpawnAfterMiliSeccond: 2000
+  CSVFile: {fileID: 4900000, guid: 9642ac5883113c949887fbddb3d9b5c0, type: 3}

@@ -47,5 +47,10 @@ namespace Game.Weapon.Bullet
             if (this.isActiveAndEnabled == false) return;
             _spawnerManager.Release<BulletWeapon>(this);
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Debug.Log(collision.tag);
+        }
     }
 }
