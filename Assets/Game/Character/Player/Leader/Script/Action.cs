@@ -14,8 +14,6 @@ namespace Game.Character.Leader
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
-        private Vector3 _inputMousePos;
-
         [SerializeField] private AnimationHandler _animation;
         [SerializeField] private BulletWeapon _bullet;
         [SerializeField] private GameObject _muzzleFlash;
@@ -31,7 +29,6 @@ namespace Game.Character.Leader
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 _leaderSystem.GunHandler.Shooting();
-                _inputMousePos = Input.mousePosition;
             }
         }
 
@@ -39,8 +36,9 @@ namespace Game.Character.Leader
         {
             _animation.AnimationShoot();
 
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(_inputMousePos);
-            clickPosition.z = 0;
+            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            clickPosition.z = -1;
+            Debug.Log(clickPosition);
 
             var bullet = _spawnerManager.Get(_bullet);
             bullet.transform.position = _posSpawnBullet.position;
