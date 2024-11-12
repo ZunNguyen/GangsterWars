@@ -61,22 +61,22 @@ namespace Game.Character.Enemy
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == CollisionTagKey.Shield && !_isAttacking)
+            if (collision.tag == CollisionTagKey.SHIELD && !_isAttacking)
             {
                 _enemyHandler.OnAttack();
             }
 
-            if (collision.tag == CollisionTagKey.Bullet)
+            if (collision.tag == CollisionTagKey.BULLET)
             {
                 var bulletCtrl = collision.GetComponent<BulletWeapon>();
                 bulletCtrl.ReleaseBullet();
-                _enemyHandler.SubstractHp(bulletCtrl.Damage);
+                _enemyHandler.SubstractHp(bulletCtrl.Damage, bulletCtrl.CollisionKey);
             }
 
-            if (collision.tag == CollisionTagKey.Boom)
+            if (collision.tag == CollisionTagKey.BOOM)
             {
                 var boom = collision.GetComponent<Bomber.Weapon>();
-                _enemyHandler.SubstractHp(boom.Damage);
+                _enemyHandler.SubstractHp(boom.Damage, CollisionTagKey.BODY);
             }
         }
 

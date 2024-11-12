@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6192433116321956875}
-  - component: {fileID: 6139262776685380681}
+  - component: {fileID: 6030562290509392274}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,8 +32,8 @@ Transform:
   m_Father: {fileID: 7078153635389497993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &6139262776685380681
-EdgeCollider2D:
+--- !u!60 &6030562290509392274
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -46,22 +46,29 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: 0.17033152, y: 0.52217245}
-  - {x: 0.47978365, y: 0.43133202}
-  - {x: 0.29069832, y: -0.23525979}
-  - {x: -0.07815239, y: -0.35390696}
-  - {x: -0.19760044, y: -0.20805255}
-  - {x: -0.12765157, y: -0.027944349}
-  - {x: -0.20937015, y: 0.120035276}
-  - {x: -0.07707365, y: 0.2713715}
-  - {x: -0.120484844, y: 0.3283559}
-  - {x: 0.17166668, y: 0.5195604}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+    m_Paths:
+    - - {x: 0.37728265, y: 0.5320276}
+      - {x: 0.0847475, y: 0.49310958}
+      - {x: -0.14590526, y: 0.32104582}
+      - {x: -0.082131445, y: 0.2631864}
+      - {x: -0.20918202, y: 0.14043912}
+      - {x: -0.14313829, y: -0.040642872}
+      - {x: -0.20371097, y: -0.08279538}
+      - {x: -0.16694987, y: -0.30836815}
+      - {x: -0.03707964, y: -0.36927086}
+      - {x: 0.14167127, y: -0.30839777}
+      - {x: 0.35560033, y: -0.12697339}
+      - {x: 0.5084537, y: 0.39608648}
 --- !u!1 &2979277852961877915
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,10 +272,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3213009970562787633}
-  - component: {fileID: 2322648474587128164}
+  - component: {fileID: 7134195839193599557}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,8 +295,8 @@ Transform:
   m_Father: {fileID: 7078153635389497993}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &2322648474587128164
-EdgeCollider2D:
+--- !u!60 &7134195839193599557
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -302,22 +309,26 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: -0.086728185, y: 0.61569065}
-  - {x: 0.41759565, y: 0.7230035}
-  - {x: 0.52368236, y: -0.6598517}
-  - {x: -0.23468564, y: -0.6188858}
-  - {x: -0.18857, y: -0.5008408}
-  - {x: 0.009705573, y: -0.4793825}
-  - {x: 0.025600106, y: -0.18564011}
-  - {x: -0.05888912, y: -0.11850327}
-  - {x: -0.07240847, y: 0.3235105}
-  - {x: -0.098822296, y: 0.6072564}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+    m_Paths:
+    - - {x: 0.3443234, y: 0.71784604}
+      - {x: -0.09503025, y: 0.5672595}
+      - {x: 0.00043398887, y: -0.53642774}
+      - {x: 0.13009763, y: -0.53060126}
+      - {x: 0.10060587, y: -0.059783526}
+      - {x: 0.2942677, y: -0.06896812}
+      - {x: 0.34590405, y: -0.5632179}
+      - {x: 0.48526275, y: -0.59176296}
+      - {x: 0.42978913, y: 0.15598446}
 --- !u!1 &3213009970673475055
 GameObject:
   m_ObjectHideFlags: 0

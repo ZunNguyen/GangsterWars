@@ -90,7 +90,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             });
         }
 
-        public void SubstractHp(int hp)
+        public void SubstractHp(int hp, string collision)
         {
             HpCurrent.Value -= hp;
             CheckDeath();

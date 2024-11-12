@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Sources.Extension;
 using Sources.GamePlaySystem.Leader;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
@@ -19,6 +20,7 @@ namespace Game.Weapon.Bullet
 
         private Vector2 _originalPos;
 
+        public string CollisionKey { get; private set; }
         public int Damage { get; private set; }
 
         [SerializeField] private Rigidbody2D _rb;
@@ -50,7 +52,8 @@ namespace Game.Weapon.Bullet
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log(collision.tag);
+            if (collision.tag == CollisionTagKey.HEAD) CollisionKey = CollisionTagKey.HEAD;
+            if (collision.tag == CollisionTagKey.BODY) CollisionKey = CollisionTagKey.BODY;
         }
     }
 }
