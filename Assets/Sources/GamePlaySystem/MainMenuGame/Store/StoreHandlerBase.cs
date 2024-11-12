@@ -19,9 +19,9 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
     {
         public ReactiveProperty<ItemState> State = new();
         public ReactiveProperty<int> LevelUpgradeFee = new(0);
+        public ReactiveProperty<int> ReloadFee = new(0);
         public List<string> LevelUpgradeIdsPassed = new();
         public int UnlockFee;
-        public int ReloadFee;
         public Action<bool> IsChosed;
     }
 
@@ -36,7 +36,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         protected List<BaseData> _weaponDatas = new();
         protected IEnumerable<WeaponInfoBase> _weaponInfoConfigs;
         
-        private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
+        protected CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
         private int _weaponIndexMaxCurrent;
 
         public Dictionary<string, WeaponViewModel> WeaponWiewModels { get; private set; } = new();
@@ -185,6 +185,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             }
             else Debug.Log("Not enough money!");
         }
+
+        public abstract void ReloadWeapon(string weaponId);
 
         public bool IsHandlerSystem(string weaponId)
         {

@@ -90,7 +90,6 @@ namespace Game.Screens.MainMenuScreen
 
                     _levelUpgradeHolder.gameObject.SetActive(true);
                     _levelUpFee.SetActive(true);
-                    _reload.SetActive(true);
 
                     GetOnCheckList();
                 }
@@ -101,7 +100,6 @@ namespace Game.Screens.MainMenuScreen
 
                     _levelUpgradeHolder.gameObject.SetActive(false);
                     _levelUpFee.SetActive(false);
-                    _reload.SetActive(false);
                 }
                 if (state == ItemState.CanNotUnlock)
                 {
@@ -110,7 +108,6 @@ namespace Game.Screens.MainMenuScreen
                     _unlock.SetActive(false);
                     _levelUpgradeHolder.gameObject.SetActive(false);
                     _levelUpFee.SetActive(false);
-                    _reload.SetActive(false);
                 }
 
             }).AddTo(this);
@@ -137,7 +134,11 @@ namespace Game.Screens.MainMenuScreen
 
         private void GetReloadFee()
         {
-            _valueReload.text = _weaponViewModel.ReloadFee.ToString();
+            _weaponViewModel.ReloadFee.Subscribe(value =>
+            {
+                _reload.SetActive(value != 0);
+                _valueReload.text = value.ToString();
+            }).AddTo(this);
         }
 
         private void GetUnlockFee()
@@ -176,6 +177,11 @@ namespace Game.Screens.MainMenuScreen
         public void OnLevelUpgradeClicked()
         {
             _storeWeaponHandler.UpgradeNewLevelWeapon(_weaponId);
+        }
+
+        public void OnReloadClicked()
+        {
+            _storeWeaponHandler.ReloadWeapon(_weaponId);
         }
     }
 }

@@ -108,7 +108,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             var factor = GetFactorShieldState(weaponDataProfile.State);
             var reloadFee = levelUpgradeInfo.ReloadFee;
 
-            weaponViewModel.ReloadFee = (int)(reloadFee * factor);
+            weaponViewModel.ReloadFee.Value = (int)(reloadFee * factor);
         }
 
         private float GetFactorShieldState(ShieldState shieldState)
@@ -145,6 +145,23 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             _userProfile.ShieldDatas.Add(newWeaponDataProfile);
 
             _userProfile.Save();
+        }
+
+        public override void ReloadWeapon(string weaponId)
+        {
+            var weaponModel = WeaponWiewModels[weaponId];
+
+            var result = _coinControllerSystem.PurchaseItem(weaponModel.ReloadFee.Value);
+            if (result)
+            {
+                weaponModel.ReloadFee.Value = 0;
+
+                var weaponConfig = _weaponConfig.GetWeaponInfo(weaponId) as ShieldWeaponInfo;
+                var weaponData = _userProfile.GetWeaponBaseData(weaponId) as ShieldData;
+                weaponData.State = ShieldState.Full;
+                _userProfile.Save();
+            }
+            else Debug.Log("Not enough money!");
         }
     }
 }

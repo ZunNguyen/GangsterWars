@@ -47,7 +47,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
             var maxBullet = weaponInfo.MaxBullet;
             var reloadFee = levelUpgradeInfo.ReloadFee;
 
-            weaponViewModel.ReloadFee = (reloadFee * bulletRemain) / maxBullet;
+            var reloadFeeCurrent = (reloadFee - bulletRemain) * (reloadFee / maxBullet);
+            weaponViewModel.ReloadFee.Value = reloadFeeCurrent;
         }
 
         protected override void SaveNewData(string weaponId, string levelUpgradeId)
@@ -68,6 +69,23 @@ namespace Sources.GamePlaySystem.MainMenuGame
             _userProfile.BomberDatas.Add(newWeaponDataProfile);
 
             _userProfile.Save();
+        }
+
+        public override void ReloadWeapon(string weaponId)
+        {
+            var weaponModel = WeaponWiewModels[weaponId];
+
+            var result = _coinControllerSystem.PurchaseItem(weaponModel.ReloadFee.Value);
+            if (result)
+            {
+                weaponModel.ReloadFee.Value = 0;
+
+                var weaponConfig = _weaponConfig.GetWeaponInfo(weaponId) as BomberWeaponInfo;
+                var weaponData = _userProfile.GetWeaponBaseData(weaponId) as WeaponData;
+                weaponData.Quatity = weaponConfig.MaxBullet;
+                _userProfile.Save();
+            }
+            else Debug.Log("Not enough money!");
         }
     }
 }

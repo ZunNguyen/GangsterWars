@@ -19,11 +19,11 @@ MonoBehaviour:
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 1
-      ReloadFee: 3
+      ReloadFee: 50
       DamageOrHp: 1
     - Id: level-02
       LevelUpFee: 2
-      ReloadFee: 4
+      ReloadFee: 50
       DamageOrHp: 10
     - Id: level-03
       LevelUpFee: 3
@@ -68,7 +68,7 @@ MonoBehaviour:
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 1
-      ReloadFee: 3
+      ReloadFee: 50
       DamageOrHp: 0
     - Id: level-02
       LevelUpFee: 2
@@ -106,7 +106,7 @@ MonoBehaviour:
       LevelUpFee: 10
       ReloadFee: 12
       DamageOrHp: 0
-    CSVFile: {fileID: 0}
+    CSVFile: {fileID: 4900000, guid: 10a86ee27d98c8247a4b53487a8436e3, type: 3}
     SpriteLibraryAsset: {fileID: 7108339969198208228, guid: e5ea23211d9e50744ac7421dc80e366b, type: 3}
     MaxBullet: 50
     BulletsPerClip: 5

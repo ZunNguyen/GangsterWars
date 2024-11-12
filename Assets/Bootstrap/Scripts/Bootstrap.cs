@@ -61,9 +61,6 @@ namespace Game.Bootstrap
 
             serviceGroup.Add(new InitSaveGameDataSystemService());
             serviceGroup.Add(new InitStoreSystemService());
-            serviceGroup.Add(new InitLeaderSystemService());
-            serviceGroup.Add(new InitBomberSystemService());
-            serviceGroup.Add(new InitMainGamePlaySystemService());
             serviceGroup.Add(new InitCoinControllerSystemService());
             serviceGroup.Add(new InitJourneyMapSystemService());
 

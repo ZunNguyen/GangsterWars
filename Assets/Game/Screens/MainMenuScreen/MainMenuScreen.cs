@@ -12,6 +12,7 @@ using Cysharp.Threading.Tasks;
 using UniRx;
 using Sources.UISystem;
 using Game.Screens.JourneyScreen;
+using Sources.GamePlaySystem.MainGamePlay;
 
 namespace Game.Screens.MainMenuScreen
 {
@@ -40,9 +41,6 @@ namespace Game.Screens.MainMenuScreen
         {
             await Close();
             await _uiManager.Show<JourneyScreen.JourneyScreen>();
-
-            //await OnTransitionExit();
-            //await new LoadSenceCommand("GamePlay").Execute();
         }
     }
 }

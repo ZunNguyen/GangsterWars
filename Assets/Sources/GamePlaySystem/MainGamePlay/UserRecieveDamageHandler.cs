@@ -61,6 +61,10 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         private void GetShieldState()
         {
+            //if (_hpCurrentShield > _maxHpShield * 0.75f)
+            //{
+            //    ShieldCurrentState.Value = ShieldState.Full;
+            //}
             if (_hpCurrentShield <= _maxHpShield * 0.75f && ShieldCurrentState.Value == ShieldState.Full)
             {
                 ShieldCurrentState.Value = ShieldState.ThreeQuarter;

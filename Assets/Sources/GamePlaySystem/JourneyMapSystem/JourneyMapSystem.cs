@@ -83,9 +83,9 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         public async void OnBattleWave(string waveId)
         {
+            await new LoadGamePlayScenceCommand().Execute();
             _mainGamePlaySystem.SetWaveId(waveId);
             await OnBattle.Invoke();
-            await new LoadSenceCommand("GamePlay").Execute();
         }
     }
 }
