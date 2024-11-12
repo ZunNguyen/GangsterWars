@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3852d90333f8ba04390624dbba687370, type: 3}
+  m_Name: SpawnWaveConfig
+  m_EditorClassIdentifier: 
+  _waves:
+  - Id: wave-01
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 2000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 2000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 0000000002000000
+        SpawnAfterMiliSeccond: 2000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 2000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 000000000100000002000000
+        SpawnAfterMiliSeccond: 3000
+  - Id: wave-02
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 0000000002000000
+        SpawnAfterMiliSeccond: 2000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 3000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 2000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 2000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 5000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 0000000002000000
+        SpawnAfterMiliSeccond: 3000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 3000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 3000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 3000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 3000
+  CSVFile: {fileID: 4900000, guid: 9642ac5883113c949887fbddb3d9b5c0, type: 3}

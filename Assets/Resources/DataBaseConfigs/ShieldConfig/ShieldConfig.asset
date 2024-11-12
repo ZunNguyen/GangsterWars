@@ -74,44 +74,44 @@ MonoBehaviour:
     - Id: level-01
       LevelUpFee: 1
       ReloadFee: 3
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-02
       LevelUpFee: 2
       ReloadFee: 4
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-03
       LevelUpFee: 3
       ReloadFee: 5
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-04
       LevelUpFee: 4
       ReloadFee: 6
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-05
       LevelUpFee: 5
       ReloadFee: 7
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-06
       LevelUpFee: 6
       ReloadFee: 8
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-07
       LevelUpFee: 7
       ReloadFee: 9
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-08
       LevelUpFee: 8
       ReloadFee: 10
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-09
       LevelUpFee: 9
       ReloadFee: 11
-      DamageOrHp: 0
+      DamageOrHp: 100
     - Id: level-10
       LevelUpFee: 10
       ReloadFee: 12
-      DamageOrHp: 0
-    CSVFile: {fileID: 0}
+      DamageOrHp: 100
+    CSVFile: {fileID: 4900000, guid: af15a1b5ca9819842b74e3596e25df01, type: 3}
     IconStates:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 195c7df775ced254ba2ab75ac713e3a0, type: 3}

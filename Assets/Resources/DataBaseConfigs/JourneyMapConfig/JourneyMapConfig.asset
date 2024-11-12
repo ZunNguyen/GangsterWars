@@ -13,54 +13,77 @@ MonoBehaviour:
   m_Name: JourneyMapConfig
   m_EditorClassIdentifier: 
   _journeyItemViews:
-  - Id: JourItem-01
+  - Id: jourItem-01
     JourneyItem: {fileID: 467950801623443786, guid: 1a2063ff95c448d44879569accd8d3f8, type: 3}
-  - Id: JourItem-02
+  - Id: jourItem-02
     JourneyItem: {fileID: 2907807851822210679, guid: 67b5b75ea8c510d4ba5818bf604e392a, type: 3}
+  - Id: jourItem-03
+    JourneyItem: {fileID: 4062566073931748303, guid: f19edb19c5be69a4e9fbb1babc2cdcd6, type: 3}
+  - Id: jourItem-04
+    JourneyItem: {fileID: 4662044734941462675, guid: a0128f8a6cc6f984ba92ef8526b938a4, type: 3}
+  - Id: jourItem-05
+    JourneyItem: {fileID: 5824259755865000873, guid: abb42addfda1d1245a1e404cc671e4e2, type: 3}
+  - Id: jourItem-06
+    JourneyItem: {fileID: 9001656014652665583, guid: bd54f1d5971630c40a9c585d97be0d12, type: 3}
+  - Id: jourItem-07
+    JourneyItem: {fileID: 7608063457769181134, guid: 30b3a2088b6e53e4094a70b36ec4ca3f, type: 3}
+  - Id: jourItem-08
+    JourneyItem: {fileID: 5610929306538095599, guid: 293b313c5a026514f919f4cee94eb8db, type: 3}
+  - Id: jourItem-09
+    JourneyItem: {fileID: 8658810952410303331, guid: 0d1c3f61bd97b2149b53dc328a9b0dc1, type: 3}
+  - Id: jourItem-10
+    JourneyItem: {fileID: 3568118831267859724, guid: 3cfae547a2a890743824b6e49385125f, type: 3}
   _pathHolderJourneyItemPrefab: Assets/Game/Screens/JourneyScreen/JourneyView/Variant
   JourneyMapDatas:
   - Rows: 3
     Collumns: 12
     Data_1:
-    - JourItem-01
+    - jourItem-01
+    - horizontal
+    - jourItem-02
+    - 
+    - jourItem-06
+    - horizontal
+    - jourItem-07
+    - horizontal
+    - jourItem-08
     - 
     - 
     - 
     - 
     - 
+    - vertical
+    - 
+    - vertical
+    - 
+    - 
+    - 
+    - vertical
     - 
     - 
     - 
     - 
     - 
+    - jourItem-03
+    - horizontal
+    - jourItem-04
+    - horizontal
+    - jourItem-05
     - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - jourItem-09
+    - horizontal
+    - jourItem-10
     - 
     Data_2:
     - wave-01
     - 
+    - wave-02
+    - 
+    - wave-06
+    - 
+    - wave-07
+    - 
+    - wave-08
     - 
     - 
     - 
@@ -78,20 +101,13 @@ MonoBehaviour:
     - 
     - 
     - 
+    - wave-03
     - 
+    - wave-04
     - 
+    - wave-05
     - 
+    - wave-09
     - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - wave-10
     - 

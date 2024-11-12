@@ -103,10 +103,9 @@ namespace Sources.DataBaseSystem
                     };
                     _waves.Add(newWave);
                     ProcessTurn(newWave, starIndexWave, endIndexWave);
-                    
+
                     countSameWave = 0;
                     startWaveId = _datas[indexWave];
-                    break;
                 }
                 countSameWave++;
             }
@@ -115,7 +114,7 @@ namespace Sources.DataBaseSystem
         private void ProcessTurn(Wave wave, int startIndex, int endIndex)
         {
             int countSameTurn = 0;
-            var startIndexTurn = _columnCount + 1;
+            var startIndexTurn = _columnCount * startIndex + 1;
             var startTurnId = _datas[startIndexTurn];
             for (int row = startIndex; row <= endIndex; row++)
             {
@@ -135,7 +134,6 @@ namespace Sources.DataBaseSystem
 
                     countSameTurn = 0;
                     startTurnId = _datas[indexTurn];
-                    break;
                 }
                 countSameTurn++;
             }
