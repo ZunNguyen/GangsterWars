@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7c769487005e54eb46add5a84ef5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waveText: {fileID: 0}
+  _waveText: {fileID: 7275748423397516630}
   _stars:
   - {fileID: 3736886164114375005}
   - {fileID: 1982573470050803311}

@@ -14,6 +14,8 @@ namespace Game.PosSpawnEnemies
 {
     public class PosSpawnEnemy : MonoBehaviour
     {
+        private const float _offsetDefaultZ = 0.1f;
+
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EnemiesConfig _enemiesConfig => _dataBase.GetConfig<EnemiesConfig>();
 
@@ -22,12 +24,14 @@ namespace Game.PosSpawnEnemies
 
         private Dictionary<string, EnemyController> _enemiesCache = new Dictionary<string, EnemyController>();
         private int _indexPos;
+        private Vector3 _offsetPos;
 
         [SerializeField] private CanvasInGamePlayController _canvasInGamePlayController;
 
         public void OnSetUp(int index)
         {
             _indexPos = index;
+            _offsetPos = transform.position;
 
             _mainGamePlaySystem.SpawnEnemiesHandler.EnemyModel.Subscribe(value =>
             {
@@ -60,8 +64,10 @@ namespace Game.PosSpawnEnemies
         {
             var enemyPrefab = _spawnerManager.Get(enemyController);
             _mainGamePlaySystem.SpawnEnemiesHandler.AddEnemyToList(enemyPrefab);
-            enemyPrefab.transform.position = this.transform.position;
             enemyPrefab.OnSetUp(_canvasInGamePlayController, enemyId);
+
+            _offsetPos.z -= _offsetDefaultZ;
+            enemyPrefab.transform.position = _offsetPos;
         }
     }
 }

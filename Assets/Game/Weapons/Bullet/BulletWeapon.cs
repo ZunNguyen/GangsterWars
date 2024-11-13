@@ -41,11 +41,7 @@ namespace Game.Weapon.Bullet
             var duration = Vector3.Distance(clickMousePos, _originalPos) / _speed;
 
             transform.DOMove(clickMousePos, duration).SetEase(Ease.InSine)
-                .OnComplete(() =>
-                {
-                    Debug.Log($"Bullet pos: {transform.position}");
-                    ReleaseBullet();
-                });
+                .OnComplete(() => ReleaseBullet());
         }
 
         public void ReleaseBullet()

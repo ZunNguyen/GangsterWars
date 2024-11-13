@@ -60,13 +60,13 @@ MonoBehaviour:
     CSVFile: {fileID: 4900000, guid: af15a1b5ca9819842b74e3596e25df01, type: 3}
     IconStates:
     - ShieldStates: 100
-      Icon: {fileID: 21300000, guid: 422529b59dc9d0f479e7d138558ee94c, type: 3}
+      Icon: {fileID: 21300000, guid: 195c7df775ced254ba2ab75ac713e3a0, type: 3}
     - ShieldStates: 75
-      Icon: {fileID: 21300000, guid: 4959d4c6dd3c30b418290f46e1796627, type: 3}
+      Icon: {fileID: 21300000, guid: d963a94e9c51c6947bb96094f37dc094, type: 3}
     - ShieldStates: 50
-      Icon: {fileID: 21300000, guid: 68fedda4970ae3e46848946d41ab83c5, type: 3}
+      Icon: {fileID: 21300000, guid: eccbceafd9a585e48a327e492c5af600, type: 3}
     - ShieldStates: 25
-      Icon: {fileID: 21300000, guid: 02fe7d470fb50ef4aa710c368a4217ea, type: 3}
+      Icon: {fileID: 21300000, guid: 1ec81bb081768df4cbe630ac89db7feb, type: 3}
   - Id: shield-02
     Icon: {fileID: 21300000, guid: 70f264c5714d5084c8a6313991c2ded9, type: 3}
     UnlockFee: 0
@@ -114,10 +114,10 @@ MonoBehaviour:
     CSVFile: {fileID: 4900000, guid: af15a1b5ca9819842b74e3596e25df01, type: 3}
     IconStates:
     - ShieldStates: 100
-      Icon: {fileID: 21300000, guid: 195c7df775ced254ba2ab75ac713e3a0, type: 3}
+      Icon: {fileID: 21300000, guid: 422529b59dc9d0f479e7d138558ee94c, type: 3}
     - ShieldStates: 75
-      Icon: {fileID: 21300000, guid: d963a94e9c51c6947bb96094f37dc094, type: 3}
+      Icon: {fileID: 21300000, guid: 4959d4c6dd3c30b418290f46e1796627, type: 3}
     - ShieldStates: 50
-      Icon: {fileID: 21300000, guid: eccbceafd9a585e48a327e492c5af600, type: 3}
+      Icon: {fileID: 21300000, guid: 68fedda4970ae3e46848946d41ab83c5, type: 3}
     - ShieldStates: 25
-      Icon: {fileID: 21300000, guid: 1ec81bb081768df4cbe630ac89db7feb, type: 3}
+      Icon: {fileID: 21300000, guid: 02fe7d470fb50ef4aa710c368a4217ea, type: 3}

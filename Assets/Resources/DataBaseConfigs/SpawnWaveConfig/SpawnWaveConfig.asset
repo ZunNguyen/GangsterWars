@@ -26,28 +26,23 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-01
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 2000
+        SpawnAfterMiliSeccond: 3000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-01
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 2000
+        SpawnAfterMiliSeccond: 3000
     - Id: turn-02
       Phases:
-      - PhaseId: phase-01
-        Enemy:
-          EnemyId: enemy-01
-          IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 2000
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-01
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 2000
+        SpawnAfterMiliSeccond: 3000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 000000000100000002000000
+          IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-02
     Turns:
@@ -62,7 +57,7 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-01
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 2000
+        SpawnAfterMiliSeccond: 3000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-02

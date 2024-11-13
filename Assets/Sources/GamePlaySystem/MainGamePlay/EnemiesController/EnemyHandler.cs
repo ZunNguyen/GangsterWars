@@ -58,8 +58,9 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public void OnSetUp(string enemyId)
         {
             GetEnemyInfo(enemyId);
-            OnStart();
+            OnWalk();
             SubscribeShieldState();
+            SubscribeUserDeath();
         }
 
         private void GetEnemyInfo(string enemyId)
@@ -73,7 +74,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             CoinsReward = GetRandom.GetCoinRandom(enemyWaveInfo.coinReward, enemyWaveInfo.PercentChance);
         }
 
-        private void OnStart()
+        private void OnWalk()
         {
             AniamtionState.Value = AnimationState.Walk;
             Direction.Value = Vector2.left;
@@ -85,10 +86,16 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             {
                 if (value == ShieldState.Empty)
                 {
-                    OnStart();
+                    OnWalk();
                 }
             });
         }
+
+        private void SubscribeUserDeath()
+        {
+            _mainGamePlaySystem.UserRecieveDamageHandler.IsDead += OnIdle;
+        }
+
 
         public void SubstractHp(int hp, string collision)
         {
@@ -100,11 +107,11 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         {
             if (HpCurrent.Value <= 0)
             {
-                Death();
+                OnDeath();
             }
         }
 
-        private void Death()
+        private void OnDeath()
         {
             Direction.Value = Vector2.zero;
             AniamtionState.Value = AnimationState.Death;
@@ -114,10 +121,15 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         {
             IsAttacking.Value = true;
 
-            AniamtionState.Value = AnimationState.Idle;
-            Direction.Value = Vector2.zero;
+            OnIdle();
 
             AniamtionState.Value = AnimationState.Attack;
+        }
+
+        private void OnIdle()
+        {
+            AniamtionState.Value = AnimationState.Idle;
+            Direction.Value = Vector2.zero;
         }
 
         public async void DamageUser()
@@ -133,6 +145,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public void Disposable()
         {
             _disposableShieldState.Dispose();
+            _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= OnIdle;
         }
     }
 }

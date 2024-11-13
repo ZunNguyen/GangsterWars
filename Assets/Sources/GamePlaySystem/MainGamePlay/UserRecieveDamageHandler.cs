@@ -24,63 +24,65 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private readonly int _maxHpTotal;
         private readonly int _maxHpShield;
         private readonly int _maxHpUser;
+        private const float _percentHpShield = 0.75f;
+        private const float _percentHpUser = 0.25f;
 
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
+        
         private int _hpCurrentShield;
+        private ShieldData _shieldData;
 
         public ReactiveProperty<ShieldState> ShieldCurrentState { get;} = new ReactiveProperty<ShieldState>(ShieldState.Full);
         public ReactiveProperty<int> HpCurrentUser {  get;} = new ReactiveProperty<int>();
-        public Action IsDead { get; private set; }
+        public Action IsDead;
         public string ShieldId {  get; private set; }
 
         public UserRecieveDamageHandler()
         {
             _maxHpTotal = GetMaxHp();
 
-            _hpCurrentShield = _maxHpShield = (int)(_maxHpTotal * 0.75f);
-            HpCurrentUser.Value = _maxHpUser = (int)(_maxHpTotal * 0.25f);
+            HpCurrentUser.Value = _maxHpUser = (int)(_maxHpTotal * _percentHpUser);
+            _maxHpShield = (int)(_maxHpTotal * _percentHpShield);
+            _hpCurrentShield = (int)_shieldData.State / 100 * _maxHpTotal;
         }
 
         private int GetMaxHp()
         {
-            var shieldData = _userProfile.GetShieldDataCurrent();
-            ShieldId = shieldData.Id;
+            _shieldData = _userProfile.GetShieldDataCurrent();
+            ShieldId = _shieldData.Id;
             var shieldInfo = _shieldConfig.GetWeaponInfo(ShieldId) as ShieldWeaponInfo;
-            var levelInfo = shieldInfo.GetLevelUpgradeInfo(shieldData.LevelUpgradeId);
+            var levelInfo = shieldInfo.GetLevelUpgradeInfo(_shieldData.LevelUpgradeId);
             return levelInfo.DamageOrHp;
         }
 
         public void OnSetUp()
         {
-            GetShieldState();
+            ShieldCurrentState.Value = GetShieldState();
         }
 
-        private void GetShieldState()
+        private ShieldState GetShieldState()
         {
-            //if (_hpCurrentShield > _maxHpShield * 0.75f)
-            //{
-            //    ShieldCurrentState.Value = ShieldState.Full;
-            //}
-            if (_hpCurrentShield <= _maxHpShield * 0.75f && ShieldCurrentState.Value == ShieldState.Full)
+            if (_hpCurrentShield > _maxHpShield * 0.5f && _hpCurrentShield <= _maxHpShield * 0.75f)
             {
-                ShieldCurrentState.Value = ShieldState.ThreeQuarter;
+                return ShieldState.ThreeQuarter;
             }
-            if (_hpCurrentShield <= _maxHpShield * 0.5f && ShieldCurrentState.Value == ShieldState.ThreeQuarter)
+            if (_hpCurrentShield > _maxHpShield * 0.25f && _hpCurrentShield <= _maxHpShield * 0.5f)
             {
-                ShieldCurrentState.Value = ShieldState.Half;
+                return ShieldState.Half;
             }
-            if (_hpCurrentShield <= _maxHpShield * 0.25f && ShieldCurrentState.Value == ShieldState.Half)
+            if (_hpCurrentShield > 0 && _hpCurrentShield <= _maxHpShield * 0.25f)
             {
-                ShieldCurrentState.Value = ShieldState.Quarter;
+                return ShieldState.Quarter;
             }
-            if (_hpCurrentShield <= 0 && ShieldCurrentState.Value != ShieldState.Empty)
+            if (_hpCurrentShield <= 0)
             {
-                ShieldCurrentState.Value = ShieldState.Empty;
+                return ShieldState.Empty;
             }
+            return ShieldState.Full;
         }
 
         public void SubstractHp(int damage)
@@ -100,7 +102,8 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private void SubstractHpShield(int damage)
         {
             _hpCurrentShield -= damage;
-            GetShieldState();
+            ShieldCurrentState.Value = _shieldData.State = GetShieldState();
+            _userProfile.Save();
         }
 
         private void SubstractHpUser(int damage)
@@ -111,7 +114,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         private void CheckDead()
         {
-            if (_hpCurrentShield < 0) IsDead?.Invoke();
+            if (HpCurrentUser.Value <= 0) IsDead?.Invoke();
         }
     }
 }

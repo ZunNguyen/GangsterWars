@@ -38,7 +38,6 @@ namespace Game.Character.Leader
 
             Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             clickPosition.z = -1;
-            Debug.Log(clickPosition);
 
             var bullet = _spawnerManager.Get(_bullet);
             bullet.transform.position = _posSpawnBullet.position;
