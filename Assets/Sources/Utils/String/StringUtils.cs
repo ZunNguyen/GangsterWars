@@ -21,7 +21,6 @@ namespace Sources.Utils.String
 
             if (splitIndex <= 0)
             {
-                Debug.Log($"<color = red>{input}</color> have not <color = blue>{_specialCharacter_1}<color> or <color = blue>{_specialCharacter_2}</color>");
                 return input;
             }
 

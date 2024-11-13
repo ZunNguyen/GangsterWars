@@ -17,9 +17,12 @@ namespace Game.Screens.JourneyScreen
         private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
 
         private string _waveId;
+        private bool _isCanClick = true;
 
         [SerializeField] private TMP_Text _waveText;
         [SerializeField] private List<GameObject> _stars;
+        [SerializeField] private GameObject _lock;
+        [SerializeField] private GameObject _starsHolder;
 
         private void Awake()
         {
@@ -27,21 +30,35 @@ namespace Game.Screens.JourneyScreen
             {
                 star.gameObject.SetActive(false);
             }
+            _lock.SetActive(false);
         }
 
         public void OnSetUp(string waveId)
         {
             _waveId = waveId;
 
-            var waveData = _journeyProfile.GetWaveData(waveId);
-            for (int i = 0; i < waveData.Stars; i++)
+            var journeyItemState = _journeyMapSystem.GetJourneyItemState(waveId);
+
+            if (journeyItemState == JourneyItemState.Passed)
             {
-                _stars[i].SetActive(true);
+                var waveData = _journeyProfile.GetWaveData(waveId);
+                for (int i = 0; i < waveData.Stars; i++)
+                {
+                    _stars[i].SetActive(true);
+                }
+            }
+            else if (journeyItemState == JourneyItemState.Lock)
+            {
+                _isCanClick = false;
+                _waveText.gameObject.SetActive(false);
+                _lock.SetActive(true);
+                _starsHolder.SetActive(false);
             }
         }
 
         public void OnBattleWaveClicked()
         {
+            if (!_isCanClick) return;
             _journeyMapSystem.OnBattleWave(_waveId);
         }
     }

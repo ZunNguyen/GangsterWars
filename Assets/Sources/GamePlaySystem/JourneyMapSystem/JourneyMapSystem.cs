@@ -8,7 +8,6 @@ using Sources.SystemService;
 using Sources.Utils.Singleton;
 using Sources.Utils.String;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Sources.GamePlaySystem.JourneyMap
@@ -23,6 +22,13 @@ namespace Sources.GamePlaySystem.JourneyMap
         VerticalItem,
     }
 
+    public enum JourneyItemState
+    {
+        Passed,
+        NotYetPass,
+        Lock
+    }
+
     public class JourneyMapSystem : BaseSystem
     {
         private const string _dataDefault = "";
@@ -34,6 +40,8 @@ namespace Sources.GamePlaySystem.JourneyMap
         private JourneyMapConfig _journeyMapConfig => _dataBase.GetConfig<JourneyMapConfig>();
         private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+
+        private int _indexGridMapCurrent;
 
         public JourneyMapData JourneyMapDataCurrent { get; private set; }
         public int IndexWaveCurrent {  get; private set; }
@@ -59,9 +67,9 @@ namespace Sources.GamePlaySystem.JourneyMap
             IndexWaveCurrent = _enemySpawnConfig.GetIndexWaveInfo(_journeyProfile.WavesPassedDatas[indexMaxWaveData].Id);
 
             var journeyItemMaxInOneGrid = _journeyMapConfig.JourneyItemViews.Count;
-            var indexGridMapCurrent = IndexWaveCurrent / journeyItemMaxInOneGrid;
+            _indexGridMapCurrent = IndexWaveCurrent / journeyItemMaxInOneGrid;
 
-            JourneyMapDataCurrent = _journeyMapConfig.JourneyMapDatas[indexGridMapCurrent];
+            JourneyMapDataCurrent = _journeyMapConfig.JourneyMapDatas[_indexGridMapCurrent];
         }
 
 
@@ -79,6 +87,54 @@ namespace Sources.GamePlaySystem.JourneyMap
             if (baseVericalItem == JourneyKey.BASE_LINK_VERTICAL_ITEM) return DataState.VerticalItem;
 
             else return DataState.Empty;
+        }
+
+        public JourneyItemState GetJourneyItemState(string waveId)
+        {
+            if (_journeyProfile.HaveWaveData(waveId)) return JourneyItemState.Passed;
+
+            if (CheckJourneyItemHorizontalPreviousPassed(waveId)) return JourneyItemState.NotYetPass;
+
+            if (CheckJourneyItemVerticalPreviousPassed(waveId)) return JourneyItemState.NotYetPass;
+            
+            return JourneyItemState.Lock;
+        }
+
+        private bool CheckJourneyItemHorizontalPreviousPassed(string waveId)
+        {
+            var indexCurrent = _journeyMapConfig.GetIndexWaveIdInJourneyMap(_indexGridMapCurrent, waveId);
+            
+            var indexLinkItem = indexCurrent--;
+            var haveLinkId = _journeyMapConfig.HaveLinkIdWithIndex(_indexGridMapCurrent, indexLinkItem);
+            if (!haveLinkId) return false;
+
+            var indexWaveIdPrevious = indexCurrent--;
+            var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(_indexGridMapCurrent, indexWaveIdPrevious);
+            return _journeyProfile.HaveWaveData(waveIdPrevious);
+        }
+
+        private bool CheckJourneyItemVerticalPreviousPassed(string waveId)
+        {
+            var indexCurrent = _journeyMapConfig.GetIndexWaveIdInJourneyMap(_indexGridMapCurrent, waveId);
+            var offsetCol = _journeyMapConfig.JourneyMapDatas[_indexGridMapCurrent].Collumns;
+
+            var indexLinkItemSubstract = indexCurrent - offsetCol;
+            if (!_journeyMapConfig.HaveLinkIdWithIndex(_indexGridMapCurrent, indexLinkItemSubstract)) return false;
+            else
+            {
+                var indexWaveIdPrevious = indexCurrent - offsetCol;
+                var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(_indexGridMapCurrent, indexWaveIdPrevious);
+                if (_journeyProfile.HaveWaveData(waveIdPrevious)) return true;
+            }
+
+            var indexLinkItemAdd = indexCurrent + offsetCol;
+            if (!_journeyMapConfig.HaveLinkIdWithIndex(_indexGridMapCurrent, indexLinkItemAdd)) return false;
+            else
+            {
+                var indexWaveIdPrevious = indexCurrent - offsetCol;
+                var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(_indexGridMapCurrent, indexWaveIdPrevious);
+                return _journeyProfile.HaveWaveData(waveIdPrevious);
+            }
         }
 
         public async void OnBattleWave(string waveId)

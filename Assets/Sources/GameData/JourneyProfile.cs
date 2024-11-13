@@ -38,5 +38,12 @@ namespace Sources.GameData
 
             return _waveDataCache[id];
         }
+
+        public bool HaveWaveData(string id)
+        {
+            var waveData = WavesPassedDatas.Find(x => x.Id == id);
+            if (waveData == null) return false;
+            return true;
+        }
     }
 }

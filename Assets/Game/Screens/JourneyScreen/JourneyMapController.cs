@@ -13,12 +13,12 @@ namespace Game.Screens.JourneyScreen
     public class JourneyMapController : MonoBehaviour
     {
         private readonly Vector2 _anchorDefault = new Vector2(0, 0.5f);
-        private readonly Vector2 _offsetBorder = new Vector2(500, 200);
-        private readonly Vector2 _linkBarItemHorizontal = new Vector2(500, 30);
-        private readonly Vector2 _linkBarItemVertical = new Vector2(30, 300);
+        private readonly Vector2 _offsetBorder = new Vector2(400, 250);
+        private readonly Vector2 _linkBarItemHorizontal = new Vector2(600, 30);
+        private readonly Vector2 _linkBarItemVertical = new Vector2(30, 600);
 
-        private const float _offsetItemX = 300;
-        private const float _offsetItemY = 300;
+        private const float _offsetItemX = 250;
+        private const float _offsetItemY = -250;
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
@@ -50,10 +50,10 @@ namespace Game.Screens.JourneyScreen
                 {
                     var cellIndex = row * _journeyMapDataCurrent.Collumns + col;
                     var dataState = _journeyMapSystem.GetDataState(_journeyMapDataCurrent.Data_1[cellIndex]);
-                    if (dataState == DataState.Empty) break;
+                    if (dataState == DataState.Empty) continue;
                     if (dataState == DataState.JourneyItem) SetJourneyItem(row, col);
-                    if (dataState == DataState.HorizontalItem) SetHorizontalItem(row, col, true);
-                    if (dataState == DataState.VerticalItem) SetHorizontalItem(row, col, false);
+                    if (dataState == DataState.HorizontalItem) SetLinkItem(row, col, true);
+                    if (dataState == DataState.VerticalItem) SetLinkItem(row, col, false);
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace Game.Screens.JourneyScreen
             rect.anchoredPosition += targetPos;
         }
 
-        private void SetHorizontalItem(int row, int col, bool isHorontal)
+        private void SetLinkItem(int row, int col, bool isHorontal)
         {
             var newLinkBarItem = _spawnerManager.Get(_linkBarItemPrefab);
             newLinkBarItem.transform.SetParent(_linkBarItemHolder);

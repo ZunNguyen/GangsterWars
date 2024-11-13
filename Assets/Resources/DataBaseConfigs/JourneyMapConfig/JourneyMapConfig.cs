@@ -26,6 +26,8 @@ namespace Sources.DataBaseSystem
 
     public class JourneyMapConfig : DataBaseConfig
     {
+        private const string _dataDefault = "";
+
         [SerializeField] private List<JourneyItemInfo> _journeyItemViews;
         public List<JourneyItemInfo> JourneyItemViews => _journeyItemViews;
         private Dictionary<string, JourneyItemInfo> _journeyItemViewsCache = new();
@@ -44,6 +46,33 @@ namespace Sources.DataBaseSystem
             }
 
             return _journeyItemViewsCache[id];
+        }
+
+        public int GetIndexWaveIdInJourneyMap(int indexGrid, string waveId)
+        {
+            var haveIdInData = JourneyMapDatas[indexGrid].Data_2.Contains(waveId);
+            if (haveIdInData)
+            {
+                var indexData = JourneyMapDatas[indexGrid].Data_2.IndexOf(waveId);
+                return indexData;
+            }
+            else return -1;
+        }
+
+        public bool HaveLinkIdWithIndex(int indexGrid, int indexLink)
+        {
+            if (indexLink < 0 || indexLink >= JourneyMapDatas[indexGrid].Data_1.Count) return false;
+
+            var result = JourneyMapDatas[indexGrid].Data_1[indexLink];
+            if (result == _dataDefault) return false;
+            
+            else return true;
+        }
+
+        public string GetWaveIdWithIndex(int indexGrid, int index)
+        {
+            var waveId = JourneyMapDatas[indexGrid].Data_2[index];
+            return waveId;
         }
     }
 }
