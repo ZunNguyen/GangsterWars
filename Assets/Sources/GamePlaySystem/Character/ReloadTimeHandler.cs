@@ -1,29 +1,20 @@
 ﻿using Cysharp.Threading.Tasks;
-using Sources.DataBaseSystem;
-using Sources.GamePlaySystem.Leader;
-using Sources.Utils.Singleton;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UniRx;
 using UnityEngine;
 
-namespace Sources.GamePlaySystem.Bomber
+namespace Sources.GamePlaySystem.Character
 {
     public class ReloadTimeHandler
     {
-        private DataBase _dataBase => Locator<DataBase>.Instance;
-        private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
-
         private float _timeReload;
 
         public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new(0);
         public Action CompleteReload;
 
-        public void OnSetUp()
+        public void OnSetUp(float timeReload)
         {
-            _timeReload = 5;
+            _timeReload = timeReload;
         }
 
         public async void Reloading()

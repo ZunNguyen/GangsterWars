@@ -1,5 +1,3 @@
-using Sources.GamePlaySystem.Bomber;
-using Sources.Utils.Singleton;
 using TMPro;
 using UniRx;
 using UnityEngine;

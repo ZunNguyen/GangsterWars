@@ -1,10 +1,6 @@
 using Sources.GameData;
-using Sources.GamePlaySystem.Bomber;
-using Sources.GamePlaySystem.Leader;
+using Sources.GamePlaySystem.Character;
 using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Game.CanvasInGamePlay.Reload
 {

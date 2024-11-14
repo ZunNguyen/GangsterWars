@@ -135,7 +135,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
             if (result)
             {
-                SaveNewData(weaponId, LevelUpgradeKey.LevelUpgrade_Default);
+                SaveNewData(weaponId, LevelUpgradeKey.LEVELUPGRADE_DEFAULT);
                 UpdateWeaponIndexMaxCurrent();
                 foreach (var weaponConfig in _weaponInfoConfigs)
                 {

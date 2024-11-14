@@ -56,7 +56,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
             var newWeaponData = new WeaponData
             {
                 Id = weaponId,
-                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+                LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
             };
             _weaponDatas.Add(newWeaponData);
 

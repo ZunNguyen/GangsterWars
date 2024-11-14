@@ -1,10 +1,7 @@
 using Cysharp.Threading.Tasks;
-using Sources.GamePlaySystem.Bomber;
+using Sources.GamePlaySystem.Character;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Sources.Command
 {
@@ -14,6 +11,7 @@ namespace Sources.Command
         {
             await new InitLeaderSystemService().Execute();
             await new InitBomberSystemService().Execute();
+            await new InitSniperSystemService().Execute();
             await new InitMainGamePlaySystemService().Execute();
             await new LoadSenceCommand("GamePlay").Execute();
         }

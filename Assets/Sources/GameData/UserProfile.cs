@@ -32,6 +32,9 @@ namespace Sources.GameData
         public List<WeaponData> BomberDatas;
         private Dictionary<string, BaseData> _bomberDatasCache = new();
 
+        public List<WeaponData> SniperDatas;
+        private Dictionary<string, BaseData> _sniperDatasCache = new();
+
         public List<ShieldData> ShieldDatas;
         private Dictionary<string, BaseData> _shieldDatasCache = new();
 
@@ -44,7 +47,7 @@ namespace Sources.GameData
             var weaponDefault = new WeaponData
             {
                 Id = LeaderKey.GunId_Default,
-                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+                LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
                 Quatity = LeaderKey.Quality_Bullet_Default,
             };
 
@@ -59,11 +62,26 @@ namespace Sources.GameData
             var weaponDefault = new WeaponData
             {
                 Id = BomberKey.BomberId_Default,
-                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+                LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
                 Quatity = BomberKey.Quality_Bom_Default,
             };
 
             BomberDatas.Add(weaponDefault);
+            Save();
+        }
+
+        public void SetSniperDataDefault()
+        {
+            SniperDatas = new();
+
+            var weaponDefault = new WeaponData
+            {
+                Id = SniperKey.SNIPERID_DEFAULT,
+                LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
+                Quatity = SniperKey.QUALITY_SNIPER_DEFAULT,
+            };
+
+            SniperDatas.Add(weaponDefault);
             Save();
         }
 
@@ -74,7 +92,7 @@ namespace Sources.GameData
             var shieldDefault = new ShieldData
             {
                 Id = ShieldKey.ShieldId_Default,
-                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+                LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
                 IsChosed = true,
             };
 

@@ -1,36 +1,38 @@
 using Cysharp.Threading.Tasks;
-using Sources.GamePlaySystem.Bomber;
-using Sources.Utils.Singleton;
-using UnityEngine;
-using UniRx;
-using Sources.DataBaseSystem;
+using Sources.GamePlaySystem.Character;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SpawnerSystem;
+using Sources.Utils.Singleton;
+using UniRx;
+using UnityEngine;
 
-namespace Game.Character.Bomber
+namespace Game.Character.Abstract
 {
-    public class ActionHandler : MonoBehaviour
+    public abstract class ActionHandler : MonoBehaviour
     {
-        private DataBase _dataBase => Locator<DataBase>.Instance;
-        private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
-        private BomberSystem _bomberSystem => Locator<BomberSystem>.Instance;
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
-        private Weapon _weapon;
+        protected WeaponHandler _weaponHandler;
 
-        [SerializeField] private Weapon _weaponPrefab;
+        private Bomber.Weapon _weapon;
+
+        [SerializeField] private Bomber.Weapon _weaponPrefab;
         [SerializeField] private Transform _weaponPos;
+
+        protected abstract void GetHandlerSystem();
 
         private async void Awake()
         {
+            GetHandlerSystem();
+
             await UniTask.Delay(5000);
 
-            _bomberSystem.BomHandler.Start();
+            _weaponHandler.Start();
 
             await UniTask.DelayFrame(1);
 
-            _bomberSystem.BomHandler.BomberModelCurrent.Subscribe(value =>
+            _weaponHandler.WeaponCurrent.Subscribe(value =>
             {
                 if (value == null) return;
                 _weapon = _spawnerManager.Get(_weaponPrefab);
@@ -46,9 +48,7 @@ namespace Game.Character.Bomber
             var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
             _weapon.gameObject.SetActive(true);
             _weapon.ThrowBomb(enemyTarget.transform.position);
-            _bomberSystem.BomHandler.EndActionThrow();
-
-            Debug.Log(enemyTarget.name);
+            _weaponHandler.EndActionThrow();
         }
     }
 }

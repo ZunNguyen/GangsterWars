@@ -132,7 +132,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             var newWeaponData = new BaseData
             {
                 Id = weaponId,
-                LevelUpgradeId = LevelUpgradeKey.LevelUpgrade_Default,
+                LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
             };
             _weaponDatas.Add(newWeaponData);
 

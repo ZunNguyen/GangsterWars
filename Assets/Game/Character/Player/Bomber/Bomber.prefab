@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6006202979181863232}
   - component: {fileID: 6006202979181863235}
   - component: {fileID: 6006202979181863234}
-  - component: {fileID: 4778332972151030819}
+  - component: {fileID: 825429573026290115}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -138,7 +138,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4778332972151030819
+--- !u!114 &825429573026290115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,11 +147,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6006202979181863233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62c8f9d6aeea6bd4687e149e6b2353f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f25706a3abed074296248dd18d8b6cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6006202979181863234}
-  _controller: {fileID: 6006202980070630783}
+  _actionHandler: {fileID: 5089070984371621868}
 --- !u!1 &6006202979271520277
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,8 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6006202979271520276}
-  - component: {fileID: 6006202980070630783}
-  - component: {fileID: 5340563169868247966}
+  - component: {fileID: 5089070984371621868}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Untagged
@@ -187,7 +186,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6006202980070630783
+--- !u!114 &5089070984371621868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,20 +195,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6006202979271520277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cbfefc624c13dd4abcb8470e1a12880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionHandler: {fileID: 5340563169868247966}
---- !u!114 &5340563169868247966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6006202979271520277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64550bd505cfb14a8b3f865196ebb14, type: 3}
+  m_Script: {fileID: 11500000, guid: 46120efaeb6fe014882c891861cca556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPrefab: {fileID: 828964793818385936, guid: 051bb1d0d5226ed489ccd989e0f1314c, type: 3}
+  _weaponPos: {fileID: 2465704205670635979}

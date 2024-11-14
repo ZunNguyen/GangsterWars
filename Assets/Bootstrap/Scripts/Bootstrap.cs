@@ -1,11 +1,8 @@
 using Sources.Command;
 using Sources.DataBaseSystem;
 using Sources.GameData;
-using Sources.GamePlaySystem.Bomber;
 using Sources.GamePlaySystem.CoinController;
 using Sources.GamePlaySystem.JourneyMap;
-using Sources.GamePlaySystem.Leader;
-using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainMenuGame;
 using Sources.SaveGame;
 using Sources.Services;
