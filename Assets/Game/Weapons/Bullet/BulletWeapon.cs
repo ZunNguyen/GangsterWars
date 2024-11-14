@@ -31,6 +31,11 @@ namespace Game.Weapon.Bullet
             Damage = _leaderSystem.GunHandler.DamageBulletCurrent;
         }
 
+        private void OnEnable()
+        {
+            
+        }
+
         public void MoveMent(Vector3 clickMousePos)
         {
             Vector2 direction = (clickMousePos - transform.position).normalized;

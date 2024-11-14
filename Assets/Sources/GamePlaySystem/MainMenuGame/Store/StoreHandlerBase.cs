@@ -186,7 +186,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             else Debug.Log("Not enough money!");
         }
 
-        public abstract void ReloadWeapon(string weaponId);
+        public abstract void OnReloadWeapon(string weaponId);
 
         public bool IsHandlerSystem(string weaponId)
         {

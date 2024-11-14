@@ -181,7 +181,7 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnReloadClicked()
         {
-            _storeWeaponHandler.ReloadWeapon(_weaponId);
+            _storeWeaponHandler.OnReloadWeapon(_weaponId);
         }
     }
 }

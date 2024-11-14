@@ -1,6 +1,7 @@
 using Sources.Extension;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Utils.String;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -144,6 +145,7 @@ namespace Sources.GameData
         {
             var weapon = GetWeaponBaseData(id) as WeaponData;
             weapon.Quatity--;
+            if (weapon.Quatity < 0) weapon.Quatity = 0;
             Save();
         }
     }

@@ -113,7 +113,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         private float GetFactorShieldState(ShieldState shieldState)
         {
-            return (int)shieldState / 100; //100 -> 100%
+            return ((int)ShieldState.Full - (int)shieldState) / 100; //100 -> 100%
         }
 
         public void ChoseShield(string shieldId)
@@ -147,7 +147,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             _userProfile.Save();
         }
 
-        public override void ReloadWeapon(string weaponId)
+        public override void OnReloadWeapon(string weaponId)
         {
             var weaponModel = WeaponWiewModels[weaponId];
 

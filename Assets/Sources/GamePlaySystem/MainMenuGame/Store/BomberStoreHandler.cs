@@ -71,7 +71,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
             _userProfile.Save();
         }
 
-        public override void ReloadWeapon(string weaponId)
+        public override void OnReloadWeapon(string weaponId)
         {
             var weaponModel = WeaponWiewModels[weaponId];
 
