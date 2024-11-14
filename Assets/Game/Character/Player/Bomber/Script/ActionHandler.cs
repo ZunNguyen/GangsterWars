@@ -24,7 +24,7 @@ namespace Game.Character.Bomber
 
         private async void Awake()
         {
-            await UniTask.Delay(3000);
+            await UniTask.Delay(5000);
 
             _bomberSystem.BomHandler.Start();
 

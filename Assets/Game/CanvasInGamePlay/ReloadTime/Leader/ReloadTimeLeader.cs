@@ -12,7 +12,7 @@ namespace Game.CanvasInGamePlay.Reload
 
         protected override void GetSystem()
         {
-            _timeReload = _leaderSystem.ReloadTimeHandler.TimeReloadCurrent;
+            _timeReload = _leaderSystem.GunHandler.TimeReloadCurrent;
             base.GetSystem();
         }
     }

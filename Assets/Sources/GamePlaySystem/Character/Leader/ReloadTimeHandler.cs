@@ -3,139 +3,111 @@ using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.Utils.Singleton;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using UniRx;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Sources.GamePlaySystem.Leader
 {
-    public class ReloadTimeInfo
-    {
-        public float SaveTimeReloadCurrent = 0;
-        public float SaveReloadDuration = 0;
-    }
-
     public class ReloadTimeHandler
     {
-        private const string _gunIdCurrentDefault = "";
-
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
 
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
-        private GunHandler _gunHandler;
 
-        private IDisposable _currentSubscription;
         private int _maxBulletPerClip;
-        private float _timeToReloadOneBullet;
+        private int _bulletCurrent;
+        private float _onceTimeReload;
+        private float _nextBulletReloadTime;
+        private string _gunId;
+        private bool _isCanReload;
+
+        private GunHandler _gunHandler;
         private CancellationTokenSource _reloadCancellationTokenSource;
-        private Dictionary<string, ReloadTimeInfo> _reloadTimeInfos = new Dictionary<string, ReloadTimeInfo>();
+        private IDisposable _disposableGunModelCurrent;
+        private IDisposable _disposableBulletAvailable;
+        private IDisposable _disposableBulletTotal;
 
         public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new (0);
 
-        private string _gunIdCurrent = "";
-        private float _startTime;
-        private float _reloadDuration = 0;
-        private float _nextBulletReloadTime;
-
-        public void OnSetUp()
+        public void OnSetUp(GunModelView gunModelView)
         {
+            _gunId = gunModelView.GunId;
             _gunHandler = _leaderSystem.GunHandler;
 
-            _gunHandler.GunModelCurrent.Subscribe(OnGunModelChanged);
+            var weaponInfo = _leaderConfig.GetWeaponInfo(_gunId) as LeaderWeaponInfo;
+            _maxBulletPerClip = weaponInfo.BulletsPerClip;
+            _onceTimeReload = weaponInfo.ReloadTime;
+
+            _disposableGunModelCurrent = _gunHandler.GunModelCurrent.Subscribe(value =>
+            {
+                _isCanReload = value.GunId == _gunId;
+                _gunHandler.TimeReloadCurrent.Value = TimeReloadCurrent.Value;
+                if (_isCanReload && TimeReloadCurrent.Value > 0)
+                {
+                    CountTimeToReLoad();
+                }
+            });
+
+            _disposableBulletAvailable = gunModelView.BulletAvailable.Subscribe(value =>
+            {
+                _bulletCurrent = value;
+                if (value != _maxBulletPerClip)
+                {
+                    CountTimeToReLoad();
+                }
+            });
+
+            _disposableBulletTotal = gunModelView.BulletTotal.Subscribe(value =>
+            {
+                _isCanReload = value != 0;
+            });
 
             _gunHandler.IsShooting += AddTimeReloadCurrent;
         }
 
-        private void OnGunModelChanged(GunModelView gunModel)
+        private void CountTimeToReLoad()
         {
-            SaveTimeReloadCurrent();
-
-            _gunIdCurrent = gunModel.GunId;
-            _currentSubscription?.Dispose();
-            UpdateReloadInfo();
-        }
-
-        private void UpdateReloadInfo()
-        { 
-            var weaponInfo = _leaderConfig.GetWeaponInfo(_gunIdCurrent) as LeaderWeaponInfo;
-            _maxBulletPerClip = weaponInfo.BulletsPerClip;
-            _timeToReloadOneBullet = weaponInfo.ReloadTime;
-            _currentSubscription = _gunHandler.GunModelCurrent.Value.BulletAvailable.Subscribe(OnBulletAvailableChanged);
-        }
-
-        private void OnBulletAvailableChanged(int bulletAvailableCurrent)
-        {
-            _startTime = Time.realtimeSinceStartup;
-            _reloadDuration = (_maxBulletPerClip - bulletAvailableCurrent) * _timeToReloadOneBullet;
-            _nextBulletReloadTime = Math.Max(0, _reloadDuration - _timeToReloadOneBullet);
-
-            LoadTimeReloadCurrent(bulletAvailableCurrent);
-
             _reloadCancellationTokenSource?.Cancel();
             _reloadCancellationTokenSource = new CancellationTokenSource();
-            CountTimeToReLoad(bulletAvailableCurrent, _reloadCancellationTokenSource.Token).Forget();
+
+            CountTimeToReLoad(_reloadCancellationTokenSource.Token).Forget();
         }
 
-        private async UniTask CountTimeToReLoad(int bulletCurrent, CancellationToken cancellationToken)
+        private async UniTask CountTimeToReLoad(CancellationToken cancellationToken)
         {
-            while (bulletCurrent < _maxBulletPerClip)
+            float endReloadTime = Time.time + TimeReloadCurrent.Value;
+
+            // 0.01f is offset when compare 2 float variable
+            _nextBulletReloadTime = (_maxBulletPerClip - _bulletCurrent) * _onceTimeReload - _onceTimeReload + 0.01f;
+
+            while (TimeReloadCurrent.Value > 0 && _isCanReload)
             {
-                float elapsedTime = Time.realtimeSinceStartup - _startTime;
-                TimeReloadCurrent.Value = (float)Math.Round(_reloadDuration - elapsedTime, 1);
+                TimeReloadCurrent.Value = (float)Math.Round(endReloadTime - Time.time, 1);
+                _gunHandler.TimeReloadCurrent.Value = TimeReloadCurrent.Value;
 
                 if (TimeReloadCurrent.Value <= _nextBulletReloadTime)
                 {
                     _gunHandler.AddBulletAvailable();
-                    bulletCurrent += 1;
                 }
 
-                await UniTask.DelayFrame(1, cancellationToken: cancellationToken);
-            }
-        }
-
-        private void SaveTimeReloadCurrent()
-        {
-            if (_gunIdCurrent == _gunIdCurrentDefault) return;
-
-            if (!_reloadTimeInfos.ContainsKey(_gunIdCurrent))
-            {
-                var newReloadTimeInfo = new ReloadTimeInfo();
-                _reloadTimeInfos.Add(_gunIdCurrent, newReloadTimeInfo);
-            }
-
-            _reloadTimeInfos[_gunIdCurrent].SaveTimeReloadCurrent = TimeReloadCurrent.Value;
-            _reloadTimeInfos[_gunIdCurrent].SaveReloadDuration = _reloadDuration;
-        }
-
-        private void LoadTimeReloadCurrent(int bulletCurrent)
-        {
-            if (!_reloadTimeInfos.ContainsKey(_gunIdCurrent))
-            {
-                TimeReloadCurrent.Value = 0;
-                return;
-            }
-
-            if (bulletCurrent != _maxBulletPerClip)
-            {
-                TimeReloadCurrent.Value = _reloadTimeInfos[_gunIdCurrent].SaveTimeReloadCurrent;
-                return;
-            }
-            
-            if (_reloadTimeInfos[_gunIdCurrent].SaveReloadDuration == 0) return;
-            
-            if (_reloadTimeInfos[_gunIdCurrent].SaveReloadDuration < _reloadDuration)
-            {
-                _reloadDuration = _reloadTimeInfos[_gunIdCurrent].SaveReloadDuration;
-                return;
+                await UniTask.DelayFrame(1, cancellationToken : cancellationToken);
             }
         }
 
         private void AddTimeReloadCurrent()
         {
-            TimeReloadCurrent.Value += _timeToReloadOneBullet;
+            if (_isCanReload) TimeReloadCurrent.Value += _onceTimeReload;
+        }
+
+
+        private void OnDisable()
+        {
+            _disposableBulletAvailable?.Dispose();
+            _disposableBulletTotal?.Dispose();
+            _disposableGunModelCurrent?.Dispose();
+            _gunHandler.IsShooting -= AddTimeReloadCurrent;
         }
     }
 }

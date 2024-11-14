@@ -14,12 +14,10 @@ namespace Sources.GamePlaySystem.Leader
     public class LeaderSystem : BaseSystem
     {
         public GunHandler GunHandler = new GunHandler();
-        public ReloadTimeHandler ReloadTimeHandler = new ReloadTimeHandler();
         
         public override async UniTask Init()
         {
             GunHandler.OnSetUp();
-            ReloadTimeHandler.OnSetUp();
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Game.Character.Leader
                 _spriteLibrary.spriteLibraryAsset = gunInfo.SpriteLibraryAsset;
             }).AddTo(this);
 
-            _leaderSystem.ReloadTimeHandler.TimeReloadCurrent.Subscribe(value =>
+            _leaderSystem.GunHandler.TimeReloadCurrent.Subscribe(value =>
             {
                 animator.SetFloat("Reload", value);
             }).AddTo(this);

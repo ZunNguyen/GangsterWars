@@ -28,11 +28,13 @@ namespace Sources.GamePlaySystem.Leader
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         private bool _isCanShoot;
+        private Dictionary<string, ReloadTimeHandler> _reloadTimeHandlers = new();
 
         public ReactiveDictionary<string, GunModelView> GunModels { get; private set; } = new();
         public ReactiveProperty<GunModelView> GunModelCurrent { get; private set; } = new();
         public Action IsShooting;
         public int DamageBulletCurrent { get; private set; }
+        public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new();
 
         public void OnSetUp()
         {
@@ -59,7 +61,6 @@ namespace Sources.GamePlaySystem.Leader
                 var gunInfo = _leaderConfig.GetWeaponInfo(gunData.Id) as LeaderWeaponInfo;
                 var bulletPerClip = (gunInfo.BulletsPerClip <= gunData.Quatity) ? gunInfo.BulletsPerClip : gunData.Quatity; 
                 gunModelView.BulletAvailable.Value = bulletPerClip;
-
                 GunModels.Add(gunData.Id, gunModelView);
             }
         }
@@ -70,6 +71,13 @@ namespace Sources.GamePlaySystem.Leader
             {
                 DamageBulletCurrent = gunModel.DamageBulletCurrent;
                 GunModelCurrent.Value = gunModel;
+            }
+
+            if (!_reloadTimeHandlers.ContainsKey(gunId))
+            {
+                var newReloadTimeHandler = new ReloadTimeHandler();
+                newReloadTimeHandler.OnSetUp(gunModel);
+                _reloadTimeHandlers.Add(gunId, newReloadTimeHandler);
             }
         }
 
@@ -90,8 +98,8 @@ namespace Sources.GamePlaySystem.Leader
         {
             if (GunModelCurrent.Value.BulletAvailable.Value <= 0) return;
 
-            GunModelCurrent.Value.BulletAvailable.Value -= 1;
             IsShooting?.Invoke();
+            GunModelCurrent.Value.BulletAvailable.Value -= 1;
 
             CheckCanShoot();
         }

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Sources.DataBaseSystem;
 using Sources.GamePlaySystem.Leader;
 using Sources.Utils.Singleton;
@@ -28,19 +28,23 @@ namespace Sources.GamePlaySystem.Bomber
 
         public async void Reloading()
         {
-            var startTime = Time.realtimeSinceStartup;
+            float endReloadTime = Time.time + _timeReload;
             TimeReloadCurrent.Value = _timeReload;
 
-            while (TimeReloadCurrent.Value >= 0)
+            while (TimeReloadCurrent.Value > 0)
             {
-                float elapsedTime = Time.realtimeSinceStartup - startTime;
-                TimeReloadCurrent.Value = (float)Math.Round(_timeReload - elapsedTime, 1);
+                TimeReloadCurrent.Value = (float)Math.Round(endReloadTime - Time.time, 1);
+
+                if (TimeReloadCurrent.Value <= 0)
+                {
+                    TimeReloadCurrent.Value = 0;
+                    break;
+                }
 
                 await UniTask.DelayFrame(1);
             }
 
             CompleteReload?.Invoke();
-            TimeReloadCurrent.Value = 0;
         }
     }
 }

@@ -17,6 +17,8 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public UserRecieveDamageHandler UserRecieveDamageHandler;
         public EnemiesController EnemiesController;
 
+        public Action StartBattel;
+
         public override async UniTask Init()
         {
             SpawnEnemiesHandler = new SpawnEnemiesHandler();
@@ -37,6 +39,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         public void StartBattle()
         {
+            StartBattel?.Invoke();
             SpawnEnemiesHandler.SpawnEnemies();
         }
     }
