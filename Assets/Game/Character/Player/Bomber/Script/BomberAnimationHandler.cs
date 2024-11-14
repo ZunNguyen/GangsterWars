@@ -2,11 +2,8 @@ using Game.Character.Abstract;
 using Sources.Extension;
 using Sources.GamePlaySystem.Character;
 using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace Game.Character
+namespace Game.Character.Bomber
 {
     public class BomberAnimationHandler : AnimationHandler
     {
