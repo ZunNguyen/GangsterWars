@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Sources.DataBaseSystem;
 using Sources.GameData;
+using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SpawnerSystem;
 using Sources.Utils;
 using Sources.Utils.Singleton;
@@ -15,6 +16,7 @@ namespace Game.Character.Bomber
         private const float _height = 10f;
         private readonly Vector3 _offsetPosTarget = new Vector3(-1f,0,0);
 
+        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
@@ -25,11 +27,6 @@ namespace Game.Character.Bomber
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private Animator _animator;
         [SerializeField] private Collider2D _collider;
-
-        private void Awake()
-        {
-            SetEnabled(false);
-        }
 
         private void SetEnabled(bool status)
         {
@@ -48,19 +45,21 @@ namespace Game.Character.Bomber
             _damage = levelInfo.DamageOrHp;
         }
 
-        public void ThrowBomb(Vector3 posTarget)
+        public void ThrowBomb()
         {
-            posTarget += _offsetPosTarget;
-            var middlePoint = GetVector.GetHightPointBetweenTwoPoint(transform.position, posTarget, _height);
+            var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
+            var enemyPos = enemyTarget.transform.position;
+            enemyPos += _offsetPosTarget;
+            var middlePoint = GetVector.GetHightPointBetweenTwoPoint(transform.position, enemyPos, _height);
 
             Vector3[] path = new Vector3[]
             {
                 transform.position,
                 middlePoint,
-                posTarget
+                enemyPos
             };
 
-            var duration = TweenUtils.GetTimeDuration(transform.position, posTarget, _throwSpeed);
+            var duration = TweenUtils.GetTimeDuration(transform.position, enemyPos, _throwSpeed);
             transform.DOPath(path, duration, PathType.CatmullRom).SetEase(Ease.Linear).OnComplete(OnBombHit);
         }
 

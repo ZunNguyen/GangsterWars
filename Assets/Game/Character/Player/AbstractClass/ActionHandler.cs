@@ -10,7 +10,6 @@ namespace Game.Character.Abstract
 {
     public abstract class ActionHandler : MonoBehaviour
     {
-        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         protected WeaponHandler _weaponHandler;
@@ -45,9 +44,8 @@ namespace Game.Character.Abstract
 
         public void Throwing()
         {
-            var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
             _weapon.gameObject.SetActive(true);
-            _weapon.ThrowBomb(enemyTarget.transform.position);
+            _weapon.ThrowBomb();
             _weaponHandler.EndActionThrow();
         }
     }

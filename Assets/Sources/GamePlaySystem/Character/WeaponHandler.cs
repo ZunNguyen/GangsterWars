@@ -8,6 +8,12 @@ using UniRx;
 
 namespace Sources.GamePlaySystem.Character
 {
+    public class WeaponView
+    {
+        public string WeaponId;
+        public int Damage;
+    }
+
     public class WeaponHandler
     {
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
