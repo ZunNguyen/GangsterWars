@@ -34,6 +34,7 @@ namespace Game.Character.Abstract
         private void AnimationAttack()
         {
             _weaponHandler.SetIsAnimationComplete(false);
+            _actionHandler.Attack();
             _animator.SetTrigger(_animationShootKey);
         }
 

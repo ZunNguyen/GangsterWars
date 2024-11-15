@@ -19,23 +19,19 @@ namespace Game.Character.Abstract
         [SerializeField] private Bomber.Weapon _weaponPrefab;
         [SerializeField] private Transform _weaponPos;
 
-        protected abstract void GetHandlerSystem();
-
-        private async void Awake()
+        private void Awake()
         {
             GetHandlerSystem();
+        }
 
-            await UniTask.DelayFrame(1);
+        protected abstract void GetHandlerSystem();
 
-            _weaponHandler.WeaponCurrent.Subscribe(value =>
-            {
-                if (value == null) return;
-                _weapon = _spawnerManager.Get(_weaponPrefab);
-                _weapon.OnSetUp(value);
-                _weapon.transform.position = _weaponPos.position;
-                _weapon.gameObject.SetActive(false);
-
-            }).AddTo(this);
+        public void Attack()
+        {
+            _weapon = _spawnerManager.Get(_weaponPrefab);
+            _weapon.OnSetUp(_weaponHandler.WeaponCurrent.Value.Id);
+            _weapon.transform.position = _weaponPos.position;
+            _weapon.gameObject.SetActive(false);
         }
 
         public void Throwing()
