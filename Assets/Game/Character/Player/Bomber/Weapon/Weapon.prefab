@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6402784821769319205}
   - component: {fileID: 6402784821769319204}
-  - component: {fileID: 828964793818385936}
   - component: {fileID: 1180684893}
   - component: {fileID: 2349787000259803156}
+  - component: {fileID: 5588244355260140074}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Boom
@@ -87,21 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &828964793818385936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6402784821769319202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bec0b35b74dd23f4caeefd48601156a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sprite: {fileID: 6402784821769319204}
-  _animator: {fileID: 1180684893}
-  _collider: {fileID: 2349787000259803156}
 --- !u!95 &1180684893
 Animator:
   serializedVersion: 5
@@ -139,3 +124,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.0001
+--- !u!114 &5588244355260140074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6402784821769319202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39868e1135c4f4240bd0b119dcd25b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 6402784821769319204}
+  _animator: {fileID: 1180684893}
+  _collider: {fileID: 2349787000259803156}

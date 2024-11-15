@@ -75,7 +75,7 @@ namespace Game.Character.Enemy
 
             if (collision.tag == CollisionTagKey.BOOM)
             {
-                var boom = collision.GetComponent<Bomber.Weapon>();
+                var boom = collision.GetComponent<Bomber.BomberWeapon>();
                 _enemyHandler.SubstractHp(boom.Damage, CollisionTagKey.BODY);
             }
         }

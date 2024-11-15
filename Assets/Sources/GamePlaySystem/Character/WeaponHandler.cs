@@ -1,4 +1,6 @@
+using BestHTTP.SecureProtocol.Org.BouncyCastle.Tls;
 using Game.Character.Enemy;
+using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
@@ -18,34 +20,61 @@ namespace Sources.GamePlaySystem.Character
 
     public class WeaponHandler
     {
+        private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
-        private List<WeaponData> _weaponDatas;
-        private ReloadTimeHandler _reloadTimeHandler;
         private bool _isReloading = false;
         private bool _isHaveEnemyToAttack = false;
         private bool _isAnimationComplete = true;
+        private bool _isOutOfAmmor = false;
 
-        public ReactiveProperty<WeaponData> WeaponCurrent = new();
+        private Dictionary<string, int> _damageWeaponCache = new();
+        private List<WeaponData> _weaponDatasClone;
+        private ReloadTimeHandler _reloadTimeHandler;
+        private WeaponConfig _weaponConfig;
+
+        public string WeaponIdCurrent {  get; private set; }
         public Action Attack;
 
-        public void OnSetUp(List<WeaponData> weaponDatas, ReloadTimeHandler reloadTimeHandler)
+        public void OnSetUp(List<WeaponData> weaponDatas, ReloadTimeHandler reloadTimeHandler, WeaponConfig weaponConfig)
         {
             if (weaponDatas == null) return;
 
-            _weaponDatas = weaponDatas;
+            _weaponDatasClone = new List<WeaponData>(weaponDatas);
             _reloadTimeHandler = reloadTimeHandler;
+            _weaponConfig = weaponConfig;
+
             _reloadTimeHandler.IsReloading += SetCanAttack;
             _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack += SetIsEnemyToAttack;
         }
 
         private void GetRandomWeapon()
         {
-            var model = GetRandom.FromList(_weaponDatas);
+            if (_weaponDatasClone.Count == 0)
+            {
+                _isOutOfAmmor = true;
+                return;
+            }
+
+            var model = GetRandom.FromList(_weaponDatasClone);
             if (model.Quatity != 0)
             {
-                WeaponCurrent.Value = model;
-                Attack?.Invoke();
+                WeaponIdCurrent = model.Id;
+                
+                var weaponInfo = _weaponConfig.GetWeaponInfo(WeaponIdCurrent);
+                var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(model.LevelUpgradeId);
+                var damageWeapon = levelUpgradeInfo.DamageOrHp;
+                if (!_damageWeaponCache.ContainsKey(model.Id))
+                {
+                    _damageWeaponCache.Add(WeaponIdCurrent, damageWeapon);
+                }
+                return;
+            }
+            else
+            {
+                _weaponDatasClone.Remove(model);
+                GetRandomWeapon();
             }
         }
 
@@ -72,14 +101,20 @@ namespace Sources.GamePlaySystem.Character
             if (!_isReloading && _isHaveEnemyToAttack && _isAnimationComplete)
             {
                 GetRandomWeapon();
+                if (_isOutOfAmmor) return;
                 Attack?.Invoke();
             }
         }
 
         public void EndActionThrow()
         {
-            WeaponCurrent.Value = null;
             _reloadTimeHandler.Reloading();
+            _userProfile.SubsctractQualityWeapon(WeaponIdCurrent);
+        }
+
+        public int GetDamageWeapon()
+        {
+            return _damageWeaponCache[WeaponIdCurrent];
         }
 
         private void OnDestroy()

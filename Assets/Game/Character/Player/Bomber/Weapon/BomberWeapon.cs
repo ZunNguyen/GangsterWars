@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Game.Character.Bomber
 {
-    public class Weapon : MonoBehaviour
+    public class BomberWeapon : MonoBehaviour
     {
         private const float _throwSpeed = 20f;
         private const float _height = 10f;
@@ -34,15 +34,14 @@ namespace Game.Character.Bomber
             _collider.enabled = status;
         }
 
-        public void OnSetUp(string weaponId)
+        public void OnSetUp(string weaponId, int damage)
         {
             SetEnabled(false);
 
             var bomInfo = _bomberConfig.GetWeaponInfo(weaponId) as BomberWeaponInfo;
-
             _sprite.sprite = bomInfo.Icon;
-            //var levelInfo = bomInfo.GetLevelUpgradeInfo(weaponData.LevelUpgradeId);
-            //_damage = levelInfo.DamageOrHp;
+
+            _damage = damage;
         }
 
         public void ThrowBomb()

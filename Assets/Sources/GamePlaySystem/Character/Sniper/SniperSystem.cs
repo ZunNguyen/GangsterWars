@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
@@ -17,13 +18,16 @@ namespace Sources.GamePlaySystem.Character
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private SniperConfig _sniperConfig => _dataBase.GetConfig<SniperConfig>();
+
         public ReloadTimeHandler ReloadTimeHandler = new();
         public WeaponHandler BomHandler = new();
 
         public override async UniTask Init()
         {
             ReloadTimeHandler.OnSetUp(_timeReload);
-            BomHandler.OnSetUp(_userProfile.SniperDatas, ReloadTimeHandler);
+            BomHandler.OnSetUp(_userProfile.SniperDatas, ReloadTimeHandler, _sniperConfig);
         }
     }
 }

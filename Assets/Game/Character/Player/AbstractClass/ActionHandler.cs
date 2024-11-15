@@ -14,9 +14,9 @@ namespace Game.Character.Abstract
 
         protected WeaponHandler _weaponHandler;
 
-        private Bomber.Weapon _weapon;
+        private Sniper.SniperWeapon _weapon;
 
-        [SerializeField] private Bomber.Weapon _weaponPrefab;
+        [SerializeField] private Sniper.SniperWeapon _weaponPrefab;
         [SerializeField] private Transform _weaponPos;
 
         private void Awake()
@@ -28,8 +28,10 @@ namespace Game.Character.Abstract
 
         public void Attack()
         {
+            var damageWeapon = _weaponHandler.GetDamageWeapon();
+
             _weapon = _spawnerManager.Get(_weaponPrefab);
-            _weapon.OnSetUp(_weaponHandler.WeaponCurrent.Value.Id);
+            _weapon.OnSetUp(_weaponHandler.WeaponIdCurrent, damageWeapon);
             _weapon.transform.position = _weaponPos.position;
             _weapon.gameObject.SetActive(false);
         }
