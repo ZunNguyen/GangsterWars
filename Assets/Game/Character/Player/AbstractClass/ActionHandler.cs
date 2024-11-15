@@ -25,10 +25,6 @@ namespace Game.Character.Abstract
         {
             GetHandlerSystem();
 
-            await UniTask.Delay(5000);
-
-            _weaponHandler.Start();
-
             await UniTask.DelayFrame(1);
 
             _weaponHandler.WeaponCurrent.Subscribe(value =>

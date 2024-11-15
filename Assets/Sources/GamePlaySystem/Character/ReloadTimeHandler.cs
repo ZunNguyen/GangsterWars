@@ -10,7 +10,7 @@ namespace Sources.GamePlaySystem.Character
         private float _timeReload;
 
         public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new(0);
-        public Action CompleteReload;
+        public Action<bool> IsReloading;
 
         public void OnSetUp(float timeReload)
         {
@@ -19,6 +19,8 @@ namespace Sources.GamePlaySystem.Character
 
         public async void Reloading()
         {
+            IsReloading?.Invoke(true);
+
             float endReloadTime = Time.time + _timeReload;
             TimeReloadCurrent.Value = _timeReload;
 
@@ -35,7 +37,7 @@ namespace Sources.GamePlaySystem.Character
                 await UniTask.DelayFrame(1);
             }
 
-            CompleteReload?.Invoke();
+            IsReloading?.Invoke(false);
         }
     }
 }

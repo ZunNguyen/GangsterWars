@@ -28,21 +28,28 @@ namespace Game.Character.Abstract
                 _animator.SetFloat(_animationReloadKey, value);
             }).AddTo(this);
 
-            _weaponHandler.EnemyTarget.Subscribe(value =>
-            {
-                if (value == null) return;
-                AnimationAttack();
-            }).AddTo(this);
+            _weaponHandler.Attack += AnimationAttack;
         }
 
         private void AnimationAttack()
         {
+            _weaponHandler.SetIsAnimationComplete(false);
             _animator.SetTrigger(_animationShootKey);
         }
 
         public void Attack()
         {
             _actionHandler.Throwing();
+        }
+
+        public void OnCompleteAnimation()
+        {
+            _weaponHandler.SetIsAnimationComplete(true);
+        }
+
+        private void OnDestroy()
+        {
+            _weaponHandler.Attack -= AnimationAttack;
         }
     }
 }

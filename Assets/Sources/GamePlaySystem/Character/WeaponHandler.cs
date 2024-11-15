@@ -1,8 +1,10 @@
 using Game.Character.Enemy;
 using Sources.GameData;
+using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Utils;
 using Sources.Utils.Singleton;
+using System;
 using System.Collections.Generic;
 using UniRx;
 
@@ -20,9 +22,12 @@ namespace Sources.GamePlaySystem.Character
 
         private List<WeaponData> _weaponDatas;
         private ReloadTimeHandler _reloadTimeHandler;
+        private bool _isReloading = false;
+        private bool _isHaveEnemyToAttack = false;
+        private bool _isAnimationComplete = true;
 
         public ReactiveProperty<WeaponData> WeaponCurrent = new();
-        public ReactiveProperty<EnemyController> EnemyTarget = new();
+        public Action Attack;
 
         public void OnSetUp(List<WeaponData> weaponDatas, ReloadTimeHandler reloadTimeHandler)
         {
@@ -30,41 +35,57 @@ namespace Sources.GamePlaySystem.Character
 
             _weaponDatas = weaponDatas;
             _reloadTimeHandler = reloadTimeHandler;
-            reloadTimeHandler.CompleteReload += Start;
+            _reloadTimeHandler.IsReloading += SetCanAttack;
+            _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack += SetIsEnemyToAttack;
         }
 
-        public void Start()
-        {
-            WeaponCurrent.Value = GetRandomWeapon();
-            GetEnemyToAttack();
-        }
-
-        private WeaponData GetRandomWeapon()
+        private void GetRandomWeapon()
         {
             var model = GetRandom.FromList(_weaponDatas);
             if (model.Quatity != 0)
             {
-                return model;
+                WeaponCurrent.Value = model;
+                Attack?.Invoke();
             }
-            return null;
         }
 
-        private void GetEnemyToAttack()
+        public void SetCanAttack(bool status)
         {
-            if (_mainGamePlaySystem.SpawnEnemiesHandler.Enemies.Count == 0) return;
-            EnemyTarget.Value = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
+            _isReloading = status;
+            CheckCanAttack();
+        }
+
+        private void SetIsEnemyToAttack(bool status)
+        {
+            _isHaveEnemyToAttack = status;
+            CheckCanAttack();
+        }
+
+        public void SetIsAnimationComplete(bool status)
+        {
+            _isAnimationComplete = status;
+            CheckCanAttack();
+        }
+
+        private void CheckCanAttack()
+        {
+            if (!_isReloading && _isHaveEnemyToAttack && _isAnimationComplete)
+            {
+                GetRandomWeapon();
+                Attack?.Invoke();
+            }
         }
 
         public void EndActionThrow()
         {
             WeaponCurrent.Value = null;
-            EnemyTarget.Value = null;
             _reloadTimeHandler.Reloading();
         }
 
         private void OnDestroy()
         {
-            _reloadTimeHandler.CompleteReload -= Start;
+            _reloadTimeHandler.IsReloading -= SetCanAttack;
+            _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack -= SetIsEnemyToAttack;
         }
     }
 }

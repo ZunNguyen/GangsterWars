@@ -9,10 +9,10 @@ namespace Sources.Command
     {
         public override async UniTask Execute()
         {
+            await new InitMainGamePlaySystemService().Execute();
             await new InitLeaderSystemService().Execute();
             await new InitBomberSystemService().Execute();
             await new InitSniperSystemService().Execute();
-            await new InitMainGamePlaySystemService().Execute();
             await new LoadSenceCommand("GamePlay").Execute();
         }
     }

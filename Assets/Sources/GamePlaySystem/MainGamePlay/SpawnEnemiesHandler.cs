@@ -2,10 +2,9 @@ using Cysharp.Threading.Tasks;
 using Game.Character.Enemy;
 using Sources.DataBaseSystem;
 using Sources.Utils.Singleton;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UniRx;
-using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainGamePlay
 {
@@ -26,6 +25,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public ReactiveProperty<Enemy> EnemyModel { get; private set; } = new();
         public ReactiveProperty<int> CountEnemy { get; private set; } = new();
         public List<EnemyController> Enemies { get; private set; } = new();
+        public Action<bool> HaveEnemyToAttack;
 
         public void SetWaveId(string id)
         {
@@ -85,12 +85,15 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         public void AddEnemyToList(EnemyController enemy)
         {
+            HaveEnemyToAttack?.Invoke(true);
             Enemies.Add(enemy);
         }
 
         public void RemoveEnemyToList(EnemyController enemy)
         {
             Enemies.Remove(enemy);
+            if (Enemies.Count > 0) HaveEnemyToAttack?.Invoke(true);
+            if (Enemies.Count == 0) HaveEnemyToAttack?.Invoke(false);
         }
     }
 }
