@@ -1,18 +1,13 @@
-﻿using Cysharp.Threading.Tasks;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Sources.Extension;
 using Sources.GamePlaySystem.Leader;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Weapon.Bullet
 {
-    public class BulletWeapon : MonoBehaviour
+    public class LeaderWeapon : MonoBehaviour
     {
         private const float _speed = 30f;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
@@ -31,11 +26,6 @@ namespace Game.Weapon.Bullet
             Damage = _leaderSystem.GunHandler.DamageBulletCurrent;
         }
 
-        private void OnEnable()
-        {
-            
-        }
-
         public void MoveMent(Vector3 clickMousePos)
         {
             Vector2 direction = (clickMousePos - transform.position).normalized;
@@ -52,13 +42,13 @@ namespace Game.Weapon.Bullet
         public void ReleaseBullet()
         {
             if (this.isActiveAndEnabled == false) return;
-            _spawnerManager.Release<BulletWeapon>(this);
+            _spawnerManager.Release<LeaderWeapon>(this);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == CollisionTagKey.HEAD) CollisionKey = CollisionTagKey.HEAD;
-            if (collision.tag == CollisionTagKey.BODY) CollisionKey = CollisionTagKey.BODY;
+            if (collision.tag == CollisionTagKey.ENEMY_HEAD) CollisionKey = CollisionTagKey.ENEMY_HEAD;
+            if (collision.tag == CollisionTagKey.ENEMY_BODY) CollisionKey = CollisionTagKey.ENEMY_BODY;
         }
     }
 }

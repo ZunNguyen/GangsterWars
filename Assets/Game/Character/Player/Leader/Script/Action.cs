@@ -15,7 +15,7 @@ namespace Game.Character.Leader
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
         [SerializeField] private AnimationHandler _animation;
-        [SerializeField] private BulletWeapon _bullet;
+        [SerializeField] private LeaderWeapon _bullet;
         [SerializeField] private GameObject _muzzleFlash;
         [SerializeField] private Transform _posSpawnBullet;
 

@@ -14,49 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bomberWeaponInfos:
   - Id: bom-01
+    Icon: {fileID: 21300000, guid: 1010f902bcb655241a349b7969f49c84, type: 3}
     UnlockFee: 0
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 1
-      ReloadFee: 3
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 5
     - Id: level-02
       LevelUpFee: 2
-      ReloadFee: 4
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 10
     - Id: level-03
       LevelUpFee: 3
-      ReloadFee: 5
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 10
     - Id: level-04
       LevelUpFee: 4
-      ReloadFee: 6
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 10
     - Id: level-05
       LevelUpFee: 5
-      ReloadFee: 7
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 10
     - Id: level-06
       LevelUpFee: 6
-      ReloadFee: 8
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 10
     - Id: level-07
       LevelUpFee: 7
-      ReloadFee: 9
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 10
     - Id: level-08
       LevelUpFee: 8
-      ReloadFee: 10
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 10
     - Id: level-09
       LevelUpFee: 9
-      ReloadFee: 11
-      Damage: 0
+      ReloadFee: 50
+      DamageOrHp: 10
     - Id: level-10
       LevelUpFee: 10
-      ReloadFee: 12
-      Damage: 0
-    Icon: {fileID: 21300000, guid: 1010f902bcb655241a349b7969f49c84, type: 3}
+      ReloadFee: 50
+      DamageOrHp: 10
+    CSVFile: {fileID: 4900000, guid: f0d8c9bf38ecb4241956e5eae1738f9b, type: 3}
     MaxBullet: 10
     BulletsPerClip: 1
-    ReloadTime: 1
+    ReloadTime: 5000

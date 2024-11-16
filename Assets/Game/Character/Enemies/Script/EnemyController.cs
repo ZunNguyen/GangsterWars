@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Game.CanvasInGamePlay.Controller;
+using Game.Character.Sniper;
 using Game.Weapon.Bullet;
 using Sources.Extension;
 using Sources.GamePlaySystem.CoinController;
@@ -61,22 +62,28 @@ namespace Game.Character.Enemy
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == CollisionTagKey.SHIELD && !_isAttacking)
+            if (collision.tag == CollisionTagKey.SHIELD_USER && !_isAttacking)
             {
                 _enemyHandler.OnAttack();
             }
 
-            if (collision.tag == CollisionTagKey.BULLET)
+            if (collision.tag == CollisionTagKey.BULLET_LEADER)
             {
-                var bulletCtrl = collision.GetComponent<BulletWeapon>();
-                bulletCtrl.ReleaseBullet();
-                _enemyHandler.SubstractHp(bulletCtrl.Damage, bulletCtrl.CollisionKey);
+                var bullet = collision.GetComponent<LeaderWeapon>();
+                bullet.ReleaseBullet();
+                _enemyHandler.SubstractHp(bullet.Damage, bullet.CollisionKey);
             }
 
-            if (collision.tag == CollisionTagKey.BOOM)
+            if (collision.tag == CollisionTagKey.BOM_BOMBER)
             {
                 var boom = collision.GetComponent<Bomber.BomberWeapon>();
-                _enemyHandler.SubstractHp(boom.Damage, CollisionTagKey.BODY);
+                _enemyHandler.SubstractHp(boom.Damage, CollisionTagKey.ENEMY_BODY);
+            }
+
+            if (collision.tag == CollisionTagKey.BULLET_SNIPER)
+            {
+                var bullet = collision.GetComponent<SniperWeapon>();
+                _enemyHandler.SubstractHp(bullet.Damage, bullet.CollisionKey);
             }
         }
 

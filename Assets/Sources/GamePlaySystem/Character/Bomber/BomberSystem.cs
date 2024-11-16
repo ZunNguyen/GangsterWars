@@ -11,7 +11,7 @@ namespace Sources.GamePlaySystem.Character
 
     public class BomberSystem : BaseSystem
     {
-        private const float _timeReload = 3f;
+        private const float _timeReload = 5f;
 
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();

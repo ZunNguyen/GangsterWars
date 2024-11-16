@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Game.Character.Abstract;
+using Sources.Extension;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
@@ -15,6 +16,8 @@ namespace Game.Character.Sniper
         private const float _offsetEnemyTargetPosY = 2f;
 
         private Vector3 _originPos;
+
+        public string CollisionKey { get; private set; }
 
         [SerializeField] private TrailRenderer _trailRenderer;
 
@@ -39,6 +42,12 @@ namespace Game.Character.Sniper
         {
             if (isActiveAndEnabled == false) return;
             _spawnerManager.Release<SniperWeapon>(this);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == CollisionTagKey.ENEMY_HEAD) CollisionKey = CollisionTagKey.ENEMY_HEAD;
+            if (collision.tag == CollisionTagKey.ENEMY_BODY) CollisionKey = CollisionTagKey.ENEMY_BODY;
         }
     }
 }

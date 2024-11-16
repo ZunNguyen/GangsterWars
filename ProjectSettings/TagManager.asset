@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bootstrap
-  - Shield
-  - Bullet
-  - Boom
-  - Head
-  - Body
+  - BulletLeader
+  - BulletSniper
+  - BomBomber
+  - ShieldUser
+  - EnemyHead
+  - EnemyBody
   layers:
   - Default
   - TransparentFX

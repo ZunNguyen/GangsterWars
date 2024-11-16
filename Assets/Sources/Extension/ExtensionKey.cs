@@ -54,10 +54,11 @@ namespace Sources.Extension
 
     public static class CollisionTagKey
     {
-        public static string SHIELD = "Shield";
-        public static string BULLET = "Bullet";
-        public static string BOOM = "Boom";
-        public static string HEAD = "Boom";
-        public static string BODY = "Boom";
+        public static string SHIELD_USER = "ShieldUser";
+        public static string BULLET_LEADER = "BulletLeader";
+        public static string BULLET_SNIPER = "BulletSniper";
+        public static string BOM_BOMBER = "BomBomber";
+        public static string ENEMY_HEAD = "EnemyHead";
+        public static string ENEMY_BODY = "EnemyBody";
     }
 }
