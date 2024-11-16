@@ -24,6 +24,8 @@ namespace Game.Character.Sniper
         public override void Moving()
         {
             var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
+            if (enemyTarget == null) return;
+
             var enemyPos =  enemyTarget.transform.position;
             enemyPos.y += _offsetEnemyTargetPosY;
 

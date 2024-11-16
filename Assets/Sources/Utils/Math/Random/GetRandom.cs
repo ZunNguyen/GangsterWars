@@ -29,5 +29,10 @@ namespace Sources.Utils
             if (percentChanceRandom > percentChance) return _coinValueDefault;
             return valueRandom;
         }
+
+        public static int GetRandomCriticalRate()
+        {
+            return _random.Next(0, 100);
+        }
     }
 }

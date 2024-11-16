@@ -42,6 +42,8 @@ namespace Game.Character.Bomber
         public override void Moving()
         {
             var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
+            if (enemyTarget == null) return;
+
             var enemyPos = enemyTarget.transform.position;
             enemyPos += _offsetPosTarget;
             var middlePoint = GetVector.GetHightPointBetweenTwoPoint(transform.position, enemyPos, _height);

@@ -27,6 +27,7 @@ namespace Game.PosSpawnEnemies
         private Vector3 _offsetPos;
 
         [SerializeField] private CanvasInGamePlayController _canvasInGamePlayController;
+        [SerializeField] private Transform _enemiesHolder;
 
         public void OnSetUp(int index)
         {
@@ -65,6 +66,7 @@ namespace Game.PosSpawnEnemies
             var enemyPrefab = _spawnerManager.Get(enemyController);
             _mainGamePlaySystem.SpawnEnemiesHandler.AddEnemyToList(enemyPrefab);
             enemyPrefab.OnSetUp(_canvasInGamePlayController, enemyId);
+            enemyPrefab.transform.SetParent(_enemiesHolder);
 
             _offsetPos.z -= _offsetDefaultZ;
             enemyPrefab.transform.position = _offsetPos;

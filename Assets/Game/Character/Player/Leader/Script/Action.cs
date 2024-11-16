@@ -14,10 +14,17 @@ namespace Game.Character.Leader
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
-        [SerializeField] private AnimationHandler _animation;
+        [Header("Bullet")]
         [SerializeField] private LeaderWeapon _bullet;
-        [SerializeField] private GameObject _muzzleFlash;
         [SerializeField] private Transform _posSpawnBullet;
+        [SerializeField] private Transform _bulletHolder;
+
+        [Header("Muzzle Flash")]
+        [SerializeField] private GameObject _muzzleFlash;
+        [SerializeField] private Transform _muzzleFlashHolder;
+
+        [Header("Animation")]
+        [SerializeField] private AnimationHandler _animation;
 
         private void Awake()
         {
@@ -40,10 +47,12 @@ namespace Game.Character.Leader
             clickPosition.z = -1;
 
             var bullet = _spawnerManager.Get(_bullet);
+            bullet.transform.SetParent(_bulletHolder);
             bullet.transform.position = _posSpawnBullet.position;
             bullet.MoveMent(clickPosition);
 
             var muzzleFlash = _spawnerManager.Get(_muzzleFlash);
+            muzzleFlash.transform.SetParent(_muzzleFlashHolder);
             muzzleFlash.transform.position = _posSpawnBullet.position;
         }
 

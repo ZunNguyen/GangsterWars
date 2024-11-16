@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Game.Character.Leader;
 using Game.PosSpawnEnemies;
 using Sources.DataBaseSystem;
+using Sources.Extension;
 using Sources.GamePlaySystem.CoinController;
 using Sources.Utils;
 using Sources.Utils.Singleton;
@@ -41,6 +42,10 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
     public class EnemyHandler
     {
+        private const int _timeDelayAfterAttackUser = 1000;
+        private const int _criticalRate = 100; //50%
+        private const int _factorCritical = 2;
+
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EnemiesConfig _enemiesConfig => _dataBase.GetConfig<EnemiesConfig>();
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
@@ -53,6 +58,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public ReactiveProperty<Vector2> Direction { get; } = new ReactiveProperty<Vector2>(Vector2.zero);
         public ReactiveProperty<AnimationState> AniamtionState { get;} = new ReactiveProperty<AnimationState>(AnimationState.Idle);
         public ReactiveProperty<bool> IsAttacking { get;} = new ReactiveProperty<bool>(false);
+        public Action<int> DamageFeed;
         public int CoinsReward { get; private set; }
 
         public void OnSetUp(string enemyId)
@@ -97,9 +103,20 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         }
 
 
-        public void SubstractHp(int hp, string collision)
+        public void SubstractHp(int damage, string collision)
         {
-            HpCurrent.Value -= hp;
+            var damageRecieve = damage;
+            if (collision == CollisionTagKey.ENEMY_HEAD)
+            {
+                var citiricalRateCurrent = GetRandom.GetRandomCriticalRate();
+                if (citiricalRateCurrent <= _criticalRate)
+                {
+                    damageRecieve = damage * _factorCritical;
+                    DamageFeed?.Invoke(damageRecieve);
+                }
+            }
+
+            HpCurrent.Value -= damageRecieve;
             CheckDeath();
         }
 
@@ -137,7 +154,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             AniamtionState.Value = AnimationState.Idle;
             _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value);
 
-            await UniTask.Delay(1000);
+            await UniTask.Delay(_timeDelayAfterAttackUser);
 
             IsAttacking.Value = false;
         }

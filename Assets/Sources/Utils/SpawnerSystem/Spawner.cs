@@ -53,14 +53,14 @@ namespace Sources.SpawnerSystem
                     if (gobj.activeSelf)
                         gobj.SetActive(false);
 
-                    gobj.transform.SetParent(null);
+                    //gobj.transform.SetParent(null);
                     break;
 
                 case MonoBehaviour mono:
                     if (mono.gameObject.activeSelf)
                         mono.gameObject.SetActive(false);
 
-                    mono.transform.SetParent(null);
+                    //mono.transform.SetParent(null);
                     break;
             }
         }

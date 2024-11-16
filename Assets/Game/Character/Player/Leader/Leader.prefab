@@ -31,6 +31,68 @@ Transform:
   m_Father: {fileID: 3429079678563366038}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &594650479043456129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8915469829197714664}
+  m_Layer: 0
+  m_Name: MuzzleFlashHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8915469829197714664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594650479043456129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3429079678563366038}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1715422395457228377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 933683512898116390}
+  m_Layer: 0
+  m_Name: BulletHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &933683512898116390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715422395457228377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3429079678563366038}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3429079678083620885
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +262,8 @@ Transform:
   m_Children:
   - {fileID: 3429079678083620884}
   - {fileID: 353417649}
+  - {fileID: 933683512898116390}
+  - {fileID: 8915469829197714664}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,10 +279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49670947beca6354b9f5e5886dfdcf8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 3429079679559175139}
-  _bullet: {fileID: 2151270990288060351, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
-  _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
+  _bullet: {fileID: 6197027588567590760, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
   _posSpawnBullet: {fileID: 353417649}
+  _bulletHolder: {fileID: 933683512898116390}
+  _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
+  _muzzleFlashHolder: {fileID: 8915469829197714664}
+  _animation: {fileID: 3429079679559175139}
 --- !u!114 &3429079679559175139
 MonoBehaviour:
   m_ObjectHideFlags: 0

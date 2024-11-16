@@ -18,6 +18,7 @@ namespace Game.Character.Abstract
 
         [SerializeField] private WeaponAbstract _weaponPrefab;
         [SerializeField] private Transform _weaponPos;
+        [SerializeField] private Transform _weaponHolder;
 
         private void Awake()
         {
@@ -32,6 +33,7 @@ namespace Game.Character.Abstract
 
             _weapon = _spawnerManager.Get(_weaponPrefab);
             _weapon.OnSetUp(_weaponHandler.WeaponIdCurrent, damageWeapon);
+            _weapon.transform.SetParent(_weaponHolder);
             _weapon.transform.position = _weaponPos.position;
             _weapon.gameObject.SetActive(false);
         }

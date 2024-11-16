@@ -57,7 +57,7 @@ namespace Game.Character.Enemy
 
         private void FixedUpdate()
         {
-            _rb.velocity = _direction * 1f;
+            _rb.velocity = _direction * 0.5f;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
