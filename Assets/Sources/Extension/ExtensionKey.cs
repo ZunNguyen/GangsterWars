@@ -30,7 +30,7 @@ namespace Sources.Extension
         public static int QUALITY_SNIPER_DEFAULT = 50;
 
         public static string ANIMATIONKEY_RELOADING = "Reloading";
-        public static string ANIMATIONKEY_SHOOTING = "Shoot";
+        public static string ANIMATIONKEY_SHOOTING = "Shooting";
     }
 
     public class LevelUpgradeKey

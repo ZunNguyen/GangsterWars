@@ -8,15 +8,15 @@ using UnityEngine;
 
 namespace Game.Character.Abstract
 {
-    public abstract class ActionHandler : MonoBehaviour
+    public abstract class ActionHandlerAbstract : MonoBehaviour
     {
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         protected WeaponHandler _weaponHandler;
 
-        private Sniper.SniperWeapon _weapon;
+        private WeaponAbstract _weapon;
 
-        [SerializeField] private Sniper.SniperWeapon _weaponPrefab;
+        [SerializeField] private WeaponAbstract _weaponPrefab;
         [SerializeField] private Transform _weaponPos;
 
         private void Awake()
@@ -39,7 +39,7 @@ namespace Game.Character.Abstract
         public void Throwing()
         {
             _weapon.gameObject.SetActive(true);
-            _weapon.ThrowBomb();
+            _weapon.Moving();
             _weaponHandler.EndActionThrow();
         }
     }

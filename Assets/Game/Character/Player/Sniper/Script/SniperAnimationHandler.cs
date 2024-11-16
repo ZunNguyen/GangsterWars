@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Character.Sniper
 {
-    public class SniperAnimationHandler : AnimationHandler
+    public class SniperAnimationHandler : AnimationHandlerAbstract
     {
         private SniperSystem _sniperSystem => Locator<SniperSystem>.Instance;
 

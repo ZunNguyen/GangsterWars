@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Character.Abstract
 {
-    public abstract class AnimationHandler : MonoBehaviour
+    public abstract class AnimationHandlerAbstract : MonoBehaviour
     {
         protected ReloadTimeHandler _reloadTimeHandler;
         protected WeaponHandler _weaponHandler;
@@ -15,7 +15,7 @@ namespace Game.Character.Abstract
         protected string _animationReloadKey;
 
         [SerializeField] private Animator _animator;
-        [SerializeField] private Abstract.ActionHandler _actionHandler;
+        [SerializeField] private Abstract.ActionHandlerAbstract _actionHandler;
 
         protected abstract void OnSetUp();
 
@@ -38,7 +38,7 @@ namespace Game.Character.Abstract
             _animator.SetTrigger(_animationShootKey);
         }
 
-        public void Attack()
+        public void OnSpawnWeapon()
         {
             _actionHandler.Throwing();
         }

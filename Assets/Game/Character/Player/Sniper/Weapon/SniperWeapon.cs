@@ -1,67 +1,44 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using Sources.DataBaseSystem;
+using Game.Character.Abstract;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using Sources.Utils;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Character.Sniper
 {
-    public class SniperWeapon : MonoBehaviour
+    public class SniperWeapon : WeaponAbstract
     {
-        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
-        private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
-        private DataBase _dataBase => Locator<DataBase>.Instance;
-        private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
+        private const float _duration = 0.4f;
+        private const float _factorOffsetPos = 10f;
+        private const float _offsetEnemyTargetPosY = 2f;
 
-        private int _damage;
-        public int Damage => _damage;
+        private Vector3 _originPos;
 
-        [SerializeField] private LineRenderer lineRenderer;
-        [SerializeField] private float laserDuration = 0.1f;
+        [SerializeField] private TrailRenderer _trailRenderer;
 
-        public void OnSetUp(string weaponId, int damage)
-        {
-
-        }
-
-        public void ThrowBomb()
+        public override void Moving()
         {
             var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
-            var enemyPos = enemyTarget.transform.position;
+            var enemyPos =  enemyTarget.transform.position;
+            enemyPos.y += _offsetEnemyTargetPosY;
 
-            Vector3 start = transform.position;
-            Vector3 direction = transform.forward;
+            Vector2 direction = (enemyPos - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-            // Dùng Raycast để xác định điểm kết thúc của tia laser
-            RaycastHit hit;
-            Vector3 end = enemyPos;
-            if (Physics.Raycast(start, direction, out hit))
-            {
-                end = hit.point; // nếu bắn trúng mục tiêu
-                                 // Bạn có thể thêm code để gây sát thương lên hit.collider nếu cần
-            }
-            else
-            {
-                end = start + direction * 100f; // khoảng cách tối đa nếu không trúng gì
-            }
+            var targetPos = (Vector2)enemyPos + direction * _factorOffsetPos;
 
-            // Thiết lập vị trí cho LineRenderer
-            lineRenderer.SetPosition(0, start); // Điểm đầu của laser
-            lineRenderer.SetPosition(1, end);   // Điểm cuối của laser
-            lineRenderer.enabled = true;
-
-            // Gọi hàm tắt laser sau một khoảng thời gian ngắn
-            Invoke(nameof(DisableLaser), laserDuration);
+            _trailRenderer.Clear();
+            transform.DOMove(targetPos, _duration).SetEase(Ease.OutExpo)
+                .OnComplete(() => ReleaseBullet());
         }
 
-        private void DisableLaser()
+        public void ReleaseBullet()
         {
-            lineRenderer.enabled = false;
+            if (isActiveAndEnabled == false) return;
+            _spawnerManager.Release<SniperWeapon>(this);
         }
     }
 }

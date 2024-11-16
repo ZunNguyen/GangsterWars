@@ -38,6 +38,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
         {
             CheckLeaderData();
             CheckBomberData();
+            CheckSniperData();
             CheckShieldData();
             OnSetUp();
         }
@@ -55,6 +56,14 @@ namespace Sources.GamePlaySystem.MainMenuGame
             if (_userProfile.BomberDatas == null)
             {
                 _userProfile.SetBomberDataDefault();
+            }
+        }
+
+        private void CheckSniperData()
+        {
+            if (_userProfile.SniperDatas == null)
+            {
+                _userProfile.SetSniperDataDefault();
             }
         }
 

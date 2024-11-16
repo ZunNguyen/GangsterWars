@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Game.Character.Abstract;
 using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.GamePlaySystem.MainGamePlay;
@@ -10,19 +11,14 @@ using UnityEngine;
 
 namespace Game.Character.Bomber
 {
-    public class BomberWeapon : MonoBehaviour
+    public class BomberWeapon : WeaponAbstract
     {
         private const float _throwSpeed = 20f;
         private const float _height = 10f;
         private readonly Vector3 _offsetPosTarget = new Vector3(-1f,0,0);
 
-        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
-        private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
-
-        private int _damage;
-        public int Damage => _damage;
 
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private Animator _animator;
@@ -34,17 +30,16 @@ namespace Game.Character.Bomber
             _collider.enabled = status;
         }
 
-        public void OnSetUp(string weaponId, int damage)
+        public override void OnSetUp(string weaponId, int damage)
         {
             SetEnabled(false);
-
             var bomInfo = _bomberConfig.GetWeaponInfo(weaponId) as BomberWeaponInfo;
             _sprite.sprite = bomInfo.Icon;
-
-            _damage = damage;
+            
+            base.OnSetUp(weaponId, damage);
         }
 
-        public void ThrowBomb()
+        public override void Moving()
         {
             var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
             var enemyPos = enemyTarget.transform.position;

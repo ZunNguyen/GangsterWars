@@ -198,5 +198,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46120efaeb6fe014882c891861cca556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponPrefab: {fileID: 828964793818385936, guid: 051bb1d0d5226ed489ccd989e0f1314c, type: 3}
+  _weaponPrefab: {fileID: 5588244355260140074, guid: 051bb1d0d5226ed489ccd989e0f1314c, type: 3}
   _weaponPos: {fileID: 2465704205670635979}

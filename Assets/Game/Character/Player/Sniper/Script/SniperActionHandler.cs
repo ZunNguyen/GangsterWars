@@ -4,7 +4,7 @@ using Sources.Utils.Singleton;
 
 namespace Game.Character.Sniper
 {
-    public class SniperActionHandler : ActionHandler
+    public class SniperActionHandler : ActionHandlerAbstract
     {
         private SniperSystem _sniperSystem => Locator<SniperSystem>.Instance;
 

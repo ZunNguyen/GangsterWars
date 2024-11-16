@@ -13,11 +13,51 @@ MonoBehaviour:
   m_Name: SniperConfig
   m_EditorClassIdentifier: 
   _bomberWeaponInfos:
-  - Id: 
+  - Id: sniper-01
     Icon: {fileID: 0}
     UnlockFee: 0
-    LevelUpgrades: []
-    CSVFile: {fileID: 0}
-    MaxBullet: 0
-    BulletsPerClip: 0
-    ReloadTime: 0
+    LevelUpgrades:
+    - Id: level-01
+      LevelUpFee: 1
+      ReloadFee: 50
+      DamageOrHp: 5
+    - Id: level-02
+      LevelUpFee: 2
+      ReloadFee: 50
+      DamageOrHp: 10
+    - Id: level-03
+      LevelUpFee: 3
+      ReloadFee: 50
+      DamageOrHp: 10
+    - Id: level-04
+      LevelUpFee: 4
+      ReloadFee: 50
+      DamageOrHp: 10
+    - Id: level-05
+      LevelUpFee: 5
+      ReloadFee: 50
+      DamageOrHp: 10
+    - Id: level-06
+      LevelUpFee: 6
+      ReloadFee: 50
+      DamageOrHp: 10
+    - Id: level-07
+      LevelUpFee: 7
+      ReloadFee: 50
+      DamageOrHp: 10
+    - Id: level-08
+      LevelUpFee: 8
+      ReloadFee: 50
+      DamageOrHp: 10
+    - Id: level-09
+      LevelUpFee: 9
+      ReloadFee: 50
+      DamageOrHp: 10
+    - Id: level-10
+      LevelUpFee: 10
+      ReloadFee: 50
+      DamageOrHp: 10
+    CSVFile: {fileID: 4900000, guid: b988f6a8e43f80c47b1d4540f933ac1c, type: 3}
+    MaxBullet: 50
+    BulletsPerClip: 1
+    ReloadTime: 3000

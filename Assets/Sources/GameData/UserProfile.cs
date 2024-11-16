@@ -130,6 +130,12 @@ namespace Sources.GameData
                 return (BomberDatas, _bomberDatasCache);
             }
 
+            var baseWeaponSniperId = StringUtils.GetBaseName(SniperDatas[0].Id);
+            if (baseWeaponId == baseWeaponSniperId)
+            {
+                return (SniperDatas, _sniperDatasCache);
+            }
+
             var baseShieldId = StringUtils.GetBaseName(ShieldDatas[0].Id);
             if (baseWeaponId == baseShieldId)
             {

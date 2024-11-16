@@ -4,7 +4,7 @@ using Sources.Utils.Singleton;
 
 namespace Game.Character.Bomber
 {
-    public class BomberActionHandler : ActionHandler
+    public class BomberActionHandler : ActionHandlerAbstract
     {
         private BomberSystem _bomberSystem => Locator<BomberSystem>.Instance;
 
