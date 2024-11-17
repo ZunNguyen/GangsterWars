@@ -77,7 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ac9c83e942c6148b1ff4d8f1a8292b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offsetTargetPosMouseClick: {x: 0.2, y: 0.2, z: -1}
   _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
   _muzzleFlashHolder: {fileID: 8915469829197714664}
   _weaponPrefab: {fileID: 6197027588567590760, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
@@ -347,7 +346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03753aafc28fab148bceb65c714a3994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offsetTargetPosMouseClick: {x: 1, y: 1, z: -1}
   _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
   _muzzleFlashHolder: {fileID: 8915469829197714664}
   _weaponPrefab: {fileID: 6197027588567590760, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
@@ -635,7 +633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be5c2d5b714ea44b9cd2873ab6d2ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offsetTargetPosMouseClick: {x: 1, y: 1, z: -1}
   _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
   _muzzleFlashHolder: {fileID: 8915469829197714664}
   _weaponPrefab: {fileID: 6197027588567590760, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
@@ -682,6 +679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3677453926299055808}
+  - component: {fileID: 913698511766280091}
   m_Layer: 0
   m_Name: Gun-05
   m_TagString: Untagged
@@ -705,6 +703,24 @@ Transform:
   m_Father: {fileID: 1925860565317244882}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913698511766280091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667212211710815661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b79a14efa83b04c89600e5ce3695bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
+  _muzzleFlashHolder: {fileID: 8915469829197714664}
+  _weaponPrefab: {fileID: 6197027588567590760, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}
+  _weaponHolders: {fileID: 933683512898116390}
+  _posSpawns:
+  - {fileID: 9036155879334624063}
 --- !u!1 &6899022640674312664
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6784e697ba8fea4a9b46d5c5bfe02ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offsetTargetPosMouseClick: {x: 0.2, y: 0.2, z: -1}
   _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
   _muzzleFlashHolder: {fileID: 8915469829197714664}
   _weaponPrefab: {fileID: 6197027588567590760, guid: 1dcaba50007266c4d8ef76f78a2cc819, type: 3}

@@ -11,6 +11,8 @@ namespace Game.Character.Leader
 {
     public class PosSpawnGun01Handler : PosSpawnBulletHandlerAbstract
     {
+        private readonly Vector3 _offsetTargetPosMouseClick = new Vector3(0.2f, 0.2f, -1);
+
         private Vector3 _offsetTargetPosMouseClickCurrent = Vector3.zero;
         private bool _isChangeSign = false;
         private int _countPosSpawn = 0;

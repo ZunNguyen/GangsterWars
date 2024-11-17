@@ -12,21 +12,19 @@ namespace Game.Character.Abstract
 {
     public abstract class PosSpawnBulletHandlerAbstract : MonoBehaviour
     {
-        public Vector3 _offsetTargetPosMouseClick = new Vector3(1, 1, -1);
-
-        protected SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
+        private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
         protected bool _isCanShoot = false;
         protected string _gunId;
 
         [Header("Muzzle Flash")]
-        [SerializeField] protected GameObject _muzzleFlash;
-        [SerializeField] protected Transform _muzzleFlashHolder;
+        [SerializeField] private GameObject _muzzleFlash;
+        [SerializeField] private Transform _muzzleFlashHolder;
 
         [Header("Bullet")]
-        [SerializeField] protected LeaderWeapon _weaponPrefab;
-        [SerializeField] protected Transform _weaponHolders;
+        [SerializeField] private LeaderWeapon _weaponPrefab;
+        [SerializeField] private Transform _weaponHolders;
         [SerializeField] protected List<Transform> _posSpawns;
 
         private void Awake()
@@ -58,8 +56,6 @@ namespace Game.Character.Abstract
             bullet.transform.SetParent(_weaponHolders);
             bullet.transform.position = posSpawn.position;
             bullet.MoveMent(posClick);
-
-            Debug.Log("a");
         }
 
         private void OnDestroy()
