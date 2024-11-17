@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 394089269}
   m_Layer: 0
   m_Name: User
-  m_TagString: Shield
+  m_TagString: ShieldUser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 894661054}
   m_Layer: 0
   m_Name: Shield
-  m_TagString: Shield
+  m_TagString: ShieldUser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

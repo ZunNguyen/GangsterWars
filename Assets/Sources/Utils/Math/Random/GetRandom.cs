@@ -34,5 +34,15 @@ namespace Sources.Utils
         {
             return _random.Next(0, 100);
         }
+
+        public static float GetRandomFloat(float startValue, float endValue)
+        {
+            return UnityEngine.Random.Range(startValue, endValue);
+        }
+
+        public static int GetRandomInt(int startValue, int endValue)
+        {
+            return UnityEngine.Random.Range(startValue, endValue);
+        }
     }
 }

@@ -23,11 +23,12 @@ namespace Game.Weapon.Bullet
         private void Awake()
         {
             _originalPos = transform.position;
-            Damage = _leaderSystem.GunHandler.DamageBulletCurrent;
         }
 
         public void MoveMent(Vector3 clickMousePos)
         {
+            Damage = _leaderSystem.GunHandler.DamageBulletCurrent;
+
             Vector2 direction = (clickMousePos - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
@@ -41,8 +42,8 @@ namespace Game.Weapon.Bullet
 
         public void ReleaseBullet()
         {
-            if (this.isActiveAndEnabled == false) return;
-            _spawnerManager.Release<LeaderWeapon>(this);
+            if (isActiveAndEnabled == false) return;
+            _spawnerManager.Release(this);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

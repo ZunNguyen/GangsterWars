@@ -60,24 +60,19 @@ namespace Game.Character.Leader
             {
                 animator.SetFloat("Reload", value);
             }).AddTo(this);
+
+            _leaderSystem.GunHandler.IsShooting += AnimationShoot;
         }
 
-        public void AnimationShoot()
+        private void AnimationShoot()
         {
             var state = AnimationStateLeader.Shoot_7_sprite.ConvertToString();
             animator.SetTrigger(state);
         }
 
-        public void AnimationReload()
+        private void OnDestroy()
         {
-            var state = AnimationStateLeader.Reload.ConvertToString();
-            animator.SetTrigger(state);
-        }
-
-        public void AnimationIdle()
-        {
-            var state = AnimationStateLeader.Idle.ConvertToString();
-            animator.SetTrigger(state);
+            _leaderSystem.GunHandler.IsShooting -= AnimationShoot;
         }
     }
 }

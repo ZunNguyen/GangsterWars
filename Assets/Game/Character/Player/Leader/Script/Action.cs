@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Game.Weapon.Bullet;
+using Sources.Extension;
 using Sources.GamePlaySystem.Leader;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
@@ -11,54 +12,46 @@ namespace Game.Character.Leader
 {
     public class Action : MonoBehaviour
     {
-        private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
-        [Header("Bullet")]
-        [SerializeField] private LeaderWeapon _bullet;
-        [SerializeField] private Transform _posSpawnBullet;
-        [SerializeField] private Transform _bulletHolder;
-
-        [Header("Muzzle Flash")]
-        [SerializeField] private GameObject _muzzleFlash;
-        [SerializeField] private Transform _muzzleFlashHolder;
-
-        [Header("Animation")]
-        [SerializeField] private AnimationHandler _animation;
+        private bool _isShooting = false;
+        private bool _isUseMachineGun = false;
 
         private void Awake()
         {
-            _leaderSystem.GunHandler.IsShooting += AnimationShooting;
+            _leaderSystem.GunHandler.GunModelCurrent.Subscribe(value =>
+            {
+                if (value.GunId == LeaderKey.GunId_04 || value.GunId == LeaderKey.GunId_05) _isUseMachineGun = true;
+                else _isUseMachineGun = false;
+            }).AddTo(this);
         }
 
         private void Update()
         {
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
+                if (_isUseMachineGun)
+                {
+                    _isShooting = true;
+                    CountTimePressMouse();
+                }
+
                 _leaderSystem.GunHandler.Shooting();
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                _isShooting = false;
             }
         }
 
-        private void AnimationShooting()
+        private async void CountTimePressMouse()
         {
-            _animation.AnimationShoot();
+            while (_isShooting)
+            {
+                _leaderSystem.GunHandler.Shooting();
 
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            clickPosition.z = -1;
-
-            var bullet = _spawnerManager.Get(_bullet);
-            bullet.transform.SetParent(_bulletHolder);
-            bullet.transform.position = _posSpawnBullet.position;
-            bullet.MoveMent(clickPosition);
-
-            var muzzleFlash = _spawnerManager.Get(_muzzleFlash);
-            muzzleFlash.transform.SetParent(_muzzleFlashHolder);
-            muzzleFlash.transform.position = _posSpawnBullet.position;
-        }
-
-        private void OnDestroy()
-        {
-            _leaderSystem.GunHandler.IsShooting -= AnimationShooting;
+                await UniTask.Delay(200);
+            }
         }
     }
 }

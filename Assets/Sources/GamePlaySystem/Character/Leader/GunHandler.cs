@@ -30,10 +30,11 @@ namespace Sources.GamePlaySystem.Leader
         private bool _isCanShoot;
         private Dictionary<string, ReloadTimeHandler> _reloadTimeHandlers = new();
 
-        public ReactiveDictionary<string, GunModelView> GunModels { get; private set; } = new();
-        public ReactiveProperty<GunModelView> GunModelCurrent { get; private set; } = new();
         public Action IsShooting;
         public int DamageBulletCurrent { get; private set; }
+
+        public ReactiveDictionary<string, GunModelView> GunModels { get; private set; } = new();
+        public ReactiveProperty<GunModelView> GunModelCurrent { get; private set; } = new();
         public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new();
 
         public void OnSetUp()

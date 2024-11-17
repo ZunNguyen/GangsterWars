@@ -1,0 +1,61 @@
+using Game.Character.Abstract;
+using Game.Effect.MuzzleFlash;
+using Game.Screens.GamePlayScreen;
+using Sources.Extension;
+using Sources.SpawnerSystem;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Game.Character.Leader
+{
+    public class PosSpawnGun02Handler : PosSpawnBulletHandlerAbstract
+    {
+        private Vector3 _offsetTargetPosMouseClickCurrent = Vector3.zero;
+        private bool _isChangeSign = false;
+        private int _countPosSpawn = 0;
+
+        protected override void OnSetUp()
+        {
+            _gunId = LeaderKey.GunId_02;
+        }
+
+        protected override void Shooting()
+        {
+            if (!_isCanShoot) return;
+
+            SpawnMuzzleFlash();
+
+            foreach (var pos in _posSpawns)
+            {
+                Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                clickPosition.z = -1;
+
+                clickPosition += _offsetTargetPosMouseClickCurrent;
+
+                SpawnBullet(pos, clickPosition);
+
+                ++_countPosSpawn;
+                UpdateTargetPosMouseClick();
+            }
+
+            _countPosSpawn = 0;
+            _offsetTargetPosMouseClickCurrent = Vector3.zero;
+            _isChangeSign = false;
+        }
+
+        private void UpdateTargetPosMouseClick()
+        {
+            if (_isChangeSign)
+            {
+                _offsetTargetPosMouseClickCurrent -= _countPosSpawn * _offsetTargetPosMouseClick;
+            }
+            else
+            {
+                _offsetTargetPosMouseClickCurrent += _countPosSpawn * _offsetTargetPosMouseClick;
+            }
+
+            _isChangeSign = !_isChangeSign;
+        }
+    }
+}
