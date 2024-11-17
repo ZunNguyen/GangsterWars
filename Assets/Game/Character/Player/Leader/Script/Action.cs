@@ -35,8 +35,10 @@ namespace Game.Character.Leader
                     _isShooting = true;
                     CountTimePressMouse();
                 }
-
-                _leaderSystem.GunHandler.Shooting();
+                else
+                {
+                    _leaderSystem.GunHandler.Shooting();
+                }
             }
             if (Input.GetMouseButtonUp(0))
             {

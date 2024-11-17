@@ -11,6 +11,8 @@ namespace Sources.Extension
         public static string GunId_05 = "gun-05";
 
         public static int Quality_Bullet_Default = 50;
+
+        public static string ANIMATIONKEY_RELOADING = "Reloading";
     }
 
     public static class BomberKey

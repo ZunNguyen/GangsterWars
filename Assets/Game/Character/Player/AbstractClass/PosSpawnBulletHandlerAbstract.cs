@@ -58,6 +58,8 @@ namespace Game.Character.Abstract
             bullet.transform.SetParent(_weaponHolders);
             bullet.transform.position = posSpawn.position;
             bullet.MoveMent(posClick);
+
+            Debug.Log("a");
         }
 
         private void OnDestroy()

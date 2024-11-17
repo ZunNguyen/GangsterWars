@@ -9,6 +9,8 @@ using UnityEngine;
 using System;
 using Sources.GameData;
 using Sources.Extension;
+using Sources.GamePlaySystem.Character;
+using BestHTTP.SecureProtocol.Org.BouncyCastle.Asn1.Crmf;
 
 namespace Sources.GamePlaySystem.Leader
 {
@@ -28,7 +30,7 @@ namespace Sources.GamePlaySystem.Leader
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         private bool _isCanShoot;
-        private Dictionary<string, ReloadTimeHandler> _reloadTimeHandlers = new();
+        private Dictionary<string, ReloadTimeHandlerBase> _reloadTimeHandlers = new();
 
         public Action IsShooting;
         public int DamageBulletCurrent { get; private set; }
@@ -76,9 +78,18 @@ namespace Sources.GamePlaySystem.Leader
 
             if (!_reloadTimeHandlers.ContainsKey(gunId))
             {
-                var newReloadTimeHandler = new ReloadTimeHandler();
-                newReloadTimeHandler.OnSetUp(gunModel);
-                _reloadTimeHandlers.Add(gunId, newReloadTimeHandler);
+                if (gunId == LeaderKey.GunId_04 || gunId == LeaderKey.GunId_05)
+                {
+                    var newReloadTimeHandler = new ReloadTimeGunMachineHandler();
+                    newReloadTimeHandler.OnSetUp(gunModel);
+                    _reloadTimeHandlers.Add(gunId, newReloadTimeHandler);
+                }
+                else
+                {
+                    var newReloadTimeHandler = new ReloadTimeGunNormalHandler();
+                    newReloadTimeHandler.OnSetUp(gunModel);
+                    _reloadTimeHandlers.Add(gunId, newReloadTimeHandler);
+                }
             }
         }
 
@@ -102,6 +113,7 @@ namespace Sources.GamePlaySystem.Leader
             IsShooting?.Invoke();
             GunModelCurrent.Value.BulletAvailable.Value -= 1;
 
+            _userProfile.SubsctractQualityWeapon(GunModelCurrent.Value.GunId);
             CheckCanShoot();
         }
 
@@ -112,15 +124,15 @@ namespace Sources.GamePlaySystem.Leader
             CheckCanShoot();
         }
 
-        public void AddBulletAvailable()
+        public void AddBulletAvailable(int bulletAdd)
         {
             if (GunModelCurrent.Value.BulletTotal.Value > 0)
             {
-                GunModelCurrent.Value.BulletAvailable.Value++;
-                GunModelCurrent.Value.BulletTotal.Value--;
+                GunModelCurrent.Value.BulletAvailable.Value += bulletAdd;
+                GunModelCurrent.Value.BulletTotal.Value -= bulletAdd;
+                GunModelCurrent.Value.BulletTotal.Value = Math.Max(0, GunModelCurrent.Value.BulletTotal.Value);
             }
 
-            _userProfile.SubsctractQualityWeapon(GunModelCurrent.Value.GunId);
             CheckCanShoot();
         }
 

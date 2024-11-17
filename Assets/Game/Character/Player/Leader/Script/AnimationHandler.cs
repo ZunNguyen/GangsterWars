@@ -1,6 +1,7 @@
 ﻿using Game.Character.Controller;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
+using Sources.Extension;
 using Sources.GamePlaySystem.Leader;
 using Sources.Utils.Singleton;
 using System;
@@ -43,6 +44,8 @@ namespace Game.Character.Leader
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
+        private string _currentState;
+
         public ReactiveProperty<AnimationStateLeader> CurrentState { get; private set; }
             = new ReactiveProperty<AnimationStateLeader>(AnimationStateLeader.None);
 
@@ -54,11 +57,18 @@ namespace Game.Character.Leader
             {
                 var gunInfo = _leaderConfig.GetWeaponInfo(value.GunId) as LeaderWeaponInfo;
                 _spriteLibrary.spriteLibraryAsset = gunInfo.SpriteLibraryAsset;
+
+                if (value.GunId == LeaderKey.GunId_04 || value.GunId == LeaderKey.GunId_05)
+                {
+                    _currentState = AnimationStateLeader.Shoot_4_sprite.ConvertToString();
+                }
+                else _currentState = AnimationStateLeader.Shoot_7_sprite.ConvertToString();
+
             }).AddTo(this);
 
             _leaderSystem.GunHandler.TimeReloadCurrent.Subscribe(value =>
             {
-                animator.SetFloat("Reload", value);
+                animator.SetFloat(LeaderKey.ANIMATIONKEY_RELOADING, value);
             }).AddTo(this);
 
             _leaderSystem.GunHandler.IsShooting += AnimationShoot;
@@ -66,8 +76,7 @@ namespace Game.Character.Leader
 
         private void AnimationShoot()
         {
-            var state = AnimationStateLeader.Shoot_7_sprite.ConvertToString();
-            animator.SetTrigger(state);
+            animator.SetTrigger(_currentState);
         }
 
         private void OnDestroy()
