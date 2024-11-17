@@ -16,6 +16,7 @@ namespace Game.Character.Leader
 
         private bool _isShooting = false;
         private bool _isUseMachineGun = false;
+        private bool _isCountingTimePressMouse = false;
 
         private void Awake()
         {
@@ -33,27 +34,25 @@ namespace Game.Character.Leader
                 if (_isUseMachineGun)
                 {
                     _isShooting = true;
-                    CountTimePressMouse();
+                    if (!_isCountingTimePressMouse) CountTimePressMouse();
                 }
-                else
-                {
-                    _leaderSystem.GunHandler.Shooting();
-                }
+                else _leaderSystem.GunHandler.Shooting();
             }
-            if (Input.GetMouseButtonUp(0))
-            {
-                _isShooting = false;
-            }
+            if (Input.GetMouseButtonUp(0)) _isShooting = false;
         }
 
         private async void CountTimePressMouse()
         {
+            _isCountingTimePressMouse = true;
+
             while (_isShooting)
             {
                 _leaderSystem.GunHandler.Shooting();
 
                 await UniTask.Delay(200);
             }
+
+            _isCountingTimePressMouse = false;
         }
     }
 }

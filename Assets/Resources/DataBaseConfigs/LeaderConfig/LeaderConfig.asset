@@ -215,7 +215,7 @@ MonoBehaviour:
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 1
-      ReloadFee: 50
+      ReloadFee: 500
       DamageOrHp: 5
     - Id: level-02
       LevelUpFee: 2
