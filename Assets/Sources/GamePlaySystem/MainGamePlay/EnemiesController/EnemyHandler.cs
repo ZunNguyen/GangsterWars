@@ -116,7 +116,12 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
                 }
             }
 
+            var substractHp = Math.Min(HpCurrent.Value, damageRecieve);
+            _mainGamePlaySystem.EnemiesController.SubstractHpTotal(substractHp);
+
             HpCurrent.Value -= damageRecieve;
+            HpCurrent.Value = Math.Max(0, HpCurrent.Value);
+            
             CheckDeath();
         }
 

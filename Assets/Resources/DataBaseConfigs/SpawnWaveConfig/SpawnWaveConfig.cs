@@ -1,4 +1,5 @@
 using BestHTTP.SecureProtocol.Org.BouncyCastle.Bcpg.Sig;
+using Game.Character.Enemy;
 using Resources.CSV;
 using Sirenix.OdinInspector;
 using Sources.DataBaseSystem;
@@ -6,6 +7,7 @@ using Sources.Utils.String;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Sources.DataBaseSystem
@@ -14,6 +16,7 @@ namespace Sources.DataBaseSystem
     public class Wave
     {
         public string Id;
+        public int TotalHp;
         public List<Turn> Turns;
     }
 
@@ -66,21 +69,36 @@ namespace Sources.DataBaseSystem
 #if UNITY_EDITOR
         private const int _startIndexRowData = 1;
 
+        private int _totalHpInWave;
+
         private string[] _datas;
         private int _rowCount;
         private int _columnCount;
+
+        private EnemiesConfig _enemiesConfig;
 
         [Button]
         public void ReadFile()
         {
             _waves.Clear();
+
             _datas = CSVFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
             string[] lines = CSVFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             _rowCount = lines.Length;
             _columnCount = _datas.Length / _rowCount;
 
+            GetEnemiesConfig();
             ProcessWave();
+        }
+
+        private void GetEnemiesConfig()
+        {
+            string pathEnemiesConfig = "Assets/Resources/DataBaseConfigs/EnemiesConfig/EnemiesConfig.asset";
+            _enemiesConfig = AssetDatabase.LoadAssetAtPath<EnemiesConfig>(pathEnemiesConfig);
+
+            _totalHpInWave = 0;
+            _enemiesConfig.ClearEnemyInfoCache();
         }
 
         private void ProcessWave()
@@ -106,6 +124,9 @@ namespace Sources.DataBaseSystem
 
                     countSameWave = 0;
                     startWaveId = _datas[indexWave];
+
+                    newWave.TotalHp = _totalHpInWave;
+                    _totalHpInWave = 0;
                 }
                 countSameWave++;
             }
@@ -179,6 +200,12 @@ namespace Sources.DataBaseSystem
                 var convertPosSpawn = int.Parse(posSpawn);
                 phase.Enemy.IndexPos.Add(convertPosSpawn);
             }
+
+            // Get TotalHp
+            var enemyInfo = _enemiesConfig.GetEnemyInfo(phase.Enemy.EnemyId);
+            var hpEnemy = enemyInfo.WaveEnemies[_waves.Count - 1].Hp;
+            var countEnemy = phase.Enemy.IndexPos.Count;
+            _totalHpInWave = _totalHpInWave + (hpEnemy * countEnemy);
         }
     }
 #endif

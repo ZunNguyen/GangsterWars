@@ -1,13 +1,27 @@
+using Sources.DataBaseSystem;
+using Sources.Utils.Singleton;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 {
     public class EnemiesController
     {
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private SpawnWaveConfig _spawnWaveConfig => _dataBase.GetConfig<SpawnWaveConfig>();
+
         private List<EnemyHandler> _activeEnemyHandlers = new();
         public List<EnemyHandler> _availableEnemyHandlers { set; private get; } = new();
+
+        public int TotalHpEnemies { get; private set; }
+        public ReactiveProperty<int> HpEnemiesCurrent { get; private set; } = new();
+
+        public void OnSetUp(string waveId)
+        {
+            TotalHpEnemies = HpEnemiesCurrent.Value = _spawnWaveConfig.GetWaveInfo(waveId).TotalHp;
+        }
 
         public EnemyHandler GetAvailableEnemyHandler()
         {
@@ -37,6 +51,11 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         {
             _activeEnemyHandlers.Add(enemyHandler);
             _availableEnemyHandlers.Remove(enemyHandler);
+        }
+
+        public void SubstractHpTotal(int damge)
+        {
+            HpEnemiesCurrent.Value -= damge;
         }
     }
 }

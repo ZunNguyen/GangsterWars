@@ -31,9 +31,10 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         public async void SetWaveId(string waveId)
         {
+            EnemiesController.OnSetUp(waveId);
             SpawnEnemiesHandler.SetWaveId(waveId);
 
-            await UniTask.Delay(2000);
+            await UniTask.Delay(1000);
             StartBattle();
         }
 

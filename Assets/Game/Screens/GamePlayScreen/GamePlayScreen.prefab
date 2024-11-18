@@ -1424,8 +1424,9 @@ GameObject:
   - component: {fileID: 333692382876407522}
   - component: {fileID: 57118799409138467}
   - component: {fileID: 7948935682707709649}
-  - component: {fileID: 8132502398456731073}
   - component: {fileID: 5626535046542292410}
+  - component: {fileID: 4507260734620341406}
+  - component: {fileID: 6949800469196249481}
   m_Layer: 0
   m_Name: GamePlayScreen
   m_TagString: Untagged
@@ -1509,21 +1510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _layer: Screen
-  _gunHudViewController: {fileID: 5722885235697798405}
-  _userHpController: {fileID: 8132502398456731073}
---- !u!114 &8132502398456731073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6933305853456619048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b970e9bb7408ae843b4121990e1ffd0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 4209489903352060227}
+  _gunHudViewHandler: {fileID: 5722885235697798405}
+  _userHpHandler: {fileID: 4507260734620341406}
+  _enemiesHpTotalHandler: {fileID: 6949800469196249481}
 --- !u!114 &5626535046542292410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,6 +1529,32 @@ MonoBehaviour:
   _slider: {fileID: 7800972204897988333}
   _panelReloadGunNormal: {fileID: 447247210098940031}
   _bulletPrefab: {fileID: 8196975060321604346, guid: bb0397ad1d46e734899b90bcbf9100d0, type: 3}
+--- !u!114 &4507260734620341406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933305853456619048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b03bcce55f9e554981d31c2807456db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 4209489903352060227}
+--- !u!114 &6949800469196249481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933305853456619048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5aefda1c755b754a9bfa88396922fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 8678820100759209434}
 --- !u!1 &6935090396590264660
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,7 @@
-using Sources.DataBaseSystem;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using Sources.UI;
-using Cysharp.Threading.Tasks;
 using Sources.SpawnerSystem;
+using Sources.UI;
 using Sources.Utils.Singleton;
+using UnityEngine;
 
 namespace Game.Screens.GamePlayScreen
 {
@@ -14,13 +9,15 @@ namespace Game.Screens.GamePlayScreen
     {
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
-        [SerializeField] private GunHudViewController _gunHudViewController;
-        [SerializeField] private UserHpController _userHpController;
+        [SerializeField] private GunHudViewController _gunHudViewHandler;
+        [SerializeField] private UserHpHandler _userHpHandler;
+        [SerializeField] private EnemiesHpTotalHandler _enemiesHpTotalHandler;
 
         private void Start()
         {
-            _gunHudViewController.OnSetUp();
-            _userHpController.OnSetUp();
+            _gunHudViewHandler.OnSetUp();
+            _userHpHandler.OnSetUp();
+            _enemiesHpTotalHandler.OnSetUp();
         }
     }
 }

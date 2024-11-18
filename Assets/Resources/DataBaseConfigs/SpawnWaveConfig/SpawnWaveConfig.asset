@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Id: wave-01
+    TotalHp: 250
     Turns:
     - Id: turn-01
       Phases:
@@ -45,6 +46,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-02
+    TotalHp: 1300
     Turns:
     - Id: turn-01
       Phases:
@@ -106,6 +108,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-03
+    TotalHp: 2100
     Turns:
     - Id: turn-01
       Phases:
@@ -177,6 +180,7 @@ MonoBehaviour:
           IndexPos: 0000000002000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-04
+    TotalHp: 3000
     Turns:
     - Id: turn-01
       Phases:
@@ -253,6 +257,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-05
+    TotalHp: 4250
     Turns:
     - Id: turn-01
       Phases:
@@ -319,6 +324,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-06
+    TotalHp: 5100
     Turns:
     - Id: turn-01
       Phases:
@@ -405,6 +411,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-07
+    TotalHp: 5950
     Turns:
     - Id: turn-01
       Phases:
@@ -481,6 +488,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-08
+    TotalHp: 6800
     Turns:
     - Id: turn-01
       Phases:
@@ -567,6 +575,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-09
+    TotalHp: 8100
     Turns:
     - Id: turn-01
       Phases:
@@ -658,6 +667,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-10
+    TotalHp: 9000
     Turns:
     - Id: turn-01
       Phases:

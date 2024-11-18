@@ -105,5 +105,10 @@ namespace Sources.DataBaseSystem
 
             return _enemyInfoCache[id];
         }
+
+        public void ClearEnemyInfoCache()
+        {
+            _enemyInfoCache.Clear();
+        }
     }
 }
