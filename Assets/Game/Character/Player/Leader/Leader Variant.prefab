@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3019850904259751890, guid: a0b4856f051eab544953f437cbbacdd9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3429079678083620886, guid: a0b4856f051eab544953f437cbbacdd9, type: 3}
       propertyPath: m_SpriteKey
       value: 1.2362407e-29
@@ -85,7 +89,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3429079678563366039, guid: a0b4856f051eab544953f437cbbacdd9, type: 3}
       propertyPath: m_Name
-      value: Leader
+      value: Leader Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2008264988, guid: a0b4856f051eab544953f437cbbacdd9, type: 3}
+    - {fileID: 3429079679559175139, guid: a0b4856f051eab544953f437cbbacdd9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a0b4856f051eab544953f437cbbacdd9, type: 3}
