@@ -43,7 +43,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
     public class EnemyHandler
     {
         private const int _timeDelayAfterAttackUser = 1000;
-        private const int _criticalRate = 100; //50%
+        private const int _criticalRate = 50; //50%
         private const int _factorCritical = 2;
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
