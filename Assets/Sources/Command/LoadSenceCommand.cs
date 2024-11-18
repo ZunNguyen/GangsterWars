@@ -22,7 +22,7 @@ namespace Sources.Command
         public override async UniTask Execute()
         {
             await SceneManager.LoadSceneAsync(_scenceName, LoadSceneMode.Single);
-            await _uiManager.Show<GamePlayScreen>();
+            //await _uiManager.Show<GamePlayScreen>();
         }
     }
 }

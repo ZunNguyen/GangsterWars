@@ -69,7 +69,6 @@ namespace Game.Bootstrap
             var commandServiceGroup = new SequenceServiceCommandGroup("After Bootstrap Loading");
 
             commandServiceGroup.Add(new LoadMainMenuScenceCommand());
-            //commandServiceGroup.Add(new LoadSenceCommand("GamePlay"));
 
             return commandServiceGroup;
         }

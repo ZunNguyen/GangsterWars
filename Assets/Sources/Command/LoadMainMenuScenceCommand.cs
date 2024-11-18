@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using Game.Screens.BlackLoadingScreen;
+using Game.Screens.LoadingScreen;
 using Game.Screens.MainMenuScreen;
 using Sources.Command;
 using Sources.Services;
@@ -16,7 +18,15 @@ namespace Sources.Command
 
         public override async UniTask Execute()
         {
-            await _uiManager.Show<MainMenuScreen>();
+            var sequenceGroup = new SequenceServiceCommandGroup("Load Main Menu Scene");
+
+            sequenceGroup.Add(new LoadSenceCommand("MainMenu"));
+
+            var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
+            await loadingScreen.PanelMoveIn();
+            _uiManager.Show<MainMenuScreen>();
+            await sequenceGroup.Run();
+            loadingScreen.Close();
         }
     }
 }
