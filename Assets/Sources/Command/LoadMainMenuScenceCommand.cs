@@ -26,6 +26,7 @@ namespace Sources.Command
             await loadingScreen.PanelMoveIn();
             _uiManager.Show<MainMenuScreen>();
             await sequenceGroup.Run();
+            await loadingScreen.PanelMoveOut();
             loadingScreen.Close();
         }
     }

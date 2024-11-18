@@ -13,6 +13,8 @@ using UniRx;
 using Sources.UISystem;
 using Game.Screens.JourneyScreen;
 using Sources.GamePlaySystem.MainGamePlay;
+using Sources.GamePlaySystem.JourneyMap;
+using System.Threading.Tasks;
 
 namespace Game.Screens.MainMenuScreen
 {
@@ -20,6 +22,7 @@ namespace Game.Screens.MainMenuScreen
     {
         private UIManager _uiManager => Locator<UIManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
+        private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
 
         [SerializeField] private TMP_Text _text;
         [SerializeField] private StoreController _storeController;
@@ -33,14 +36,20 @@ namespace Game.Screens.MainMenuScreen
                 _text.text = value.ToString();
             }).AddTo(this);
 
+            _journeyMapSystem.OnBattle += CloseScreen;
+
             _storeController.OnSetUp();
             _tabHandler.OnSetUp();
         }
 
         public async void OnPlayGameClicked()
         {
-            await Close();
             await _uiManager.Show<JourneyScreen.JourneyScreen>();
+        }
+
+        private async Task CloseScreen()
+        {
+            await Close();
         }
     }
 }

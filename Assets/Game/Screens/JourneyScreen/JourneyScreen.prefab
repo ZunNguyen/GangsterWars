@@ -440,7 +440,7 @@ MonoBehaviour:
     EaseExit: 9
   _rootCanvasGroup: {fileID: 7705955339711572878}
   _blackBackGround: {fileID: 8820068018295451461}
-  _duration: 0.5
+  _duration: 1
 --- !u!114 &1357561761885428303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Content: {fileID: 6162998698005020466}
   m_Horizontal: 1
   m_Vertical: 0
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135

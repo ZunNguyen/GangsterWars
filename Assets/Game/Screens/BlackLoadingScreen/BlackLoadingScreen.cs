@@ -32,9 +32,13 @@ namespace Game.Screens.BlackLoadingScreen
             _panelBot.anchorMax = _anchoMinBotTarget;
         }
 
+        public override UniTask OnTransitionEnter()
+        {
+            return base.OnTransitionEnter();
+        }
+
         public override UniTask OnTransitionExit()
         {
-            PanelMoveOut();
             return base.OnTransitionExit();
         }
 
@@ -44,10 +48,10 @@ namespace Game.Screens.BlackLoadingScreen
             await _panelBot.DOAnchorMax(_originalAnchorPanelBot, _duration).SetEase(Ease.InOutSine);
         }
 
-        private void PanelMoveOut()
+        public async UniTask PanelMoveOut()
         {
             _panelTop.DOAnchorMin(_anchoMinTopTarget, _duration).SetEase(Ease.InOutSine);
-            _panelBot.DOAnchorMax(_anchoMinBotTarget, _duration).SetEase(Ease.InOutSine);
+            await _panelBot.DOAnchorMax(_anchoMinBotTarget, _duration).SetEase(Ease.InOutSine);
         }
     }
 }
