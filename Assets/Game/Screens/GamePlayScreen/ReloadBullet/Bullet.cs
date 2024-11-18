@@ -33,5 +33,10 @@ namespace Game.Screens.GamePlayScreen
         {
             _bulletIcon.SetActive(false);
         }
+
+        private void OnDestroy()
+        {
+            _disposableBulletAvailable?.Dispose();
+        }
     }
 }
