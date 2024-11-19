@@ -41,7 +41,7 @@ namespace Sources.GamePlaySystem.JourneyMap
         private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
-        private int _indexGridMapCurrent;
+        public int IndexGridMapCurrent { get; private set; }
 
         public JourneyMapData JourneyMapDataCurrent { get; private set; }
         public int IndexWaveCurrent {  get; private set; }
@@ -66,9 +66,9 @@ namespace Sources.GamePlaySystem.JourneyMap
             IndexWaveCurrent = _enemySpawnConfig.GetIndexWaveInfo(_journeyProfile.WavesPassedDatas[indexMaxWaveData].Id);
 
             var journeyItemMaxInOneGrid = _journeyMapConfig.JourneyItemViews.Count;
-            _indexGridMapCurrent = IndexWaveCurrent / journeyItemMaxInOneGrid;
+            IndexGridMapCurrent = IndexWaveCurrent / journeyItemMaxInOneGrid;
 
-            JourneyMapDataCurrent = _journeyMapConfig.JourneyMapDatas[_indexGridMapCurrent];
+            JourneyMapDataCurrent = _journeyMapConfig.JourneyMapDatas[IndexGridMapCurrent];
         }
 
 
@@ -101,37 +101,37 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         private bool CheckJourneyItemHorizontalPreviousPassed(string waveId)
         {
-            var indexCurrent = _journeyMapConfig.GetIndexWaveIdInJourneyMap(_indexGridMapCurrent, waveId);
+            var indexCurrent = _journeyMapConfig.GetIndexWaveIdInJourneyMap(IndexGridMapCurrent, waveId);
             
             var indexLinkItem = indexCurrent--;
-            var haveLinkId = _journeyMapConfig.HaveLinkIdWithIndex(_indexGridMapCurrent, indexLinkItem);
+            var haveLinkId = _journeyMapConfig.HaveLinkIdWithIndex(IndexGridMapCurrent, indexLinkItem);
             if (!haveLinkId) return false;
 
             var indexWaveIdPrevious = indexCurrent--;
-            var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(_indexGridMapCurrent, indexWaveIdPrevious);
+            var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(IndexGridMapCurrent, indexWaveIdPrevious);
             return _journeyProfile.HaveWaveData(waveIdPrevious);
         }
 
         private bool CheckJourneyItemVerticalPreviousPassed(string waveId)
         {
-            var indexCurrent = _journeyMapConfig.GetIndexWaveIdInJourneyMap(_indexGridMapCurrent, waveId);
-            var offsetCol = _journeyMapConfig.JourneyMapDatas[_indexGridMapCurrent].Collumns;
+            var indexCurrent = _journeyMapConfig.GetIndexWaveIdInJourneyMap(IndexGridMapCurrent, waveId);
+            var offsetCol = _journeyMapConfig.JourneyMapDatas[IndexGridMapCurrent].Collumns;
 
             var indexLinkItemSubstract = indexCurrent - offsetCol;
-            if (!_journeyMapConfig.HaveLinkIdWithIndex(_indexGridMapCurrent, indexLinkItemSubstract)) return false;
+            if (!_journeyMapConfig.HaveLinkIdWithIndex(IndexGridMapCurrent, indexLinkItemSubstract)) return false;
             else
             {
                 var indexWaveIdPrevious = indexCurrent - offsetCol;
-                var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(_indexGridMapCurrent, indexWaveIdPrevious);
+                var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(IndexGridMapCurrent, indexWaveIdPrevious);
                 if (_journeyProfile.HaveWaveData(waveIdPrevious)) return true;
             }
 
             var indexLinkItemAdd = indexCurrent + offsetCol;
-            if (!_journeyMapConfig.HaveLinkIdWithIndex(_indexGridMapCurrent, indexLinkItemAdd)) return false;
+            if (!_journeyMapConfig.HaveLinkIdWithIndex(IndexGridMapCurrent, indexLinkItemAdd)) return false;
             else
             {
                 var indexWaveIdPrevious = indexCurrent - offsetCol;
-                var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(_indexGridMapCurrent, indexWaveIdPrevious);
+                var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(IndexGridMapCurrent, indexWaveIdPrevious);
                 return _journeyProfile.HaveWaveData(waveIdPrevious);
             }
         }
@@ -139,6 +139,11 @@ namespace Sources.GamePlaySystem.JourneyMap
         public async void OnBattleWave(string waveId)
         {
             new LoadGamePlayScenceCommand(waveId).Execute().Forget();
+        }
+
+        public void OnChangeEpisode(int index)
+        {
+
         }
     }
 }

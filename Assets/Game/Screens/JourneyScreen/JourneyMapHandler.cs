@@ -1,16 +1,14 @@
 using Sources.DataBaseSystem;
-using Sources.GameData;
 using Sources.GamePlaySystem.JourneyMap;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace Game.Screens.JourneyScreen
 {
-    public class JourneyMapController : MonoBehaviour
+    public class JourneyMapHandler : MonoBehaviour
     {
         private readonly Vector2 _anchorDefault = new Vector2(0, 0.5f);
         private readonly Vector2 _offsetBorder = new Vector2(400, 250);
