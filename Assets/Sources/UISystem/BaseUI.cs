@@ -49,6 +49,11 @@ namespace Sources.UI
             await _uiTransitionHandler.DoTransition(false);
         }
 
+        public void Back()
+        {
+            Close();
+        }
+
         public virtual async UniTask Close()
         {
             await _uiManager.Close(_uiName);
