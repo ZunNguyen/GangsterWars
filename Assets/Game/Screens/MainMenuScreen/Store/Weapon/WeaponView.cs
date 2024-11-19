@@ -5,7 +5,6 @@ using Sources.GamePlaySystem.MainMenuGame;
 using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,15 +29,15 @@ namespace Game.Screens.MainMenuScreen
 
         [Header("Level Up")]
         [SerializeField] private GameObject _levelUpFee;
-        [SerializeField] private TMP_Text _valueLevelUpFee;
+        [SerializeField] private Text _valueLevelUpFee;
 
         [Header("Reload")]
         [SerializeField] private GameObject _reload;
-        [SerializeField] private TMP_Text _valueReload;
+        [SerializeField] private Text _valueReload;
 
         [Header("Unlock")]
         [SerializeField] private GameObject _unlock;
-        [SerializeField] private TMP_Text _valueUnlock;
+        [SerializeField] private Text _valueUnlock;
 
         [Header("Check List")]
         [SerializeField] private GameObject _checkList;

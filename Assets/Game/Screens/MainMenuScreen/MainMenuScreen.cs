@@ -1,20 +1,11 @@
-using Sources.DataBaseSystem;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using Sources.UI;
-using Sources.Command;
-using Sources.GamePlaySystem.CoinController;
-using Sources.Utils.Singleton;
-using TMPro;
 using Cysharp.Threading.Tasks;
-using UniRx;
+using Sources.GamePlaySystem.CoinController;
+using Sources.UI;
 using Sources.UISystem;
-using Game.Screens.JourneyScreen;
-using Sources.GamePlaySystem.MainGamePlay;
-using Sources.GamePlaySystem.JourneyMap;
-using System.Threading.Tasks;
+using Sources.Utils.Singleton;
+using UniRx;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Screens.MainMenuScreen
 {
@@ -23,7 +14,7 @@ namespace Game.Screens.MainMenuScreen
         private UIManager _uiManager => Locator<UIManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
 
-        [SerializeField] private TMP_Text _text;
+        [SerializeField] private Text _text;
         [SerializeField] private StoreController _storeController;
         [SerializeField] private TabHandler _tabHandler;
 
