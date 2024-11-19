@@ -10,10 +10,10 @@ namespace Sources.GamePlaySystem.MainGamePlay
 {
     public class SpawnEnemiesHandler
     {
-        private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
-
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
+
+        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
         private Wave _waveInfo;
         private int _turnIndexCurrent = 0;
@@ -23,14 +23,19 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public string WaveIdCurrent => _waveIdCurrent;
 
         public ReactiveProperty<Enemy> EnemyModel { get; private set; } = new();
-        public ReactiveProperty<int> CountEnemy { get; private set; } = new();
         public List<EnemyController> Enemies { get; private set; } = new();
         public Action<bool> HaveEnemyToAttack;
 
-        public void SetWaveId(string id)
+        public void OnSetUp(string id)
         {
             _waveIdCurrent = id;
             GetWaveInfo();
+            _mainGamePlaySystem.UserRecieveDamageHandler.IsDead += SetEndWave;
+        }
+
+        private void SetEndWave()
+        {
+            _endWave = true;
         }
 
         private void GetWaveInfo()
@@ -78,7 +83,6 @@ namespace Sources.GamePlaySystem.MainGamePlay
                 for (int phase = 0; phase < _waveInfo.Turns[turn].Phases.Count; phase++)
                 {
                     var enemyCount = _waveInfo.Turns[turn].Phases[phase].Enemy.IndexPos.Count;
-                    CountEnemy.Value += enemyCount;
                 }
             }
         }
@@ -94,6 +98,11 @@ namespace Sources.GamePlaySystem.MainGamePlay
             Enemies.Remove(enemy);
             if (Enemies.Count > 0) HaveEnemyToAttack?.Invoke(true);
             if (Enemies.Count == 0) HaveEnemyToAttack?.Invoke(false);
+        }
+
+        private void OnDestroy()
+        {
+            _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= SetEndWave;
         }
     }
 }

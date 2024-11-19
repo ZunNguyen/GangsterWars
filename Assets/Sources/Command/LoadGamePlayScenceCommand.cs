@@ -3,8 +3,6 @@ using Game.Screens.BlackLoadingScreen;
 using Game.Screens.GamePlayScreen;
 using Game.Screens.JourneyScreen;
 using Game.Screens.MainMenuScreen;
-using Sources.DataBaseSystem;
-using Sources.DataBaseSystem.Leader;
 using Sources.GamePlaySystem.Character;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
@@ -35,12 +33,9 @@ namespace Sources.Command
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
             await loadingScreen.PanelMoveIn();
 
-            _journeyScreen.Close().Forget();
-            _mainMenuScreen.Close().Forget();
-
-            await RunServiceSystem();
-            var mainGamePlaySystem = Locator<MainGamePlaySystem>.Instance;
-            mainGamePlaySystem.SetWaveId(_waveId);
+            CloseScreen();
+            PreOnSetUp();
+            
             _uiManager.Show<GamePlayScreen>().Forget();
             sequenceGroup.Run().Forget();
 
@@ -48,16 +43,23 @@ namespace Sources.Command
             loadingScreen.Close().Forget();
         }
 
-        private async UniTask RunServiceSystem()
+        private void CloseScreen()
         {
-            var seviceSystem = new SequenceServiceGroup("Load Game Play Service");
+            _journeyScreen.Close().Forget();
+            _mainMenuScreen.Close().Forget();
+        }
 
-            seviceSystem.Add(new InitMainGamePlaySystemService());
-            seviceSystem.Add(new InitLeaderSystemService());
-            seviceSystem.Add(new InitBomberSystemService());
-            seviceSystem.Add(new InitSniperSystemService());
+        private void PreOnSetUp()
+        {
+            var mainGamePlaySystem = Locator<MainGamePlaySystem>.Instance;
+            var leaderSystem = Locator<LeaderSystem>.Instance;
+            var bomberSystem = Locator<BomberSystem>.Instance;
+            var sniperSystem = Locator<SniperSystem>.Instance;
 
-            await seviceSystem.Run();
+            mainGamePlaySystem.OnSetUp(_waveId);
+            leaderSystem.OnSetUp();
+            bomberSystem.OnSetUp();
+            sniperSystem.OnSetUp();
         }
     }
 }

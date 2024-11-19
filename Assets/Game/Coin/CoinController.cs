@@ -28,5 +28,10 @@ namespace Game.Screens.Coin
             newCoin.gameObject.SetActive(true);
             newCoin.OnSetUp(_posIconCoinReward, coinRewardInfo.Coins);
         }
+
+        private void OnDestroy()
+        {
+            _coinControllerSystem.CoinReward -= SpawnCoinReward;
+        }
     }
 }

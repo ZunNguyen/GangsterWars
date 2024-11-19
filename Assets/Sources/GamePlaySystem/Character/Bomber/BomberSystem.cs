@@ -25,6 +25,11 @@ namespace Sources.GamePlaySystem.Character
         public override async UniTask Init()
         {
             ReloadTimeHandler.OnSetUp(_timeReload);
+        }
+
+        public void OnSetUp()
+        {
+            if (_userProfile.BomberDatas == null) return;
             BomHandler.OnSetUp(_userProfile.BomberDatas, ReloadTimeHandler, _bomberConfig);
         }
     }

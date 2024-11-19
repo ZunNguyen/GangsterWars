@@ -1,5 +1,6 @@
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
+using Sources.Extension;
 using Sources.GamePlaySystem.MainMenuGame;
 using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.SpawnerSystem;
@@ -43,7 +44,8 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private GameObject _checkList;
         [SerializeField] private GameObject _iconCheckList;
 
-        [Header("Another")]
+        [Header("Wepon View")]
+        [SerializeField] private RectTransform _iconHolder;
         [SerializeField] private Image _icon;
         [SerializeField] private GameObject _iconlock;
 
@@ -63,6 +65,7 @@ namespace Game.Screens.MainMenuScreen
             if (weaponInfo is LeaderWeaponInfo leaderWeaponInfo)
             {
                 _icon.sprite = leaderWeaponInfo.Icon;
+                SetSizeIconGun(leaderWeaponInfo);
             }
             else if (weaponInfo is BomberWeaponInfo bomberWeaponInfo)
             {
@@ -77,6 +80,23 @@ namespace Game.Screens.MainMenuScreen
             GetLevelUpgrade();
             GetReloadFee();
             GetUnlockFee();
+        }
+
+        private void SetSizeIconGun(LeaderWeaponInfo leaderWeaponInfo)
+        {
+            if (leaderWeaponInfo.Id == LeaderKey.GunId_03 || leaderWeaponInfo.Id == LeaderKey.GunId_04)
+            {
+                Vector2 size = _iconHolder.sizeDelta;
+                size.x = 150f;
+                _iconHolder.sizeDelta = size;
+            }
+
+            if (leaderWeaponInfo.Id == LeaderKey.GunId_05)
+            {
+                Vector2 size = _iconHolder.sizeDelta;
+                size.x = 175f;
+                _iconHolder.sizeDelta = size;
+            }
         }
 
         private void GetWeaponSate()

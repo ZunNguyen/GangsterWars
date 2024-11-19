@@ -1,8 +1,11 @@
 using Sources.Command;
 using Sources.DataBaseSystem;
 using Sources.GameData;
+using Sources.GamePlaySystem.Character;
 using Sources.GamePlaySystem.CoinController;
 using Sources.GamePlaySystem.JourneyMap;
+using Sources.GamePlaySystem.Leader;
+using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainMenuGame;
 using Sources.SaveGame;
 using Sources.Services;
@@ -48,6 +51,12 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitDataBaseService(_dataBase));
             serviceGroup.Add(new InitGameDataService());
             serviceGroup.Add(new InitEventSystemService());
+
+            // Main game play service
+            serviceGroup.Add(new InitMainGamePlaySystemService());
+            serviceGroup.Add(new InitLeaderSystemService());
+            serviceGroup.Add(new InitBomberSystemService());
+            serviceGroup.Add(new InitSniperSystemService());
 
             return serviceGroup;
         }

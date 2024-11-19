@@ -1232,6 +1232,10 @@ PrefabInstance:
       propertyPath: _tabHandler
       value: 
       objectReference: {fileID: 3543051194000745451}
+    - target: {fileID: 8832539287796435756, guid: 49637c66dcabae349b1963fb96d6a289, type: 3}
+      propertyPath: m_Spacing.y
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49637c66dcabae349b1963fb96d6a289, type: 3}
 --- !u!224 &3009396770303106587 stripped

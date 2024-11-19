@@ -16,6 +16,14 @@ namespace Sources.SpawnerSystem
             Locator<SpawnerManager>.Set(this);
         }
 
+        public void ResetAllSpawner()
+        {
+            foreach (var spawner in _spawners.Values)
+            {
+                spawner.Reset();
+            }
+        }
+
         public T Get<T>(T prefab) where T : Object
         {
             if (prefab == null)

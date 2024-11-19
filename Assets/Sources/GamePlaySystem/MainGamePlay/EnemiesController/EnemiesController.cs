@@ -1,9 +1,7 @@
 using Sources.DataBaseSystem;
 using Sources.Utils.Singleton;
-using System.Collections;
 using System.Collections.Generic;
 using UniRx;
-using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 {
@@ -21,11 +19,18 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public void OnSetUp(string waveId)
         {
             TotalHpEnemies = HpEnemiesCurrent.Value = _spawnWaveConfig.GetWaveInfo(waveId).TotalHp;
+            ClearEnemeyHandlers();
+        }
+
+        private void ClearEnemeyHandlers()
+        {
+            _activeEnemyHandlers.Clear();
+            _availableEnemyHandlers.Clear();
         }
 
         public EnemyHandler GetAvailableEnemyHandler()
         {
-            if (_availableEnemyHandlers.Count == 0)
+            if (_availableEnemyHandlers.Count == 0) 
             {
                 var newEnemyHandler = new EnemyHandler();
                 _availableEnemyHandlers.Add(newEnemyHandler);
@@ -34,11 +39,6 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             var enemyHandler = _availableEnemyHandlers[0];
             MoveToActiveList(enemyHandler);
             return enemyHandler;
-        }
-
-        public void UnActiveEnemyHandler(EnemyHandler enemyHandler)
-        {
-            MoveToAvailableList(enemyHandler);
         }
 
         private void MoveToAvailableList(EnemyHandler enemyHandler)

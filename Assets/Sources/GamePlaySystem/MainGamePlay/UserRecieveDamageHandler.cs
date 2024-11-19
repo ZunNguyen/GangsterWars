@@ -21,9 +21,6 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
     public class UserRecieveDamageHandler
     {
-        private readonly int _maxHpTotal;
-        private readonly int _maxHpShield;
-        private readonly int _maxHpUser;
         private const float _percentHpShield = 0.75f;
         private const float _percentHpUser = 0.25f;
 
@@ -32,7 +29,10 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
-        
+
+        private int _maxHpTotal;
+        private int _maxHpUser;
+        private int _maxHpShield;
         private int _hpCurrentShield;
         private ShieldData _shieldData;
 
@@ -41,13 +41,15 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public Action IsDead;
         public string ShieldId {  get; private set; }
 
-        public UserRecieveDamageHandler()
+        public void OnSetUp()
         {
             _maxHpTotal = GetMaxHp();
 
             HpCurrentUser.Value = _maxHpUser = (int)(_maxHpTotal * _percentHpUser);
             _maxHpShield = (int)(_maxHpTotal * _percentHpShield);
             _hpCurrentShield = (int)_shieldData.State / 100 * _maxHpTotal;
+
+            ShieldCurrentState.Value = GetShieldState();
         }
 
         private int GetMaxHp()
@@ -57,11 +59,6 @@ namespace Sources.GamePlaySystem.MainGamePlay
             var shieldInfo = _shieldConfig.GetWeaponInfo(ShieldId) as ShieldWeaponInfo;
             var levelInfo = shieldInfo.GetLevelUpgradeInfo(_shieldData.LevelUpgradeId);
             return levelInfo.DamageOrHp;
-        }
-
-        public void OnSetUp()
-        {
-            ShieldCurrentState.Value = GetShieldState();
         }
 
         private ShieldState GetShieldState()

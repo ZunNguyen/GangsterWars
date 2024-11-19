@@ -75,6 +75,7 @@ namespace Sources.SpawnerSystem
         public void Reset()
         {
             _counter = 0;
+            _pool.Clear();
         }
     }
 }

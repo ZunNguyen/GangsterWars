@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainGamePlay.Enemies
@@ -164,9 +165,9 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             IsAttacking.Value = false;
         }
 
-        public void Disposable()
+        private void OnDestroy()
         {
-            _disposableShieldState.Dispose();
+            _disposableShieldState?.Dispose();
             _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= OnIdle;
         }
     }

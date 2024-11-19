@@ -1,14 +1,11 @@
-using BestHTTP.SecureProtocol.Org.BouncyCastle.Tls;
-using Game.Character.Enemy;
 using Sources.DataBaseSystem;
 using Sources.GameData;
-using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using System;
 using System.Collections.Generic;
-using UniRx;
+using Unity.VisualScripting;
 
 namespace Sources.GamePlaySystem.Character
 {
@@ -39,12 +36,11 @@ namespace Sources.GamePlaySystem.Character
 
         public void OnSetUp(List<WeaponData> weaponDatas, ReloadTimeHandler reloadTimeHandler, WeaponConfig weaponConfig)
         {
-            if (weaponDatas == null) return;
-
             _weaponDatasClone = new List<WeaponData>(weaponDatas);
             _reloadTimeHandler = reloadTimeHandler;
             _weaponConfig = weaponConfig;
 
+            OnDestroy();
             _reloadTimeHandler.IsReloading += SetCanAttack;
             _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack += SetIsEnemyToAttack;
         }

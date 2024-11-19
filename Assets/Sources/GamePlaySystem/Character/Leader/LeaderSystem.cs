@@ -13,10 +13,16 @@ namespace Sources.GamePlaySystem.Leader
 
     public class LeaderSystem : BaseSystem
     {
-        public GunHandler GunHandler = new GunHandler();
+        public GunHandler GunHandler;
         
         public override async UniTask Init()
         {
+            
+        }
+
+        public void OnSetUp()
+        {
+            GunHandler = new GunHandler();
             GunHandler.OnSetUp();
         }
     }

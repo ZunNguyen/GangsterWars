@@ -1162,6 +1162,7 @@ MonoBehaviour:
   _valueUnlock: {fileID: 2686776345435279017}
   _checkList: {fileID: 1122120208606803309}
   _iconCheckList: {fileID: 105904300269629191}
+  _iconHolder: {fileID: 5025731472021362873}
   _icon: {fileID: 4592423985529313965}
   _iconlock: {fileID: 3867235780409302838}
 --- !u!1 &3867235780409302838
@@ -1276,7 +1277,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 82.65981, y: -13.7599}
-  m_SizeDelta: {x: 122.9, y: 88.1}
+  m_SizeDelta: {x: 130, y: 88.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4423959861818630481
 GameObject:

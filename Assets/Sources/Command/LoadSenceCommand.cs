@@ -21,6 +21,7 @@ namespace Sources.Command
 
         public override async UniTask Execute()
         {
+            await new ResetSpawnerManagerCommand().Execute();
             await SceneManager.LoadSceneAsync(_scenceName, LoadSceneMode.Single);
         }
     }
