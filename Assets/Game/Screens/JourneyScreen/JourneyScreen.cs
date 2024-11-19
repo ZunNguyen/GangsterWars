@@ -12,17 +12,5 @@ namespace Game.Screens.JourneyScreen
 {
     public class JourneyScreen : BaseUI
     {
-        private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            _journeyMapSystem.OnBattle += CloseScreen;
-        }
-
-        private async Task CloseScreen()
-        {
-            await Close();
-        }
     }
 }

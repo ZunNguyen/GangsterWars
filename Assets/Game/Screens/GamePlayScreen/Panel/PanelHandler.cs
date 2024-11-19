@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Sources.Command;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -81,7 +82,7 @@ namespace Game.Screens.GamePlayScreen
 
         public void OnHomeClicked()
         {
-            
+            new LoadMainMenuScenceCommand().Execute();
         }
 
         public void OnComfirmClicked()

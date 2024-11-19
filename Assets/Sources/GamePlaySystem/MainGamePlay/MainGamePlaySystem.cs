@@ -16,7 +16,6 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public SpawnEnemiesHandler SpawnEnemiesHandler;
         public UserRecieveDamageHandler UserRecieveDamageHandler;
         public EnemiesController EnemiesController;
-
         public Action StartBattel;
 
         public override async UniTask Init()

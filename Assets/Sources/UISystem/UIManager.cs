@@ -110,6 +110,17 @@ namespace Sources.UISystem
             }
         }
 
+        public T GetUI<T>() where T : BaseUI
+        {
+            var uiName = typeof(T).Name;
+            return GetUI(uiName) as T;
+        }
+
+        public BaseUI GetUI(string uiName)
+        {
+            return _uiData.GetBaseUI(uiName);
+        }
+
         private void DestroyUI(BaseUI ui)
         {
             Destroy(ui.gameObject);

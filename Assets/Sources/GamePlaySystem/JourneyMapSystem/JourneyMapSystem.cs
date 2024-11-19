@@ -45,7 +45,6 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         public JourneyMapData JourneyMapDataCurrent { get; private set; }
         public int IndexWaveCurrent {  get; private set; }
-        public Func<Task> OnBattle;
 
         public override async UniTask Init()
         {
@@ -139,9 +138,7 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         public async void OnBattleWave(string waveId)
         {
-            await new LoadGamePlayScenceCommand().Execute();
-            _mainGamePlaySystem.SetWaveId(waveId);
-            await OnBattle.Invoke();
+            new LoadGamePlayScenceCommand(waveId).Execute().Forget();
         }
     }
 }

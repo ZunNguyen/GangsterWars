@@ -1,8 +1,10 @@
 using Cysharp.Threading.Tasks;
 using Game.Screens.BlackLoadingScreen;
+using Game.Screens.GamePlayScreen;
 using Game.Screens.LoadingScreen;
 using Game.Screens.MainMenuScreen;
 using Sources.Command;
+using Sources.GamePlaySystem.MainMenuGame;
 using Sources.Services;
 using Sources.UISystem;
 using Sources.Utils.Singleton;
@@ -15,6 +17,8 @@ namespace Sources.Command
     public class LoadMainMenuScenceCommand : Command
     {
         private UIManager _uiManager => Locator<UIManager>.Instance;
+        private GamePlayScreen _gamePlayScreen => _uiManager.GetUI<GamePlayScreen>();
+        private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 
         public override async UniTask Execute()
         {
@@ -24,10 +28,12 @@ namespace Sources.Command
 
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
             await loadingScreen.PanelMoveIn();
-            _uiManager.Show<MainMenuScreen>();
+            await _storeSystem.Init();
+            if (_gamePlayScreen != null) _gamePlayScreen.Close().Forget();
             await sequenceGroup.Run();
+            _uiManager.Show<MainMenuScreen>().Forget();
             await loadingScreen.PanelMoveOut();
-            loadingScreen.Close();
+            loadingScreen.Close().Forget();
         }
     }
 }

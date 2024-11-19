@@ -44,6 +44,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         public virtual void OnSetUp()
         {
+            WeaponWiewModels.Clear();
             SetData();
             _weaponInfoConfigs = _weaponConfig.GetAllWeapons();
 

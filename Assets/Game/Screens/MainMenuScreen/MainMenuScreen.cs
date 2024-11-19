@@ -22,7 +22,6 @@ namespace Game.Screens.MainMenuScreen
     {
         private UIManager _uiManager => Locator<UIManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
-        private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
 
         [SerializeField] private TMP_Text _text;
         [SerializeField] private StoreController _storeController;
@@ -36,8 +35,6 @@ namespace Game.Screens.MainMenuScreen
                 _text.text = value.ToString();
             }).AddTo(this);
 
-            _journeyMapSystem.OnBattle += CloseScreen;
-
             _storeController.OnSetUp();
             _tabHandler.OnSetUp();
         }
@@ -45,11 +42,6 @@ namespace Game.Screens.MainMenuScreen
         public async void OnPlayGameClicked()
         {
             await _uiManager.Show<JourneyScreen.JourneyScreen>();
-        }
-
-        private async Task CloseScreen()
-        {
-            await Close();
         }
     }
 }
