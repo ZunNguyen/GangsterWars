@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using BestHTTP.SecureProtocol.Org.BouncyCastle.Math.Field;
+using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
 using UniRx;
@@ -19,6 +20,7 @@ namespace Sources.GamePlaySystem.Leader
         {
             base.OnSetUp(gunModelView);
             _gunHandler.IsShooting += AddTimeReloadCurrent;
+            _gunHandler.EmptyBullet += EmptyBullet;
         }
 
         protected override void SubscribeBulletAvailable()
@@ -33,6 +35,14 @@ namespace Sources.GamePlaySystem.Leader
         private void AddTimeReloadCurrent()
         {
             if (_isCanReload) TimeReloadCurrent.Value += _onceTimeReload;
+        }
+
+        private async void EmptyBullet()
+        {
+            _isCanReload = false;
+            await UniTask.DelayFrame(2);
+            TimeReloadCurrent.Value = 0;
+            _gunHandler.TimeReloadCurrent.Value = 0;
         }
 
         protected override void CountTimeToReLoad()
@@ -69,6 +79,7 @@ namespace Sources.GamePlaySystem.Leader
             base.OnDisable();
             _disposableBulletAvailable?.Dispose();
             _gunHandler.IsShooting -= AddTimeReloadCurrent;
+            _gunHandler.EmptyBullet -= EmptyBullet;
         }
     }
 }

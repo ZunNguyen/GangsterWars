@@ -34,6 +34,7 @@ namespace Sources.GamePlaySystem.Leader
         public ReactiveDictionary<string, GunModelView> GunModels { get; private set; } = new();
         public ReactiveProperty<GunModelView> GunModelCurrent { get; private set; } = new();
         public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new();
+        public Action EmptyBullet;
 
         public void OnSetUp()
         {
@@ -96,13 +97,7 @@ namespace Sources.GamePlaySystem.Leader
             return damageInfo.DamageOrHp;
         }
 
-        private void CheckCanShoot()
-        {
-            var bulletCurrent = GunModelCurrent.Value.BulletAvailable.Value;
-            _isCanShoot = bulletCurrent > 0;
-        }
-
-        public void SubtractBullet()
+        private void SubtractBullet()
         {
             if (GunModelCurrent.Value.BulletAvailable.Value <= 0) return;
 
@@ -111,6 +106,18 @@ namespace Sources.GamePlaySystem.Leader
 
             _userProfile.SubsctractQualityWeapon(GunModelCurrent.Value.GunId);
             CheckCanShoot();
+            CheckEmptyBullet();
+        }
+
+        private void CheckCanShoot()
+        {
+            var bulletCurrent = GunModelCurrent.Value.BulletAvailable.Value;
+            _isCanShoot = bulletCurrent > 0;
+        }
+
+        private void CheckEmptyBullet()
+        {
+            if (GunModelCurrent.Value.BulletAvailable.Value == 0 && GunModelCurrent.Value.BulletTotal.Value == 0) EmptyBullet?.Invoke();
         }
 
         public void ChangeGunModel(string gunId)
