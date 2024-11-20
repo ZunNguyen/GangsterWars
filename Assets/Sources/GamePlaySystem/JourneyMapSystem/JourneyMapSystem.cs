@@ -41,6 +41,7 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         private List<JourneyMapData> _journeyMapDatas = new();
 
+        public int StarCurrent { get; private set; }
         public int IndexGridMapCurrent { get; private set; }
         public int IndexGridMapMaxCurrent { get; private set; }
         public JourneyMapData JourneyMapDataCurrent { get; private set; }
@@ -53,6 +54,7 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         public void ChangeJourneyMap(int index)
         {
+            StarCurrent = 0;
             JourneyMapDataCurrent = _journeyMapDatas[index];
             IndexGridMapCurrent = index;
         }
@@ -90,6 +92,8 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         public JourneyItemState GetJourneyItemState(string waveId)
         {
+            CountStarInEpisode(waveId);
+
             if (_journeyProfile.HaveWaveData(waveId)) return JourneyItemState.Passed;
 
             if (IsWaveFirstInEpisode(waveId)) return JourneyItemState.NotYetPass;
@@ -143,6 +147,13 @@ namespace Sources.GamePlaySystem.JourneyMap
                 var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(IndexGridMapCurrent, indexWaveIdPrevious);
                 return _journeyProfile.HaveWaveData(waveIdPrevious);
             }
+        }
+
+        private void CountStarInEpisode(string waveId)
+        {
+            var waveData = _journeyProfile.GetWaveData(waveId);
+            if (waveData == null) return;
+            StarCurrent += waveData.Stars;
         }
 
         public async void OnBattleWave(string waveId)

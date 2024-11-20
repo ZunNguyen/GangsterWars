@@ -22,6 +22,7 @@ namespace Sources.GameData
             if (!_waveDataCache.ContainsKey(id))
             {
                 var waveData = WavesPassedDatas.Find(x => x.Id == id);
+                if (waveData == null) return null;
                 _waveDataCache.Add(id, waveData);
             }
 

@@ -18,6 +18,7 @@ namespace Game.Screens.JourneyScreen
 
         private const float _offsetItemX = 250;
         private const float _offsetItemY = -250;
+        private const int _maxStarInOneEpisode = 30;
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
@@ -58,6 +59,8 @@ namespace Game.Screens.JourneyScreen
                     if (dataState == DataState.VerticalItem) SetLinkItem(row, col, false);
                 }
             }
+
+            SetTextStarCollect();
         }
 
         private void SetJourneyItem(int row, int col)
@@ -114,7 +117,7 @@ namespace Game.Screens.JourneyScreen
 
         private void SetTextStarCollect()
         {
-
+            _starText.text = $"{_journeyMapSystem.StarCurrent} / {_maxStarInOneEpisode}";
         }
     }
 }
