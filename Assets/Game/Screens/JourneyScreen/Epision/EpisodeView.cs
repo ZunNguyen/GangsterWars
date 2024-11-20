@@ -23,7 +23,7 @@ namespace Game.Screens.JourneyScreen
             var num = _indexEpisode + 1;
             _text.text = _episodeTextDefault + num.ToString();
 
-            var indexEpisodeCurrent = _journeyMapSystem.IndexGridMapCurrent;
+            var indexEpisodeCurrent = _journeyMapSystem.IndexGridMapMaxCurrent;
             _active.SetActive(_indexEpisode <= indexEpisodeCurrent);
         }
 

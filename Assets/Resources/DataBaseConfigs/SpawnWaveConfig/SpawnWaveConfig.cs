@@ -194,7 +194,7 @@ namespace Sources.DataBaseSystem
                 IndexPos = new()
             };
 
-            var posSpawns = StringUtils.SeparateString(_datas[indexPosSpawn]);
+            var posSpawns = StringUtils.SeparateString_1(_datas[indexPosSpawn]);
             foreach (var posSpawn in posSpawns)
             {
                 var convertPosSpawn = int.Parse(posSpawn);

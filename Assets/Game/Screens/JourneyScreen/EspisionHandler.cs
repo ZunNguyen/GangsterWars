@@ -13,7 +13,7 @@ namespace Game.Screens.JourneyScreen
         private readonly Vector2 _offsetEpisodePos = new Vector2(0, -80f);
         private const int _maxIndexEpision = 3;
         private const int _minEpision = 0;
-        private const float _duration = 0.3f;
+        private const float _duration = 0.2f;
 
         private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
 
@@ -59,8 +59,6 @@ namespace Game.Screens.JourneyScreen
             for (int i = episionsMoveClone.Count - 1; i >= 0; i--)
             {
                 var targetMove = _offsetEpisodePos * countOffset;
-
-                Debug.Log(targetMove);
 
                 var moveTasks = new List<Task>();
                 foreach (var episode in episionsMoveClone)

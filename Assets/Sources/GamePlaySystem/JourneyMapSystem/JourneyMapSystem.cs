@@ -7,8 +7,7 @@ using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
 using Sources.Utils.String;
-using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Sources.GamePlaySystem.JourneyMap
 {
@@ -41,34 +40,39 @@ namespace Sources.GamePlaySystem.JourneyMap
         private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
-        public int IndexGridMapCurrent { get; private set; }
+        private List<JourneyMapData> _journeyMapDatas = new();
 
+        public int IndexGridMapCurrent { get; private set; }
+        public int IndexGridMapMaxCurrent { get; private set; }
         public JourneyMapData JourneyMapDataCurrent { get; private set; }
         public int IndexWaveCurrent {  get; private set; }
 
         public override async UniTask Init()
         {
-            CheckJourneyData();
-            GetMatrixMapCurrent();
+            GetAllMatrixMapAvailable();
+            ChangeJourneyMap(IndexGridMapCurrent);
         }
 
-        private void CheckJourneyData()
+        public void ChangeJourneyMap(int index)
         {
-            if (_journeyProfile.WavesPassedDatas.Count == 0)
-            {
-                _journeyProfile.SetJourneyDataDefault();
-            }
+            JourneyMapDataCurrent = _journeyMapDatas[index];
+            IndexGridMapCurrent = index;
         }
 
-        private void GetMatrixMapCurrent()
+        private void GetAllMatrixMapAvailable()
         {
             var indexMaxWaveData = _journeyProfile.WavesPassedDatas.Count - 1;
+            var countMaxWaveCurrent = _journeyProfile.WavesPassedDatas.Count;
             IndexWaveCurrent = _enemySpawnConfig.GetIndexWaveInfo(_journeyProfile.WavesPassedDatas[indexMaxWaveData].Id);
 
             var journeyItemMaxInOneGrid = _journeyMapConfig.JourneyItemViews.Count;
-            IndexGridMapCurrent = IndexWaveCurrent / journeyItemMaxInOneGrid;
+            IndexGridMapCurrent = IndexGridMapMaxCurrent = countMaxWaveCurrent / journeyItemMaxInOneGrid;
 
-            JourneyMapDataCurrent = _journeyMapConfig.JourneyMapDatas[IndexGridMapCurrent];
+            for (int i = 0; i <= IndexGridMapCurrent; i++)
+            {
+                var journeyMapData = _journeyMapConfig.JourneyMapDatas[i];
+                _journeyMapDatas.Add(journeyMapData);
+            }
         }
 
 
@@ -92,6 +96,8 @@ namespace Sources.GamePlaySystem.JourneyMap
         {
             if (_journeyProfile.HaveWaveData(waveId)) return JourneyItemState.Passed;
 
+            if (IsWaveFirstInEpisode(waveId)) return JourneyItemState.NotYetPass;
+
             if (CheckJourneyItemHorizontalPreviousPassed(waveId)) return JourneyItemState.NotYetPass;
 
             if (CheckJourneyItemVerticalPreviousPassed(waveId)) return JourneyItemState.NotYetPass;
@@ -99,15 +105,23 @@ namespace Sources.GamePlaySystem.JourneyMap
             return JourneyItemState.Lock;
         }
 
+        private bool IsWaveFirstInEpisode(string waveId)
+        {
+            return waveId == WaveKey.WAVE_ID_FIRST_EPISODE_1
+                || waveId == WaveKey.WAVE_ID_FIRST_EPISODE_2
+                || waveId == WaveKey.WAVE_ID_FIRST_EPISODE_3
+                || waveId == WaveKey.WAVE_ID_FIRST_EPISODE_4;
+        }
+
         private bool CheckJourneyItemHorizontalPreviousPassed(string waveId)
         {
             var indexCurrent = _journeyMapConfig.GetIndexWaveIdInJourneyMap(IndexGridMapCurrent, waveId);
             
-            var indexLinkItem = indexCurrent--;
+            var indexLinkItem = --indexCurrent;
             var haveLinkId = _journeyMapConfig.HaveLinkIdWithIndex(IndexGridMapCurrent, indexLinkItem);
             if (!haveLinkId) return false;
 
-            var indexWaveIdPrevious = indexCurrent--;
+            var indexWaveIdPrevious = --indexCurrent;
             var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(IndexGridMapCurrent, indexWaveIdPrevious);
             return _journeyProfile.HaveWaveData(waveIdPrevious);
         }
@@ -118,10 +132,9 @@ namespace Sources.GamePlaySystem.JourneyMap
             var offsetCol = _journeyMapConfig.JourneyMapDatas[IndexGridMapCurrent].Collumns;
 
             var indexLinkItemSubstract = indexCurrent - offsetCol;
-            if (!_journeyMapConfig.HaveLinkIdWithIndex(IndexGridMapCurrent, indexLinkItemSubstract)) return false;
-            else
+            if (_journeyMapConfig.HaveLinkIdWithIndex(IndexGridMapCurrent, indexLinkItemSubstract))
             {
-                var indexWaveIdPrevious = indexCurrent - offsetCol;
+                var indexWaveIdPrevious = indexLinkItemSubstract - offsetCol;
                 var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(IndexGridMapCurrent, indexWaveIdPrevious);
                 if (_journeyProfile.HaveWaveData(waveIdPrevious)) return true;
             }
@@ -130,7 +143,7 @@ namespace Sources.GamePlaySystem.JourneyMap
             if (!_journeyMapConfig.HaveLinkIdWithIndex(IndexGridMapCurrent, indexLinkItemAdd)) return false;
             else
             {
-                var indexWaveIdPrevious = indexCurrent - offsetCol;
+                var indexWaveIdPrevious = indexLinkItemAdd + offsetCol;
                 var waveIdPrevious = _journeyMapConfig.GetWaveIdWithIndex(IndexGridMapCurrent, indexWaveIdPrevious);
                 return _journeyProfile.HaveWaveData(waveIdPrevious);
             }
@@ -141,9 +154,10 @@ namespace Sources.GamePlaySystem.JourneyMap
             new LoadGamePlayScenceCommand(waveId).Execute().Forget();
         }
 
-        public void OnChangeEpisode(int index)
+        public async void OnChangeEpisode(int index)
         {
-
+            if (index == IndexGridMapCurrent) return;
+            await new LoadJourneyMapCommand(index).Execute();
         }
     }
 }

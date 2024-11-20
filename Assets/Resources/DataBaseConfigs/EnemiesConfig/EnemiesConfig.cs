@@ -57,7 +57,7 @@ namespace Sources.DataBaseSystem
                 var indexCoinReward = row * _columnCount + _startIndexColCoinReward;
                 var indexPerChance = row * _columnCount + _startIndexColPerChance;
 
-                var coinReward = StringUtils.SeparateString(_datas[indexCoinReward]);
+                var coinReward = StringUtils.SeparateString_2(_datas[indexCoinReward]);
                 var coinRewardMin = int.Parse(coinReward[0]);
                 var coinRewardMax = int.Parse(coinReward[1]);
 

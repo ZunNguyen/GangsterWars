@@ -27,10 +27,16 @@ namespace Sources.Utils.String
             return input.Substring(0, splitIndex);
         }
 
-        private static readonly string _specialCharacterSeparate = "-";
-        public static string[] SeparateString(string input)
+        private static readonly string _specialCharacterSeparate_1 = "-";
+        public static string[] SeparateString_1(string input)
         {
-            return input.Split(new[] { _specialCharacterSeparate }, StringSplitOptions.RemoveEmptyEntries);
+            return input.Split(new[] { _specialCharacterSeparate_1 }, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        private static readonly string _specialCharacterSeparate_2 = "&";
+        public static string[] SeparateString_2(string input)
+        {
+            return input.Split(new[] { _specialCharacterSeparate_2 }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

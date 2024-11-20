@@ -63,4 +63,12 @@ namespace Sources.Extension
         public static string ENEMY_HEAD = "EnemyHead";
         public static string ENEMY_BODY = "EnemyBody";
     }
+
+    public static class WaveKey
+    {
+        public static string WAVE_ID_FIRST_EPISODE_1 = "wave-01";
+        public static string WAVE_ID_FIRST_EPISODE_2 = "wave-02";
+        public static string WAVE_ID_FIRST_EPISODE_3 = "wave-03";
+        public static string WAVE_ID_FIRST_EPISODE_4 = "wave-04";
+    }
 }

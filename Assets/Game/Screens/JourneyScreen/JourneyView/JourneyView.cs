@@ -42,10 +42,15 @@ namespace Game.Screens.JourneyScreen
             if (journeyItemState == JourneyItemState.Passed)
             {
                 var waveData = _journeyProfile.GetWaveData(waveId);
+                _waveText.text = waveId;
                 for (int i = 0; i < waveData.Stars; i++)
                 {
                     _stars[i].SetActive(true);
                 }
+            }
+            if (journeyItemState == JourneyItemState.NotYetPass)
+            {
+                _waveText.text = waveId;
             }
             else if (journeyItemState == JourneyItemState.Lock)
             {

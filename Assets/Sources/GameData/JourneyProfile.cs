@@ -16,17 +16,6 @@ namespace Sources.GameData
     {
         public List<WaveData> WavesPassedDatas = new();
         private Dictionary<string, WaveData> _waveDataCache = new();
- 
-        public void SetJourneyDataDefault()
-        {
-            var newWaveData = new WaveData
-            {
-                Id = JourneyKey.WaveDefault,
-                Stars = 0,
-            };
-            WavesPassedDatas.Add(newWaveData);
-            Save();
-        }
 
         public WaveData GetWaveData(string id)
         {
