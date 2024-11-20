@@ -25,6 +25,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public ReactiveProperty<Enemy> EnemyModel { get; private set; } = new();
         public List<EnemyController> Enemies { get; private set; } = new();
         public Action<bool> HaveEnemyToAttack;
+        public Action EndWave;
 
         public void OnSetUp(string id)
         {
@@ -62,7 +63,11 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private void CheckEndWave()
         {
             var turnIndexMax = _waveInfo.Turns.Count - 1;
-            if (_turnIndexCurrent > turnIndexMax) _endWave = true;
+            if (_turnIndexCurrent > turnIndexMax)
+            {
+                EndWave?.Invoke();
+                _endWave = true;
+            }
         }
 
         private void UpdateIndex()

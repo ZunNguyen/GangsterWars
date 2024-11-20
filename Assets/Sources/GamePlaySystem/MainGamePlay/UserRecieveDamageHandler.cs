@@ -40,6 +40,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public ReactiveProperty<int> HpCurrentUser {  get;} = new ReactiveProperty<int>();
         public Action IsDead;
         public string ShieldId {  get; private set; }
+        public int MaxHpBegin { get; private set; }
 
         public void OnSetUp()
         {
@@ -48,6 +49,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
             HpCurrentUser.Value = _maxHpUser = (int)(_maxHpTotal * _percentHpUser);
             _maxHpShield = (int)(_maxHpTotal * _percentHpShield);
             _hpCurrentShield = (int)_shieldData.State / 100 * _maxHpTotal;
+            MaxHpBegin = _hpCurrentShield + HpCurrentUser.Value;
 
             ShieldCurrentState.Value = GetShieldState();
         }
@@ -112,6 +114,11 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private void CheckDead()
         {
             if (HpCurrentUser.Value <= 0) IsDead?.Invoke();
+        }
+
+        public int GetTotalHpWhenEnd()
+        {
+            return _hpCurrentShield + HpCurrentUser.Value;
         }
     }
 }

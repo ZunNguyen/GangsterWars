@@ -4,6 +4,7 @@ using Game.Screens.GamePlayScreen;
 using Game.Screens.JourneyScreen;
 using Game.Screens.MainMenuScreen;
 using Sources.GamePlaySystem.Character;
+using Sources.GamePlaySystem.GameResult;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Services;
@@ -55,11 +56,13 @@ namespace Sources.Command
             var leaderSystem = Locator<LeaderSystem>.Instance;
             var bomberSystem = Locator<BomberSystem>.Instance;
             var sniperSystem = Locator<SniperSystem>.Instance;
+            var gameResultSystem = Locator<GameResultSystem>.Instance;
 
             mainGamePlaySystem.OnSetUp(_waveId);
             leaderSystem.OnSetUp();
             bomberSystem.OnSetUp();
             sniperSystem.OnSetUp();
+            gameResultSystem.OnSetUp();
         }
     }
 }
