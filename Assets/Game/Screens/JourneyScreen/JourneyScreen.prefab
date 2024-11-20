@@ -812,6 +812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _episodePrefab: {fileID: 1612738005808018568, guid: e53e5cf2b9638a447b0641ab0408394e, type: 3}
   _episodeHolder: {fileID: 6918345900851590879}
+  _row: {fileID: 83617178907825443}
 --- !u!1 &7711062324932866011
 GameObject:
   m_ObjectHideFlags: 0

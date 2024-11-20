@@ -18,10 +18,12 @@ namespace Game.Screens.JourneyScreen
         private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
 
         private bool _isAnimationShow = false;
+        private bool _isShowUp = true;
         private List<RectTransform> _episodesMove = new();
 
         [SerializeField] private EpisodeView _episodePrefab;
         [SerializeField] private Transform _episodeHolder;
+        [SerializeField] private RectTransform _row;
 
         private void Awake()
         {
@@ -58,6 +60,8 @@ namespace Game.Screens.JourneyScreen
             {
                 var targetMove = _offsetEpisodePos * countOffset;
 
+                Debug.Log(targetMove);
+
                 var moveTasks = new List<Task>();
                 foreach (var episode in episionsMoveClone)
                 {
@@ -77,10 +81,13 @@ namespace Game.Screens.JourneyScreen
         {
             _isAnimationShow = true;
 
-            var episionsMoveClone = new List<RectTransform>(_episodesMove);
-            var countOffset = episionsMoveClone.Count;
-            for (int i = 0; i < episionsMoveClone.Count; i++)
+            var episionsMoveClone = new List<RectTransform>();
+            
+
+            var countOffset = _episodesMove.Count;
+            for (int i = 0; i < _episodesMove.Count; i++)
             {
+                episionsMoveClone.Add(_episodesMove[i]);
                 --countOffset;
                 var targetMove = _offsetEpisodePos * countOffset;
 
@@ -92,7 +99,6 @@ namespace Game.Screens.JourneyScreen
                 }
 
                 await Task.WhenAll(moveTasks);
-                episionsMoveClone.Remove(episionsMoveClone[i]);
             }
 
             _isAnimationShow = false;
@@ -101,13 +107,10 @@ namespace Game.Screens.JourneyScreen
         public void OnShowAllEpisodeClicked()
         {
             if (_isAnimationShow) return;
-            ShowAllEpisode();
-        }
-
-        public void OnUnShowAllEpisodeClicked()
-        {
-            if (_isAnimationShow) return;
-            UnShowAllEpisode();
+            if (_isShowUp) ShowAllEpisode();
+            else UnShowAllEpisode();
+            _row.eulerAngles = new Vector3(_row.eulerAngles.x, _row.eulerAngles.y, _row.eulerAngles.z * -1f);
+            _isShowUp = !_isShowUp;
         }
     }
 }
