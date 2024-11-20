@@ -299,6 +299,7 @@ MonoBehaviour:
   - {fileID: 652275131652856876}
   _lock: {fileID: 8493085173022007862}
   _starsHolder: {fileID: 352791720321307375}
+  _rect: {fileID: 259655174755010813}
 --- !u!114 &7210085265860522372
 MonoBehaviour:
   m_ObjectHideFlags: 0

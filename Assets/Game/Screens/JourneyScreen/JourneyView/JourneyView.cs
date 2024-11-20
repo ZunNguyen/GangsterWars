@@ -1,9 +1,7 @@
-using Sources.Command;
+using DG.Tweening;
 using Sources.GameData;
 using Sources.GamePlaySystem.JourneyMap;
-using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Utils.Singleton;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +10,9 @@ namespace Game.Screens.JourneyScreen
 {
     public class JourneyView : MonoBehaviour
     {
+        private readonly Vector3 _targetScale = new Vector3(1.1f, 1.1f, 1f);
+        private const float _duration = 0.7f;
+
         private GameData _gameData => Locator<GameData>.Instance;
         private JourneyProfile _journeyProfile => _gameData.GetProfileData<JourneyProfile>();
         private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
@@ -23,6 +24,7 @@ namespace Game.Screens.JourneyScreen
         [SerializeField] private List<GameObject> _stars;
         [SerializeField] private GameObject _lock;
         [SerializeField] private GameObject _starsHolder;
+        [SerializeField] private RectTransform _rect;
 
         private void Awake()
         {
@@ -51,6 +53,7 @@ namespace Game.Screens.JourneyScreen
             if (journeyItemState == JourneyItemState.NotYetPass)
             {
                 _waveText.text = waveId;
+                ShowAnimation();
             }
             else if (journeyItemState == JourneyItemState.Lock)
             {
@@ -59,6 +62,15 @@ namespace Game.Screens.JourneyScreen
                 _lock.SetActive(true);
                 _starsHolder.SetActive(false);
             }
+        }
+
+        private void ShowAnimation()
+        {
+            var sequence = DOTween.Sequence();
+            sequence.Append(_rect.DOScale(_targetScale, _duration).SetEase(Ease.Linear))
+                    .Append(_rect.DOScale(Vector3.one, _duration).SetEase(Ease.Linear))
+                    .SetLoops(-1);
+            sequence.Play();
         }
 
         public void OnBattleWaveClicked()

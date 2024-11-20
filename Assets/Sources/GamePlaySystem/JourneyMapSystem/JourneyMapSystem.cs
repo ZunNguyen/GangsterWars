@@ -38,14 +38,12 @@ namespace Sources.GamePlaySystem.JourneyMap
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private JourneyMapConfig _journeyMapConfig => _dataBase.GetConfig<JourneyMapConfig>();
         private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
-        private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
         private List<JourneyMapData> _journeyMapDatas = new();
 
         public int IndexGridMapCurrent { get; private set; }
         public int IndexGridMapMaxCurrent { get; private set; }
         public JourneyMapData JourneyMapDataCurrent { get; private set; }
-        public int IndexWaveCurrent {  get; private set; }
 
         public override async UniTask Init()
         {
@@ -61,9 +59,7 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         private void GetAllMatrixMapAvailable()
         {
-            var indexMaxWaveData = _journeyProfile.WavesPassedDatas.Count - 1;
             var countMaxWaveCurrent = _journeyProfile.WavesPassedDatas.Count;
-            IndexWaveCurrent = _enemySpawnConfig.GetIndexWaveInfo(_journeyProfile.WavesPassedDatas[indexMaxWaveData].Id);
 
             var journeyItemMaxInOneGrid = _journeyMapConfig.JourneyItemViews.Count;
             IndexGridMapCurrent = IndexGridMapMaxCurrent = countMaxWaveCurrent / journeyItemMaxInOneGrid;

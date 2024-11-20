@@ -12,7 +12,7 @@ namespace Game.Character.Sniper
     public class SniperWeapon : WeaponAbstract
     {
         private const float _duration = 0.4f;
-        private const float _factorOffsetPos = 10f;
+        private const float _factorOffsetPos = 15f;
         private const float _offsetEnemyTargetPosY = 2f;
 
         private Vector3 _originPos;

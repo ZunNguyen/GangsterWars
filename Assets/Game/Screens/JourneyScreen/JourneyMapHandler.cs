@@ -5,6 +5,7 @@ using Sources.Utils.Singleton;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Screens.JourneyScreen
 {
@@ -33,6 +34,9 @@ namespace Game.Screens.JourneyScreen
         [Header("Link Item")]
         [SerializeField] private LinkBarItem _linkBarItemPrefab;
         [SerializeField] private Transform _linkBarItemHolder;
+
+        [Header("Star Collection")]
+        [SerializeField] private Text _starText;
 
         private void Awake()
         {
@@ -106,6 +110,11 @@ namespace Game.Screens.JourneyScreen
             targetPos.y = _offsetBorder.y + row * _offsetItemY;
 
             rectTransform.anchoredPosition += targetPos;
+        }
+
+        private void SetTextStarCollect()
+        {
+
         }
     }
 }
