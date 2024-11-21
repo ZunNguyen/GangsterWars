@@ -15,13 +15,13 @@ namespace Sources.GamePlaySystem.Leader
 
         private string _gunId;
         private IDisposable _disposableGunModelCurrent;
-        private IDisposable _disposableBulletTotal;
-
+        
         protected int _maxBulletPerClip;
         protected float _onceTimeReload;
         protected bool _isCanReload;
         protected GunModelView _gunModelView;
         protected GunHandler _gunHandler;
+        protected IDisposable _disposableBulletTotal;
 
         public ReactiveProperty<float> TimeReloadCurrent { get; private set; } = new (0);
 
@@ -50,13 +50,7 @@ namespace Sources.GamePlaySystem.Leader
             });
         }
 
-        private void SubscribeBulletTotal()
-        {
-            _disposableBulletTotal = _gunModelView.BulletTotal.Subscribe(value =>
-            {
-                _isCanReload = value != 0;
-            });
-        }
+        protected abstract void SubscribeBulletTotal();
 
         protected virtual void OnDisable()
         {

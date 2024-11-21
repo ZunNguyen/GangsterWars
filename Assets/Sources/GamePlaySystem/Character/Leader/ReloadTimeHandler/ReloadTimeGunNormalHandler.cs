@@ -32,6 +32,14 @@ namespace Sources.GamePlaySystem.Leader
             });
         }
 
+        override protected void SubscribeBulletTotal()
+        {
+            _disposableBulletTotal = _gunModelView.BulletTotal.Subscribe(value =>
+            {
+                _isCanReload = value != 0;
+            });
+        }
+
         private void AddTimeReloadCurrent()
         {
             if (_isCanReload) TimeReloadCurrent.Value += _onceTimeReload;

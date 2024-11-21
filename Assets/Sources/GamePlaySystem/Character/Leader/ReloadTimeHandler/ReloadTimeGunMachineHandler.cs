@@ -1,8 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Sources.DataBaseSystem;
-using Sources.DataBaseSystem.Leader;
 using Sources.GamePlaySystem.Leader;
-using Sources.Utils.Singleton;
 using System;
 using UniRx;
 using UnityEngine;
@@ -12,6 +9,7 @@ namespace Sources.GamePlaySystem.Character
     public class ReloadTimeGunMachineHandler : ReloadTimeHandlerBase
     {
         private IDisposable _disposableBulletAvailable;
+        private int _bulletTotalCurrent;
 
         protected override void SubscribeBulletAvailable()
         {
@@ -22,6 +20,16 @@ namespace Sources.GamePlaySystem.Character
                     TimeReloadCurrent.Value = _onceTimeReload;
                     CountTimeToReLoad();
                 }
+            });
+        }
+
+        override protected void SubscribeBulletTotal()
+        {
+            _disposableBulletTotal = _gunModelView.BulletTotal.Subscribe(value =>
+            {
+                _bulletTotalCurrent = value;
+                _isCanReload = value != 0;
+                if (value == 0) _gunHandler.TimeReloadCurrent.Value = TimeReloadCurrent.Value = 0;
             });
         }
 
@@ -44,7 +52,8 @@ namespace Sources.GamePlaySystem.Character
 
             if (_isCanReload && TimeReloadCurrent.Value == 0)
             {
-                _gunHandler.AddBulletAvailable(_maxBulletPerClip);
+                var bulletAdd = Math.Min(_maxBulletPerClip, _bulletTotalCurrent);
+                _gunHandler.AddBulletAvailable(bulletAdd);
             }
         }
 
