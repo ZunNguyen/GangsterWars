@@ -70,5 +70,6 @@ namespace Sources.Extension
         public static string WAVE_ID_FIRST_EPISODE_2 = "wave-11";
         public static string WAVE_ID_FIRST_EPISODE_3 = "wave-21";
         public static string WAVE_ID_FIRST_EPISODE_4 = "wave-31";
+        public static string WAVE_ID_MAX = "wave-40";
     }
 }

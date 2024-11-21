@@ -18,6 +18,7 @@ namespace Sources.Command
         private UIManager _uiManager => Locator<UIManager>.Instance;
         private JourneyScreen _journeyScreen => _uiManager.GetUI<JourneyScreen>();
         private MainMenuScreen _mainMenuScreen => _uiManager.GetUI<MainMenuScreen>();
+        private GamePlayScreen _gamePlayScreen => _uiManager.GetUI<GamePlayScreen>();
 
         private string _waveId;
 
@@ -48,6 +49,7 @@ namespace Sources.Command
         {
             _journeyScreen.Close().Forget();
             _mainMenuScreen.Close().Forget();
+            _gamePlayScreen.Close().Forget();
         }
 
         private void PreOnSetUp()

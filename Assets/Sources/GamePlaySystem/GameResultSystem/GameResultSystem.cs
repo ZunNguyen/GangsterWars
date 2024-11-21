@@ -1,4 +1,7 @@
 using Cysharp.Threading.Tasks;
+using Sources.DataBaseSystem;
+using Sources.Extension;
+using Sources.GameData;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
@@ -11,11 +14,19 @@ namespace Sources.GamePlaySystem.GameResult
 
     public class GameResultSystem : BaseSystem
     {
+        private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private JourneyProfile _jourNeyProfile => _gameData.GetProfileData<JourneyProfile>();
+
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private SpawnWaveConfig _spawnWaveConfig => _dataBase.GetConfig<SpawnWaveConfig>();
+
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         
         private bool _isHaveEnemyToAttack;
         private bool _isEndWave;
 
+        public string WaveIdCurrent { get; private set; }
+        public string WaveIdNext { get; private set; }
         public int StarWin { get; private set; }
         public Action<bool> IsUserWin;
 
@@ -48,13 +59,19 @@ namespace Sources.GamePlaySystem.GameResult
             _isEndWave = true;
             CheckUserWin();
         }
+        private void UserLose()
+        {
+            IsUserWin?.Invoke(false);
+        }
 
         private void CheckUserWin()
         {
             if (!_isHaveEnemyToAttack && _isEndWave)
             {
-                GetStarWin();
                 IsUserWin?.Invoke(true);
+                GetStarWin();
+                GetWaveIdCurrent();
+                GetWaveIdNext();
             }
         }
 
@@ -71,7 +88,7 @@ namespace Sources.GamePlaySystem.GameResult
             }
 
             var oneThirdsHp = (float)hpBegin * 1 / 3;
-            if (hpEnd >= twoThirdsHp)
+            if (hpEnd >= oneThirdsHp)
             {
                 StarWin = 2;
                 return;
@@ -80,9 +97,22 @@ namespace Sources.GamePlaySystem.GameResult
             else StarWin = 1;
         }
 
-        private void UserLose()
+        private void GetWaveIdCurrent()
         {
-            IsUserWin?.Invoke(false);
+            WaveIdCurrent = _mainGamePlaySystem.WaveIdCurrent;
+        }
+
+        private void GetWaveIdNext()
+        {
+            if (WaveIdCurrent == WaveKey.WAVE_ID_MAX)
+            {
+                WaveIdNext = WaveKey.WAVE_ID_MAX;
+                return;
+            }
+
+            var indexWaveCurrent = _spawnWaveConfig.GetIndexWaveInfo(WaveIdCurrent);
+            var waveNexInfo = _spawnWaveConfig.GetWaveInfo(++indexWaveCurrent);
+            WaveIdNext = waveNexInfo.Id;
         }
 
         private void OnDisable()

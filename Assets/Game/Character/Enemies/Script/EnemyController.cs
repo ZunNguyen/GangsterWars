@@ -47,12 +47,12 @@ namespace Game.Character.Enemy
             _disposableDirection = _enemyHandler.Direction.Subscribe(value =>
             {
                 _direction = value;
-            });
+            }).AddTo(this);
 
             _disposableIsAttacking = _enemyHandler.IsAttacking.Subscribe(value =>
             {
                 _isAttacking = value;
-            });
+            }).AddTo(this);
         }
 
         private void FixedUpdate()
@@ -103,6 +103,7 @@ namespace Game.Character.Enemy
         private void OnDisposable()
         {
             _disposableDirection?.Dispose();
+            _disposableIsAttacking?.Dispose();
             _animationHander.OnDisposable();
         }
 

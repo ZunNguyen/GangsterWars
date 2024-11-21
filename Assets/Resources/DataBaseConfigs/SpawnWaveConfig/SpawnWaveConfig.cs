@@ -66,6 +66,11 @@ namespace Sources.DataBaseSystem
             return _waves.IndexOf(waveInfo);
         }
 
+        public Wave GetWaveInfo(int index)
+        {
+            return _waves[index];
+        }
+
 #if UNITY_EDITOR
         private const int _startIndexRowData = 1;
 

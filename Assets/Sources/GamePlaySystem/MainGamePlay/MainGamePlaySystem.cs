@@ -17,6 +17,8 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public UserRecieveDamageHandler UserRecieveDamageHandler = new();
         public EnemiesController EnemiesController = new();
 
+        public string WaveIdCurrent { get; private set; }
+
         public override async UniTask Init()
         {
             
@@ -24,6 +26,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         public async void OnSetUp(string waveId)
         {
+            WaveIdCurrent = waveId;
             UserRecieveDamageHandler.OnSetUp();
             EnemiesController.OnSetUp(waveId);
             SpawnEnemiesHandler = new();

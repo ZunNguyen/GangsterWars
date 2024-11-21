@@ -28,7 +28,7 @@ namespace Game.Character.Enemy
                 {
                     onDeath?.Invoke();
                 }
-            });
+            }).AddTo(this);
         }
 
         public void AttackEnd()

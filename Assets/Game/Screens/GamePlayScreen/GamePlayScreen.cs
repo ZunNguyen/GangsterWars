@@ -12,12 +12,14 @@ namespace Game.Screens.GamePlayScreen
         [SerializeField] private GunHudViewController _gunHudViewHandler;
         [SerializeField] private UserHpHandler _userHpHandler;
         [SerializeField] private EnemiesHpTotalHandler _enemiesHpTotalHandler;
+        [SerializeField] private PanelResultHandler _panelResultHandler;
 
         private void Start()
         {
             _gunHudViewHandler.OnSetUp();
             _userHpHandler.OnSetUp();
             _enemiesHpTotalHandler.OnSetUp();
+            _panelResultHandler.OnSetUp();
         }
     }
 }
