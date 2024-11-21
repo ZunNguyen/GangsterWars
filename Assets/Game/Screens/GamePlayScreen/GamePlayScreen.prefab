@@ -4454,6 +4454,7 @@ MonoBehaviour:
   _userHpHandler: {fileID: 4507260734620341406}
   _enemiesHpTotalHandler: {fileID: 6949800469196249481}
   _panelResultHandler: {fileID: 671282359332402792}
+  _panelHandler: {fileID: 6194226441637933715}
 --- !u!114 &5626535046542292410
 MonoBehaviour:
   m_ObjectHideFlags: 0

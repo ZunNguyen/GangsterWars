@@ -20,10 +20,8 @@ namespace Game.Screens.GamePlayScreen
         [SerializeField] private RectTransform _panelPause;
         [SerializeField] private RectTransform _panelSetting;
 
-        private void Awake()
+        public void OnSetUp()
         {
-            gameObject.SetActive(false);
-
             _originalPosPanelPause = _panelPause.anchoredPosition;
             _originalPosPanelSetting = _panelSetting.anchoredPosition;
 

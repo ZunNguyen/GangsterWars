@@ -66,11 +66,11 @@ namespace Sources.GamePlaySystem.GameResult
 
         private void CheckUserWin()
         {
+            GetWaveIdCurrent();
             if (!_isHaveEnemyToAttack && _isEndWave)
             {
                 IsUserWin?.Invoke(true);
                 GetStarWin();
-                GetWaveIdCurrent();
                 GetWaveIdNext();
                 SaveData();
             }

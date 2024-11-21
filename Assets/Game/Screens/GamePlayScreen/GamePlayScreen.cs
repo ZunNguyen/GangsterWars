@@ -13,6 +13,7 @@ namespace Game.Screens.GamePlayScreen
         [SerializeField] private UserHpHandler _userHpHandler;
         [SerializeField] private EnemiesHpTotalHandler _enemiesHpTotalHandler;
         [SerializeField] private PanelResultHandler _panelResultHandler;
+        [SerializeField] private PanelHandler _panelHandler;
 
         private void Start()
         {
@@ -20,6 +21,7 @@ namespace Game.Screens.GamePlayScreen
             _userHpHandler.OnSetUp();
             _enemiesHpTotalHandler.OnSetUp();
             _panelResultHandler.OnSetUp();
+            _panelHandler.OnSetUp();
         }
     }
 }

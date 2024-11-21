@@ -16,6 +16,8 @@ namespace Game.Character.Enemy
 {
     public class EnemyController : MonoBehaviour
     {
+        private const float _speed = 1f;
+
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
@@ -57,7 +59,7 @@ namespace Game.Character.Enemy
 
         private void FixedUpdate()
         {
-            _rb.velocity = _direction * 0.5f;
+            _rb.velocity = _direction * _speed;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
