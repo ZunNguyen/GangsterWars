@@ -14,35 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Id: wave-01
-    TotalHp: 250
+    TotalHp: 150
     Turns:
     - Id: turn-01
       Phases:
       - PhaseId: phase-01
         Enemy:
-          EnemyId: enemy-01
+          EnemyId: enemy-02
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 0
       - PhaseId: phase-02
         Enemy:
-          EnemyId: enemy-01
+          EnemyId: enemy-02
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 3000
-      - PhaseId: phase-03
-        Enemy:
-          EnemyId: enemy-01
-          IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
     - Id: turn-02
       Phases:
-      - PhaseId: phase-02
+      - PhaseId: phase-01
         Enemy:
-          EnemyId: enemy-01
-          IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
-      - PhaseId: phase-03
-        Enemy:
-          EnemyId: enemy-01
+          EnemyId: enemy-02
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-02

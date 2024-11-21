@@ -6,7 +6,7 @@ using UniRx;
 using Sources.DataBaseSystem;
 using Sources.SpawnerSystem;
 using System.Collections.Generic;
-using Game.Character.Enemy;
+using Game.Character.Enemy.Abstract;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Game.CanvasInGamePlay.Controller;
 
@@ -22,7 +22,7 @@ namespace Game.PosSpawnEnemies
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
-        private Dictionary<string, EnemyController> _enemiesCache = new Dictionary<string, EnemyController>();
+        private Dictionary<string, EnemyControllerAbstract> _enemiesCache = new Dictionary<string, EnemyControllerAbstract>();
         private int _indexPos;
         private Vector3 _offsetPos;
 
@@ -50,7 +50,7 @@ namespace Game.PosSpawnEnemies
             if (!_enemiesCache.ContainsKey(enemyId))
             {
                 var enemyPrefab = _enemiesConfig.GetEnemyInfo(enemyId).EnemyPrefab;
-                var enemyController = enemyPrefab.GetComponent<EnemyController>();
+                var enemyController = enemyPrefab.GetComponent<EnemyControllerAbstract>();
                 _enemiesCache.Add(enemyId, enemyController);
 
                 Spawning(enemyController, enemyId);
@@ -61,7 +61,7 @@ namespace Game.PosSpawnEnemies
             Spawning(enemyTarget, enemyId);
         }
 
-        private void Spawning(EnemyController enemyController, string enemyId)
+        private void Spawning(EnemyControllerAbstract enemyController, string enemyId)
         {
             var enemyPrefab = _spawnerManager.Get(enemyController);
             _mainGamePlaySystem.SpawnEnemiesHandler.AddEnemyToList(enemyPrefab);

@@ -1,21 +1,19 @@
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UniRx;
-using Sources.SpawnerSystem;
+using UnityEngine;
 
-namespace Game.Character.Enemy
+namespace Game.Character.Enemy.Abstract
 {
-    public class AnimationHander : MonoBehaviour
+    public abstract class AnimationHandlerAbstract : MonoBehaviour
     {
         private IDisposable _disposableAniamtionState;
-        private EnemyHandler _enemyHandler;
+        
+        protected EnemyHandler _enemyHandler;
 
         [SerializeField] private Animator _animator;
 
-        public void OnSetUp(EnemyHandler enemyHandler, Action onDeath)
+        public virtual void OnSetUp(EnemyHandler enemyHandler)
         {
             _enemyHandler = enemyHandler;
 
@@ -23,18 +21,10 @@ namespace Game.Character.Enemy
             {
                 var state = value.ConvertToString();
                 _animator.SetTrigger(state);
-
-                if (value == Sources.GamePlaySystem.MainGamePlay.Enemies.AnimationState.Death)
-                {
-                    onDeath?.Invoke();
-                }
             }).AddTo(this);
         }
 
-        public void AttackEnd()
-        {
-            _enemyHandler.DamageUser();
-        }
+        public abstract void OnAttackEnd();
 
         public void OnDisposable()
         {

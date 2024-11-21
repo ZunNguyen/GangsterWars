@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Game.CanvasInGamePlay.Controller;
+using Game.Character.Enemy.Abstract;
 using Game.Character.Sniper;
 using Game.Weapon.Bullet;
 using Sources.Extension;
@@ -12,9 +13,9 @@ using System;
 using UniRx;
 using UnityEngine;
 
-namespace Game.Character.Enemy
+namespace Game.Character.Enemy.Abstract
 {
-    public class EnemyController : MonoBehaviour
+    public abstract class EnemyControllerAbstract : MonoBehaviour
     {
         private const float _speed = 1f;
 
@@ -22,17 +23,17 @@ namespace Game.Character.Enemy
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
 
-        private EnemyHandler _enemyHandler;
         private Vector2 _direction;
-        private bool _isAttacking = false;
-
         private IDisposable _disposableDirection;
         private IDisposable _disposableIsAttacking;
+        private IDisposable _disposableIsDeath;
+
+        protected bool _isAttacking = false;
+        protected EnemyHandler _enemyHandler;
 
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private Animator _animator;
         [SerializeField] private Transform _hpBarPos;
-        [SerializeField] private AnimationHander _animationHander;
+        [SerializeField] private AnimationHandlerAbstract _animationHander;
 
         public void OnSetUp(CanvasInGamePlayController canvasInGamePlayController, string enemyId)
         {
@@ -40,11 +41,11 @@ namespace Game.Character.Enemy
             _enemyHandler.OnSetUp(enemyId);
             canvasInGamePlayController.OnSetUpHpBar(_hpBarPos, _enemyHandler);
 
-            SubcribeDirection();
-            _animationHander.OnSetUp(_enemyHandler, OnDeath);
+            SubcribeValue();
+            _animationHander.OnSetUp(_enemyHandler);
         }
 
-        private void SubcribeDirection()
+        private void SubcribeValue()
         {
             _disposableDirection = _enemyHandler.Direction.Subscribe(value =>
             {
@@ -55,6 +56,14 @@ namespace Game.Character.Enemy
             {
                 _isAttacking = value;
             }).AddTo(this);
+
+            _disposableIsDeath = _enemyHandler.AniamtionState.Subscribe(value =>
+            {
+                if (value == Sources.GamePlaySystem.MainGamePlay.Enemies.AnimationState.Death)
+                {
+                    OnDeath();
+                }
+            }).AddTo(this);
         }
 
         private void FixedUpdate()
@@ -62,13 +71,10 @@ namespace Game.Character.Enemy
             _rb.velocity = _direction * _speed;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == CollisionTagKey.SHIELD_USER && !_isAttacking)
-            {
-                _enemyHandler.OnAttack();
-            }
-
+            OnTriggerToStop(collision);
+            
             if (collision.tag == CollisionTagKey.BULLET_LEADER)
             {
                 var bullet = collision.GetComponent<LeaderWeapon>();
@@ -88,6 +94,9 @@ namespace Game.Character.Enemy
                 _enemyHandler.SubstractHp(bullet.Damage, bullet.CollisionKey);
             }
         }
+
+        protected abstract void OnTriggerToStop(Collider2D collision);
+
 
         private void OnDeath()
         {

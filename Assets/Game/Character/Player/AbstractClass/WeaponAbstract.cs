@@ -1,15 +1,9 @@
-using Cysharp.Threading.Tasks;
-using DG.Tweening;
-using Sources.DataBaseSystem;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using Sources.Utils;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Character.Abstract
+namespace Game.Character.Player.Abstract
 {
     public abstract class WeaponAbstract : MonoBehaviour
     {

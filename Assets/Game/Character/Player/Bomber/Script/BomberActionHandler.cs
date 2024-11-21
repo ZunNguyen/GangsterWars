@@ -1,4 +1,4 @@
-using Game.Character.Abstract;
+using Game.Character.Player.Abstract;
 using Sources.GamePlaySystem.Character;
 using Sources.Utils.Singleton;
 

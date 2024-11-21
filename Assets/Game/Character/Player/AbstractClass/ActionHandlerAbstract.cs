@@ -1,12 +1,9 @@
-using Cysharp.Threading.Tasks;
 using Sources.GamePlaySystem.Character;
-using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using UniRx;
 using UnityEngine;
 
-namespace Game.Character.Abstract
+namespace Game.Character.Player.Abstract
 {
     public abstract class ActionHandlerAbstract : MonoBehaviour
     {

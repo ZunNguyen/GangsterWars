@@ -1,14 +1,13 @@
 using Cysharp.Threading.Tasks;
-using Sources.GamePlaySystem.Leader;
-using Sources.Utils.Singleton;
-using UnityEngine;
-using UniRx;
 using Game.Weapon.Bullet;
-using System.Collections.Generic;
+using Sources.GamePlaySystem.Leader;
 using Sources.SpawnerSystem;
-using static UnityEditor.PlayerSettings;
+using Sources.Utils.Singleton;
+using System.Collections.Generic;
+using UniRx;
+using UnityEngine;
 
-namespace Game.Character.Abstract
+namespace Game.Character.Player.Abstract
 {
     public abstract class PosSpawnBulletHandlerAbstract : MonoBehaviour
     {

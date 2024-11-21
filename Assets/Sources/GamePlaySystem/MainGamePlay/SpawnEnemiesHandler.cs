@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Game.Character.Enemy;
+using Game.Character.Enemy.Abstract;
 using Sources.DataBaseSystem;
 using Sources.Utils.Singleton;
 using System;
@@ -23,7 +23,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public string WaveIdCurrent => _waveIdCurrent;
 
         public ReactiveProperty<Enemy> EnemyModel { get; private set; } = new();
-        public List<EnemyController> Enemies { get; private set; } = new();
+        public List<EnemyControllerAbstract> Enemies { get; private set; } = new();
         public Action<bool> HaveEnemyToAttack;
         public Action EndWave;
 
@@ -92,13 +92,13 @@ namespace Sources.GamePlaySystem.MainGamePlay
             }
         }
 
-        public void AddEnemyToList(EnemyController enemy)
+        public void AddEnemyToList(EnemyControllerAbstract enemy)
         {
             HaveEnemyToAttack?.Invoke(true);
             Enemies.Add(enemy);
         }
 
-        public void RemoveEnemyToList(EnemyController enemy)
+        public void RemoveEnemyToList(EnemyControllerAbstract enemy)
         {
             Enemies.Remove(enemy);
             if (Enemies.Count > 0) HaveEnemyToAttack?.Invoke(true);

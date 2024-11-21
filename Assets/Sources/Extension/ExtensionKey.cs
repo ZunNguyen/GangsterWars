@@ -62,6 +62,7 @@ namespace Sources.Extension
         public static string BOM_BOMBER = "BomBomber";
         public static string ENEMY_HEAD = "EnemyHead";
         public static string ENEMY_BODY = "EnemyBody";
+        public static string STOP_POINT = "StopPoint";
     }
 
     public static class WaveKey

@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using Game.Character.Abstract;
+using Game.Character.Player.Abstract;
 using Sources.Extension;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SpawnerSystem;

@@ -79,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2979277852961877914}
   - component: {fileID: 3213009971212483284}
-  - component: {fileID: 7499837118995402507}
+  - component: {fileID: 5139457135466134231}
   m_Layer: 0
   m_Name: Enemy02
   m_TagString: Untagged
@@ -125,7 +125,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7499837118995402507
+--- !u!114 &5139457135466134231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,13 +134,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2979277852961877915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fe45b22fe0a80647a8d447b88aa81b0, type: 3}
+  m_Script: {fileID: 11500000, guid: edfde0e2c74fa354a933abe7643d7685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 3213009971212483284}
-  _animator: {fileID: 8584574939415129193}
   _hpBarPos: {fileID: 3213009970673475054}
-  _animationHander: {fileID: 8389620269742849460}
+  _animationHander: {fileID: 2782352152802359042}
 --- !u!1 &2979277853909615190
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +151,7 @@ GameObject:
   - component: {fileID: 2979277853909615193}
   - component: {fileID: 2979277853909615195}
   - component: {fileID: 8584574939415129193}
-  - component: {fileID: 8389620269742849460}
+  - component: {fileID: 2782352152802359042}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -250,7 +249,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8389620269742849460
+--- !u!114 &2782352152802359042
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,7 +258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2979277853909615190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd5a32ba5dc0e44eadd11354faedf82, type: 3}
+  m_Script: {fileID: 11500000, guid: 483e42ce46a4e6b42996951094e6f680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8584574939415129193}

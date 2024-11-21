@@ -1,10 +1,8 @@
-using Sources.Extension;
 using Sources.GamePlaySystem.Character;
-using Sources.Utils.Singleton;
 using UniRx;
 using UnityEngine;
 
-namespace Game.Character.Abstract
+namespace Game.Character.Player.Abstract
 {
     public abstract class AnimationHandlerAbstract : MonoBehaviour
     {

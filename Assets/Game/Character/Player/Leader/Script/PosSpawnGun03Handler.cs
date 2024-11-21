@@ -1,4 +1,4 @@
-using Game.Character.Abstract;
+using Game.Character.Player.Abstract;
 using Game.Effect.MuzzleFlash;
 using Game.Screens.GamePlayScreen;
 using Sources.Extension;
