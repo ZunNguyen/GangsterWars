@@ -72,6 +72,7 @@ namespace Sources.GamePlaySystem.GameResult
                 GetStarWin();
                 GetWaveIdCurrent();
                 GetWaveIdNext();
+                SaveData();
             }
         }
 
@@ -113,6 +114,11 @@ namespace Sources.GamePlaySystem.GameResult
             var indexWaveCurrent = _spawnWaveConfig.GetIndexWaveInfo(WaveIdCurrent);
             var waveNexInfo = _spawnWaveConfig.GetWaveInfo(++indexWaveCurrent);
             WaveIdNext = waveNexInfo.Id;
+        }
+
+        private void SaveData()
+        {
+            _jourNeyProfile.SaveWavePassedData(WaveIdCurrent, StarWin);
         }
 
         private void OnDisable()

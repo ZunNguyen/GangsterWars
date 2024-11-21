@@ -3606,6 +3606,7 @@ MonoBehaviour:
   _rewardHolder: {fileID: 3471551516078528770}
   _blackBG: {fileID: 4267888786886064711}
   _blockPanel: {fileID: 8892154170884248530}
+  _btnNext: {fileID: 4321044490160965716}
   _playableDirector: {fileID: 6773570378241203417}
 --- !u!95 &9087509169646852181
 Animator:

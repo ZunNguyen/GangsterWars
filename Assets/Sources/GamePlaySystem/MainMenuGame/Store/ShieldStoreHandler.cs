@@ -113,7 +113,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         private float GetFactorShieldState(ShieldState shieldState)
         {
-            return ((int)ShieldState.Full - (int)shieldState) / 100; //100 -> 100%
+            return (float)((int)ShieldState.Full - (int)shieldState) / 100; //100 -> 100%
         }
 
         public void ChoseShield(string shieldId)

@@ -29,6 +29,7 @@ namespace Game.Screens.GamePlayScreen
         [SerializeField] private GameObject _rewardHolder;
         [SerializeField] private GameObject _blackBG;
         [SerializeField] private GameObject _blockPanel;
+        [SerializeField] private GameObject _btnNext;
         [SerializeField] private PlayableDirector _playableDirector;
 
         public void OnSetUp()
@@ -58,6 +59,7 @@ namespace Game.Screens.GamePlayScreen
         private async void SetPanelLose()
         {
             _textTitle.text = "You Lose";
+            Destroy(_btnNext);
             _rewardHolder.gameObject.SetActive(false);
             _titleTryAgain.gameObject.SetActive(true);
 
