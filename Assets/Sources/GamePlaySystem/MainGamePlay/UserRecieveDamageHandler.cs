@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using Sources.DataBaseSystem;
 using Sources.GameData;
+using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.Utils.Singleton;
 using System;
 using System.Collections;
@@ -36,11 +37,13 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private int _hpCurrentShield;
         private ShieldData _shieldData;
 
+        public int MaxHpBegin { get; private set; }
+        public string ShieldId { get; private set; }
         public ReactiveProperty<ShieldState> ShieldCurrentState { get;} = new ReactiveProperty<ShieldState>(ShieldState.Full);
         public ReactiveProperty<int> HpCurrentUser {  get;} = new ReactiveProperty<int>();
         public Action IsDead;
-        public string ShieldId {  get; private set; }
-        public int MaxHpBegin { get; private set; }
+        public Action<TypeDamageUser> DamageShield;
+        public Action DamageUser;
 
         public void OnSetUp()
         {
@@ -84,17 +87,17 @@ namespace Sources.GamePlaySystem.MainGamePlay
             return ShieldState.Full;
         }
 
-        public void SubstractHp(int damage)
+        public void SubstractHp(int damage, TypeDamageUser typeDamage)
         {
             if (ShieldCurrentState.Value != ShieldState.Empty)
             {
+                DamageShield?.Invoke(typeDamage);
                 SubstractHpShield(damage);
-                return;
             }
             else
             {
+                DamageUser?.Invoke();
                 SubstractHpUser(damage);
-                return;
             }
         }
 

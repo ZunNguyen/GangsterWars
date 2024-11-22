@@ -6,16 +6,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using DG.Tweening;
+using Sources.GamePlaySystem.MainGamePlay.Enemies;
 
 namespace Game.UserReceiveDamage.Shield
 {
     public class ShieldController : MonoBehaviour
     {
+        private readonly Color _originalColor = new Color(1f, 1f, 1f);
+        private readonly Color _targetColor = new Color(1f, 0.63f, 0.63f);
+        private const float _duration = 0.4f;
+        private const float _offsetX = 0.1f;
+
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private ShieldWeaponInfo _shieldInfo;
+
+        private float _ogirinalX;
+        private float _targetMoveX;
 
         [SerializeField] private SpriteRenderer _iconShield;
 
@@ -23,6 +33,10 @@ namespace Game.UserReceiveDamage.Shield
         {
             GetShieldInfo();
             SubscribeShieldData();
+            SubscribeDamageShield();
+
+            _ogirinalX = transform.position.x;
+            _targetMoveX = _ogirinalX - _offsetX;
         }
 
         private void GetShieldInfo()
@@ -42,6 +56,28 @@ namespace Game.UserReceiveDamage.Shield
 
                 _iconShield.sprite = _shieldInfo.GetIconShield(value);
             }).AddTo(this);
+        }
+
+        private void SubscribeDamageShield()
+        {
+            _mainGamePlaySystem.UserRecieveDamageHandler.DamageShield += AnimationDamageShield;
+        }
+
+        private async void AnimationDamageShield(TypeDamageUser type)
+        {
+            if (type == TypeDamageUser.LongRangeDamage) return;
+
+            _iconShield.color = _targetColor;
+            await transform.DOMoveX(_targetMoveX, _duration);
+            transform.DOMoveX(_ogirinalX, _duration).OnComplete(() =>
+            {
+                _iconShield.color = _originalColor;
+            });
+        }
+
+        private void OnDestroy()
+        {
+            _mainGamePlaySystem.UserRecieveDamageHandler.DamageShield -= AnimationDamageShield;
         }
     }
 }

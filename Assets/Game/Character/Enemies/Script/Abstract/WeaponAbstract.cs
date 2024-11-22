@@ -12,6 +12,8 @@ namespace Game.Character.Enemy.Abstract
 {
     public abstract class WeaponAbstract : MonoBehaviour
     {
+        private readonly TypeDamageUser _typeDamage = TypeDamageUser.LongRangeDamage;
+
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
@@ -48,7 +50,7 @@ namespace Game.Character.Enemy.Abstract
         {
             await UniTask.Delay(500);
             SetEnabled(true);
-            _enemyHandler.DamageUser();
+            _enemyHandler.DamageUser(_typeDamage);
         }
 
         public void OnCompletAnimation()

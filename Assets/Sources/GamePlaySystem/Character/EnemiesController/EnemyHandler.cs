@@ -9,6 +9,12 @@ using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 {
+    public enum TypeDamageUser
+    {
+        LongRangeDamage,
+        ShortRangeDamage
+    }
+
     public class EnemyHandler
     {
         private const int _timeDelayAfterAttackUser = 1000;
@@ -123,10 +129,10 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             Direction.Value = Vector2.zero;
         }
 
-        public async void DamageUser()
+        public async void DamageUser(TypeDamageUser type)
         {
             AniamtionState.Value = AnimationState.Idle;
-            _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value);
+            _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value, type);
 
             await UniTask.Delay(_timeDelayAfterAttackUser);
 
