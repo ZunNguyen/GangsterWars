@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3196122232629242973}
   - component: {fileID: 4290409247114023162}
   m_Layer: 0
-  m_Name: BomEnemyWeapon
+  m_Name: BomEnemy
   m_TagString: BomBomber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

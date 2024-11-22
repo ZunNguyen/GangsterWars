@@ -65,7 +65,13 @@ namespace Game.UserReceiveDamage.Shield
 
         private async void AnimationDamageShield(TypeDamageUser type)
         {
-            if (type == TypeDamageUser.LongRangeDamage) return;
+            if (type == TypeDamageUser.LongRangeDamage)
+            {
+                _iconShield.color = _targetColor;
+                await UniTask.Delay(100);
+                _iconShield.color = _originalColor;
+                return;
+            }
 
             _iconShield.color = _targetColor;
             await transform.DOMoveX(_targetMoveX, _duration);

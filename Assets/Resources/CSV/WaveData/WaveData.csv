@@ -1,7 +1,7 @@
 ﻿Wave,Turn,Phase,Enemy,Index Pos,Time Spawn
-wave-01,turn-01,phase-01,enemy-05,1,0
-wave-01,turn-01,phase-02,enemy-05,0,3000
-wave-01,turn-02,phase-01,enemy-05,2,3000
+wave-01,turn-01,phase-01,enemy-06,1,0
+wave-01,turn-01,phase-02,enemy-06,0,3000
+wave-01,turn-02,phase-01,enemy-06,2,3000
 wave-02,turn-01,phase-01,enemy-01,1,0
 wave-02,turn-01,phase-02,enemy-01,0-2,3000
 wave-02,turn-01,phase-03,enemy-02,0,3000
