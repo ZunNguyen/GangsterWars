@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 394089265}
-  - component: {fileID: 394089269}
+  - component: {fileID: 394089266}
   m_Layer: 0
   m_Name: User
   m_TagString: ShieldUser
@@ -201,8 +201,8 @@ Transform:
   m_Father: {fileID: 1423915967}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &394089269
-EdgeCollider2D:
+--- !u!60 &394089266
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -215,20 +215,24 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: 0.6721091, y: 3.1064875}
-  - {x: -0.79095507, y: 3.8608994}
-  - {x: -6.6825194, y: -3.698478}
-  - {x: -3.8433433, y: -4.0781856}
-  - {x: -2.1723967, y: -0.67328835}
-  - {x: -2.9330397, y: -0.5261228}
-  - {x: -2.8923907, y: -0.030156136}
-  - {x: 0.6401868, y: 3.1027923}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+    m_Paths:
+    - - {x: -0.7549529, y: 3.8736916}
+      - {x: -6.6497326, y: -3.6605735}
+      - {x: -3.851129, y: -4.072362}
+      - {x: -2.2128468, y: -0.7359569}
+      - {x: -2.184768, y: -0.70013976}
+      - {x: -3.0960994, y: -0.42043233}
+      - {x: 0.68316984, y: 3.207062}
 --- !u!1 &532987735
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,8 +476,8 @@ GameObject:
   m_Component:
   - component: {fileID: 894661051}
   - component: {fileID: 894661053}
-  - component: {fileID: 894661052}
   - component: {fileID: 894661054}
+  - component: {fileID: 894661055}
   m_Layer: 0
   m_Name: Shield
   m_TagString: ShieldUser
@@ -496,35 +500,6 @@ Transform:
   m_Father: {fileID: 1423915967}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &894661052
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894661050}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 2.874111, y: 3.3494527}
-  - {x: 2.9786475, y: 3.468923}
-  - {x: 2.3422365, y: 4.5011206}
-  - {x: 1.6678541, y: 3.64596}
-  - {x: -3.1666784, y: -3.760751}
-  - {x: -1.295846, y: -3.7529395}
-  - {x: 2.3273838, y: 2.4257782}
-  - {x: 2.555897, y: 3.0601397}
-  - {x: 2.8744934, y: 3.3677406}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!212 &894661053
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -590,6 +565,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _iconShield: {fileID: 894661053}
+--- !u!60 &894661055
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894661050}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.49, y: 8.8}
+    newSize: {x: 6.36, y: 7.85}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.2791386, y: 4.5173593}
+      - {x: -4.0728316, y: -4.7753005}
+      - {x: -2.260963, y: -4.8973093}
+      - {x: 3.2375977, y: 3.8325593}
 --- !u!1 &1002202731
 GameObject:
   m_ObjectHideFlags: 0
