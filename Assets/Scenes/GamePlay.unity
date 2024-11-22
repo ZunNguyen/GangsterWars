@@ -512,13 +512,15 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 2.929034, y: 2.5585625}
-  - {x: 2.9354043, y: 3.8530295}
+  - {x: 2.874111, y: 3.3494527}
+  - {x: 2.9786475, y: 3.468923}
+  - {x: 2.3422365, y: 4.5011206}
   - {x: 1.6678541, y: 3.64596}
   - {x: -3.1666784, y: -3.760751}
-  - {x: -0.94817543, y: -3.8161523}
+  - {x: -1.295846, y: -3.7529395}
   - {x: 2.3273838, y: 2.4257782}
-  - {x: 2.9733112, y: 2.543864}
+  - {x: 2.555897, y: 3.0601397}
+  - {x: 2.8744934, y: 3.3677406}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -996,7 +998,7 @@ GameObject:
   - component: {fileID: 1423915967}
   m_Layer: 0
   m_Name: UserReceiveDamage
-  m_TagString: Shield
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1310,7 +1312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1962976642
 Transform:
   m_ObjectHideFlags: 0
