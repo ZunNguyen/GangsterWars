@@ -327,6 +327,7 @@ MonoBehaviour:
   - {fileID: 260888912}
   - {fileID: 542056539}
   - {fileID: 1146191058}
+  _posShieldPlayer: {fileID: 894661051}
 --- !u!1 &709991385
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709991386}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: EnemiesHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

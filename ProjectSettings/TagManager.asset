@@ -11,6 +11,10 @@ TagManager:
   - ShieldUser
   - EnemyHead
   - EnemyBody
+  - Head
+  - Body
+  - Shield
+  - StopPoint
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@ using Sources.DataBaseSystem;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
 using UniRx;
+using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 {
@@ -14,6 +15,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public List<EnemyHandler> _availableEnemyHandlers { set; private get; } = new();
 
         public int TotalHpEnemies { get; private set; }
+        public Transform ShieldPlayerPos { get; private set; }
         public ReactiveProperty<int> HpEnemiesCurrent { get; private set; } = new();
 
         public void OnSetUp(string waveId)
@@ -56,6 +58,11 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public void SubstractHpTotal(int damge)
         {
             HpEnemiesCurrent.Value -= damge;
+        }
+
+        public void SetShieldPlayerPos(Transform pos)
+        {
+            ShieldPlayerPos = pos;
         }
     }
 }

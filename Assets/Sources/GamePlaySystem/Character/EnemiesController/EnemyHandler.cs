@@ -133,6 +133,11 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             IsAttacking.Value = false;
         }
 
+        public void SetIdle()
+        {
+            AniamtionState.Value = AnimationState.Idle;
+        }
+
         private void OnDestroy()
         {
             _disposableShieldState?.Dispose();
