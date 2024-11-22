@@ -20,6 +20,8 @@ namespace Game.Character.Enemy.Abstract
         protected Vector3 _targetPos;
 
         [SerializeField] private Animator _animator;
+        [SerializeField] private SpriteRenderer _sprite;
+        [SerializeField] private Sprite _spriteOrigin;
 
         private void SetEnabled(bool status)
         {
@@ -29,6 +31,7 @@ namespace Game.Character.Enemy.Abstract
         public void OnSetUp(EnemyHandler enemyHandler)
         {
             _enemyHandler = enemyHandler;
+            _sprite.sprite = _spriteOrigin;
             GetTargetPos();
             SetEnabled(false);
             Moving();

@@ -120,3 +120,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3196122232629242973}
+  _sprite: {fileID: 8395179076122660132}
+  _spriteOrigin: {fileID: 21300000, guid: 2230a67b86f1f8e479116952622b12ab, type: 3}
