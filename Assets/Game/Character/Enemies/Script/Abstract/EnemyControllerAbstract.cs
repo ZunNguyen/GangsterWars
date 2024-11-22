@@ -31,12 +31,16 @@ namespace Game.Character.Enemy.Abstract
         protected bool _isAttacking = false;
         protected EnemyHandler _enemyHandler;
 
+        public int IndexPos { get; private set; }
+
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private Transform _hpBarPos;
         [SerializeField] private AnimationHandlerAbstract _animationHander;
 
-        public void OnSetUp(CanvasInGamePlayController canvasInGamePlayController, string enemyId)
+        public void OnSetUp(CanvasInGamePlayController canvasInGamePlayController, string enemyId, int indexPos)
         {
+            IndexPos = indexPos;
+
             _enemyHandler = _mainGamePlaySystem.EnemiesController.GetAvailableEnemyHandler();
             _enemyHandler.OnSetUp(enemyId);
             canvasInGamePlayController.OnSetUpHpBar(_hpBarPos, _enemyHandler);

@@ -2,9 +2,6 @@
 using DG.Tweening;
 using Game.Character.Player.Abstract;
 using Sources.DataBaseSystem;
-using Sources.GameData;
-using Sources.GamePlaySystem.MainGamePlay;
-using Sources.SpawnerSystem;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using UnityEngine;
@@ -14,8 +11,8 @@ namespace Game.Character.Bomber
     public class BomberWeapon : WeaponAbstract
     {
         private const float _throwSpeed = 20f;
-        private const float _height = 10f;
-        private readonly Vector3 _offsetPosTarget = new Vector3(-1f,0,0);
+        private const float _height = -2f;
+        private readonly Vector3 _offsetPosTarget = new Vector3(-3f,0,0);
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();

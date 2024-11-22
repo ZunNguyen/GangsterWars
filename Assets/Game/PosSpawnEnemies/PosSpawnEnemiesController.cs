@@ -12,7 +12,7 @@ namespace Game.PosSpawnEnemies
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
         [SerializeField] private List<PosSpawnEnemy> _posSpawnEnemies;
-        [SerializeField] private Transform _posShieldPlayer;
+        [SerializeField] private List<Transform> _targetPosToShoot;
 
         private void Awake()
         {
@@ -21,7 +21,10 @@ namespace Game.PosSpawnEnemies
                 _posSpawnEnemies[i].OnSetUp(i);
             }
 
-            _mainGamePlaySystem.EnemiesController.SetShieldPlayerPos(_posShieldPlayer);
+            foreach (var targetPos in _targetPosToShoot)
+            {
+                _mainGamePlaySystem.EnemiesController.SetShieldPlayerPos(targetPos);
+            }
         }
     }
 }

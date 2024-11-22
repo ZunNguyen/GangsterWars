@@ -10,6 +10,7 @@ namespace Game.Character.Enemy.Shoot
     {
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
+        [SerializeField] private EnemyControllerAbstract _enemyController;
         [SerializeField] private WeaponAbstract _weaponPrefab;
         [SerializeField] private Transform _weaponHolder;
         [SerializeField] private Transform _posSpawnWeapon;
@@ -19,7 +20,7 @@ namespace Game.Character.Enemy.Shoot
             var newWeapon = _spawnerManager.Get(_weaponPrefab);
             newWeapon.transform.SetParent(_weaponHolder);
             newWeapon.transform.position = _posSpawnWeapon.position;
-            newWeapon.OnSetUp(_enemyHandler);
+            newWeapon.OnSetUp(_enemyHandler, _enemyController.IndexPos);
         }
 
         public override void OnAttackEnd()

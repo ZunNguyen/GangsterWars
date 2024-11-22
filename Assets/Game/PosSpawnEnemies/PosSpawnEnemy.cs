@@ -63,13 +63,13 @@ namespace Game.PosSpawnEnemies
 
         private void Spawning(EnemyControllerAbstract enemyController, string enemyId)
         {
-            var enemyPrefab = _spawnerManager.Get(enemyController);
-            _mainGamePlaySystem.SpawnEnemiesHandler.AddEnemyToList(enemyPrefab);
-            enemyPrefab.OnSetUp(_canvasInGamePlayController, enemyId);
-            enemyPrefab.transform.SetParent(_enemiesHolder);
+            var newEnemy = _spawnerManager.Get(enemyController);
+            _mainGamePlaySystem.SpawnEnemiesHandler.AddEnemyToList(newEnemy);
+            newEnemy.OnSetUp(_canvasInGamePlayController, enemyId, _indexPos);
+            newEnemy.transform.SetParent(_enemiesHolder);
 
             _offsetPos.z -= _offsetDefaultZ;
-            enemyPrefab.transform.position = _offsetPos;
+            newEnemy.transform.position = _offsetPos;
         }
     }
 }

@@ -7,12 +7,14 @@ namespace Game.Character.Enemy.Weapon
     public class BomEnemyWeapon : Abstract.WeaponAbstract
     {
         private const float _throwSpeed = 20f;
-        private const float _height = 10f;
-        private readonly Vector3 _offsetPosTarget = new Vector3(-1f, 0, 0);
+        private const float _height = 2f;
+        private const float _randomPosXMin = -1f;
+        private const float _randomPosXMax = 1f;
 
         protected override void Moving()
         {
-            _targetPos += _offsetPosTarget;
+            var offsetPosx = GetRandom.GetRandomFloat(_randomPosXMin, _randomPosXMax);
+            _targetPos.x += offsetPosx;
             var middlePoint = GetVector.GetHightPointBetweenTwoPoint(transform.position, _targetPos, _height);
 
             Vector3[] path = new Vector3[]

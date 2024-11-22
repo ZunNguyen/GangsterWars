@@ -15,7 +15,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public List<EnemyHandler> _availableEnemyHandlers { set; private get; } = new();
 
         public int TotalHpEnemies { get; private set; }
-        public Transform ShieldPlayerPos { get; private set; }
+        public List<Transform> ShieldPlayerPos { get; private set; } = new();
         public ReactiveProperty<int> HpEnemiesCurrent { get; private set; } = new();
 
         public void OnSetUp(string waveId)
@@ -62,7 +62,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         public void SetShieldPlayerPos(Transform pos)
         {
-            ShieldPlayerPos = pos;
+            ShieldPlayerPos.Add(pos);
         }
     }
 }

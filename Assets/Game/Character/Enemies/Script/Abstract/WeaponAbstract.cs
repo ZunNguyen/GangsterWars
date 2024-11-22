@@ -28,18 +28,18 @@ namespace Game.Character.Enemy.Abstract
             _animator.enabled = status;
         }
 
-        public void OnSetUp(EnemyHandler enemyHandler)
+        public void OnSetUp(EnemyHandler enemyHandler, int indexPos)
         {
+            SetEnabled(false);
             _enemyHandler = enemyHandler;
             _sprite.sprite = _spriteOrigin;
-            GetTargetPos();
-            SetEnabled(false);
+            GetTargetPos(indexPos);
             Moving();
         }
 
-        private void GetTargetPos()
+        private void GetTargetPos(int indexPos)
         {
-            _targetPos = _mainGamePlaySystem.EnemiesController.ShieldPlayerPos.position;
+            _targetPos = _mainGamePlaySystem.EnemiesController.ShieldPlayerPos[indexPos].position;
         }
 
         protected abstract void Moving();
