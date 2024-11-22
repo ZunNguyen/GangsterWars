@@ -112,17 +112,16 @@ namespace Game.Character.Enemy.Abstract
 
             _coinControllerSystem.SpawnCoinReward(coinRewardInfo);
             OnDisposable();
-            AnimationDeath();
+            ReleaseObject();
         }
 
         private void OnDisposable()
         {
             _disposableDirection?.Dispose();
             _disposableIsAttacking?.Dispose();
-            _animationHander.OnDisposable();
         }
 
-        private async void AnimationDeath()
+        private async void ReleaseObject()
         {
             await UniTask.Delay(2000);
 

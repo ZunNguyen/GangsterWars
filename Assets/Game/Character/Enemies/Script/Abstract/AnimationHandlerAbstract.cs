@@ -21,12 +21,14 @@ namespace Game.Character.Enemy.Abstract
             {
                 var state = value.ConvertToString();
                 _animator.SetTrigger(state);
+
+                if (value == Sources.GamePlaySystem.MainGamePlay.Enemies.AnimationState.Death) OnDisposable();
             }).AddTo(this);
         }
 
         public abstract void OnAttackEnd();
 
-        public void OnDisposable()
+        private void OnDisposable()
         {
             _disposableAniamtionState?.Dispose();
         }
