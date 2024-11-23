@@ -456,7 +456,7 @@ MonoBehaviour:
       PercentChance: 100
     CSVFile: {fileID: 4900000, guid: de9d87e6ac476a24e817b66eeab11c99, type: 3}
   - Id: boss-02
-    EnemyPrefab: {fileID: 0}
+    EnemyPrefab: {fileID: 6955511236308158615, guid: 2b658d2dab17bcf4cb9ed8800804432f, type: 3}
     WaveEnemies:
     - Id: wave-01
       Damage: 10
@@ -466,46 +466,370 @@ MonoBehaviour:
     - Id: wave-02
       Damage: 20
       Hp: 100
-      coinReward: {x: 4, y: 10}
+      coinReward: {x: 2, y: 5}
       PercentChance: 100
     - Id: wave-03
       Damage: 30
       Hp: 150
-      coinReward: {x: 2, y: 5}
+      coinReward: {x: 2, y: 6}
       PercentChance: 100
     - Id: wave-04
       Damage: 40
       Hp: 200
-      coinReward: {x: 4, y: 11}
+      coinReward: {x: 2, y: 7}
       PercentChance: 100
     - Id: wave-05
       Damage: 50
       Hp: 250
-      coinReward: {x: 2, y: 6}
+      coinReward: {x: 2, y: 8}
       PercentChance: 100
     - Id: wave-06
       Damage: 60
       Hp: 300
-      coinReward: {x: 4, y: 12}
+      coinReward: {x: 2, y: 9}
       PercentChance: 100
     - Id: wave-07
       Damage: 70
       Hp: 350
-      coinReward: {x: 2, y: 7}
+      coinReward: {x: 2, y: 10}
       PercentChance: 100
     - Id: wave-08
       Damage: 80
       Hp: 400
-      coinReward: {x: 2, y: 5}
+      coinReward: {x: 2, y: 11}
       PercentChance: 100
     - Id: wave-09
       Damage: 90
       Hp: 450
-      coinReward: {x: 4, y: 11}
+      coinReward: {x: 2, y: 12}
       PercentChance: 100
     - Id: wave-10
       Damage: 100
       Hp: 500
+      coinReward: {x: 2, y: 13}
+      PercentChance: 100
+    CSVFile: {fileID: 4900000, guid: cb6017ff9007e9e4abd6ad39917b54c8, type: 3}
+  - Id: boss-03
+    EnemyPrefab: {fileID: 2051321100529574554, guid: dee7d93fd783dc043ba46001c200ceb9, type: 3}
+    WaveEnemies:
+    - Id: wave-01
+      Damage: 10
+      Hp: 50
+      coinReward: {x: 2, y: 4}
+      PercentChance: 100
+    - Id: wave-02
+      Damage: 20
+      Hp: 100
+      coinReward: {x: 2, y: 5}
+      PercentChance: 100
+    - Id: wave-03
+      Damage: 30
+      Hp: 150
       coinReward: {x: 2, y: 6}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: e08b1079cf3797f4cbb56baa4460a472, type: 3}
+    - Id: wave-04
+      Damage: 40
+      Hp: 200
+      coinReward: {x: 2, y: 7}
+      PercentChance: 100
+    - Id: wave-05
+      Damage: 50
+      Hp: 250
+      coinReward: {x: 2, y: 8}
+      PercentChance: 100
+    - Id: wave-06
+      Damage: 60
+      Hp: 300
+      coinReward: {x: 2, y: 9}
+      PercentChance: 100
+    - Id: wave-07
+      Damage: 70
+      Hp: 350
+      coinReward: {x: 2, y: 10}
+      PercentChance: 100
+    - Id: wave-08
+      Damage: 80
+      Hp: 400
+      coinReward: {x: 2, y: 11}
+      PercentChance: 100
+    - Id: wave-09
+      Damage: 90
+      Hp: 450
+      coinReward: {x: 2, y: 12}
+      PercentChance: 100
+    - Id: wave-10
+      Damage: 100
+      Hp: 500
+      coinReward: {x: 2, y: 13}
+      PercentChance: 100
+    CSVFile: {fileID: 4900000, guid: d03afe13614b2fa4d89f5fb860b5f13a, type: 3}
+  - Id: boss-04
+    EnemyPrefab: {fileID: 6103538179936068456, guid: 0fb06a77f1970794f8629ade655d9bbd, type: 3}
+    WaveEnemies:
+    - Id: wave-01
+      Damage: 10
+      Hp: 50
+      coinReward: {x: 2, y: 4}
+      PercentChance: 100
+    - Id: wave-02
+      Damage: 20
+      Hp: 100
+      coinReward: {x: 2, y: 5}
+      PercentChance: 100
+    - Id: wave-03
+      Damage: 30
+      Hp: 150
+      coinReward: {x: 2, y: 6}
+      PercentChance: 100
+    - Id: wave-04
+      Damage: 40
+      Hp: 200
+      coinReward: {x: 2, y: 7}
+      PercentChance: 100
+    - Id: wave-05
+      Damage: 50
+      Hp: 250
+      coinReward: {x: 2, y: 8}
+      PercentChance: 100
+    - Id: wave-06
+      Damage: 60
+      Hp: 300
+      coinReward: {x: 2, y: 9}
+      PercentChance: 100
+    - Id: wave-07
+      Damage: 70
+      Hp: 350
+      coinReward: {x: 2, y: 10}
+      PercentChance: 100
+    - Id: wave-08
+      Damage: 80
+      Hp: 400
+      coinReward: {x: 2, y: 11}
+      PercentChance: 100
+    - Id: wave-09
+      Damage: 90
+      Hp: 450
+      coinReward: {x: 2, y: 12}
+      PercentChance: 100
+    - Id: wave-10
+      Damage: 100
+      Hp: 500
+      coinReward: {x: 2, y: 13}
+      PercentChance: 100
+    CSVFile: {fileID: 4900000, guid: f968dadf886faf346bc659d1e4efe107, type: 3}
+  - Id: boss-05
+    EnemyPrefab: {fileID: 8646716340610159811, guid: df1a4c0d299044945a3ee9ffe2ae2c06, type: 3}
+    WaveEnemies:
+    - Id: wave-01
+      Damage: 10
+      Hp: 50
+      coinReward: {x: 2, y: 4}
+      PercentChance: 100
+    - Id: wave-02
+      Damage: 20
+      Hp: 100
+      coinReward: {x: 2, y: 5}
+      PercentChance: 100
+    - Id: wave-03
+      Damage: 30
+      Hp: 150
+      coinReward: {x: 2, y: 6}
+      PercentChance: 100
+    - Id: wave-04
+      Damage: 40
+      Hp: 200
+      coinReward: {x: 2, y: 7}
+      PercentChance: 100
+    - Id: wave-05
+      Damage: 50
+      Hp: 250
+      coinReward: {x: 2, y: 8}
+      PercentChance: 100
+    - Id: wave-06
+      Damage: 60
+      Hp: 300
+      coinReward: {x: 2, y: 9}
+      PercentChance: 100
+    - Id: wave-07
+      Damage: 70
+      Hp: 350
+      coinReward: {x: 2, y: 10}
+      PercentChance: 100
+    - Id: wave-08
+      Damage: 80
+      Hp: 400
+      coinReward: {x: 2, y: 11}
+      PercentChance: 100
+    - Id: wave-09
+      Damage: 90
+      Hp: 450
+      coinReward: {x: 2, y: 12}
+      PercentChance: 100
+    - Id: wave-10
+      Damage: 100
+      Hp: 500
+      coinReward: {x: 2, y: 13}
+      PercentChance: 100
+    CSVFile: {fileID: 4900000, guid: cb9393a2cc6e92b4994c6cd499f5dcba, type: 3}
+  - Id: boss-06
+    EnemyPrefab: {fileID: 4347561333755118298, guid: be7c4c5f8f0ada942b685b98656aca02, type: 3}
+    WaveEnemies:
+    - Id: wave-01
+      Damage: 10
+      Hp: 50
+      coinReward: {x: 2, y: 4}
+      PercentChance: 100
+    - Id: wave-02
+      Damage: 20
+      Hp: 100
+      coinReward: {x: 2, y: 5}
+      PercentChance: 100
+    - Id: wave-03
+      Damage: 30
+      Hp: 150
+      coinReward: {x: 2, y: 6}
+      PercentChance: 100
+    - Id: wave-04
+      Damage: 40
+      Hp: 200
+      coinReward: {x: 2, y: 7}
+      PercentChance: 100
+    - Id: wave-05
+      Damage: 50
+      Hp: 250
+      coinReward: {x: 2, y: 8}
+      PercentChance: 100
+    - Id: wave-06
+      Damage: 60
+      Hp: 300
+      coinReward: {x: 2, y: 9}
+      PercentChance: 100
+    - Id: wave-07
+      Damage: 70
+      Hp: 350
+      coinReward: {x: 2, y: 10}
+      PercentChance: 100
+    - Id: wave-08
+      Damage: 80
+      Hp: 400
+      coinReward: {x: 2, y: 11}
+      PercentChance: 100
+    - Id: wave-09
+      Damage: 90
+      Hp: 450
+      coinReward: {x: 2, y: 12}
+      PercentChance: 100
+    - Id: wave-10
+      Damage: 100
+      Hp: 500
+      coinReward: {x: 2, y: 13}
+      PercentChance: 100
+    CSVFile: {fileID: 4900000, guid: 0c4de3216ddd2744f95eeda3bc96b824, type: 3}
+  - Id: boss-07
+    EnemyPrefab: {fileID: 2738606599830832688, guid: ffc9a57fd37840848be819a707ee721a, type: 3}
+    WaveEnemies:
+    - Id: wave-01
+      Damage: 10
+      Hp: 50
+      coinReward: {x: 2, y: 4}
+      PercentChance: 100
+    - Id: wave-02
+      Damage: 20
+      Hp: 100
+      coinReward: {x: 2, y: 5}
+      PercentChance: 100
+    - Id: wave-03
+      Damage: 30
+      Hp: 150
+      coinReward: {x: 2, y: 6}
+      PercentChance: 100
+    - Id: wave-04
+      Damage: 40
+      Hp: 200
+      coinReward: {x: 2, y: 7}
+      PercentChance: 100
+    - Id: wave-05
+      Damage: 50
+      Hp: 250
+      coinReward: {x: 2, y: 8}
+      PercentChance: 100
+    - Id: wave-06
+      Damage: 60
+      Hp: 300
+      coinReward: {x: 2, y: 9}
+      PercentChance: 100
+    - Id: wave-07
+      Damage: 70
+      Hp: 350
+      coinReward: {x: 2, y: 10}
+      PercentChance: 100
+    - Id: wave-08
+      Damage: 80
+      Hp: 400
+      coinReward: {x: 2, y: 11}
+      PercentChance: 100
+    - Id: wave-09
+      Damage: 90
+      Hp: 450
+      coinReward: {x: 2, y: 12}
+      PercentChance: 100
+    - Id: wave-10
+      Damage: 100
+      Hp: 500
+      coinReward: {x: 2, y: 13}
+      PercentChance: 100
+    CSVFile: {fileID: 4900000, guid: 06dccfc35f7f4bd4fb1c8bc01b270c67, type: 3}
+  - Id: boss-08
+    EnemyPrefab: {fileID: 4533735913268279485, guid: 4f3939168dfc9a148bf7293104538f9d, type: 3}
+    WaveEnemies:
+    - Id: wave-01
+      Damage: 10
+      Hp: 50
+      coinReward: {x: 2, y: 4}
+      PercentChance: 100
+    - Id: wave-02
+      Damage: 20
+      Hp: 100
+      coinReward: {x: 2, y: 5}
+      PercentChance: 100
+    - Id: wave-03
+      Damage: 30
+      Hp: 150
+      coinReward: {x: 2, y: 6}
+      PercentChance: 100
+    - Id: wave-04
+      Damage: 40
+      Hp: 200
+      coinReward: {x: 2, y: 7}
+      PercentChance: 100
+    - Id: wave-05
+      Damage: 50
+      Hp: 250
+      coinReward: {x: 2, y: 8}
+      PercentChance: 100
+    - Id: wave-06
+      Damage: 60
+      Hp: 300
+      coinReward: {x: 2, y: 9}
+      PercentChance: 100
+    - Id: wave-07
+      Damage: 70
+      Hp: 350
+      coinReward: {x: 2, y: 10}
+      PercentChance: 100
+    - Id: wave-08
+      Damage: 80
+      Hp: 400
+      coinReward: {x: 2, y: 11}
+      PercentChance: 100
+    - Id: wave-09
+      Damage: 90
+      Hp: 450
+      coinReward: {x: 2, y: 12}
+      PercentChance: 100
+    - Id: wave-10
+      Damage: 100
+      Hp: 500
+      coinReward: {x: 2, y: 13}
+      PercentChance: 100
+    CSVFile: {fileID: 4900000, guid: 8bcfef49cc744a447a162223e9d5260a, type: 3}
