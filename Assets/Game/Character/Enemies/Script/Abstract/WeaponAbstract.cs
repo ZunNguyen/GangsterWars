@@ -14,13 +14,14 @@ namespace Game.Character.Enemy.Abstract
     {
         protected readonly TypeDamageUser _typeDamage = TypeDamageUser.LongRangeDamage;
 
-        private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
+        protected SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         protected MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
         protected EnemyHandler _enemyHandler;
 
         public virtual void OnSetUp(EnemyHandler enemyHandler, int indexPos)
         {
+            gameObject.SetActive(true);
             _enemyHandler = enemyHandler;
             Moving();
         }
@@ -32,7 +33,7 @@ namespace Game.Character.Enemy.Abstract
             _enemyHandler.DamageUser(_typeDamage);
         }
 
-        public void OnRelease()
+        public virtual void OnRelease()
         {
             _spawnerManager.Release(this);
         }

@@ -179,6 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 394089265}
   - component: {fileID: 394089266}
+  - component: {fileID: 394089267}
   m_Layer: 0
   m_Name: User
   m_TagString: ShieldUser
@@ -233,6 +234,27 @@ PolygonCollider2D:
       - {x: -2.184768, y: -0.70013976}
       - {x: -3.0960994, y: -0.42043233}
       - {x: 0.68316984, y: 3.207062}
+--- !u!50 &394089267
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394089264}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &532987735
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +500,7 @@ GameObject:
   - component: {fileID: 894661053}
   - component: {fileID: 894661054}
   - component: {fileID: 894661055}
+  - component: {fileID: 894661056}
   m_Layer: 0
   m_Name: Shield
   m_TagString: ShieldUser
@@ -594,6 +617,27 @@ PolygonCollider2D:
       - {x: -3.6069922, y: -4.193002}
       - {x: -2.8004317, y: -4.2259912}
       - {x: 3.1340535, y: 4.1742554}
+--- !u!50 &894661056
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894661050}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1002202731
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ namespace Game.Character.Enemy.Abstract
             }).AddTo(this);
         }
 
-        public abstract void OnAttackEnd();
+        public abstract void OnAttack();
 
         private void OnDisposable()
         {

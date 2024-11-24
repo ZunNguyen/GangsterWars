@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Game.Character.Controller;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.Utils;
