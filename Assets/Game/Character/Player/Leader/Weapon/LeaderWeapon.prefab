@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 1485380722}
+  _hitBulletEffect: {fileID: 1315920859806135075, guid: 04608886100b3584b9b254b2694eea90, type: 3}

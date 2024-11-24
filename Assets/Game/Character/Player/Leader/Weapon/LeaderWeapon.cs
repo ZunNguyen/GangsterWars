@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Game.Character.HitBulletEffect;
 using Sources.Extension;
 using Sources.GamePlaySystem.Leader;
 using Sources.SpawnerSystem;
@@ -19,6 +20,7 @@ namespace Game.Weapon.Bullet
         public int Damage { get; private set; }
 
         [SerializeField] private Rigidbody2D _rb;
+        [SerializeField] private HitBulletEffect _hitBulletEffect;
 
         private void Awake()
         {
@@ -43,6 +45,9 @@ namespace Game.Weapon.Bullet
         public void ReleaseBullet()
         {
             if (isActiveAndEnabled == false) return;
+
+            var effect = _spawnerManager.Get(_hitBulletEffect);
+            effect.OnSetUp(_originalPos, transform.position);
             _spawnerManager.Release(this);
         }
 
