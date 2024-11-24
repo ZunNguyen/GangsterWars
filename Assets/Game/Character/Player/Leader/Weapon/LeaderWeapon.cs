@@ -1,5 +1,5 @@
 ﻿using DG.Tweening;
-using Game.Character.HitBulletEffect;
+using Game.Character.BulletEffect;
 using Sources.Extension;
 using Sources.GamePlaySystem.Leader;
 using Sources.SpawnerSystem;
@@ -14,20 +14,26 @@ namespace Game.Weapon.Bullet
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
+        private HitBulletEffect _hitBulletEffect;
         private Vector2 _originalPos;
 
         public string CollisionKey { get; private set; }
         public int Damage { get; private set; }
 
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private HitBulletEffect _hitBulletEffect;
 
         private void Awake()
         {
             _originalPos = transform.position;
         }
 
-        public void MoveMent(Vector3 clickMousePos)
+        public void OnSetUp(HitBulletEffect hitBulletEffect, Vector3 clickMousePos)
+        {
+            _hitBulletEffect = hitBulletEffect;
+            MoveMent(clickMousePos);
+        }
+
+        private void MoveMent(Vector3 clickMousePos)
         {
             Damage = _leaderSystem.GunHandler.DamageBulletCurrent;
 

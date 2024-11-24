@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Game.Character.BulletEffect;
 using Game.Weapon.Bullet;
 using Sources.GamePlaySystem.Leader;
 using Sources.SpawnerSystem;
@@ -25,6 +26,9 @@ namespace Game.Character.Player.Abstract
         [SerializeField] private LeaderWeapon _weaponPrefab;
         [SerializeField] private Transform _weaponHolders;
         [SerializeField] protected List<Transform> _posSpawns;
+
+        [Header("Hit Bullet Effect")]
+        [SerializeField] private HitBulletEffect _hitBulletEffectPrefab;
 
         private void Awake()
         {
@@ -54,7 +58,7 @@ namespace Game.Character.Player.Abstract
             var bullet = _spawnerManager.Get(_weaponPrefab);
             bullet.transform.SetParent(_weaponHolders);
             bullet.transform.position = posSpawn.position;
-            bullet.MoveMent(posClick);
+            bullet.OnSetUp(_hitBulletEffectPrefab, posClick);
         }
 
         private void OnDestroy()

@@ -84,6 +84,7 @@ MonoBehaviour:
   _posSpawns:
   - {fileID: 2845476343917744008}
   - {fileID: 4095233951100490895}
+  _hitBulletEffectPrefab: {fileID: 1315920859806135075, guid: 04608886100b3584b9b254b2694eea90, type: 3}
 --- !u!1 &412625268637603177
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616671748200951407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -294,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914903108751433181}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.02, z: 0}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -352,6 +353,7 @@ MonoBehaviour:
   _weaponHolders: {fileID: 933683512898116390}
   _posSpawns:
   - {fileID: 5029054795495156658}
+  _hitBulletEffectPrefab: {fileID: 8342772848997375492, guid: e643171962914844a825c217cbc28671, type: 3}
 --- !u!1 &3019850904259751890
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +641,7 @@ MonoBehaviour:
   _weaponHolders: {fileID: 933683512898116390}
   _posSpawns:
   - {fileID: 353417649}
+  _hitBulletEffectPrefab: {fileID: 1315920859806135075, guid: 04608886100b3584b9b254b2694eea90, type: 3}
 --- !u!1 &5473270803356991514
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +724,7 @@ MonoBehaviour:
   _weaponHolders: {fileID: 933683512898116390}
   _posSpawns:
   - {fileID: 9036155879334624063}
+  _hitBulletEffectPrefab: {fileID: 8342772848997375492, guid: e643171962914844a825c217cbc28671, type: 3}
 --- !u!1 &6899022640674312664
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,3 +811,4 @@ MonoBehaviour:
   - {fileID: 4804100258939489624}
   - {fileID: 5072125361753903933}
   - {fileID: 1107320849868820713}
+  _hitBulletEffectPrefab: {fileID: 1315920859806135075, guid: 04608886100b3584b9b254b2694eea90, type: 3}

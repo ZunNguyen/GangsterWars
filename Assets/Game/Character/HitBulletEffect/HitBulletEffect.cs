@@ -1,10 +1,8 @@
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Character.HitBulletEffect
+namespace Game.Character.BulletEffect
 {
     public class HitBulletEffect : MonoBehaviour
     {
