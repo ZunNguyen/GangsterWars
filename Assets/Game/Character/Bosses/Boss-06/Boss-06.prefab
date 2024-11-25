@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5699321534768691163}
   m_Layer: 0
-  m_Name: PosSpawnBullet
+  m_Name: PosSpawnBom_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,12 +24,43 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290034525182547590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.13, y: 2.73, z: 0}
+  m_LocalPosition: {x: -1.776, y: 2.608, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4347561333755118299}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &932292675138464891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124270160935581065}
+  m_Layer: 0
+  m_Name: PosSpawnBom_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &124270160935581065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932292675138464891}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.806, y: 2.505, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4347561333755118299}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2506474275847921641
 GameObject:
@@ -316,6 +347,7 @@ Transform:
   - {fileID: 4151123790384754863}
   - {fileID: 8575945294086395191}
   - {fileID: 5699321534768691163}
+  - {fileID: 124270160935581065}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -354,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 4151123790922897301}
   _hpBarPos: {fileID: 4151123790384754863}
-  _animationHander: {fileID: 7245594392694922193}
+  _animationHander: {fileID: 5528179491461456905}
 --- !u!1 &4347561334400954135
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +398,7 @@ GameObject:
   - component: {fileID: 4347561334400954136}
   - component: {fileID: 4347561334400954138}
   - component: {fileID: 7075067050091512104}
-  - component: {fileID: 7245594392694922193}
+  - component: {fileID: 5528179491461456905}
   m_Layer: 0
   m_Name: Animation
   m_TagString: Untagged
@@ -464,7 +496,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7245594392694922193
+--- !u!114 &5528179491461456905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -473,14 +505,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4347561334400954135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 483e42ce46a4e6b42996951094e6f680, type: 3}
+  m_Script: {fileID: 11500000, guid: 38bfd714e01d56d47bcb246e303b789b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7075067050091512104}
   _enemyController: {fileID: 201633728246839017}
-  _weaponPrefab: {fileID: 6148796955823961097, guid: 93863f3fd63d16544892972bee3c7fbd, type: 3}
+  _weaponPrefab: {fileID: 4290409247114023162, guid: 4f56c2ac8f9b81043b801b9b371a25af, type: 3}
+  _muzzleFlash: {fileID: 0}
   _weaponHolder: {fileID: 8575945294086395191}
   _posSpawnWeapon: {fileID: 5699321534768691163}
+  _posSpawnWeapon_2: {fileID: 124270160935581065}
 --- !u!1 &8957348091739199133
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8575945294086395191}
   m_Layer: 0
-  m_Name: BulletHolder
+  m_Name: BomHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

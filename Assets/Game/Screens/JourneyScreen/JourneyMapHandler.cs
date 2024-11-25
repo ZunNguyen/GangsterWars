@@ -78,7 +78,7 @@ namespace Game.Screens.JourneyScreen
 
             var journeyItemPrefab = _journeyPrefabs[journeyItemId];
             var newJourneyItemView = _spawnerManager.Get(journeyItemPrefab);
-            newJourneyItemView.transform.SetParent(_journeyItemViewHolder);
+            newJourneyItemView.transform.SetParent(_journeyItemViewHolder, false);
 
             var journeyItemScript = newJourneyItemView.GetComponent<JourneyView>();
             var waveId = _journeyMapDataCurrent.Data_2[cellIndex];

@@ -14,8 +14,9 @@ namespace Game.Weapon.Bullet
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
-        private HitBulletEffect _hitBulletEffect;
         private Vector2 _originalPos;
+        private HitBulletEffect _hitBulletEffect;
+        private Tween _tween;
 
         public string CollisionKey { get; private set; }
         public int Damage { get; private set; }
@@ -44,7 +45,7 @@ namespace Game.Weapon.Bullet
 
             var duration = Vector3.Distance(clickMousePos, _originalPos) / _speed;
 
-            transform.DOMove(clickMousePos, duration).SetEase(Ease.InSine)
+            _tween = transform.DOMove(clickMousePos, duration).SetEase(Ease.InSine)
                 .OnComplete(() => ReleaseBullet());
         }
 
@@ -52,6 +53,7 @@ namespace Game.Weapon.Bullet
         {
             if (isActiveAndEnabled == false) return;
 
+            _tween.Kill();
             var effect = _spawnerManager.Get(_hitBulletEffect);
             effect.OnSetUp(_originalPos, transform.position);
             _spawnerManager.Release(this);

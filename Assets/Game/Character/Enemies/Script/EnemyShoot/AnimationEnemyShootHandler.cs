@@ -36,6 +36,7 @@ namespace Game.Character.Enemy.Shoot
 
         protected void SpawnMuzzleFlash(Transform posSpawn)
         {
+            if (_muzzleFlash == null) return;
             var muzzleFlash = _spawnerManager.Get(_muzzleFlash);
             muzzleFlash.transform.SetParent(_weaponHolder);
             muzzleFlash.transform.position = posSpawn.position;

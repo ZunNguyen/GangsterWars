@@ -20,14 +20,14 @@ MonoBehaviour:
       Phases:
       - PhaseId: phase-01
         Enemy:
-          EnemyId: boss-03
+          EnemyId: boss-08
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 0
     - Id: turn-02
       Phases:
       - PhaseId: phase-01
         Enemy:
-          EnemyId: boss-03
+          EnemyId: boss-08
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-02

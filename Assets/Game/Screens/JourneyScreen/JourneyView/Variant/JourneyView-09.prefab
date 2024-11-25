@@ -73,11 +73,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 259655174755010813, guid: 0b100cf45c2c1cf4bb5bb3ad7558a878, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1746
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 259655174755010813, guid: 0b100cf45c2c1cf4bb5bb3ad7558a878, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 127
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 259655174755010813, guid: 0b100cf45c2c1cf4bb5bb3ad7558a878, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2650613766052123214, guid: 0b100cf45c2c1cf4bb5bb3ad7558a878, type: 3}
       propertyPath: m_Name
-      value: JourneyView (6)
+      value: JourneyView-09
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b100cf45c2c1cf4bb5bb3ad7558a878, type: 3}
