@@ -9,6 +9,8 @@ namespace Game.Character.Enemy.Shoot
 {
     public class AnimationEnemyShootHandler : AnimationHandlerAbstract
     {
+        private readonly Vector3 _rotateDefault = new Vector3(0, 0, 180f);
+
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         [SerializeField] private EnemyControllerAbstract _enemyController;
@@ -37,7 +39,7 @@ namespace Game.Character.Enemy.Shoot
             var muzzleFlash = _spawnerManager.Get(_muzzleFlash);
             muzzleFlash.transform.SetParent(_weaponHolder);
             muzzleFlash.transform.position = posSpawn.position;
-            muzzleFlash.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180f));
+            muzzleFlash.transform.rotation = Quaternion.Euler(_rotateDefault);
         }
     }
 }

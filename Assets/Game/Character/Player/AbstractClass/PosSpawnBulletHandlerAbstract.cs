@@ -12,6 +12,8 @@ namespace Game.Character.Player.Abstract
 {
     public abstract class PosSpawnBulletHandlerAbstract : MonoBehaviour
     {
+        private readonly Vector3 _rotateDefault = Vector3.zero;
+
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
@@ -51,6 +53,7 @@ namespace Game.Character.Player.Abstract
             var muzzleFlash = _spawnerManager.Get(_muzzleFlash);
             muzzleFlash.transform.SetParent(_muzzleFlashHolder);
             muzzleFlash.transform.position = transform.position;
+            muzzleFlash.transform.rotation = Quaternion.Euler(_rotateDefault);
         }
 
         protected void SpawnBullet(Transform posSpawn, Vector3 posClick)
