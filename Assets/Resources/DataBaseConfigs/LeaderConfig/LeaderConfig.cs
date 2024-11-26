@@ -18,11 +18,16 @@ namespace Sources.DataBaseSystem.Leader
 
         [Header("Time to reload one bullet - second")] 
         public float ReloadTime;
+
+        private string GetDescription()
+        {
+            return Id;
+        }
     }
 
     public class LeaderConfig : WeaponConfig
     {
-        [SerializeField]
+        [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
         private List<LeaderWeaponInfo> _weaponInfos;
         private Dictionary<string, LeaderWeaponInfo> _weaponInfoCache = new();
 

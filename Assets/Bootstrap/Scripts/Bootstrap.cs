@@ -1,3 +1,4 @@
+using Sources.Audio;
 using Sources.Command;
 using Sources.DataBaseSystem;
 using Sources.GameData;
@@ -26,6 +27,9 @@ namespace Game.Bootstrap
         [Header("DataBase")]
         [SerializeField] private DataBase _dataBase;
 
+        [Header("Audio Object Instance")]
+        [SerializeField] private AudioObjectInstance _audioObjectInstance;
+
         private async void Start()
         {
             var bootStrapService = CreateBootstrapServiceGroup();
@@ -52,13 +56,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitDataBaseService(_dataBase));
             serviceGroup.Add(new InitGameDataService());
             serviceGroup.Add(new InitEventSystemService());
-
-            // Main game play service
-            serviceGroup.Add(new InitMainGamePlaySystemService());
-            serviceGroup.Add(new InitLeaderSystemService());
-            serviceGroup.Add(new InitBomberSystemService());
-            serviceGroup.Add(new InitSniperSystemService());
-            serviceGroup.Add(new InitGameResultSystemService());
+            serviceGroup.Add(new InitAudioManagerService(_audioObjectInstance));
 
             return serviceGroup;
         }
@@ -71,6 +69,13 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitStoreSystemService());
             serviceGroup.Add(new InitCoinControllerSystemService());
             serviceGroup.Add(new InitJourneyMapSystemService());
+
+            // Main game play service
+            serviceGroup.Add(new InitMainGamePlaySystemService());
+            serviceGroup.Add(new InitLeaderSystemService());
+            serviceGroup.Add(new InitBomberSystemService());
+            serviceGroup.Add(new InitSniperSystemService());
+            serviceGroup.Add(new InitGameResultSystemService());
 
             return serviceGroup;
         }
