@@ -35,5 +35,10 @@ namespace Game.Screens.MainMenuScreen
         {
             await _uiManager.Show<JourneyScreen.JourneyScreen>();
         }
+
+        public async void OnSettingClicked()
+        {
+            await _uiManager.Show<PanelSettingDialog.PanelSettingDialog>();
+        }
     }
 }
