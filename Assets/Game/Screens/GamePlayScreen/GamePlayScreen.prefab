@@ -3031,8 +3031,8 @@ RectTransform:
   m_Father: {fileID: 1289124269692271562}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.034188036, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.05075594, y: 0.049065422}
+  m_AnchorMax: {x: 0.9492441, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4445,13 +4445,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _useBlackBackGround: 0
   _uiTransition:
-    TransitionEnter: 1
-    TransitionExit: 2
+    TransitionEnter: 0
+    TransitionExit: 0
     EaseEnter: 9
     EaseExit: 9
   _rootCanvasGroup: {fileID: 7705955339711572878}
   _blackBackGround: {fileID: 8820068018295451461}
-  _duration: 0.5
+  _duration: 0
 --- !u!114 &7948935682707709649
 MonoBehaviour:
   m_ObjectHideFlags: 0

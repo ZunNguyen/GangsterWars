@@ -938,13 +938,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _useBlackBackGround: 0
   _uiTransition:
-    TransitionEnter: 1
-    TransitionExit: 2
+    TransitionEnter: 0
+    TransitionExit: 0
     EaseEnter: 9
     EaseExit: 9
   _rootCanvasGroup: {fileID: 7705955339711572878}
   _blackBackGround: {fileID: 8820068018295451461}
-  _duration: 0.5
+  _duration: 0
 --- !u!114 &4498912390214106619
 MonoBehaviour:
   m_ObjectHideFlags: 0

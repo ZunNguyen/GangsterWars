@@ -10,6 +10,8 @@ using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Services;
 using Sources.UISystem;
 using Sources.Utils.Singleton;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Sources.Command
 {
@@ -35,22 +37,24 @@ namespace Sources.Command
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
             await loadingScreen.PanelMoveIn();
 
-            CloseScreen();
             PreOnSetUp();
+            await CloseScreen();
             
             _uiManager.Show<GamePlayScreen>().Forget();
-            sequenceGroup.Run().Forget();
+            await sequenceGroup.Run();
 
             await loadingScreen.PanelMoveOut();
             loadingScreen.Close().Forget();
         }
 
-        private void CloseScreen()
+        private async UniTask CloseScreen()
         {
-            _journeyScreen.Close().Forget();
-            _mainMenuScreen.Close().Forget();
-            _gamePlayScreen.Close().Forget();
-        }
+            await UniTask.WhenAll(
+                                    _journeyScreen.Close(),
+                                    _mainMenuScreen.Close(),
+                                    _gamePlayScreen.Close()
+                                 );
+        }       
 
         private void PreOnSetUp()
         {
