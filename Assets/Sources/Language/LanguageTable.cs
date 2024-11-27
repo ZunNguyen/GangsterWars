@@ -1,3 +1,4 @@
+using Resources.CSV;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace Sources.Language
 {
-    public class LanguageTable : ScriptableObject
+    public class LanguageTable : ScriptableObject, IReadCSVData
     {
         [SerializeField][ReadOnly]
         private List<string> _languages;
@@ -80,6 +81,7 @@ namespace Sources.Language
 
         private const string _defaultConfigPath = "Assets/Resources/Language/LanguageItem";
 
+        [PropertySpace(20)]
         [Header("------Tool------")]
         [SerializeField]
         [ValueDropdown("ShowAllLanguage")]
@@ -184,6 +186,20 @@ namespace Sources.Language
         private void ClearNull()
         {
             _languageItems.RemoveAll(item => item == null);
+        }
+
+        [PropertySpace(30)]
+        [SerializeField, PropertyOrder(1), ReadOnly] private TextAsset _csvFile;
+        [Button, PropertyOrder(2)]
+        public void ReadFile()
+        {
+            string[] datas = _csvFile.text.Split(new string[] {",", "\n", "\r"}, StringSplitOptions.RemoveEmptyEntries);
+            
+            List<LanguageItem> languageItemsTemp = new();
+            foreach (string data in datas)
+            {
+
+            }
         }
 #endif
     }

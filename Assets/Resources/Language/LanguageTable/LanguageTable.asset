@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LanguageTable
   m_EditorClassIdentifier: 
   _languages:
-  - English
   - Vietnamese
-  _languageItems:
-  - {fileID: 11400000, guid: 203e0d34f210ca8408056fb8c2198fe0, type: 2}
+  - English
+  _languageItems: []
   _languageDefault: Vietnamese
-  _languageToDelete: VietNamese
+  _languageToDelete: Vietnamese
+  _csvFile: {fileID: 4900000, guid: 3cf9e628b4486154588361edb3ae800e, type: 3}
