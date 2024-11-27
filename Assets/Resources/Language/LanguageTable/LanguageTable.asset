@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a7659deddba4945a337b4f0a556140, type: 3}
   m_Name: LanguageTable
   m_EditorClassIdentifier: 
-  _languages: []
+  _languages:
+  - English
+  - Vietnamese
   _languageItems:
-  - {fileID: 11400000, guid: 2a810f9c2d84e1e4da84901d176f432f, type: 2}
+  - {fileID: 11400000, guid: 203e0d34f210ca8408056fb8c2198fe0, type: 2}
+  _languageDefault: Vietnamese
+  _languageToDelete: VietNamese

@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4935997636243510881, guid: 40cc728d35be7a6409efaa8d4a8f9337, type: 3}
+      propertyPath: _languageTable
+      value: 
+      objectReference: {fileID: 11400000, guid: 0292846e1d3d49045a69da325a0670a0, type: 2}
+    - target: {fileID: -4935997636243510881, guid: 40cc728d35be7a6409efaa8d4a8f9337, type: 3}
+      propertyPath: _audioObjectInstance
+      value: 
+      objectReference: {fileID: 3638774793349489799, guid: 354abbcd8efab414da671991629edf41, type: 3}
     - target: {fileID: 610503647607898631, guid: 40cc728d35be7a6409efaa8d4a8f9337, type: 3}
       propertyPath: m_Name
       value: Bootstrap

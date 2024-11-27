@@ -9,6 +9,7 @@ using Sources.GamePlaySystem.JourneyMap;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainMenuGame;
+using Sources.Language;
 using Sources.SaveGame;
 using Sources.Services;
 using Sources.Services.BootstrapLoadingService;
@@ -26,6 +27,9 @@ namespace Game.Bootstrap
 
         [Header("DataBase")]
         [SerializeField] private DataBase _dataBase;
+
+        [Header("LanguageTable")]
+        [SerializeField] private LanguageTable _languageTable;
 
         [Header("Audio Object Instance")]
         [SerializeField] private AudioObjectInstance _audioObjectInstance;
@@ -57,6 +61,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitGameDataService());
             serviceGroup.Add(new InitEventSystemService());
             serviceGroup.Add(new InitAudioManagerService(_audioObjectInstance));
+            serviceGroup.Add(new InitLanaguageTableService(_languageTable));
 
             return serviceGroup;
         }
