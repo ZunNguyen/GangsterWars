@@ -1,3 +1,9 @@
 ﻿LanguageId,Vietnamese,English
-Language_VietNam,Việt Nam,Vietnamese
-Language_English,Tiếng Anh,English
+Language,Việt Nam,English
+Setting_Title,Cài đặt,Setting
+Setting_Audio,Âm thanh,Audio
+Setting_Music,Âm Nhạc,Music
+Setting_Effect,Hiệu ứng,Effect
+Setting_Language,Ngôn ngữ,Language
+Setting_Data,Dữ liệu,Data
+Setting_Reset,Đặt lại,Reset

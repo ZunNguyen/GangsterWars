@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0cb6ab1a27ee7e45a7cb7201a8ad417, type: 3}
-  m_Name: Language_VietNam
+  m_Name: Setting_Music
   m_EditorClassIdentifier: 
-  Id: Language_VietNam
+  Id: Setting_Music
   LanguageInfos:
   - LanguageName: Vietnamese
-    Text: "Vi\u1EC7t Nam"
+    Text: "\xC2m Nh\u1EA1c"
   - LanguageName: English
-    Text: Vietnamese
+    Text: Music

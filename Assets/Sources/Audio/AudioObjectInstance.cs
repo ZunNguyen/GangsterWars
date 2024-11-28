@@ -18,23 +18,27 @@ namespace Sources.Audio
         private string _audioId;
         private bool _isMusic;
 
-        private IDisposable _disposabelMusicVolume;
-
         [SerializeField] AudioSource _audioSource;
 
-        private void OnEnable()
+        private void Awake()
         {
-            SubscriseMusicVolume();
+            SubscriseEvent();
         }
 
-        private void OnDisable()
+        private void SubscriseEvent()
         {
-            _disposabelMusicVolume?.Dispose();
+            _audioManager.MusicVolume.Subscribe(UpdateMusicVolume).AddTo(this);
+            _audioManager.SFXVolume.Subscribe(UpdateSFXVolume).AddTo(this);
         }
 
-        private void OnDestroy()
+        private void UpdateMusicVolume(float value)
         {
-            OnDisable();
+            if (_isMusic) _audioSource.volume = value;
+        }
+
+        private void UpdateSFXVolume(float value)
+        {
+            if (!_isMusic) _audioSource.volume = value;
         }
 
         public async void OnSetUp(AudioInfo audioInfo, bool isLoop)
@@ -51,14 +55,6 @@ namespace Sources.Audio
                 await UniTask.Delay(lengthAudio);
                 _spawnerManager.Release(this);
             }
-        }
-
-        private void SubscriseMusicVolume()
-        {
-            _disposabelMusicVolume = _audioManager.MusicVolume.Subscribe(value =>
-            {
-                _audioSource.volume = value;
-            }).AddTo(this);
         }
     }
 }

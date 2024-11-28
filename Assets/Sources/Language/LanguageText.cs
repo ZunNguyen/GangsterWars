@@ -1,19 +1,17 @@
-using BestHTTP.Extensions;
-using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Sources.Language
 {
-    [RequireComponent(typeof(Text))]
+    [RequireComponent(typeof(TMP_Text))]
     public class LanguageText : MonoBehaviour
     {
         private LanguageTable _languageTable => Locator<LanguageTable>.Instance;
 
-        private Text _text;
+        private TMP_Text _text;
 
         [SerializeField]
         [ValueDropdown("GetAllLanguageItemIds"), OnValueChanged("UpdateLanguageItem")]
@@ -34,7 +32,7 @@ namespace Sources.Language
 
         private async void Awake()
         {
-            _text = GetComponent<Text>();
+            _text = GetComponent<TMP_Text>();
 
             if (_languageItem != null)
             {

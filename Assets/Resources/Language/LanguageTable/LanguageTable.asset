@@ -16,8 +16,14 @@ MonoBehaviour:
   - Vietnamese
   - English
   _languageItems:
-  - {fileID: 11400000, guid: a6b15ffa70dfec54ebe5a1631349b834, type: 2}
-  - {fileID: 11400000, guid: 6bfd7c35bb2a806409cac6f3bece7d69, type: 2}
+  - {fileID: 11400000, guid: 2dc3d4668081e784e9af74f88d1d92c0, type: 2}
+  - {fileID: 11400000, guid: 8c36804c15bd0bf46ac5b06a28304c80, type: 2}
+  - {fileID: 11400000, guid: c338d0e2e3162bf41b1ba6de27657158, type: 2}
+  - {fileID: 11400000, guid: 9508caf4b76509f46ac3e09da14db177, type: 2}
+  - {fileID: 11400000, guid: 93c278438392bad47a2b4d65cecaa8c1, type: 2}
+  - {fileID: 11400000, guid: ff5054dccca51ee428a59cf7c8210920, type: 2}
+  - {fileID: 11400000, guid: c39f590a50bd7dd4f9a21df5fdd74244, type: 2}
+  - {fileID: 11400000, guid: 5bb8a7aa189a47348b926a59481d528f, type: 2}
   _languageDefault: Vietnamese
   _languageToDelete: Vietnamese
   _csvFile: {fileID: 4900000, guid: 3cf9e628b4486154588361edb3ae800e, type: 3}

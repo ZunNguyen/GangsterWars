@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0cb6ab1a27ee7e45a7cb7201a8ad417, type: 3}
-  m_Name: Language_English
+  m_Name: Setting_Reset
   m_EditorClassIdentifier: 
-  Id: Language_English
+  Id: Setting_Reset
   LanguageInfos:
   - LanguageName: Vietnamese
-    Text: "Ti\u1EBFng Anh"
+    Text: "\u0110\u1EB7t l\u1EA1i"
   - LanguageName: English
-    Text: English
+    Text: Reset
