@@ -19,5 +19,13 @@ namespace Sources.Language
         {
             get => LanguageInfos;
         }
+
+#if UNITY_EDITOR
+        [Button]
+        public void UpdateToFile()
+        {
+            LanguageTable.Instance.UpdateToFile(this);
+        }
+#endif
     }
 }

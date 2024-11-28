@@ -1,10 +1,13 @@
-using Resources.CSV;
+﻿using Resources.CSV;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UniRx;
+using System.Text;
 
 namespace Sources.Language
 {
@@ -13,7 +16,7 @@ namespace Sources.Language
         [SerializeField][ReadOnly]
         private List<string> _languages;
 
-        [SerializeField] private List<LanguageItem> _languageItems;
+        [SerializeField] private List<LanguageItem> _languageItems = new();
         private Dictionary<string, LanguageItem> _languageItemsCache = new();
 
         public IEnumerable<string> LanguageItemIds => _languageItems.Select(item => item.Id);
@@ -35,6 +38,7 @@ namespace Sources.Language
             if (!_languageItemsCache.ContainsKey(id))
             {
                 var languageItem = _languageItems.First(item => item.Id == id);
+                if (languageItem == null) return null;
                 _languageItemsCache.Add(id, languageItem);
             }
 
@@ -190,16 +194,114 @@ namespace Sources.Language
 
         [PropertySpace(30)]
         [SerializeField, PropertyOrder(1), ReadOnly] private TextAsset _csvFile;
-        [Button, PropertyOrder(2)]
+        [SerializeField, PropertyOrder(2), ReadOnly] private string _csvFilePath;
+        [Button, PropertyOrder(3)]
         public void ReadFile()
         {
-            string[] datas = _csvFile.text.Split(new string[] {",", "\n", "\r"}, StringSplitOptions.RemoveEmptyEntries);
-            
-            List<LanguageItem> languageItemsTemp = new();
-            foreach (string data in datas)
-            {
+            FecthAll();
 
+            string[] datas = _csvFile.text.Split(new string[] {",", "\n", "\r"}, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = _csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            var rowCount = lines.Length;
+            var colCount = datas.Length / rowCount;
+
+            List<LanguageItem> languageItemsTemp = new();
+            LanguageItem languageItem = null;
+            int indexLanguageId;
+            string languageId;
+
+            LanguageItemInfo languageItemInfo;
+            string dataLanguageVietNam;
+            string dataLanguageEnglish;
+
+            for (int row = 1; row < rowCount; row++)
+            {
+                indexLanguageId = row * colCount;
+                languageId = datas[indexLanguageId];
+
+                if (languageItemsTemp.FirstOrDefault(x => x.Id == languageId) != null) continue;
+
+                languageItem = GetLanguageItem();
+                UpdateData();
             }
+
+            foreach (var languageItemRemain in _languageItems)
+            {
+                var path = AssetDatabase.GetAssetPath(languageItem);
+                AssetDatabase.DeleteAsset(path);
+            }
+
+            _languageItems.Clear();
+            _languageItems = languageItemsTemp;
+            FecthAll();
+            AssetDatabase.Refresh();
+
+            void UpdateData()
+            {
+                languageItemsTemp.Add(languageItem);
+                _languageItems.Remove(languageItem);
+
+                dataLanguageVietNam = datas[indexLanguageId + 1];
+                languageItemInfo = languageItem.LanguageItemInfos[0];
+                languageItemInfo.Text = dataLanguageVietNam;
+
+                dataLanguageEnglish = datas[indexLanguageId + 2];
+                languageItemInfo = languageItem.LanguageItemInfos[1];
+                languageItemInfo.Text = dataLanguageEnglish;
+            }
+
+            LanguageItem GetLanguageItem()
+            {
+                languageItem = _languageItems.FirstOrDefault(item => item.Id == languageId);
+                if (languageItem == null)
+                {
+                    CreatLanguageItem(languageId);
+                    languageItem = _languageItems.FirstOrDefault(item => item.Id == languageId);
+                }
+
+                return languageItem;
+            }
+        }
+
+        public void UpdateToFile(LanguageItem languageItem)
+        {
+            string[] datas = _csvFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = _csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            var rowCount = lines.Length;
+            var colCount = datas.Length / rowCount;
+
+            string newLine = "";
+
+            var indexLanguage = Array.IndexOf(datas, languageItem.Id);   
+            if (indexLanguage == -1)
+            {
+                newLine = $"{languageItem.Id},{languageItem.LanguageItemInfos[0].Text},{languageItem.LanguageItemInfos[1].Text}";
+            }
+            else
+            {
+                datas[indexLanguage + 1] = languageItem.LanguageInfos[0].Text; // Viet namese text
+                datas[indexLanguage + 2] = languageItem.LanguageInfos[1].Text; // English text
+            }
+
+            List<string> linesData = new ();
+            for (int i = 0; i < rowCount; i++)
+            {
+                var lineData = new List<string>();
+                for (int j = 0; j < colCount; j++)
+                {
+                    lineData.Add(datas[i * colCount + j]);
+                }
+                linesData.Add(string.Join(",", lineData));
+            }
+
+            if (newLine != "")
+            {
+                linesData.Add(newLine);
+            }
+
+            File.WriteAllLines(_csvFilePath, linesData);
         }
 #endif
     }

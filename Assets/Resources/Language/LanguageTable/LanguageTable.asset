@@ -15,7 +15,10 @@ MonoBehaviour:
   _languages:
   - Vietnamese
   - English
-  _languageItems: []
+  _languageItems:
+  - {fileID: 11400000, guid: a6b15ffa70dfec54ebe5a1631349b834, type: 2}
+  - {fileID: 11400000, guid: 6bfd7c35bb2a806409cac6f3bece7d69, type: 2}
   _languageDefault: Vietnamese
   _languageToDelete: Vietnamese
   _csvFile: {fileID: 4900000, guid: 3cf9e628b4486154588361edb3ae800e, type: 3}
+  _csvFilePath: Assets/Resources/Language/LanguageData.csv
