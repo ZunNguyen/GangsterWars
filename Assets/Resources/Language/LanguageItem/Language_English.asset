@@ -15,6 +15,6 @@ MonoBehaviour:
   Id: Language_English
   LanguageInfos:
   - LanguageName: Vietnamese
-    Text: Ti?ng Anh
+    Text: "Ti\u1EBFng Anh"
   - LanguageName: English
     Text: English

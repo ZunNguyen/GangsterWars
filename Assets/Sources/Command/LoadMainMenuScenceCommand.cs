@@ -3,7 +3,9 @@ using Game.Screens.BlackLoadingScreen;
 using Game.Screens.GamePlayScreen;
 using Game.Screens.LoadingScreen;
 using Game.Screens.MainMenuScreen;
+using Sources.Audio;
 using Sources.Command;
+using Sources.Extension;
 using Sources.GamePlaySystem.MainMenuGame;
 using Sources.Services;
 using Sources.UISystem;
@@ -16,6 +18,8 @@ namespace Sources.Command
 {
     public class LoadMainMenuScenceCommand : Command
     {
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
+
         private UIManager _uiManager => Locator<UIManager>.Instance;
         private GamePlayScreen _gamePlayScreen => _uiManager.GetUI<GamePlayScreen>();
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
@@ -27,6 +31,8 @@ namespace Sources.Command
             sequenceGroup.Add(new LoadSenceCommand("MainMenu"));
 
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
+            _audioManager.Play(AudioKey.MENU_SONG, true);
+
             await loadingScreen.PanelMoveIn();
             await _storeSystem.Init();
             if (_gamePlayScreen != null) _gamePlayScreen.Close().Forget();

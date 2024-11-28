@@ -1,20 +1,28 @@
 using Sources.DataBaseSystem;
+using Sources.GameData;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using UniRx;
 using UnityEngine;
 
 namespace Sources.Audio
 {
     public class AudioManager
     {
+        private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private UserSettingProfile _userSettingProfile => _gameData.GetProfileData<UserSettingProfile>();
+
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private AudioConfig _audioConfig => _dataBase.GetConfig<AudioConfig>();
+
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         private AudioObjectInstance _audioObjectInstance;
         private GameObject _audioHolder;
+
+        public ReactiveProperty<float> MusicVolume = new();
+        public ReactiveProperty<float> SFXVolume = new();
 
         public void Init(AudioObjectInstance audioObjectInstance)
         {
@@ -22,7 +30,15 @@ namespace Sources.Audio
 
             _audioHolder = new GameObject("Audio Holder");
             _audioHolder.transform.position = Vector3.zero;
-            Object.DontDestroyOnLoad(_audioHolder);
+            UnityEngine.Object.DontDestroyOnLoad(_audioHolder);
+
+            LoadSetting();
+        }
+
+        private void LoadSetting()
+        {
+            MusicVolume.Value = _userSettingProfile.MusicVolume;
+            SFXVolume.Value = _userSettingProfile.SFXVolume;
         }
 
         public void Play(string audioId, bool isLoop)
@@ -39,6 +55,16 @@ namespace Sources.Audio
             var audioObject = _spawnerManager.Get(_audioObjectInstance);
             audioObject.transform.SetParent(_audioHolder.transform, false);
             return audioObject;
+        }
+
+        public void AdjustMusicVolume(float value)
+        {
+            MusicVolume.Value = value;
+        }
+
+        public void AdjustSFXVolume(float value)
+        {
+            SFXVolume.Value = value;
         }
     }
 }

@@ -67,9 +67,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d7cffddcbc0cc8f4ebe6e28eb9804082, type: 3}
-    m_FontSize: 60
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: f30789001796db64f8e8eb06c5d2959c, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 60
@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'LANGUAGE:'
+  m_Text: LANGUAGE
 --- !u!1 &1128716410705184915
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,8 +389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2.5}
-  m_SizeDelta: {x: 0, y: -5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7518475925610444478
 CanvasRenderer:
@@ -421,7 +421,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d7cffddcbc0cc8f4ebe6e28eb9804082, type: 3}
+    m_Font: {fileID: 12800000, guid: f30789001796db64f8e8eb06c5d2959c, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vietnamese
+  m_Text: "Vi\u1EC7t Nam"
 --- !u!114 &4447308249849002696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,8 +446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9010c3ea0095649b11d6d0bb7a35b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _languageItemId: Language_Vietnam
-  _languageItem: {fileID: 11400000, guid: 203e0d34f210ca8408056fb8c2198fe0, type: 2}
+  _languageItemId: Language_VietNam
+  _languageItem: {fileID: 11400000, guid: a6b15ffa70dfec54ebe5a1631349b834, type: 2}
 --- !u!1 &2819169861320614016
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +711,20 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7773213539816876197}
+        m_TargetAssemblyTypeName: Game.Screens.PanelSettingDialog.PanelSettingDialog,
+          Assembly-CSharp
+        m_MethodName: OnMusicVolumeChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4142289205456964711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _layer: Dialog
+  _sliderMusic: {fileID: 2273878841093362603}
 --- !u!1 &7363545852769089466
 GameObject:
   m_ObjectHideFlags: 0

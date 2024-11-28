@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AudioConfig
   m_EditorClassIdentifier: 
   _audioInfos:
-  - Id: 
-    AudioClip: {fileID: 0}
-    IsMusic: 0
+  - Id: menu-song
+    AudioClip: {fileID: 8300000, guid: c5f438067bebab444a7eaa7619950acd, type: 3}
+    IsMusic: 1
