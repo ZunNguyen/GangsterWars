@@ -2,9 +2,6 @@ using Cysharp.Threading.Tasks;
 using Sources.DataBaseSystem;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
@@ -29,6 +26,8 @@ namespace Sources.Audio
         {
             _audioManager.MusicVolume.Subscribe(UpdateMusicVolume).AddTo(this);
             _audioManager.SFXVolume.Subscribe(UpdateSFXVolume).AddTo(this);
+            _audioManager.OnPause += Pause;
+            _audioManager.AllAudioPause += AllPause;
         }
 
         private void UpdateMusicVolume(float value)
@@ -41,10 +40,23 @@ namespace Sources.Audio
             if (!_isMusic) _audioSource.volume = value;
         }
 
+        private void Pause(string id)
+        {
+            if (_audioId != id) return;
+            _audioSource.Pause();
+        }
+
+        private void AllPause()
+        {
+            _audioSource.Pause();
+            if (!gameObject.activeSelf) return;
+            _spawnerManager.Release(gameObject);
+        }
+
         public async void OnSetUp(AudioInfo audioInfo, bool isLoop)
         {
             _audioId = audioInfo.Id;
-            _isMusic =  audioInfo.IsMusic;
+            _isMusic = audioInfo.IsMusic;
             _audioSource.loop = isLoop;
 
             _audioSource.clip = audioInfo.AudioClip;
@@ -53,8 +65,14 @@ namespace Sources.Audio
             {
                 var lengthAudio = (int)(_audioSource.clip.length * 1000);
                 await UniTask.Delay(lengthAudio);
-                _spawnerManager.Release(this);
+                _spawnerManager.Release(gameObject);
             }
+        }
+
+        private void OnDestroy()
+        {
+            _audioManager.OnPause -= Pause;
+            _audioManager.AllAudioPause -= AllPause;
         }
     }
 }

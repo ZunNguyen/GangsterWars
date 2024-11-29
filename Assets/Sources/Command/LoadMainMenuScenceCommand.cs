@@ -31,12 +31,11 @@ namespace Sources.Command
             sequenceGroup.Add(new LoadSenceCommand("MainMenu"));
 
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
-            _audioManager.Play(AudioKey.MENU_SONG, true);
-
             await loadingScreen.PanelMoveIn();
             await _storeSystem.Init();
             if (_gamePlayScreen != null) _gamePlayScreen.Close().Forget();
             await sequenceGroup.Run();
+            _audioManager.Play(AudioKey.MENU_SONG, true);
             _uiManager.Show<MainMenuScreen>().Forget();
             await loadingScreen.PanelMoveOut();
             loadingScreen.Close().Forget();

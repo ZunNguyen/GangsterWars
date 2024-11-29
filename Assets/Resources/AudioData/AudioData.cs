@@ -1,8 +1,6 @@
 using Sirenix.OdinInspector;
-using Sources.DataBaseSystem;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Sources.DataBaseSystem
@@ -20,7 +18,7 @@ namespace Sources.DataBaseSystem
         }
     }
 
-    public class AudioConfig : DataBaseConfig
+    public class AudioData : ScriptableObject
     {
         [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
         private List<AudioInfo> _audioInfos;

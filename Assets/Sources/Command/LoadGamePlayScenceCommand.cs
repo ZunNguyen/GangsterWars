@@ -3,6 +3,8 @@ using Game.Screens.BlackLoadingScreen;
 using Game.Screens.GamePlayScreen;
 using Game.Screens.JourneyScreen;
 using Game.Screens.MainMenuScreen;
+using Sources.Audio;
+using Sources.Extension;
 using Sources.GamePlaySystem.Character;
 using Sources.GamePlaySystem.GameResult;
 using Sources.GamePlaySystem.Leader;
@@ -21,6 +23,7 @@ namespace Sources.Command
         private JourneyScreen _journeyScreen => _uiManager.GetUI<JourneyScreen>();
         private MainMenuScreen _mainMenuScreen => _uiManager.GetUI<MainMenuScreen>();
         private GamePlayScreen _gamePlayScreen => _uiManager.GetUI<GamePlayScreen>();
+        private AudioManager _audioManager = Locator<AudioManager>.Instance;
 
         private string _waveId;
 
@@ -34,14 +37,16 @@ namespace Sources.Command
             var sequenceGroup = new SequenceServiceCommandGroup("Load Main Game Play Scene");
             sequenceGroup.Add(new LoadSenceCommand("GamePlay"));
 
+
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
             await loadingScreen.PanelMoveIn();
-
             PreOnSetUp();
             await CloseScreen();
             
             _uiManager.Show<GamePlayScreen>().Forget();
             await sequenceGroup.Run();
+
+            _audioManager.Play(AudioKey.GAME_PLAY_SONG, true);
 
             await loadingScreen.PanelMoveOut();
             loadingScreen.Close().Forget();
@@ -49,11 +54,8 @@ namespace Sources.Command
 
         private async UniTask CloseScreen()
         {
-            await UniTask.WhenAll(
-                                    _journeyScreen.Close(),
-                                    _mainMenuScreen.Close(),
-                                    _gamePlayScreen.Close()
-                                 );
+            await UniTask.WhenAll(_journeyScreen.Close(),
+                                    _mainMenuScreen.Close(), _gamePlayScreen.Close());
         }       
 
         private void PreOnSetUp()

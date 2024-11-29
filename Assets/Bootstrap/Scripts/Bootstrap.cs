@@ -32,6 +32,7 @@ namespace Game.Bootstrap
         [SerializeField] private LanguageTable _languageTable;
 
         [Header("Audio Object Instance")]
+        [SerializeField] private AudioData _audioData;
         [SerializeField] private AudioObjectInstance _audioObjectInstance;
 
         private async void Start()
@@ -60,7 +61,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitDataBaseService(_dataBase));
             serviceGroup.Add(new InitGameDataService());
             serviceGroup.Add(new InitEventSystemService());
-            serviceGroup.Add(new InitAudioManagerService(_audioObjectInstance));
+            serviceGroup.Add(new InitAudioManagerService(_audioData, _audioObjectInstance));
             serviceGroup.Add(new InitLanaguageTableService(_languageTable));
 
             return serviceGroup;

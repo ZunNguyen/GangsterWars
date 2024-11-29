@@ -8,6 +8,7 @@ namespace Sources.Extension
     {
         // Song
         public static string MENU_SONG = "menu-song";
+        public static string GAME_PLAY_SONG = "game-play-song";
 
         // SFX
         public static string SFX_CLICK_01 = "sfx-click-01";

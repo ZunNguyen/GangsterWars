@@ -13,9 +13,7 @@ namespace Sources.Audio
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserSettingProfile _userSettingProfile => _gameData.GetProfileData<UserSettingProfile>();
 
-        private DataBase _dataBase => Locator<DataBase>.Instance;
-        private AudioConfig _audioConfig => _dataBase.GetConfig<AudioConfig>();
-
+        private AudioData _audioConfig => Locator<AudioData>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
         private AudioObjectInstance _audioObjectInstance;
@@ -23,6 +21,8 @@ namespace Sources.Audio
 
         public ReactiveProperty<float> MusicVolume = new();
         public ReactiveProperty<float> SFXVolume = new();
+        public Action<string> OnPause;
+        public Action AllAudioPause;
 
         public void Init(AudioObjectInstance audioObjectInstance)
         {
@@ -48,6 +48,16 @@ namespace Sources.Audio
             var audioInfo = _audioConfig.GetAudioInfo(audioId);
             var audioObj = GetAudioObject();
             audioObj.OnSetUp(audioInfo, isLoop);
+        }
+
+        public void PauseAudio(string audioId)
+        {
+            OnPause?.Invoke(audioId);
+        }
+
+        public void AllPauseAudio()
+        {
+            AllAudioPause?.Invoke();
         }
 
         private AudioObjectInstance GetAudioObject()

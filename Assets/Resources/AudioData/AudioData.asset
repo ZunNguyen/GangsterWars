@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2ab6c3876685f845b30b46a448b08ca, type: 3}
-  m_Name: AudioConfig
+  m_Name: AudioData
   m_EditorClassIdentifier: 
   _audioInfos:
   - Id: menu-song
     AudioClip: {fileID: 8300000, guid: c5f438067bebab444a7eaa7619950acd, type: 3}
+    IsMusic: 1
+  - Id: game-play-song
+    AudioClip: {fileID: 8300000, guid: 66759925640e1bd419515ea22661dadc, type: 3}
     IsMusic: 1
   - Id: sfx-click-01
     AudioClip: {fileID: 8300000, guid: 90b202af1ee4eb34cb2ac5782120173b, type: 3}

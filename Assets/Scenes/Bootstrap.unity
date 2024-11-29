@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4935997636243510881, guid: 40cc728d35be7a6409efaa8d4a8f9337, type: 3}
+      propertyPath: _audioData
+      value: 
+      objectReference: {fileID: 11400000, guid: 577153799fe0933459112bbe906ef0d2, type: 2}
+    - target: {fileID: -4935997636243510881, guid: 40cc728d35be7a6409efaa8d4a8f9337, type: 3}
       propertyPath: _languageTable
       value: 
       objectReference: {fileID: 11400000, guid: 0292846e1d3d49045a69da325a0670a0, type: 2}
