@@ -1,6 +1,7 @@
 ﻿using Game.Character.Bomber;
 using Resources.CSV;
 using Sirenix.OdinInspector;
+using Sources.Language;
 using System;
 using System.Collections.Generic;
 using System.Linq;

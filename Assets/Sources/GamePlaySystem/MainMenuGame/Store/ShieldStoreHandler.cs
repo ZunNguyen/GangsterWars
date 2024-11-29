@@ -147,7 +147,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             _userProfile.Save();
         }
 
-        public override void OnReloadWeapon(string weaponId)
+        public override ResultBuyItem OnReloadWeapon(string weaponId)
         {
             var weaponModel = WeaponWiewModels[weaponId];
 
@@ -160,8 +160,10 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 var weaponData = _userProfile.GetWeaponBaseData(weaponId) as ShieldData;
                 weaponData.State = ShieldState.Full;
                 _userProfile.Save();
+
+                return ResultBuyItem.Success;
             }
-            else Debug.Log("Not enough money!");
+            else return ResultBuyItem.Fail;
         }
     }
 }

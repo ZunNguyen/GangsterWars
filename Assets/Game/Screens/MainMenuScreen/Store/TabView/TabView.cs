@@ -1,3 +1,6 @@
+using Sources.Audio;
+using Sources.Extension;
+using Sources.Utils.Singleton;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +10,8 @@ namespace Game.Screens.MainMenuScreen
 {
     public class TabView : MonoBehaviour
     {
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
+
         private TabState _tabStateCurrent;
 
         [SerializeField] private TabHandler _tabHandler;
@@ -21,6 +26,7 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             _tabHandler.OnChangeTabState(_tabStateCurrent);
         }
 

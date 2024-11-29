@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Sources.Audio;
+using Sources.Extension;
 using Sources.GamePlaySystem.JourneyMap;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
@@ -16,6 +18,7 @@ namespace Game.Screens.JourneyScreen
         private const float _duration = 0.2f;
 
         private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private bool _isAnimationShow = false;
         private bool _isShowUp = true;
@@ -55,18 +58,21 @@ namespace Game.Screens.JourneyScreen
             _isAnimationShow = true;
 
             var episionsMoveClone = new List<RectTransform>(_episodesMove);
+            var moveTasks = new List<Task>();
             var countOffset = 1;
+
             for (int i = episionsMoveClone.Count - 1; i >= 0; i--)
             {
                 var targetMove = _offsetEpisodePos * countOffset;
 
-                var moveTasks = new List<Task>();
+                moveTasks.Clear();
                 foreach (var episode in episionsMoveClone)
                 {
                     var task = episode.DOAnchorPos(targetMove, _duration).SetEase(Ease.Linear);
                     moveTasks.Add(task.AsyncWaitForCompletion());
                 }
 
+                _audioManager.Play(AudioKey.SFX_RELOAD_01);
                 await Task.WhenAll(moveTasks);
                 episionsMoveClone.Remove(episionsMoveClone[i]);
                 countOffset++;
@@ -80,7 +86,7 @@ namespace Game.Screens.JourneyScreen
             _isAnimationShow = true;
 
             var episionsMoveClone = new List<RectTransform>();
-            
+            var moveTasks = new List<Task>();
 
             var countOffset = _episodesMove.Count;
             for (int i = 0; i < _episodesMove.Count; i++)
@@ -89,13 +95,14 @@ namespace Game.Screens.JourneyScreen
                 --countOffset;
                 var targetMove = _offsetEpisodePos * countOffset;
 
-                var moveTasks = new List<Task>();
+                moveTasks.Clear();
                 foreach (var episode in episionsMoveClone)
                 {
                     var task = episode.DOAnchorPos(targetMove, _duration).SetEase(Ease.Linear);
                     moveTasks.Add(task.AsyncWaitForCompletion());
                 }
 
+                _audioManager.Play(AudioKey.SFX_RELOAD_01);
                 await Task.WhenAll(moveTasks);
             }
 
@@ -105,6 +112,8 @@ namespace Game.Screens.JourneyScreen
         public void OnShowAllEpisodeClicked()
         {
             if (_isAnimationShow) return;
+
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             if (_isShowUp) ShowAllEpisode();
             else UnShowAllEpisode();
             _row.eulerAngles = new Vector3(_row.eulerAngles.x, _row.eulerAngles.y, _row.eulerAngles.z * -1f);

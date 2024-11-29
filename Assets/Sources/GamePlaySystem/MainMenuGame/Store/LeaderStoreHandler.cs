@@ -74,7 +74,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
             _userProfile.Save();
         }
 
-        public override void OnReloadWeapon(string weaponId)
+        public override ResultBuyItem OnReloadWeapon(string weaponId)
         {
             var weaponModel = WeaponWiewModels[weaponId];
 
@@ -87,8 +87,10 @@ namespace Sources.GamePlaySystem.MainMenuGame
                 var weaponData = _userProfile.GetWeaponBaseData(weaponId) as WeaponData;
                 weaponData.Quatity = weaponConfig.MaxBullet;
                 _userProfile.Save();
+
+                return ResultBuyItem.Success;
             }
-            else Debug.Log("Not enough money!");
+            else return ResultBuyItem.Fail;
         }
     }
 }

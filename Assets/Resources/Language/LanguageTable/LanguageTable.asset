@@ -24,7 +24,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ff5054dccca51ee428a59cf7c8210920, type: 2}
   - {fileID: 11400000, guid: c39f590a50bd7dd4f9a21df5fdd74244, type: 2}
   - {fileID: 11400000, guid: 5bb8a7aa189a47348b926a59481d528f, type: 2}
-  _languageDefault: Vietnamese
+  - {fileID: 11400000, guid: 7d72fffde2bd7374084d747ad18d5655, type: 2}
+  - {fileID: 11400000, guid: d1de89403c865f344abb2bbec63ea81e, type: 2}
+  - {fileID: 11400000, guid: 4adf52171d1124e448fec938d13a5894, type: 2}
+  - {fileID: 11400000, guid: cbe924af879750c4e9b85004d97753e8, type: 2}
+  - {fileID: 11400000, guid: c05e1e7dc41c15d4e93e5c42b3bd6103, type: 2}
+  - {fileID: 11400000, guid: 538a34045cd2a6c4d82b05b974347cfa, type: 2}
+  - {fileID: 11400000, guid: 4b084299cbe14f9438510bfe4272dec5, type: 2}
+  - {fileID: 11400000, guid: 398ee30ea12e3ac4f8d23d2bfe2e1f22, type: 2}
+  _languageDefault: English
   _languageToDelete: Vietnamese
   _csvFile: {fileID: 4900000, guid: 3cf9e628b4486154588361edb3ae800e, type: 3}
   _csvFilePath: Assets/Resources/Language/LanguageData.csv

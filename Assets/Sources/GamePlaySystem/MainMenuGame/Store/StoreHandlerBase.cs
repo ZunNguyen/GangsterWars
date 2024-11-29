@@ -15,6 +15,12 @@ using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainMenuGame.Store
 {
+    public enum ResultBuyItem
+    {
+        Success,
+        Fail
+    }
+
     public class WeaponViewModel
     {
         public ReactiveProperty<ItemState> State = new();
@@ -128,7 +134,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             else return ItemState.CanNotUnlock;
         }
 
-        public void UnlockNewWeapon(string weaponId)
+        public ResultBuyItem UnlockNewWeapon(string weaponId)
         {
             var weaponViewModel = WeaponWiewModels[weaponId];
             var fee = weaponViewModel.UnlockFee;
@@ -148,25 +154,20 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                     UpdateWeaponViewModel(_weaponDatas[i].Id, _weaponDatas[i].LevelUpgradeId);
                 }
 
-                foreach (var weaponModel in WeaponWiewModels)
-                {
-                    Debug.Log($"{weaponModel.Value.State}");
-                }
-
-                Debug.Log($"Unlock {weaponId} successfully");
+                return ResultBuyItem.Success;
             }
-            else Debug.Log("Not enough money!");
+            else return ResultBuyItem.Fail;
         }
 
         protected abstract void SaveNewData(string weaponId, string levelUpgradeId);
 
-        public void UpgradeNewLevelWeapon(string weaponId)
+        public ResultBuyItem UpgradeNewLevelWeapon(string weaponId)
         {
             var weaponModel = WeaponWiewModels[weaponId];
             if (weaponModel.LevelUpgradeFee.Value == _levelUpgardeFeeDefault)
             {
                 Debug.Log($"Level Upgrade {weaponModel.LevelUpgradeFee.Value} is max");
-                return;
+                return ResultBuyItem.Fail;
             }
 
             var levelUpgradeFee = weaponModel.LevelUpgradeFee.Value;
@@ -183,11 +184,13 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
                 UpdateWeaponViewModel(weaponData.Id, weaponData.LevelUpgradeId);
                 _userProfile.Save();
+
+                return ResultBuyItem.Success;
             }
-            else Debug.Log("Not enough money!");
+            else return ResultBuyItem.Fail;
         }
 
-        public abstract void OnReloadWeapon(string weaponId);
+        public abstract ResultBuyItem OnReloadWeapon(string weaponId);
 
         public bool IsHandlerSystem(string weaponId)
         {

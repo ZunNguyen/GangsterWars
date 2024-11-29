@@ -41,7 +41,7 @@ namespace Sources.Audio
             SFXVolume.Value = _userSettingProfile.SFXVolume;
         }
 
-        public void Play(string audioId, bool isLoop)
+        public void Play(string audioId, bool isLoop = false)
         {
             if (string.IsNullOrEmpty(audioId)) return;
 

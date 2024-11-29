@@ -7,3 +7,11 @@ Setting_Effect,Hiệu ứng,Effect
 Setting_Language,Ngôn ngữ,Language
 Setting_Data,Dữ liệu,Data
 Setting_Reset,Đặt lại,Reset
+Gun_Pistol,Súng lục,Pistol
+Gun_DoublePistol,Súng lục đôi,Dual Pistol
+Gun_Machine,Súng máy,Machine Gun
+Gun_Ak,AK-47,AK-47
+Gun_Shotgun,Súng thục,Shotgun
+Store_Unlock,Mở khóa,Unlock
+Store_LevelUp,Lên cấp,Level Up
+Store_Reload,Nạp đạn,Reload

@@ -1,20 +1,28 @@
+using Sources.Audio;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.Extension;
 using Sources.GamePlaySystem.MainMenuGame;
 using Sources.GamePlaySystem.MainMenuGame.Store;
+using Sources.Language;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
+using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace Game.Screens.MainMenuScreen
 {
     public class WeaponView : MonoBehaviour
     {
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
+        private LanguageTable _languageTable => Locator<LanguageTable>.Instance;
 
         private WeaponInfoBase _weaponInfo;
         private Sources.GamePlaySystem.MainMenuGame.Store.WeaponViewModel _weaponViewModel;
@@ -29,15 +37,15 @@ namespace Game.Screens.MainMenuScreen
 
         [Header("Level Up")]
         [SerializeField] private GameObject _levelUpFee;
-        [SerializeField] private Text _valueLevelUpFee;
+        [SerializeField] private TMP_Text _valueLevelUpFee;
 
         [Header("Reload")]
         [SerializeField] private GameObject _reload;
-        [SerializeField] private Text _valueReload;
+        [SerializeField] private TMP_Text _valueReload;
 
         [Header("Unlock")]
         [SerializeField] private GameObject _unlock;
-        [SerializeField] private Text _valueUnlock;
+        [SerializeField] private TMP_Text _valueUnlock;
 
         [Header("Check List")]
         [SerializeField] private GameObject _checkList;
@@ -46,6 +54,7 @@ namespace Game.Screens.MainMenuScreen
         [Header("Wepon View")]
         [SerializeField] private RectTransform _iconHolder;
         [SerializeField] private Image _icon;
+        [SerializeField] private TMP_Text _gunName;
         [SerializeField] private GameObject _iconlock;
 
         private void Awake()
@@ -75,6 +84,7 @@ namespace Game.Screens.MainMenuScreen
                 _icon.sprite = shieldWeaponInfo.Icon;
             }
 
+            GetGunName();
             GetWeaponSate();
             GetLevelUpgrade();
             GetReloadFee();
@@ -96,6 +106,14 @@ namespace Game.Screens.MainMenuScreen
                 size.x = 175f;
                 _iconHolder.sizeDelta = size;
             }
+        }
+
+        private void GetGunName()
+        {
+            var weaponInfo = _leaderConfig.GetWeaponInfo(_weaponId);
+            var languageGunId = weaponInfo.LanguageId;
+            var languageItem = _languageTable.GetLanguageItem(languageGunId);
+            _gunName.text = languageItem.GetText();
         }
 
         private void GetWeaponSate()
@@ -173,7 +191,7 @@ namespace Game.Screens.MainMenuScreen
                 _checkList.SetActive(true);
                 _weaponViewModel.IsChosed += SubscribeCheckList;
 
-                OnCheckListClicked();
+                _shieldStoreHandler.ChoseShield(_weaponId);
             }
         }
 
@@ -183,24 +201,34 @@ namespace Game.Screens.MainMenuScreen
             else _iconCheckList.SetActive(false);
         }
 
-        public void OnCheckListClicked()
+        public void OnChooseShieldClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_02);
             _shieldStoreHandler.ChoseShield(_weaponId);
         }
 
         public void OnUnlockWeaponClicked()
         {
-            _storeWeaponHandler.UnlockNewWeapon(_weaponId);
+            var result = _storeWeaponHandler.UnlockNewWeapon(_weaponId);
+            SetSFX(result);
         }
 
         public void OnLevelUpgradeClicked()
         {
-            _storeWeaponHandler.UpgradeNewLevelWeapon(_weaponId);
+            var result = _storeWeaponHandler.UpgradeNewLevelWeapon(_weaponId);
+            SetSFX(result);
         }
 
         public void OnReloadClicked()
         {
-            _storeWeaponHandler.OnReloadWeapon(_weaponId);
+            var result = _storeWeaponHandler.OnReloadWeapon(_weaponId);
+            SetSFX(result);
+        }
+
+        private void SetSFX(ResultBuyItem result)
+        {
+            if (result == ResultBuyItem.Success) _audioManager.Play(AudioKey.SFX_DELETE_COIN);
+            else _audioManager.Play(AudioKey.SFX_CLICK_ERROR);
         }
     }
 }

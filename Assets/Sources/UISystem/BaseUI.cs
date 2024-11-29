@@ -49,7 +49,7 @@ namespace Sources.UI
             await _uiTransitionHandler.DoTransition(false);
         }
 
-        public void Back()
+        public virtual void Back()
         {
             Close();
         }

@@ -16,3 +16,18 @@ MonoBehaviour:
   - Id: menu-song
     AudioClip: {fileID: 8300000, guid: c5f438067bebab444a7eaa7619950acd, type: 3}
     IsMusic: 1
+  - Id: sfx-click-01
+    AudioClip: {fileID: 8300000, guid: 90b202af1ee4eb34cb2ac5782120173b, type: 3}
+    IsMusic: 0
+  - Id: sfx-click-02
+    AudioClip: {fileID: 8300000, guid: 1477cd8037ca0ac48b1eba696f9743a2, type: 3}
+    IsMusic: 0
+  - Id: sfx-click-error
+    AudioClip: {fileID: 8300000, guid: 4ce5d93b1faa6424f8c16f9750376c38, type: 3}
+    IsMusic: 0
+  - Id: sfx-delete-coin
+    AudioClip: {fileID: 8300000, guid: 1dcd95dff6d9c7a4e9f08263215099de, type: 3}
+    IsMusic: 0
+  - Id: sfx-reload-01
+    AudioClip: {fileID: 8300000, guid: 396f55101f4be9341ae916a663274eda, type: 3}
+    IsMusic: 0

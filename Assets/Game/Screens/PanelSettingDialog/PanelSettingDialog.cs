@@ -8,6 +8,7 @@ using Sources.Language;
 using Sources.Utils.Singleton;
 using Sources.Audio;
 using UnityEngine.UI;
+using Sources.Extension;
 
 namespace Game.Screens.PanelSettingDialog
 {
@@ -19,11 +20,6 @@ namespace Game.Screens.PanelSettingDialog
         [SerializeField] private Slider _sliderMusic;
         [SerializeField] private Slider _sliderSFX;
 
-        public void OnChangeLanguageClicked()
-        {
-            _languageTable.ChangeNexLanguageName();
-        }
-
         public void OnMusicVolumeChanged()
         {
             _audioManager.AdjustMusicVolume(_sliderMusic.value);
@@ -32,6 +28,17 @@ namespace Game.Screens.PanelSettingDialog
         public void OnSFXVolumeChanged()
         {
             _audioManager.AdjustSFXVolume(_sliderSFX.value);
+        }
+
+        public void OnChangeLanguageClicked()
+        {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
+            _languageTable.ChangeNexLanguageName();
+        }
+
+        public void OnResetDataClicked()
+        {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
         }
     }
 }

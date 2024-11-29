@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
+using Sources.Audio;
 using Sources.Command;
+using Sources.Extension;
 using Sources.GamePlaySystem.CoinController;
 using Sources.UI;
 using Sources.UISystem;
@@ -14,6 +16,7 @@ namespace Game.Screens.MainMenuScreen
     {
         private UIManager _uiManager => Locator<UIManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         [SerializeField] private Text _text;
         [SerializeField] private StoreController _storeController;
@@ -33,11 +36,13 @@ namespace Game.Screens.MainMenuScreen
 
         public async void OnPlayGameClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             await _uiManager.Show<JourneyScreen.JourneyScreen>();
         }
 
         public async void OnSettingClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             await _uiManager.Show<PanelSettingDialog.PanelSettingDialog>();
         }
     }

@@ -1,6 +1,7 @@
 using Resources.CSV;
 using Sirenix.OdinInspector;
 using Sources.DataBaseSystem.Leader;
+using Sources.Language;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,9 @@ namespace Sources.DataBaseSystem
         [PropertyOrder(1)]
         public int UnlockFee;
 
+        [SerializeField, ValueDropdown("GetAllLanguageItem")]
+        public string LanguageId;
+
         [PropertyOrder(2)]
         public List<LevelUpgradeInfo> LevelUpgrades;
         protected Dictionary<string, LevelUpgradeInfo> LevelUpgradeCache { get; private set; } = new();
@@ -48,6 +52,11 @@ namespace Sources.DataBaseSystem
         {
             var levelUpgradeInfo = LevelUpgrades.FirstOrDefault(level => level.Id == levelUpgradeId);
             return LevelUpgrades.IndexOf(levelUpgradeInfo);
+        }
+
+        private IEnumerable<string> GetAllLanguageItem()
+        {
+            return LanguageTable.Instance.LanguageItemIds;
         }
 
 #if UNITY_EDITOR
