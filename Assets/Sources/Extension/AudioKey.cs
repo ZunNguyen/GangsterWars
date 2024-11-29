@@ -16,5 +16,10 @@ namespace Sources.Extension
         public static string SFX_CLICK_ERROR = "sfx-click-error";
         public static string SFX_DELETE_COIN = "sfx-delete-coin";
         public static string SFX_RELOAD_01 = "sfx-reload-01";
+
+        // SFX Gun
+        public static string SFX_SHOOT_PISTOL = "sfx-shoot-pistol";
+        public static string SFX_SHOOT_SHOOTGUN = "sfx-shoot-shootgun";
+        public static string SFX_SHOOT_GUN_MACHINE = "sfx-shoot-gun-machine";
     }
 }

@@ -1,10 +1,7 @@
 using Game.Character.Player.Abstract;
-using Game.Effect.MuzzleFlash;
-using Game.Screens.GamePlayScreen;
+using Sources.Audio;
 using Sources.Extension;
-using Sources.SpawnerSystem;
-using System.Collections;
-using System.Collections.Generic;
+using Sources.Utils.Singleton;
 using UnityEngine;
 
 namespace Game.Character.Leader
@@ -12,6 +9,8 @@ namespace Game.Character.Leader
     public class PosSpawnGun03Handler : PosSpawnBulletHandlerAbstract
     {
         private readonly Vector3 _offsetTargetPosMouseClick = new Vector3(0.2f, 0.2f, -1);
+
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private Vector3 _offsetTargetPosMouseClickCurrent = Vector3.zero;
         private bool _isChangeSign = false;
@@ -26,6 +25,7 @@ namespace Game.Character.Leader
         {
             if (!_isCanShoot) return;
 
+            _audioManager.Play(AudioKey.SFX_SHOOT_SHOOTGUN);
             SpawnMuzzleFlash();
 
             foreach (var pos in _posSpawns)

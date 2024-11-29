@@ -38,7 +38,7 @@ namespace Game.Character.Leader
                 }
                 else _leaderSystem.GunHandler.Shooting();
             }
-            if (Input.GetMouseButtonUp(0)) _isShooting = false;
+            if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject()) _isShooting = false;
         }
 
         private async void CountTimePressMouse()

@@ -22,7 +22,7 @@ namespace Game.Screens.GamePlayScreen
         private string _gunId;
 
         [SerializeField] private Image _icon;
-        [SerializeField] private Text _countText;
+        [SerializeField] private TMP_Text _countText;
 
         public void OnSetUp(string gunId)
         {

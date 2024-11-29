@@ -34,3 +34,15 @@ MonoBehaviour:
   - Id: sfx-reload-01
     AudioClip: {fileID: 8300000, guid: 396f55101f4be9341ae916a663274eda, type: 3}
     IsMusic: 0
+  - Id: sfx-shoot-pistol
+    AudioClip: {fileID: 8300000, guid: 59746988af5fc91459820c026d3ef3a2, type: 3}
+    IsMusic: 0
+  - Id: sfx-shoot-shootgun
+    AudioClip: {fileID: 8300000, guid: 1776a3ee5c3d5ae49b7f7be0a17f350b, type: 3}
+    IsMusic: 0
+  - Id: sfx-shoot-gun-machine
+    AudioClip: {fileID: 8300000, guid: 85526bdcc642cca438ef2950f1e14080, type: 3}
+    IsMusic: 0
+  - Id: sfx-reload
+    AudioClip: {fileID: 8300000, guid: 3ed83323b948a6348a85b250c88cf222, type: 3}
+    IsMusic: 0

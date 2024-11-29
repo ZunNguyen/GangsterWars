@@ -1,8 +1,11 @@
 using Game.Character.Player.Abstract;
 using Game.Effect.MuzzleFlash;
 using Game.Screens.GamePlayScreen;
+using Sources.Audio;
 using Sources.Extension;
 using Sources.SpawnerSystem;
+using Sources.Utils;
+using Sources.Utils.Singleton;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +14,7 @@ namespace Game.Character.Leader
 {
     public class PosSpawnGun01Handler : PosSpawnBulletHandlerAbstract
     {
-        private readonly Vector3 _offsetTargetPosMouseClick = new Vector3(0.3f, 0.3f, -1);
-
-        private Vector3 _offsetTargetPosMouseClickCurrent = Vector3.zero;
-        private bool _isChangeSign = false;
-        private int _countPosSpawn = 0;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         protected override void OnSetUp()
         {
@@ -25,36 +24,14 @@ namespace Game.Character.Leader
         protected override void Shooting()
         {
             if (!_isCanShoot) return;
+
+            _audioManager.Play(AudioKey.SFX_SHOOT_PISTOL);
             SpawnMuzzleFlash();
 
-            foreach (var pos in _posSpawns)
-            {
-                Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                clickPosition.z = -1;
+            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            clickPosition.z = -1;
 
-                clickPosition += _offsetTargetPosMouseClickCurrent;
-
-                SpawnBullet(pos, clickPosition);
-
-                ++_countPosSpawn;
-                UpdateTargetPosMouseClick();
-            }
-
-            _offsetTargetPosMouseClickCurrent = Vector3.zero;
-        }
-
-        private void UpdateTargetPosMouseClick()
-        {
-            if (_isChangeSign)
-            {
-                _offsetTargetPosMouseClickCurrent -= _countPosSpawn * _offsetTargetPosMouseClick;
-            }
-            else
-            {
-                _offsetTargetPosMouseClickCurrent += _countPosSpawn * _offsetTargetPosMouseClick;
-            }
-
-            _isChangeSign = !_isChangeSign;
+            SpawnBullet(_posSpawns[0].transform, clickPosition);
         }
     }
 }

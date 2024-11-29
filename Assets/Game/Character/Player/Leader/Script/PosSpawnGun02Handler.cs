@@ -1,63 +1,39 @@
+using Cysharp.Threading.Tasks;
 using Game.Character.Player.Abstract;
-using Game.Effect.MuzzleFlash;
-using Game.Screens.GamePlayScreen;
+using Sources.Audio;
 using Sources.Extension;
-using Sources.SpawnerSystem;
-using System.Collections;
-using System.Collections.Generic;
+using Sources.Utils.Singleton;
 using UnityEngine;
 
 namespace Game.Character.Leader
 {
     public class PosSpawnGun02Handler : PosSpawnBulletHandlerAbstract
     {
-        private readonly Vector3 _offsetTargetPosMouseClick = new Vector3(0.2f, 0.2f, -1);
+        private readonly Vector3 _offsetTargetPosMouseClick = new Vector3(0.5f, 0.5f, -1);
 
-        private Vector3 _offsetTargetPosMouseClickCurrent = Vector3.zero;
-        private bool _isChangeSign = false;
-        private int _countPosSpawn = 0;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         protected override void OnSetUp()
         {
             _gunId = LeaderKey.GunId_02;
         }
 
-        protected override void Shooting()
+        protected override async void Shooting()
         {
             if (!_isCanShoot) return;
 
             SpawnMuzzleFlash();
+            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            clickPosition.z = -1;
 
-            foreach (var pos in _posSpawns)
-            {
-                Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                clickPosition.z = -1;
+            _audioManager.Play(AudioKey.SFX_SHOOT_PISTOL);
+            SpawnBullet(_posSpawns[0].transform, clickPosition);
 
-                clickPosition += _offsetTargetPosMouseClickCurrent;
+            await UniTask.DelayFrame(2);
 
-                SpawnBullet(pos, clickPosition);
-
-                ++_countPosSpawn;
-                UpdateTargetPosMouseClick();
-            }
-
-            _countPosSpawn = 0;
-            _offsetTargetPosMouseClickCurrent = Vector3.zero;
-            _isChangeSign = false;
-        }
-
-        private void UpdateTargetPosMouseClick()
-        {
-            if (_isChangeSign)
-            {
-                _offsetTargetPosMouseClickCurrent -= _countPosSpawn * _offsetTargetPosMouseClick;
-            }
-            else
-            {
-                _offsetTargetPosMouseClickCurrent += _countPosSpawn * _offsetTargetPosMouseClick;
-            }
-
-            _isChangeSign = !_isChangeSign;
+            _audioManager.Play(AudioKey.SFX_SHOOT_PISTOL);
+            clickPosition += _offsetTargetPosMouseClick;
+            SpawnBullet(_posSpawns[1].transform, clickPosition);
         }
     }
 }
