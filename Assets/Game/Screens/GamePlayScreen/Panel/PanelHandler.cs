@@ -1,7 +1,8 @@
 using DG.Tweening;
+using Sources.Audio;
 using Sources.Command;
-using System.Collections;
-using System.Collections.Generic;
+using Sources.Extension;
+using Sources.Utils.Singleton;
 using UnityEngine;
 
 namespace Game.Screens.GamePlayScreen
@@ -10,6 +11,8 @@ namespace Game.Screens.GamePlayScreen
     {
         private readonly Vector2 _offsetPos = new Vector2(0, 100f);
         private const float _duration = 1f;
+
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private bool _isResumeClick = false;
         private bool _isMovingPanelPause = false;
@@ -80,28 +83,33 @@ namespace Game.Screens.GamePlayScreen
 
         public void OnPauseClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             MovePanelPauseOn();
         }
 
         public void OnResumeClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             _isResumeClick = true;
             MovePanelPauseOut();
         }
 
         public void OnSettingClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             MovePanelSettingOn();
             MovePanelPauseOut();
         }
 
         public void OnHomeClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             new LoadMainMenuScenceCommand().Execute();
         }
 
         public void OnComfirmClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             MovePanelSettingOut();
             MovePanelPauseOn();
         }

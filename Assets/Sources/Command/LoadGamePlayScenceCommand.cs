@@ -46,7 +46,7 @@ namespace Sources.Command
             _uiManager.Show<GamePlayScreen>().Forget();
             await sequenceGroup.Run();
 
-            _audioManager.Play(AudioKey.GAME_PLAY_SONG, true);
+            //_audioManager.Play(AudioKey.GAME_PLAY_SONG, true);
 
             await loadingScreen.PanelMoveOut();
             loadingScreen.Close().Forget();

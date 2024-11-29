@@ -1,3 +1,4 @@
+using Sources.Audio;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.Extension;
@@ -24,6 +25,7 @@ namespace Sources.GamePlaySystem.Leader
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private bool _isCanShoot;
         private Dictionary<string, ReloadTimeHandlerBase> _reloadTimeHandlers = new();
@@ -129,14 +131,14 @@ namespace Sources.GamePlaySystem.Leader
 
         public void AddBulletAvailable(int bulletAdd)
         {
-            if (GunModelCurrent.Value.BulletTotal.Value > 0)
-            {
-                GunModelCurrent.Value.BulletAvailable.Value += bulletAdd;
-                GunModelCurrent.Value.BulletTotal.Value -= bulletAdd;
-                GunModelCurrent.Value.BulletTotal.Value = Math.Max(0, GunModelCurrent.Value.BulletTotal.Value);
-            }
+            if (GunModelCurrent.Value.BulletTotal.Value <= 0) return;
 
+            GunModelCurrent.Value.BulletAvailable.Value += bulletAdd;
+            GunModelCurrent.Value.BulletTotal.Value -= bulletAdd;
+            GunModelCurrent.Value.BulletTotal.Value = Math.Max(0, GunModelCurrent.Value.BulletTotal.Value);
             CheckCanShoot();
+
+            _audioManager.Play(AudioKey.SFX_RELOAD_01);
         }
 
         public void Shooting()

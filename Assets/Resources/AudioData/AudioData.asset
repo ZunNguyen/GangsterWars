@@ -43,6 +43,6 @@ MonoBehaviour:
   - Id: sfx-shoot-gun-machine
     AudioClip: {fileID: 8300000, guid: 85526bdcc642cca438ef2950f1e14080, type: 3}
     IsMusic: 0
-  - Id: sfx-reload
+  - Id: sfx-reload-02
     AudioClip: {fileID: 8300000, guid: 3ed83323b948a6348a85b250c88cf222, type: 3}
     IsMusic: 0
