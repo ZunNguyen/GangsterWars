@@ -15,11 +15,16 @@ namespace Sources.DataBaseSystem
 
         [Header("Time to reload one bullet - second")]
         public float ReloadTime;
+
+        private string GetDiscription()
+        {
+            return Id;
+        }
     }
 
     public class BomberConfig : WeaponConfig
     {
-        [SerializeField]
+        [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDiscription")]
         private List<BomberWeaponInfo> _bomberWeaponInfos;
         Dictionary<string, BomberWeaponInfo> _bomberWeaponInfoCache = new();
 

@@ -16,6 +16,7 @@ MonoBehaviour:
   - Id: shield-01
     Icon: {fileID: 21300000, guid: 1e9857fc7263db1429082853344d0f1b, type: 3}
     UnlockFee: 0
+    LanguageId: Store_Wood
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 1
@@ -70,6 +71,7 @@ MonoBehaviour:
   - Id: shield-02
     Icon: {fileID: 21300000, guid: 70f264c5714d5084c8a6313991c2ded9, type: 3}
     UnlockFee: 0
+    LanguageId: Store_Bamboo
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 1
@@ -111,7 +113,7 @@ MonoBehaviour:
       LevelUpFee: 10
       ReloadFee: 12
       DamageOrHp: 100
-    CSVFile: {fileID: 4900000, guid: af15a1b5ca9819842b74e3596e25df01, type: 3}
+    CSVFile: {fileID: 4900000, guid: 5d916929a5abdfb4cb8e2301459dfed5, type: 3}
     IconStates:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 422529b59dc9d0f479e7d138558ee94c, type: 3}
@@ -124,6 +126,7 @@ MonoBehaviour:
   - Id: shield-03
     Icon: {fileID: 21300000, guid: 05f011cdcd862fb458e412a367297cd0, type: 3}
     UnlockFee: 0
+    LanguageId: Store_Steel
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 1
@@ -165,7 +168,7 @@ MonoBehaviour:
       LevelUpFee: 10
       ReloadFee: 12
       DamageOrHp: 100
-    CSVFile: {fileID: 4900000, guid: af15a1b5ca9819842b74e3596e25df01, type: 3}
+    CSVFile: {fileID: 4900000, guid: 2253c7fd6fc31914691b119f464b478c, type: 3}
     IconStates:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 5d55571707dfe974c8c80ee3312e7899, type: 3}
@@ -178,6 +181,7 @@ MonoBehaviour:
   - Id: shield-04
     Icon: {fileID: 21300000, guid: e96b0d026f258e54497296df9d2e1a1d, type: 3}
     UnlockFee: 0
+    LanguageId: Store_Iron
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 1
@@ -219,7 +223,7 @@ MonoBehaviour:
       LevelUpFee: 10
       ReloadFee: 12
       DamageOrHp: 100
-    CSVFile: {fileID: 4900000, guid: af15a1b5ca9819842b74e3596e25df01, type: 3}
+    CSVFile: {fileID: 4900000, guid: 7b8c8e483176f9646b1f011e1f896c79, type: 3}
     IconStates:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 402406ee5a429774db55eed819098ef8, type: 3}

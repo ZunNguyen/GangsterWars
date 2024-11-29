@@ -16,7 +16,7 @@ namespace Sources.Language
         [SerializeField][ReadOnly]
         private List<string> _languages;
 
-        [SerializeField] private List<LanguageItem> _languageItems = new();
+        [SerializeField, InlineEditor] private List<LanguageItem> _languageItems = new();
         private Dictionary<string, LanguageItem> _languageItemsCache = new();
 
         public IEnumerable<string> LanguageItemIds => _languageItems.Select(item => item.Id);

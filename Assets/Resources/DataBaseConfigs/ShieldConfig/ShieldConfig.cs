@@ -16,6 +16,11 @@ namespace Sources.DataBaseSystem
             var iconInfo = IconStates.Find(x => x.ShieldStates == shieldStates);
             return iconInfo.Icon;
         }
+
+        private string GetDescription()
+        {
+            return Id;
+        }
     }
 
     [Serializable]
@@ -28,7 +33,8 @@ namespace Sources.DataBaseSystem
 
     public class ShieldConfig : WeaponConfig
     {
-        [SerializeField] private List<ShieldWeaponInfo> _shieldInfos;
+        [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
+        private List<ShieldWeaponInfo> _shieldInfos;
         private Dictionary<string, ShieldWeaponInfo> _shieldInfoCache = new();
 
         public override IEnumerable<WeaponInfoBase> GetAllWeapons()

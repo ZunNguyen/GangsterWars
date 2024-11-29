@@ -1016,6 +1016,7 @@ GameObject:
   - component: {fileID: 7591630479876734846}
   - component: {fileID: 4566320210701961499}
   - component: {fileID: 1150893080146990444}
+  - component: {fileID: 4275663457309554993}
   m_Layer: 0
   m_Name: NameWeapon
   m_TagString: Untagged
@@ -1071,7 +1072,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pistol
+  m_text: Cocktail
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 061be0d9f5b04254888133b5f88734e1, type: 2}
   m_sharedMaterial: {fileID: 4226824626226113957, guid: 061be0d9f5b04254888133b5f88734e1, type: 2}
@@ -1140,6 +1141,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4275663457309554993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2301233968971094627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9010c3ea0095649b11d6d0bb7a35b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _languageItemId: 
+  _languageItem: {fileID: 0}
 --- !u!1 &2900769970705754341
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,7 +1224,7 @@ MonoBehaviour:
   _iconCheckList: {fileID: 105904300269629191}
   _iconHolder: {fileID: 5025731472021362873}
   _icon: {fileID: 4592423985529313965}
-  _gunName: {fileID: 1150893080146990444}
+  _languageText: {fileID: 4275663457309554993}
   _iconlock: {fileID: 3867235780409302838}
 --- !u!1 &3867235780409302838
 GameObject:

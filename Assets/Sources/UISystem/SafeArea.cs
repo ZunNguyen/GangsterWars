@@ -60,8 +60,6 @@ namespace Sources.UISystem
                 Panel.anchorMin = anchorMin;
                 Panel.anchorMax = anchorMax;
             }
-
-            Debug.Log($"Safe Area Applied: Min={anchorMin}, Max={anchorMax}");
         }
     }
 }

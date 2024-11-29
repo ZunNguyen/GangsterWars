@@ -34,6 +34,17 @@ namespace Sources.Language
         {
             _text = GetComponent<TMP_Text>();
 
+            SetLanguage();
+        }
+
+        public void OnSetUp(string languageId)
+        {
+            _languageItemId = languageId;
+            SetLanguage();
+        }
+
+        private void SetLanguage()
+        {
             if (_languageItem != null)
             {
                 SetText(_languageItem);

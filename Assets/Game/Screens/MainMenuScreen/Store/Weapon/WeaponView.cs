@@ -17,8 +17,6 @@ namespace Game.Screens.MainMenuScreen
 {
     public class WeaponView : MonoBehaviour
     {
-        private DataBase _dataBase => Locator<DataBase>.Instance;
-        private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
@@ -54,7 +52,7 @@ namespace Game.Screens.MainMenuScreen
         [Header("Wepon View")]
         [SerializeField] private RectTransform _iconHolder;
         [SerializeField] private Image _icon;
-        [SerializeField] private TMP_Text _gunName;
+        [SerializeField] private LanguageText _languageText;
         [SerializeField] private GameObject _iconlock;
 
         private void Awake()
@@ -110,10 +108,9 @@ namespace Game.Screens.MainMenuScreen
 
         private void GetGunName()
         {
-            var weaponInfo = _leaderConfig.GetWeaponInfo(_weaponId);
-            var languageGunId = weaponInfo.LanguageId;
+            var languageGunId = _weaponInfo.LanguageId;
             var languageItem = _languageTable.GetLanguageItem(languageGunId);
-            _gunName.text = languageItem.GetText();
+            _languageText.OnSetUp(languageGunId);
         }
 
         private void GetWeaponSate()
