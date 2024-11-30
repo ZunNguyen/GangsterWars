@@ -18,7 +18,7 @@ namespace Game.Character.Leader
 
         protected override void OnSetUp()
         {
-            _gunId = LeaderKey.GunId_Default;
+            _gunId = LeaderKey.GUN_ID_DEFAULT;
         }
 
         protected override void Shooting()

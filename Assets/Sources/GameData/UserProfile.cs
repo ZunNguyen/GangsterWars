@@ -46,7 +46,7 @@ namespace Sources.GameData
 
             var weaponDefault = new WeaponData
             {
-                Id = LeaderKey.GunId_Default,
+                Id = LeaderKey.GUN_ID_DEFAULT,
                 LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
                 Quatity = LeaderKey.Quality_Bullet_Default,
             };
@@ -61,7 +61,7 @@ namespace Sources.GameData
 
             var weaponDefault = new WeaponData
             {
-                Id = BomberKey.BomberId_Default,
+                Id = BomberKey.BOMBER_ID_DEFAULT,
                 LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
                 Quatity = BomberKey.Quality_Bom_Default,
             };
@@ -76,7 +76,7 @@ namespace Sources.GameData
 
             var weaponDefault = new WeaponData
             {
-                Id = SniperKey.SNIPERID_DEFAULT,
+                Id = SniperKey.SNIPER_ID_DEFAULT,
                 LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
                 Quatity = SniperKey.QUALITY_SNIPER_DEFAULT,
             };
@@ -91,7 +91,7 @@ namespace Sources.GameData
 
             var shieldDefault = new ShieldData
             {
-                Id = ShieldKey.ShieldId_Default,
+                Id = ShieldKey.SHIELD_ID_DEFAULT,
                 LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
                 IsChosed = true,
             };
@@ -118,29 +118,10 @@ namespace Sources.GameData
         {
             var baseWeaponId = StringUtils.GetBaseName(weaponId);
 
-            var baseWeaponLeaderId = StringUtils.GetBaseName(LeaderDatas[0].Id);
-            if (baseWeaponId == baseWeaponLeaderId)
-            {
-                return (LeaderDatas, _leaderDatasCache);
-            }
-
-            var baseWeaponBomberId = StringUtils.GetBaseName(BomberDatas[0].Id);
-            if (baseWeaponId == baseWeaponBomberId)
-            {
-                return (BomberDatas, _bomberDatasCache);
-            }
-
-            var baseWeaponSniperId = StringUtils.GetBaseName(SniperDatas[0].Id);
-            if (baseWeaponId == baseWeaponSniperId)
-            {
-                return (SniperDatas, _sniperDatasCache);
-            }
-
-            var baseShieldId = StringUtils.GetBaseName(ShieldDatas[0].Id);
-            if (baseWeaponId == baseShieldId)
-            {
-                return (ShieldDatas, _shieldDatasCache);
-            }
+            if (baseWeaponId == StringUtils.GetBaseName(LeaderKey.GUN_ID_DEFAULT)) return (LeaderDatas, _leaderDatasCache);
+            if (baseWeaponId == StringUtils.GetBaseName(ShieldKey.SHIELD_ID_DEFAULT)) return (ShieldDatas, _shieldDatasCache);
+            if (baseWeaponId == StringUtils.GetBaseName(BomberKey.BOMBER_ID_DEFAULT)) return (BomberDatas, _bomberDatasCache);
+            if (baseWeaponId == StringUtils.GetBaseName(SniperKey.SNIPER_ID_DEFAULT)) return (SniperDatas, _sniperDatasCache);
 
             return (null, null);
         }

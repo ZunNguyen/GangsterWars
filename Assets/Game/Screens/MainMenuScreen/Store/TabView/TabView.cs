@@ -12,34 +12,36 @@ namespace Game.Screens.MainMenuScreen
     {
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
+        private bool _isOpened = false;
         private TabState _tabStateCurrent;
 
         [SerializeField] private TabHandler _tabHandler;
         [SerializeField] private GameObject _notSelected;
 
-        public void OnSetUp(TabState state)
+        public void OnSetUp(TabState state, bool isOpened = false)
         {
             _tabStateCurrent = state;
+            _isOpened = isOpened;
 
             _tabHandler.TabStateChange += UpdateTabState;
         }
 
+        public void UpdateOpenStore(bool updateState)
+        {
+            _isOpened |= updateState;
+        }
+
         public void OnClicked()
         {
+            if (!_isOpened) return;
+
             _audioManager.Play(AudioKey.SFX_CLICK_01);
             _tabHandler.OnChangeTabState(_tabStateCurrent);
         }
 
         private void UpdateTabState(TabState tabState)
         {
-            if (tabState != _tabStateCurrent)
-            {
-                _notSelected.SetActive(true);
-            }
-            else
-            {
-                _notSelected.SetActive(false);
-            }
+            _notSelected.SetActive(tabState != _tabStateCurrent);
         }
 
         private void OnDestroy()

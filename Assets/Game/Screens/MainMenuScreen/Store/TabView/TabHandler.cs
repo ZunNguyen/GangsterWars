@@ -1,7 +1,11 @@
+using BestHTTP.SecureProtocol.Org.BouncyCastle.X509;
 using Cysharp.Threading.Tasks;
+using Sources.GamePlaySystem.MainMenuGame;
+using Sources.Utils.Singleton;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 namespace Game.Screens.MainMenuScreen
@@ -15,6 +19,8 @@ namespace Game.Screens.MainMenuScreen
 
     public class TabHandler : MonoBehaviour
     {
+        private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
+
         [SerializeField] private TabView _tabGun;
         [SerializeField] private TabView _tabBom;
         [SerializeField] private TabView _tabShield;
@@ -23,12 +29,19 @@ namespace Game.Screens.MainMenuScreen
 
         public async void OnSetUp()
         {
-            _tabGun.OnSetUp(TabState.TabGun);
-            _tabBom.OnSetUp(TabState.TabBom);
-            _tabShield.OnSetUp(TabState.TabShield);
+            _tabGun.OnSetUp(TabState.TabGun, true);
+            _tabBom.OnSetUp(TabState.TabBom, false);
+            _tabShield.OnSetUp(TabState.TabShield, true);
 
             await UniTask.DelayFrame(1);
             TabStateChange?.Invoke(TabState.TabGun);
+
+            _storeSystem.OnpenBomberStore.Subscribe(SubOpenBomberStore).AddTo(this);
+        }
+
+        private void SubOpenBomberStore(bool isOpened)
+        {
+            _tabBom.UpdateOpenStore(isOpened);
         }
 
         public void OnChangeTabState(TabState state)

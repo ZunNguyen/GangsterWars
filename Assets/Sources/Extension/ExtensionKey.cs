@@ -4,7 +4,7 @@ namespace Sources.Extension
 {
     public static class LeaderKey
     {
-        public static string GunId_Default = "gun-01";
+        public static string GUN_ID_DEFAULT = "gun-01";
         public static string GunId_02 = "gun-02";
         public static string GunId_03 = "gun-03";
         public static string GunId_04 = "gun-04";
@@ -17,7 +17,7 @@ namespace Sources.Extension
 
     public static class BomberKey
     {
-        public static string BomberId_Default = "bom-01";
+        public static string BOMBER_ID_DEFAULT = "bom-01";
 
         public static int Quality_Bom_Default = 10;
 
@@ -27,7 +27,7 @@ namespace Sources.Extension
 
     public static class SniperKey
     {
-        public static string SNIPERID_DEFAULT = "sniper-01";
+        public static string SNIPER_ID_DEFAULT = "sniper-01";
 
         public static int QUALITY_SNIPER_DEFAULT = 50;
 
@@ -42,7 +42,7 @@ namespace Sources.Extension
 
     public static class ShieldKey
     {
-        public static string ShieldId_Default = "shield-01";
+        public static string SHIELD_ID_DEFAULT = "shield-01";
     }
 
     public static class JourneyKey

@@ -191,13 +191,5 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         }
 
         public abstract ResultBuyItem OnReloadWeapon(string weaponId);
-
-        public bool IsHandlerSystem(string weaponId)
-        {
-            var baseWeapon = StringUtils.GetBaseName(weaponId);
-            var baseWeaponSystem = StringUtils.GetBaseName(_weaponDatas[0].Id);
-
-            return baseWeaponSystem == baseWeapon;
-        }
     }
 }

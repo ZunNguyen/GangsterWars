@@ -41,7 +41,7 @@ namespace Sources.GamePlaySystem.Leader
         public void OnSetUp()
         {
             LoadGunModels();
-            LoadGunInfoCurrent(LeaderKey.GunId_Default);
+            LoadGunInfoCurrent(LeaderKey.GUN_ID_DEFAULT);
             CheckCanShoot();
         }
 
