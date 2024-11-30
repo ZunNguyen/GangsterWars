@@ -28,6 +28,9 @@ namespace Sources.DataBaseSystem
         private List<BomberWeaponInfo> _bomberWeaponInfos;
         Dictionary<string, BomberWeaponInfo> _bomberWeaponInfoCache = new();
 
+        [SerializeField] private int _openFee;
+        public int OpenFee => _openFee;
+
         public override IEnumerable<WeaponInfoBase> GetAllWeapons()
         {
             return _bomberWeaponInfos;

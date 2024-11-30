@@ -30,36 +30,39 @@ namespace Sources.GamePlaySystem.MainMenuGame
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
 
-        public LeaderStoreHandler LeaderStoreHandler = new();
-        public BomberStoreHandler BomberStoreHandler = new();
-        public ShieldStoreHandler ShieldStoreHandler = new();
+        public LeaderStoreHandler LeaderStoreHandler { get; private set; }
+        public BomberStoreHandler BomberStoreHandler { get; private set; }
+        public ShieldStoreHandler ShieldStoreHandler { get; private set; }
 
         public override async UniTask Init()
         {
-            CheckLeaderData();
-            CheckBomberData();
-            CheckSniperData();
-            CheckShieldData();
-            OnSetUp();
+            SetLeaderStore();
+            SetBomberStore();
+            SetSniperStore();
+            SetShieldStore();
         }
 
-        private void CheckLeaderData()
+        private void SetLeaderStore()
         {
             if (_userProfile.LeaderDatas == null)
             {
                 _userProfile.SetLeaderDataDefault();
+                LeaderStoreHandler = new();
+                LeaderStoreHandler.OnSetUp();
             }
         }
 
-        private void CheckBomberData()
+        private void SetBomberStore()
         {
             if (_userProfile.BomberDatas == null)
             {
                 _userProfile.SetBomberDataDefault();
+                BomberStoreHandler = new();
+                BomberStoreHandler.OnSetUp();
             }
         }
 
-        private void CheckSniperData()
+        private void SetSniperStore()
         {
             if (_userProfile.SniperDatas == null)
             {
@@ -67,19 +70,14 @@ namespace Sources.GamePlaySystem.MainMenuGame
             }
         }
 
-        private void CheckShieldData()
+        private void SetShieldStore()
         {
             if (_userProfile.ShieldDatas == null)
             {
                 _userProfile.SetShieldDataDefault();
+                ShieldStoreHandler = new();
+                ShieldStoreHandler.OnSetUp();
             }
-        }
-
-        private void OnSetUp()
-        {
-            LeaderStoreHandler.OnSetUp();
-            BomberStoreHandler.OnSetUp();
-            ShieldStoreHandler.OnSetUp();
         }
 
         public StoreHandlerBase GetWeaponHandlerSystem(string weaponId)

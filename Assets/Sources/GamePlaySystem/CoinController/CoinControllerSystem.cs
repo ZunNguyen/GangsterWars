@@ -55,11 +55,11 @@ namespace Sources.GamePlaySystem.CoinController
             CoinReward?.Invoke(coinRewardInfo);
         }
 
-        public bool PurchaseItem(int itemCoin)
+        public bool PurchaseItem(int fee)
         {
-            if (itemCoin <= Coins.Value)
+            if (fee <= Coins.Value)
             {
-                Coins.Value -= itemCoin;
+                Coins.Value -= fee;
                 _userProfile.Coins = Coins.Value;
                 _userProfile.Save();
                 return true;

@@ -72,6 +72,7 @@ namespace Game.Bootstrap
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
 
             serviceGroup.Add(new InitSaveGameDataSystemService());
+            serviceGroup.Add(new InitOpenCharacterSystem());
             serviceGroup.Add(new InitStoreSystemService());
             serviceGroup.Add(new InitCoinControllerSystemService());
             serviceGroup.Add(new InitJourneyMapSystemService());
