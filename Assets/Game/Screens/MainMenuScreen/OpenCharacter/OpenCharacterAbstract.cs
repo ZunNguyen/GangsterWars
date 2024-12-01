@@ -1,7 +1,10 @@
 using DG.Tweening;
+using Sources.Audio;
+using Sources.Extension;
 using Sources.GamePlaySystem.MainMenuGame;
 using Sources.Utils.Singleton;
 using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +14,7 @@ namespace Game.Screens.MainMenuScreen
     {
         private const float _duration = 0.5f;
 
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
         protected OpenCharacterSystem _openCharacterSystem => Locator<OpenCharacterSystem>.Instance;
 
         protected OpenCharacterHandlerAbstract _openCharacterAbastract;
@@ -34,7 +38,11 @@ namespace Game.Screens.MainMenuScreen
         private void OnSetUp()
         {
             SetValue();
-            if (_openCharacterAbastract.IsAldreadyOpenCharacter) return;
+            if (_openCharacterAbastract.IsAldreadyOpenCharacter)
+            {
+                _imageCharacter.raycastTarget = false;
+                return;
+            }
 
             _imageCharacter.color = Color.black;
             _fee.text = _openCharacterAbastract.CharacterFee.ToString();
@@ -53,11 +61,13 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnOpenBoxClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             _boxCharacter.transform.DOScale(Vector3.one, _duration);
         }
 
         public void OnCloseBoxClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             _boxCharacter.transform.DOScale(Vector3.zero, _duration);
         }
 
@@ -67,10 +77,12 @@ namespace Game.Screens.MainMenuScreen
 
             if (result)
             {
+                _audioManager.Play(AudioKey.SFX_CLICK_01);
                 _imageCharacter.raycastTarget = false;
                 OnCloseBoxClicked();
                 _imageCharacter.color = Color.white;
             }
+            else _audioManager.Play(AudioKey.SFX_CLICK_ERROR);
         }
 
         private void OnDestroy()

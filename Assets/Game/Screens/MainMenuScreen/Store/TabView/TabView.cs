@@ -26,15 +26,19 @@ namespace Game.Screens.MainMenuScreen
             _tabHandler.TabStateChange += UpdateTabState;
         }
 
-        public void UpdateOpenStore(bool updateState)
+        public void UpdateOpenStore()
         {
-            _isOpened = updateState;
-            _tabHandler.OnChangeTabState(TabState.TabGun);
+            _isOpened = true;
+            _tabHandler.OnChangeTabState(_tabStateCurrent);
         }
 
         public void OnClicked()
         {
-            if (!_isOpened) return;
+            if (!_isOpened)
+            {
+                _audioManager.Play(AudioKey.SFX_CLICK_ERROR);
+                return;
+            }
 
             _audioManager.Play(AudioKey.SFX_CLICK_01);
             _tabHandler.OnChangeTabState(_tabStateCurrent);

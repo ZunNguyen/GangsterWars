@@ -37,17 +37,22 @@ namespace Game.Screens.MainMenuScreen
             await UniTask.DelayFrame(1);
             TabStateChange?.Invoke(TabState.TabGun);
 
-            _storeSystem.OnpenBomberStore.Subscribe(SubOpenBomberStore).AddTo(this);
+            _storeSystem.OnpenBomberStore += SubOpenBomberStore;
         }
 
-        private void SubOpenBomberStore(bool isOpened)
+        private void SubOpenBomberStore()
         {
-            _tabBom.UpdateOpenStore(isOpened);
+            _tabBom.UpdateOpenStore();
         }
 
         public void OnChangeTabState(TabState state)
         {
             TabStateChange?.Invoke(state);
+        }
+
+        private void OnDestroy()
+        {
+            _storeSystem.OnpenBomberStore -= SubOpenBomberStore;
         }
     }
 }
