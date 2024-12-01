@@ -17,6 +17,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
         protected override void SetDataCharacter()
         {
             _userProfile.SetBomberDataDefault();
+            _storeSystem.SetBomberStore();
         }
     }
 }

@@ -28,7 +28,8 @@ namespace Game.Screens.MainMenuScreen
 
         public void UpdateOpenStore(bool updateState)
         {
-            _isOpened |= updateState;
+            _isOpened = updateState;
+            _tabHandler.OnChangeTabState(TabState.TabGun);
         }
 
         public void OnClicked()

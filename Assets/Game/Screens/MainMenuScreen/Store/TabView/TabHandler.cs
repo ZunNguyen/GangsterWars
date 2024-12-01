@@ -14,6 +14,7 @@ namespace Game.Screens.MainMenuScreen
     {
         TabGun,
         TabBom,
+        TabSniper,
         TabShield
     }
 
