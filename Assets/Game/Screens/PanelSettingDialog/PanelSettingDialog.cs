@@ -9,6 +9,7 @@ using Sources.Utils.Singleton;
 using Sources.Audio;
 using UnityEngine.UI;
 using Sources.Extension;
+using Sources.Command;
 
 namespace Game.Screens.PanelSettingDialog
 {
@@ -39,6 +40,7 @@ namespace Game.Screens.PanelSettingDialog
         public void OnResetDataClicked()
         {
             _audioManager.Play(AudioKey.SFX_CLICK_01);
+            new ResetDataCommand().Execute();
         }
     }
 }

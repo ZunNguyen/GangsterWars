@@ -14,35 +14,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioInfos:
   - Id: menu-song
-    AudioClip: {fileID: 8300000, guid: c5f438067bebab444a7eaa7619950acd, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: c5f438067bebab444a7eaa7619950acd, type: 3}
     IsMusic: 1
   - Id: game-play-song
-    AudioClip: {fileID: 8300000, guid: 66759925640e1bd419515ea22661dadc, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: e2b69ecb83b6fa546ba1f13620bd7263, type: 3}
     IsMusic: 1
   - Id: sfx-click-01
-    AudioClip: {fileID: 8300000, guid: 90b202af1ee4eb34cb2ac5782120173b, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 90b202af1ee4eb34cb2ac5782120173b, type: 3}
     IsMusic: 0
   - Id: sfx-click-02
-    AudioClip: {fileID: 8300000, guid: 1477cd8037ca0ac48b1eba696f9743a2, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 1477cd8037ca0ac48b1eba696f9743a2, type: 3}
     IsMusic: 0
   - Id: sfx-click-error
-    AudioClip: {fileID: 8300000, guid: 4ce5d93b1faa6424f8c16f9750376c38, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 4ce5d93b1faa6424f8c16f9750376c38, type: 3}
     IsMusic: 0
   - Id: sfx-delete-coin
-    AudioClip: {fileID: 8300000, guid: 1dcd95dff6d9c7a4e9f08263215099de, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 1dcd95dff6d9c7a4e9f08263215099de, type: 3}
     IsMusic: 0
   - Id: sfx-reload-01
-    AudioClip: {fileID: 8300000, guid: 396f55101f4be9341ae916a663274eda, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 396f55101f4be9341ae916a663274eda, type: 3}
     IsMusic: 0
   - Id: sfx-shoot-pistol
-    AudioClip: {fileID: 8300000, guid: 59746988af5fc91459820c026d3ef3a2, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 59746988af5fc91459820c026d3ef3a2, type: 3}
     IsMusic: 0
   - Id: sfx-shoot-shootgun
-    AudioClip: {fileID: 8300000, guid: 1776a3ee5c3d5ae49b7f7be0a17f350b, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 1776a3ee5c3d5ae49b7f7be0a17f350b, type: 3}
     IsMusic: 0
   - Id: sfx-shoot-gun-machine
-    AudioClip: {fileID: 8300000, guid: 85526bdcc642cca438ef2950f1e14080, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 85526bdcc642cca438ef2950f1e14080, type: 3}
     IsMusic: 0
   - Id: sfx-reload-02
-    AudioClip: {fileID: 8300000, guid: 3ed83323b948a6348a85b250c88cf222, type: 3}
+    AudioClips:
+    - {fileID: 8300000, guid: 3ed83323b948a6348a85b250c88cf222, type: 3}
     IsMusic: 0
+  - Id: sfx-enemy-death
+    AudioClips:
+    - {fileID: 8300000, guid: e7f485b66e8d6c046a93fe92885b6fb9, type: 3}
+    - {fileID: 8300000, guid: b6c345527818040459f2b9bc305e7b11, type: 3}
+    - {fileID: 8300000, guid: b59ed64554c060047b81bb6d36fe29c3, type: 3}
+    - {fileID: 8300000, guid: 8ed9225d5bb49da45b9e80119f2cc3e9, type: 3}
+    IsMusic: 0
+  _audioListInfos: []

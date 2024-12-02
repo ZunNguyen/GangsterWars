@@ -1,6 +1,6 @@
 namespace Game.Screens.MainMenuScreen
 {
-    public class TabBomberHandler : OpenCharacterAbstract
+    public class OpenBomberHandler : OpenCharacterAbstract
     {
         protected override void SetValue()
         {

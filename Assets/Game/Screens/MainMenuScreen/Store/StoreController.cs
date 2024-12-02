@@ -30,18 +30,14 @@ namespace Game.Screens.MainMenuScreen
             _storeShieldHandler.OnSetUp(_shieldConfig.GetAllWeapons());
             _storeShieldHandler.SetState(TabState.TabShield);
 
-            _storeSystem.OnpenBomberStore += SubOpenBomberStore;
+            _storeSystem.OnpenBomberStore.Subscribe(SubOpenBomberStore).AddTo(this);
         }
 
-        private void SubOpenBomberStore()
+        private void SubOpenBomberStore(bool isOpen)
         {
+            if (!isOpen) return;
             _storeBomberHandler.OnSetUp(_bomberConfig.GetAllWeapons());
             _storeBomberHandler.SetState(TabState.TabBom);
-        }
-
-        private void OnDestroy()
-        {
-            _storeSystem.OnpenBomberStore -= SubOpenBomberStore;
         }
     }
 }

@@ -34,25 +34,20 @@ namespace Game.Screens.MainMenuScreen
             _tabBom.OnSetUp(TabState.TabBom, false);
             _tabShield.OnSetUp(TabState.TabShield, true);
 
-            await UniTask.DelayFrame(1);
-            TabStateChange?.Invoke(TabState.TabGun);
+            _storeSystem.OnpenBomberStore.Subscribe(SubOpenBomberStore).AddTo(this);
 
-            _storeSystem.OnpenBomberStore += SubOpenBomberStore;
+            await UniTask.DelayFrame(5);
+            TabStateChange?.Invoke(TabState.TabGun);
         }
 
-        private void SubOpenBomberStore()
+        private void SubOpenBomberStore(bool isOpen)
         {
-            _tabBom.UpdateOpenStore();
+            _tabBom.UpdateOpenStore(isOpen);
         }
 
         public void OnChangeTabState(TabState state)
         {
             TabStateChange?.Invoke(state);
-        }
-
-        private void OnDestroy()
-        {
-            _storeSystem.OnpenBomberStore -= SubOpenBomberStore;
         }
     }
 }

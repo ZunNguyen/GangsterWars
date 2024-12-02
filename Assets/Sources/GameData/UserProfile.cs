@@ -38,7 +38,7 @@ namespace Sources.GameData
         public List<ShieldData> ShieldDatas;
         private Dictionary<string, BaseData> _shieldDatasCache = new();
 
-        public int Coins = 1000;
+        public int Coins = 50;
 
         public void SetLeaderDataDefault()
         {

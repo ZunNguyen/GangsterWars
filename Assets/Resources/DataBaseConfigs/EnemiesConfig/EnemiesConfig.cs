@@ -3,12 +3,14 @@ using Sirenix.OdinInspector;
 using Sources.Utils.String;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace Sources.DataBaseSystem
 {
     [Serializable]
-    public class EnemyInfo : IReadCSVData
+    public class EnemyInfo : IReadCSVData, ISaveFileCSVData
     {
         public string Id;
         [PreviewField(100, ObjectFieldAlignment.Center)]
@@ -16,7 +18,7 @@ namespace Sources.DataBaseSystem
         public List<WaveEnemy> WaveEnemies = new();
         public Dictionary<string, WaveEnemy> WaveEnemyCache { get; private set; } = new();
 
-        public TextAsset CSVFile;
+        [SerializeField] private TextAsset _csvFile;
 
         public WaveEnemy GetWaveEnemy(string id)
         {
@@ -28,6 +30,11 @@ namespace Sources.DataBaseSystem
             return WaveEnemyCache[id];
         }
 
+        private string GetDiscription()
+        {
+            return Id;
+        }
+
 #if UNITY_EDITOR
         private const int _startRowIndex = 1;
         private const int _startIndexColWaveId = 0;
@@ -36,42 +43,63 @@ namespace Sources.DataBaseSystem
         private const int _startIndexColCoinReward = 3;
         private const int _startIndexColPerChance = 4;
 
-        private string[] _datas;
-        private int _rowCount;
-        private int _columnCount;
         [Button]
         public void ReadFile()
         {
             WaveEnemies.Clear();
-            _datas = CSVFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
-            string[] lines = CSVFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] datas = _csvFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = _csvFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-            _rowCount = lines.Length;
-            _columnCount = _datas.Length / _rowCount;
+            var rowCount = lines.Length;
+            var columnCount = datas.Length / rowCount;
 
-            for (int row = _startRowIndex; row < _rowCount; row++)
+            for (int row = _startRowIndex; row < rowCount; row++)
             {
-                var indexId = row * _columnCount + _startIndexColWaveId;
-                var indexDamage = row * _columnCount + _startIndexColDamage;
-                var indexHp = row * _columnCount + _startIndexColHp;
-                var indexCoinReward = row * _columnCount + _startIndexColCoinReward;
-                var indexPerChance = row * _columnCount + _startIndexColPerChance;
+                var indexId = row * columnCount + _startIndexColWaveId;
+                var indexDamage = row * columnCount + _startIndexColDamage;
+                var indexHp = row * columnCount + _startIndexColHp;
+                var indexCoinReward = row * columnCount + _startIndexColCoinReward;
+                var indexPerChance = row * columnCount + _startIndexColPerChance;
 
-                var coinReward = StringUtils.SeparateString_2(_datas[indexCoinReward]);
+                var coinReward = StringUtils.SeparateString_2(datas[indexCoinReward]);
                 var coinRewardMin = int.Parse(coinReward[0]);
                 var coinRewardMax = int.Parse(coinReward[1]);
 
                 var waveEnemy = new WaveEnemy
                 {
-                    Id = _datas[indexId],
-                    Damage = int.Parse(_datas[indexDamage]),
-                    Hp = int.Parse(_datas[indexHp]),
+                    Id = datas[indexId],
+                    Damage = int.Parse(datas[indexDamage]),
+                    Hp = int.Parse(datas[indexHp]),
                     coinReward = new Vector2Int(coinRewardMin, coinRewardMax),
-                    PercentChance = int.Parse(_datas[indexPerChance])
+                    PercentChance = int.Parse(datas[indexPerChance])
                 };
 
                 WaveEnemies.Add(waveEnemy);
             }
+        }
+
+        private const string _filePath = "Assets/Resources/CSV/Enemies";
+        [Button]
+        public void SaveFile()
+        {
+            List<string> csvLines = new();
+            csvLines.Add("WaveId, Damage, Hp, CoinRewardMin-CoinRewardMax, PercentChance");
+
+            foreach (WaveEnemy waveEnemy in WaveEnemies)
+            {
+                string line = $"{waveEnemy.Id}," +
+                              $"{waveEnemy.Damage}," +
+                              $"{waveEnemy.Hp}," +
+                              $"{waveEnemy.coinReward.x}&{waveEnemy.coinReward.y}," +
+                              $"{waveEnemy.PercentChance}";
+
+                csvLines.Add(line);
+            }
+
+            string filePath = $"{_filePath}/{_csvFile.name}.csv";
+
+            File.WriteAllLines(filePath, csvLines);
+            AssetDatabase.Refresh();
         }
 #endif
     }
@@ -92,7 +120,8 @@ namespace Sources.DataBaseSystem
 
     public class EnemiesConfig : DataBaseConfig
     {
-        [SerializeField] private List<EnemyInfo> _enemies;
+        [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDiscription")]
+        private List<EnemyInfo> _enemies;
         private Dictionary<string, EnemyInfo> _enemyInfoCache = new();
 
         public EnemyInfo GetEnemyInfo(string id)

@@ -1,23 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Sources.GameData;
-using Sources.Utils.Singleton;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 namespace Sources.GameData
 {
     public class GameData
     {
-        //public UserData UserData = new();
-        //public StoreData StoreData = new();
-
-        //public void Init()
-        //{
-        //    Locator<GameData>.Set(this);
-        //}
-
         private Dictionary<string, IProfileData> _profileDatasCache = new();
 
         public void SaveData(IProfileData profileData)

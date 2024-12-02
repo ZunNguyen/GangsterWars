@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Sources.Audio;
 using Sources.DataBaseSystem;
 using Sources.Extension;
 using Sources.Utils;
@@ -24,6 +25,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EnemiesConfig _enemiesConfig => _dataBase.GetConfig<EnemiesConfig>();
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
         
         private IDisposable _disposableShieldState;
 
@@ -110,6 +112,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         private void OnDeath()
         {
+            _audioManager.Play(AudioKey.SFX_ENEMY_DEATH);
             Direction.Value = Vector2.zero;
             AniamtionState.Value = AnimationState.Death;
         }

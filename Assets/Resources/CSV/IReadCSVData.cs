@@ -13,4 +13,9 @@ namespace Resources.CSV
     {
         void ReadFile();
     }
+
+    public interface ISaveFileCSVData
+    {
+        void SaveFile();
+    }
 }

@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Sources.Utils;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,26 @@ namespace Sources.DataBaseSystem
     public class AudioInfo
     {
         public string Id;
-        public AudioClip AudioClip;
+        public List<AudioClip> AudioClips = new();
         public bool IsMusic;
+
+        public AudioClip TakeRandom()
+        {
+            return GetRandom.FromList(AudioClips);
+        }
+
+        private string GetDescription()
+        {
+            var music = IsMusic ? "Music" : "SFX";
+            return $"[{Id}] / [{music}] / [{AudioClips.Count}]";
+        }
+    }
+
+    [Serializable]
+    public class AudioListInfo
+    {
+        public string Id;
+        public List<AudioClip> AudioClips;
 
         private string GetDescription()
         {
@@ -24,6 +43,10 @@ namespace Sources.DataBaseSystem
         private List<AudioInfo> _audioInfos;
         private Dictionary<string, AudioInfo> _audioInfoCache = new();
 
+        [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
+        private List<AudioListInfo> _audioListInfos;
+        private Dictionary<string, AudioListInfo> _audioListInfoCache = new();
+
         public AudioInfo GetAudioInfo(string id)
         {
             if (!_audioInfoCache.ContainsKey(id))
@@ -33,6 +56,17 @@ namespace Sources.DataBaseSystem
             }
 
             return _audioInfoCache[id];
+        }
+
+        public AudioListInfo GetAudioListInfo(string id)
+        {
+            if (!_audioListInfoCache.ContainsKey(id))
+            {
+                var audioListInfo = _audioListInfos.Find(x => x.Id == id);
+                _audioListInfoCache.Add(id, audioListInfo);
+            }
+
+            return _audioListInfoCache[id];
         }
     }
 }

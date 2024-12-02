@@ -34,7 +34,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
         public BomberStoreHandler BomberStoreHandler { get; private set; }
         public ShieldStoreHandler ShieldStoreHandler { get; private set; }
 
-        public Action OnpenBomberStore;
+        public ReactiveProperty<bool> OnpenBomberStore { get; private set; } = new (false);
 
         public override async UniTask Init()
         {
@@ -76,7 +76,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
             {
                 BomberStoreHandler = new();
                 BomberStoreHandler.OnSetUp();
-                OnpenBomberStore?.Invoke();
+                OnpenBomberStore.Value = true;
             }
         }
 

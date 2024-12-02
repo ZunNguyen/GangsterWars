@@ -1,11 +1,6 @@
 using Cysharp.Threading.Tasks;
-using Game.Screens.GamePlayScreen;
 using Sources.Audio;
-using Sources.UISystem;
 using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Sources.Command

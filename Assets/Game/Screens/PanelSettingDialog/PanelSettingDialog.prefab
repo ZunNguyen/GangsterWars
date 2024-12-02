@@ -1644,9 +1644,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.Screens.GamePlayScreen.PanelHandler, Assembly-CSharp
-        m_MethodName: OnComfirmClicked
+      - m_Target: {fileID: 7773213539816876197}
+        m_TargetAssemblyTypeName: Game.Screens.PanelSettingDialog.PanelSettingDialog,
+          Assembly-CSharp
+        m_MethodName: OnResetDataClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

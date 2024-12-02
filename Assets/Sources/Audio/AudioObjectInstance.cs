@@ -59,7 +59,7 @@ namespace Sources.Audio
             _isMusic = audioInfo.IsMusic;
             _audioSource.loop = isLoop;
 
-            _audioSource.clip = audioInfo.AudioClip;
+            _audioSource.clip = audioInfo.TakeRandom();
             _audioSource.Play();
             if (!isLoop)
             {

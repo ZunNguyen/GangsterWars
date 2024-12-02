@@ -19,9 +19,9 @@ MonoBehaviour:
     LanguageId: Gun_Pistol
     LevelUpgrades:
     - Id: level-01
-      LevelUpFee: 1
+      LevelUpFee: 0
       ReloadFee: 50
-      DamageOrHp: 5
+      DamageOrHp: 1
     - Id: level-02
       LevelUpFee: 2
       ReloadFee: 50

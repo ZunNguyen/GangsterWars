@@ -1,12 +1,8 @@
-using BestHTTP.SecureProtocol.Org.BouncyCastle.Bcpg.Sig;
-using Game.Character.Enemy;
 using Resources.CSV;
 using Sirenix.OdinInspector;
-using Sources.DataBaseSystem;
 using Sources.Utils.String;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -47,7 +43,8 @@ namespace Sources.DataBaseSystem
         [SerializeField] private List<Wave> _waves;
         public Dictionary<string, Wave> WavesCache = new();
 
-        public TextAsset CSVFile;
+        [SerializeField, ReadOnly]
+        private TextAsset CSVFile;
 
         public Wave GetWaveInfo(string id)
         {

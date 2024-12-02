@@ -18,6 +18,12 @@ namespace Game.Screens.MainMenuScreen
         [Header("Weapon View")]
         [SerializeField] private WeaponView _weaponViewPrefab;
         [SerializeField] private Transform _holderWeaponView;
+        [SerializeField] private GameObject _store;
+
+        private void Awake()
+        {
+            _store.SetActive(false);
+        }
 
         public void OnSetUp(IEnumerable<WeaponInfoBase> weaponsConfig)
         {
@@ -36,8 +42,7 @@ namespace Game.Screens.MainMenuScreen
 
         private void ListenTabStateChange(TabState state)
         {
-            if (state != _tabState) gameObject.SetActive(false);
-            else gameObject.SetActive(true);
+            _store.SetActive(state == _tabState);
         }
     }
 }

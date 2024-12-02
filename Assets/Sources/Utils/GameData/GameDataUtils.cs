@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Sources.Utils
 {
-    public class GameDataUtils
+    public static class GameDataUtils
     {
         [MenuItem("Tools/Clear Game Data")]
         public static void ClearAllData()
@@ -18,7 +18,7 @@ namespace Sources.Utils
             }
         }
 
-        private static void ClearData()
+        public static void ClearData()
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath);
          

@@ -17,9 +17,9 @@ MonoBehaviour:
     EnemyPrefab: {fileID: 418380563315780808, guid: cefb970d02136db44aff9b0332bfac71, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 4, y: 5}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
       Damage: 20
@@ -73,15 +73,15 @@ MonoBehaviour:
       PercentChance: 100
     - Id: wave-12
       Damage: 100
-      Hp: 500
+      Hp: 0
       coinReward: {x: 4, y: 16}
-      PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: 6ed66c5a1190ab64cb9db96c9a4f981f, type: 3}
+      PercentChance: 80
+    _csvFile: {fileID: 4900000, guid: 43d778fa86753f9439228816b02e65eb, type: 3}
   - Id: enemy-02
     EnemyPrefab: {fileID: 2979277852961877915, guid: 77e536c4464207b43a03fb6709fe4497, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
+      Damage: 0
       Hp: 50
       coinReward: {x: 2, y: 4}
       PercentChance: 100
@@ -130,7 +130,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 6}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: 2d388f10f3900654583c94c61d363837, type: 3}
+    _csvFile: {fileID: 0}
   - Id: enemy-03
     EnemyPrefab: {fileID: 44199057889964456, guid: 9df3cbb0a1b61fd469455c985cbc89ca, type: 3}
     WaveEnemies:
@@ -184,7 +184,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 6}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: f348e63d706f28740a3698d901658590, type: 3}
+    _csvFile: {fileID: 0}
   - Id: enemy-04
     EnemyPrefab: {fileID: 6159979376426271357, guid: c7dff053761e1bd4d846f79b0fb86c74, type: 3}
     WaveEnemies:
@@ -238,7 +238,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 6}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: 93e92407775dde84287788b984ecb34c, type: 3}
+    _csvFile: {fileID: 0}
   - Id: enemy-05
     EnemyPrefab: {fileID: 180452731009248054, guid: fa1cdb717af73eb439d89584ba9c5cb5, type: 3}
     WaveEnemies:
@@ -292,7 +292,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 6}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: 33428ca10bb7b3048b7cfe61c6ae0baa, type: 3}
+    _csvFile: {fileID: 0}
   - Id: enemy-06
     EnemyPrefab: {fileID: 8493911427500958365, guid: 753940f11ca5b434cbbfccd10e3c17d2, type: 3}
     WaveEnemies:
@@ -346,7 +346,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: a5438b7d5cc15cc448b8d5467a24f0ed, type: 3}
+    _csvFile: {fileID: 0}
   - Id: enemy-07
     EnemyPrefab: {fileID: 345816969573170895, guid: ab4ac09e1b5decb4e8af977768b6024f, type: 3}
     WaveEnemies:
@@ -400,7 +400,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: c9ce6763ebdef8b40811ea999da5bd7f, type: 3}
+    _csvFile: {fileID: 0}
   - Id: boss-01
     EnemyPrefab: {fileID: 7357696925340996628, guid: d365fd14f41132e4cbcd8765e6e6e59a, type: 3}
     WaveEnemies:
@@ -454,7 +454,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: de9d87e6ac476a24e817b66eeab11c99, type: 3}
+    _csvFile: {fileID: 0}
   - Id: boss-02
     EnemyPrefab: {fileID: 6955511236308158615, guid: 2b658d2dab17bcf4cb9ed8800804432f, type: 3}
     WaveEnemies:
@@ -508,7 +508,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: cb6017ff9007e9e4abd6ad39917b54c8, type: 3}
+    _csvFile: {fileID: 0}
   - Id: boss-03
     EnemyPrefab: {fileID: 2051321100529574554, guid: dee7d93fd783dc043ba46001c200ceb9, type: 3}
     WaveEnemies:
@@ -562,7 +562,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: d03afe13614b2fa4d89f5fb860b5f13a, type: 3}
+    _csvFile: {fileID: 0}
   - Id: boss-04
     EnemyPrefab: {fileID: 6103538179936068456, guid: 0fb06a77f1970794f8629ade655d9bbd, type: 3}
     WaveEnemies:
@@ -616,7 +616,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: f968dadf886faf346bc659d1e4efe107, type: 3}
+    _csvFile: {fileID: 0}
   - Id: boss-05
     EnemyPrefab: {fileID: 8646716340610159811, guid: df1a4c0d299044945a3ee9ffe2ae2c06, type: 3}
     WaveEnemies:
@@ -670,7 +670,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: cb9393a2cc6e92b4994c6cd499f5dcba, type: 3}
+    _csvFile: {fileID: 0}
   - Id: boss-06
     EnemyPrefab: {fileID: 4347561333755118298, guid: be7c4c5f8f0ada942b685b98656aca02, type: 3}
     WaveEnemies:
@@ -724,7 +724,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: 0c4de3216ddd2744f95eeda3bc96b824, type: 3}
+    _csvFile: {fileID: 0}
   - Id: boss-07
     EnemyPrefab: {fileID: 2738606599830832688, guid: ffc9a57fd37840848be819a707ee721a, type: 3}
     WaveEnemies:
@@ -778,7 +778,7 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: 06dccfc35f7f4bd4fb1c8bc01b270c67, type: 3}
+    _csvFile: {fileID: 0}
   - Id: boss-08
     EnemyPrefab: {fileID: 4533735913268279485, guid: 4f3939168dfc9a148bf7293104538f9d, type: 3}
     WaveEnemies:
@@ -832,4 +832,4 @@ MonoBehaviour:
       Hp: 500
       coinReward: {x: 2, y: 13}
       PercentChance: 100
-    CSVFile: {fileID: 4900000, guid: 8bcfef49cc744a447a162223e9d5260a, type: 3}
+    _csvFile: {fileID: 0}

@@ -1,6 +1,7 @@
 using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.SpawnerSystem;
+using Sources.Utils;
 using Sources.Utils.Singleton;
 using System;
 using UniRx;
@@ -48,6 +49,16 @@ namespace Sources.Audio
             var audioInfo = _audioConfig.GetAudioInfo(audioId);
             var audioObj = GetAudioObject();
             audioObj.OnSetUp(audioInfo, isLoop);
+        }
+
+        private void PlayAudio(string audioId, bool isLoop = false)
+        {
+
+        }
+
+        private void PlayAudioList(string audioId, bool isLoop = false)
+        {
+
         }
 
         public void PauseAudio(string audioId)
