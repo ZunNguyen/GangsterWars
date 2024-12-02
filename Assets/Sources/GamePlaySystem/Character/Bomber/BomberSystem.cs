@@ -24,6 +24,8 @@ namespace Sources.GamePlaySystem.Character
 
         public override async UniTask Init()
         {
+            if (_userProfile.BomberDatas == null) return;
+
             ReloadTimeHandler.OnSetUp(_timeReload);
         }
 

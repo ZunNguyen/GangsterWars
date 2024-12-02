@@ -8,6 +8,8 @@ using UnityEngine;
 using UniRx;
 using DG.Tweening;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
+using Sources.Audio;
+using Sources.Extension;
 
 namespace Game.UserReceiveDamage.Shield
 {
@@ -22,6 +24,8 @@ namespace Game.UserReceiveDamage.Shield
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
+
         private ShieldWeaponInfo _shieldInfo;
 
         private float _ogirinalX;
@@ -72,6 +76,8 @@ namespace Game.UserReceiveDamage.Shield
                 _iconShield.color = _originalColor;
                 return;
             }
+
+            _audioManager.Play(AudioKey.SFX_SHIELD_IMPACT);
 
             _iconShield.color = _targetColor;
             await transform.DOMoveX(_targetMoveX, _duration);

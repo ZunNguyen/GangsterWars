@@ -64,4 +64,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: b59ed64554c060047b81bb6d36fe29c3, type: 3}
     - {fileID: 8300000, guid: 8ed9225d5bb49da45b9e80119f2cc3e9, type: 3}
     IsMusic: 0
+  - Id: sfx-earn-gold
+    AudioClips:
+    - {fileID: 8300000, guid: fa033ae7266ac4442b2e75da2a098442, type: 3}
+    - {fileID: 8300000, guid: 9f1f37735305c4cc99b07c19fe48675d, type: 3}
+    IsMusic: 0
+  - Id: sfx-impact-shield
+    AudioClips:
+    - {fileID: 8300000, guid: b657c39ee4df40b4380402461fa2d9cd, type: 3}
+    IsMusic: 0
   _audioListInfos: []

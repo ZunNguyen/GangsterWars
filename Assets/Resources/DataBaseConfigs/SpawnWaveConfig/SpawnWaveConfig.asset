@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Id: wave-01
+    CoinRewards: 50
     TotalHp: 24
     Turns:
     - Id: turn-01
@@ -37,7 +38,7 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-01
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 5000
+        SpawnAfterMiliSeccond: 4000
     - Id: turn-02
       Phases:
       - PhaseId: phase-01
@@ -61,7 +62,8 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-02
-    TotalHp: 1300
+    CoinRewards: 100
+    TotalHp: 104
     Turns:
     - Id: turn-01
       Phases:
@@ -74,55 +76,56 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-01
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-02
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 2000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-02
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 2000
+        SpawnAfterMiliSeccond: 4000
     - Id: turn-02
       Phases:
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 5000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-01
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
           EnemyId: enemy-02
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-01
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-02
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
   - Id: wave-03
+    CoinRewards: 0
     TotalHp: 2100
     Turns:
     - Id: turn-01
@@ -195,6 +198,7 @@ MonoBehaviour:
           IndexPos: 0000000002000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-04
+    CoinRewards: 0
     TotalHp: 3000
     Turns:
     - Id: turn-01
@@ -272,6 +276,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-05
+    CoinRewards: 0
     TotalHp: 4250
     Turns:
     - Id: turn-01
@@ -339,6 +344,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-06
+    CoinRewards: 0
     TotalHp: 5100
     Turns:
     - Id: turn-01
@@ -426,6 +432,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-07
+    CoinRewards: 0
     TotalHp: 5950
     Turns:
     - Id: turn-01
@@ -503,6 +510,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-08
+    CoinRewards: 0
     TotalHp: 6800
     Turns:
     - Id: turn-01
@@ -590,6 +598,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-09
+    CoinRewards: 0
     TotalHp: 8100
     Turns:
     - Id: turn-01
@@ -682,6 +691,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-10
+    CoinRewards: 0
     TotalHp: 9000
     Turns:
     - Id: turn-01
@@ -759,6 +769,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-11
+    CoinRewards: 0
     TotalHp: 9000
     Turns:
     - Id: turn-01

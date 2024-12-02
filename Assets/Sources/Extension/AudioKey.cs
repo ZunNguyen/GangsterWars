@@ -11,17 +11,28 @@ namespace Sources.Extension
         public static string GAME_PLAY_SONG = "game-play-song";
 
         // SFX
+        // Click
         public static string SFX_CLICK_01 = "sfx-click-01";
         public static string SFX_CLICK_02 = "sfx-click-02";
         public static string SFX_CLICK_ERROR = "sfx-click-error";
+        
+        // Coin
+        public static string SFX_EARN_COIN = "sfx-earn-gold";
         public static string SFX_DELETE_COIN = "sfx-delete-coin";
-        public static string SFX_RELOAD_01 = "sfx-reload-01";
+
+        // Enemy 
         public static string SFX_ENEMY_DEATH = "sfx-enemy-death";
 
-        // SFX Gun
+        // Gun
         public static string SFX_SHOOT_PISTOL = "sfx-shoot-pistol";
         public static string SFX_SHOOT_SHOOTGUN = "sfx-shoot-shootgun";
         public static string SFX_SHOOT_GUN_MACHINE = "sfx-shoot-gun-machine";
         public static string SFX_RELOAD_02 = "sfx-reload-02";
+
+        // Shield
+        public static string SFX_SHIELD_IMPACT = "sfx-impact-shield";
+
+        // Another
+        public static string SFX_RELOAD_01 = "sfx-reload-01";
     }
 }

@@ -21,7 +21,7 @@ namespace Sources.DataBaseSystem
         private string GetDescription()
         {
             var music = IsMusic ? "Music" : "SFX";
-            return $"[{Id}] / [{music}] / [{AudioClips.Count}]";
+            return $"[{Id}] [{music}] [{AudioClips.Count}]";
         }
     }
 

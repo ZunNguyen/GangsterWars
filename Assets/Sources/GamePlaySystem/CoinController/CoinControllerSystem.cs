@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using Sources.Audio;
+using Sources.Extension;
 using Sources.GameData;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
@@ -21,6 +23,8 @@ namespace Sources.GamePlaySystem.CoinController
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
+
         public ReactiveProperty<int> Coins { get; private set; } = new();
 
         public Action<CoinRewardInfo> CoinReward;
@@ -32,6 +36,8 @@ namespace Sources.GamePlaySystem.CoinController
 
         public void AddCoin(int quantity)
         {
+            _audioManager.Play(AudioKey.SFX_EARN_COIN);
+
             Coins.Value += quantity;
             SaveCoin();
         }

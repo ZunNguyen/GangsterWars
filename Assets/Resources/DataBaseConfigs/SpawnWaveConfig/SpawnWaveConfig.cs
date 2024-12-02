@@ -12,8 +12,14 @@ namespace Sources.DataBaseSystem
     public class Wave
     {
         public string Id;
+        public int CoinRewards;
         public int TotalHp;
         public List<Turn> Turns;
+
+        private string GetDescription()
+        {
+            return Id;
+        }
     }
 
     [Serializable]
@@ -40,7 +46,8 @@ namespace Sources.DataBaseSystem
 
     public class SpawnWaveConfig : DataBaseConfig , IReadCSVData
     {
-        [SerializeField] private List<Wave> _waves;
+        [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
+        private List<Wave> _waves;
         public Dictionary<string, Wave> WavesCache = new();
 
         [SerializeField, ReadOnly]

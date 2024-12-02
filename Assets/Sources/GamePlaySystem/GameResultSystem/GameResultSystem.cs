@@ -1,7 +1,9 @@
 using Cysharp.Threading.Tasks;
+using Game.Screens.Coin;
 using Sources.DataBaseSystem;
 using Sources.Extension;
 using Sources.GameData;
+using Sources.GamePlaySystem.CoinController;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
@@ -21,6 +23,7 @@ namespace Sources.GamePlaySystem.GameResult
         private SpawnWaveConfig _spawnWaveConfig => _dataBase.GetConfig<SpawnWaveConfig>();
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+        private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
         
         private bool _isHaveEnemyToAttack;
         private bool _isEndWave;
@@ -28,11 +31,11 @@ namespace Sources.GamePlaySystem.GameResult
         public string WaveIdCurrent { get; private set; }
         public string WaveIdNext { get; private set; }
         public int StarWin { get; private set; }
+        public int CoinRewards { get; private set; }
         public Action<bool> IsUserWin;
 
         public override async UniTask Init()
         {
-            
         }
 
         public void OnSetUp()
@@ -69,9 +72,11 @@ namespace Sources.GamePlaySystem.GameResult
             GetWaveIdCurrent();
             if (!_isHaveEnemyToAttack && _isEndWave)
             {
-                IsUserWin?.Invoke(true);
                 GetStarWin();
+                GetCoinRewards();
                 GetWaveIdNext();
+
+                IsUserWin?.Invoke(true);
                 SaveData();
             }
         }
@@ -96,6 +101,11 @@ namespace Sources.GamePlaySystem.GameResult
             }
             
             else StarWin = 1;
+        }
+
+        private void GetCoinRewards()
+        {
+            CoinRewards = _spawnWaveConfig.GetWaveInfo(WaveIdCurrent).CoinRewards;
         }
 
         private void GetWaveIdCurrent()
@@ -126,6 +136,11 @@ namespace Sources.GamePlaySystem.GameResult
             _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack -= HaveEnemyToAttack;
             _mainGamePlaySystem.SpawnEnemiesHandler.EndWave -= EndWave;
             _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= UserLose;
+        }
+
+        public void ClaimReward()
+        {
+            _coinControllerSystem.AddCoin(CoinRewards);
         }
     }
 }

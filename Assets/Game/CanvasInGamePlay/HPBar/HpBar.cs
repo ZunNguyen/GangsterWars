@@ -39,7 +39,7 @@ namespace Game.CanvasInGamePlay.HPBar
                     try
                     {
                         _disposedHpBar?.Dispose();
-                        _spawnerManager.Release<HpBar>(this);
+                        _spawnerManager.Release(gameObject);
                     }
                     catch { }
                 }

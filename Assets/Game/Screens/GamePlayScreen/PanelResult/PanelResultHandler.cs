@@ -2,12 +2,11 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sources.Command;
 using Sources.GamePlaySystem.GameResult;
-using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.UI;
 
 namespace Game.Screens.GamePlayScreen
 {
@@ -19,14 +18,16 @@ namespace Game.Screens.GamePlayScreen
 
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
 
-        [Header("Text")]
-        [SerializeField] private Text _textTitle;
-        [SerializeField] private Text _textMoney;
+        [Header("Title")]
+        [SerializeField] private TMP_Text _textTitle;
+
+        [Header("Reward")]
+        [SerializeField] private TMP_Text _textReward;
+        [SerializeField] private GameObject _rewardHolder;
 
         [Header("Another")]
         [SerializeField] private List<RectTransform> _stars;
         [SerializeField] private GameObject _titleTryAgain;
-        [SerializeField] private GameObject _rewardHolder;
         [SerializeField] private GameObject _blackBG;
         [SerializeField] private GameObject _blockPanel;
         [SerializeField] private GameObject _btnNext;
@@ -49,9 +50,12 @@ namespace Game.Screens.GamePlayScreen
 
         private async void SetPanelWin()
         {
+            _textReward.text = _gameResultSystem.CoinRewards.ToString();
             await UniTask.Delay(1000);
+
             await AnimationPlayableDirector();
             await AnimationCollectStars();
+            _gameResultSystem.ClaimReward();
 
             _blockPanel.SetActive(false);
         }
