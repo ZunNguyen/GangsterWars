@@ -246,3 +246,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd774821431abb4a9fa628c9728bfab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sniperActionHandler: {fileID: 7699727780148354985}
+  _sniperAnimationHandler: {fileID: 8966376555145316784}

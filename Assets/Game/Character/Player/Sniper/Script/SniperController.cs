@@ -10,9 +10,17 @@ namespace Game.Character.Sniper
     {
         private OpenCharacterSystem _openCharacterSystem => Locator<OpenCharacterSystem>.Instance;
 
+        [SerializeField] private SniperActionHandler _sniperActionHandler;
+        [SerializeField] private SniperAnimationHandler _sniperAnimationHandler;
+
         private void Awake()
         {
             if (!_openCharacterSystem.OpenSniperHandler.IsAldreadyOpenCharacter) gameObject.SetActive(false);
+            else
+            {
+                _sniperActionHandler.OnSetUp();
+                _sniperAnimationHandler.OnSetUp();
+            }
         }
     }
 }
