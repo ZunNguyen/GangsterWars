@@ -165,100 +165,100 @@ MonoBehaviour:
     ReloadTime: 1
   - Id: gun-04
     Icon: {fileID: 21300000, guid: 996a43b95025abf4ab1011f20720b51a, type: 3}
-    UnlockFee: 0
+    UnlockFee: 700
     LanguageId: Gun_Ak
     LevelUpgrades:
     - Id: level-01
-      LevelUpFee: 1
-      ReloadFee: 500
-      DamageOrHp: 5
+      LevelUpFee: 0
+      ReloadFee: 150
+      DamageOrHp: 20
     - Id: level-02
-      LevelUpFee: 2
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 300
+      ReloadFee: 200
+      DamageOrHp: 25
     - Id: level-03
-      LevelUpFee: 3
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 400
+      ReloadFee: 250
+      DamageOrHp: 30
     - Id: level-04
-      LevelUpFee: 4
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 500
+      ReloadFee: 300
+      DamageOrHp: 35
     - Id: level-05
-      LevelUpFee: 5
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 600
+      ReloadFee: 350
+      DamageOrHp: 40
     - Id: level-06
-      LevelUpFee: 6
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 700
+      ReloadFee: 400
+      DamageOrHp: 45
     - Id: level-07
-      LevelUpFee: 7
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 800
+      ReloadFee: 450
+      DamageOrHp: 50
     - Id: level-08
-      LevelUpFee: 8
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 900
+      ReloadFee: 500
+      DamageOrHp: 55
     - Id: level-09
-      LevelUpFee: 9
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 1000
+      ReloadFee: 550
+      DamageOrHp: 60
     - Id: level-10
-      LevelUpFee: 10
-      ReloadFee: 50
-      DamageOrHp: 10
-    CSVFile: {fileID: 4900000, guid: b988f6a8e43f80c47b1d4540f933ac1c, type: 3}
+      LevelUpFee: 1100
+      ReloadFee: 600
+      DamageOrHp: 65
+    CSVFile: {fileID: 4900000, guid: 054a8866611eee64eae734262a20eadf, type: 3}
     SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 7dd686c26dec3e84bafe7f78c587dd85, type: 3}
-    MaxBullet: 500
+    MaxBullet: 400
     BulletsPerClip: 50
     ReloadTime: 5
   - Id: gun-05
     Icon: {fileID: 21300000, guid: de808f26d17b1e5449bb66be5a9cbed2, type: 3}
-    UnlockFee: 0
+    UnlockFee: 1000
     LanguageId: Gun_Machine
     LevelUpgrades:
     - Id: level-01
-      LevelUpFee: 1
-      ReloadFee: 500
-      DamageOrHp: 5
+      LevelUpFee: 0
+      ReloadFee: 250
+      DamageOrHp: 30
     - Id: level-02
-      LevelUpFee: 2
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 500
+      ReloadFee: 350
+      DamageOrHp: 40
     - Id: level-03
-      LevelUpFee: 3
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 700
+      ReloadFee: 450
+      DamageOrHp: 50
     - Id: level-04
-      LevelUpFee: 4
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 900
+      ReloadFee: 550
+      DamageOrHp: 60
     - Id: level-05
-      LevelUpFee: 5
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 1100
+      ReloadFee: 650
+      DamageOrHp: 70
     - Id: level-06
-      LevelUpFee: 6
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 1300
+      ReloadFee: 750
+      DamageOrHp: 80
     - Id: level-07
-      LevelUpFee: 7
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 1500
+      ReloadFee: 850
+      DamageOrHp: 90
     - Id: level-08
-      LevelUpFee: 8
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 1700
+      ReloadFee: 950
+      DamageOrHp: 100
     - Id: level-09
-      LevelUpFee: 9
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 1900
+      ReloadFee: 1050
+      DamageOrHp: 110
     - Id: level-10
-      LevelUpFee: 10
-      ReloadFee: 50
-      DamageOrHp: 10
-    CSVFile: {fileID: 4900000, guid: b988f6a8e43f80c47b1d4540f933ac1c, type: 3}
+      LevelUpFee: 2100
+      ReloadFee: 1150
+      DamageOrHp: 120
+    CSVFile: {fileID: 4900000, guid: b10c94553dda7e0469e217c54d159406, type: 3}
     SpriteLibraryAsset: {fileID: 7108339969198208228, guid: fc796774f33fd6546abd7c1895275c75, type: 3}
     MaxBullet: 500
     BulletsPerClip: 50

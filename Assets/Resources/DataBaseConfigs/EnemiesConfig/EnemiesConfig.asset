@@ -29,807 +29,3047 @@ MonoBehaviour:
     - Id: wave-03
       Damage: 4
       Hp: 15
-      coinReward: {x: 1, y: 15}
-      PercentChance: 100
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 4, y: 8}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 4, y: 9}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 4, y: 10}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 4, y: 12}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 4, y: 13}
-      PercentChance: 100
+      Damage: 16
+      Hp: 500
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
     - Id: wave-10
-      Damage: 100
-      Hp: 500
-      coinReward: {x: 4, y: 14}
-      PercentChance: 100
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
     - Id: wave-11
-      Damage: 100
-      Hp: 500
-      coinReward: {x: 4, y: 15}
-      PercentChance: 100
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
     - Id: wave-12
-      Damage: 100
-      Hp: 0
-      coinReward: {x: 4, y: 16}
-      PercentChance: 80
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
     _csvFile: {fileID: 4900000, guid: 43d778fa86753f9439228816b02e65eb, type: 3}
   - Id: enemy-02
     EnemyPrefab: {fileID: 2979277852961877915, guid: 77e536c4464207b43a03fb6709fe4497, type: 3}
     WaveEnemies:
     - Id: wave-01
       Damage: 1
-      Hp: 5
-      coinReward: {x: 2, y: 4}
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
       Damage: 2
       Hp: 8
-      coinReward: {x: 4, y: 10}
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
       Damage: 4
       Hp: 15
-      coinReward: {x: 1, y: 15}
-      PercentChance: 100
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 4, y: 12}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 5}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
-    _csvFile: {fileID: 4900000, guid: 2d388f10f3900654583c94c61d363837, type: 3}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: a8d1566203c6c61498e002a826e3f8b3, type: 3}
   - Id: enemy-03
     EnemyPrefab: {fileID: 44199057889964456, guid: 9df3cbb0a1b61fd469455c985cbc89ca, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 4, y: 10}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 5}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 4, y: 12}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 5}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: 84fdc843e2e6efc419d853bf233003bc, type: 3}
   - Id: enemy-04
     EnemyPrefab: {fileID: 6159979376426271357, guid: c7dff053761e1bd4d846f79b0fb86c74, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 4, y: 10}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 5}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 4, y: 12}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 5}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: 4004456398a364f4ab1d0ce8d4cf2b09, type: 3}
   - Id: enemy-05
     EnemyPrefab: {fileID: 180452731009248054, guid: fa1cdb717af73eb439d89584ba9c5cb5, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 4, y: 10}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 5}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 4, y: 12}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 5}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 4, y: 11}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: cff36190081fecd4a8bd4542d6f95b34, type: 3}
   - Id: enemy-06
     EnemyPrefab: {fileID: 8493911427500958365, guid: 753940f11ca5b434cbbfccd10e3c17d2, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: a50a7159fb483f244824547fd69e7920, type: 3}
   - Id: enemy-07
     EnemyPrefab: {fileID: 345816969573170895, guid: ab4ac09e1b5decb4e8af977768b6024f, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: 95548ce0ee8ef7c449a07d65262bf0aa, type: 3}
   - Id: boss-01
     EnemyPrefab: {fileID: 7357696925340996628, guid: d365fd14f41132e4cbcd8765e6e6e59a, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: b36c73cb0ecb34748b196a835bdd551e, type: 3}
   - Id: boss-02
     EnemyPrefab: {fileID: 6955511236308158615, guid: 2b658d2dab17bcf4cb9ed8800804432f, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: c81058435381368498492bb4578b8d5f, type: 3}
   - Id: boss-03
     EnemyPrefab: {fileID: 2051321100529574554, guid: dee7d93fd783dc043ba46001c200ceb9, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: bc11d0c3726b7eb478ed3f9fd4b0300d, type: 3}
   - Id: boss-04
     EnemyPrefab: {fileID: 6103538179936068456, guid: 0fb06a77f1970794f8629ade655d9bbd, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: 636c021064e3ccf4ba6164039fad3afc, type: 3}
   - Id: boss-05
     EnemyPrefab: {fileID: 8646716340610159811, guid: df1a4c0d299044945a3ee9ffe2ae2c06, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: 0bc27df780bbfef498a7b28e933c0bce, type: 3}
   - Id: boss-06
     EnemyPrefab: {fileID: 4347561333755118298, guid: be7c4c5f8f0ada942b685b98656aca02, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: 21918da0ed17ee64a91aab969bb132c7, type: 3}
   - Id: boss-07
     EnemyPrefab: {fileID: 2738606599830832688, guid: ffc9a57fd37840848be819a707ee721a, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: cf3dee7b60c5c5141a61c5f039804729, type: 3}
   - Id: boss-08
     EnemyPrefab: {fileID: 4533735913268279485, guid: 4f3939168dfc9a148bf7293104538f9d, type: 3}
     WaveEnemies:
     - Id: wave-01
-      Damage: 10
-      Hp: 50
-      coinReward: {x: 2, y: 4}
+      Damage: 1
+      Hp: 3
+      coinReward: {x: 5, y: 10}
       PercentChance: 100
     - Id: wave-02
-      Damage: 20
-      Hp: 100
-      coinReward: {x: 2, y: 5}
+      Damage: 2
+      Hp: 8
+      coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 6}
-      PercentChance: 100
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 7, y: 15}
+      PercentChance: 50
     - Id: wave-04
-      Damage: 40
-      Hp: 200
-      coinReward: {x: 2, y: 7}
-      PercentChance: 100
+      Damage: 6
+      Hp: 30
+      coinReward: {x: 8, y: 20}
+      PercentChance: 50
     - Id: wave-05
-      Damage: 50
-      Hp: 250
-      coinReward: {x: 2, y: 8}
-      PercentChance: 100
+      Damage: 8
+      Hp: 50
+      coinReward: {x: 10, y: 23}
+      PercentChance: 50
     - Id: wave-06
-      Damage: 60
-      Hp: 300
-      coinReward: {x: 2, y: 9}
-      PercentChance: 100
+      Damage: 10
+      Hp: 100
+      coinReward: {x: 15, y: 26}
+      PercentChance: 50
     - Id: wave-07
-      Damage: 70
-      Hp: 350
-      coinReward: {x: 2, y: 10}
-      PercentChance: 100
+      Damage: 12
+      Hp: 200
+      coinReward: {x: 20, y: 30}
+      PercentChance: 50
     - Id: wave-08
-      Damage: 80
-      Hp: 400
-      coinReward: {x: 2, y: 11}
-      PercentChance: 100
+      Damage: 14
+      Hp: 300
+      coinReward: {x: 25, y: 35}
+      PercentChance: 50
     - Id: wave-09
-      Damage: 90
-      Hp: 450
-      coinReward: {x: 2, y: 12}
-      PercentChance: 100
-    - Id: wave-10
-      Damage: 100
+      Damage: 16
       Hp: 500
-      coinReward: {x: 2, y: 13}
-      PercentChance: 100
-    _csvFile: {fileID: 0}
+      coinReward: {x: 30, y: 40}
+      PercentChance: 50
+    - Id: wave-10
+      Damage: 18
+      Hp: 700
+      coinReward: {x: 35, y: 50}
+      PercentChance: 50
+    - Id: wave-11
+      Damage: 20
+      Hp: 1000
+      coinReward: {x: 45, y: 60}
+      PercentChance: 50
+    - Id: wave-12
+      Damage: 22
+      Hp: 1500
+      coinReward: {x: 50, y: 70}
+      PercentChance: 50
+    - Id: wave-13
+      Damage: 24
+      Hp: 2000
+      coinReward: {x: 60, y: 80}
+      PercentChance: 50
+    - Id: wave-14
+      Damage: 26
+      Hp: 2500
+      coinReward: {x: 70, y: 90}
+      PercentChance: 50
+    - Id: wave-15
+      Damage: 28
+      Hp: 3000
+      coinReward: {x: 80, y: 100}
+      PercentChance: 50
+    - Id: wave-16
+      Damage: 30
+      Hp: 3500
+      coinReward: {x: 90, y: 100}
+      PercentChance: 50
+    - Id: wave-17
+      Damage: 32
+      Hp: 4000
+      coinReward: {x: 110, y: 150}
+      PercentChance: 50
+    - Id: wave-18
+      Damage: 34
+      Hp: 4500
+      coinReward: {x: 120, y: 200}
+      PercentChance: 50
+    - Id: wave-19
+      Damage: 36
+      Hp: 5000
+      coinReward: {x: 130, y: 210}
+      PercentChance: 50
+    - Id: wave-20
+      Damage: 38
+      Hp: 5500
+      coinReward: {x: 140, y: 220}
+      PercentChance: 50
+    - Id: wave-21
+      Damage: 40
+      Hp: 6000
+      coinReward: {x: 150, y: 240}
+      PercentChance: 50
+    - Id: wave-22
+      Damage: 42
+      Hp: 6500
+      coinReward: {x: 170, y: 250}
+      PercentChance: 50
+    - Id: wave-23
+      Damage: 44
+      Hp: 7000
+      coinReward: {x: 180, y: 280}
+      PercentChance: 50
+    - Id: wave-24
+      Damage: 46
+      Hp: 7500
+      coinReward: {x: 200, y: 300}
+      PercentChance: 50
+    - Id: wave-25
+      Damage: 48
+      Hp: 8000
+      coinReward: {x: 250, y: 350}
+      PercentChance: 50
+    - Id: wave-26
+      Damage: 50
+      Hp: 8500
+      coinReward: {x: 275, y: 375}
+      PercentChance: 50
+    - Id: wave-27
+      Damage: 52
+      Hp: 9000
+      coinReward: {x: 300, y: 400}
+      PercentChance: 50
+    - Id: wave-28
+      Damage: 54
+      Hp: 9500
+      coinReward: {x: 350, y: 500}
+      PercentChance: 50
+    - Id: wave-29
+      Damage: 56
+      Hp: 10000
+      coinReward: {x: 370, y: 550}
+      PercentChance: 50
+    - Id: wave-30
+      Damage: 58
+      Hp: 10500
+      coinReward: {x: 400, y: 600}
+      PercentChance: 50
+    - Id: wave-31
+      Damage: 60
+      Hp: 11000
+      coinReward: {x: 500, y: 700}
+      PercentChance: 50
+    - Id: wave-32
+      Damage: 62
+      Hp: 11500
+      coinReward: {x: 600, y: 800}
+      PercentChance: 50
+    - Id: wave-33
+      Damage: 64
+      Hp: 12000
+      coinReward: {x: 700, y: 900}
+      PercentChance: 50
+    - Id: wave-34
+      Damage: 66
+      Hp: 12500
+      coinReward: {x: 800, y: 1000}
+      PercentChance: 50
+    - Id: wave-35
+      Damage: 68
+      Hp: 13000
+      coinReward: {x: 900, y: 1100}
+      PercentChance: 50
+    - Id: wave-36
+      Damage: 70
+      Hp: 13500
+      coinReward: {x: 1000, y: 1300}
+      PercentChance: 50
+    - Id: wave-37
+      Damage: 72
+      Hp: 14000
+      coinReward: {x: 1200, y: 1500}
+      PercentChance: 50
+    - Id: wave-38
+      Damage: 74
+      Hp: 14500
+      coinReward: {x: 1300, y: 1600}
+      PercentChance: 50
+    - Id: wave-39
+      Damage: 76
+      Hp: 15000
+      coinReward: {x: 1400, y: 1700}
+      PercentChance: 50
+    - Id: wave-40
+      Damage: 78
+      Hp: 15500
+      coinReward: {x: 1500, y: 2000}
+      PercentChance: 50
+    _csvFile: {fileID: 4900000, guid: e1f2e5b8635b4224e9f41da585b51cf7, type: 3}

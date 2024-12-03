@@ -15,6 +15,7 @@ namespace Sources.DataBaseSystem
         public string Id;
         [PreviewField(100, ObjectFieldAlignment.Center)]
         public GameObject EnemyPrefab;
+        [ListDrawerSettings(ListElementLabelName = "GetDescription")]
         public List<WaveEnemy> WaveEnemies = new();
         public Dictionary<string, WaveEnemy> WaveEnemyCache { get; private set; } = new();
 
@@ -116,6 +117,11 @@ namespace Sources.DataBaseSystem
 
         [ProgressBar(0, 100)]
         public int PercentChance;
+
+        private string GetDescription()
+        {
+            return Id;
+        }
     }
 
     public class EnemiesConfig : DataBaseConfig

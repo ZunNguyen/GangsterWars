@@ -17,6 +17,11 @@ namespace Sources.DataBaseSystem
         public int ReloadFee;
         [Header("Damage or Hp")]
         public int DamageOrHp;
+
+        private string GetDescription()
+        {
+            return Id;
+        }
     }
 
     public abstract class WeaponInfoBase : IReadCSVData
@@ -30,7 +35,7 @@ namespace Sources.DataBaseSystem
         [SerializeField, ValueDropdown("GetAllLanguageItem")]
         public string LanguageId;
 
-        [PropertyOrder(2)]
+        [PropertyOrder(2), ListDrawerSettings(ListElementLabelName = "GetDescription")]
         public List<LevelUpgradeInfo> LevelUpgrades;
         protected Dictionary<string, LevelUpgradeInfo> LevelUpgradeCache { get; private set; } = new();
         [PropertyOrder(3)]
