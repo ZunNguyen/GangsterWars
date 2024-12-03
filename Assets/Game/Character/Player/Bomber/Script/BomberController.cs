@@ -9,9 +9,17 @@ namespace Game.Character.Bomber
     {
         private OpenCharacterSystem _openCharacterSystem => Locator<OpenCharacterSystem>.Instance;
 
+        [SerializeField] private BomberActionHandler _bomberActionHandler;
+        [SerializeField] private BomberAnimationHandler _bomberAnimationHandler;
+
         private void Awake()
         {
             if (!_openCharacterSystem.OpenBomberHandler.IsAldreadyOpenCharacter) gameObject.SetActive(false);
+            else
+            {
+                _bomberActionHandler.OnSetUp();
+                _bomberAnimationHandler.OnSetUp();
+            }
         }
     }
 }

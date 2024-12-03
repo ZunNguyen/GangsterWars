@@ -19,47 +19,47 @@ MonoBehaviour:
     LanguageId: Store_Dynamite
     LevelUpgrades:
     - Id: level-01
-      LevelUpFee: 1
+      LevelUpFee: 0
       ReloadFee: 50
       DamageOrHp: 5
     - Id: level-02
-      LevelUpFee: 2
-      ReloadFee: 50
+      LevelUpFee: 100
+      ReloadFee: 70
       DamageOrHp: 10
     - Id: level-03
-      LevelUpFee: 3
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 150
+      ReloadFee: 90
+      DamageOrHp: 15
     - Id: level-04
-      LevelUpFee: 4
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 200
+      ReloadFee: 110
+      DamageOrHp: 20
     - Id: level-05
-      LevelUpFee: 5
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 250
+      ReloadFee: 130
+      DamageOrHp: 25
     - Id: level-06
-      LevelUpFee: 6
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 300
+      ReloadFee: 150
+      DamageOrHp: 30
     - Id: level-07
-      LevelUpFee: 7
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 350
+      ReloadFee: 170
+      DamageOrHp: 35
     - Id: level-08
-      LevelUpFee: 8
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 400
+      ReloadFee: 190
+      DamageOrHp: 40
     - Id: level-09
-      LevelUpFee: 9
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 450
+      ReloadFee: 210
+      DamageOrHp: 45
     - Id: level-10
-      LevelUpFee: 10
+      LevelUpFee: 500
       ReloadFee: 50
-      DamageOrHp: 10
+      DamageOrHp: 50
     CSVFile: {fileID: 4900000, guid: f0d8c9bf38ecb4241956e5eae1738f9b, type: 3}
-    MaxBullet: 10
+    MaxBullet: 20
     BulletsPerClip: 1
     ReloadTime: 5000
   - Id: bom-02
@@ -209,3 +209,4 @@ MonoBehaviour:
     MaxBullet: 10
     BulletsPerClip: 1
     ReloadTime: 5000
+  _openFee: 150

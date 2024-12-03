@@ -11,7 +11,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
     public class SpawnEnemiesHandler
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
+        private WavesConfig _enemySpawnConfig => _dataBase.GetConfig<WavesConfig>();
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
@@ -41,7 +41,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         private void GetWaveInfo()
         {
-            _waveInfo = _enemySpawnConfig.GetWaveInfo(_waveIdCurrent);
+            _waveInfo = _enemySpawnConfig.GetSpawnWaveInfo(_waveIdCurrent);
             GetMaxEnemy();
         }
 

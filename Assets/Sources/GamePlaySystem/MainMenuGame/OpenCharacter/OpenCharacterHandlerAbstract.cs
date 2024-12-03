@@ -17,23 +17,26 @@ namespace Sources.GamePlaySystem.MainMenuGame
         protected StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 
         public int CharacterFee { get; private set; }
-        public bool IsAldreadyOpenCharacter { get; private set; } = false;
+        public bool IsAldreadyOpenCharacter { get; private set; } = true;
 
         public abstract void OnSetUp();
 
         protected void CheckCharacterData(List<WeaponData> characterDatas, int characterFee)
         {
-            if (characterDatas != null)
-            {
-                IsAldreadyOpenCharacter = true;
-                CharacterFee = characterFee;
-            }
+            if (characterDatas != null) return;
+
+            IsAldreadyOpenCharacter = false;
+            CharacterFee = characterFee;
         }
 
         public bool OpenCharacter()
         {
             var result = _coinController.PurchaseItem(CharacterFee);
-            if (result == true) SetDataCharacter();
+            if (result == true)
+            {
+                IsAldreadyOpenCharacter = true;
+                SetDataCharacter();
+            }
             return result;
         }
 

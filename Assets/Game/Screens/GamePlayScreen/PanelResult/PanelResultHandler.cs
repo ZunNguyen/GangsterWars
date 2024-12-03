@@ -94,6 +94,7 @@ namespace Game.Screens.GamePlayScreen
 
         private void OnDestroy()
         {
+            _playableDirector.DOKill();
             _gameResultSystem.IsUserWin -= EndGame;
         }
 

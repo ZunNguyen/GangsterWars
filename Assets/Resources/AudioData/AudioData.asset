@@ -73,4 +73,8 @@ MonoBehaviour:
     AudioClips:
     - {fileID: 8300000, guid: b657c39ee4df40b4380402461fa2d9cd, type: 3}
     IsMusic: 0
+  - Id: sfx-boom-01
+    AudioClips:
+    - {fileID: 8300000, guid: dcc115856383dd848ab1714bf7c87bb2, type: 3}
+    IsMusic: 0
   _audioListInfos: []

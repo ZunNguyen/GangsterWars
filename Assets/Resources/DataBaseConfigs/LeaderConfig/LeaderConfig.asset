@@ -115,50 +115,50 @@ MonoBehaviour:
     ReloadTime: 1
   - Id: gun-03
     Icon: {fileID: 21300000, guid: 365676944dbbcc749b7bc45758a396d4, type: 3}
-    UnlockFee: 0
+    UnlockFee: 500
     LanguageId: Gun_Shotgun
     LevelUpgrades:
     - Id: level-01
-      LevelUpFee: 1
-      ReloadFee: 50
+      LevelUpFee: 0
+      ReloadFee: 80
       DamageOrHp: 5
     - Id: level-02
-      LevelUpFee: 2
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 200
+      ReloadFee: 120
+      DamageOrHp: 8
     - Id: level-03
-      LevelUpFee: 3
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 250
+      ReloadFee: 160
+      DamageOrHp: 11
     - Id: level-04
-      LevelUpFee: 4
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 300
+      ReloadFee: 200
+      DamageOrHp: 14
     - Id: level-05
-      LevelUpFee: 5
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 350
+      ReloadFee: 240
+      DamageOrHp: 17
     - Id: level-06
-      LevelUpFee: 6
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 400
+      ReloadFee: 280
+      DamageOrHp: 20
     - Id: level-07
-      LevelUpFee: 7
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 450
+      ReloadFee: 320
+      DamageOrHp: 23
     - Id: level-08
-      LevelUpFee: 8
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 500
+      ReloadFee: 360
+      DamageOrHp: 26
     - Id: level-09
-      LevelUpFee: 9
-      ReloadFee: 50
-      DamageOrHp: 10
+      LevelUpFee: 550
+      ReloadFee: 400
+      DamageOrHp: 29
     - Id: level-10
-      LevelUpFee: 10
-      ReloadFee: 50
-      DamageOrHp: 10
-    CSVFile: {fileID: 4900000, guid: b988f6a8e43f80c47b1d4540f933ac1c, type: 3}
+      LevelUpFee: 600
+      ReloadFee: 440
+      DamageOrHp: 32
+    CSVFile: {fileID: 4900000, guid: ffeb9b7a8ce3c1c48bef444c410cd1cb, type: 3}
     SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 2e308fd8d7718af4da716a3f51c9e0a2, type: 3}
     MaxBullet: 50
     BulletsPerClip: 5

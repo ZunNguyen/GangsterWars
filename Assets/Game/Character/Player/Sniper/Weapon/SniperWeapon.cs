@@ -43,7 +43,7 @@ namespace Game.Character.Sniper
         public void ReleaseBullet()
         {
             if (isActiveAndEnabled == false) return;
-            _spawnerManager.Release<SniperWeapon>(this);
+            _spawnerManager.Release(this);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

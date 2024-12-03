@@ -29,6 +29,9 @@ namespace Sources.Extension
         public static string SFX_SHOOT_GUN_MACHINE = "sfx-shoot-gun-machine";
         public static string SFX_RELOAD_02 = "sfx-reload-02";
 
+        // Boom
+        public static string SFX_BOOM_01 = "sfx-boom-01";
+
         // Shield
         public static string SFX_SHIELD_IMPACT = "sfx-impact-shield";
 

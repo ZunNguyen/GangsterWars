@@ -9,7 +9,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
     public class EnemiesController
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private SpawnWaveConfig _spawnWaveConfig => _dataBase.GetConfig<SpawnWaveConfig>();
+        private WavesConfig _spawnWaveConfig => _dataBase.GetConfig<WavesConfig>();
 
         private List<EnemyHandler> _activeEnemyHandlers = new();
         public List<EnemyHandler> _availableEnemyHandlers { set; private get; } = new();
@@ -20,7 +20,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         public void OnSetUp(string waveId)
         {
-            TotalHpEnemies = HpEnemiesCurrent.Value = _spawnWaveConfig.GetWaveInfo(waveId).TotalHp;
+            TotalHpEnemies = HpEnemiesCurrent.Value = _spawnWaveConfig.GetSpawnWaveInfo(waveId).TotalHp;
             ClearEnemeyHandlers();
         }
 

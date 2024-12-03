@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sources.Audio;
 using Sources.Extension;
@@ -27,11 +28,12 @@ namespace Game.Screens.MainMenuScreen
         [Header("Tab Handler")]
         [SerializeField] private TabHandler _tabHandler;
 
-        private void Awake()
+        private async void Awake()
         {
             _boxCharacter.transform.localScale = Vector3.zero;
             _boxCharacter.gameObject.SetActive(true);
 
+            await UniTask.Delay(100);
             OnSetUp();
         }
 

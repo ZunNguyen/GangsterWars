@@ -20,7 +20,7 @@ namespace Sources.GamePlaySystem.GameResult
         private JourneyProfile _jourNeyProfile => _gameData.GetProfileData<JourneyProfile>();
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private SpawnWaveConfig _spawnWaveConfig => _dataBase.GetConfig<SpawnWaveConfig>();
+        private WavesConfig _spawnWaveConfig => _dataBase.GetConfig<WavesConfig>();
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
@@ -105,7 +105,7 @@ namespace Sources.GamePlaySystem.GameResult
 
         private void GetCoinRewards()
         {
-            CoinRewards = _spawnWaveConfig.GetWaveInfo(WaveIdCurrent).CoinRewards;
+            CoinRewards = _spawnWaveConfig.GetBGWaveInfo(WaveIdCurrent).CoinRewards;
         }
 
         private void GetWaveIdCurrent()

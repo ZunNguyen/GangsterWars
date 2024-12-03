@@ -10,7 +10,7 @@ namespace Game.BackGround
     public class ChangeBackGroundController : MonoBehaviour
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private BackGroundConfig _backGroundConfig => _dataBase.GetConfig<BackGroundConfig>();
+        private WavesConfig _backGroundConfig => _dataBase.GetConfig<WavesConfig>();
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
@@ -19,7 +19,7 @@ namespace Game.BackGround
         private void Awake()
         {
             var waveId = _mainGamePlaySystem.WaveIdCurrent;
-            var waveInfo = _backGroundConfig.GetWaveInfo(waveId);
+            var waveInfo = _backGroundConfig.GetBGWaveInfo(waveId);
             _sprite.sprite = waveInfo.Sprite;
         }
     }

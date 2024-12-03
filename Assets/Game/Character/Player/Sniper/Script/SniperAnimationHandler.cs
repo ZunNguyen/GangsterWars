@@ -10,7 +10,7 @@ namespace Game.Character.Sniper
     {
         private SniperSystem _sniperSystem => Locator<SniperSystem>.Instance;
 
-        protected override void OnSetUp()
+        protected override void InitValue()
         {
             _reloadTimeHandler = _sniperSystem.ReloadTimeHandler;
             _weaponHandler = _sniperSystem.BomHandler;

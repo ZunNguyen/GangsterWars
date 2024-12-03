@@ -37,7 +37,7 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private JourneyMapConfig _journeyMapConfig => _dataBase.GetConfig<JourneyMapConfig>();
-        private SpawnWaveConfig _enemySpawnConfig => _dataBase.GetConfig<SpawnWaveConfig>();
+        private WavesConfig _enemySpawnConfig => _dataBase.GetConfig<WavesConfig>();
 
         private List<JourneyMapData> _journeyMapDatas = new();
 

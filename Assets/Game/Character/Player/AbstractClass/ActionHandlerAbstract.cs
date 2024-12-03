@@ -17,7 +17,7 @@ namespace Game.Character.Player.Abstract
         [SerializeField] private Transform _weaponPos;
         [SerializeField] private Transform _weaponHolder;
 
-        private void Awake()
+        public void OnSetUp()
         {
             GetHandlerSystem();
         }

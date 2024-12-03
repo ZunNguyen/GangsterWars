@@ -265,7 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 8584574939415129193}
   _enemyController: {fileID: 5139457135466134231}
-  _weaponPrefab: {fileID: 4290409247114023162, guid: 4f56c2ac8f9b81043b801b9b371a25af, type: 3}
+  _weaponPrefab: {fileID: 5109040994430903655, guid: 4f56c2ac8f9b81043b801b9b371a25af, type: 3}
+  _muzzleFlash: {fileID: 0}
   _weaponHolder: {fileID: 810299488151705635}
   _posSpawnWeapon: {fileID: 7152832270182053110}
 --- !u!1 &3213009970562787634

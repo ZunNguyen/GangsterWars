@@ -12,7 +12,6 @@ namespace Sources.DataBaseSystem
     public class Wave
     {
         public string Id;
-        public int CoinRewards;
         public int TotalHp;
         public List<Turn> Turns;
 
@@ -44,35 +43,66 @@ namespace Sources.DataBaseSystem
         public List<int> IndexPos;
     }
 
-    public class SpawnWaveConfig : DataBaseConfig , IReadCSVData
+    [Serializable]
+    public class WaveInfo
     {
+        public string WaveId;
+        public int CoinRewards;
+        [PreviewField(75, ObjectFieldAlignment.Center)]
+        public Sprite Sprite;
+
+        private string GetDescription()
+        {
+            return WaveId;
+        }
+    }
+
+    public class WavesConfig : DataBaseConfig , IReadCSVData
+    {
+        [TabGroup("Wave Spawn")]
         [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
-        private List<Wave> _waves;
-        public Dictionary<string, Wave> WavesCache = new();
+        private List<Wave> _waveSpawn;
+        public Dictionary<string, Wave> WaveSpawnCache = new();
+
+        [TabGroup("Wave Info")]
+        [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
+        private List<WaveInfo> _waveMoreInfo = new();
+        private Dictionary<string, WaveInfo> _waveMoreInfoCache = new();
 
         [SerializeField, ReadOnly]
         private TextAsset CSVFile;
 
-        public Wave GetWaveInfo(string id)
+        public Wave GetSpawnWaveInfo(string id)
         {
-            if (!WavesCache.ContainsKey(id))
+            if (!WaveSpawnCache.ContainsKey(id))
             {
-                var wave = _waves.Find(waveTarget => waveTarget.Id == id);
-                WavesCache.Add(id, wave);
+                var wave = _waveSpawn.Find(waveTarget => waveTarget.Id == id);
+                WaveSpawnCache.Add(id, wave);
             }
 
-            return WavesCache[id];
+            return WaveSpawnCache[id];
         }
 
         public int GetIndexWaveInfo(string id)
         {
-            var waveInfo = GetWaveInfo(id);
-            return _waves.IndexOf(waveInfo);
+            var waveInfo = GetSpawnWaveInfo(id);
+            return _waveSpawn.IndexOf(waveInfo);
         }
 
         public Wave GetWaveInfo(int index)
         {
-            return _waves[index];
+            return _waveSpawn[index];
+        }
+
+        public WaveInfo GetBGWaveInfo(string waveId)
+        {
+            if (!_waveMoreInfoCache.ContainsKey(waveId))
+            {
+                var waveInfo = _waveMoreInfo.Find(x => x.WaveId == waveId);
+                _waveMoreInfoCache.Add(waveId, waveInfo);
+            }
+
+            return _waveMoreInfoCache[waveId];
         }
 
 #if UNITY_EDITOR
@@ -89,7 +119,7 @@ namespace Sources.DataBaseSystem
         [Button]
         public void ReadFile()
         {
-            _waves.Clear();
+            _waveSpawn.Clear();
 
             _datas = CSVFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
             string[] lines = CSVFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -128,7 +158,7 @@ namespace Sources.DataBaseSystem
                         Id = startWaveId,
                         Turns = new()
                     };
-                    _waves.Add(newWave);
+                    _waveSpawn.Add(newWave);
                     ProcessTurn(newWave, starIndexWave, endIndexWave);
 
                     countSameWave = 0;
@@ -212,10 +242,50 @@ namespace Sources.DataBaseSystem
 
             // Get TotalHp
             var enemyInfo = _enemiesConfig.GetEnemyInfo(phase.Enemy.EnemyId);
-            var hpEnemy = enemyInfo.WaveEnemies[_waves.Count - 1].Hp;
+            var hpEnemy = enemyInfo.WaveEnemies[_waveSpawn.Count - 1].Hp;
             var countEnemy = phase.Enemy.IndexPos.Count;
             _totalHpInWave = _totalHpInWave + (hpEnemy * countEnemy);
         }
-    }
 #endif
+
+//#if UNITY_EDITOR
+//        [Button]
+//        public void Creat()
+//        {
+//            Clear();
+
+//            string waveNum = "";
+//            for (int i = 1; i <= 40; i++)
+//            {
+//                var wave = new WaveInfo();
+//                if (i < 10)
+//                {
+//                    waveNum = "0" + i.ToString();
+//                }
+//                else
+//                {
+//                    waveNum = i.ToString();
+//                }
+
+//                wave.WaveId = $"wave-{waveNum}";
+//                _waveMoreInfo.Add(wave);
+//            }
+//        }
+
+//        [Button]
+//        public void Clear()
+//        {
+//            _waveMoreInfo.Clear();
+//        }
+
+//        [Button]
+//        public void AddSprite(Sprite sprite, int indexBegin, int indexFinish)
+//        {
+//            for (int i = indexBegin - 1; i < indexFinish; i++)
+//            {
+//                _waveMoreInfo[i].Sprite = sprite;
+//            }
+//        }
+//#endif
+    }
 }

@@ -9,7 +9,7 @@ namespace Game.Character.Bomber
     {
         private BomberSystem _bomberSystem => Locator<BomberSystem>.Instance;
 
-        protected override void OnSetUp()
+        protected override void InitValue()
         {
             _reloadTimeHandler = _bomberSystem.ReloadTimeHandler;
             _weaponHandler = _bomberSystem.BomHandler;

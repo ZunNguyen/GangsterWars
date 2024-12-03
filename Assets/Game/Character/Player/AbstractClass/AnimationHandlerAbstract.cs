@@ -15,11 +15,11 @@ namespace Game.Character.Player.Abstract
         [SerializeField] private Animator _animator;
         [SerializeField] private Abstract.ActionHandlerAbstract _actionHandler;
 
-        protected abstract void OnSetUp();
+        protected abstract void InitValue();
 
-        private void Awake()
+        public void OnSetUp()
         {
-            OnSetUp();
+            InitValue();
 
             _reloadTimeHandler.TimeReloadCurrent.Subscribe(value =>
             {

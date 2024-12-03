@@ -246,3 +246,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6705756f3f114345b1a3c05635a314f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bomberActionHandler: {fileID: 5089070984371621868}
+  _bomberAnimationHandler: {fileID: 825429573026290115}

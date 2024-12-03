@@ -1,7 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Game.Character.Player.Abstract;
+using Sources.Audio;
 using Sources.DataBaseSystem;
+using Sources.Extension;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using UnityEngine;
@@ -12,10 +14,11 @@ namespace Game.Character.Bomber
     {
         private const float _throwSpeed = 20f;
         private const float _height = -2f;
-        private readonly Vector3 _offsetPosTarget = new Vector3(-3f,0,0);
+        private readonly Vector3 _offsetPosTarget = new Vector3(-2f,0,0);
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private Animator _animator;
@@ -59,10 +62,11 @@ namespace Game.Character.Bomber
         private async void OnBombHit()
         {
             await UniTask.Delay(500);
+            _audioManager.Play(AudioKey.SFX_BOOM_01);
             SetEnabled(true);
         }
 
-        public void OnCompletAnimation()
+        public void OnRelease()
         {
             _spawnerManager.Release(this);
         }

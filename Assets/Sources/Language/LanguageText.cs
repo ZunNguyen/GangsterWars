@@ -40,7 +40,7 @@ namespace Sources.Language
         public void OnSetUp(string languageId)
         {
             _languageItemId = languageId;
-            SetLanguage();
+            Awake();
         }
 
         private void SetLanguage()

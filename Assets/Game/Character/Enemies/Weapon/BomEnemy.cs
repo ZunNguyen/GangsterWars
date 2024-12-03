@@ -1,9 +1,12 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Game.Character.Controller;
+using Sources.Audio;
+using Sources.Extension;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.Utils;
+using Sources.Utils.Singleton;
 using UnityEngine;
 
 namespace Game.Character.Enemy.Weapon
@@ -14,6 +17,8 @@ namespace Game.Character.Enemy.Weapon
         private const float _height = 2f;
         private const float _randomPosXMin = -1f;
         private const float _randomPosXMax = 1f;
+
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private Vector3 _targetPos;
 
@@ -40,6 +45,7 @@ namespace Game.Character.Enemy.Weapon
 
         private void SetEnabled(bool status)
         {
+            _audioManager.Play(AudioKey.SFX_BOOM_01);
             _animator.enabled = status;
         }
 

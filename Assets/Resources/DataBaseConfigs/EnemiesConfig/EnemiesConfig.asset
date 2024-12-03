@@ -27,9 +27,9 @@ MonoBehaviour:
       coinReward: {x: 6, y: 12}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 4, y: 7}
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 1, y: 15}
       PercentChance: 100
     - Id: wave-04
       Damage: 40
@@ -91,9 +91,9 @@ MonoBehaviour:
       coinReward: {x: 4, y: 10}
       PercentChance: 100
     - Id: wave-03
-      Damage: 30
-      Hp: 150
-      coinReward: {x: 2, y: 5}
+      Damage: 4
+      Hp: 15
+      coinReward: {x: 1, y: 15}
       PercentChance: 100
     - Id: wave-04
       Damage: 40
