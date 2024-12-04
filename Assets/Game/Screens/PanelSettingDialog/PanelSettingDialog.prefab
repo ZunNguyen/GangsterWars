@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 6079210736515387231}
   - component: {fileID: 977589213341875494}
   - component: {fileID: 8977123680216582614}
+  - component: {fileID: 2397577571565961511}
   m_Layer: 0
   m_Name: Button-Language
   m_TagString: Untagged
@@ -928,6 +929,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2397577571565961511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819169861320614016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026b58cb011ee5c4bad28cc411bb2cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3752387685254756770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,6 +1547,7 @@ GameObject:
   - component: {fileID: 5478615343758393183}
   - component: {fileID: 220588171494004483}
   - component: {fileID: 64422727443768485}
+  - component: {fileID: 8307833478533146561}
   m_Layer: 0
   m_Name: Button-Reset
   m_TagString: Untagged
@@ -1657,6 +1671,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8307833478533146561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213980040650243593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026b58cb011ee5c4bad28cc411bb2cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6867828992546890179
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using Sources.Utils.Singleton;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 namespace Game.Screens.MainMenuScreen
@@ -20,6 +21,8 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private Transform _holderWeaponView;
         [SerializeField] private GameObject _store;
 
+        public ReactiveProperty<bool> IsChosed;
+
         private void Awake()
         {
             _store.SetActive(false);
@@ -30,7 +33,7 @@ namespace Game.Screens.MainMenuScreen
             foreach (var weapon in weaponsConfig)
             {
                 var newWeaponPrefab = Instantiate(_weaponViewPrefab, _holderWeaponView);
-                newWeaponPrefab.OnSetUp(weapon);
+                newWeaponPrefab.OnSetUp(weapon, IsChosed);
             }
         }
 
@@ -43,6 +46,7 @@ namespace Game.Screens.MainMenuScreen
         private void ListenTabStateChange(TabState state)
         {
             _store.SetActive(state == _tabState);
+            IsChosed.Value = state == _tabState;
         }
     }
 }

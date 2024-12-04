@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Sources.Audio;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
@@ -8,6 +9,7 @@ using Sources.Language;
 using Sources.SpawnerSystem;
 using Sources.Utils;
 using Sources.Utils.Singleton;
+using System;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -18,17 +20,19 @@ namespace Game.Screens.MainMenuScreen
 {
     public class WeaponView : MonoBehaviour
     {
+        private readonly Vector3 _targetScale = new Vector3(0.9f, 0.9f, 0.9f);
+        private const float _duration = 0.15f;
+
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
         private LanguageTable _languageTable => Locator<LanguageTable>.Instance;
 
+        private string _weaponId;
         private WeaponInfoBase _weaponInfo;
         private Sources.GamePlaySystem.MainMenuGame.Store.WeaponViewModel _weaponViewModel;
         private StoreHandlerBase _storeWeaponHandler;
         private ShieldStoreHandler _shieldStoreHandler;
-        private string _weaponId;
-        
 
         [Header("Level Upgrade")]
         [SerializeField] private LevelUpgradeView _levelUpgradePrefab;
@@ -62,7 +66,7 @@ namespace Game.Screens.MainMenuScreen
             _iconCheckList.SetActive(false);
         }
 
-        public void OnSetUp(WeaponInfoBase weaponInfo)
+        public void OnSetUp(WeaponInfoBase weaponInfo, ReactiveProperty<bool> isChosed)
         {
             _weaponId = weaponInfo.Id;
             _storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(_weaponId);
@@ -82,6 +86,8 @@ namespace Game.Screens.MainMenuScreen
             {
                 _icon.sprite = shieldWeaponInfo.Icon;
             }
+
+            isChosed.Subscribe(Effect).AddTo(this);
 
             GetGunName();
             GetWeaponSate();
@@ -226,6 +232,24 @@ namespace Game.Screens.MainMenuScreen
         {
             if (result == ResultBuyItem.Success) _audioManager.Play(AudioKey.SFX_DELETE_COIN);
             else _audioManager.Play(AudioKey.SFX_CLICK_ERROR);
+        }
+
+        private void Effect(bool isChosed)
+        {
+            if (!isChosed) return;
+
+            transform.DOScale(_targetScale, _duration).OnComplete(() =>
+            {
+                transform.DOScale(Vector3.one, _duration);
+            });
+        }
+
+        private void OnDestroy()
+        {
+            if (_weaponViewModel?.IsChosed != null)
+            {
+                _weaponViewModel.IsChosed -= SubscribeCheckList;
+            }
         }
     }
 }
