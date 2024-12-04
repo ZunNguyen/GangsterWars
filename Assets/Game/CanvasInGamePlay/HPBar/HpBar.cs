@@ -22,6 +22,7 @@ namespace Game.CanvasInGamePlay.HPBar
 
         public void OnSetUp(CanvasModel canvasModel)
         {
+            gameObject.SetActive(true);
             _canvas = canvasModel.Canvas;
             _worldTransformObject = canvasModel.TransformObject;
             SetUpSlider(canvasModel.EnemyHandler);

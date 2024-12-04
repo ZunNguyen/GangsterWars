@@ -27,6 +27,7 @@ namespace Sources.Extension
         public static string SFX_SHOOT_PISTOL = "sfx-shoot-pistol";
         public static string SFX_SHOOT_SHOOTGUN = "sfx-shoot-shootgun";
         public static string SFX_SHOOT_GUN_MACHINE = "sfx-shoot-gun-machine";
+        public static string SFX_SHOOT_SNIPER = "sfx-shoot-sniper";
         public static string SFX_RELOAD_02 = "sfx-reload-02";
 
         // Boom
@@ -37,5 +38,6 @@ namespace Sources.Extension
 
         // Another
         public static string SFX_RELOAD_01 = "sfx-reload-01";
+        public static string SFX_POP_UP = "sfx-pop-up";
     }
 }

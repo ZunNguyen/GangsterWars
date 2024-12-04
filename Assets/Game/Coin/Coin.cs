@@ -15,15 +15,22 @@ namespace Game.Screens.Coin
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
 
+        private Tween _tween;
+
         public async void OnSetUp(Transform posCoinsHolder, int quantity)
         {
             await UniTask.Delay(5000);
             var duration = TweenUtils.GetTimeDuration(transform.position, posCoinsHolder.position, _speed);
-            transform.DOMove(posCoinsHolder.position, duration).OnComplete(() =>
+            _tween = transform.DOMove(posCoinsHolder.position, duration).OnComplete(() =>
             {
                 _coinControllerSystem.AddCoin(quantity);
                 _spawnerManager.Release(this);
             });
+        }
+
+        private void OnDestroy()
+        {
+            _tween.Kill();
         }
     }
 }

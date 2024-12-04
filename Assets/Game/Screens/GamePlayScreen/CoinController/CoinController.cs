@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Sources.GamePlaySystem.CoinController;
+using Sources.Utils;
 using Sources.Utils.Singleton;
 using TMPro;
 using UniRx;
@@ -17,7 +18,7 @@ namespace Game.Screens.GamePlayScreen
         {
             _coinControllerSystem.Coins.Subscribe(value =>
             {
-                _text.text = value.ToString();
+                _text.text = ShortNumber.Get(value);
             }).AddTo(this);
         }
     }

@@ -1,9 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Game.Character.Player.Abstract;
+using Sources.Audio;
 using Sources.Extension;
-using Sources.GamePlaySystem.MainGamePlay;
-using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
 using UnityEngine;
 
@@ -15,6 +13,8 @@ namespace Game.Character.Sniper
         private const float _factorOffsetPos = 15f;
         private const float _offsetEnemyTargetPosY = 2f;
 
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
+
         private Vector3 _originPos;
 
         public string CollisionKey { get; private set; }
@@ -23,6 +23,8 @@ namespace Game.Character.Sniper
 
         public override void Moving()
         {
+            _audioManager.Play(AudioKey.SFX_SHOOT_SNIPER);
+
             var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
             if (enemyTarget == null) return;
 

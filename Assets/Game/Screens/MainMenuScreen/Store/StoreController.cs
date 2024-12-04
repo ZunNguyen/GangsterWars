@@ -14,12 +14,14 @@ namespace Game.Screens.MainMenuScreen
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
+        private SniperConfig _sniperConfig => _dataBase.GetConfig<SniperConfig>();
         private ShieldConfig _shieldConfig => _dataBase.GetConfig<ShieldConfig>();
 
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 
         [SerializeField] private StoreWeaponHandler _storeLeaderHandler;
         [SerializeField] private StoreWeaponHandler _storeBomberHandler;
+        [SerializeField] private StoreWeaponHandler _storeSniperHandler;
         [SerializeField] private StoreWeaponHandler _storeShieldHandler;
 
         public void OnSetUp()
@@ -30,7 +32,8 @@ namespace Game.Screens.MainMenuScreen
             _storeShieldHandler.OnSetUp(_shieldConfig.GetAllWeapons());
             _storeShieldHandler.SetState(TabState.TabShield);
 
-            _storeSystem.OnpenBomberStore.Subscribe(SubOpenBomberStore).AddTo(this);
+            _storeSystem.OpenBomberStore.Subscribe(SubOpenBomberStore).AddTo(this);
+            _storeSystem.OpenSniperStore.Subscribe(SubOpenSniperStore).AddTo(this);
         }
 
         private void SubOpenBomberStore(bool isOpen)
@@ -38,6 +41,13 @@ namespace Game.Screens.MainMenuScreen
             if (!isOpen) return;
             _storeBomberHandler.OnSetUp(_bomberConfig.GetAllWeapons());
             _storeBomberHandler.SetState(TabState.TabBom);
+        }
+
+        private void SubOpenSniperStore(bool isOpen)
+        {
+            if (!isOpen) return;
+            _storeSniperHandler.OnSetUp(_sniperConfig.GetAllWeapons());
+            _storeSniperHandler.SetState(TabState.TabSniper);
         }
     }
 }

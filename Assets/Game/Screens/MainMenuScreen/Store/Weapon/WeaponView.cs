@@ -6,6 +6,7 @@ using Sources.GamePlaySystem.MainMenuGame;
 using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.Language;
 using Sources.SpawnerSystem;
+using Sources.Utils;
 using Sources.Utils.Singleton;
 using TMPro;
 using UniRx;
@@ -151,13 +152,12 @@ namespace Game.Screens.MainMenuScreen
         {
             _weaponViewModel.LevelUpgradeFee.Subscribe(value =>
             {
-                if(value == 0)
+                _valueLevelUpFee.text = ShortNumber.Get(value);
+                if (value == 0)
                 {
                     _levelUpFee.SetActive(false);
                 }
             }).AddTo(this);
-
-            _valueLevelUpFee.text = _weaponViewModel.LevelUpgradeFee.ToString();
 
             for (int i = 0; i < _weaponInfo.LevelUpgrades.Count; i++)
             {
@@ -171,13 +171,13 @@ namespace Game.Screens.MainMenuScreen
             _weaponViewModel.ReloadFee.Subscribe(value =>
             {
                 _reload.SetActive(value != 0);
-                _valueReload.text = value.ToString();
+                _valueReload.text = ShortNumber.Get(value);
             }).AddTo(this);
         }
 
         private void GetUnlockFee()
         {
-            _valueUnlock.text = _weaponViewModel.UnlockFee.ToString();
+            _valueUnlock.text = ShortNumber.Get(_weaponViewModel.UnlockFee);
         }
 
         private void GetOnCheckList()

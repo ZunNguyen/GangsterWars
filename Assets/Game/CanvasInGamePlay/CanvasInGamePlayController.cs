@@ -36,14 +36,11 @@ namespace Game.CanvasInGamePlay.Controller
             _canvasModel.EnemyHandler = enemyHandler;
 
             var newHpBar = _spawnerManager.Get(_hpBarPrefab);
-            newHpBar.gameObject.SetActive(true);
-            newHpBar.transform.SetParent(_hpBarHolder);
-            newHpBar.transform.localScale = Vector3.one;
+            newHpBar.transform.SetParent(_hpBarHolder, false);
             newHpBar.OnSetUp(_canvasModel);
 
             var newDamageFeed = _spawnerManager.Get(_damageFeedPrefab);
-            newDamageFeed.transform.SetParent(_damageFeedHolder);
-            newDamageFeed.transform.localScale = Vector3.one;
+            newDamageFeed.transform.SetParent(_damageFeedHolder, false);
             newDamageFeed.OnSetUp(_canvasModel);
         }
     }

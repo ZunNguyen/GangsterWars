@@ -77,4 +77,15 @@ MonoBehaviour:
     AudioClips:
     - {fileID: 8300000, guid: dcc115856383dd848ab1714bf7c87bb2, type: 3}
     IsMusic: 0
+  - Id: sfx-shoot-sniper
+    AudioClips:
+    - {fileID: 8300000, guid: 2f56b4209e7d2c0409f3569fd3449b36, type: 3}
+    IsMusic: 0
+  - Id: sfx-pop-up
+    AudioClips:
+    - {fileID: 8300000, guid: 051b598ba31ff964eb60d7e2705bfde9, type: 3}
+    - {fileID: 8300000, guid: 27706ce8a00777f4591e80eef7d59830, type: 3}
+    - {fileID: 8300000, guid: 62055d860fdecb046bebef8cffa63215, type: 3}
+    - {fileID: 8300000, guid: 332f51680dc53eb42b8e08e30d3b94cb, type: 3}
+    IsMusic: 0
   _audioListInfos: []

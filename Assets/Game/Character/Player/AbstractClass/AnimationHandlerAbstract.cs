@@ -1,4 +1,5 @@
 using Sources.GamePlaySystem.Character;
+using System;
 using UniRx;
 using UnityEngine;
 
@@ -48,7 +49,10 @@ namespace Game.Character.Player.Abstract
 
         private void OnDestroy()
         {
-            _weaponHandler.Attack -= AnimationAttack;
+            if (_weaponHandler?.Attack != null)
+            {
+                _weaponHandler.Attack -= AnimationAttack;
+            }
         }
     }
 }

@@ -12,22 +12,30 @@ namespace Game.Character.Bomber
 {
     public class BomberWeapon : WeaponAbstract
     {
-        private const float _throwSpeed = 20f;
-        private const float _height = -2f;
+        private const float _throwSpeed = 15f;
+        private const float _height = -3f;
         private readonly Vector3 _offsetPosTarget = new Vector3(-2f,0,0);
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
+        private Vector3 _originalScale;
+
         [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private Animator _animator;
         [SerializeField] private Collider2D _collider;
+
+        private void Awake()
+        {
+            _originalScale = transform.localScale;
+        }
 
         private void SetEnabled(bool status)
         {
             _animator.enabled = status;
             _collider.enabled = status;
+            transform.localScale = _originalScale;
         }
 
         public override void OnSetUp(string weaponId, int damage)
@@ -56,7 +64,11 @@ namespace Game.Character.Bomber
             };
 
             var duration = TweenUtils.GetTimeDuration(transform.position, enemyPos, _throwSpeed);
-            transform.DOPath(path, duration, PathType.CatmullRom).SetEase(Ease.Linear).OnComplete(OnBombHit);
+
+            var sequence = DOTween.Sequence();
+            sequence.Append(transform.DOPath(path, duration, PathType.CatmullRom).SetEase(Ease.Linear).OnComplete(OnBombHit));
+            sequence.Join(transform.DORotate(new Vector3(0, 0, -360), duration, RotateMode.FastBeyond360)
+                    .SetEase(Ease.Linear));
         }
 
         private async void OnBombHit()

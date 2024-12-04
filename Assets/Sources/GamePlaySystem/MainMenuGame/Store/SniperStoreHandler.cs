@@ -3,22 +3,25 @@ using Sources.Extension;
 using Sources.GameData;
 using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.Utils.Singleton;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainMenuGame
 {
-    public class BomberStoreHandler : StoreHandlerBase
+    public class SniperStoreHandler : StoreHandlerBase
     {
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
+        private SniperConfig _sniperConfig => _dataBase.GetConfig<SniperConfig>();
 
         protected override void SetData()
         {
-            _weaponConfig = _bomberConfig;
+            _weaponConfig = _sniperConfig;
 
-            var weaponDatas = _userProfile.BomberDatas;
+            var weaponDatas = _userProfile.SniperDatas;
             foreach (var weaponData in weaponDatas)
             {
                 var newWeaponData = new BaseData

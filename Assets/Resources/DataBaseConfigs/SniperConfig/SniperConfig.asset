@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bomberWeaponInfos:
   - Id: sniper-01
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: a5f1a56c3d8834d4a96db9fec1c3a6c4, type: 3}
     UnlockFee: 0
-    LanguageId: 
+    LanguageId: Store_Iron
     LevelUpgrades:
     - Id: level-01
       LevelUpFee: 0

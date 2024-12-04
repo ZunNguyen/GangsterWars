@@ -24,6 +24,7 @@ namespace Game.Screens.MainMenuScreen
 
         [SerializeField] private TabView _tabGun;
         [SerializeField] private TabView _tabBom;
+        [SerializeField] private TabView _tabSniper;
         [SerializeField] private TabView _tabShield;
 
         public Action<TabState> TabStateChange;
@@ -31,10 +32,12 @@ namespace Game.Screens.MainMenuScreen
         public async void OnSetUp()
         {
             _tabGun.OnSetUp(TabState.TabGun, true);
-            _tabBom.OnSetUp(TabState.TabBom, false);
+            _tabBom.OnSetUp(TabState.TabBom);
+            _tabSniper.OnSetUp(TabState.TabSniper);
             _tabShield.OnSetUp(TabState.TabShield, true);
 
-            _storeSystem.OnpenBomberStore.Subscribe(SubOpenBomberStore).AddTo(this);
+            _storeSystem.OpenBomberStore.Subscribe(SubOpenBomberStore).AddTo(this);
+            _storeSystem.OpenSniperStore.Subscribe(SubOpenSniperStore).AddTo(this);
 
             await UniTask.DelayFrame(5);
             TabStateChange?.Invoke(TabState.TabGun);
@@ -43,6 +46,11 @@ namespace Game.Screens.MainMenuScreen
         private void SubOpenBomberStore(bool isOpen)
         {
             _tabBom.UpdateOpenStore(isOpen);
+        }
+
+        private void SubOpenSniperStore(bool isOpen)
+        {
+            _tabSniper.UpdateOpenStore(isOpen);
         }
 
         public void OnChangeTabState(TabState state)

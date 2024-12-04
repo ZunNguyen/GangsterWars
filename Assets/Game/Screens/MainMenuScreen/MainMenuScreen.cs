@@ -5,7 +5,9 @@ using Sources.Extension;
 using Sources.GamePlaySystem.CoinController;
 using Sources.UI;
 using Sources.UISystem;
+using Sources.Utils;
 using Sources.Utils.Singleton;
+using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +20,7 @@ namespace Game.Screens.MainMenuScreen
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
-        [SerializeField] private Text _text;
+        [SerializeField] private TMP_Text _text;
         [SerializeField] private StoreController _storeController;
         [SerializeField] private TabHandler _tabHandler;
 
@@ -27,7 +29,7 @@ namespace Game.Screens.MainMenuScreen
             base.Awake();
             _coinControllerSystem.Coins.Subscribe(value =>
             {
-                _text.text = value.ToString();
+                _text.text = ShortNumber.Get(value);
             }).AddTo(this);
 
             _storeController.OnSetUp();

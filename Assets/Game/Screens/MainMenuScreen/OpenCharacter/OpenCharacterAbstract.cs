@@ -3,6 +3,7 @@ using DG.Tweening;
 using Sources.Audio;
 using Sources.Extension;
 using Sources.GamePlaySystem.MainMenuGame;
+using Sources.Utils;
 using Sources.Utils.Singleton;
 using TMPro;
 using UnityEditorInternal;
@@ -33,7 +34,7 @@ namespace Game.Screens.MainMenuScreen
             _boxCharacter.transform.localScale = Vector3.zero;
             _boxCharacter.gameObject.SetActive(true);
 
-            await UniTask.Delay(100);
+            await UniTask.DelayFrame(5);
             OnSetUp();
         }
 
@@ -47,7 +48,7 @@ namespace Game.Screens.MainMenuScreen
             }
 
             _imageCharacter.color = Color.black;
-            _fee.text = _openCharacterAbastract.CharacterFee.ToString();
+            _fee.text = ShortNumber.Get(_openCharacterAbastract.CharacterFee);
 
             _tabHandler.TabStateChange += AnimationWhenClickTab;
         }

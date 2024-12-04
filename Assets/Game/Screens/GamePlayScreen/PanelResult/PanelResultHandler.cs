@@ -1,7 +1,10 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Sources.Audio;
 using Sources.Command;
+using Sources.Extension;
 using Sources.GamePlaySystem.GameResult;
+using Sources.Utils;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +20,7 @@ namespace Game.Screens.GamePlayScreen
         private readonly Vector2 _targetScaleStar = new Vector2(1.2f, 1.2f);
 
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         [Header("Title")]
         [SerializeField] private TMP_Text _textTitle;
@@ -50,7 +54,7 @@ namespace Game.Screens.GamePlayScreen
 
         private async void SetPanelWin()
         {
-            _textReward.text = _gameResultSystem.CoinRewards.ToString();
+            _textReward.text = ShortNumber.Get(_gameResultSystem.CoinRewards);
             await UniTask.Delay(1000);
 
             await AnimationPlayableDirector();
@@ -85,6 +89,8 @@ namespace Game.Screens.GamePlayScreen
 
             for (int i = 0; i < starCollect; i++)
             {
+                _audioManager.Play(AudioKey.SFX_POP_UP);
+
                 _stars[i].gameObject.SetActive(true);
                 _stars[i].localScale = Vector3.zero;
                 await _stars[i].DOScale(_targetScaleStar, _durationZoomIn).SetEase(Ease.Linear);
@@ -100,17 +106,20 @@ namespace Game.Screens.GamePlayScreen
 
         public void OnBackHomeClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             new LoadMainMenuScenceCommand().Execute().Forget();
         }
 
         public void OnResetClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             var waveId = _gameResultSystem.WaveIdCurrent;
             new LoadGamePlayScenceCommand(waveId).Execute().Forget();
         }
 
         public void OnNextWaveClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             var waveId = _gameResultSystem.WaveIdNext;
             new LoadGamePlayScenceCommand(waveId).Execute().Forget();
         }

@@ -32,9 +32,11 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         public LeaderStoreHandler LeaderStoreHandler { get; private set; }
         public BomberStoreHandler BomberStoreHandler { get; private set; }
+        public SniperStoreHandler SniperStoreHandler { get; private set; }
         public ShieldStoreHandler ShieldStoreHandler { get; private set; }
 
-        public ReactiveProperty<bool> OnpenBomberStore { get; private set; } = new (false);
+        public ReactiveProperty<bool> OpenBomberStore { get; private set; } = new (false);
+        public ReactiveProperty<bool> OpenSniperStore { get; private set; } = new (false);
 
         public override async UniTask Init()
         {
@@ -76,7 +78,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
             {
                 BomberStoreHandler = new();
                 BomberStoreHandler.OnSetUp();
-                OnpenBomberStore.Value = true;
+                OpenBomberStore.Value = true;
             }
         }
 
@@ -84,7 +86,9 @@ namespace Sources.GamePlaySystem.MainMenuGame
         {
             if (_userProfile.SniperDatas != null)
             {
-
+                SniperStoreHandler = new();
+                SniperStoreHandler.OnSetUp();
+                OpenSniperStore.Value = true;
             }
         }
 
@@ -94,6 +98,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
             if (baseId == StringUtils.GetBaseName(LeaderKey.GUN_ID_DEFAULT)) return LeaderStoreHandler;
             if (baseId == StringUtils.GetBaseName(BomberKey.BOMBER_ID_DEFAULT)) return BomberStoreHandler;
+            if (baseId == StringUtils.GetBaseName(SniperKey.SNIPER_ID_DEFAULT)) return SniperStoreHandler;
             if (baseId == StringUtils.GetBaseName(ShieldKey.SHIELD_ID_DEFAULT)) return ShieldStoreHandler;
             else return null;
         }

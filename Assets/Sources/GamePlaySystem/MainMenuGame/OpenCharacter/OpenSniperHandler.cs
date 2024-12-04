@@ -14,6 +14,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
         protected override void SetDataCharacter()
         {
             _userProfile.SetSniperDataDefault();
+            _storeSystem.SetSniperStore();
         }
     }
 }
