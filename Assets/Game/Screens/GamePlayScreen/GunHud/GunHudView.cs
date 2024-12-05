@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using Sources.Audio;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.Extension;
@@ -13,8 +15,12 @@ namespace Game.Screens.GamePlayScreen
 {
     public class GunHudView : MonoBehaviour
     {
+        private readonly Vector3 _targetScale = new Vector3(1.2f, 1.2f, 1.2f);
+        private const float _duration = 0.2f;
+
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
         private GunHandler _gunHandler;
@@ -43,6 +49,12 @@ namespace Game.Screens.GamePlayScreen
                     _countText.text = value.ToString();
                 }).AddTo(this);
             }
+
+            _gunHandler.GunModelCurrent.Subscribe(value =>
+            {
+                if (value.GunId == _gunId) EffectChangeGun();
+                else transform.localScale = Vector3.one;
+            }).AddTo(this);
 
             SetUpIcon();
         }
@@ -73,7 +85,13 @@ namespace Game.Screens.GamePlayScreen
 
         public void OnChoseClicked()
         {
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             _gunHandler.ChangeGunModel(_gunId);
+        }
+
+        private void EffectChangeGun()
+        {
+            transform.DOScale(_targetScale, _duration);
         }
     }
 }

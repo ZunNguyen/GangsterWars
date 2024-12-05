@@ -6,9 +6,9 @@ using Sources.GamePlaySystem.MainMenuGame;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
 
 namespace Game.Screens.MainMenuScreen
 {
@@ -18,6 +18,7 @@ namespace Game.Screens.MainMenuScreen
 
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
         protected OpenCharacterSystem _openCharacterSystem => Locator<OpenCharacterSystem>.Instance;
+        private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 
         protected OpenCharacterHandlerAbstract _openCharacterAbastract;
         protected TabState _tabCurrentState;
@@ -50,7 +51,10 @@ namespace Game.Screens.MainMenuScreen
             _imageCharacter.color = Color.black;
             _fee.text = ShortNumber.Get(_openCharacterAbastract.CharacterFee);
 
-            _tabHandler.TabStateChange += AnimationWhenClickTab;
+            _storeSystem.TabCurrent.Subscribe(value =>
+            {
+                AnimationWhenClickTab(value);
+            }).AddTo(this);
         }
 
         protected abstract void SetValue();
@@ -86,11 +90,6 @@ namespace Game.Screens.MainMenuScreen
                 _imageCharacter.color = Color.white;
             }
             else _audioManager.Play(AudioKey.SFX_CLICK_ERROR);
-        }
-
-        private void OnDestroy()
-        {
-            _tabHandler.TabStateChange -= AnimationWhenClickTab;
         }
     }
 }

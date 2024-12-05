@@ -70,6 +70,14 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             // Update state
             weaponViewModel.State.Value = GetWeaponState(weaponId);
 
+            // Update shield percent state
+            if (weaponViewModel.State.Value == ItemState.AlreadyHave)
+            {
+                var weaponDataProfile = _userProfile.GetWeaponBaseData(weaponId) as ShieldData;
+                var state = (int)weaponDataProfile.State;
+                weaponViewModel.WeaponValue.Value = $"{state}%";
+            }
+
             // Update unlockFee
             weaponViewModel.UnlockFee = weaponInfo.UnlockFee;
 

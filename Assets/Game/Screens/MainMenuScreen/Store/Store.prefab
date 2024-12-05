@@ -181,7 +181,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 400, y: 150}
-  m_Spacing: {x: 0, y: 40}
+  m_Spacing: {x: 0, y: 55}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &6113693083114127315
@@ -238,6 +238,8 @@ MonoBehaviour:
   _weaponViewPrefab: {fileID: 5273541460729744390, guid: 379003621949c604ca6131e1f19c5a90, type: 3}
   _holderWeaponView: {fileID: 3719443541187160433}
   _store: {fileID: 5532677710754227860}
+  IsChosed:
+    value: 0
 --- !u!1 &8823679153029722158
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Game.Screens.MainMenuScreen;
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
 using Sources.Extension;
@@ -21,6 +22,14 @@ namespace Sources.GamePlaySystem.MainMenuGame
         CanNotUnlock
     }
 
+    public enum TabState
+    {
+        TabGun,
+        TabBom,
+        TabSniper,
+        TabShield
+    }
+
     public class StoreSystem : BaseSystem
     {
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
@@ -37,6 +46,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         public ReactiveProperty<bool> OpenBomberStore { get; private set; } = new (false);
         public ReactiveProperty<bool> OpenSniperStore { get; private set; } = new (false);
+
+        public ReactiveProperty<TabState> TabCurrent { get; private set; } = new();
 
         public override async UniTask Init()
         {
@@ -92,7 +103,12 @@ namespace Sources.GamePlaySystem.MainMenuGame
             }
         }
 
-        public StoreHandlerBase GetWeaponHandlerSystem(string weaponId)
+        public void SetTabCurrent(TabState tabState)
+        {
+            TabCurrent.Value = tabState;
+        }
+
+        public StoreHandlerBase GetWeaponHandlerById(string weaponId)
         {
             var baseId = StringUtils.GetBaseName(weaponId);
 

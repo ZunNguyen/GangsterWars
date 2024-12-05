@@ -1,9 +1,6 @@
 using Sources.DataBaseSystem;
-using Sources.DataBaseSystem.Leader;
-using Sources.GameData;
+using Sources.GamePlaySystem.MainMenuGame;
 using Sources.Utils.Singleton;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
@@ -12,6 +9,8 @@ namespace Game.Screens.MainMenuScreen
 {
     public class StoreWeaponHandler : MonoBehaviour
     {
+        private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
+
         private TabState _tabState;
 
         [SerializeField] private TabHandler _tabHandler;
@@ -40,7 +39,7 @@ namespace Game.Screens.MainMenuScreen
         public void SetState(TabState state)
         {
             _tabState = state;
-            _tabHandler.TabStateChange += ListenTabStateChange;
+            _storeSystem.TabCurrent.Subscribe(ListenTabStateChange).AddTo(this);
         }
 
         private void ListenTabStateChange(TabState state)

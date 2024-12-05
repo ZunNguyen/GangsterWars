@@ -23,12 +23,13 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
     public class WeaponViewModel
     {
-        public ReactiveProperty<ItemState> State = new();
+        public ReactiveProperty<ItemState> State = new(ItemState.CanNotUnlock);
         public ReactiveProperty<int> LevelUpgradeFee = new(0);
         public ReactiveProperty<int> ReloadFee = new(0);
+        public ReactiveProperty<string> WeaponValue = new(); // if weapon -> is count bullet, if shield -> is state
         public List<string> LevelUpgradeIdsPassed = new();
-        public int UnlockFee;
         public Action<bool> IsChosed;
+        public int UnlockFee;
     }
 
     public abstract class StoreHandlerBase
@@ -95,6 +96,12 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
             // Update state
             weaponViewModel.State.Value = GetWeaponState(weaponId);
+
+            if (weaponViewModel.State.Value == ItemState.AlreadyHave)
+            {
+                var weaponData = _userProfile.GetWeaponBaseData(weaponId) as WeaponData;
+                weaponViewModel.WeaponValue.Value = weaponData.Quatity.ToString();
+            }
 
             // Update unlockFee
             weaponViewModel.UnlockFee = weaponInfo.UnlockFee;

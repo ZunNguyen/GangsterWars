@@ -1,3 +1,5 @@
+using Sources.GamePlaySystem.MainMenuGame;
+
 namespace Game.Screens.MainMenuScreen
 {
     public class OpenSniperHandler : OpenCharacterAbstract

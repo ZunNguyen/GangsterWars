@@ -15,6 +15,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Game.Screens.MainMenuScreen
 {
@@ -69,31 +70,24 @@ namespace Game.Screens.MainMenuScreen
         public void OnSetUp(WeaponInfoBase weaponInfo, ReactiveProperty<bool> isChosed)
         {
             _weaponId = weaponInfo.Id;
-            _storeWeaponHandler = _storeSystem.GetWeaponHandlerSystem(_weaponId);
+            _storeWeaponHandler = _storeSystem.GetWeaponHandlerById(_weaponId);
             _weaponViewModel = _storeWeaponHandler.WeaponWiewModels[_weaponId];
-            
             _weaponInfo = weaponInfo;
-            if (weaponInfo is LeaderWeaponInfo leaderWeaponInfo)
-            {
-                _icon.sprite = leaderWeaponInfo.Icon;
-                SetSizeIconGun(leaderWeaponInfo);
-            }
-            else if (weaponInfo is BomberWeaponInfo bomberWeaponInfo)
-            {
-                _icon.sprite = bomberWeaponInfo.Icon;
-            }
-            else if (weaponInfo is ShieldWeaponInfo shieldWeaponInfo)
-            {
-                _icon.sprite = shieldWeaponInfo.Icon;
-            }
 
+            if (weaponInfo is LeaderWeaponInfo leaderWeaponInfo) SetSizeIconGun(leaderWeaponInfo);
             isChosed.Subscribe(Effect).AddTo(this);
 
-            GetGunName();
-            GetWeaponSate();
-            GetLevelUpgrade();
-            GetReloadFee();
-            GetUnlockFee();
+            SetIcon();
+            SetGunName();
+            SetWeaponSate();
+            SetLevelUpgrade();
+            SetReloadFee();
+            SetUnlockFee();
+        }
+
+        private void SetIcon()
+        {
+            _icon.sprite = _weaponInfo.Icon;
         }
 
         private void SetSizeIconGun(LeaderWeaponInfo leaderWeaponInfo)
@@ -113,14 +107,14 @@ namespace Game.Screens.MainMenuScreen
             }
         }
 
-        private void GetGunName()
+        private void SetGunName()
         {
             var languageGunId = _weaponInfo.LanguageId;
             var languageItem = _languageTable.GetLanguageItem(languageGunId);
             _languageText.OnSetUp(languageGunId);
         }
 
-        private void GetWeaponSate()
+        private void SetWeaponSate()
         {
             _weaponViewModel.State.Subscribe(state =>
             {
@@ -154,7 +148,7 @@ namespace Game.Screens.MainMenuScreen
             }).AddTo(this);
         }
 
-        private void GetLevelUpgrade()
+        private void SetLevelUpgrade()
         {
             _weaponViewModel.LevelUpgradeFee.Subscribe(value =>
             {
@@ -172,7 +166,7 @@ namespace Game.Screens.MainMenuScreen
             }
         }
 
-        private void GetReloadFee()
+        private void SetReloadFee()
         {
             _weaponViewModel.ReloadFee.Subscribe(value =>
             {
@@ -181,7 +175,7 @@ namespace Game.Screens.MainMenuScreen
             }).AddTo(this);
         }
 
-        private void GetUnlockFee()
+        private void SetUnlockFee()
         {
             _valueUnlock.text = ShortNumber.Get(_weaponViewModel.UnlockFee);
         }
