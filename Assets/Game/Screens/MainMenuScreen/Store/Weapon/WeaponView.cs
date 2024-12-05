@@ -60,6 +60,13 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private Image _icon;
         [SerializeField] private LanguageText _languageText;
         [SerializeField] private GameObject _iconlock;
+        [SerializeField] private GameObject _boxItemClock;
+
+        [Header("Weapon Value")]
+        [SerializeField] private GameObject _bulletCount;
+        [SerializeField] private GameObject _shieldState;
+        [SerializeField] private TMP_Text _bulletCountText;
+        [SerializeField] private TMP_Text _shieldStateText;
 
         private void Awake()
         {
@@ -78,7 +85,8 @@ namespace Game.Screens.MainMenuScreen
             isChosed.Subscribe(Effect).AddTo(this);
 
             SetIcon();
-            SetGunName();
+            SetWeaponValue();
+            SetWeaponName();
             SetWeaponSate();
             SetLevelUpgrade();
             SetReloadFee();
@@ -88,6 +96,24 @@ namespace Game.Screens.MainMenuScreen
         private void SetIcon()
         {
             _icon.sprite = _weaponInfo.Icon;
+        }
+
+        private void SetWeaponValue()
+        {
+            if (_weaponInfo is ShieldWeaponInfo shieldWeaponInfo)
+            {
+                _weaponViewModel.WeaponValue.Subscribe(value =>
+                { 
+                    _shieldStateText.text = value;
+                }).AddTo(this);
+            }
+            else
+            {
+                _weaponViewModel.WeaponValue.Subscribe(value =>
+                {
+                    _bulletCountText.text = value;
+                }).AddTo(this);
+            }
         }
 
         private void SetSizeIconGun(LeaderWeaponInfo leaderWeaponInfo)
@@ -107,7 +133,7 @@ namespace Game.Screens.MainMenuScreen
             }
         }
 
-        private void SetGunName()
+        private void SetWeaponName()
         {
             var languageGunId = _weaponInfo.LanguageId;
             var languageItem = _languageTable.GetLanguageItem(languageGunId);
@@ -122,9 +148,13 @@ namespace Game.Screens.MainMenuScreen
                 {
                     _iconlock.SetActive(false);
                     _unlock.SetActive(false);
+                    _boxItemClock.SetActive(false);
 
                     _levelUpgradeHolder.gameObject.SetActive(true);
                     _levelUpFee.SetActive(true);
+
+                    if (_weaponInfo is ShieldWeaponInfo shieldWeaponInfo) _shieldState.SetActive(true);
+                    else _bulletCount.SetActive(true);
 
                     GetOnCheckList();
                 }

@@ -55,11 +55,12 @@ namespace Sources.GamePlaySystem.MainMenuGame
             };
             _weaponDatas.Add(newWeaponData);
 
+            var weaponInfo = _bomberConfig.GetWeaponInfo(weaponId) as BomberWeaponInfo;
             var newWeaponDataProfile = new WeaponData
             {
                 Id = weaponId,
                 LevelUpgradeId = levelUpgradeId,
-                Quatity = 50
+                Quatity = weaponInfo.MaxBullet
             };
             _userProfile.BomberDatas.Add(newWeaponDataProfile);
 

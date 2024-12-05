@@ -63,11 +63,12 @@ namespace Sources.GamePlaySystem.MainMenuGame
             };
             _weaponDatas.Add(newWeaponData);
 
+            var weaponInfo = _leaderConfig.GetWeaponInfo(weaponId) as LeaderWeaponInfo;
             var newWeaponDataProfile = new WeaponData
             {
                 Id = weaponId,
                 LevelUpgradeId = levelUpgradeId,
-                Quatity = 50
+                Quatity = weaponInfo.MaxBullet
             };
             _userProfile.LeaderDatas.Add(newWeaponDataProfile);
 
