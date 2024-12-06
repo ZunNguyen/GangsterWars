@@ -28,6 +28,8 @@ namespace Game.Screens.GamePlayScreen
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
+        private bool _isUserWin;
+
         [Header("Title")]
         [SerializeField] private LanguageText _title;
 
@@ -58,15 +60,16 @@ namespace Game.Screens.GamePlayScreen
         private void EndGame(bool isUserWin)
         {
             _blackBG.SetActive(true);
+            _isUserWin = isUserWin;
+            SetTitle();
 
-            SetTitle(isUserWin);
             if (isUserWin) SetPanelWin();
             else SetPanelLose();
         }
 
-        private void SetTitle(bool isUserWin)
+        private void SetTitle()
         {
-            var languagageId = isUserWin ? LanguageKey.LANGUAGE_TITLE_WIN : LanguageKey.LANGUAGE_TITLE_LOSE;
+            var languagageId = _isUserWin ? LanguageKey.LANGUAGE_TITLE_WIN : LanguageKey.LANGUAGE_TITLE_LOSE;
             _title.OnSetUp(languagageId);
         }
 
@@ -97,7 +100,11 @@ namespace Game.Screens.GamePlayScreen
 
         private async UniTask AnimationPlayableDirectorPanel()
         {
+            if (_isUserWin) _audioManager.Play(AudioKey.SFX_WIN);
+            else _audioManager.Play(AudioKey.SFX_LOSE);
+
             _playableDirectorPanel.Play();
+
             var duration = _playableDirectorPanel.duration;
             await UniTask.Delay((int)(duration * 1000));
         }

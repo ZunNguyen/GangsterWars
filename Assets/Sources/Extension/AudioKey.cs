@@ -39,5 +39,7 @@ namespace Sources.Extension
         // Another
         public static string SFX_RELOAD_01 = "sfx-reload-01";
         public static string SFX_POP_UP = "sfx-pop-up";
+        public static string SFX_WIN = "sfx-win";
+        public static string SFX_LOSE = "sfx-lose";
     }
 }

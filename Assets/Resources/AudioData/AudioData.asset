@@ -88,4 +88,12 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 62055d860fdecb046bebef8cffa63215, type: 3}
     - {fileID: 8300000, guid: 332f51680dc53eb42b8e08e30d3b94cb, type: 3}
     IsMusic: 0
+  - Id: sfx-win
+    AudioClips:
+    - {fileID: 8300000, guid: bf40f5f246f0e94408eb797bc240c75f, type: 3}
+    IsMusic: 0
+  - Id: sfx-lose
+    AudioClips:
+    - {fileID: 8300000, guid: 08e08c7f1df898e448150ee46a713f3d, type: 3}
+    IsMusic: 0
   _audioListInfos: []
