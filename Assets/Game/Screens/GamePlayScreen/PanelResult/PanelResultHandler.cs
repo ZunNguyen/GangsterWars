@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Mono.Cecil.Cil;
 using Sources.Audio;
 using Sources.Command;
 using Sources.Extension;
@@ -15,8 +16,12 @@ namespace Game.Screens.GamePlayScreen
 {
     public class PanelResultHandler : MonoBehaviour
     {
-        private const float _durationZoomIn = 0.5f;
+        private const float _durationZoomIn = 0.4f;
         private const float _durationZoomOut = 0.2f;
+
+        private const int _countCoinIconReward = 5;
+        private const float _durationEarnCoin = 0.3f;
+        
         private readonly Vector2 _targetScaleStar = new Vector2(1.2f, 1.2f);
 
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
@@ -29,13 +34,18 @@ namespace Game.Screens.GamePlayScreen
         [SerializeField] private TMP_Text _textReward;
         [SerializeField] private GameObject _rewardHolder;
 
+        [Header("Playable Director")]
+        [SerializeField] private PlayableDirector _playableDirectorPanel;
+        [SerializeField] private PlayableDirector _playableDirectorTextReward;
+
         [Header("Another")]
         [SerializeField] private List<RectTransform> _stars;
+        [SerializeField] private Transform _coinTotal;
+        [SerializeField] private GameObject _coinIcon;
         [SerializeField] private GameObject _titleTryAgain;
         [SerializeField] private GameObject _blackBG;
         [SerializeField] private GameObject _blockPanel;
         [SerializeField] private GameObject _btnNext;
-        [SerializeField] private PlayableDirector _playableDirector;
 
         public void OnSetUp()
         {
@@ -57,9 +67,10 @@ namespace Game.Screens.GamePlayScreen
             _textReward.text = ShortNumber.Get(_gameResultSystem.CoinRewards);
             await UniTask.Delay(1000);
 
-            await AnimationPlayableDirector();
+            await AnimationPlayableDirectorPanel();
             await AnimationCollectStars();
-            _gameResultSystem.ClaimReward();
+            await AnimationPlayableDirectorTextReward();
+            await AnimationCollectCoin();
 
             _blockPanel.SetActive(false);
         }
@@ -72,15 +83,23 @@ namespace Game.Screens.GamePlayScreen
             _titleTryAgain.gameObject.SetActive(true);
 
             await UniTask.Delay(1000);
-            await AnimationPlayableDirector();
+            await AnimationPlayableDirectorPanel();
 
             _blockPanel.SetActive(false);
         }
 
-        private async UniTask AnimationPlayableDirector()
+        private async UniTask AnimationPlayableDirectorPanel()
         {
-            _playableDirector.Play();
-            await UniTask.Delay(1500);
+            _playableDirectorPanel.Play();
+            var duration = _playableDirectorPanel.duration;
+            await UniTask.Delay((int)(duration * 1000));
+        }
+
+        private async UniTask AnimationPlayableDirectorTextReward()
+        {
+            _playableDirectorTextReward.Play();
+            var duration = _playableDirectorTextReward.duration;
+            await UniTask.Delay((int)(duration * 1000));
         }
 
         private async UniTask AnimationCollectStars()
@@ -98,9 +117,34 @@ namespace Game.Screens.GamePlayScreen
             }
         }
 
+        private async UniTask AnimationCollectCoin()
+        {
+            var coinReward = _gameResultSystem.CoinRewards / _countCoinIconReward;
+            for (int i = 0; i < _countCoinIconReward; i++)
+            {
+                var coin = Instantiate(_coinIcon);
+                coin.transform.SetParent(_coinIcon.transform, false);
+                coin.transform.position = _coinIcon.transform.position;
+                coin.transform.localScale = Vector3.zero;
+
+                var sequence = DOTween.Sequence();
+
+                sequence.Append(coin.transform.DOMove(_coinTotal.transform.position, _durationEarnCoin));
+                sequence.Join(coin.transform.DOScale(Vector3.one, _durationEarnCoin));
+                sequence.AppendCallback(() =>
+                {
+                    _gameResultSystem.ClaimReward(coinReward);
+                    coin.gameObject.SetActive(false);
+                });
+
+                await UniTask.Delay(200);
+            }
+        }
+
         private void OnDestroy()
         {
-            _playableDirector.DOKill();
+            _playableDirectorPanel.DOKill();
+            _playableDirectorTextReward.DOKill();
             _gameResultSystem.IsUserWin -= EndGame;
         }
 

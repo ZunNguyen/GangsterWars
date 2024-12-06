@@ -138,9 +138,9 @@ namespace Sources.GamePlaySystem.GameResult
             _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= UserLose;
         }
 
-        public void ClaimReward()
+        public void ClaimReward(int quality)
         {
-            _coinControllerSystem.AddCoin(CoinRewards);
+            _coinControllerSystem.AddCoin(quality);
         }
     }
 }

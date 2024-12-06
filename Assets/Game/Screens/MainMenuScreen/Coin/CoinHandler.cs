@@ -6,11 +6,15 @@ using UniRx;
 using Sources.Utils;
 using System.Threading;
 using Sources.SpawnerSystem;
+using DG.Tweening;
 
 namespace Game.Screens.MainMenuScreen
 {
     public class CoinHandler : MonoBehaviour
     {
+        private readonly Vector3 _targetScale = new Vector3(1.1f, 1.1f, 1.1f);
+        private const float _duration = 0.2f;
+
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
@@ -32,12 +36,22 @@ namespace Game.Screens.MainMenuScreen
         {
             var coinText = GetCoinText();
             coinText.OnSetUp(quality, true);
+            AnimationCoinText();
         }
 
         private void AnimationSubstract(int quality)
         {
             var coinText = GetCoinText();
             coinText.OnSetUp(quality, false);
+            AnimationCoinText();
+        }
+
+        private void AnimationCoinText()
+        {
+            _text.transform.DOScale(_targetScale, _duration).SetEase(Ease.InOutSine).OnComplete( () =>
+            {
+                _text.transform.DOScale(Vector3.one, _duration).SetEase(Ease.InOutSine);
+            });
         }
 
         private CoinText GetCoinText()

@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 3283835523483046371}
-  _coinText: {fileID: 6650789028265079703, guid: 0bb90d9586b4b4c44b2979e0a3a07cab, type: 3}
+  _coinText: {fileID: 79010766138549514, guid: 130311ce67615c642bd6c4beea4cc608, type: 3}
 --- !u!1 &999115817250646822
 GameObject:
   m_ObjectHideFlags: 0

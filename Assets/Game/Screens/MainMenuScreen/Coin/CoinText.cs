@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Sources.SpawnerSystem;
+using Sources.Utils;
 using Sources.Utils.Singleton;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnSetUp(int quality, bool isAdd)
         {
-            _text.text = (isAdd ? _stringAdd : _stringSubstract) + quality.ToString();
+            _text.text = (isAdd ? _stringAdd : _stringSubstract) + ShortNumber.Get(quality);
 
             _targetMoveY = _rect.anchoredPosition.y + _offsetMoveY;
             _text.alpha = 1f;

@@ -1,4 +1,6 @@
 using DG.Tweening;
+using Sources.Audio;
+using Sources.Extension;
 using Sources.GameData;
 using Sources.GamePlaySystem.JourneyMap;
 using Sources.Utils.Singleton;
@@ -16,6 +18,7 @@ namespace Game.Screens.JourneyScreen
         private GameData _gameData => Locator<GameData>.Instance;
         private JourneyProfile _journeyProfile => _gameData.GetProfileData<JourneyProfile>();
         private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private string _waveId;
         private bool _isCanClick = true;
@@ -75,7 +78,12 @@ namespace Game.Screens.JourneyScreen
 
         public void OnBattleWaveClicked()
         {
-            if (!_isCanClick) return;
+            if (!_isCanClick)
+            {
+                _audioManager.Play(AudioKey.SFX_CLICK_ERROR);
+                return;
+            }
+            _audioManager.Play(AudioKey.SFX_CLICK_01);
             _journeyMapSystem.OnBattleWave(_waveId);
         }
     }
