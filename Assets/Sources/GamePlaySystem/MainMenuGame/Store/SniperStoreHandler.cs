@@ -45,7 +45,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
             var maxBullet = weaponInfo.MaxBullet;
             var reloadFee = levelUpgradeInfo.ReloadFee;
 
-            var reloadFeeCurrent = (reloadFee - bulletRemain) * (reloadFee / maxBullet);
+            var reloadFeeCurrent = (maxBullet - bulletRemain) * (reloadFee / maxBullet);
             weaponViewModel.ReloadFee.Value = reloadFeeCurrent;
         }
 

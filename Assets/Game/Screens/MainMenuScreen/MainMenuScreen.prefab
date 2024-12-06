@@ -3801,7 +3801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8029415549079258792, guid: 592d6823e7b78c24bbe422bd3a51897c, type: 3}
       propertyPath: m_Spacing.y
-      value: 55
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 592d6823e7b78c24bbe422bd3a51897c, type: 3}
