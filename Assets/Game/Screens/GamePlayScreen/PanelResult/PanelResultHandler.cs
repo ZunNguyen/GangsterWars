@@ -5,6 +5,7 @@ using Sources.Audio;
 using Sources.Command;
 using Sources.Extension;
 using Sources.GamePlaySystem.GameResult;
+using Sources.Language;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace Game.Screens.GamePlayScreen
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         [Header("Title")]
-        [SerializeField] private TMP_Text _textTitle;
+        [SerializeField] private LanguageText _title;
 
         [Header("Reward")]
         [SerializeField] private TMP_Text _textReward;
@@ -58,8 +59,15 @@ namespace Game.Screens.GamePlayScreen
         {
             _blackBG.SetActive(true);
 
+            SetTitle(isUserWin);
             if (isUserWin) SetPanelWin();
             else SetPanelLose();
+        }
+
+        private void SetTitle(bool isUserWin)
+        {
+            var languagageId = isUserWin ? LanguageKey.LANGUAGE_TITLE_WIN : LanguageKey.LANGUAGE_TITLE_LOSE;
+            _title.OnSetUp(languagageId);
         }
 
         private async void SetPanelWin()
@@ -77,7 +85,6 @@ namespace Game.Screens.GamePlayScreen
 
         private async void SetPanelLose()
         {
-            _textTitle.text = "You Lose";
             Destroy(_btnNext);
             _rewardHolder.gameObject.SetActive(false);
             _titleTryAgain.gameObject.SetActive(true);

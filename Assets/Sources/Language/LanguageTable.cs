@@ -195,7 +195,7 @@ namespace Sources.Language
         [PropertySpace(30)]
         [SerializeField, PropertyOrder(1), ReadOnly] private TextAsset _csvFile;
         [SerializeField, PropertyOrder(2), ReadOnly] private string _csvFilePath;
-        [Button, PropertyOrder(3)]
+        [PropertyOrder(3)]
         public void ReadFile()
         {
             FecthAll();
