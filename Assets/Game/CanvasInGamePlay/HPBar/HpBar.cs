@@ -14,13 +14,12 @@ namespace Game.CanvasInGamePlay.HPBar
     public class HpBar : MonoBehaviour
     {
         private const float _duration = 0.5f;
+        private const float _timeToOffShowSlider = 2f;
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private Transform _worldTransformObject;
         private Canvas _canvas;
         private IDisposable _disposedHpBar;
-
-        private bool _isActive;
 
         [SerializeField] private RectTransform _rectTransformObject;
         [SerializeField] private Slider _slider;
@@ -31,19 +30,12 @@ namespace Game.CanvasInGamePlay.HPBar
             _slider.onValueChanged.AddListener(OnSliderValueChange);
         }
 
-        public async void OnSetUp(CanvasModel canvasModel)
+        public void OnSetUp(CanvasModel canvasModel)
         {
-            _isActive = true;
-
-
-
-            
             _canvas = canvasModel.Canvas;
             _worldTransformObject = canvasModel.TransformObject;
+            SetPos();
             SetUpSlider(canvasModel.EnemyHandler);
-
-            await UniTask.DelayFrame(2);
-            gameObject.SetActive(true);
         }
 
         private void SetUpSlider(EnemyHandler enemyHandler)
@@ -52,10 +44,12 @@ namespace Game.CanvasInGamePlay.HPBar
 
             _disposedHpBar = enemyHandler.HpCurrent.Subscribe(value =>
             {
+                var isShowSlider = value != enemyHandler.HpMax && value > 0;
+                _slider.gameObject.SetActive(isShowSlider);
+
                 _slider.value = value;
                 if (value <= 0)
                 {
-                    _isActive = false;
                     try
                     {
                         _disposedHpBar?.Dispose();
@@ -86,10 +80,12 @@ namespace Game.CanvasInGamePlay.HPBar
 
         private void FixedUpdate()
         {
-            if (!_isActive) return;
-
             if (_worldTransformObject == null || _canvas == null) return;
+            SetPos();
+        }
 
+        private void SetPos()
+        {
             Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, _worldTransformObject.position);
 
             Vector2 anchoredPos;

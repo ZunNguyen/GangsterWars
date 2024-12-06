@@ -82,6 +82,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
                 var weaponConfig = _weaponConfig.GetWeaponInfo(weaponId) as BomberWeaponInfo;
                 var weaponData = _userProfile.GetWeaponBaseData(weaponId) as WeaponData;
                 weaponData.Quatity = weaponConfig.MaxBullet;
+                weaponModel.WeaponValue.Value = weaponConfig.MaxBullet.ToString();
                 _userProfile.Save();
 
                 return ResultBuyItem.Success;

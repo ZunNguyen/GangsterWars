@@ -167,6 +167,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
                 var weaponConfig = _weaponConfig.GetWeaponInfo(weaponId) as ShieldWeaponInfo;
                 var weaponData = _userProfile.GetWeaponBaseData(weaponId) as ShieldData;
                 weaponData.State = ShieldState.Full;
+                weaponModel.WeaponValue.Value = ShieldState.Full.ToString();
                 _userProfile.Save();
 
                 return ResultBuyItem.Success;
