@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Sources.Utils
@@ -20,6 +21,7 @@ namespace Sources.Utils
                 if (value >= suffix.Key)
                 {
                     var shortValue = (float)value / suffix.Key;
+                    shortValue = (float)Math.Floor(shortValue * 10f) / 10f;
                     var format = shortValue >= 100 ? "0" : "0.0";
                     return shortValue.ToString(format) + suffix.Value;
                 }

@@ -28,6 +28,8 @@ namespace Sources.GamePlaySystem.CoinController
         public ReactiveProperty<int> Coins { get; private set; } = new();
 
         public Action<CoinRewardInfo> CoinReward;
+        public Action<int> OnAddCoin;
+        public Action<int> OnSubstractCoin;
 
         public override async UniTask Init()
         {
@@ -39,12 +41,14 @@ namespace Sources.GamePlaySystem.CoinController
             _audioManager.Play(AudioKey.SFX_EARN_COIN);
 
             Coins.Value += quantity;
+            OnAddCoin?.Invoke(quantity);
             SaveCoin();
         }
 
         public void SubstractCoin(int quantity)
         {
             Coins.Value -= quantity;
+            OnSubstractCoin?.Invoke(quantity);
             SaveCoin();
         }
 
@@ -65,9 +69,7 @@ namespace Sources.GamePlaySystem.CoinController
         {
             if (fee <= Coins.Value)
             {
-                Coins.Value -= fee;
-                _userProfile.Coins = Coins.Value;
-                _userProfile.Save();
+                SubstractCoin(fee);
                 return true;
             }
 

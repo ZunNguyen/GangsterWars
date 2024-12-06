@@ -14,17 +14,24 @@ namespace Game.Screens.MainMenuScreen
 {
     public abstract class OpenCharacterAbstract : MonoBehaviour
     {
+        private readonly Vector3 _targetScale = new Vector3(1.2f, 1.2f, 1.2f);
+        private const float _offsetMoveY = 1f;
         private const float _duration = 0.5f;
 
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
         protected OpenCharacterSystem _openCharacterSystem => Locator<OpenCharacterSystem>.Instance;
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 
+        private Tween _tween;
+        private float _posOriginalY;
+        private float _targetMoveY;
+
         protected OpenCharacterHandlerAbstract _openCharacterAbastract;
         protected TabState _tabCurrentState;
 
         [SerializeField] private Image _imageCharacter;
         [SerializeField] private TMP_Text _fee;
+        [SerializeField] private RectTransform _unlockMe;
         [SerializeField] private GameObject _boxCharacter;
 
         [Header("Tab Handler")]
@@ -34,6 +41,8 @@ namespace Game.Screens.MainMenuScreen
         {
             _boxCharacter.transform.localScale = Vector3.zero;
             _boxCharacter.gameObject.SetActive(true);
+            _posOriginalY = transform.position.y;
+            _targetMoveY = transform.position.y + _offsetMoveY;
 
             await UniTask.DelayFrame(5);
             OnSetUp();
@@ -49,21 +58,20 @@ namespace Game.Screens.MainMenuScreen
             }
 
             _imageCharacter.color = Color.black;
+            _unlockMe.gameObject.SetActive(true);
             _fee.text = ShortNumber.Get(_openCharacterAbastract.CharacterFee);
 
-            _storeSystem.TabCurrent.Subscribe(value =>
-            {
-                AnimationWhenClickTab(value);
-            }).AddTo(this);
+            AnimationUnlockMe();
         }
 
         protected abstract void SetValue();
 
-        private void AnimationWhenClickTab(TabState tabState)
+        private void AnimationUnlockMe()
         {
-            if (_tabCurrentState != tabState) return;
-            
-            // Animation
+            _tween = _unlockMe.transform.DOScale(_targetScale, _duration).SetEase(Ease.InOutSine).OnComplete(() =>
+            {
+                _unlockMe.transform.DOScale(Vector3.one, _duration).SetEase(Ease.InOutSine);
+            }).SetLoops(-1, LoopType.Yoyo);
         }
 
         public void OnOpenBoxClicked()
@@ -88,6 +96,7 @@ namespace Game.Screens.MainMenuScreen
                 _imageCharacter.raycastTarget = false;
                 OnCloseBoxClicked();
                 _imageCharacter.color = Color.white;
+                _tween.Kill();
             }
             else _audioManager.Play(AudioKey.SFX_CLICK_ERROR);
         }
