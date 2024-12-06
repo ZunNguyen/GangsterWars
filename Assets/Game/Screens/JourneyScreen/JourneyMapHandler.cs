@@ -42,6 +42,8 @@ namespace Game.Screens.JourneyScreen
         private void Awake()
         {
             _journeyMapDataCurrent = _journeyMapSystem.JourneyMapDataCurrent;
+            _journeyMapSystem.ResetCountStar();
+
             SetUpJourneyMap();
         }
 

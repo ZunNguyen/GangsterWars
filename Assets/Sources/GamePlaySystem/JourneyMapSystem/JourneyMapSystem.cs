@@ -73,7 +73,6 @@ namespace Sources.GamePlaySystem.JourneyMap
             }
         }
 
-
         public DataState GetDataState(string data_1)
         {
             if (data_1 == _dataDefault) return DataState.Empty;
@@ -156,7 +155,12 @@ namespace Sources.GamePlaySystem.JourneyMap
             StarCurrent += waveData.Stars;
         }
 
-        public async void OnBattleWave(string waveId)
+        public void ResetCountStar()
+        {
+            StarCurrent = 0;
+        }
+
+        public void OnBattleWave(string waveId)
         {
             new LoadGamePlayScenceCommand(waveId).Execute().Forget();
         }
