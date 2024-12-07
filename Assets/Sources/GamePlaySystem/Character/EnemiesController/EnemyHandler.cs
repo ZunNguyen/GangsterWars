@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Sources.Audio;
 using Sources.DataBaseSystem;
 using Sources.Extension;
+using Sources.GamePlaySystem.GameResult;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using System;
@@ -25,6 +26,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EnemiesConfig _enemiesConfig => _dataBase.GetConfig<EnemiesConfig>();
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+        private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
         
         private IDisposable _disposableShieldState;
@@ -76,9 +78,13 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         private void SubscribeUserDeath()
         {
-            _mainGamePlaySystem.UserRecieveDamageHandler.IsDead += OnIdle;
+            _gameResultSystem.IsUserWin += EndGame;
         }
 
+        private void EndGame(bool result)
+        {
+            OnIdle();
+        }
 
         public void SubstractHp(int damage, string collision)
         {
@@ -145,7 +151,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         private void OnDestroy()
         {
             _disposableShieldState?.Dispose();
-            _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= OnIdle;
+            _gameResultSystem.IsUserWin -= EndGame;
         }
     }
 }

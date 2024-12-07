@@ -5,6 +5,7 @@ using Game.Character.Sniper;
 using Game.Weapon.Bullet;
 using Sources.Extension;
 using Sources.GamePlaySystem.CoinController;
+using Sources.GamePlaySystem.GameResult;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.SpawnerSystem;
@@ -22,6 +23,7 @@ namespace Game.Character.Enemy.Abstract
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
+        private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
 
         private Vector2 _direction;
         private IDisposable _disposableDirection;
@@ -36,6 +38,17 @@ namespace Game.Character.Enemy.Abstract
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private Transform _hpBarPos;
         [SerializeField] private AnimationHandlerAbstract _animationHander;
+
+        private void Start()
+        {
+            _gameResultSystem.IsUserWin += EndGame;
+        }
+
+        private void EndGame(bool result)
+        {
+            OnDisposable();
+            _direction = Vector2.zero;
+        }
 
         public void OnSetUp(CanvasInGamePlayController canvasInGamePlayController, string enemyId, int indexPos)
         {

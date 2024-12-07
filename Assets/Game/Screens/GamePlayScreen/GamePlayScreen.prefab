@@ -3906,7 +3906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43fa7cc1213bd646be307ebf536e6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _title: {fileID: 8399094210500094715}
+  _title: {fileID: 3621188274642600778}
   _textReward: {fileID: 4453762596879723880}
   _rewardHolder: {fileID: 3471551516078528770}
   _playableDirectorPanel: {fileID: 6773570378241203417}
@@ -6175,7 +6175,7 @@ GameObject:
   - component: {fileID: 5357922919746739791}
   - component: {fileID: 5483454375082922586}
   - component: {fileID: 40729137770840009}
-  - component: {fileID: 8399094210500094715}
+  - component: {fileID: 3621188274642600778}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -6300,7 +6300,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8399094210500094715
+--- !u!114 &3621188274642600778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6312,8 +6312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9010c3ea0095649b11d6d0bb7a35b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _languageItemId: PanelResult_Title_Win
-  _languageItem: {fileID: 11400000, guid: dfc2ae55779ea42409350025bbd99b43, type: 2}
+  _languageItemId: 
+  _languageItem: {fileID: 0}
 --- !u!1001 &1429572311862315654
 PrefabInstance:
   m_ObjectHideFlags: 0

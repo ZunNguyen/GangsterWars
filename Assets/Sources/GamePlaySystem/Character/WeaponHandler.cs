@@ -1,5 +1,6 @@
 using Sources.DataBaseSystem;
 using Sources.GameData;
+using Sources.GamePlaySystem.GameResult;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.Utils;
 using Sources.Utils.Singleton;
@@ -20,11 +21,13 @@ namespace Sources.GamePlaySystem.Character
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+        private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
 
         private bool _isReloading = false;
         private bool _isHaveEnemyToAttack = false;
         private bool _isAnimationComplete = true;
         private bool _isOutOfAmmor = false;
+        private bool _isEndGame = false;
 
         private Dictionary<string, int> _damageWeaponCache = new();
         private List<WeaponData> _weaponDatasClone;
@@ -44,6 +47,12 @@ namespace Sources.GamePlaySystem.Character
             _isOutOfAmmor = false;
             _reloadTimeHandler.IsReloading += SetCanAttack;
             _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack += SetIsEnemyToAttack;
+            _gameResultSystem.IsUserWin += EndGame;
+        }
+
+        private void EndGame(bool result)
+        {
+            _isEndGame = true;
         }
 
         private void GetRandomWeapon()
@@ -95,7 +104,7 @@ namespace Sources.GamePlaySystem.Character
 
         private void CheckCanAttack()
         {
-            if (!_isReloading && _isHaveEnemyToAttack && _isAnimationComplete)
+            if (!_isReloading && _isHaveEnemyToAttack && _isAnimationComplete && !_isEndGame)
             {
                 GetRandomWeapon();
                 if (_isOutOfAmmor) return;
@@ -118,6 +127,7 @@ namespace Sources.GamePlaySystem.Character
         {
             _reloadTimeHandler.IsReloading -= SetCanAttack;
             _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack -= SetIsEnemyToAttack;
+            _gameResultSystem.IsUserWin -= EndGame;
         }
     }
 }

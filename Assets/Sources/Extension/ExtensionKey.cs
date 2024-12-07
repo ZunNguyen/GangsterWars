@@ -19,7 +19,7 @@ namespace Sources.Extension
     {
         public static string BOMBER_ID_DEFAULT = "bom-01";
 
-        public static int Quality_Bom_Default = 10;
+        public static int Quality_Bom_Default = 20;
 
         public static string AnimationKey_Reloading = "Reloading";
         public static string AnimationKey_Throwing = "Throwing";

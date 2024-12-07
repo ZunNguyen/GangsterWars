@@ -1,5 +1,4 @@
 ﻿using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using Game.CanvasInGamePlay.Controller;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
@@ -8,7 +7,6 @@ using Sources.Utils.Singleton;
 using System;
 using UniRx;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game.CanvasInGamePlay.HPBar
 {

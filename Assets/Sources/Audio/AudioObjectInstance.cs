@@ -65,7 +65,7 @@ namespace Sources.Audio
             {
                 var lengthAudio = (int)(_audioSource.clip.length * 1000);
                 await UniTask.Delay(lengthAudio);
-                _spawnerManager.Release(gameObject);
+                if (gameObject.activeSelf) _spawnerManager.Release(gameObject);
             }
         }
 

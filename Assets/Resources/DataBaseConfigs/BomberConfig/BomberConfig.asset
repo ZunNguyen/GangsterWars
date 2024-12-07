@@ -108,7 +108,7 @@ MonoBehaviour:
       ReloadFee: 50
       DamageOrHp: 10
     CSVFile: {fileID: 4900000, guid: ff6e014efbc1c7745b12bb68d48a52b6, type: 3}
-    MaxBullet: 10
+    MaxBullet: 20
     BulletsPerClip: 1
     ReloadTime: 5000
   - Id: bom-03
@@ -157,7 +157,7 @@ MonoBehaviour:
       ReloadFee: 50
       DamageOrHp: 10
     CSVFile: {fileID: 4900000, guid: 009ca7b4b0984b8468ab71911366648f, type: 3}
-    MaxBullet: 10
+    MaxBullet: 20
     BulletsPerClip: 1
     ReloadTime: 5000
   - Id: bom-04
@@ -206,7 +206,7 @@ MonoBehaviour:
       ReloadFee: 50
       DamageOrHp: 10
     CSVFile: {fileID: 4900000, guid: 8c26d5ada52ba9c4eabe42345213a425, type: 3}
-    MaxBullet: 10
+    MaxBullet: 20
     BulletsPerClip: 1
     ReloadTime: 5000
   _openFee: 150

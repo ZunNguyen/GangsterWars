@@ -30,7 +30,7 @@ namespace Sources.Language
             _languageItem = LanguageTable.Instance.GetLanguageItem(_languageItemId);
         }
 
-        private async void Awake()
+        private void Awake()
         {
             _text = GetComponent<TMP_Text>();
 
