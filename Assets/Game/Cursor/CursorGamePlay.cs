@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Cursorsd
+namespace Game.Cursor
 {
-    public class CursorManager : MonoBehaviour
+    public class CursorGamePlay : MonoBehaviour
     {
         [SerializeField] private Texture2D _cursor;
 
@@ -11,7 +13,7 @@ namespace Game.Cursorsd
         private void Start()
         {
             _cursorHotspot = new Vector2(_cursor.width / 2, _cursor.height / 2);
-            Cursor.SetCursor(_cursor, _cursorHotspot, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(_cursor, _cursorHotspot, CursorMode.Auto);
         }
     }
 }
