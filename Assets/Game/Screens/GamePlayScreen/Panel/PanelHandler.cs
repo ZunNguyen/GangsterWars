@@ -10,7 +10,7 @@ namespace Game.Screens.GamePlayScreen
     public class PanelHandler : MonoBehaviour
     {
         private readonly Vector2 _offsetPos = new Vector2(0, 100f);
-        private const float _duration = 1f;
+        private const float _duration = 0.7f;
 
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
@@ -47,7 +47,7 @@ namespace Game.Screens.GamePlayScreen
             _isMovingPanelPause = true;
             _blockBG.SetActive(true);
             _panelPause.DOAnchorPos(_originalPosPanelPause, _duration).SetEase(Ease.OutQuart)
-                .OnComplete(() => _isMovingPanelPause = false);
+                .OnComplete(() => _isMovingPanelPause = false).SetUpdate(true);
         }
 
         private void MovePanelPauseOut()
@@ -62,7 +62,7 @@ namespace Game.Screens.GamePlayScreen
             }
 
             _panelPause.DOAnchorPos(-_targetOffsetPos, _duration).SetEase(Ease.OutQuart)
-                .OnComplete(() => _isMovingPanelPause = false);
+                .OnComplete(() => _isMovingPanelPause = false).SetUpdate(true);
         }
 
         private void MovePanelSettingOn()
@@ -70,7 +70,7 @@ namespace Game.Screens.GamePlayScreen
             if (_isMovingPanelSetting) return;
             _isMovingPanelSetting = true;
             _panelSetting.DOAnchorPos(_originalPosPanelSetting, _duration).SetEase(Ease.OutBack)
-                .OnComplete(() => _isMovingPanelSetting = false);
+                .OnComplete(() => _isMovingPanelSetting = false).SetUpdate(true);
         }
 
         private void MovePanelSettingOut()
@@ -78,11 +78,12 @@ namespace Game.Screens.GamePlayScreen
             if (_isMovingPanelSetting) return;
             _isMovingPanelSetting = true;
             _panelSetting.DOAnchorPos(_targetOffsetPos, _duration).SetEase(Ease.OutBack)
-                .OnComplete(() => _isMovingPanelSetting = false);
+                .OnComplete(() => _isMovingPanelSetting = false).SetUpdate(true);
         }
 
         public void OnPauseClicked()
         {
+            Time.timeScale = 0;
             _audioManager.Play(AudioKey.SFX_CLICK_01);
             MovePanelPauseOn();
         }
@@ -92,6 +93,7 @@ namespace Game.Screens.GamePlayScreen
             _audioManager.Play(AudioKey.SFX_CLICK_01);
             _isResumeClick = true;
             MovePanelPauseOut();
+            Time.timeScale = 1f;
         }
 
         public void OnSettingClicked()
@@ -111,7 +113,7 @@ namespace Game.Screens.GamePlayScreen
         {
             _audioManager.Play(AudioKey.SFX_CLICK_01);
             MovePanelSettingOut();
-            MovePanelPauseOn();
+            MovePanelPauseOn(); 
         }
     }
 }

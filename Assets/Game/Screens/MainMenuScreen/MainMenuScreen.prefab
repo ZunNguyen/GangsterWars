@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 404637273444526443}
   - component: {fileID: 5122447624752160003}
   - component: {fileID: 7271771766662445155}
+  - component: {fileID: 9210738751456267863}
   m_Layer: 0
   m_Name: TextUnlock
   m_TagString: Untagged
@@ -426,6 +427,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9210738751456267863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856771821824830178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9010c3ea0095649b11d6d0bb7a35b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _languageItemId: Store_UnlockMe
+  _languageItem: {fileID: 11400000, guid: 3f96cbcfcb673f240a51c78db3291984, type: 2}
 --- !u!1 &991104323713347375
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +970,7 @@ GameObject:
   - component: {fileID: 3505938186260363140}
   - component: {fileID: 966798499643677165}
   - component: {fileID: 8704923121284918143}
+  - component: {fileID: 4094916377391860709}
   m_Layer: 0
   m_Name: TextUnlock
   m_TagString: Untagged
@@ -979,7 +995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -116, y: 0}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &966798499643677165
@@ -1010,7 +1026,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Unlock me
+  m_text: "M\u1EDF kh\xF3a t\xF4i"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 061be0d9f5b04254888133b5f88734e1, type: 2}
   m_sharedMaterial: {fileID: 4226824626226113957, guid: 061be0d9f5b04254888133b5f88734e1, type: 2}
@@ -1079,6 +1095,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4094916377391860709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550515168020276721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9010c3ea0095649b11d6d0bb7a35b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _languageItemId: Store_UnlockMe
+  _languageItem: {fileID: 11400000, guid: 3f96cbcfcb673f240a51c78db3291984, type: 2}
 --- !u!1 &2840602984650407535
 GameObject:
   m_ObjectHideFlags: 0

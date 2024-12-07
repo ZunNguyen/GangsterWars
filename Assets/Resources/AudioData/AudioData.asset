@@ -19,7 +19,7 @@ MonoBehaviour:
     IsMusic: 1
   - Id: game-play-song
     AudioClips:
-    - {fileID: 8300000, guid: e2b69ecb83b6fa546ba1f13620bd7263, type: 3}
+    - {fileID: 8300000, guid: 5f07b2d63b2b03a4ab18e8be22bbcfb3, type: 3}
     IsMusic: 1
   - Id: sfx-click-01
     AudioClips:
