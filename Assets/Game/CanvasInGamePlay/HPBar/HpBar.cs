@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Game.CanvasInGamePlay.Controller;
+using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
@@ -11,24 +12,16 @@ using UnityEngine.UI;
 
 namespace Game.CanvasInGamePlay.HPBar
 {
-    public class HpBar : MonoBehaviour
+    public class HpBar : HpHandlerAbstract
     {
-        private const float _duration = 0.5f;
-        private const float _timeToOffShowSlider = 2f;
-
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private Transform _worldTransformObject;
         private Canvas _canvas;
         private IDisposable _disposedHpBar;
 
         [SerializeField] private RectTransform _rectTransformObject;
-        [SerializeField] private Slider _slider;
-        [SerializeField] private Image _fillWhite;
 
-        private void Awake()
-        {
-            _slider.onValueChanged.AddListener(OnSliderValueChange);
-        }
+        public override void OnSetUp(){}
 
         public void OnSetUp(CanvasModel canvasModel)
         {
@@ -40,14 +33,14 @@ namespace Game.CanvasInGamePlay.HPBar
 
         private void SetUpSlider(EnemyHandler enemyHandler)
         {
-            _slider.maxValue = enemyHandler.HpMax;
+            _maxValue = enemyHandler.HpMax;
 
             _disposedHpBar = enemyHandler.HpCurrent.Subscribe(value =>
             {
                 var isShowSlider = value != enemyHandler.HpMax && value > 0;
-                _slider.gameObject.SetActive(isShowSlider);
-
-                _slider.value = value;
+                gameObject.SetActive(isShowSlider);
+                
+                ChangeValue(value);
                 if (value <= 0)
                 {
                     try
@@ -59,23 +52,6 @@ namespace Game.CanvasInGamePlay.HPBar
                 }
 
             }).AddTo(this);
-        }
-
-        private async void OnSliderValueChange(float value)
-        {
-            await UniTask.Delay(1000);
-
-            DOTween.To(() =>
-                    _fillWhite.fillAmount,
-                    x => _fillWhite.fillAmount = x,
-                    value / _slider.maxValue,
-                    _duration
-                ).SetEase(Ease.OutQuart);
-        }
-
-        private void OnDestroy()
-        {
-            _slider.onValueChanged.RemoveListener(OnSliderValueChange);
         }
 
         private void FixedUpdate()
