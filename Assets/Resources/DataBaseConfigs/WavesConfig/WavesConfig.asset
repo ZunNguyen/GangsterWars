@@ -20,22 +20,22 @@ MonoBehaviour:
       Phases:
       - PhaseId: phase-01
         Enemy:
-          EnemyId: enemy-02
+          EnemyId: enemy-06
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 0
       - PhaseId: phase-02
         Enemy:
-          EnemyId: enemy-02
+          EnemyId: enemy-01
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
-          EnemyId: enemy-02
+          EnemyId: enemy-01
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
-          EnemyId: enemy-02
+          EnemyId: enemy-01
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
     - Id: turn-02
@@ -195,7 +195,7 @@ MonoBehaviour:
           IndexPos: 0000000002000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-04
-    TotalHp: 3000
+    TotalHp: 450
     Turns:
     - Id: turn-01
       Phases:
@@ -208,27 +208,27 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-02
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 2000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-02
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 2000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
           EnemyId: enemy-03
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-02
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-02
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
     - Id: turn-02
       Phases:
       - PhaseId: phase-01
@@ -250,29 +250,29 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-01
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-01
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-02
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-07
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-08
         Enemy:
           EnemyId: enemy-02
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
   - Id: wave-05
-    TotalHp: 4250
+    TotalHp: 850
     Turns:
     - Id: turn-01
       Phases:
@@ -285,12 +285,12 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-02
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
           EnemyId: enemy-03
@@ -307,17 +307,17 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-03
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 5000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-01
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
           EnemyId: boss-01
@@ -327,19 +327,19 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-01
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-07
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
   - Id: wave-06
-    TotalHp: 5100
+    TotalHp: 1700
     Turns:
     - Id: turn-01
       Phases:
@@ -357,7 +357,7 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
           EnemyId: enemy-01
@@ -367,12 +367,12 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-07
         Enemy:
           EnemyId: enemy-03
@@ -384,49 +384,49 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-01
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 5000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-01
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-01
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-03
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-03
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-03
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-02
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-02
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-02
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
   - Id: wave-07
-    TotalHp: 5950
+    TotalHp: 3400
     Turns:
     - Id: turn-01
       Phases:
@@ -439,27 +439,27 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-02
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-04
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
           EnemyId: enemy-01
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-02
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-03
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
     - Id: turn-02
       Phases:
       - PhaseId: phase-01
@@ -471,7 +471,7 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-02
           IndexPos: 0000000002000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-04
@@ -481,29 +481,29 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-04
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-04
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-01
           IndexPos: 00000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-07
         Enemy:
           EnemyId: enemy-01
           IndexPos: 01000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-08
         Enemy:
           EnemyId: enemy-01
           IndexPos: 02000000
-        SpawnAfterMiliSeccond: 3000
+        SpawnAfterMiliSeccond: 4000
   - Id: wave-08
-    TotalHp: 6800
+    TotalHp: 5100
     Turns:
     - Id: turn-01
       Phases:
@@ -590,7 +590,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-09
-    TotalHp: 8100
+    TotalHp: 9000
     Turns:
     - Id: turn-01
       Phases:
@@ -682,7 +682,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-10
-    TotalHp: 9000
+    TotalHp: 12600
     Turns:
     - Id: turn-01
       Phases:
@@ -759,7 +759,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 3000
   - Id: wave-11
-    TotalHp: 9000
+    TotalHp: 18000
     Turns:
     - Id: turn-01
       Phases:
@@ -835,7 +835,7 @@ MonoBehaviour:
           EnemyId: enemy-01
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 3000
-  _waveMoreInfo:
+  _waveMoreInfos:
   - WaveId: wave-01
     CoinRewards: 50
     Sprite: {fileID: 21300000, guid: 6c45fd4539c51814e906042cd87b85a7, type: 3}
@@ -846,114 +846,115 @@ MonoBehaviour:
     CoinRewards: 150
     Sprite: {fileID: 21300000, guid: 6c45fd4539c51814e906042cd87b85a7, type: 3}
   - WaveId: wave-04
-    CoinRewards: 0
+    CoinRewards: 200
     Sprite: {fileID: 21300000, guid: 6c45fd4539c51814e906042cd87b85a7, type: 3}
   - WaveId: wave-05
-    CoinRewards: 0
+    CoinRewards: 250
     Sprite: {fileID: 21300000, guid: 6c45fd4539c51814e906042cd87b85a7, type: 3}
   - WaveId: wave-06
-    CoinRewards: 0
+    CoinRewards: 300
     Sprite: {fileID: 21300000, guid: e3eba14e9f4e66447963cb33fc09bca3, type: 3}
   - WaveId: wave-07
-    CoinRewards: 0
+    CoinRewards: 350
     Sprite: {fileID: 21300000, guid: e3eba14e9f4e66447963cb33fc09bca3, type: 3}
   - WaveId: wave-08
-    CoinRewards: 0
+    CoinRewards: 400
     Sprite: {fileID: 21300000, guid: e3eba14e9f4e66447963cb33fc09bca3, type: 3}
   - WaveId: wave-09
-    CoinRewards: 0
+    CoinRewards: 450
     Sprite: {fileID: 21300000, guid: e3eba14e9f4e66447963cb33fc09bca3, type: 3}
   - WaveId: wave-10
-    CoinRewards: 0
+    CoinRewards: 500
     Sprite: {fileID: 21300000, guid: e3eba14e9f4e66447963cb33fc09bca3, type: 3}
   - WaveId: wave-11
-    CoinRewards: 0
+    CoinRewards: 550
     Sprite: {fileID: 21300000, guid: 923e77a35d39177428ad4c2ac32c4c02, type: 3}
   - WaveId: wave-12
-    CoinRewards: 0
+    CoinRewards: 600
     Sprite: {fileID: 21300000, guid: 923e77a35d39177428ad4c2ac32c4c02, type: 3}
   - WaveId: wave-13
-    CoinRewards: 0
+    CoinRewards: 650
     Sprite: {fileID: 21300000, guid: 923e77a35d39177428ad4c2ac32c4c02, type: 3}
   - WaveId: wave-14
-    CoinRewards: 0
+    CoinRewards: 700
     Sprite: {fileID: 21300000, guid: 923e77a35d39177428ad4c2ac32c4c02, type: 3}
   - WaveId: wave-15
-    CoinRewards: 0
+    CoinRewards: 750
     Sprite: {fileID: 21300000, guid: 923e77a35d39177428ad4c2ac32c4c02, type: 3}
   - WaveId: wave-16
-    CoinRewards: 0
+    CoinRewards: 800
     Sprite: {fileID: 21300000, guid: 655d9e64641c29049ac8b569a39f0833, type: 3}
   - WaveId: wave-17
-    CoinRewards: 0
+    CoinRewards: 850
     Sprite: {fileID: 21300000, guid: 655d9e64641c29049ac8b569a39f0833, type: 3}
   - WaveId: wave-18
-    CoinRewards: 0
+    CoinRewards: 900
     Sprite: {fileID: 21300000, guid: 655d9e64641c29049ac8b569a39f0833, type: 3}
   - WaveId: wave-19
-    CoinRewards: 0
+    CoinRewards: 950
     Sprite: {fileID: 21300000, guid: 655d9e64641c29049ac8b569a39f0833, type: 3}
   - WaveId: wave-20
-    CoinRewards: 0
+    CoinRewards: 1000
     Sprite: {fileID: 21300000, guid: 655d9e64641c29049ac8b569a39f0833, type: 3}
   - WaveId: wave-21
-    CoinRewards: 0
+    CoinRewards: 1050
     Sprite: {fileID: 21300000, guid: be01d8247fdcbbd498084be6f10b2104, type: 3}
   - WaveId: wave-22
-    CoinRewards: 0
+    CoinRewards: 1100
     Sprite: {fileID: 21300000, guid: be01d8247fdcbbd498084be6f10b2104, type: 3}
   - WaveId: wave-23
-    CoinRewards: 0
+    CoinRewards: 1150
     Sprite: {fileID: 21300000, guid: be01d8247fdcbbd498084be6f10b2104, type: 3}
   - WaveId: wave-24
-    CoinRewards: 0
+    CoinRewards: 1200
     Sprite: {fileID: 21300000, guid: be01d8247fdcbbd498084be6f10b2104, type: 3}
   - WaveId: wave-25
-    CoinRewards: 0
+    CoinRewards: 1250
     Sprite: {fileID: 21300000, guid: be01d8247fdcbbd498084be6f10b2104, type: 3}
   - WaveId: wave-26
-    CoinRewards: 0
+    CoinRewards: 1300
     Sprite: {fileID: 21300000, guid: 5e7255ea20e6e55408961ab2659af63b, type: 3}
   - WaveId: wave-27
-    CoinRewards: 0
+    CoinRewards: 1350
     Sprite: {fileID: 21300000, guid: 5e7255ea20e6e55408961ab2659af63b, type: 3}
   - WaveId: wave-28
-    CoinRewards: 0
+    CoinRewards: 1400
     Sprite: {fileID: 21300000, guid: 5e7255ea20e6e55408961ab2659af63b, type: 3}
   - WaveId: wave-29
-    CoinRewards: 0
+    CoinRewards: 1450
     Sprite: {fileID: 21300000, guid: 5e7255ea20e6e55408961ab2659af63b, type: 3}
   - WaveId: wave-30
-    CoinRewards: 0
+    CoinRewards: 1500
     Sprite: {fileID: 21300000, guid: 5e7255ea20e6e55408961ab2659af63b, type: 3}
   - WaveId: wave-31
-    CoinRewards: 0
+    CoinRewards: 1550
     Sprite: {fileID: 21300000, guid: b848afca57f73aa479d4d338e7ddcf6d, type: 3}
   - WaveId: wave-32
-    CoinRewards: 0
+    CoinRewards: 1600
     Sprite: {fileID: 21300000, guid: b848afca57f73aa479d4d338e7ddcf6d, type: 3}
   - WaveId: wave-33
-    CoinRewards: 0
+    CoinRewards: 1650
     Sprite: {fileID: 21300000, guid: b848afca57f73aa479d4d338e7ddcf6d, type: 3}
   - WaveId: wave-34
-    CoinRewards: 0
+    CoinRewards: 1700
     Sprite: {fileID: 21300000, guid: b848afca57f73aa479d4d338e7ddcf6d, type: 3}
   - WaveId: wave-35
-    CoinRewards: 0
+    CoinRewards: 1750
     Sprite: {fileID: 21300000, guid: b848afca57f73aa479d4d338e7ddcf6d, type: 3}
   - WaveId: wave-36
-    CoinRewards: 0
+    CoinRewards: 1800
     Sprite: {fileID: 21300000, guid: fb61c8bb5ca8e4a47a29900d5b48743a, type: 3}
   - WaveId: wave-37
-    CoinRewards: 0
+    CoinRewards: 1850
     Sprite: {fileID: 21300000, guid: fb61c8bb5ca8e4a47a29900d5b48743a, type: 3}
   - WaveId: wave-38
-    CoinRewards: 0
+    CoinRewards: 1900
     Sprite: {fileID: 21300000, guid: fb61c8bb5ca8e4a47a29900d5b48743a, type: 3}
   - WaveId: wave-39
-    CoinRewards: 0
+    CoinRewards: 1950
     Sprite: {fileID: 21300000, guid: fb61c8bb5ca8e4a47a29900d5b48743a, type: 3}
   - WaveId: wave-40
-    CoinRewards: 0
+    CoinRewards: 2000
     Sprite: {fileID: 21300000, guid: fb61c8bb5ca8e4a47a29900d5b48743a, type: 3}
-  CSVFile: {fileID: 4900000, guid: 9642ac5883113c949887fbddb3d9b5c0, type: 3}
+  CSVFileWaveSpawn: {fileID: 4900000, guid: 9642ac5883113c949887fbddb3d9b5c0, type: 3}
+  CSVFileReward: {fileID: 4900000, guid: 2d5a11205bc640641a7e65eba10f7b78, type: 3}

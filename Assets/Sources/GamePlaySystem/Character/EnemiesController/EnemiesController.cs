@@ -21,18 +21,12 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public void OnSetUp(string waveId)
         {
             TotalHpEnemies = HpEnemiesCurrent.Value = _spawnWaveConfig.GetSpawnWaveInfo(waveId).TotalHp;
-            ClearEnemeyHandlers();
-        }
-
-        private void ClearEnemeyHandlers()
-        {
-            _activeEnemyHandlers.Clear();
-            _availableEnemyHandlers.Clear();
+            ShieldPlayerPos.Clear();
         }
 
         public EnemyHandler GetAvailableEnemyHandler()
         {
-            if (_availableEnemyHandlers.Count == 0) 
+            if (_availableEnemyHandlers.Count == 0)
             {
                 var newEnemyHandler = new EnemyHandler();
                 _availableEnemyHandlers.Add(newEnemyHandler);
@@ -43,16 +37,25 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             return enemyHandler;
         }
 
-        private void MoveToAvailableList(EnemyHandler enemyHandler)
+        public void MoveToAvailableList(EnemyHandler enemyHandler)
         {
-            _availableEnemyHandlers.Add(enemyHandler);
-            _activeEnemyHandlers.Remove(enemyHandler);
+            var index = _activeEnemyHandlers.IndexOf(enemyHandler);
+            var enemyHandlerCache = _activeEnemyHandlers[index];
+
+            _availableEnemyHandlers.Add(enemyHandlerCache);
+            _activeEnemyHandlers.Remove(enemyHandlerCache);
+
+            Debug.Log($"activeEnemyHandlers : {_activeEnemyHandlers.Count}");
+            Debug.Log($"availableEnemyHandlers : {_availableEnemyHandlers.Count}");
         }
 
         private void MoveToActiveList(EnemyHandler enemyHandler)
         {
             _activeEnemyHandlers.Add(enemyHandler);
             _availableEnemyHandlers.Remove(enemyHandler);
+
+            Debug.Log($"activeEnemyHandlers : {_activeEnemyHandlers.Count}");
+            Debug.Log($"availableEnemyHandlers : {_availableEnemyHandlers.Count}");
         }
 
         public void SubstractHpTotal(int damge)

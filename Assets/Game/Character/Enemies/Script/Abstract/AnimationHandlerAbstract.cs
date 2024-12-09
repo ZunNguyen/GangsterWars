@@ -25,7 +25,7 @@ namespace Game.Character.Enemy.Abstract
         private void EndGame(bool result)
         {
             OnDisposable();
-            _animator.SetTrigger("Idle");
+            if (!result) _animator.SetTrigger("Idle");
         }
 
         public virtual void OnSetUp(EnemyHandler enemyHandler)

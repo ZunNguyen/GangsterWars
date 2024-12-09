@@ -73,39 +73,39 @@ MonoBehaviour:
       ReloadFee: 50
       DamageOrHp: 2
     - Id: level-02
-      LevelUpFee: 2
+      LevelUpFee: 200
       ReloadFee: 80
       DamageOrHp: 4
     - Id: level-03
-      LevelUpFee: 3
+      LevelUpFee: 300
       ReloadFee: 110
       DamageOrHp: 6
     - Id: level-04
-      LevelUpFee: 4
+      LevelUpFee: 400
       ReloadFee: 140
       DamageOrHp: 8
     - Id: level-05
-      LevelUpFee: 5
+      LevelUpFee: 500
       ReloadFee: 170
       DamageOrHp: 10
     - Id: level-06
-      LevelUpFee: 6
+      LevelUpFee: 600
       ReloadFee: 200
       DamageOrHp: 12
     - Id: level-07
-      LevelUpFee: 7
+      LevelUpFee: 700
       ReloadFee: 230
       DamageOrHp: 14
     - Id: level-08
-      LevelUpFee: 8
+      LevelUpFee: 800
       ReloadFee: 260
       DamageOrHp: 16
     - Id: level-09
-      LevelUpFee: 9
+      LevelUpFee: 900
       ReloadFee: 290
       DamageOrHp: 18
     - Id: level-10
-      LevelUpFee: 10
+      LevelUpFee: 1000
       ReloadFee: 320
       DamageOrHp: 20
     CSVFile: {fileID: 4900000, guid: 10a86ee27d98c8247a4b53487a8436e3, type: 3}

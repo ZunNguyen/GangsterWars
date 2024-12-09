@@ -44,6 +44,7 @@ namespace Sources.GamePlaySystem.Character
             _weaponConfig = weaponConfig;
 
             OnDestroy();
+            _isEndGame = false;
             _isOutOfAmmor = false;
             _reloadTimeHandler.IsReloading += SetCanAttack;
             _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack += SetIsEnemyToAttack;

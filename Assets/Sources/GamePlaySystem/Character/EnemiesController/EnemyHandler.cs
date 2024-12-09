@@ -17,6 +17,32 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         ShortRangeDamage
     }
 
+    public enum AnimationState
+    {
+        None,
+        Idle,
+        Walk,
+        Attack,
+        Death
+    }
+
+    public static class AnimationStateEx
+    {
+        public static string ConvertToString(this AnimationState state)
+        {
+            return state switch
+            {
+                AnimationState.None => "None",
+                AnimationState.Idle => "Idle",
+                AnimationState.Walk => "Walk",
+                AnimationState.Attack => "Attack",
+                AnimationState.Death => "Death",
+
+                _ => throw new ArgumentOutOfRangeException(nameof(state), state, null)
+            };
+        }
+    }
+
     public class EnemyHandler
     {
         private const int _timeDelayAfterAttackUser = 1000;
@@ -29,23 +55,41 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
         
+        public int CoinsReward { get; private set; }
+        public int HpMax { get; private set; }
         private IDisposable _disposableShieldState;
 
-        public int HpMax { get; private set; }
-        public ReactiveProperty<int> HpCurrent { get; } = new ReactiveProperty<int>();
-        public ReactiveProperty<int> Damage { get; } = new ReactiveProperty<int>();
-        public ReactiveProperty<Vector2> Direction { get; } = new ReactiveProperty<Vector2>(Vector2.zero);
-        public ReactiveProperty<AnimationState> AniamtionState { get;} = new ReactiveProperty<AnimationState>(AnimationState.Idle);
-        public ReactiveProperty<bool> IsAttacking { get;} = new ReactiveProperty<bool>(false);
+        public ReactiveProperty<int> HpCurrent { get; private set; } = new ();
+        public ReactiveProperty<int> Damage { get; private set; } = new ();
+        public ReactiveProperty<bool> IsAttacking { get; private set; } = new (false);
+        public ReactiveProperty<Vector2> Direction { get; private set; } = new (Vector2.zero);
+        public ReactiveProperty<AnimationState> AniamtionState { get; private set; } = new (AnimationState.Idle);
+
         public Action<int> DamageFeed;
-        public int CoinsReward { get; private set; }
+        
+        public void SetUpFirst()
+        {
+            SubscribeShieldState();
+            SubscribeUserDeath();
+        }
+
+        private void SubscribeShieldState()
+        {
+            _disposableShieldState = _mainGamePlaySystem.UserRecieveDamageHandler.ShieldCurrentState.Subscribe(value =>
+            {
+                if (value == ShieldState.Empty) OnWalk();
+            });
+        }
+
+        private void SubscribeUserDeath()
+        {
+            _gameResultSystem.IsUserWin += EndGame;
+        }
 
         public void OnSetUp(string enemyId)
         {
             GetEnemyInfo(enemyId);
             OnWalk();
-            SubscribeShieldState();
-            SubscribeUserDeath();
         }
 
         private void GetEnemyInfo(string enemyId)
@@ -63,22 +107,6 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         {
             AniamtionState.Value = AnimationState.Walk;
             Direction.Value = Vector2.left;
-        }
-        
-        private void SubscribeShieldState()
-        {
-            _disposableShieldState = _mainGamePlaySystem.UserRecieveDamageHandler.ShieldCurrentState.Subscribe(value =>
-            {
-                if (value == ShieldState.Empty)
-                {
-                    OnWalk();
-                }
-            });
-        }
-
-        private void SubscribeUserDeath()
-        {
-            _gameResultSystem.IsUserWin += EndGame;
         }
 
         private void EndGame(bool result)
@@ -112,6 +140,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         {
             if (HpCurrent.Value <= 0)
             {
+                _mainGamePlaySystem.EnemiesController.MoveToAvailableList(this);
                 OnDeath();
             }
         }

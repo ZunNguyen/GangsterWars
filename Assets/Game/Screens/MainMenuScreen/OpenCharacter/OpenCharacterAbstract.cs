@@ -25,6 +25,7 @@ namespace Game.Screens.MainMenuScreen
         private Tween _tween;
         private float _posOriginalY;
         private float _targetMoveY;
+        private bool _isAldreadyOpen;
 
         protected OpenCharacterHandlerAbstract _openCharacterAbastract;
         protected TabState _tabCurrentState;
@@ -33,6 +34,7 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private TMP_Text _fee;
         [SerializeField] private RectTransform _unlockMe;
         [SerializeField] private GameObject _boxCharacter;
+        [SerializeField] private GameObject _blackBG;
 
         [Header("Tab Handler")]
         [SerializeField] private TabHandler _tabHandler;
@@ -51,7 +53,8 @@ namespace Game.Screens.MainMenuScreen
         private void OnSetUp()
         {
             SetValue();
-            if (_openCharacterAbastract.IsAldreadyOpenCharacter)
+            _isAldreadyOpen = _openCharacterAbastract.IsAldreadyOpenCharacter;
+            if (_isAldreadyOpen)
             {
                 _imageCharacter.raycastTarget = false;
                 return;
@@ -76,13 +79,17 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnOpenBoxClicked()
         {
+            if (_isAldreadyOpen) return;
             _audioManager.Play(AudioKey.SFX_CLICK_01);
+            _blackBG.SetActive(true);
             _boxCharacter.transform.DOScale(Vector3.one, _duration);
         }
 
-        public void OnCloseBoxClicked()
+        private void OnCloseBoxClicked()
         {
             _audioManager.Play(AudioKey.SFX_CLICK_01);
+            _blackBG.SetActive(false);
+            _unlockMe.gameObject.SetActive(false);
             _boxCharacter.transform.DOScale(Vector3.zero, _duration);
         }
 
@@ -97,6 +104,7 @@ namespace Game.Screens.MainMenuScreen
                 OnCloseBoxClicked();
                 _imageCharacter.color = Color.white;
                 _tween.Kill();
+                _isAldreadyOpen = true;
             }
             else _audioManager.Play(AudioKey.SFX_CLICK_ERROR);
         }

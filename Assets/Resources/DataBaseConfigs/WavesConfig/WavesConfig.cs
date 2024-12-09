@@ -66,11 +66,14 @@ namespace Sources.DataBaseSystem
 
         [TabGroup("Wave Info")]
         [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
-        private List<WaveInfo> _waveMoreInfo = new();
+        private List<WaveInfo> _waveMoreInfos = new();
         private Dictionary<string, WaveInfo> _waveMoreInfoCache = new();
 
-        [SerializeField, ReadOnly]
-        private TextAsset CSVFile;
+        [SerializeField, ReadOnly, TabGroup("Wave Spawn")]
+        private TextAsset CSVFileWaveSpawn;
+
+        [SerializeField, ReadOnly, TabGroup("Wave Info")]
+        private TextAsset CSVFileReward;
 
         public Wave GetSpawnWaveInfo(string id)
         {
@@ -98,7 +101,7 @@ namespace Sources.DataBaseSystem
         {
             if (!_waveMoreInfoCache.ContainsKey(waveId))
             {
-                var waveInfo = _waveMoreInfo.Find(x => x.WaveId == waveId);
+                var waveInfo = _waveMoreInfos.Find(x => x.WaveId == waveId);
                 _waveMoreInfoCache.Add(waveId, waveInfo);
             }
 
@@ -116,13 +119,13 @@ namespace Sources.DataBaseSystem
 
         private EnemiesConfig _enemiesConfig;
 
-        [Button]
+        [Button, TabGroup("Wave Spawn")]
         public void ReadFile()
         {
             _waveSpawn.Clear();
 
-            _datas = CSVFile.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
-            string[] lines = CSVFile.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            _datas = CSVFileWaveSpawn.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = CSVFileWaveSpawn.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             _rowCount = lines.Length;
             _columnCount = _datas.Length / _rowCount;
@@ -248,6 +251,26 @@ namespace Sources.DataBaseSystem
         }
 #endif
 
+#if UNITY_EDITOR
+
+        [Button, TabGroup("Wave Info")]
+        public void ReadFileWaveReward()
+        {
+            _datas = CSVFileReward.text.Split(new string[] { ",", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = CSVFileReward.text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            _rowCount = lines.Length;
+            _columnCount = _datas.Length / _rowCount;
+
+            for (int i = 0; i < _waveMoreInfos.Count; i++)
+            {
+                var reward = _datas[_columnCount * (i + 1) + 1];
+                _waveMoreInfos[i].CoinRewards = int.Parse(reward);
+            }
+        }
+
+#endif
+
 //#if UNITY_EDITOR
 //        [Button]
 //        public void Creat()
@@ -268,14 +291,14 @@ namespace Sources.DataBaseSystem
 //                }
 
 //                wave.WaveId = $"wave-{waveNum}";
-//                _waveMoreInfo.Add(wave);
+//                _waveMoreInfos.Add(wave);
 //            }
 //        }
 
 //        [Button]
 //        public void Clear()
 //        {
-//            _waveMoreInfo.Clear();
+//            _waveMoreInfos.Clear();
 //        }
 
 //        [Button]
@@ -283,7 +306,7 @@ namespace Sources.DataBaseSystem
 //        {
 //            for (int i = indexBegin - 1; i < indexFinish; i++)
 //            {
-//                _waveMoreInfo[i].Sprite = sprite;
+//                _waveMoreInfos[i].Sprite = sprite;
 //            }
 //        }
 //#endif

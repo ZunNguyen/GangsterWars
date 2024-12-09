@@ -17,6 +17,9 @@ namespace Game.CanvasInGamePlay.HPBar
         private Canvas _canvas;
         private IDisposable _disposedHpBar;
 
+        private Vector3 _screenPos;
+        private Vector2 _anchoredPos;
+
         [SerializeField] private RectTransform _rectTransformObject;
 
         public override void OnSetUp(){}
@@ -43,12 +46,12 @@ namespace Game.CanvasInGamePlay.HPBar
                 {
                     try
                     {
+                        _worldTransformObject = null;
                         _disposedHpBar?.Dispose();
                         _spawnerManager.Release(gameObject);
                     }
                     catch { }
                 }
-
             }).AddTo(this);
         }
 
@@ -60,12 +63,11 @@ namespace Game.CanvasInGamePlay.HPBar
 
         private void SetPos()
         {
-            Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, _worldTransformObject.position);
+            _screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, _worldTransformObject.position);
 
-            Vector2 anchoredPos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, screenPos, _canvas.worldCamera, out anchoredPos);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, _screenPos, _canvas.worldCamera, out _anchoredPos);
 
-            _rectTransformObject.anchoredPosition = anchoredPos;
+            _rectTransformObject.anchoredPosition = _anchoredPos;
         }
     }
 }

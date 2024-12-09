@@ -49,6 +49,8 @@ namespace Game.Character.Bomber
 
         public override void Moving()
         {
+            if (_mainGamePlaySystem.SpawnEnemiesHandler.Enemies.Count == 0) return;
+
             var enemyTarget = _mainGamePlaySystem.SpawnEnemiesHandler.Enemies[0];
             if (enemyTarget == null) return;
 

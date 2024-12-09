@@ -323,7 +323,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8657200545767037454}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -467,18 +467,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991104323713347375}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6840238497595111721}
-  m_Father: {fileID: 6957705062913681057}
-  m_RootOrder: 1
+  m_Father: {fileID: 1310530064279470696}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 387.34845, y: -50}
+  m_AnchoredPosition: {x: 387.34845, y: -100}
   m_SizeDelta: {x: 239.6969, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5820857045462825796
@@ -837,7 +837,7 @@ GameObject:
   - component: {fileID: 1424082740208128480}
   - component: {fileID: 2556069138775362189}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,13 +850,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791903738967882415}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1658534816175408016}
-  m_RootOrder: 4
+  m_Father: {fileID: 1310530064279470696}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1067,7 +1067,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5440478016120422794}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1407,7 +1407,7 @@ RectTransform:
   - {fileID: 2547180438538830864}
   - {fileID: 2636506592780517215}
   - {fileID: 9110064291125964454}
-  - {fileID: 5430667729717875615}
+  - {fileID: 1310530064279470696}
   m_Father: {fileID: 7303247458430885644}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1613,12 +1613,12 @@ RectTransform:
   - {fileID: 8643541008353890106}
   - {fileID: 8620960400286179790}
   - {fileID: 4419366209168997350}
-  m_Father: {fileID: 8657200545767037454}
-  m_RootOrder: 0
+  m_Father: {fileID: 1310530064279470696}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 300}
+  m_AnchoredPosition: {x: -60, y: -4}
   m_SizeDelta: {x: 600, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5043723966448722641
@@ -2007,7 +2007,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1172743427258591511}
-  - {fileID: 8866572414774077485}
   m_Father: {fileID: 1658534816175408016}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2050,12 +2049,12 @@ RectTransform:
   - {fileID: 8285742817909696964}
   - {fileID: 1081524165910953537}
   - {fileID: 2359845755714349604}
-  m_Father: {fileID: 5440478016120422794}
-  m_RootOrder: 0
+  m_Father: {fileID: 1310530064279470696}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 229, y: -124}
+  m_AnchoredPosition: {x: -66.79999, y: 44.900024}
   m_SizeDelta: {x: 600, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2627184534638028143
@@ -2469,7 +2468,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6232034029031763709}
   - {fileID: 3505938186260363140}
   m_Father: {fileID: 2547180438538830864}
   m_RootOrder: 3
@@ -2554,6 +2552,7 @@ MonoBehaviour:
   _fee: {fileID: 6328133486028221974}
   _unlockMe: {fileID: 3505938186260363140}
   _boxCharacter: {fileID: 4739097447360561108}
+  _blackBG: {fileID: 1791903738967882415}
   _tabHandler: {fileID: 3543051194000745451}
 --- !u!114 &7730122010194633149
 MonoBehaviour:
@@ -3209,6 +3208,46 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &7856359043002738620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1310530064279470696}
+  m_Layer: 0
+  m_Name: BlackBG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1310530064279470696
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856359043002738620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5430667729717875615}
+  - {fileID: 6232034029031763709}
+  - {fileID: 6112639828049184221}
+  - {fileID: 8866572414774077485}
+  m_Father: {fileID: 1658534816175408016}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8019879548932037661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,7 +3427,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6112639828049184221}
   - {fileID: 404637273444526443}
   m_Father: {fileID: 2547180438538830864}
   m_RootOrder: 2
@@ -3473,6 +3511,7 @@ MonoBehaviour:
   _fee: {fileID: 6588191842346608655}
   _unlockMe: {fileID: 404637273444526443}
   _boxCharacter: {fileID: 3984723495982680103}
+  _blackBG: {fileID: 1791903738967882415}
   _tabHandler: {fileID: 3543051194000745451}
 --- !u!114 &1423503145363236062
 MonoBehaviour:

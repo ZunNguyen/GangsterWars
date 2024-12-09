@@ -18,7 +18,7 @@ namespace Game.Character.Enemy.Abstract
 {
     public abstract class EnemyControllerAbstract : MonoBehaviour
     {
-        private const float _speed = 1f;
+        private const float _speed = 0.7f;
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
@@ -130,6 +130,7 @@ namespace Game.Character.Enemy.Abstract
 
         private void OnDisposable()
         {
+            _disposableIsDeath?.Dispose();
             _disposableDirection?.Dispose();
             _disposableIsAttacking?.Dispose();
         }
@@ -138,8 +139,8 @@ namespace Game.Character.Enemy.Abstract
         {
             await UniTask.Delay(2000);
 
-            _spawnerManager.Release(this);
             _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
+            _spawnerManager.Release(gameObject);
         }
     }
 }

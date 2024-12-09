@@ -24,14 +24,12 @@ namespace Sources.GamePlaySystem.Character
 
         public override async UniTask Init()
         {
-            if (_userProfile.BomberDatas == null) return;
-
-            ReloadTimeHandler.OnSetUp(_timeReload);
         }
 
         public void OnSetUp()
         {
             if (_userProfile.BomberDatas == null) return;
+            ReloadTimeHandler.OnSetUp(_timeReload);
             BomHandler.OnSetUp(_userProfile.BomberDatas, ReloadTimeHandler, _bomberConfig);
         }
     }
