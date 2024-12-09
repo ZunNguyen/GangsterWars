@@ -44,18 +44,12 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
             _availableEnemyHandlers.Add(enemyHandlerCache);
             _activeEnemyHandlers.Remove(enemyHandlerCache);
-
-            Debug.Log($"activeEnemyHandlers : {_activeEnemyHandlers.Count}");
-            Debug.Log($"availableEnemyHandlers : {_availableEnemyHandlers.Count}");
         }
 
         private void MoveToActiveList(EnemyHandler enemyHandler)
         {
             _activeEnemyHandlers.Add(enemyHandler);
             _availableEnemyHandlers.Remove(enemyHandler);
-
-            Debug.Log($"activeEnemyHandlers : {_activeEnemyHandlers.Count}");
-            Debug.Log($"availableEnemyHandlers : {_availableEnemyHandlers.Count}");
         }
 
         public void SubstractHpTotal(int damge)
