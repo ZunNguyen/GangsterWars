@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Game.Character.Enemy.Abstract;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Game.CanvasInGamePlay.Controller;
+using Sources.GamePlaySystem.GameResult;
 
 namespace Game.PosSpawnEnemies
 {
@@ -21,10 +22,12 @@ namespace Game.PosSpawnEnemies
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+        private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
 
-        private Dictionary<string, EnemyControllerAbstract> _enemiesCache = new Dictionary<string, EnemyControllerAbstract>();
+        private bool _isEndGame = false;
         private int _indexPos;
         private Vector3 _offsetPos;
+        private Dictionary<string, EnemyControllerAbstract> _enemiesCache = new Dictionary<string, EnemyControllerAbstract>();
 
         [SerializeField] private CanvasInGamePlayController _canvasInGamePlayController;
         [SerializeField] private Transform _enemiesHolder;
@@ -39,11 +42,18 @@ namespace Game.PosSpawnEnemies
                 if (value == null) return;
                 SpawnEnemy(value);
             }).AddTo(this);
+
+            _gameResultSystem.IsUserWin += EndGame;
+        }
+
+        private void EndGame(bool isEndGame)
+        {
+            _isEndGame = true;
         }
 
         private void SpawnEnemy(Enemy enemy)
         {
-            if (!enemy.IndexPos.Contains(_indexPos)) return;
+            if (!enemy.IndexPos.Contains(_indexPos) || _isEndGame) return;
 
             var enemyId = enemy.EnemyId;
 

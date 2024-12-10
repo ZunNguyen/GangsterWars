@@ -43,7 +43,7 @@ namespace Game.Character.Enemy.Abstract
 
         public abstract void OnAttack();
 
-        private void OnDisposable()
+        public void OnDisposable()
         {
             _disposableAniamtionState?.Dispose();
         }

@@ -33,17 +33,17 @@ MonoBehaviour:
       PercentChance: 50
     - Id: wave-04
       Damage: 6
-      Hp: 30
+      Hp: 20
       coinReward: {x: 8, y: 20}
       PercentChance: 50
     - Id: wave-05
       Damage: 8
-      Hp: 50
+      Hp: 30
       coinReward: {x: 10, y: 23}
       PercentChance: 50
     - Id: wave-06
       Damage: 10
-      Hp: 100
+      Hp: 50
       coinReward: {x: 15, y: 26}
       PercentChance: 50
     - Id: wave-07
@@ -237,22 +237,22 @@ MonoBehaviour:
       PercentChance: 50
     - Id: wave-04
       Damage: 6
-      Hp: 30
+      Hp: 20
       coinReward: {x: 8, y: 20}
       PercentChance: 50
     - Id: wave-05
       Damage: 8
-      Hp: 50
+      Hp: 30
       coinReward: {x: 10, y: 23}
       PercentChance: 50
     - Id: wave-06
       Damage: 10
-      Hp: 100
+      Hp: 50
       coinReward: {x: 15, y: 26}
       PercentChance: 50
     - Id: wave-07
       Damage: 12
-      Hp: 200
+      Hp: 100
       coinReward: {x: 20, y: 30}
       PercentChance: 50
     - Id: wave-08
