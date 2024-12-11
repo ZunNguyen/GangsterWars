@@ -29,6 +29,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             if (_availableEnemyHandlers.Count == 0)
             {
                 var newEnemyHandler = new EnemyHandler();
+                newEnemyHandler.SetUpFirst();
                 _availableEnemyHandlers.Add(newEnemyHandler);
             }
 
@@ -40,6 +41,10 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public void MoveToAvailableList(EnemyHandler enemyHandler)
         {
             var index = _activeEnemyHandlers.IndexOf(enemyHandler);
+
+            // I don't know why sometime, occur out of range error
+            if (index == -1) return;
+            
             var enemyHandlerCache = _activeEnemyHandlers[index];
 
             _availableEnemyHandlers.Add(enemyHandlerCache);

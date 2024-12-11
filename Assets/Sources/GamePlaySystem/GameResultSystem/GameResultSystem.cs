@@ -64,6 +64,7 @@ namespace Sources.GamePlaySystem.GameResult
         }
         private void UserLose()
         {
+            GetWaveIdCurrent();
             IsUserWin?.Invoke(false);
         }
 

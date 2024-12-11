@@ -57,6 +57,7 @@ namespace Game.Character.Enemy.Abstract
         {
             IndexPos = indexPos;
 
+            _enemyHandler = null;
             _enemyHandler = _mainGamePlaySystem.EnemiesController.GetAvailableEnemyHandler();
             _enemyHandler.OnSetUp(enemyId);
             canvasInGamePlayController.OnSetUpHpBar(_hpBarPos, _enemyHandler);

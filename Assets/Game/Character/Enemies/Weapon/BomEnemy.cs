@@ -45,7 +45,6 @@ namespace Game.Character.Enemy.Weapon
 
         private void SetEnabled(bool status)
         {
-            _audioManager.Play(AudioKey.SFX_BOOM_01);
             _animator.enabled = status;
         }
 
@@ -66,6 +65,7 @@ namespace Game.Character.Enemy.Weapon
         {
             await UniTask.Delay(500);
             SetEnabled(true);
+            _audioManager.Play(AudioKey.SFX_BOOM_01);
             base.DamageUser();
         }
     }

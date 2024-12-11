@@ -8,7 +8,7 @@ namespace Game.Character.Enemy.Shoot
     {
         protected override void OnTriggerToStop(Collider2D collision)
         {
-            if (collision.tag == CollisionTagKey.STOP_POINT && !_isAttacking) _enemyHandler.OnAttack();
+            if (collision.tag == CollisionTagKey.STOP_POINT && !_isAttacking) _enemyHandler.HaveColliderInFace();
         }
     }
 }

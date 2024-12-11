@@ -54,6 +54,8 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
+        private bool _isHaveColliderInFace;
+        private bool _isEndGame;
         private int _timeReload;
         public int CoinsReward { get; private set; }
         public int HpMax { get; private set; }
@@ -77,7 +79,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         {
             _disposableShieldState = _mainGamePlaySystem.UserRecieveDamageHandler.ShieldCurrentState.Subscribe(value =>
             {
-                if (value == ShieldState.Empty) OnWalk();
+                if (value == ShieldState.Empty) OnAction();
             });
         }
 
@@ -89,7 +91,9 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         public void OnSetUp(string enemyId)
         {
             GetEnemyInfo(enemyId);
-            OnWalk();
+            _isHaveColliderInFace = false;
+            _isEndGame = false;
+            OnAction();
         }
 
         private void GetEnemyInfo(string enemyId)
@@ -105,15 +109,57 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             _timeReload = enemy.TimeToReload;
         }
 
-        private void OnWalk()
+        private void OnAction()
+        {
+            if (_isEndGame) return;
+
+            if (_isHaveColliderInFace)
+            {
+                SetIdle();
+                Attack();
+            }
+            else SetWalk();
+        }
+
+        public void HaveColliderInFace()
+        {
+            _isHaveColliderInFace = true;
+            OnAction();
+        }
+
+        private void EndGame(bool isUserWin)
+        {
+            _isEndGame = true;
+            if (!isUserWin) SetIdle();
+        }
+
+        private void Attack()
+        {
+            IsAttacking.Value = true;
+            AniamtionState.Value = AnimationState.Attack;
+        }
+
+        private void SetIdle()
+        {
+            AniamtionState.Value = AnimationState.Idle;
+            Direction.Value = Vector2.zero;
+        }
+
+        private void SetWalk()
         {
             AniamtionState.Value = AnimationState.Walk;
             Direction.Value = Vector2.left;
         }
 
-        private void EndGame(bool result)
+        public async void DamageUser(TypeDamageUser type)
         {
-            OnIdle();
+            AniamtionState.Value = AnimationState.Idle;
+            _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value, type);
+
+            await UniTask.Delay(_timeReload);
+            IsAttacking.Value = false;
+
+            OnAction();
         }
 
         public void SubstractHp(int damage, string collision)
@@ -134,7 +180,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
             HpCurrent.Value -= damageRecieve;
             HpCurrent.Value = Math.Max(0, HpCurrent.Value);
-            
+
             CheckDeath();
         }
 
@@ -143,40 +189,15 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             if (HpCurrent.Value <= 0)
             {
                 _mainGamePlaySystem.EnemiesController.MoveToAvailableList(this);
-                OnDeath();
+                Death();
             }
         }
 
-        private void OnDeath()
+        private void Death()
         {
             _audioManager.Play(AudioKey.SFX_ENEMY_DEATH);
             Direction.Value = Vector2.zero;
             AniamtionState.Value = AnimationState.Death;
-        }
-
-        public void OnAttack()
-        {
-            IsAttacking.Value = true;
-
-            OnIdle();
-
-            AniamtionState.Value = AnimationState.Attack;
-        }
-
-        private void OnIdle()
-        {
-            AniamtionState.Value = AnimationState.Idle;
-            Direction.Value = Vector2.zero;
-        }
-
-        public async void DamageUser(TypeDamageUser type)
-        {
-            AniamtionState.Value = AnimationState.Idle;
-            _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value, type);
-
-            await UniTask.Delay(_timeReload);
-
-            IsAttacking.Value = false;
         }
 
         private void OnDestroy()

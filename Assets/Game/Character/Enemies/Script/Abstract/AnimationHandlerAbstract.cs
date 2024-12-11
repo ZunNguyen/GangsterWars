@@ -9,24 +9,11 @@ namespace Game.Character.Enemy.Abstract
 {
     public abstract class AnimationHandlerAbstract : MonoBehaviour
     {
-        private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
-
         private IDisposable _disposableAniamtionState;
         
         protected EnemyHandler _enemyHandler;
 
         [SerializeField] private Animator _animator;
-
-        private void Start()
-        {
-            _gameResultSystem.IsUserWin += EndGame;
-        }
-
-        private void EndGame(bool result)
-        {
-            OnDisposable();
-            if (!result) _animator.SetTrigger("Idle");
-        }
 
         public virtual void OnSetUp(EnemyHandler enemyHandler)
         {
