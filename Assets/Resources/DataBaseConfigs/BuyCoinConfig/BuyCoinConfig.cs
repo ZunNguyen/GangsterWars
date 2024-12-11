@@ -22,6 +22,9 @@ namespace Sources.DataBaseSystem
         [SerializeField] private List<BuyCoinInfo> _buyCoinInfos;
         private Dictionary<string, BuyCoinInfo> _buyCoinInfoCache = new();
 
+        [SerializeField] private int _countCoinIcon;
+        public int CountCoinIcon => _countCoinIcon;
+
         public BuyCoinInfo GetBuyCoinInfo(string id)
         {
             if (!_buyCoinInfoCache.ContainsKey(id))
@@ -31,6 +34,11 @@ namespace Sources.DataBaseSystem
             }
 
             return _buyCoinInfoCache[id];
+        }
+
+        public List<BuyCoinInfo> GetAllInfos()
+        {
+            return _buyCoinInfos;
         }
     }
 }

@@ -1,3 +1,4 @@
+using Sources.AdMob;
 using Sources.Audio;
 using Sources.Command;
 using Sources.DataBaseSystem;
@@ -63,6 +64,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitEventSystemService());
             serviceGroup.Add(new InitAudioManagerService(_audioData, _audioObjectInstance));
             serviceGroup.Add(new InitLanaguageTableService(_languageTable));
+            serviceGroup.Add(new InitAdMobSystemService());
 
             return serviceGroup;
         }

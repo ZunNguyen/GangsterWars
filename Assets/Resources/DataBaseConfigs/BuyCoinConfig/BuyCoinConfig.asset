@@ -25,3 +25,4 @@ MonoBehaviour:
   - Id: pack-04
     Sprite: {fileID: 21300000, guid: 048c8cbaee0f34c45941a4094e1b26a5, type: 3}
     Value: 500
+  _countCoinIcon: 5

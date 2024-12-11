@@ -8,7 +8,6 @@ using Sources.GamePlaySystem.MainMenuGame.Store;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
 using Sources.Utils.String;
-using System;
 using UniRx;
 
 namespace Sources.GamePlaySystem.MainMenuGame
@@ -27,7 +26,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
         TabGun,
         TabBom,
         TabSniper,
-        TabShield
+        TabShield,
+        TabCoin
     }
 
     public class StoreSystem : BaseSystem
@@ -44,6 +44,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
         public SniperStoreHandler SniperStoreHandler { get; private set; }
         public ShieldStoreHandler ShieldStoreHandler { get; private set; }
 
+        public Store.StoreBuyCoinHandler StoreBuyCoinHandler { get; private set; } = new();
+
         public ReactiveProperty<bool> OpenBomberStore { get; private set; } = new (false);
         public ReactiveProperty<bool> OpenSniperStore { get; private set; } = new (false);
 
@@ -55,6 +57,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
             SetBomberStore();
             SetSniperStore();
             SetShieldStore();
+
+            StoreBuyCoinHandler.OnSetUp();
         }
 
         private void SetLeaderStore()
