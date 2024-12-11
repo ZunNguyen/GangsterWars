@@ -43,7 +43,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             base.OnSetUp();
 
-            ChoseShield(_userProfile.ShieldDatas[0].Id);
+            var shieldDataChosed = _userProfile.GetShieldDataCurrent();
+            ChoseShield(shieldDataChosed.Id);
         }
 
         protected override void SetWeaponViewModels()
@@ -128,8 +129,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             foreach(var weaponViewModel in WeaponWiewModels)
             {
-                if (weaponViewModel.Key == shieldId) weaponViewModel.Value.IsChosed?.Invoke(true);
-                else weaponViewModel.Value.IsChosed?.Invoke(false);
+                if (weaponViewModel.Key == shieldId) weaponViewModel.Value.IsChosed.Value = true;
+                else weaponViewModel.Value.IsChosed.Value = false;
             }
 
             _userProfile.ChoseShield(shieldId);

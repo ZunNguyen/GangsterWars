@@ -27,8 +27,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public ReactiveProperty<int> LevelUpgradeFee = new(0);
         public ReactiveProperty<int> ReloadFee = new(0);
         public ReactiveProperty<string> WeaponValue = new(); // if weapon -> is count bullet, if shield -> is state
+        public ReactiveProperty<bool> IsChosed = new();
         public List<string> LevelUpgradeIdsPassed = new();
-        public Action<bool> IsChosed;
         public int UnlockFee;
     }
 

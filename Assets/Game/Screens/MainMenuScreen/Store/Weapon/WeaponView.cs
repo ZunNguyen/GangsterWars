@@ -216,9 +216,7 @@ namespace Game.Screens.MainMenuScreen
             {
                 _shieldStoreHandler = shieldStoreHandler;
                 _checkList.SetActive(true);
-                _weaponViewModel.IsChosed += SubscribeCheckList;
-
-                _shieldStoreHandler.ChoseShield(_weaponId);
+                _weaponViewModel.IsChosed.Subscribe(SubscribeCheckList).AddTo(this);
             }
         }
 
@@ -266,14 +264,6 @@ namespace Game.Screens.MainMenuScreen
             {
                 transform.DOScale(Vector3.one, _duration);
             });
-        }
-
-        private void OnDestroy()
-        {
-            if (_weaponViewModel?.IsChosed != null)
-            {
-                _weaponViewModel.IsChosed -= SubscribeCheckList;
-            }
         }
     }
 }

@@ -10,6 +10,7 @@ using DG.Tweening;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.Audio;
 using Sources.Extension;
+using Game.ShakeCamera;
 
 namespace Game.UserReceiveDamage.Shield
 {
@@ -30,8 +31,11 @@ namespace Game.UserReceiveDamage.Shield
 
         private float _ogirinalX;
         private float _targetMoveX;
+        private bool _isFirstSub = true;
 
+        [SerializeField] private CameraShake _cameraShake;
         [SerializeField] private SpriteRenderer _iconShield;
+        [SerializeField] private PolygonCollider2D _polygonCollider;
 
         private void Awake()
         {
@@ -52,13 +56,12 @@ namespace Game.UserReceiveDamage.Shield
         {
             _mainGamePlaySystem.UserRecieveDamageHandler.ShieldCurrentState.Subscribe(value =>
             {
-                if (value == ShieldState.Empty)
-                {
-                    gameObject.SetActive(false);
-                    return;
-                }
+                if (value == ShieldState.Empty) _polygonCollider.enabled = false;
 
                 _iconShield.sprite = _shieldInfo.GetIconShield(value);
+
+                if (!_isFirstSub) _cameraShake.Shake(0.5f, 0.5f);
+                if (_isFirstSub) _isFirstSub = false;
             }).AddTo(this);
         }
 

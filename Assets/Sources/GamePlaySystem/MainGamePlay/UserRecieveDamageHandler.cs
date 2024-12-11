@@ -14,9 +14,8 @@ namespace Sources.GamePlaySystem.MainGamePlay
     public enum ShieldState
     {
         Full = 100, // 100%
-        ThreeQuarter = 75, // 75%
-        Half = 50, // 50%
-        Quarter = 25, // 25%
+        TwoThird = 65, // 65%
+        OneThird = 35, // 35%
         Empty = 0, // 0%
     }
 
@@ -70,17 +69,13 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         private ShieldState GetShieldState()
         {
-            if (_hpCurrentShield > _maxHpShield * 0.5f && _hpCurrentShield <= _maxHpShield * 0.75f)
+            if (_hpCurrentShield > _maxHpShield * 0.35f && _hpCurrentShield <= _maxHpShield * 0.65f)
             {
-                return ShieldState.ThreeQuarter;
+                return ShieldState.TwoThird;
             }
-            if (_hpCurrentShield > _maxHpShield * 0.25f && _hpCurrentShield <= _maxHpShield * 0.5f)
+            if (_hpCurrentShield > 0 && _hpCurrentShield <= _maxHpShield * 0.35f)
             {
-                return ShieldState.Half;
-            }
-            if (_hpCurrentShield > 0 && _hpCurrentShield <= _maxHpShield * 0.25f)
-            {
-                return ShieldState.Quarter;
+                return ShieldState.OneThird;
             }
             if (_hpCurrentShield <= 0)
             {

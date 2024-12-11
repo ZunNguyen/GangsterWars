@@ -62,11 +62,11 @@ MonoBehaviour:
     IconStates:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 195c7df775ced254ba2ab75ac713e3a0, type: 3}
-    - ShieldStates: 75
+    - ShieldStates: 65
       Icon: {fileID: 21300000, guid: d963a94e9c51c6947bb96094f37dc094, type: 3}
-    - ShieldStates: 50
+    - ShieldStates: 35
       Icon: {fileID: 21300000, guid: eccbceafd9a585e48a327e492c5af600, type: 3}
-    - ShieldStates: 25
+    - ShieldStates: 0
       Icon: {fileID: 21300000, guid: 1ec81bb081768df4cbe630ac89db7feb, type: 3}
   - Id: shield-02
     Icon: {fileID: 21300000, guid: 70f264c5714d5084c8a6313991c2ded9, type: 3}
@@ -117,11 +117,11 @@ MonoBehaviour:
     IconStates:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 422529b59dc9d0f479e7d138558ee94c, type: 3}
-    - ShieldStates: 75
+    - ShieldStates: 65
       Icon: {fileID: 21300000, guid: 4959d4c6dd3c30b418290f46e1796627, type: 3}
-    - ShieldStates: 50
+    - ShieldStates: 35
       Icon: {fileID: 21300000, guid: 68fedda4970ae3e46848946d41ab83c5, type: 3}
-    - ShieldStates: 25
+    - ShieldStates: 0
       Icon: {fileID: 21300000, guid: 02fe7d470fb50ef4aa710c368a4217ea, type: 3}
   - Id: shield-03
     Icon: {fileID: 21300000, guid: 05f011cdcd862fb458e412a367297cd0, type: 3}
@@ -172,11 +172,11 @@ MonoBehaviour:
     IconStates:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 5d55571707dfe974c8c80ee3312e7899, type: 3}
-    - ShieldStates: 75
+    - ShieldStates: 65
       Icon: {fileID: 21300000, guid: e69282aa3f7a80b40a0d36196fd2ee44, type: 3}
-    - ShieldStates: 50
+    - ShieldStates: 35
       Icon: {fileID: 21300000, guid: a94521452155e9343bb2c9f1899468c5, type: 3}
-    - ShieldStates: 25
+    - ShieldStates: 0
       Icon: {fileID: 21300000, guid: e086f9f599b5f2443a214c8b3c97443f, type: 3}
   - Id: shield-04
     Icon: {fileID: 21300000, guid: e96b0d026f258e54497296df9d2e1a1d, type: 3}
@@ -227,9 +227,9 @@ MonoBehaviour:
     IconStates:
     - ShieldStates: 100
       Icon: {fileID: 21300000, guid: 402406ee5a429774db55eed819098ef8, type: 3}
-    - ShieldStates: 75
+    - ShieldStates: 65
       Icon: {fileID: 21300000, guid: e6d627a608d8cb8468d32db90556b612, type: 3}
-    - ShieldStates: 50
+    - ShieldStates: 35
       Icon: {fileID: 21300000, guid: 424dc9358e3800047a75600a22354ce5, type: 3}
-    - ShieldStates: 25
+    - ShieldStates: 0
       Icon: {fileID: 21300000, guid: 4737f4ae2bef22949a133b1c281b933e, type: 3}
