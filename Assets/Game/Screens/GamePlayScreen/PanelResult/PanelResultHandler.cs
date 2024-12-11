@@ -59,6 +59,8 @@ namespace Game.Screens.GamePlayScreen
         
         private void EndGame(bool isUserWin)
         {
+            _audioManager.PauseAudio(AudioKey.MENU_SONG);
+
             _blackBG.SetActive(true);
             _isUserWin = isUserWin;
             SetTitle();

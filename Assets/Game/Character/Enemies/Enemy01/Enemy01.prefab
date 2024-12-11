@@ -348,6 +348,7 @@ MonoBehaviour:
   _rb: {fileID: 1347303815}
   _hpBarPos: {fileID: 1885445821}
   _animationHander: {fileID: 3450843082116455791}
+  _spriteRenderer: {fileID: 418380562367955208}
 --- !u!1 &1022242828588234164
 GameObject:
   m_ObjectHideFlags: 0

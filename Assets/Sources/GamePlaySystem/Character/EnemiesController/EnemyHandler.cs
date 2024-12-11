@@ -45,7 +45,6 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
     public class EnemyHandler
     {
-        private const int _timeDelayAfterAttackUser = 1000;
         private const int _criticalRate = 50; //50%
         private const int _factorCritical = 2;
 
@@ -54,7 +53,8 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
-        
+
+        private int _timeReload;
         public int CoinsReward { get; private set; }
         public int HpMax { get; private set; }
         private IDisposable _disposableShieldState;
@@ -101,6 +101,8 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             Damage.Value = enemyWaveInfo.Damage;
 
             CoinsReward = GetRandom.GetCoinRandom(enemyWaveInfo.coinReward, enemyWaveInfo.PercentChance);
+
+            _timeReload = enemy.TimeToReload;
         }
 
         private void OnWalk()
@@ -172,7 +174,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             AniamtionState.Value = AnimationState.Idle;
             _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value, type);
 
-            await UniTask.Delay(_timeDelayAfterAttackUser);
+            await UniTask.Delay(_timeReload);
 
             IsAttacking.Value = false;
         }

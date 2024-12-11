@@ -15,6 +15,7 @@ namespace Sources.DataBaseSystem
         public string Id;
         [PreviewField(100, ObjectFieldAlignment.Center)]
         public GameObject EnemyPrefab;
+        public int TimeToReload;
         [ListDrawerSettings(ListElementLabelName = "GetDescription")]
         public List<WaveEnemy> WaveEnemies = new();
         public Dictionary<string, WaveEnemy> WaveEnemyCache { get; private set; } = new();

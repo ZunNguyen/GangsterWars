@@ -35,6 +35,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private int _maxHpUser;
         private int _maxHpShield;
         private int _hpCurrentShield;
+        private bool _isDeath;
         private ShieldData _shieldData;
 
         public int MaxHpBegin { get; private set; }
@@ -47,6 +48,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         public void OnSetUp()
         {
+            _isDeath = false;
             _maxHpTotal = GetMaxHp();
 
             HpCurrentUser.Value = _maxHpUser = (int)(_maxHpTotal * _percentHpUser);
@@ -116,7 +118,13 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         private void CheckDead()
         {
-            if (HpCurrentUser.Value <= 0) IsDead?.Invoke();
+            if (_isDeath) return;
+
+            if (HpCurrentUser.Value <= 0)
+            {
+                _isDeath = true;
+                IsDead?.Invoke();
+            }
         }
 
         public int GetTotalHpWhenEnd()

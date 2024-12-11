@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Game.CanvasInGamePlay.Controller;
 using Game.Character.Enemy.Abstract;
 using Game.Character.Sniper;
@@ -19,6 +20,7 @@ namespace Game.Character.Enemy.Abstract
     public abstract class EnemyControllerAbstract : MonoBehaviour
     {
         private const float _speed = 0.7f;
+        private const float _durationDoFade = 0.3f;
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
@@ -38,6 +40,7 @@ namespace Game.Character.Enemy.Abstract
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private Transform _hpBarPos;
         [SerializeField] private AnimationHandlerAbstract _animationHander;
+        [SerializeField] private SpriteRenderer _spriteRenderer;    
 
         private void Start()
         {
@@ -138,6 +141,11 @@ namespace Game.Character.Enemy.Abstract
         private async void ReleaseObject()
         {
             await UniTask.Delay(2000);
+
+            await _spriteRenderer.DOFade(0.8f, _durationDoFade).OnComplete(() =>
+            {
+                _spriteRenderer.DOFade(1f, _durationDoFade);
+            }).SetLoops(3);
 
             _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
             _spawnerManager.Release(gameObject);
