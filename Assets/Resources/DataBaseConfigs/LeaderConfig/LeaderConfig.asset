@@ -65,7 +65,7 @@ MonoBehaviour:
     ReloadTime: 1
   - Id: gun-02
     Icon: {fileID: 21300000, guid: 369e90ac1ad79bc46a5a336f88fb88b9, type: 3}
-    UnlockFee: 100
+    UnlockFee: 50
     LanguageId: Gun_DoublePistol
     LevelUpgrades:
     - Id: level-01
@@ -76,10 +76,6 @@ MonoBehaviour:
       LevelUpFee: 200
       ReloadFee: 80
       DamageOrHp: 4
-    - Id: level-03
-      LevelUpFee: 300
-      ReloadFee: 110
-      DamageOrHp: 6
     - Id: level-04
       LevelUpFee: 400
       ReloadFee: 140
