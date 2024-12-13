@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using Sources.Command;
 using System;
 
-namespace Sources.FTUE
+namespace Sources.FTUE.Command
 {
     public interface IFTUECommand : ICommand
     {
@@ -12,7 +12,7 @@ namespace Sources.FTUE
     [Serializable]
     public abstract class FTUECommand : IFTUECommand
     {
-        public string FullDescription => Description;
+        public string FullDescription => $"[{GetType().Name}] - {Description}";
         public abstract string Description { get; }
         public abstract UniTask Execute();
     }
