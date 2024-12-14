@@ -15,10 +15,7 @@ MonoBehaviour:
   FTUESequenceTable:
     FTUEMainMenu:
     - _completeTriggerKey: CompleteTrigger/MM_Welcome
-      _ftueCommands:
-      - rid: 4621832631308779524
-      - rid: 4621832631308779525
-      - rid: 4621832631308779526
+      _ftueCommands: []
   FTUEKey:
     _items:
     - Key: CompleteTrigger
@@ -27,23 +24,14 @@ MonoBehaviour:
     - Key: WaitPoint
       Values:
       - FinishOpenMainMenuScreen
+    - Key: WaitTapToNext
+      Values:
+      - TapToNext
     - Key: ViewModel
       Values:
       - MM_Leader
+    _nameScript: 
+    _pathHolder: 
   references:
     version: 2
-    RefIds:
-    - rid: 4621832631308779524
-      type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
-      data:
-        _waitPointKey: WaitPoint/FinishOpenMainMenuScreen
-    - rid: 4621832631308779525
-      type: {class: FTUEBlockUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
-      data:
-        _isOpen: 0
-    - rid: 4621832631308779526
-      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
-      data:
-        _uiTypeName: MainMenuScreen
-        _ftueViewModelKeys:
-        - ViewModel/MM_Leader
+    RefIds: []

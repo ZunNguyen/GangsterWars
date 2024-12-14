@@ -2,6 +2,7 @@ using Sources.AdMob;
 using Sources.Audio;
 using Sources.Command;
 using Sources.DataBaseSystem;
+using Sources.FTUE.System;
 using Sources.GameData;
 using Sources.GamePlaySystem.Character;
 using Sources.GamePlaySystem.CoinController;
@@ -74,6 +75,7 @@ namespace Game.Bootstrap
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
 
             serviceGroup.Add(new InitSaveGameDataSystemService());
+            serviceGroup.Add(new InitFTUESystemService());
             serviceGroup.Add(new InitOpenCharacterSystem());
             serviceGroup.Add(new InitStoreSystemService());
             serviceGroup.Add(new InitCoinControllerSystemService());

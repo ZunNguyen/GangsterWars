@@ -8,6 +8,7 @@ namespace Sources.FTUE.System
 
     public class FTUESystem : BaseSystem
     {
+        private bool _isTapToNextStep;
         private List<string> _ftueTriggerIds;
 
         public override UniTask Init()
@@ -18,6 +19,12 @@ namespace Sources.FTUE.System
         public async UniTask WaitForAtPoint(string triggerId)
         {
             await UniTask.WaitUntil(() => _ftueTriggerIds.Contains(triggerId));
+        }
+
+        public async UniTask WaitTapToNextStep()
+        {
+            _isTapToNextStep = false;
+            await UniTask.WaitUntil(() => _isTapToNextStep == true);
         }
     }
 }

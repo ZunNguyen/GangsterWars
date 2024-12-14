@@ -9,6 +9,9 @@ namespace Game.Screens.FTUEScreen
 {
     public class FTUEScreen : BaseUI
     {
-        
+        public void SetClickToNext()
+        {
+
+        }
     }
 }

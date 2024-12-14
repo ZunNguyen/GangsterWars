@@ -32,5 +32,18 @@ namespace Sources.FTUE.Config
             }
             return ids;
         }
+
+#if UNITY_EDITOR
+        [Space(30)]
+        [Header("Creat FTUE Key Script")]
+        [SerializeField] private string _nameScript;
+        [SerializeField] private string _pathHolder;
+
+        [Button]
+        private void CreateFTUEKey()
+        {
+
+        }
+#endif
     }
 }
