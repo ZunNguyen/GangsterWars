@@ -10,8 +10,8 @@ namespace Sources.FTUE.GameObject
         public List<string> FTUEViewModelKey { get; }
     }
 
-    public class FTUEViewModelBase : MonoBehaviour
+    public abstract class FTUEViewModelBase : MonoBehaviour, IFTUEVieModel
     {
-
+        public List<string> FTUEViewModelKey { get; }
     }
 }

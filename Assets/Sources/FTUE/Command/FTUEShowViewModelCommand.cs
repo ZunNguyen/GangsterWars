@@ -43,7 +43,7 @@ namespace Sources.FTUE.Command
                 return;
             }
 
-            var ftueViewModels = uiFTUEScreen.GetComponentsInChildren<IFTUEVieModel>();
+            var ftueViewModels = uiTypeName.GetComponentsInChildren<IFTUEVieModel>();
             var ftueViewModelsChoosed = new List<IFTUEVieModel>();
             foreach (var ftueViewModel in ftueViewModels)
             {

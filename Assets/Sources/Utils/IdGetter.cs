@@ -1,4 +1,5 @@
 using Sources.DataBaseSystem;
+using Sources.Language;
 using Sources.UISystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace Sources.Utils
     {
         private static DataBase _dataBase => DataBase.EditorInstance;
         private static UIData _uiData => UIData.ActiveUIData;
+        private static LanguageTable _languageTable => LanguageTable.Instance;
 
         public static IEnumerable GetAllFTUEKeyIds()
         {
@@ -28,6 +30,11 @@ namespace Sources.Utils
             }
 
             return uisName;
+        }
+
+        public static IEnumerable GetAllLanguageIds()
+        {
+            return _languageTable.LanguageItemIds;
         }
     }
 }
