@@ -12,9 +12,8 @@ namespace Sources.FTUE.Command
     {
         private FTUESystem _ftueSystem => Locator<FTUESystem>.Instance;
 
-        [SerializeField, ValueDropdown(nameof(_getKeyIds))]
+        [SerializeField, ValueDropdown(nameof(_getAllFTUEKey))]
         private string _waitPointKey;
-        private IEnumerable _getKeyIds => IdGetter.GetAllFTUEKeyIds();
 
         public override string Description => $"Wait at point {_waitPointKey}";
 

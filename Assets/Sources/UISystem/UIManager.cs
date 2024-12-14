@@ -94,6 +94,12 @@ namespace Sources.UISystem
             return _layers[layerName];
         }
 
+        public async UniTask Close<T>() where T : BaseUI
+        {
+            var uiName = typeof(T).Name;
+            await Close(uiName);
+        }
+
         public async UniTask Close(string uiName)
         {
             if (_uiShowing.TryGetValue(uiName, out BaseUI ui))
@@ -119,6 +125,18 @@ namespace Sources.UISystem
         public BaseUI GetUI(string uiName)
         {
             return _uiData.GetBaseUI(uiName);
+        }
+
+        public BaseUI GetUIShowing<T>() where T : BaseUI
+        {
+            var uiName = typeof(T).Name;
+            return GetUIShowing(uiName);
+        }
+
+        public BaseUI GetUIShowing(string uiName)
+        {
+            if (_uiShowing.TryGetValue(uiName, out BaseUI ui)) return ui;
+            return null;
         }
 
         private void DestroyUI(BaseUI ui)

@@ -45,6 +45,11 @@ namespace Sources.UISystem
             }
         }
 
+        public List<BaseUI> GetAllUIs()
+        {
+            return _uis;
+        }
+
         public List<string> GetUILayers()
         {
             if (_uiLayers.Count == 0) _uiLayers.Add("Default");
@@ -56,6 +61,7 @@ namespace Sources.UISystem
             return _uis.FirstOrDefault(ui => ui.name == uiName);
         }
 
+#if UNITY_EDITOR
         [Button]
         private void CreateNewUI(string uiName)
         {
@@ -176,5 +182,6 @@ namespace Sources.UISystem
         {
             _uis.RemoveAll(ui => ui == null);
         }
+#endif
     }
 }

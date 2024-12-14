@@ -1,16 +1,31 @@
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
+using Sources.UISystem;
+using Sources.Utils;
+using Sources.Utils.Singleton;
 using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Sources.FTUE.Command
 {
     [Serializable]
     public class FTUEShowUICommand : FTUECommand
     {
-        public override string Description => GetType().Name;
+        private UIManager _uiManager => Locator<UIManager>.Instance;
 
-        public override UniTask Execute()
+        [SerializeField, ValueDropdown(nameof(_getAllUIName))]
+        private string _uiTypeName;
+        private IEnumerable _getAllUIName => IdGetter.GetAllUIName();
+
+        public override string Description => $"Show ui {_uiTypeName}";
+
+        public override async UniTask Execute()
         {
-            throw new global::System.NotImplementedException();
+            var uiTargetShow = _uiManager.GetUIShowing(_uiTypeName);
+
+            if (uiTargetShow != null) return;
+            else await _uiManager.Show(_uiTypeName);
         }
     }
 }
