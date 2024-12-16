@@ -66,8 +66,11 @@ namespace Sources.DataBaseSystem
             if (!_configCache.ContainsKey(id))
             {
                 var config = _configs.Find(x => x.ID == id);
-                _configCache.Add(id, config);
-                return config;
+                if (config != null)
+                {
+                    _configCache.Add(id, config);
+                    return config;
+                }
             }
 
             return _configCache[id];

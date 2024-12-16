@@ -13,11 +13,102 @@ MonoBehaviour:
   m_Name: FTUEConfig
   m_EditorClassIdentifier: 
   FTUESequenceTables:
-    FTUEMainMenu: []
+    FTUEMainMenu:
+    - _completeTriggerKey: CompleteTrigger/MM_Welcome
+      _ftueCommands:
+      - rid: 4621832677252923400
+      - rid: 4621832677252923401
+      - rid: 4621832677252923403
+      - rid: 4621832682780753921
+      - rid: 4621832682780753923
+      - rid: 4621832686710030336
+      - rid: 4621832686710030337
+      - rid: 4621832686710030338
+      - rid: 4621832686710030339
+      - rid: 4621832686710030340
+      - rid: 4621832686710030342
+      - rid: 4621832686710030343
   FTUEKeyTables:
-    _items: []
+    _items:
+    - Key: CompleteTrigger
+      Values:
+      - MM_Welcome
+    - Key: WaitPoint
+      Values:
+      - FinishOpenMainMenuScreen
+    - Key: ViewModel
+      Values:
+      - MM_Leader
+      - MM_BoxChat
+      - MM_Store
+    - Key: WaitToNextStep
+      Values:
+      - TapToNextStep
     _nameScript: 
     _pathHolder: 
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4621832677252923400
+      type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _waitPointKey: WaitPoint/FinishOpenMainMenuScreen
+    - rid: 4621832677252923401
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: UIBlockerScreen
+        _isOpen: 1
+    - rid: 4621832677252923403
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 1
+    - rid: 4621832682780753921
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: MainMenuScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/MM_Leader
+        - ViewModel/MM_BoxChat
+        _ftueViewModelKeysClose: []
+    - rid: 4621832682780753923
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: MainMenuScreen
+        _languageId: FTUE_Welcome_1
+    - rid: 4621832686710030336
+      type: {class: FTUEWaitDelayTimeCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _delayMilisecond: 2000
+    - rid: 4621832686710030337
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: MainMenuScreen
+        _languageId: FTUE_Welcome_2
+    - rid: 4621832686710030338
+      type: {class: FTUEWaitDelayTimeCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _delayMilisecond: 2000
+    - rid: 4621832686710030339
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: MainMenuScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/MM_Store
+        _ftueViewModelKeysClose: []
+    - rid: 4621832686710030340
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: MainMenuScreen
+        _languageId: FTUE_Introduce_Store_1
+    - rid: 4621832686710030342
+      type: {class: FTUEWaitDelayTimeCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _delayMilisecond: 2000
+    - rid: 4621832686710030343
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: MainMenuScreen
+        _languageId: FTUE_Introduce_Store_2

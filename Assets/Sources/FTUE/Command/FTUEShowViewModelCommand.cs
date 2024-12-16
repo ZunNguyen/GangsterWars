@@ -36,10 +36,10 @@ namespace Sources.FTUE.Command
 
         public override async UniTask Execute()
         {
-            var uiTypeName = _uiManager.GetUIShowing(this._uiTypeName);
+            var uiTypeName = _uiManager.GetUIShowing(_uiTypeName);
             if (uiTypeName == null)
             {
-                Debug.Log($"UI {this._uiTypeName} not yet show");
+                Debug.Log($"UI {_uiTypeName} not yet show");
                 return;
             }
 

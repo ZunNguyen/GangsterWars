@@ -14,6 +14,10 @@ namespace Sources.FTUE.Command
     {
         private UIManager _uiManager => Locator<UIManager>.Instance;
 
+        [SerializeField, ValueDropdown(nameof(_getAllUIName))]
+        private string _uiTypeName;
+        private IEnumerable _getAllUIName => IdGetter.GetAllUIName();
+
         [SerializeField, ValueDropdown(nameof(GetAllLanguageIds))]
         private string _languageId;
         private IEnumerable GetAllLanguageIds => IdGetter.GetAllLanguageIds();
@@ -22,6 +26,13 @@ namespace Sources.FTUE.Command
 
         public override async UniTask Execute()
         {
+            var uiTypeName = _uiManager.GetUIShowing(_uiTypeName);
+            if (uiTypeName == null)
+            {
+                Debug.Log($"UI {_uiTypeName} not yet show");
+                return;
+            }
+
             var uiFTUEScreen = _uiManager.GetUIShowing<FTUEScreen>();
             if (uiFTUEScreen == null)
             {
@@ -29,20 +40,16 @@ namespace Sources.FTUE.Command
                 return;
             }
 
-            var ftueViewModels = uiFTUEScreen.GetComponentsInChildren<IFTUEVieModel>();
-            FTUELanguageText ftueLanguageText = new ();
+            var ftueViewModels = uiTypeName.GetComponentsInChildren<FTUEViewModel>();
             foreach (var model in ftueViewModels)
             {
-                if (model is FTUELanguageText FTUELanguageText)
+                foreach (var objectData in model.ObjectDatas)
                 {
-                    ftueLanguageText = FTUELanguageText;
-                    ftueLanguageText.OnSetUp(_languageId);
-                    return;
-                }
-                else
-                {
-                    Debug.Log($"FTUE Language Text not yet show");
-                    return;
+                    if (objectData.IsLanguageText)
+                    {
+                        model.SetLanguage(_languageId);
+                        return;
+                    }
                 }
             }
         }

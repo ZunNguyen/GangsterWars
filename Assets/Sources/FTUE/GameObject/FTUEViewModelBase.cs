@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace Sources.FTUE.GameObject
 {
-    public interface IFTUEVieModel
+    public interface IFTUEViewModel
     {
         public string FTUEViewModelKey { get; }
     }
 
-    public abstract class FTUEViewModelBase : MonoBehaviour, IFTUEVieModel
+    public abstract class FTUEViewModelBase : MonoBehaviour, IFTUEViewModel
     {
         [SerializeField, ValueDropdown(nameof(_getAllFTUEKeys))]
         private string _ftueViewModelKey;
