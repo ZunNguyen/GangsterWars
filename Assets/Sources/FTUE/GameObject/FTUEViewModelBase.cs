@@ -1,4 +1,6 @@
+using Sirenix.OdinInspector;
 using Sources.FTUE.Config;
+using Sources.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +9,15 @@ namespace Sources.FTUE.GameObject
 {
     public interface IFTUEVieModel
     {
-        public List<string> FTUEViewModelKey { get; }
+        public string FTUEViewModelKey { get; }
     }
 
     public abstract class FTUEViewModelBase : MonoBehaviour, IFTUEVieModel
     {
-        public List<string> FTUEViewModelKey { get; }
+        [SerializeField, ValueDropdown(nameof(_getAllFTUEKeys))]
+        private string _ftueViewModelKey;
+        public string FTUEViewModelKey => _ftueViewModelKey;
+
+        private IEnumerable _getAllFTUEKeys => IdGetter.GetAllFTUEKeyIds();
     }
 }

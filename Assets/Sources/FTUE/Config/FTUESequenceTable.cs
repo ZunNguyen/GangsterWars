@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using Sources.FTUE.Command;
 using Sources.Utils;
@@ -12,7 +13,7 @@ namespace Sources.FTUE.Config
     public class FTUESequenceTable
     {
         [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")] 
-        private List<FTUESequenceInfo> FTUEMainMenu;
+        public List<FTUESequenceInfo> FTUEMainMenu;
     }
 
     [Serializable]
@@ -32,6 +33,18 @@ namespace Sources.FTUE.Config
         private string GetDescription()
         {
             return _completeTriggerKey;
+        }
+
+        public async UniTask Execute()
+        {
+            int index = 0;
+            foreach (var command in _ftueCommands)
+            {
+                Debug.Log($"Start {index} {command.FullDescription}");
+                await command.Execute();
+                Debug.Log($"End {index} {command.FullDescription}");
+                index++;
+            }
         }
     }
 }

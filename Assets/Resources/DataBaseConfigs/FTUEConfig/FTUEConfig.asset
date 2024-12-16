@@ -12,24 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb8c46c14c2e184c9b9d7e85b8f03bf, type: 3}
   m_Name: FTUEConfig
   m_EditorClassIdentifier: 
-  FTUESequenceTable:
-    FTUEMainMenu:
-    - _completeTriggerKey: CompleteTrigger/MM_Welcome
-      _ftueCommands: []
-  FTUEKey:
-    _items:
-    - Key: CompleteTrigger
-      Values:
-      - MM_Welcome
-    - Key: WaitPoint
-      Values:
-      - FinishOpenMainMenuScreen
-    - Key: WaitTapToNext
-      Values:
-      - TapToNext
-    - Key: ViewModel
-      Values:
-      - MM_Leader
+  FTUESequenceTables:
+    FTUEMainMenu: []
+  FTUEKeyTables:
+    _items: []
     _nameScript: 
     _pathHolder: 
   references:

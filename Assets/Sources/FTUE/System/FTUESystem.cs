@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
+using Sources.DataBaseSystem;
 using Sources.SystemService;
+using Sources.Utils.Singleton;
 using System.Collections.Generic;
 
 namespace Sources.FTUE.System
@@ -8,12 +10,24 @@ namespace Sources.FTUE.System
 
     public class FTUESystem : BaseSystem
     {
-        private bool _isTapToNextStep;
-        private List<string> _ftueTriggerIds;
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private FTUEConfig _ftueConfig => _dataBase.GetConfig<FTUEConfig>();
 
-        public override UniTask Init()
+        private bool _isTapToNextStep;
+        private List<string> _ftueTriggerIds = new();
+
+        public override async UniTask Init()
         {
-            throw new global::System.NotImplementedException();
+            InitFTUEMainMenu();
+        }
+
+        private async void InitFTUEMainMenu()
+        {
+            var sequences = _ftueConfig.FTUESequenceTables.FTUEMainMenu;
+            foreach (var sequence in sequences)
+            {
+                await sequence.Execute();
+            }
         }
 
         public async UniTask WaitForAtPoint(string triggerId)
@@ -25,6 +39,18 @@ namespace Sources.FTUE.System
         {
             _isTapToNextStep = false;
             await UniTask.WaitUntil(() => _isTapToNextStep == true);
+        }
+
+        public void TriggerWaitPoint(string triggerId)
+        {
+            if (string.IsNullOrEmpty(triggerId)) return;
+
+            if (!_ftueTriggerIds.Contains(triggerId)) _ftueTriggerIds.Add(triggerId);
+        }
+
+        public void TriggerWaitToNextStep()
+        {
+            _isTapToNextStep = true;
         }
     }
 }

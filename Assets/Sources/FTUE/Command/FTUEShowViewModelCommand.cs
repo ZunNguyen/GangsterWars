@@ -36,43 +36,50 @@ namespace Sources.FTUE.Command
 
         public override async UniTask Execute()
         {
-            var uiTypeName = _uiManager.GetUIShowing(_uiTypeName);
+            var uiTypeName = _uiManager.GetUIShowing(this._uiTypeName);
             if (uiTypeName == null)
             {
-                Debug.Log($"UI {_uiTypeName} not yet show");
+                Debug.Log($"UI {this._uiTypeName} not yet show");
                 return;
             }
 
-            var uiFTUEScreen = _uiManager.GetUIShowing<FTUEScreen>();
+            var uiFTUEScreen = _uiManager.GetUIShowing<FTUEScreen>() as FTUEScreen;
             if (uiFTUEScreen == null)
             {
                 Debug.Log($"UI {uiFTUEScreen.name} not yet show");
                 return;
             }
 
-            if (_isShow) IsShow(uiTypeName);
-            else IsClose(uiFTUEScreen);
-        }
+            if (_isShow) IsShow();
+            else IsClose();
 
-        private void IsShow(BaseUI baseUI)
-        {
-            var ftueViewModels = baseUI.GetComponentsInChildren<IFTUEVieModel>();
-            var ftueViewModelsChoosed = new List<IFTUEVieModel>();
-            foreach (var ftueViewModel in ftueViewModels)
+            void IsShow()
             {
-                var isChoosed = _ftueViewModelKeysShow.Any(x => ftueViewModel.FTUEViewModelKey.Contains(x));
-                if (isChoosed) ftueViewModelsChoosed.Add(ftueViewModel);
+                var ftueViewModels = uiTypeName.GetComponentsInChildren<FTUEViewModel>();
+                var ftueViewModelsChoosed = new List<FTUEViewModel>();
+                foreach (var ftueViewModel in ftueViewModels)
+                {
+                    var isChoosed = _ftueViewModelKeysShow.Any(x => ftueViewModel.FTUEViewModelKey.Contains(x));
+                    if (isChoosed) ftueViewModelsChoosed.Add(ftueViewModel);
+                }
+
+                uiFTUEScreen.SetUpViewModel(ftueViewModelsChoosed);
             }
-        }
 
-        private void IsClose(BaseUI baseUI)
-        {
-            var ftueViewModels = baseUI.GetComponentsInChildren<IFTUEVieModel>();
-            var ftueViewModelsChoosed = new List<IFTUEVieModel>();
-            foreach (var ftueViewModel in ftueViewModels)
+            void IsClose()
             {
-                var isChoosed = _ftueViewModelKeysShow.Any(x => ftueViewModel.FTUEViewModelKey.Contains(x));
-                if (isChoosed) ftueViewModelsChoosed.Add(ftueViewModel);
+                var ftueViewModels = uiFTUEScreen.GetComponentsInChildren<FTUEViewModel>();
+                var ftueViewModelsChoosed = new List<FTUEViewModel>();
+                foreach (var ftueViewModel in ftueViewModels)
+                {
+                    var isChoosed = _ftueViewModelKeysShow.Any(x => ftueViewModel.FTUEViewModelKey.Contains(x));
+                    if (isChoosed) ftueViewModelsChoosed.Add(ftueViewModel);
+                }
+
+                foreach (var ftueViewModel in ftueViewModelsChoosed)
+                {
+                    ftueViewModel.BackViewModelOrigin();
+                }
             }
         }
     }

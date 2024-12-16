@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Sources.FTUE.GameObject
 {
-    public class FTUELanguageText : MonoBehaviour
+    public class FTUELanguageText : FTUEViewModelBase
     {
         public void OnSetUp(string languageId)
         {

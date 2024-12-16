@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b730e207b4275c64d8701909c3540df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layer: 
+  _layer: BlockScreen
 --- !u!1 &8820068018295451461
 GameObject:
   m_ObjectHideFlags: 0

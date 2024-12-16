@@ -16,7 +16,7 @@ namespace Sources.Utils
         {
             var config = _dataBase.GetConfig<FTUEConfig>();
             if (config == null) return null;
-            return config.FTUEKey.GetAllKeyIds();
+            return config.FTUEKeyTables.GetAllKeyIds();
         }
 
         public static IEnumerable GetAllUIName()
