@@ -48,7 +48,6 @@ namespace Sources.FTUE.Command
                     if (objectData.IsLanguageText)
                     {
                         model.SetLanguage(_languageId);
-                        return;
                     }
                 }
             }

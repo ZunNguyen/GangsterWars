@@ -9,7 +9,7 @@ namespace Sources.DataBaseSystem
 {
     public class FTUEConfig : DataBaseConfig
     {
-        public FTUESequenceTable FTUESequenceTables;
+        public List<FTUESequenceTable> FTUESequenceTables;
         public FTUEKeyTable FTUEKeyTables;
     }
 }

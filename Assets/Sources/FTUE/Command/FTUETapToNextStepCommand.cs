@@ -16,9 +16,6 @@ namespace Sources.FTUE.Command
         private UIManager _uiManager => Locator<UIManager>.Instance;
         private FTUESystem _ftueSystem => Locator<FTUESystem>.Instance;
 
-        [SerializeField, ValueDropdown(nameof(_getAllFTUEKey))]
-        private string _waitNextToStepKey;
-
         public override string Description => $"Tap to Next Step";
 
         public override async UniTask Execute()

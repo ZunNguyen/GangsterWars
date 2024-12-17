@@ -21,7 +21,7 @@ namespace Sources.FTUE.Command
 
         [SerializeField] private bool _isOpen;
 
-        public override string Description => $"Show ui {_uiTypeName}";
+        public override string Description => $"Show UI {_uiTypeName}";
 
         public override async UniTask Execute()
         {

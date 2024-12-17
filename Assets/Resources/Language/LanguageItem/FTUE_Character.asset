@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0cb6ab1a27ee7e45a7cb7201a8ad417, type: 3}
-  m_Name: FTUE_Introduce_Store_4
+  m_Name: FTUE_Character
   m_EditorClassIdentifier: 
-  Id: FTUE_Introduce_Store_4
+  Id: FTUE_Character
   LanguageInfos:
   - LanguageName: Vietnamese
     Text: "\xC0, c\xF2n \u0111\xE2y l\xE0 t\u1ED5 \u0111\u1ED9i c\u1EE7a t\xF4i,
