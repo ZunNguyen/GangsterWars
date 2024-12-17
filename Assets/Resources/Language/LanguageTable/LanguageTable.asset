@@ -48,8 +48,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fcf7ccb41d18c0749a6a8698430d2137, type: 2}
   - {fileID: 11400000, guid: 71e72018ed161ce4ca0ecdbd40001bba, type: 2}
   - {fileID: 11400000, guid: 4fb463d63e1622b45972c2a21a04d217, type: 2}
+  - {fileID: 11400000, guid: 22a452f51c5b78e429154157f3072a2c, type: 2}
+  - {fileID: 11400000, guid: 6b1dc1bff39924d4380d45655a4e492c, type: 2}
+  - {fileID: 11400000, guid: cefed699ad78cf640a26db2cd6ee8825, type: 2}
   - {fileID: 11400000, guid: b6aa2c56963f399448238fbe3a45c885, type: 2}
   - {fileID: 11400000, guid: 1ee092f0e12f32949992b066b3aeae15, type: 2}
+  - {fileID: 11400000, guid: de41abe8b7cf3d341a47da02c6333985, type: 2}
+  - {fileID: 11400000, guid: 75598848179f4174ea31ded8236a8824, type: 2}
+  - {fileID: 11400000, guid: cd2244eb872ff1e408b853821174c8d9, type: 2}
   _languageDefault: Vietnamese
   _languageToDelete: Vietnamese
   _csvFile: {fileID: 4900000, guid: 3cf9e628b4486154588361edb3ae800e, type: 3}

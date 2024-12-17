@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0cb6ab1a27ee7e45a7cb7201a8ad417, type: 3}
-  m_Name: FTUE_Welcome_2
+  m_Name: FTUE_Welcome_4
   m_EditorClassIdentifier: 
-  Id: FTUE_Welcome_2
+  Id: FTUE_Welcome_4
   LanguageInfos:
   - LanguageName: Vietnamese
-    Text: "N\u01A1i li\xEAn t\u1EE5c x\u1EA3y ra nh\u1EEFng cu\u1ED9c chi\u1EBFn
-      gi\u1EEFa c\xE1c b\u0103ng \u0111\u1EA3ng"
+    Text: "Game \u0111\u01B0\u1EE3c th\u1EF1c hi\u1EC7n b\u1EDFi Ershen, c\u1EA3m
+      \u01A1n b\u1EA1n \u0111\xE3 tham gia!"
   - LanguageName: English
-    Text: A place where gang wars constantly occur
+    Text: The game is created by Ershen. Thank you for playing!

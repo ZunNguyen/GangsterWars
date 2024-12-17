@@ -12,6 +12,10 @@ namespace Sources.FTUE.Config
     [Serializable]
     public class FTUESequenceTable
     {
+        [SerializeField, ValueDropdown(nameof(GetAllFTUESequenceTableId))]
+        private string FTUESequenceTableId;
+        private IEnumerable GetAllFTUESequenceTableId => IdGetter.GetAllFTUEKeyIds();
+
         [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")] 
         public List<FTUESequenceInfo> FTUEMainMenu;
     }

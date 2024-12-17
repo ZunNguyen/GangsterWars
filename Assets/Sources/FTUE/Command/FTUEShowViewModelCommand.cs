@@ -19,10 +19,10 @@ namespace Sources.FTUE.Command
     {
         private UIManager _uiManager => Locator<UIManager>.Instance;
 
-        [SerializeField] private bool _isShow;
+        [SerializeField] private bool _isShow = false;
         private bool _isClose => !_isShow;
 
-        [SerializeField, ValueDropdown(nameof(_getAllUIName)), ShowIf(nameof(_isShow))] 
+        [SerializeField, ValueDropdown(nameof(_getAllUIName))] 
         private string _uiTypeName;
         private IEnumerable _getAllUIName => IdGetter.GetAllUIName();
 
@@ -32,7 +32,7 @@ namespace Sources.FTUE.Command
         [SerializeField, ValueDropdown(nameof(_getAllFTUEKey)), ShowIf(nameof(_isClose))]
         private List<string> _ftueViewModelKeysClose;
 
-        public override string Description => $"Show FTUE view model in {_uiTypeName}";
+        public override string Description => $"Show FTUE view model in {_uiTypeName} : {_isShow}";
 
         public override async UniTask Execute()
         {
@@ -68,11 +68,11 @@ namespace Sources.FTUE.Command
 
             void IsClose()
             {
-                var ftueViewModels = uiFTUEScreen.GetComponentsInChildren<FTUEViewModel>();
+                var ftueViewModels = uiTypeName.GetComponentsInChildren<FTUEViewModel>();
                 var ftueViewModelsChoosed = new List<FTUEViewModel>();
                 foreach (var ftueViewModel in ftueViewModels)
                 {
-                    var isChoosed = _ftueViewModelKeysShow.Any(x => ftueViewModel.FTUEViewModelKey.Contains(x));
+                    var isChoosed = _ftueViewModelKeysClose.Any(x => ftueViewModel.FTUEViewModelKey.Contains(x));
                     if (isChoosed) ftueViewModelsChoosed.Add(ftueViewModel);
                 }
 

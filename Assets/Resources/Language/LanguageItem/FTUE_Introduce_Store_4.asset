@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0cb6ab1a27ee7e45a7cb7201a8ad417, type: 3}
-  m_Name: FTUE_Welcome_2
+  m_Name: FTUE_Introduce_Store_4
   m_EditorClassIdentifier: 
-  Id: FTUE_Welcome_2
+  Id: FTUE_Introduce_Store_4
   LanguageInfos:
   - LanguageName: Vietnamese
-    Text: "N\u01A1i li\xEAn t\u1EE5c x\u1EA3y ra nh\u1EEFng cu\u1ED9c chi\u1EBFn
-      gi\u1EEFa c\xE1c b\u0103ng \u0111\u1EA3ng"
+    Text: "\xC0, c\xF2n \u0111\xE2y l\xE0 t\u1ED5 \u0111\u1ED9i c\u1EE7a t\xF4i,
+      h\xE3y c\u1ED1 g\u1EAFng m\u1EDF kh\xF3a h\u1ECD \u0111\u1EC3 gia t\u0103ng
+      s\u1EE9c m\u1EA1nh"
   - LanguageName: English
-    Text: A place where gang wars constantly occur
+    Text: Ah, and here is my squad. Try to unlock them to increase your strength

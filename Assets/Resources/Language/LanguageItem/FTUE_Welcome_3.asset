@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0cb6ab1a27ee7e45a7cb7201a8ad417, type: 3}
-  m_Name: FTUE_Welcome_2
+  m_Name: FTUE_Welcome_3
   m_EditorClassIdentifier: 
-  Id: FTUE_Welcome_2
+  Id: FTUE_Welcome_3
   LanguageInfos:
   - LanguageName: Vietnamese
-    Text: "N\u01A1i li\xEAn t\u1EE5c x\u1EA3y ra nh\u1EEFng cu\u1ED9c chi\u1EBFn
-      gi\u1EEFa c\xE1c b\u0103ng \u0111\u1EA3ng"
+    Text: "H\xE3y c\xF9ng b\u0103ng \u0111\u1EA3ng c\u1EE7a m\xECnh s\u1ED1ng s\xF3t
+      \u0111\u1EBFn cu\u1ED1i c\xF9ng n\xE0o!"
   - LanguageName: English
-    Text: A place where gang wars constantly occur
+    Text: Let's survive with your gang until the very end!
