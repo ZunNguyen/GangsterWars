@@ -73,4 +73,10 @@ namespace Sources.Extension
         public static string WAVE_ID_FIRST_EPISODE_4 = "wave-31";
         public static string WAVE_ID_MAX = "wave-40";
     }
+
+    public static class NameScenceKey
+    {
+        public static string NAME_SCENCE_MAIN_MENU = "MainMenu";
+        public static string NAME_SCENCE_GAME_PLAY = "GamePlay";
+    }
 }

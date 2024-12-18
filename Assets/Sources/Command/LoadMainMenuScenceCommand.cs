@@ -32,7 +32,7 @@ namespace Sources.Command
         {
             var sequenceGroup = new SequenceServiceCommandGroup("Load Main Menu Scene");
 
-            sequenceGroup.Add(new LoadSenceCommand("MainMenu"));
+            sequenceGroup.Add(new LoadSenceCommand(NameScenceKey.NAME_SCENCE_MAIN_MENU));
 
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
             await loadingScreen.PanelMoveIn();

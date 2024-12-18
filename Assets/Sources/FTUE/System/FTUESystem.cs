@@ -3,6 +3,7 @@ using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
+using System;
 using System.Collections.Generic;
 
 namespace Sources.FTUE.System
@@ -19,6 +20,9 @@ namespace Sources.FTUE.System
 
         private bool _isTapToNextStep;
         private List<string> _ftueTriggerIds = new();
+
+        public Action SpawnEnemyFTUE;
+        public Action PassFTUE;
 
         public override async UniTask Init()
         {
@@ -37,8 +41,12 @@ namespace Sources.FTUE.System
                     {
                         await ftueSequence.Execute();
                     }
+
+                    _ftueProfile.AddFTUEIdPass(sequenceTable.FTUESequenceTableId);
                 }
             }
+
+            PassFTUE?.Invoke();
         }
 
         public async UniTask WaitForAtPoint(string triggerId)
@@ -62,6 +70,11 @@ namespace Sources.FTUE.System
         public void TriggerWaitToNextStep()
         {
             _isTapToNextStep = true;
+        }
+
+        public void SpawnFTUEEnemy()
+        {
+            SpawnEnemyFTUE?.Invoke();
         }
     }
 }

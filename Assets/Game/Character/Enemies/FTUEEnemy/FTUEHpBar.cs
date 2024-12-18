@@ -1,28 +1,35 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
-using UniRx;
-using Cysharp.Threading.Tasks;
-using Sources.Utils.Singleton;
 
-namespace Sources.GamePlaySystem.MainGamePlay
+namespace Game.Character.Enemy.FTUE
 {
-    public abstract class HpHandlerAbstract : MonoBehaviour
+    public class FTUEHpBar : MonoBehaviour
     {
         private float _duration = 0.5f;
 
-        protected MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
-
         protected float _maxValue;
 
+        [SerializeField] private FTUEEnemyCtrl _enemyCtrl;
         [SerializeField] private Image _firstImage;
         [SerializeField] private Image _secondImage;
 
-        public abstract void OnSetUp();
-
-        protected async void ChangeValue(int value)
+        private void Start()
         {
-            ChangeFillAmount(value, _firstImage, _duration/4);
+            _maxValue = _enemyCtrl.HPEnemy.Value;
+            _enemyCtrl.HPEnemy.Subscribe(value =>
+            {
+                ChangeValue(value);
+
+                if (value <= 0) gameObject.SetActive(false);
+            }).AddTo(this);
+        }
+
+        private async void ChangeValue(int value)
+        {
+            ChangeFillAmount(value, _firstImage, _duration / 4);
             await UniTask.Delay(1000);
             ChangeFillAmount(value, _secondImage, _duration);
         }

@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Game.Character.Enemy.Abstract;
 using Sources.DataBaseSystem;
+using Sources.FTUE.System;
 using Sources.Utils.Singleton;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,13 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private WavesConfig _enemySpawnConfig => _dataBase.GetConfig<WavesConfig>();
 
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
+        private FTUESystem _ftueSystem => Locator<FTUESystem>.Instance;
 
         private Wave _waveInfo;
         private int _turnIndexCurrent = 0;
         private int _phaseIndexCurrent = 0;
         private bool _endWave = false;
+        private bool _passFTUE = false;
         private string _waveIdCurrent;
         public string WaveIdCurrent => _waveIdCurrent;
 
@@ -27,11 +30,17 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public Action<bool> HaveEnemyToAttack;
         public Action EndWave;
 
-        public void OnSetUp(string id)
+        public async void OnSetUp(string id)
         {
             _waveIdCurrent = id;
             GetWaveInfo();
             _mainGamePlaySystem.UserRecieveDamageHandler.IsDead += SetEndWave;
+            _ftueSystem.PassFTUE += SetPassFTUE;
+        }
+
+        private void SetPassFTUE()
+        {
+            _passFTUE = true;
         }
 
         private void SetEndWave()
@@ -45,8 +54,15 @@ namespace Sources.GamePlaySystem.MainGamePlay
             GetMaxEnemy();
         }
 
+        private async UniTask PassFTUE()
+        {
+            await UniTask.WaitUntil(() => _passFTUE == true);
+        }
+
         public async void SpawnEnemies()
         {
+            await PassFTUE();
+
             await UniTask.Delay(2000);
 
             while (!_endWave)
@@ -108,6 +124,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private void OnDestroy()
         {
             _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= SetEndWave;
+            _ftueSystem.PassFTUE -= SetPassFTUE;
         }
     }
 }

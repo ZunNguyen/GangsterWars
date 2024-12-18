@@ -59,13 +59,50 @@ MonoBehaviour:
       - rid: 4621832708353687590
       - rid: 4621832708353687591
   - _ftueSequenceTableId: FTUESequenceTableId/JM_Introduce
-    FTUESequences: []
+    FTUESequences:
+    - _completeTriggerKey: CompleteTrigger/JM_JourneyItems
+      _ftueCommands:
+      - rid: 4621832722713411603
+      - rid: 4621832722713411606
+      - rid: 4621832722713411607
+      - rid: 4621832722713411604
+      - rid: 4621832722713411608
+      - rid: 4621832725652832256
+      - rid: 4621832722713411605
+    - _completeTriggerKey: CompleteTrigger/JM_Epision
+      _ftueCommands:
+      - rid: 4621832725652832257
+      - rid: 4621832725652832258
+      - rid: 4621832725652832259
+      - rid: 4621832725652832260
+    - _completeTriggerKey: CompleteTrigger/JM_Stars
+      _ftueCommands:
+      - rid: 4621832725652832261
+      - rid: 4621832725652832262
+      - rid: 4621832725652832263
+      - rid: 4621832725652832265
+    - _completeTriggerKey: CompleteTrigger/JM_End
+      _ftueCommands:
+      - rid: 4621832725652832266
+      - rid: 4621832725652832267
+      - rid: 4621832725652832268
+      - rid: 4621832725652832269
+      - rid: 4621832725652832270
+      - rid: 4621832725652832271
+  - _ftueSequenceTableId: FTUESequenceTableId/GP_Introduce
+    FTUESequences:
+    - _completeTriggerKey: CompleteTrigger/GP_ShowEnemy
+      _ftueCommands:
+      - rid: 4621832725652832276
+      - rid: 4621832725652832274
+      - rid: 4621832725652832275
   FTUEKeyTables:
     _items:
     - Key: FTUESequenceTableId
       Values:
       - MM_Introduce
       - JM_Introduce
+      - GP_Introduce
     - Key: CompleteTrigger
       Values:
       - MM_Welcome
@@ -73,9 +110,17 @@ MonoBehaviour:
       - MM_Character
       - MM_Setting
       - MM_Start
+      - JM_JourneyItems
+      - JM_Epision
+      - JM_Stars
+      - JM_End
+      - GP_ShowEnemy
     - Key: WaitPoint
       Values:
       - FinishOpenMainMenuScreen
+      - OpenJM
+      - FinishOpenGamePlay
+      - FirstEnemyReviceDamage
     - Key: ViewModel
       Values:
       - MM_Leader
@@ -84,6 +129,10 @@ MonoBehaviour:
       - MM_Store
       - MM_Setting
       - MM_Character
+      - JM_Leader
+      - JM_JourneyItems
+      - JM_Espision
+      - JM_Stars
     - Key: WaitToNextStep
       Values:
       - TapToNextStep
@@ -266,3 +315,130 @@ MonoBehaviour:
         _isOpen: 0
     - rid: 4621832708353687593
       type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832722713411603
+      type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _waitPointKey: WaitPoint/OpenJM
+    - rid: 4621832722713411604
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: JourneyScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/JM_JourneyItems
+        _ftueViewModelKeysClose: []
+    - rid: 4621832722713411605
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832722713411606
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: UIBlockerScreen
+        _isOpen: 1
+    - rid: 4621832722713411607
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 1
+    - rid: 4621832722713411608
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: JourneyScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/JM_Leader
+        _ftueViewModelKeysClose:
+        - ViewModel/JM_Leader
+    - rid: 4621832725652832256
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: JourneyScreen
+        _languageId: FTUE_JourneyMap_1
+    - rid: 4621832725652832257
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: JourneyScreen
+        _ftueViewModelKeysShow: []
+        _ftueViewModelKeysClose:
+        - ViewModel/JM_JourneyItems
+    - rid: 4621832725652832258
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: JourneyScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/JM_Espision
+        _ftueViewModelKeysClose: []
+    - rid: 4621832725652832259
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: JourneyScreen
+        _languageId: FTUE_JourneyMap_2
+    - rid: 4621832725652832260
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832725652832261
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: JourneyScreen
+        _ftueViewModelKeysShow: []
+        _ftueViewModelKeysClose:
+        - ViewModel/JM_Espision
+    - rid: 4621832725652832262
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: JourneyScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/JM_Stars
+        _ftueViewModelKeysClose: []
+    - rid: 4621832725652832263
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: JourneyScreen
+        _languageId: FTUE_JourneyMap_3
+    - rid: 4621832725652832265
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832725652832266
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: JourneyScreen
+        _ftueViewModelKeysShow: []
+        _ftueViewModelKeysClose:
+        - ViewModel/JM_Stars
+    - rid: 4621832725652832267
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: JourneyScreen
+        _languageId: FTUE_JourneyMap_4
+    - rid: 4621832725652832268
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832725652832269
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: JourneyScreen
+        _ftueViewModelKeysShow: []
+        _ftueViewModelKeysClose:
+        - ViewModel/JM_Leader
+    - rid: 4621832725652832270
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: UIBlockerScreen
+        _isOpen: 0
+    - rid: 4621832725652832271
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 0
+    - rid: 4621832725652832274
+      type: {class: FTUEShowEnemyCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832725652832275
+      type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _waitPointKey: ViewModel/MM_Leader
+    - rid: 4621832725652832276
+      type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _waitPointKey: WaitPoint/FinishOpenGamePlay

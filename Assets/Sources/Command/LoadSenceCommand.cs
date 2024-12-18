@@ -25,7 +25,14 @@ namespace Sources.Command
             await new ResetSpawnerManagerCommand().Execute();
             await SceneManager.LoadSceneAsync(_scenceName, LoadSceneMode.Single);
 
-            _ftueSystem.TriggerWaitPoint(FTUEKey.WaitPoint_FinishOpenMainMenuScreen);
+            if (_scenceName == NameScenceKey.NAME_SCENCE_MAIN_MENU)
+            {
+                _ftueSystem.TriggerWaitPoint(FTUEKey.WaitPoint_FinishOpenMainMenuScreen);
+            }
+            if (_scenceName == NameScenceKey.NAME_SCENCE_GAME_PLAY)
+            {
+                _ftueSystem.TriggerWaitPoint(FTUEKey.WaitPoint_FinishOpenGamePlay);
+            }
         }
     }
 }

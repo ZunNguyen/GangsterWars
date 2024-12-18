@@ -35,7 +35,7 @@ namespace Sources.Command
         public override async UniTask Execute()
         {
             var sequenceGroup = new SequenceServiceCommandGroup("Load Main Game Play Scene");
-            sequenceGroup.Add(new LoadSenceCommand("GamePlay"));
+            sequenceGroup.Add(new LoadSenceCommand(NameScenceKey.NAME_SCENCE_GAME_PLAY));
 
 
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
