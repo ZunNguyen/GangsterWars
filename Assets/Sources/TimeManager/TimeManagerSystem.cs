@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using BestHTTP;
+using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
 using Sources.SystemService;
 using System;
 using System.Collections;
@@ -26,19 +28,21 @@ namespace Sources.TimeManager
             GetTimeRequest();
         }
 
-        private async UniTask GetTimeRequest()
+        private async void GetTimeRequest()
         {
-            UnityWebRequest request = UnityWebRequest.Get("https://worldtimeapi.org/api");
+            UnityWebRequest request = UnityWebRequest.Get("https://timeapi.io/api/Time/current/zone?timeZone=UTC");
 
             await request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.ConnectionError)
+            if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError($"Error: {request.error}");
+                return;
             }
             else
             {
-                var response = JsonUtility.FromJson<TimeResponse>(request.downloadHandler.text);
+                var response = JsonConvert.DeserializeObject<TimeResponse>(request.downloadHandler.text);
+
                 _serverTime = DateTime.Parse(response.datetime);
                 _lastSyncedTime = Time.time;
 
