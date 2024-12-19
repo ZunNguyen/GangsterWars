@@ -15,9 +15,11 @@ namespace Sources.DataBaseSystem
         [PreviewField(Alignment = ObjectFieldAlignment.Center, Height = 70)]
         public Sprite Sprite;
         public int Value;
+        [Header("Minutes")]
+        public int TimeToReload;
     }
 
-    public class BuyCoinConfig : DataBaseConfig
+    public class EarnCoinConfig : DataBaseConfig
     {
         [SerializeField] private List<BuyCoinInfo> _buyCoinInfos;
         private Dictionary<string, BuyCoinInfo> _buyCoinInfoCache = new();

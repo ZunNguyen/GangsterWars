@@ -10,7 +10,7 @@ namespace Game.Screens.MainMenuScreen
     public class StoreBuyCoinHandler : MonoBehaviour
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private BuyCoinConfig _buyCoinConfig => _dataBase.GetConfig<BuyCoinConfig>();
+        private EarnCoinConfig _buyCoinConfig => _dataBase.GetConfig<EarnCoinConfig>();
 
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 

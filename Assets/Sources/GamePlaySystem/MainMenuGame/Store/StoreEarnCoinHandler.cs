@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Sources.GamePlaySystem.MainMenuGame.Store
 {
-    public class StoreBuyCoinHandler
+    public class StoreEarnCoinHandler
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
-        private BuyCoinConfig _buyCoinConfig => _dataBase.GetConfig<BuyCoinConfig>();
+        private EarnCoinConfig _buyCoinConfig => _dataBase.GetConfig<EarnCoinConfig>();
 
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
         private AdMobSystem _adMobSystem => Locator<AdMobSystem>.Instance;
