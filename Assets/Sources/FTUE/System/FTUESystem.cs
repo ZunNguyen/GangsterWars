@@ -5,6 +5,7 @@ using Sources.SystemService;
 using Sources.Utils.Singleton;
 using System;
 using System.Collections.Generic;
+using UniRx;
 
 namespace Sources.FTUE.System
 {
@@ -22,7 +23,7 @@ namespace Sources.FTUE.System
         private List<string> _ftueTriggerIds = new();
 
         public Action SpawnEnemyFTUE;
-        public Action PassFTUE;
+        public ReactiveProperty<bool> PassFTUE = new (false);
 
         public override async UniTask Init()
         {
@@ -46,7 +47,7 @@ namespace Sources.FTUE.System
                 }
             }
 
-            PassFTUE?.Invoke();
+            PassFTUE.Value = true;
         }
 
         public async UniTask WaitForAtPoint(string triggerId)

@@ -6,6 +6,7 @@ using Sources.Utils.Singleton;
 using System;
 using System.Collections.Generic;
 using UniRx;
+using Unity.VisualScripting;
 
 namespace Sources.GamePlaySystem.MainGamePlay
 {
@@ -17,13 +18,15 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private FTUESystem _ftueSystem => Locator<FTUESystem>.Instance;
 
-        private Wave _waveInfo;
         private int _turnIndexCurrent = 0;
         private int _phaseIndexCurrent = 0;
         private bool _endWave = false;
         private bool _passFTUE = false;
         private string _waveIdCurrent;
         public string WaveIdCurrent => _waveIdCurrent;
+
+        private Wave _waveInfo;
+        private IDisposable _disposablePassFTUE;
 
         public ReactiveProperty<Enemy> EnemyModel { get; private set; } = new();
         public List<EnemyControllerAbstract> Enemies { get; private set; } = new();
@@ -34,13 +37,15 @@ namespace Sources.GamePlaySystem.MainGamePlay
         {
             _waveIdCurrent = id;
             GetWaveInfo();
+
+            OnDestroy();
             _mainGamePlaySystem.UserRecieveDamageHandler.IsDead += SetEndWave;
-            _ftueSystem.PassFTUE += SetPassFTUE;
+            _disposablePassFTUE = _ftueSystem.PassFTUE.Subscribe(SetPassFTUE);
         }
 
-        private void SetPassFTUE()
+        private void SetPassFTUE(bool isPass)
         {
-            _passFTUE = true;
+            _passFTUE = isPass;
         }
 
         private void SetEndWave()
@@ -124,7 +129,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         private void OnDestroy()
         {
             _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= SetEndWave;
-            _ftueSystem.PassFTUE -= SetPassFTUE;
+            _disposablePassFTUE?.Dispose();
         }
     }
 }

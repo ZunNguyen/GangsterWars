@@ -48,7 +48,11 @@ namespace Game.Screens.GamePlayScreen
             {
                 _gunHandler.GunModelCurrent.Value.BulletTotal.Subscribe(value =>
                 {
-                    if (value == InfinityKey.INFINITY_BULLET_INT) _countText.text = InfinityKey.INFINITY_SYMBOL;
+                    if (value == InfinityKey.INFINITY_BULLET_INT)
+                    {
+                        _countText.fontSize = 40;
+                        _countText.text = InfinityKey.INFINITY_SYMBOL;
+                    }
                     else _countText.text = value.ToString();
                 }).AddTo(this);
             }

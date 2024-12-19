@@ -111,6 +111,8 @@ namespace Game.Screens.MainMenuScreen
             {
                 _weaponViewModel.WeaponValue.Subscribe(value =>
                 {
+                    if (value == InfinityKey.INFINITY_SYMBOL) _bulletCountText.fontSize = 40;
+
                     _bulletCountText.text = value;
                 }).AddTo(this);
             }
