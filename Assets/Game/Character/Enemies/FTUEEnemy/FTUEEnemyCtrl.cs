@@ -38,6 +38,8 @@ namespace Game.Character.Enemy.FTUE
         [SerializeField] private Animator _animator;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private FTUEDamageFeed _ftueDamageFeed;
+        [SerializeField] private Transform _canvasHolder;
+        [SerializeField] private Transform _posSpawnDamageFeed;
 
         private void Awake()
         {
@@ -88,8 +90,9 @@ namespace Game.Character.Enemy.FTUE
             if (_isCriticalDamage && _collisionKey == CollisionTagKey.ENEMY_HEAD)
             {
                 var damageFeed = _spawnerManager.Get(_ftueDamageFeed);
+                damageFeed.transform.SetParent(_canvasHolder, false);
+                damageFeed.transform.position = _posSpawnDamageFeed.position;
                 damageFeed.ShowDamageFeed(damage * 2);
-                damageFeed.transform.position = transform.position;
 
                 HPEnemy.Value -= damage * 2;
             }
@@ -116,6 +119,7 @@ namespace Game.Character.Enemy.FTUE
                 _spriteRenderer.DOFade(1f, _durationDoFade);
             }).SetLoops(3);
 
+            _ftueSystem.TriggerWaitPoint(FTUEKey.WaitPoint_EnemyDeath);
             Destroy(gameObject);
         }
     }

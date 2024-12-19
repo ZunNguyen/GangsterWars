@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0cb6ab1a27ee7e45a7cb7201a8ad417, type: 3}
+  m_Name: FTUE_GP_3
+  m_EditorClassIdentifier: 
+  Id: FTUE_GP_3
+  LanguageInfos:
+  - LanguageName: Vietnamese
+    Text: "S\xE1t th\u01B0\u01A1ng s\u1EBD cao h\u01A1n n\u1EBFu nh\u01B0 tr\xFAng
+      v\xE0o \u0111\u1EA7u k\u1EBB \u0111\u1ECBch \u0111\u1EA5y"
+  - LanguageName: English
+    Text: Damage will be higher if you hit the enemy's head

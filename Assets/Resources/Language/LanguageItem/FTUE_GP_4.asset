@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0cb6ab1a27ee7e45a7cb7201a8ad417, type: 3}
+  m_Name: FTUE_GP_4
+  m_EditorClassIdentifier: 
+  Id: FTUE_GP_4
+  LanguageInfos:
+  - LanguageName: Vietnamese
+    Text: "R\u1EA5t t\u1ED1t, h\xE0nh tr\xECnh ch\u1EC9 m\u1EDBi b\u1EAFt \u0111\u1EA7u.
+      Ch\xFAc may m\u1EAFn nh\xE9!"
+  - LanguageName: English
+    Text: Well done! The journey has just begun. Good luck!

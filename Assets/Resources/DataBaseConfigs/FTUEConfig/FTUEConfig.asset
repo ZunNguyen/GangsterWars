@@ -94,8 +94,36 @@ MonoBehaviour:
     - _completeTriggerKey: CompleteTrigger/GP_ShowEnemy
       _ftueCommands:
       - rid: 4621832725652832276
+      - rid: 4621832742194905089
       - rid: 4621832725652832274
-      - rid: 4621832725652832275
+      - rid: 4621832742194905090
+      - rid: 4621832742194905088
+      - rid: 4621832742194905091
+      - rid: 4621832742194905092
+      - rid: 4621832742194905093
+      - rid: 4621832742194905097
+    - _completeTriggerKey: CompleteTrigger/GP_DamageEnemey
+      _ftueCommands:
+      - rid: 4621832742194905101
+      - rid: 4621832742194905099
+      - rid: 4621832728464326656
+      - rid: 4621832742194905100
+      - rid: 4621832742194905102
+      - rid: 4621832742194905094
+      - rid: 4621832742194905104
+    - _completeTriggerKey: CompleteTrigger/GP_KillEnemy
+      _ftueCommands:
+      - rid: 4621832742194905106
+      - rid: 4621832742194905105
+      - rid: 4621832742194905095
+      - rid: 4621832742194905107
+      - rid: 4621832742194905108
+      - rid: 4621832742194905096
+      - rid: 4621832742194905098
+    - _completeTriggerKey: CompleteTrigger/GP_End
+      _ftueCommands:
+      - rid: 4621832742194905110
+      - rid: 4621832742194905109
   FTUEKeyTables:
     _items:
     - Key: FTUESequenceTableId
@@ -115,12 +143,16 @@ MonoBehaviour:
       - JM_Stars
       - JM_End
       - GP_ShowEnemy
+      - GP_DamageEnemey
+      - GP_KillEnemy
+      - GP_End
     - Key: WaitPoint
       Values:
       - FinishOpenMainMenuScreen
       - OpenJM
       - FinishOpenGamePlay
       - FirstEnemyReviceDamage
+      - EnemyDeath
     - Key: ViewModel
       Values:
       - MM_Leader
@@ -133,6 +165,7 @@ MonoBehaviour:
       - JM_JourneyItems
       - JM_Espision
       - JM_Stars
+      - GP_BoxChat
     - Key: WaitToNextStep
       Values:
       - TapToNextStep
@@ -434,11 +467,127 @@ MonoBehaviour:
         _isOpen: 0
     - rid: 4621832725652832274
       type: {class: FTUEShowEnemyCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
-    - rid: 4621832725652832275
-      type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
-      data:
-        _waitPointKey: ViewModel/MM_Leader
     - rid: 4621832725652832276
       type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
       data:
         _waitPointKey: WaitPoint/FinishOpenGamePlay
+    - rid: 4621832728464326656
+      type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _waitPointKey: WaitPoint/FirstEnemyReviceDamage
+    - rid: 4621832742194905088
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/GP_BoxChat
+        _ftueViewModelKeysClose: []
+    - rid: 4621832742194905089
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 1
+    - rid: 4621832742194905090
+      type: {class: FTUEWaitDelayTimeCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _delayMilisecond: 5000
+    - rid: 4621832742194905091
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: GamePlayScreen
+        _languageId: FTUE_GP_1
+    - rid: 4621832742194905092
+      type: {class: FTUEWaitDelayTimeCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _delayMilisecond: 2000
+    - rid: 4621832742194905093
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: GamePlayScreen
+        _languageId: FTUE_GP_2
+    - rid: 4621832742194905094
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: GamePlayScreen
+        _languageId: FTUE_GP_3
+    - rid: 4621832742194905095
+      type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _waitPointKey: WaitPoint/EnemyDeath
+    - rid: 4621832742194905096
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: GamePlayScreen
+        _languageId: FTUE_GP_4
+    - rid: 4621832742194905097
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832742194905098
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832742194905099
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 0
+    - rid: 4621832742194905100
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 1
+    - rid: 4621832742194905101
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow: []
+        _ftueViewModelKeysClose:
+        - ViewModel/GP_BoxChat
+    - rid: 4621832742194905102
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/GP_BoxChat
+        _ftueViewModelKeysClose: []
+    - rid: 4621832742194905104
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 4621832742194905105
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 0
+    - rid: 4621832742194905106
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow: []
+        _ftueViewModelKeysClose:
+        - ViewModel/GP_BoxChat
+    - rid: 4621832742194905107
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 1
+    - rid: 4621832742194905108
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/GP_BoxChat
+        _ftueViewModelKeysClose: []
+    - rid: 4621832742194905109
+      type: {class: FTUEShowUICommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: FTUEScreen
+        _isOpen: 0
+    - rid: 4621832742194905110
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow: []
+        _ftueViewModelKeysClose:
+        - ViewModel/GP_BoxChat

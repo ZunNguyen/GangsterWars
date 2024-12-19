@@ -12,7 +12,7 @@ namespace Game.Character.Enemy.FTUE
 {
     public class FTUEDamageFeed : MonoBehaviour
     {
-        private const float _offsetMovePosY = 30f;
+        private const float _offsetMovePosY = 1.5f;
         private const float _duration = 1f;
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
