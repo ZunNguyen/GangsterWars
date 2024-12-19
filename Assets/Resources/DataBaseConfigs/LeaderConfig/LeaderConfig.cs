@@ -16,6 +16,7 @@ namespace Sources.DataBaseSystem.Leader
         public SpriteLibraryAsset SpriteLibraryAsset;
         public int MaxBullet;
         public int BulletsPerClip;
+        public bool InfinityBullet;
 
         [Header("Time to reload one bullet - second")] 
         public float ReloadTime;

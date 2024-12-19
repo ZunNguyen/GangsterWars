@@ -35,18 +35,21 @@ namespace Game.Screens.GamePlayScreen
             _gunId = gunId;
 
             _gunHandler = _leaderSystem.GunHandler;
+
             if (_gunHandler.GunModels.ContainsKey(gunId))
             {
                 _gunHandler.GunModels[gunId].BulletTotal.Subscribe(value =>
                 {
-                    _countText.text = value.ToString();
+                    if (value == InfinityKey.INFINITY_BULLET_INT) _countText.text = InfinityKey.INFINITY_SYMBOL;
+                    else _countText.text = value.ToString();
                 }).AddTo(this);
             }
             else
             {
                 _gunHandler.GunModelCurrent.Value.BulletTotal.Subscribe(value =>
                 {
-                    _countText.text = value.ToString();
+                    if (value == InfinityKey.INFINITY_BULLET_INT) _countText.text = InfinityKey.INFINITY_SYMBOL;
+                    else _countText.text = value.ToString();
                 }).AddTo(this);
             }
 

@@ -100,7 +100,9 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             if (weaponViewModel.State.Value == ItemState.AlreadyHave)
             {
                 var weaponData = _userProfile.GetWeaponBaseData(weaponId) as WeaponData;
-                weaponViewModel.WeaponValue.Value = weaponData.Quatity.ToString();
+
+                weaponViewModel.WeaponValue.Value = weaponData.Quatity == InfinityKey.INFINITY_BULLET_INT ?
+                    InfinityKey.INFINITY_SYMBOL : weaponData.Quatity.ToString();
             }
 
             // Update unlockFee

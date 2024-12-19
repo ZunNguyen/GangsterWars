@@ -48,7 +48,7 @@ namespace Sources.GameData
             {
                 Id = LeaderKey.GUN_ID_DEFAULT,
                 LevelUpgradeId = LevelUpgradeKey.LEVELUPGRADE_DEFAULT,
-                Quatity = LeaderKey.Quality_Bullet_Default,
+                Quatity = LeaderKey.Quality_Infinity_Bullet,
             };
 
             LeaderDatas.Add(weaponDefault);
@@ -149,6 +149,8 @@ namespace Sources.GameData
         public void SubsctractQualityWeapon(string id)
         {
             var weapon = GetWeaponBaseData(id) as WeaponData;
+            if (weapon.Quatity == InfinityKey.INFINITY_BULLET_INT) return;
+
             weapon.Quatity--;
             if (weapon.Quatity < 0) weapon.Quatity = 0;
             Save();

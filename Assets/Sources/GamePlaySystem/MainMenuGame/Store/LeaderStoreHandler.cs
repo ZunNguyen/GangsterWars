@@ -44,6 +44,9 @@ namespace Sources.GamePlaySystem.MainMenuGame
             if (weaponViewModel.State.Value != ItemState.AlreadyHave) return;
 
             var weaponInfo = _weaponConfig.GetWeaponInfo(weaponId) as LeaderWeaponInfo;
+
+            if (weaponInfo.InfinityBullet) return;
+
             var levelUpgradeInfo = weaponInfo.GetLevelUpgradeInfo(levelUpgradeId);
             var weaponDataProfile = _userProfile.GetWeaponBaseData(weaponId) as WeaponData;
             var bulletRemain = weaponDataProfile.Quatity;

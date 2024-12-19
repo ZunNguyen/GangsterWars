@@ -134,10 +134,14 @@ namespace Sources.GamePlaySystem.Leader
             if (GunModelCurrent.Value.BulletTotal.Value <= 0) return;
 
             GunModelCurrent.Value.BulletAvailable.Value += bulletAdd;
-            GunModelCurrent.Value.BulletTotal.Value -= bulletAdd;
-            GunModelCurrent.Value.BulletTotal.Value = Math.Max(0, GunModelCurrent.Value.BulletTotal.Value);
-            CheckCanShoot();
 
+            if (GunModelCurrent.Value.BulletTotal.Value != InfinityKey.INFINITY_BULLET_INT)
+            {
+                GunModelCurrent.Value.BulletTotal.Value -= bulletAdd;
+                GunModelCurrent.Value.BulletTotal.Value = Math.Max(0, GunModelCurrent.Value.BulletTotal.Value);
+            }
+            
+            CheckCanShoot();
             _audioManager.Play(AudioKey.SFX_RELOAD_01);
         }
 

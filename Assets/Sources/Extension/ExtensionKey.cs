@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sources.Extension
 {
@@ -10,7 +10,7 @@ namespace Sources.Extension
         public static string GunId_04 = "gun-04";
         public static string GunId_05 = "gun-05";
 
-        public static int Quality_Bullet_Default = 50;
+        public static int Quality_Infinity_Bullet = 999;
 
         public static string ANIMATIONKEY_RELOADING = "Reloading";
     }
@@ -78,5 +78,12 @@ namespace Sources.Extension
     {
         public static string NAME_SCENCE_MAIN_MENU = "MainMenu";
         public static string NAME_SCENCE_GAME_PLAY = "GamePlay";
+    }
+
+    public static class InfinityKey
+    {
+        public static string INFINITY_SYMBOL = "∞";
+        public static string INFINITY_BULLET_STRING = "999";
+        public static int INFINITY_BULLET_INT = 999;
     }
 }
