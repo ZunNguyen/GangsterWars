@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Sources.DataBaseSystem
 {
     [Serializable]
-    public class BuyCoinInfo
+    public class EarnCoinInfo
     {
         public string Id;
         [PreviewField(Alignment = ObjectFieldAlignment.Center, Height = 70)]
@@ -21,26 +21,26 @@ namespace Sources.DataBaseSystem
 
     public class EarnCoinConfig : DataBaseConfig
     {
-        [SerializeField] private List<BuyCoinInfo> _buyCoinInfos;
-        private Dictionary<string, BuyCoinInfo> _buyCoinInfoCache = new();
+        [SerializeField] private List<EarnCoinInfo> _earnCoinInfos;
+        private Dictionary<string, EarnCoinInfo> _earnCoinInfoCache = new();
 
         [SerializeField] private int _countCoinIcon;
         public int CountCoinIcon => _countCoinIcon;
 
-        public BuyCoinInfo GetBuyCoinInfo(string id)
+        public EarnCoinInfo GetEarnCoinInfo(string id)
         {
-            if (!_buyCoinInfoCache.ContainsKey(id))
+            if (!_earnCoinInfoCache.ContainsKey(id))
             {
-                var buyCoinInfo = _buyCoinInfos.Find(x => x.Id == id);
-                _buyCoinInfoCache.Add(id, buyCoinInfo);
+                var buyCoinInfo = _earnCoinInfos.Find(x => x.Id == id);
+                _earnCoinInfoCache.Add(id, buyCoinInfo);
             }
 
-            return _buyCoinInfoCache[id];
+            return _earnCoinInfoCache[id];
         }
 
-        public List<BuyCoinInfo> GetAllInfos()
+        public List<EarnCoinInfo> GetAllInfos()
         {
-            return _buyCoinInfos;
+            return _earnCoinInfos;
         }
     }
 }

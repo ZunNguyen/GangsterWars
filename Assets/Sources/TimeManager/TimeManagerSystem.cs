@@ -1,7 +1,10 @@
 ﻿using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
+using Sources.GameData;
 using Sources.SystemService;
+using Sources.Utils.Singleton;
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -9,25 +12,33 @@ namespace Sources.TimeManager
 {
     public class InitTimeManagerSystemService : InitSystemService<TimeManagerSystem> { }
 
+    public class TimeResponse
+    {
+        public string datetime;
+    }
+
     public class TimeManagerSystem : BaseSystem
     {
-        [Serializable]
-        private class TimeResponse
-        {
-            public string datetime;
-        }
+        private const string _urlTimeRequest = "https://timeapi.io/api/Time/current/zone?timeZone=UTC";
 
-        private DateTime _serverTime;
-        private float _lastSyncedTime;
+        private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
+        private PackEarnCoinProfile _packEarnCoinProfile => _gameData.GetProfileData<PackEarnCoinProfile>();
+
+        private bool _isCompleteSetTimeLogin = false;
+        private DateTime _timeLogin;
+
+        public int DurationTimeOffline { get; private set; }
 
         public override async UniTask Init()
         {
-            GetTimeRequest();
+            GetTimeLogin();
+            SetPackEarnCoinProfile();
+            SetDurationTimeOffline();
         }
 
-        private async void GetTimeRequest()
+        private async void GetTimeLogin()
         {
-            UnityWebRequest request = UnityWebRequest.Get("https://timeapi.io/api/Time/current/zone?timeZone=UTC");
+            UnityWebRequest request = UnityWebRequest.Get(_urlTimeRequest);
 
             await request.SendWebRequest();
 
@@ -39,13 +50,32 @@ namespace Sources.TimeManager
             else
             {
                 var response = JsonConvert.DeserializeObject<TimeResponse>(request.downloadHandler.text);
-
-                _serverTime = DateTime.Parse(response.datetime);
-                _lastSyncedTime = Time.time;
-
-                Debug.Log($"Server Time: {_serverTime}");
-                Debug.Log($"Last Synced Time: {_lastSyncedTime}");
+                _timeLogin = DateTime.Parse(response.datetime);
+                Debug.Log($"Server Time: {_timeLogin}");
             }
+
+            _isCompleteSetTimeLogin = true;
+        }
+
+        private async void SetPackEarnCoinProfile()
+        {
+            await UniTask.WaitUntil(() => _isCompleteSetTimeLogin);
+
+            if (_packEarnCoinProfile.PackEarnCoinDatas == null)
+            {
+                _packEarnCoinProfile.SetDataDefault();
+                _packEarnCoinProfile.SetLastTimeUserPlay(_timeLogin);
+            }
+        }
+
+        private async void SetDurationTimeOffline()
+        {
+            await UniTask.WaitUntil(() => _isCompleteSetTimeLogin);
+
+            var durationTime = _timeLogin - _packEarnCoinProfile.LastTimeUserPlay;
+            DurationTimeOffline = (int)durationTime.TotalMinutes;
+
+            Debug.Log($"DurationTimeOffline: {DurationTimeOffline}");
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206162c8c203cf24699d3041b6d14c03, type: 3}
   m_Name: EarnCoinConfig
   m_EditorClassIdentifier: 
-  _buyCoinInfos:
+  _earnCoinInfos:
   - Id: pack-01
     Sprite: {fileID: 21300000, guid: 8fe6f078b90eb974ca934484d00f3cf9, type: 3}
     Value: 50

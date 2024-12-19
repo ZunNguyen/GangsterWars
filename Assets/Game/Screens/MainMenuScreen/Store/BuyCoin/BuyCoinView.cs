@@ -27,7 +27,7 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private TMP_Text _textCoin;
         [SerializeField] private Image _iconBox;
 
-        public void OnSetUp(BuyCoinInfo buyCoinInfo, RectTransform posCoinTotal)
+        public void OnSetUp(EarnCoinInfo buyCoinInfo, RectTransform posCoinTotal)
         {
             _packId = buyCoinInfo.Id;
             _iconBox.sprite = buyCoinInfo.Sprite;

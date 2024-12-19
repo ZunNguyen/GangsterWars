@@ -29,7 +29,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
          
             if (result)
             {
-                var buyCoinInfo = _buyCoinConfig.GetBuyCoinInfo(id);
+                var buyCoinInfo = _buyCoinConfig.GetEarnCoinInfo(id);
                 _coinValue = buyCoinInfo.Value;
             }
 
