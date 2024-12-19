@@ -16,6 +16,7 @@ using Sources.SaveGame;
 using Sources.Services;
 using Sources.Services.BootstrapLoadingService;
 using Sources.SpawnerSystem;
+using Sources.TimeManager;
 using Sources.UISystem;
 using UnityEngine;
 
@@ -65,6 +66,7 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitEventSystemService());
             serviceGroup.Add(new InitAudioManagerService(_audioData, _audioObjectInstance));
             serviceGroup.Add(new InitLanaguageTableService(_languageTable));
+            serviceGroup.Add(new InitTimeManagerSystemService());
             serviceGroup.Add(new InitAdMobSystemService());
 
             return serviceGroup;
