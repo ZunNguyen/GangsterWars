@@ -53,7 +53,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         public override async UniTask Init()
         {
-            
+            StoreEarnCoinHandler.OnSetUp();
         }
 
         public void OnSetUp()
@@ -62,8 +62,6 @@ namespace Sources.GamePlaySystem.MainMenuGame
             SetBomberStore();
             SetSniperStore();
             SetShieldStore();
-
-            StoreEarnCoinHandler.OnSetUp();
         }
 
         private void SetLeaderStore()
