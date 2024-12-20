@@ -21,6 +21,7 @@ namespace Game.CanvasInGamePlay.HPBar
         private Vector2 _anchoredPos;
 
         [SerializeField] private RectTransform _rectTransformObject;
+        [SerializeField] private GameObject _hpBar;
 
         public override void OnSetUp(){}
 
@@ -28,6 +29,9 @@ namespace Game.CanvasInGamePlay.HPBar
         {
             _canvas = canvasModel.Canvas;
             _worldTransformObject = canvasModel.TransformObject;
+            gameObject.SetActive(true);
+            _hpBar.SetActive(false);
+
             SetPos();
             SetUpSlider(canvasModel.EnemyHandler);
         }
@@ -39,7 +43,7 @@ namespace Game.CanvasInGamePlay.HPBar
             _disposedHpBar = enemyHandler.HpCurrent.Subscribe(value =>
             {
                 var isShowSlider = value != enemyHandler.HpMax && value > 0;
-                gameObject.SetActive(isShowSlider);
+                _hpBar.SetActive(isShowSlider);
                 
                 ChangeValue(value);
                 if (value <= 0)
