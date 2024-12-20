@@ -10,7 +10,9 @@ namespace Game.Screens.JourneyScreen
     public class EpisodeView : MonoBehaviour
     {
         private const string _episodeTextDefault = "Episode ";
+        private const string _episodeLanguageKey = "Button_Episode";
 
+        private LanguageTable _languageTable => Locator<LanguageTable>.Instance;
         private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
 
         private int _indexEpisode;
@@ -23,7 +25,8 @@ namespace Game.Screens.JourneyScreen
             _indexEpisode = index;
 
             var num = _indexEpisode + 1;
-            _text.text = _text + " " + num.ToString();
+            var languageItem = _languageTable.GetLanguageItem(_episodeLanguageKey);
+            _text.text = languageItem.GetText() + " " + num.ToString();
 
             var indexEpisodeCurrent = _journeyMapSystem.IndexGridMapMaxCurrent;
             _active.SetActive(_indexEpisode <= indexEpisodeCurrent);
