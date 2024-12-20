@@ -1,5 +1,7 @@
 using Sources.GamePlaySystem.JourneyMap;
+using Sources.Language;
 using Sources.Utils.Singleton;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +15,7 @@ namespace Game.Screens.JourneyScreen
 
         private int _indexEpisode;
 
-        [SerializeField] private Text _text;
+        [SerializeField] private TMP_Text _text;
         [SerializeField] private GameObject _active;
 
         public void OnSetUp(int index)
@@ -21,7 +23,7 @@ namespace Game.Screens.JourneyScreen
             _indexEpisode = index;
 
             var num = _indexEpisode + 1;
-            _text.text = _episodeTextDefault + num.ToString();
+            _text.text = _text + " " + num.ToString();
 
             var indexEpisodeCurrent = _journeyMapSystem.IndexGridMapMaxCurrent;
             _active.SetActive(_indexEpisode <= indexEpisodeCurrent);

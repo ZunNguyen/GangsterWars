@@ -1,5 +1,7 @@
 using Sirenix.OdinInspector;
+using Sources.Utils;
 using Sources.Utils.Singleton;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,16 +16,12 @@ namespace Sources.Language
         private TMP_Text _text;
 
         [SerializeField]
-        [ValueDropdown("GetAllLanguageItemIds"), OnValueChanged("UpdateLanguageItem")]
+        [ValueDropdown(nameof(GetAllLanguageIds)), OnValueChanged(nameof(UpdateLanguageItem))]
         private string _languageItemId;
+        private IEnumerable GetAllLanguageIds => IdGetter.GetAllLanguageIds();
 
         [SerializeField, InlineEditor, ReadOnly]
         private LanguageItem _languageItem;
-
-        private IEnumerable<string> GetAllLanguageItemIds()
-        {
-            return LanguageTable.Instance.LanguageItemIds;
-        }
 
         private void UpdateLanguageItem()
         {

@@ -149,6 +149,8 @@ namespace Game.Character.Enemy.Abstract
             }).SetLoops(3);
 
             _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
+
+            if (!gameObject.activeSelf) return;
             _spawnerManager.Release(gameObject);
         }
     }
