@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.GamePlaySystem.CoinController;
@@ -41,10 +42,12 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 #endif
         }
 
-        private void SetValue()
+        private async void SetValue()
         {
             var packEarnCoinData = _packEarnCoinProfile.GetPackEarnCoinData(_selfId);
-            TimeRemain.Value = packEarnCoinData.TimeNextEarn;
+            await UniTask.WaitUntil(() => _timeManagerSystem.DurationTimeOffline != 0);
+            TimeRemain.Value = packEarnCoinData.TimeNextEarn - _timeManagerSystem.DurationTimeOffline;
+            TimeRemain.Value = Math.Max(0, TimeRemain.Value);
 
             var packEarnCoinInfo = _earnCoinConfig.GetEarnCoinInfo(_selfId);
             TimeToEarn = packEarnCoinInfo.TimeToReload;

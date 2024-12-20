@@ -59,6 +59,7 @@ namespace Game.Bootstrap
         {
             var serviceGroup = new SequenceServiceGroup("Essential Service Group");
 
+            serviceGroup.Add(new InitTimeManagerSystemService());
             serviceGroup.Add(new InitUISystemService(_uiData, _uiManagerPrefab));
             serviceGroup.Add(new InitSpawnerManagerService());
             serviceGroup.Add(new InitDataBaseService(_dataBase));
@@ -66,7 +67,6 @@ namespace Game.Bootstrap
             serviceGroup.Add(new InitEventSystemService());
             serviceGroup.Add(new InitAudioManagerService(_audioData, _audioObjectInstance));
             serviceGroup.Add(new InitLanaguageTableService(_languageTable));
-            serviceGroup.Add(new InitTimeManagerSystemService());
             serviceGroup.Add(new InitAdMobSystemService());
 
             return serviceGroup;
