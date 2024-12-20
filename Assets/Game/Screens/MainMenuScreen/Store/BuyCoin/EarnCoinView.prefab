@@ -155,6 +155,7 @@ MonoBehaviour:
   _shadow: {fileID: 6490742853811010813}
   _amount: {fileID: 8704848448409290830}
   _textCountTime: {fileID: 2284694584813936192}
+  _selfRect: {fileID: 7000306680540208675}
 --- !u!1 &1468415973099280647
 GameObject:
   m_ObjectHideFlags: 0

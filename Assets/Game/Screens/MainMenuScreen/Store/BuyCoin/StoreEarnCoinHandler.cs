@@ -7,7 +7,7 @@ using UniRx;
 
 namespace Game.Screens.MainMenuScreen
 {
-    public class StoreBuyCoinHandler : MonoBehaviour
+    public class StoreEarnCoinHandler : MonoBehaviour
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EarnCoinConfig _buyCoinConfig => _dataBase.GetConfig<EarnCoinConfig>();

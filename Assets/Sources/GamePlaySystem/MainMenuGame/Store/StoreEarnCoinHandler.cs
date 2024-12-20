@@ -1,11 +1,10 @@
 using Sources.AdMob;
 using Sources.DataBaseSystem;
 using Sources.GameData;
-using Sources.GamePlaySystem.CoinController;
 using Sources.TimeManager;
-using Sources.Utils.DateTime;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UniRx;
 
@@ -23,6 +22,9 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private TimeManagerSystem _timeManagerSystem => Locator<TimeManagerSystem>.Instance;
 
         private Dictionary<string, PackEarnCoinViewHandler> _packEarnCoinViewHandlers = new();
+        private Dictionary<string, bool> _listCanEarnCoins = new();
+
+        public ReactiveProperty<bool> IsAnyPackToEarn = new(false);
 
         public void OnSetUp()
         {
@@ -50,6 +52,18 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public PackEarnCoinViewHandler GetPackEarnCoinViewHandler(string id)
         {
             return _packEarnCoinViewHandlers[id];
+        }
+
+        public void SetCanEarnCoin(string id, bool isCan)
+        {
+            _listCanEarnCoins[id] = isCan;
+            CheckHaveAnyPackCanEarn();
+        }
+
+        private void CheckHaveAnyPackCanEarn()
+        {
+            if (_listCanEarnCoins.Values.Any(value => value)) IsAnyPackToEarn.Value = true;
+            else IsAnyPackToEarn.Value = false;
         }
     }
 }

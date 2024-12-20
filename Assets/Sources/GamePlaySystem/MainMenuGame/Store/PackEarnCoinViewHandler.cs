@@ -3,6 +3,7 @@ using Sources.GameData;
 using Sources.GamePlaySystem.CoinController;
 using Sources.TimeManager;
 using Sources.Utils.Singleton;
+using System;
 using UniRx;
 using UnityEditor;
 
@@ -18,6 +19,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
         private TimeManagerSystem _timeManagerSystem => Locator<TimeManagerSystem>.Instance;
+        private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 
         private string _selfId;
         private int _coinValue;
@@ -25,6 +27,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public int TimeToEarn { get; private set; }
         public int CountCoinIcon { get; private set; }
         public ReactiveProperty<int> TimeRemain { get; private set; } = new();
+        public ReactiveProperty<bool> IsCanClaim { get; private set; } = new();
 
         public void OnSetUp(string id)
         {
@@ -56,6 +59,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             if (TimeRemain.Value == 0)
             {
+                IsCanClaim.Value = true;
+                _storeSystem.StoreEarnCoinHandler.SetCanEarnCoin(_selfId, true);
                 UnSubscribeAddOneSecond();
                 return;
             }
@@ -77,6 +82,8 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             _packEarnCoinProfile.UpdateTimeNextEarn(_selfId, TimeToEarn);
             TimeRemain.Value = TimeToEarn;
+            _storeSystem.StoreEarnCoinHandler.SetCanEarnCoin(_selfId, false);
+            IsCanClaim.Value = false;
             SubscribeAddOneSecond();
         }
 
