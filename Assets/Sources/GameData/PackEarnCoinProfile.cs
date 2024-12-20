@@ -18,6 +18,8 @@ namespace Sources.GameData
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EarnCoinConfig _earnCoinConfig => _dataBase.GetConfig<EarnCoinConfig>();
 
+        private Dictionary<string, PackEarnCoinData> _packEarnCoinDataCache = new();
+
         public List<PackEarnCoinData> PackEarnCoinDatas;
         public DateTime LastTimeUserPlay = new();
         
@@ -37,6 +39,24 @@ namespace Sources.GameData
                 PackEarnCoinDatas.Add(newPackEarnCoinData);
             }
 
+            Save();
+        }
+
+        public PackEarnCoinData GetPackEarnCoinData(string packId)
+        {
+            if (!_packEarnCoinDataCache.ContainsKey(packId))
+            {
+                var packEarnCoinData = PackEarnCoinDatas.Find(x => x.Id == packId);
+                _packEarnCoinDataCache.Add(packId, packEarnCoinData);
+            }
+
+            return _packEarnCoinDataCache[packId];
+        }
+
+        public void UpdateTimeNextEarn(string id, int time)
+        {
+            var packEarnCoinData = GetPackEarnCoinData(id);
+            packEarnCoinData.TimeNextEarn = time;
             Save();
         }
 

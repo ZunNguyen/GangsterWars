@@ -44,7 +44,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
         public SniperStoreHandler SniperStoreHandler { get; private set; }
         public ShieldStoreHandler ShieldStoreHandler { get; private set; }
 
-        public Store.StoreEarnCoinHandler StoreBuyCoinHandler { get; private set; } = new();
+        public Store.StoreEarnCoinHandler StoreEarnCoinHandler { get; private set; } = new();
 
         public ReactiveProperty<bool> OpenBomberStore { get; private set; } = new (false);
         public ReactiveProperty<bool> OpenSniperStore { get; private set; } = new (false);
@@ -53,12 +53,17 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         public override async UniTask Init()
         {
+            
+        }
+
+        public void OnSetUp()
+        {
             SetLeaderStore();
             SetBomberStore();
             SetSniperStore();
             SetShieldStore();
 
-            StoreBuyCoinHandler.OnSetUp();
+            StoreEarnCoinHandler.OnSetUp();
         }
 
         private void SetLeaderStore()

@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _posCoinTotal: {fileID: 8866572414774077485}
-  _buyCoinViewPrefab: {fileID: 2051401801954798813, guid: 5cdf0a0a55a6b4d47a5707a76dc8c353, type: 3}
+  _buyCoinViewPrefab: {fileID: 4640536359363300581, guid: 5cdf0a0a55a6b4d47a5707a76dc8c353, type: 3}
   _holder: {fileID: 7216949452576939419}
 --- !u!1 &531293211663422191
 GameObject:

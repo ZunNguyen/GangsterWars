@@ -15,7 +15,7 @@ namespace Sources.DataBaseSystem
         [PreviewField(Alignment = ObjectFieldAlignment.Center, Height = 70)]
         public Sprite Sprite;
         public int Value;
-        [Header("Minutes")]
+        [Header("Seconds")]
         public int TimeToReload;
     }
 

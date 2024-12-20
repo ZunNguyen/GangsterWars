@@ -19,7 +19,7 @@ namespace Game.Screens.MainMenuScreen
         [SerializeField] private RectTransform _posCoinTotal;
 
         [Header("Coin View Prefab")]
-        [SerializeField] private BuyCoinView _buyCoinViewPrefab;
+        [SerializeField] private EarnCoinView _buyCoinViewPrefab;
         [SerializeField] private Transform _holder;
 
         private void Start()

@@ -4,9 +4,10 @@ using Sources.GameData;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
 using System;
-using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEditor;
+using UniRx;
 
 namespace Sources.TimeManager
 {
@@ -28,12 +29,18 @@ namespace Sources.TimeManager
         private DateTime _timeLogin;
 
         public int DurationTimeOffline { get; private set; }
+        public Action AddOneSecondTimeOnline;
 
         public override async UniTask Init()
         {
             GetTimeLogin();
             SetPackEarnCoinProfile();
             SetDurationTimeOffline();
+            SetDurationTimeOnline();
+
+#if UNITY_EDITOR
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+#endif
         }
 
         private async void GetTimeLogin()
@@ -73,9 +80,33 @@ namespace Sources.TimeManager
             await UniTask.WaitUntil(() => _isCompleteSetTimeLogin);
 
             var durationTime = _timeLogin - _packEarnCoinProfile.LastTimeUserPlay;
-            DurationTimeOffline = (int)durationTime.TotalMinutes;
+            DurationTimeOffline = (int)durationTime.TotalSeconds;
 
             Debug.Log($"DurationTimeOffline: {DurationTimeOffline}");
         }
+
+        private async void SetDurationTimeOnline()
+        {
+            while (true)
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(1));
+                AddOneSecondTimeOnline?.Invoke();
+            }
+        }
+
+        private void OnApplicationQuit()
+        {
+            _packEarnCoinProfile.SetLastTimeUserPlay(_timeLogin);
+        }
+
+#if UNITY_EDITOR
+        private void OnPlayModeStateChanged(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.ExitingPlayMode)
+            {
+                _packEarnCoinProfile.SetLastTimeUserPlay(_timeLogin);
+            }
+        }
+#endif
     }
 }

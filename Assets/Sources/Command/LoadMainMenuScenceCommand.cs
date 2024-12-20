@@ -36,7 +36,7 @@ namespace Sources.Command
 
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
             await loadingScreen.PanelMoveIn();
-            await _storeSystem.Init();
+            _storeSystem.OnSetUp();
 
             CloseScreen();
 
