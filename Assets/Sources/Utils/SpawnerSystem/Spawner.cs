@@ -18,7 +18,7 @@ namespace Sources.SpawnerSystem
 
         private T CreateFunc()
         {
-            var obj = UnityEngine.Object.Instantiate(_prefab);
+            var obj = Object.Instantiate(_prefab);
             obj.name = $"{_prefab.name}{SpawnerManager.Indicator}{_counter++}";
 
             return obj as T;

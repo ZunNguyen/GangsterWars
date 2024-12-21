@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using UniRx;
 using Sources.Utils.DateTime;
 using System;
+using Game.Screens.Coin;
 
 namespace Game.Screens.MainMenuScreen
 {
@@ -18,19 +19,19 @@ namespace Game.Screens.MainMenuScreen
     {
         private readonly Vector3 _targetScale = new Vector3(1.1f, 1.1f, 1.1f);
         private const float _durationScale = 0.8f;
-        private const float _duration = 0.4f;
+        private const int _delayEarnCoin = 200;
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 
         private bool _isCanClaim = false;
         private float _maxValueAmount;
-        private RectTransform _posCoinTotal;
+        private Transform _posCoinTotal;
         private PackEarnCoinViewHandler _handler;
         private Tween _tween;
 
         [Header("Coin icon")]
-        [SerializeField] private GameObject _iconCoin;
+        [SerializeField] private Coin.Coin _coinPrefab;
 
         [Header("Box Coin")]
         [SerializeField] private TMP_Text _textCoin;
@@ -44,7 +45,7 @@ namespace Game.Screens.MainMenuScreen
         [Header("Another")]
         [SerializeField] private RectTransform _selfRect;
 
-        public void OnSetUp(EarnCoinInfo buyCoinInfo, RectTransform posCoinTotal)
+        public void OnSetUp(EarnCoinInfo buyCoinInfo, Transform posCoinTotal)
         {
             _iconBox.sprite = buyCoinInfo.Sprite;
             _textCoin.text = buyCoinInfo.Value.ToString();
@@ -103,24 +104,16 @@ namespace Game.Screens.MainMenuScreen
 
         private async void AnimationCollectCoin()
         {
-            var rect = new RectTransform();
-            var delay = (int)(_duration / 2 * 1000);
-
             for (int i = 0; i < _handler.CountCoinIcon; i++)
             {
-                var newIcon = _spawnerManager.Get(_iconCoin);
-                newIcon.SetActive(true);
-                rect = newIcon.GetComponent<RectTransform>();
-
-                rect.transform.SetParent(_posCoinTotal, false);
-                rect.position = transform.position;
-
-                rect.DOMove(_posCoinTotal.position, _duration).SetEase(Ease.InOutSine).OnComplete(() =>
-                {
-                    _handler.AddCoin();
-                    _spawnerManager.Release(newIcon);
-                });
-                await UniTask.Delay(delay);
+                var newIcon = _spawnerManager.Get(_coinPrefab);
+                
+                newIcon.gameObject.SetActive(true);
+                newIcon.transform.SetParent(_posCoinTotal, false);
+                newIcon.transform.position = transform.position;
+                
+                newIcon.OnSetUp(_posCoinTotal, _handler.OnceEarnCoin, 3000);
+                await UniTask.Delay(_delayEarnCoin);
             }
         }
     }

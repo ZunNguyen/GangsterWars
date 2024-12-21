@@ -18,13 +18,13 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EarnCoinConfig _earnCoinConfig => _dataBase.GetConfig<EarnCoinConfig>();
 
-        private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
         private TimeManagerSystem _timeManagerSystem => Locator<TimeManagerSystem>.Instance;
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
 
         private string _selfId;
         private int _coinValue;
 
+        public int OnceEarnCoin => _coinValue / 5;
         public int TimeToEarn { get; private set; }
         public int CountCoinIcon { get; private set; }
         public ReactiveProperty<int> TimeRemain { get; private set; } = new();
@@ -88,11 +88,6 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             _storeSystem.StoreEarnCoinHandler.SetCanEarnCoin(_selfId, false);
             IsCanClaim.Value = false;
             SubscribeAddOneSecond();
-        }
-
-        public void AddCoin()
-        {
-            _coinControllerSystem.AddCoin(_coinValue / CountCoinIcon);
         }
 
         private void OnApplicationQuit()

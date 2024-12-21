@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Sources.GamePlaySystem.CoinController;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
@@ -21,12 +22,13 @@ namespace Game.Screens.Coin
             _coinPrefab.gameObject.SetActive(false);
         }
 
-        private void SpawnCoinReward(CoinRewardInfo coinRewardInfo)
+        private async void SpawnCoinReward(CoinRewardInfo coinRewardInfo)
         {
             var newCoin = _spawnerManager.Get(_coinPrefab);
             newCoin.transform.position = coinRewardInfo.PosSpawn.position;
             newCoin.gameObject.SetActive(true);
-            newCoin.OnSetUp(_posIconCoinReward, coinRewardInfo.Coins);
+            await UniTask.Delay(5000);
+            newCoin.OnSetUp(_posIconCoinReward, coinRewardInfo.Coins, 30);
         }
 
         private void OnDestroy()

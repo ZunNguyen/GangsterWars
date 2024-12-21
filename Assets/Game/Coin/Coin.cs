@@ -17,14 +17,13 @@ namespace Game.Screens.Coin
 
         private Tween _tween;
 
-        public async void OnSetUp(Transform posCoinsHolder, int quantity)
+        public void OnSetUp(Transform posCoinsHolder, int quantity, int speed)
         {
-            await UniTask.Delay(5000);
-            var duration = TweenUtils.GetTimeDuration(transform.position, posCoinsHolder.position, _speed);
-            _tween = transform.DOMove(posCoinsHolder.position, duration).OnComplete(() =>
+            var duration = TweenUtils.GetTimeDuration(transform.position, posCoinsHolder.position, speed);
+            _tween = transform.DOMove(posCoinsHolder.position, duration).SetEase(Ease.Linear).OnComplete(() =>
             {
                 _coinControllerSystem.AddCoin(quantity);
-                _spawnerManager.Release(this);
+                _spawnerManager.Release(gameObject);
             });
         }
 

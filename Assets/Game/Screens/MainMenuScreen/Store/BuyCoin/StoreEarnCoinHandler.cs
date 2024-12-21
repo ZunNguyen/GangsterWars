@@ -16,7 +16,7 @@ namespace Game.Screens.MainMenuScreen
 
         private TabState _tab = TabState.TabCoin;
 
-        [SerializeField] private RectTransform _posCoinTotal;
+        [SerializeField] private Transform _posCoinTotal;
 
         [Header("Coin View Prefab")]
         [SerializeField] private EarnCoinView _buyCoinViewPrefab;
