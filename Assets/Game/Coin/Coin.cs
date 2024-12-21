@@ -1,10 +1,9 @@
-using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Sources.GamePlaySystem.CoinController;
+using Sources.SpawnerSystem;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using UnityEngine;
-using DG.Tweening;
-using Sources.SpawnerSystem;
 
 namespace Game.Screens.Coin
 {

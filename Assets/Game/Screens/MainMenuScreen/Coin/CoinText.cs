@@ -1,9 +1,8 @@
 using DG.Tweening;
+using Sources.GamePlaySystem.CoinController;
 using Sources.SpawnerSystem;
 using Sources.Utils;
 using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -18,6 +17,7 @@ namespace Game.Screens.MainMenuScreen
         private const string _stringSubstract = "-";
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
+        private CoinControllerSystem _coinControllerSystem => Locator<CoinControllerSystem>.Instance;
 
         private float _targetMoveY;
 

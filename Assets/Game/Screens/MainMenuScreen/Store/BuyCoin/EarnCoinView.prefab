@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9000a5858ca604c9846e89ed23e25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 3202902376630746337}
+  _coinPrefab: {fileID: 1149277181628098390, guid: 101c9955ec4a4ac42870e5da032a321c, type: 3}
   _textCoin: {fileID: 2010954782963501011}
   _iconBox: {fileID: 2505707430610588409}
   _shadow: {fileID: 6490742853811010813}
@@ -551,9 +551,8 @@ GameObject:
   - component: {fileID: 8182158212551013326}
   - component: {fileID: 5249139405228260719}
   - component: {fileID: 6817351328038773202}
-  - component: {fileID: 3202902376630746337}
   m_Layer: 0
-  m_Name: IconMoney99
+  m_Name: IconMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,15 +616,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3202902376630746337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6634924303186595094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80b0a97af13339941a1ba54cff7ff404, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
