@@ -8,30 +8,26 @@ namespace Sources.GameData
 {
     public class UserSettingProfile : IProfileData
     {
-        public string LanguageName { get; private set; }
-        public float MusicVolume { get; private set; }
-        public float SFXVolume { get; private set; }
-
-        public UserSettingProfile()
-        {
-            LanguageName = LanguageKey.LANGUAGE_VIETNAME;
-            MusicVolume = 0.5f;
-            SFXVolume = 0.5f;
-        }
+        public string LanguageName = LanguageKey.LANGUAGE_VIETNAME;
+        public float MusicVolume = 0.5f;
+        public float SFXVolume = 0.5f;
 
         public void SetLanguageName(string languageName)
         {
             LanguageName = languageName;
+            Save();
         }
 
         public void SetMusicVolume(float value)
         {
             MusicVolume = value;
+            Save();
         }
 
         public void SetSFXVolume(float value)
         {
             SFXVolume = value;
+            Save();
         }
     }
 }

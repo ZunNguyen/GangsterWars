@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Sources.AdMob;
 using Sources.DataBaseSystem;
 using Sources.GameData;
@@ -26,8 +27,10 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         public ReactiveProperty<bool> IsAnyPackToEarn = new(false);
 
-        public void OnSetUp()
+        public async void OnSetUp()
         {
+            await UniTask.WaitUntil(() => _timeManagerSystem.IsCompleteSetTimeLogin == true);
+
             SetPackEarnCoinViewModels();
         }
 

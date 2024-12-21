@@ -59,6 +59,8 @@ namespace Sources.Audio
             _isMusic = audioInfo.IsMusic;
             _audioSource.loop = isLoop;
 
+            if (_isMusic) _audioSource.volume = _audioManager.MusicVolume.Value;
+
             _audioSource.clip = audioInfo.TakeRandom();
             _audioSource.Play();
             if (!isLoop)

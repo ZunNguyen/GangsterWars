@@ -1,15 +1,13 @@
-using Sources.DataBaseSystem;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using Sources.UI;
-using Sources.Language;
-using Sources.Utils.Singleton;
+using Cysharp.Threading.Tasks;
 using Sources.Audio;
-using UnityEngine.UI;
-using Sources.Extension;
 using Sources.Command;
+using Sources.Extension;
+using Sources.Language;
+using Sources.UI;
+using Sources.Utils.Singleton;
+using UnityEngine;
+using UnityEngine.UI;
+using UniRx;
 
 namespace Game.Screens.PanelSettingDialog
 {
@@ -17,19 +15,6 @@ namespace Game.Screens.PanelSettingDialog
     {
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
         private LanguageTable _languageTable => Locator<LanguageTable>.Instance;
-
-        [SerializeField] private Slider _sliderMusic;
-        [SerializeField] private Slider _sliderSFX;
-
-        public void OnMusicVolumeChanged()
-        {
-            _audioManager.AdjustMusicVolume(_sliderMusic.value);
-        }
-
-        public void OnSFXVolumeChanged()
-        {
-            _audioManager.AdjustSFXVolume(_sliderSFX.value);
-        }
 
         public void OnChangeLanguageClicked()
         {

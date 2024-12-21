@@ -81,11 +81,13 @@ namespace Sources.Audio
         public void AdjustMusicVolume(float value)
         {
             MusicVolume.Value = value;
+            _userSettingProfile.SetMusicVolume(value);
         }
 
         public void AdjustSFXVolume(float value)
         {
             SFXVolume.Value = value;
+            _userSettingProfile.SetSFXVolume(value);
         }
     }
 }

@@ -25,10 +25,10 @@ namespace Sources.TimeManager
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
         private PackEarnCoinProfile _packEarnCoinProfile => _gameData.GetProfileData<PackEarnCoinProfile>();
 
-        private bool _isCompleteSetTimeLogin = false;
         private DateTime _timeLogin;
 
         public int DurationTimeOffline { get; private set; }
+        public bool IsCompleteSetTimeLogin { get; private set; } = false;
         public Action AddOneSecondTimeOnline;
 
         public override async UniTask Init()
@@ -61,12 +61,12 @@ namespace Sources.TimeManager
                 Debug.Log($"Server Time: {_timeLogin}");
             }
 
-            _isCompleteSetTimeLogin = true;
+            IsCompleteSetTimeLogin = true;
         }
 
         private async void SetPackEarnCoinProfile()
         {
-            await UniTask.WaitUntil(() => _isCompleteSetTimeLogin);
+            await UniTask.WaitUntil(() => IsCompleteSetTimeLogin);
 
             if (_packEarnCoinProfile.PackEarnCoinDatas == null)
             {
@@ -77,7 +77,7 @@ namespace Sources.TimeManager
 
         private async void SetDurationTimeOffline()
         {
-            await UniTask.WaitUntil(() => _isCompleteSetTimeLogin);
+            await UniTask.WaitUntil(() => IsCompleteSetTimeLogin);
 
             var durationTime = _timeLogin - _packEarnCoinProfile.LastTimeUserPlay;
             DurationTimeOffline = (int)durationTime.TotalSeconds;
