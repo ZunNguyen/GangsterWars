@@ -22,13 +22,12 @@ namespace Sources.GamePlaySystem.Character
         public ReloadTimeHandler ReloadTimeHandler = new();
         public WeaponHandler BomHandler = new ();
 
-        public override async UniTask Init()
-        {
-        }
+        public override async UniTask Init(){}
 
         public void OnSetUp()
         {
             if (_userProfile.BomberDatas == null) return;
+
             ReloadTimeHandler.OnSetUp(_timeReload);
             BomHandler.OnSetUp(_userProfile.BomberDatas, ReloadTimeHandler, _bomberConfig);
         }

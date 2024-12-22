@@ -1,8 +1,10 @@
 using DG.Tweening;
 using Sources.Audio;
+using Sources.DataBaseSystem;
 using Sources.Extension;
 using Sources.GameData;
 using Sources.GamePlaySystem.JourneyMap;
+using Sources.Language;
 using Sources.Utils.Singleton;
 using System.Collections.Generic;
 using TMPro;
@@ -14,11 +16,17 @@ namespace Game.Screens.JourneyScreen
     {
         private readonly Vector3 _targetScale = new Vector3(1.1f, 1.1f, 1f);
         private const float _duration = 0.7f;
+        private const string _languageIdDay = "JourneyMap_Day";
 
         private GameData _gameData => Locator<GameData>.Instance;
         private JourneyProfile _journeyProfile => _gameData.GetProfileData<JourneyProfile>();
+
+        private DataBase _dataBase => Locator<DataBase>.Instance;
+        private WavesConfig _wavesConfig => _dataBase.GetConfig<WavesConfig>();
+
         private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
+        private LanguageTable _languageTable => Locator<LanguageTable>.Instance;
 
         private string _waveId;
         private bool _isCanClick = true;
@@ -43,11 +51,13 @@ namespace Game.Screens.JourneyScreen
             _waveId = waveId;
 
             var journeyItemState = _journeyMapSystem.GetJourneyItemState(waveId);
+            var dayLanguageText = _languageTable.GetLanguageItem(_languageIdDay).GetText();
+            var numDay = _wavesConfig.GetIndexWaveInfo(waveId) + 1;
 
             if (journeyItemState == JourneyItemState.Passed)
             {
                 var waveData = _journeyProfile.GetWaveData(waveId);
-                _waveText.text = waveId;
+                _waveText.text = $"{dayLanguageText} {numDay}";
                 for (int i = 0; i < waveData.Stars; i++)
                 {
                     _stars[i].SetActive(true);
@@ -55,7 +65,7 @@ namespace Game.Screens.JourneyScreen
             }
             if (journeyItemState == JourneyItemState.NotYetPass)
             {
-                _waveText.text = waveId;
+                _waveText.text = $"{dayLanguageText} {numDay}";
                 ShowAnimation();
             }
             else if (journeyItemState == JourneyItemState.Lock)

@@ -24,15 +24,13 @@ namespace Sources.GamePlaySystem.Character
         public ReloadTimeHandler ReloadTimeHandler = new();
         public WeaponHandler BomHandler = new();
 
-        public override async UniTask Init()
-        {
-            if (_userProfile.SniperDatas == null) return;
-            ReloadTimeHandler.OnSetUp(_timeReload);
-        }
+        public override async UniTask Init(){}
 
         public void OnSetUp()
         {
             if (_userProfile.SniperDatas == null) return;
+
+            ReloadTimeHandler.OnSetUp(_timeReload);
             BomHandler.OnSetUp(_userProfile.SniperDatas, ReloadTimeHandler, _sniperConfig);
         }
     }

@@ -67,6 +67,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 94a70d2e050b3684f8343472239fab2c, type: 2}
   - {fileID: 11400000, guid: 54bc4d3bf2abb4842abb59d40607a806, type: 2}
   - {fileID: 11400000, guid: 83a5e02bd15a3bf41b7b5cf200033786, type: 2}
+  - {fileID: 11400000, guid: 9923d66e674a8d946bbe23ab5c0b136a, type: 2}
   _languageDefault: Vietnamese
   _languageToDelete: Vietnamese
   _csvFile: {fileID: 4900000, guid: 3cf9e628b4486154588361edb3ae800e, type: 3}
