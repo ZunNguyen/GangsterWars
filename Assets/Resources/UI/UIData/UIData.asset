@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 7773213539816876197, guid: 0da28e912e549a444a776418ba3ef584, type: 3}
   - {fileID: -161759123837661661, guid: 6800a8585fea81a448f33b1d7ccdeb13, type: 3}
   - {fileID: -5090275508954710937, guid: 9d7966233d0aa734586e1f990dbcd72e, type: 3}
+  - {fileID: -4722801514099046646, guid: 9fa3eed518f2238488c17b9641d83c72, type: 3}
   _uiLayers:
   - Screen
   - Dialog

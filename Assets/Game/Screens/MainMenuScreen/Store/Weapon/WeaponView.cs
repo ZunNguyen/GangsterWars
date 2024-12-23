@@ -9,13 +9,10 @@ using Sources.Language;
 using Sources.SpawnerSystem;
 using Sources.Utils;
 using Sources.Utils.Singleton;
-using System;
 using TMPro;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Game.Screens.MainMenuScreen
 {

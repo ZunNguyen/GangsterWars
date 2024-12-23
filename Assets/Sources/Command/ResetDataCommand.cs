@@ -19,7 +19,6 @@ namespace Sources.Command
         {
             GameDataUtils.ClearData();
             await UniTask.DelayFrame(5);
-            new LoadMainMenuScenceCommand().Execute();
         }
     }
 }

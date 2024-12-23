@@ -1,3 +1,4 @@
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using UnityEditor;
@@ -28,8 +29,12 @@ namespace Sources.Utils
             }
 
             foreach (DirectoryInfo dir in directoryInfo.GetDirectories())
-            { 
-                dir.Delete();
+            {
+                try
+                {
+                    dir.Delete(true);
+                }
+                catch {}
             }
         }
 

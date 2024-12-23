@@ -1,13 +1,11 @@
-using Cysharp.Threading.Tasks;
+﻿using Game.Screens.ConfirmDialog;
 using Sources.Audio;
 using Sources.Command;
 using Sources.Extension;
 using Sources.Language;
 using Sources.UI;
+using Sources.UISystem;
 using Sources.Utils.Singleton;
-using UnityEngine;
-using UnityEngine.UI;
-using UniRx;
 
 namespace Game.Screens.PanelSettingDialog
 {
@@ -15,6 +13,7 @@ namespace Game.Screens.PanelSettingDialog
     {
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
         private LanguageTable _languageTable => Locator<LanguageTable>.Instance;
+        private UIManager _uiManager => Locator<UIManager>.Instance;
 
         public void OnChangeLanguageClicked()
         {
@@ -22,10 +21,9 @@ namespace Game.Screens.PanelSettingDialog
             _languageTable.ChangeNexLanguageName();
         }
 
-        public void OnResetDataClicked()
+        public async void OnResetDataClicked()
         {
-            _audioManager.Play(AudioKey.SFX_CLICK_01);
-            new ResetDataCommand().Execute();
+            await _uiManager.Show<ConfirmDialog.ConfirmDialog>();
         }
     }
 }
