@@ -141,17 +141,21 @@ namespace Game.Character.Enemy.Abstract
 
         private async void ReleaseObject()
         {
-            await UniTask.Delay(2000);
+            var token = this.GetCancellationTokenOnDestroy();
 
-            await _spriteRenderer.DOFade(0.8f, _durationDoFade).OnComplete(() =>
+            try
             {
-                _spriteRenderer.DOFade(1f, _durationDoFade);
-            }).SetLoops(3);
+                await UniTask.Delay(2000, cancellationToken: token);
 
-            _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
+                await _spriteRenderer.DOFade(0.8f, _durationDoFade).OnComplete(() =>
+                {
+                    _spriteRenderer.DOFade(1f, _durationDoFade);
+                }).SetLoops(3);
 
-            if (!gameObject.activeSelf) return;
-            _spawnerManager.Release(gameObject);
+                _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
+                _spawnerManager.Release(gameObject);
+            }
+            catch (OperationCanceledException) {}
         }
     }
 }

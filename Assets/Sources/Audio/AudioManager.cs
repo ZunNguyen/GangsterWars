@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.SpawnerSystem;
@@ -66,9 +67,10 @@ namespace Sources.Audio
             OnPause?.Invoke(audioId);
         }
 
-        public void AllPauseAudio()
+        public async UniTask AllPauseAudio()
         {
             AllAudioPause?.Invoke();
+            await UniTask.DelayFrame(5);
         }
 
         private AudioObjectInstance GetAudioObject()

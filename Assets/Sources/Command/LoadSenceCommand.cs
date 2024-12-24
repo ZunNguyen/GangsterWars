@@ -20,9 +20,8 @@ namespace Sources.Command
 
         public override async UniTask Execute()
         {
-            _audioManager.AllPauseAudio();
-            await UniTask.DelayFrame(5);
             await new ResetSpawnerManagerCommand().Execute();
+            await _audioManager.AllPauseAudio();
             await SceneManager.LoadSceneAsync(_scenceName, LoadSceneMode.Single);
 
             if (_scenceName == NameScenceKey.NAME_SCENCE_MAIN_MENU)

@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Sources.GamePlaySystem.CoinController;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,11 +25,17 @@ namespace Game.Screens.Coin
 
         private async void SpawnCoinReward(CoinRewardInfo coinRewardInfo)
         {
-            var newCoin = _spawnerManager.Get(_coinPrefab);
-            newCoin.transform.position = coinRewardInfo.PosSpawn.position;
-            newCoin.gameObject.SetActive(true);
-            await UniTask.Delay(5000);
-            newCoin.OnSetUp(_posIconCoinReward, coinRewardInfo.Coins, 30);
+            var token = this.GetCancellationTokenOnDestroy();
+
+            try
+            {
+                var newCoin = _spawnerManager.Get(_coinPrefab);
+                newCoin.transform.position = coinRewardInfo.PosSpawn.position;
+                newCoin.gameObject.SetActive(true);
+                await UniTask.Delay(5000, cancellationToken : token);
+                newCoin.OnSetUp(_posIconCoinReward, coinRewardInfo.Coins, 30);
+            }
+            catch (OperationCanceledException) { }
         }
 
         private void OnDestroy()
