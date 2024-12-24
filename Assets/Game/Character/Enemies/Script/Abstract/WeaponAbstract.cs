@@ -12,7 +12,7 @@ namespace Game.Character.Enemy.Abstract
 {
     public abstract class WeaponAbstract : MonoBehaviour
     {
-        protected readonly TypeDamageUser _typeDamage = TypeDamageUser.LongRangeDamage;
+        protected readonly DamageUserType _typeDamage = DamageUserType.LongRangeDamage;
 
         protected SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         protected MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;

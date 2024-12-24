@@ -34,8 +34,8 @@ namespace Game.Screens.BlackLoadingScreen
 
         public async UniTask PanelMoveIn()
         {
-            _panelTop.DOAnchorMin(_originalAnchorPanelTop, _duration).SetEase(Ease.OutQuart);
-            await _panelBot.DOAnchorMax(_originalAnchorPanelBot, _duration).SetEase(Ease.OutQuart);
+            _panelTop.DOAnchorMin(_originalAnchorPanelTop, _duration).SetEase(Ease.OutQuart).SetUpdate(true);
+            await _panelBot.DOAnchorMax(_originalAnchorPanelBot, _duration).SetEase(Ease.OutQuart).SetUpdate(true);
         }
 
         public async UniTask PanelMoveOut()

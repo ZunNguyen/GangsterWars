@@ -70,9 +70,9 @@ namespace Game.UserReceiveDamage.Shield
             _mainGamePlaySystem.UserRecieveDamageHandler.DamageShield += AnimationDamageShield;
         }
 
-        private async void AnimationDamageShield(TypeDamageUser type)
+        private async void AnimationDamageShield(DamageUserType type)
         {
-            if (type == TypeDamageUser.LongRangeDamage)
+            if (type == DamageUserType.LongRangeDamage)
             {
                 _iconShield.color = _targetColor;
                 await UniTask.Delay(100);

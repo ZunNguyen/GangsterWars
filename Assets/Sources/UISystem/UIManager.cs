@@ -67,7 +67,7 @@ namespace Sources.UISystem
             if (!ui.SafeIsUnityNull())
             {
                 ui.OnSetUp(parameter);
-                await ui.OnTransitionEnter();
+                //await ui.OnTransitionEnter();
             }
             _uiShowing.Add(uiName, ui);
 

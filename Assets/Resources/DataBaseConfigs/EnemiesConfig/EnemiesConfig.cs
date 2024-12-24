@@ -15,7 +15,14 @@ namespace Sources.DataBaseSystem
         public string Id;
         [PreviewField(100, ObjectFieldAlignment.Center)]
         public GameObject EnemyPrefab;
-        public int TimeToReload;
+
+        public bool IsCanHit;
+        [ShowIf(nameof(IsCanHit))] public int TimeToReloadHit;
+
+        public bool IsCanShoot;
+        [ShowIf(nameof(IsCanShoot))] public int QualityWeaponShoot;
+        [ShowIf(nameof(IsCanShoot))] public int TimeToReloadShoot;
+
         [ListDrawerSettings(ListElementLabelName = "GetDescription")]
         public List<WaveEnemy> WaveEnemies = new();
         public Dictionary<string, WaveEnemy> WaveEnemyCache { get; private set; } = new();

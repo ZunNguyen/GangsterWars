@@ -35,15 +35,16 @@ namespace Sources.Command
             sequenceGroup.Add(new LoadSenceCommand(NameScenceKey.NAME_SCENCE_MAIN_MENU));
 
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
+            
             await loadingScreen.PanelMoveIn();
             _storeSystem.OnSetUp();
-
             CloseScreen();
-
             await sequenceGroup.Run();
+            Time.timeScale = 1f;
             _audioManager.Play(AudioKey.MENU_SONG, true);
             _uiManager.Show<MainMenuScreen>().Forget();
             await loadingScreen.PanelMoveOut();
+            
             loadingScreen.Close().Forget();
         }
 

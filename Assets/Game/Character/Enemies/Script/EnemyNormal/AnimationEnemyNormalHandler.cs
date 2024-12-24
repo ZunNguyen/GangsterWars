@@ -5,7 +5,7 @@ namespace Game.Character.Enemy.Normal
 {
     public class AnimationEnemyNormalHandler : AnimationHandlerAbstract
     {
-        private readonly TypeDamageUser _typeDamage = TypeDamageUser.ShortRangeDamage; 
+        private readonly DamageUserType _typeDamage = DamageUserType.ShortRangeDamage; 
 
         public override void OnAttack()
         {

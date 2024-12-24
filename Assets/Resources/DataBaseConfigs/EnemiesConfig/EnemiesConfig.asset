@@ -15,7 +15,11 @@ MonoBehaviour:
   _enemies:
   - Id: enemy-01
     EnemyPrefab: {fileID: 418380563315780808, guid: cefb970d02136db44aff9b0332bfac71, type: 3}
-    TimeToReload: 1000
+    IsCanHit: 1
+    TimeToReloadHit: 1000
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -220,7 +224,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 43d778fa86753f9439228816b02e65eb, type: 3}
   - Id: enemy-02
     EnemyPrefab: {fileID: 2979277852961877915, guid: 77e536c4464207b43a03fb6709fe4497, type: 3}
-    TimeToReload: 1500
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 1
+    QualityWeaponShoot: 99999
+    TimeToReloadShoot: 2000
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -425,7 +433,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: a8d1566203c6c61498e002a826e3f8b3, type: 3}
   - Id: enemy-03
     EnemyPrefab: {fileID: 44199057889964456, guid: 9df3cbb0a1b61fd469455c985cbc89ca, type: 3}
-    TimeToReload: 1000
+    IsCanHit: 1
+    TimeToReloadHit: 1000
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -630,7 +642,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 84fdc843e2e6efc419d853bf233003bc, type: 3}
   - Id: enemy-04
     EnemyPrefab: {fileID: 6159979376426271357, guid: c7dff053761e1bd4d846f79b0fb86c74, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -835,7 +851,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 4004456398a364f4ab1d0ce8d4cf2b09, type: 3}
   - Id: enemy-05
     EnemyPrefab: {fileID: 180452731009248054, guid: fa1cdb717af73eb439d89584ba9c5cb5, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -1040,7 +1060,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: cff36190081fecd4a8bd4542d6f95b34, type: 3}
   - Id: enemy-06
     EnemyPrefab: {fileID: 8493911427500958365, guid: 753940f11ca5b434cbbfccd10e3c17d2, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -1245,7 +1269,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: a50a7159fb483f244824547fd69e7920, type: 3}
   - Id: enemy-07
     EnemyPrefab: {fileID: 345816969573170895, guid: ab4ac09e1b5decb4e8af977768b6024f, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -1450,7 +1478,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 95548ce0ee8ef7c449a07d65262bf0aa, type: 3}
   - Id: boss-01
     EnemyPrefab: {fileID: 7357696925340996628, guid: d365fd14f41132e4cbcd8765e6e6e59a, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -1655,7 +1687,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: b36c73cb0ecb34748b196a835bdd551e, type: 3}
   - Id: boss-02
     EnemyPrefab: {fileID: 6955511236308158615, guid: 2b658d2dab17bcf4cb9ed8800804432f, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -1860,7 +1896,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: c81058435381368498492bb4578b8d5f, type: 3}
   - Id: boss-03
     EnemyPrefab: {fileID: 2051321100529574554, guid: dee7d93fd783dc043ba46001c200ceb9, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -2065,7 +2105,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: bc11d0c3726b7eb478ed3f9fd4b0300d, type: 3}
   - Id: boss-04
     EnemyPrefab: {fileID: 6103538179936068456, guid: 0fb06a77f1970794f8629ade655d9bbd, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -2270,7 +2314,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 636c021064e3ccf4ba6164039fad3afc, type: 3}
   - Id: boss-05
     EnemyPrefab: {fileID: 8646716340610159811, guid: df1a4c0d299044945a3ee9ffe2ae2c06, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -2475,7 +2523,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 0bc27df780bbfef498a7b28e933c0bce, type: 3}
   - Id: boss-06
     EnemyPrefab: {fileID: 4347561333755118298, guid: be7c4c5f8f0ada942b685b98656aca02, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -2680,7 +2732,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 21918da0ed17ee64a91aab969bb132c7, type: 3}
   - Id: boss-07
     EnemyPrefab: {fileID: 2738606599830832688, guid: ffc9a57fd37840848be819a707ee721a, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -2885,7 +2941,11 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: cf3dee7b60c5c5141a61c5f039804729, type: 3}
   - Id: boss-08
     EnemyPrefab: {fileID: 4533735913268279485, guid: 4f3939168dfc9a148bf7293104538f9d, type: 3}
-    TimeToReload: 0
+    IsCanHit: 0
+    TimeToReloadHit: 0
+    IsCanShoot: 0
+    QualityWeaponShoot: 0
+    TimeToReloadShoot: 0
     WaveEnemies:
     - Id: wave-01
       Damage: 1

@@ -105,8 +105,7 @@ namespace Game.Screens.GamePlayScreen
 
         public void OnHomeClicked()
         {
-            Time.timeScale = 1f;
-            _audioManager.Play(AudioKey.SFX_CLICK_01);
+            _audioManager.PauseAudio(AudioKey.GAME_PLAY_SONG);
             new LoadMainMenuScenceCommand().Execute();
         }
 

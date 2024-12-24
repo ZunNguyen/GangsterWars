@@ -42,7 +42,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
         public ReactiveProperty<ShieldState> ShieldCurrentState { get;} = new ReactiveProperty<ShieldState>(ShieldState.Full);
         public ReactiveProperty<int> HpCurrentUser {  get;} = new ReactiveProperty<int>();
         public Action IsDead;
-        public Action<TypeDamageUser> DamageShield;
+        public Action<DamageUserType> DamageShield;
         public Action DamageUser;
 
         public void OnSetUp()
@@ -84,7 +84,7 @@ namespace Sources.GamePlaySystem.MainGamePlay
             return ShieldState.Full;
         }
 
-        public void SubstractHp(int damage, TypeDamageUser typeDamage)
+        public void SubstractHp(int damage, DamageUserType typeDamage)
         {
             if (ShieldCurrentState.Value != ShieldState.Empty)
             {

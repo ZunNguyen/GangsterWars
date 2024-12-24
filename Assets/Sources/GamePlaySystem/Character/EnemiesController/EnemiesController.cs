@@ -29,7 +29,6 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             if (_availableEnemyHandlers.Count == 0)
             {
                 var newEnemyHandler = new EnemyHandler();
-                newEnemyHandler.SetUpFirst();
                 _availableEnemyHandlers.Add(newEnemyHandler);
             }
 

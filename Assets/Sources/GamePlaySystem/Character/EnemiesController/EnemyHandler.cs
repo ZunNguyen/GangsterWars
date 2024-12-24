@@ -11,7 +11,14 @@ using UnityEngine;
 
 namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 {
-    public enum TypeDamageUser
+    public enum ActionType
+    {
+        None,
+        Hit,
+        Shoot
+    }
+
+    public enum DamageUserType
     {
         LongRangeDamage,
         ShortRangeDamage
@@ -50,36 +57,46 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EnemiesConfig _enemiesConfig => _dataBase.GetConfig<EnemiesConfig>();
+
         private MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
+        private int _qualityWeaponShoot;
         private bool _isHaveColliderInFace;
         private bool _isEndGame;
-        private int _timeReload;
+        private EnemyInfo _enemyInfo;
+        private IDisposable _disposableShieldState;
+        private ReloadTimeHandler _reloadTimeHandler;
+
         public int CoinsReward { get; private set; }
         public int HpMax { get; private set; }
-        private IDisposable _disposableShieldState;
-
+        
         public ReactiveProperty<int> HpCurrent { get; private set; } = new ();
         public ReactiveProperty<int> Damage { get; private set; } = new ();
         public ReactiveProperty<bool> IsAttacking { get; private set; } = new (false);
         public ReactiveProperty<Vector2> Direction { get; private set; } = new (Vector2.zero);
         public ReactiveProperty<AnimationState> AniamtionState { get; private set; } = new (AnimationState.Idle);
+        public ReactiveProperty<ActionType> ActionTypeCurrent { get; private set; } = new (Enemies.ActionType.None);
 
         public Action<int> DamageFeed;
         
-        public void SetUpFirst()
+        public EnemyHandler()
         {
             SubscribeShieldState();
             SubscribeUserDeath();
+            _reloadTimeHandler = new(ActionTypeCurrent);
         }
 
         private void SubscribeShieldState()
         {
             _disposableShieldState = _mainGamePlaySystem.UserRecieveDamageHandler.ShieldCurrentState.Subscribe(value =>
             {
-                if (value == ShieldState.Empty) OnAction();
+                if (value == ShieldState.Empty && ActionTypeCurrent.Value == ActionType.Hit)
+                {
+                    _isHaveColliderInFace = false;
+                    OnAction();
+                }
             });
         }
 
@@ -90,23 +107,25 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
 
         public void OnSetUp(string enemyId)
         {
-            GetEnemyInfo(enemyId);
             _isHaveColliderInFace = false;
             _isEndGame = false;
+            _reloadTimeHandler.SetEnemyId(enemyId);
+
+            GetEnemyInfo(enemyId);
             OnAction();
         }
 
         private void GetEnemyInfo(string enemyId)
         {
-            var enemy = _enemiesConfig.GetEnemyInfo(enemyId);
-            var enemyWaveInfo = enemy.GetWaveEnemy(_mainGamePlaySystem.SpawnEnemiesHandler.WaveIdCurrent);
+            _enemyInfo = _enemiesConfig.GetEnemyInfo(enemyId);
+            var enemyWaveInfo = _enemyInfo.GetWaveEnemy(_mainGamePlaySystem.SpawnEnemiesHandler.WaveIdCurrent);
 
             HpCurrent.Value = HpMax = enemyWaveInfo.Hp;
             Damage.Value = enemyWaveInfo.Damage;
 
             CoinsReward = GetRandom.GetCoinRandom(enemyWaveInfo.coinReward, enemyWaveInfo.PercentChance);
 
-            _timeReload = enemy.TimeToReload;
+            if (_enemyInfo.IsCanShoot) _qualityWeaponShoot = _enemyInfo.QualityWeaponShoot;
         }
 
         private void OnAction()
@@ -121,9 +140,16 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             else SetWalk();
         }
 
-        public void HaveColliderInFace()
+        public void HaveColliderInFace(string collisionKey)
         {
             _isHaveColliderInFace = true;
+
+            if (collisionKey == CollisionTagKey.STOP_POINT_SHOOT && _enemyInfo.IsCanShoot) 
+                ActionTypeCurrent.Value = Enemies.ActionType.Shoot; 
+            
+            if (collisionKey == CollisionTagKey.SHIELD_USER && _enemyInfo.IsCanHit) 
+                ActionTypeCurrent.Value = Enemies.ActionType.Hit;
+
             OnAction();
         }
 
@@ -151,12 +177,14 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             Direction.Value = Vector2.left;
         }
 
-        public async void DamageUser(TypeDamageUser type)
+        public async void DamageUser(DamageUserType type)
         {
             AniamtionState.Value = AnimationState.Idle;
             _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value, type);
 
-            await UniTask.Delay(_timeReload);
+            SubstractWeaponShoot();
+
+            await _reloadTimeHandler.ReloadingTime();
             IsAttacking.Value = false;
 
             OnAction();
@@ -198,6 +226,12 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             _audioManager.Play(AudioKey.SFX_ENEMY_DEATH);
             Direction.Value = Vector2.zero;
             AniamtionState.Value = AnimationState.Death;
+        }
+
+        private void SubstractWeaponShoot()
+        {
+            _qualityWeaponShoot--;
+            if (_qualityWeaponShoot <= 0) _isHaveColliderInFace = false;
         }
 
         private void OnDestroy()

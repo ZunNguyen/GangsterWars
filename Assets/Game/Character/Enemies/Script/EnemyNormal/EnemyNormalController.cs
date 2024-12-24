@@ -10,7 +10,7 @@ namespace Game.Character.Enemy.Normal
         {
             if (collision.tag == CollisionTagKey.SHIELD_USER && !_isAttacking)
             {
-                _enemyHandler.HaveColliderInFace();
+                _enemyHandler.HaveColliderInFace(collision.tag);
             }
         }
     }
