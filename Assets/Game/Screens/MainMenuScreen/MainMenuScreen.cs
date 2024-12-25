@@ -26,6 +26,8 @@ namespace Game.Screens.MainMenuScreen
 
             _storeController.OnSetUp();
             _tabHandler.OnSetUp();
+
+            _audioManager.Play(AudioKey.MENU_SONG, true);
         }
 
         public async void OnPlayGameClicked()

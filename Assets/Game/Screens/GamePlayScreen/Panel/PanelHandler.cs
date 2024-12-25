@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sources.Audio;
 using Sources.Command;
@@ -105,8 +106,7 @@ namespace Game.Screens.GamePlayScreen
 
         public void OnHomeClicked()
         {
-            _audioManager.PauseAudio(AudioKey.GAME_PLAY_SONG);
-            new LoadMainMenuScenceCommand().Execute();
+            new LoadMainMenuScenceCommand().Execute().Forget();
         }
 
         public void OnComfirmClicked()

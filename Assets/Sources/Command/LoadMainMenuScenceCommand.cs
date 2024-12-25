@@ -19,8 +19,6 @@ namespace Sources.Command
 {
     public class LoadMainMenuScenceCommand : Command
     {
-        private AudioManager _audioManager => Locator<AudioManager>.Instance;
-
         private UIManager _uiManager => Locator<UIManager>.Instance;
         private GamePlayScreen _gamePlayScreen => _uiManager.GetUI<GamePlayScreen>();
         private MainMenuScreen _mainMenuScreen => _uiManager.GetUI<MainMenuScreen>();
@@ -41,7 +39,6 @@ namespace Sources.Command
             CloseScreen();
             await sequenceGroup.Run();
             Time.timeScale = 1f;
-            _audioManager.Play(AudioKey.MENU_SONG, true);
             _uiManager.Show<MainMenuScreen>().Forget();
             await loadingScreen.PanelMoveOut();
             

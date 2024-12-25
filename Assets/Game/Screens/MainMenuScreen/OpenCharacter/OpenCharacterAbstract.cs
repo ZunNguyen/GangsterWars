@@ -82,14 +82,15 @@ namespace Game.Screens.MainMenuScreen
             if (_isAldreadyOpen) return;
             _audioManager.Play(AudioKey.SFX_CLICK_01);
             _blackBG.SetActive(true);
+            _unlockMe.gameObject.SetActive(false);
             _boxCharacter.transform.DOScale(Vector3.one, _duration);
         }
 
-        private void OnCloseBoxClicked()
+        public void OnCloseBoxClicked()
         {
             _audioManager.Play(AudioKey.SFX_CLICK_01);
             _blackBG.SetActive(false);
-            _unlockMe.gameObject.SetActive(false);
+            _unlockMe.gameObject.SetActive(true);
             _boxCharacter.transform.DOScale(Vector3.zero, _duration);
         }
 
@@ -101,6 +102,7 @@ namespace Game.Screens.MainMenuScreen
             {
                 _audioManager.Play(AudioKey.SFX_CLICK_01);
                 _imageCharacter.raycastTarget = false;
+                _unlockMe.gameObject.SetActive(false);
                 OnCloseBoxClicked();
                 _imageCharacter.color = Color.white;
                 _tween.Kill();

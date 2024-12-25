@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Sources.DataBaseSystem;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
+using System;
 using UniRx;
 using UnityEngine;
 
@@ -43,14 +44,14 @@ namespace Sources.Audio
         private void Pause(string id)
         {
             if (_audioId != id) return;
-            _audioSource.Pause();
+            if (gameObject.activeSelf)
+                _spawnerManager.Release(gameObject);
         }
 
         private void AllPause()
         {
-            _audioSource.Pause();
-            if (!gameObject.activeSelf) return;
-            _spawnerManager.Release(gameObject);
+            if (gameObject.activeSelf)
+                _spawnerManager.Release(gameObject);
         }
 
         public async void OnSetUp(AudioInfo audioInfo, bool isLoop)
@@ -63,11 +64,17 @@ namespace Sources.Audio
 
             _audioSource.clip = audioInfo.TakeRandom();
             _audioSource.Play();
+
             if (!isLoop)
             {
-                var lengthAudio = (int)(_audioSource.clip.length * 1000);
-                await UniTask.Delay(lengthAudio);
-                if (gameObject.activeSelf) _spawnerManager.Release(gameObject);
+                var token = this.GetCancellationTokenOnDestroy();
+                try
+                {
+                    var lengthAudio = (int)(_audioSource.clip.length * 1000);
+                    await UniTask.Delay(lengthAudio, cancellationToken : token);
+                    if (gameObject.activeSelf) _spawnerManager.Release(gameObject);
+                }
+                catch (OperationCanceledException) { }
             }
         }
 
