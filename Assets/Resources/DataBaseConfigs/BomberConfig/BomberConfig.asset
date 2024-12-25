@@ -64,7 +64,7 @@ MonoBehaviour:
     ReloadTime: 5000
   - Id: bom-02
     Icon: {fileID: 21300000, guid: 5158ddcb88aa3d64f975727f054ac744, type: 3}
-    UnlockFee: 0
+    UnlockFee: 200
     LanguageId: Store_Nade
     LevelUpgrades:
     - Id: level-01
@@ -113,7 +113,7 @@ MonoBehaviour:
     ReloadTime: 5000
   - Id: bom-03
     Icon: {fileID: 21300000, guid: d8ff5a0166c5bf949ae912914ffdf28e, type: 3}
-    UnlockFee: 0
+    UnlockFee: 500
     LanguageId: Store_Cocktail
     LevelUpgrades:
     - Id: level-01
@@ -162,7 +162,7 @@ MonoBehaviour:
     ReloadTime: 5000
   - Id: bom-04
     Icon: {fileID: 21300000, guid: 1010f902bcb655241a349b7969f49c84, type: 3}
-    UnlockFee: 0
+    UnlockFee: 1000
     LanguageId: Store_Mine
     LevelUpgrades:
     - Id: level-01
