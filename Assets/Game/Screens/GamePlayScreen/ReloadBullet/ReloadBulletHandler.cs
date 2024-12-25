@@ -85,7 +85,7 @@ namespace Game.Screens.GamePlayScreen
             for (int i = 0; i < _bulletPerClip; i++)
             {
                 var bullet = _spawnerManager.Get(_bulletPrefab);
-                bullet.transform.SetParent(_panelReloadGunNormal);
+                bullet.transform.SetParent(_panelReloadGunNormal, false);
                 bullet.OnSetUp(i, gunModel.BulletAvailable);
                 _bullets.Add(bullet);
             }

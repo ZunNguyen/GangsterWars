@@ -1,5 +1,5 @@
 ﻿STT,1,2,3,4,5,6,7,8,9,10
 Level Upgrade Id,level-01,level-02,level-03,level-04,level-05,level-06,level-07,level-08,level-09,level-10
-Level Up Fee,1,2,3,4,5,6,7,8,9,10
-Reload Fee,50,50,50,50,50,50,50,50,50,50
-Damage,5,10,10,10,10,10,10,10,10,10
+Level Up Fee,0,200,290,380,470,560,650,740,830,920
+Reload Fee,120,170,220,270,320,370,420,470,520,570
+Damage,15,24,33,42,51,60,69,78,87,96
