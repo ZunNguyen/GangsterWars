@@ -29,7 +29,6 @@ namespace Game.PosSpawnEnemies
         private Vector3 _offsetPos;
         private Dictionary<string, EnemyControllerAbstract> _enemiesCache = new Dictionary<string, EnemyControllerAbstract>();
 
-        [SerializeField] private CanvasInGamePlayController _canvasInGamePlayController;
         [SerializeField] private Transform _enemiesHolder;
 
         public void OnSetUp(int index)
@@ -75,7 +74,7 @@ namespace Game.PosSpawnEnemies
         {
             var newEnemy = _spawnerManager.Get(enemyController);
             _mainGamePlaySystem.SpawnEnemiesHandler.AddEnemyToList(newEnemy);
-            newEnemy.OnSetUp(_canvasInGamePlayController, enemyId, _indexPos);
+            newEnemy.OnSetUp(enemyId, _indexPos);
             newEnemy.transform.SetParent(_enemiesHolder);
 
             _offsetPos.z -= _offsetDefaultZ;

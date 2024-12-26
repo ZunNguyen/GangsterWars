@@ -18,67 +18,36 @@ namespace Game.CanvasInGamePlay
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
-        private bool _isShowText = false;
-
-        private Transform _worldTransformObject;
-        private Canvas _canvas;
-        private EnemyHandler _enemyHandler;
-        private IDisposable _disposedHpBar;
+        private Tween _tween;
 
         [SerializeField] private RectTransform _rectTransformObject;
         [SerializeField] private TMP_Text _text;
 
-        public void OnSetUp(CanvasModel canvasModel)
+        public void OnSetUp(Canvas canvas, Transform transformObject, int damageFeed)
         {
-            gameObject.SetActive(false);
-
-            _canvas = canvasModel.Canvas;
-            _worldTransformObject = canvasModel.TransformObject;
-            _enemyHandler = canvasModel.EnemyHandler;
-
-            _disposedHpBar = _enemyHandler.HpCurrent.Subscribe(async value =>
-            {
-                if (value <= 0)
-                {
-                    while(_isShowText)
-                    {
-                        await UniTask.DelayFrame(1);
-                    }
-
-                    try
-                    {
-                        _disposedHpBar?.Dispose();
-                        _enemyHandler.DamageFeed -= ShowDamageFeed;
-                        _spawnerManager.Release(this);
-                    }
-                    catch { }
-                }
-
-            }).AddTo(this);
-
-            _enemyHandler.DamageFeed += ShowDamageFeed;
-        }
-
-        private void ShowDamageFeed(int value)
-        {
-            _isShowText = true;
-
-            gameObject.SetActive(true);
-            _text.text = value.ToString();
-
-            Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, _worldTransformObject.position);
+            _text.text = damageFeed.ToString();
+            
+            Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, transformObject.position);
             Vector2 anchoredPos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, screenPos, _canvas.worldCamera, out anchoredPos);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, screenPos, canvas.worldCamera, out anchoredPos);
             _rectTransformObject.anchoredPosition = anchoredPos;
 
+            ShowDamageFeed();
+        }
+
+        private void ShowDamageFeed()
+        {
             var targetMovePosY = _rectTransformObject.anchoredPosition.y + _offsetMovePosY;
-            _rectTransformObject.DOAnchorPosY(targetMovePosY, _duration).OnComplete(async () =>
+            _tween = _rectTransformObject.DOAnchorPosY(targetMovePosY, _duration).OnComplete(async () =>
             {
                 await UniTask.Delay(200);
-                gameObject.SetActive(false);
-
-                _isShowText = false;
+                _spawnerManager.Release(this);
             });
+        }
+
+        private void OnDestroy()
+        {
+            _tween?.Kill();
         }
     }
 }

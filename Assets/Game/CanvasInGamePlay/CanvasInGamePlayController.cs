@@ -19,6 +19,9 @@ namespace Game.CanvasInGamePlay.Controller
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private CanvasModel _canvasModel = new();
 
+        private static CanvasInGamePlayController _instance;
+        public static CanvasInGamePlayController Instance => _instance;
+
         [Header("HP Bar")]
         [SerializeField] private HpBar _hpBarPrefab;
         [SerializeField] private Transform _hpBarHolder;
@@ -29,6 +32,11 @@ namespace Game.CanvasInGamePlay.Controller
 
         [SerializeField] private Canvas _canvas;
 
+        private void Awake()
+        {
+            if (_instance == null) _instance = this;
+        }
+
         public void OnSetUpHpBar(Transform transformObject, EnemyHandler enemyHandler)
         {
             _canvasModel.Canvas = _canvas;
@@ -38,10 +46,13 @@ namespace Game.CanvasInGamePlay.Controller
             var newHpBar = _spawnerManager.Get(_hpBarPrefab);
             newHpBar.transform.SetParent(_hpBarHolder, false);
             newHpBar.OnSetUp(_canvasModel);
+        }
 
+        public void OnShowDamageFeed(Transform transformObject, int damageFeed)
+        {
             var newDamageFeed = _spawnerManager.Get(_damageFeedPrefab);
             newDamageFeed.transform.SetParent(_damageFeedHolder, false);
-            newDamageFeed.OnSetUp(_canvasModel);
+            newDamageFeed.OnSetUp(_canvas, transformObject, damageFeed);
         }
     }
 }

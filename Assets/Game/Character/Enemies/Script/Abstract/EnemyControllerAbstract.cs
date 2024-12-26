@@ -39,8 +39,9 @@ namespace Game.Character.Enemy.Abstract
 
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private Transform _hpBarPos;
+        [SerializeField] private Transform _damageFeedPos;
         [SerializeField] private AnimationHandlerAbstract _animationHander;
-        [SerializeField] private SpriteRenderer _spriteRenderer;    
+        [SerializeField] private SpriteRenderer _spriteRenderer;
 
         private void Start()
         {
@@ -53,17 +54,17 @@ namespace Game.Character.Enemy.Abstract
             _direction = Vector2.zero;
         }
 
-        public void OnSetUp(CanvasInGamePlayController canvasInGamePlayController, string enemyId, int indexPos)
+        public void OnSetUp(string enemyId, int indexPos)
         {
             IndexPos = indexPos;
-
             _enemyHandler = null;
             _enemyHandler = _mainGamePlaySystem.EnemiesController.GetAvailableEnemyHandler();
+            
             _enemyHandler.OnSetUp(enemyId);
-            canvasInGamePlayController.OnSetUpHpBar(_hpBarPos, _enemyHandler);
-
-            SubcribeValue();
             _animationHander.OnSetUp(_enemyHandler);
+            CanvasInGamePlayController.Instance.OnSetUpHpBar(_hpBarPos, _enemyHandler);
+            
+            SubcribeValue();
         }
 
         private void SubcribeValue()
@@ -85,6 +86,13 @@ namespace Game.Character.Enemy.Abstract
                     OnDeath();
                 }
             }).AddTo(this);
+
+            _enemyHandler.DamageFeed += ShowDamageFeed;
+        }
+
+        private void ShowDamageFeed(int damge)
+        {
+            CanvasInGamePlayController.Instance.OnShowDamageFeed(_damageFeedPos, damge);
         }
 
         private void FixedUpdate()
@@ -132,13 +140,6 @@ namespace Game.Character.Enemy.Abstract
             ReleaseObject();
         }
 
-        private void OnDisposable()
-        {
-            _disposableIsDeath?.Dispose();
-            _disposableDirection?.Dispose();
-            _disposableIsAttacking?.Dispose();
-        }
-
         private async void ReleaseObject()
         {
             var token = this.GetCancellationTokenOnDestroy();
@@ -153,9 +154,22 @@ namespace Game.Character.Enemy.Abstract
                 }).SetLoops(3);
 
                 _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
-                _spawnerManager.Release(gameObject);
+                if (gameObject.activeSelf) _spawnerManager.Release(gameObject);
             }
             catch (OperationCanceledException) {}
+        }
+
+        private void OnDisposable()
+        {
+            _disposableIsDeath?.Dispose();
+            _disposableDirection?.Dispose();
+            _disposableIsAttacking?.Dispose();
+            _enemyHandler.DamageFeed -= ShowDamageFeed;
+        }
+
+        private void OnDestroy()
+        {
+            _enemyHandler.DamageFeed -= ShowDamageFeed;
         }
     }
 }

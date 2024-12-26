@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1280020002973436976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2740650635369940270}
+  m_Layer: 0
+  m_Name: DamageFeedPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2740650635369940270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280020002973436976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.57, y: 1.93, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8493911427500958364}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3277482205372726740
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,7 +60,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8493911427500958364}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5089878862296805875
 GameObject:
@@ -60,7 +91,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8493911427500958364}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7745353108547452846
 GameObject:
@@ -370,6 +401,7 @@ MonoBehaviour:
   _animator: {fileID: 3141933024051421551}
   _enemyController: {fileID: 1868990788147314544}
   _weaponPrefab: {fileID: 6148796955823961097, guid: 93863f3fd63d16544892972bee3c7fbd, type: 3}
+  _muzzleFlash: {fileID: 0}
   _weaponHolder: {fileID: 8432689198941520761}
   _posSpawnWeapon: {fileID: 59397833328154823}
 --- !u!1 &8493911427500958365
@@ -404,6 +436,7 @@ Transform:
   m_Children:
   - {fileID: 8493911427072970591}
   - {fileID: 8083413325061263592}
+  - {fileID: 2740650635369940270}
   - {fileID: 59397833328154823}
   - {fileID: 8432689198941520761}
   m_Father: {fileID: 0}
@@ -444,7 +477,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 8083413324521289682}
   _hpBarPos: {fileID: 8083413325061263592}
+  _damageFeedPos: {fileID: 2740650635369940270}
   _animationHander: {fileID: 3205203450472146741}
+  _spriteRenderer: {fileID: 0}
 --- !u!1 &9079734006034938849
 GameObject:
   m_ObjectHideFlags: 0
