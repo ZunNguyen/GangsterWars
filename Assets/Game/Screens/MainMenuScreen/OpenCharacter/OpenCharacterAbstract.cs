@@ -105,7 +105,7 @@ namespace Game.Screens.MainMenuScreen
                 _unlockMe.gameObject.SetActive(false);
                 OnCloseBoxClicked();
                 _imageCharacter.color = Color.white;
-                _tween.Kill();
+                _tween?.Kill();
                 _isAldreadyOpen = true;
             }
             else _audioManager.Play(AudioKey.SFX_CLICK_ERROR);

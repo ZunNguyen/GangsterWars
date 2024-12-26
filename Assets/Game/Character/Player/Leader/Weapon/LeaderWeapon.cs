@@ -53,7 +53,7 @@ namespace Game.Weapon.Bullet
         {
             if (isActiveAndEnabled == false) return;
 
-            _tween.Kill();
+            _tween?.Kill();
             var effect = _spawnerManager.Get(_hitBulletEffect);
             effect.OnSetUp(_originalPos, transform.position);
             _spawnerManager.Release(this);

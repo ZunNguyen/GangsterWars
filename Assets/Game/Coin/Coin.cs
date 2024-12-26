@@ -28,7 +28,7 @@ namespace Game.Screens.Coin
 
         private void OnDestroy()
         {
-            _tween.Kill();
+            _tween?.Kill();
         }
     }
 }

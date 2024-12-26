@@ -145,16 +145,20 @@ namespace Game.Character.Enemy.Abstract
 
         private async void ReleaseObject()
         {
-            await UniTask.Delay(2000, cancellationToken: _token);
-
-            _tween = _spriteRenderer.DOFade(0.8f, _durationDoFade).OnComplete(() =>
+            try
             {
-                _spriteRenderer.DOFade(1f, _durationDoFade);
-            }).SetLoops(3, LoopType.Yoyo);
+                await UniTask.Delay(2000, cancellationToken: _token);
 
-            await _tween.AwaitForComplete(cancellationToken : _token);
-            _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
-            _spawnerManager.Release(gameObject);
+                _tween = _spriteRenderer.DOFade(0.8f, _durationDoFade).OnComplete(() =>
+                {
+                    _spriteRenderer.DOFade(1f, _durationDoFade);
+                }).SetLoops(3, LoopType.Yoyo);
+
+                await _tween.AwaitForComplete(cancellationToken: _token);
+                _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
+                _spawnerManager.Release(gameObject);
+            }
+            catch (OperationCanceledException) { }
         }
 
         private void OnDisposable()

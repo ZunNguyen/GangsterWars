@@ -251,6 +251,7 @@ Transform:
   - {fileID: 5871142798079775005}
   - {fileID: 2297500543836157061}
   - {fileID: 2880530120365446761}
+  - {fileID: 7772436089163716593}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -289,7 +290,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 5871142797541439015}
   _hpBarPos: {fileID: 5871142798079775005}
+  _damageFeedPos: {fileID: 7772436089163716593}
   _animationHander: {fileID: 895154106120387171}
+  _spriteRenderer: {fileID: 6103538181974265512}
 --- !u!1 &6103538181974265509
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +487,37 @@ PolygonCollider2D:
       - {x: 0.3794871, y: 0.99418354}
       - {x: 0.048217222, y: 1.3147858}
       - {x: -0.17982218, y: 0.9428182}
+--- !u!1 &7256850183247193844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7772436089163716593}
+  m_Layer: 0
+  m_Name: DamageFeedPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7772436089163716593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256850183247193844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7, y: 2.99, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6103538179936068457}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7847474528509228852
 GameObject:
   m_ObjectHideFlags: 0

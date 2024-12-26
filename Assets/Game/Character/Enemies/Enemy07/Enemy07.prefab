@@ -224,7 +224,7 @@ MonoBehaviour:
   _hpBarPos: {fileID: 72889186503953594}
   _damageFeedPos: {fileID: 8977523483637472560}
   _animationHander: {fileID: 4917881262067307072}
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 345816970789540623}
 --- !u!1 &345816970789540610
 GameObject:
   m_ObjectHideFlags: 0

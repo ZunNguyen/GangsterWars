@@ -58,7 +58,7 @@ namespace Game.Character.Enemy.Weapon
 
         public override void OnRelease()
         {
-            _tween.Kill();
+            _tween?.Kill();
             base.OnRelease();
         }
     }

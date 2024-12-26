@@ -53,8 +53,8 @@ namespace Sources.GamePlaySystem.MainMenuGame
             var maxBullet = weaponInfo.MaxBullet;
             var reloadFee = levelUpgradeInfo.ReloadFee;
 
-            var reloadFeeCurrent = (maxBullet - bulletRemain) * (reloadFee / maxBullet);
-            weaponViewModel.ReloadFee.Value = reloadFeeCurrent;
+            var reloadFeeCurrent = (maxBullet - bulletRemain) * ((float)reloadFee / maxBullet);
+            weaponViewModel.ReloadFee.Value = (int)reloadFeeCurrent;
         }
 
         protected override void SaveNewData(string weaponId, string levelUpgradeId)
