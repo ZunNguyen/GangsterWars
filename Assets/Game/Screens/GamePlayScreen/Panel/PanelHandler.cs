@@ -3,6 +3,7 @@ using DG.Tweening;
 using Sources.Audio;
 using Sources.Command;
 using Sources.Extension;
+using Sources.GamePlaySystem.GameResult;
 using Sources.Utils.Singleton;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace Game.Screens.GamePlayScreen
         private readonly Vector2 _offsetPos = new Vector2(0, 100f);
         private const float _duration = 0.7f;
 
+        private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private bool _isResumeClick = false;
@@ -106,6 +108,7 @@ namespace Game.Screens.GamePlayScreen
 
         public void OnHomeClicked()
         {
+            _gameResultSystem.SetEndGame();
             new LoadMainMenuScenceCommand().Execute().Forget();
         }
 

@@ -33,10 +33,9 @@ namespace Sources.GamePlaySystem.GameResult
         public int StarWin { get; private set; }
         public int CoinRewards { get; private set; }
         public Action<bool> IsUserWin;
+        public Action<bool> IsEndGame;
 
-        public override async UniTask Init()
-        {
-        }
+        public override async UniTask Init() {}
 
         public void OnSetUp()
         {
@@ -44,6 +43,7 @@ namespace Sources.GamePlaySystem.GameResult
 
             _isEndWave = false;
             _isHaveEnemyToAttack = true;
+            IsEndGame?.Invoke(false);
 
             _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack += HaveEnemyToAttack;
             _mainGamePlaySystem.SpawnEnemiesHandler.EndWave += EndWave;
@@ -66,6 +66,7 @@ namespace Sources.GamePlaySystem.GameResult
         {
             GetWaveIdCurrent();
             IsUserWin?.Invoke(false);
+            SetEndGame();
         }
 
         private void CheckUserWin()
@@ -78,6 +79,7 @@ namespace Sources.GamePlaySystem.GameResult
                 GetWaveIdNext();
 
                 IsUserWin?.Invoke(true);
+                SetEndGame();
                 SaveData();
             }
         }
@@ -132,16 +134,21 @@ namespace Sources.GamePlaySystem.GameResult
             _jourNeyProfile.SaveWavePassedData(WaveIdCurrent, StarWin);
         }
 
-        private void OnDisable()
+        public void SetEndGame()
         {
-            _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack -= HaveEnemyToAttack;
-            _mainGamePlaySystem.SpawnEnemiesHandler.EndWave -= EndWave;
-            _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= UserLose;
+            IsEndGame?.Invoke(true);
         }
 
         public void ClaimReward(int quality)
         {
             _coinControllerSystem.AddCoin(quality);
+        }
+
+        private void OnDisable()
+        {
+            _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack -= HaveEnemyToAttack;
+            _mainGamePlaySystem.SpawnEnemiesHandler.EndWave -= EndWave;
+            _mainGamePlaySystem.UserRecieveDamageHandler.IsDead -= UserLose;
         }
     }
 }

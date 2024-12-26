@@ -73,7 +73,7 @@ namespace Sources.GamePlaySystem.Leader
                 TimeReloadCurrent.Value = (float)Math.Round(endReloadTime - Time.time, 1);
                 _gunHandler.TimeReloadCurrent.Value = TimeReloadCurrent.Value;
 
-                if (TimeReloadCurrent.Value <= _nextBulletReloadTime)
+                if (TimeReloadCurrent.Value <= _nextBulletReloadTime && !_isEndGame)
                 {
                     _gunHandler.AddBulletAvailable(_bulletAdd);
                 }

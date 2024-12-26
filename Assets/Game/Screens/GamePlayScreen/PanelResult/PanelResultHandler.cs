@@ -49,10 +49,14 @@ namespace Game.Screens.GamePlayScreen
         [SerializeField] private GameObject _blockPanel;
         [SerializeField] private GameObject _btnNext;
 
+        private void Awake()
+        {
+            transform.localScale = Vector3.zero;
+        }
+
         public void OnSetUp()
         {
-            gameObject.SetActive(false);
-
+            gameObject.SetActive(true);
             _gameResultSystem.IsUserWin += EndGame;
         }
         

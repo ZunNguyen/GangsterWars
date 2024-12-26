@@ -50,7 +50,7 @@ namespace Sources.GamePlaySystem.Character
                 await UniTask.DelayFrame(1);
             }
 
-            if (_isCanReload && TimeReloadCurrent.Value == 0)
+            if (_isCanReload && TimeReloadCurrent.Value == 0 && !_isEndGame)
             {
                 var bulletAdd = Math.Min(_maxBulletPerClip, _bulletTotalCurrent);
                 _gunHandler.AddBulletAvailable(bulletAdd);

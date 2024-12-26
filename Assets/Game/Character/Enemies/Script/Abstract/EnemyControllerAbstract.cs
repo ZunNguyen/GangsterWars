@@ -1,7 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Game.CanvasInGamePlay.Controller;
-using Game.Character.Enemy.Abstract;
 using Game.Character.Sniper;
 using Game.Weapon.Bullet;
 using Sources.Extension;
@@ -12,6 +11,7 @@ using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
 using System;
+using System.Threading;
 using UniRx;
 using UnityEngine;
 
@@ -28,6 +28,8 @@ namespace Game.Character.Enemy.Abstract
         private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
 
         private Vector2 _direction;
+        private Tween _tween;
+        private CancellationToken _token;
         private IDisposable _disposableDirection;
         private IDisposable _disposableIsAttacking;
         private IDisposable _disposableIsDeath;
@@ -46,6 +48,7 @@ namespace Game.Character.Enemy.Abstract
         private void Start()
         {
             _gameResultSystem.IsUserWin += EndGame;
+            _token = this.GetCancellationTokenOnDestroy();
         }
 
         private void EndGame(bool result)
@@ -59,11 +62,11 @@ namespace Game.Character.Enemy.Abstract
             IndexPos = indexPos;
             _enemyHandler = null;
             _enemyHandler = _mainGamePlaySystem.EnemiesController.GetAvailableEnemyHandler();
-            
+
             _enemyHandler.OnSetUp(enemyId);
             _animationHander.OnSetUp(_enemyHandler);
             CanvasInGamePlayController.Instance.OnSetUpHpBar(_hpBarPos, _enemyHandler);
-            
+
             SubcribeValue();
         }
 
@@ -103,7 +106,7 @@ namespace Game.Character.Enemy.Abstract
         protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             OnTriggerToStop(collision);
-            
+
             if (collision.tag == CollisionTagKey.BULLET_LEADER)
             {
                 var bullet = collision.GetComponent<LeaderWeapon>();
@@ -142,21 +145,16 @@ namespace Game.Character.Enemy.Abstract
 
         private async void ReleaseObject()
         {
-            var token = this.GetCancellationTokenOnDestroy();
+            await UniTask.Delay(2000, cancellationToken: _token);
 
-            try
+            _tween = _spriteRenderer.DOFade(0.8f, _durationDoFade).OnComplete(() =>
             {
-                await UniTask.Delay(2000, cancellationToken: token);
+                _spriteRenderer.DOFade(1f, _durationDoFade);
+            }).SetLoops(3, LoopType.Yoyo);
 
-                await _spriteRenderer.DOFade(0.8f, _durationDoFade).OnComplete(() =>
-                {
-                    _spriteRenderer.DOFade(1f, _durationDoFade);
-                }).SetLoops(3);
-
-                _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
-                if (gameObject.activeSelf) _spawnerManager.Release(gameObject);
-            }
-            catch (OperationCanceledException) {}
+            await _tween.AwaitForComplete(cancellationToken : _token);
+            _mainGamePlaySystem.SpawnEnemiesHandler.RemoveEnemyToList(this);
+            _spawnerManager.Release(gameObject);
         }
 
         private void OnDisposable()
@@ -169,6 +167,7 @@ namespace Game.Character.Enemy.Abstract
 
         private void OnDestroy()
         {
+            _tween?.Kill();
             _enemyHandler.DamageFeed -= ShowDamageFeed;
         }
     }

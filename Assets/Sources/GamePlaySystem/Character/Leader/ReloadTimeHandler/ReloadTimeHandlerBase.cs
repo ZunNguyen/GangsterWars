@@ -1,8 +1,10 @@
 using Sources.DataBaseSystem;
 using Sources.DataBaseSystem.Leader;
+using Sources.GamePlaySystem.GameResult;
 using Sources.Utils.Singleton;
 using System;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Sources.GamePlaySystem.Leader
@@ -12,6 +14,7 @@ namespace Sources.GamePlaySystem.Leader
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private LeaderConfig _leaderConfig => _dataBase.GetConfig<LeaderConfig>();
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
+        private GameResultSystem _gameResultSystem => Locator<GameResultSystem>.Instance;
 
         private string _gunId;
         private IDisposable _disposableGunModelCurrent;
@@ -19,6 +22,7 @@ namespace Sources.GamePlaySystem.Leader
         protected int _maxBulletPerClip;
         protected float _onceTimeReload;
         protected bool _isCanReload;
+        protected bool _isEndGame;
         protected GunModelView _gunModelView;
         protected GunHandler _gunHandler;
         protected IDisposable _disposableBulletTotal;
@@ -38,6 +42,7 @@ namespace Sources.GamePlaySystem.Leader
             SubscribeGunModelCurrent();
             SubscribeBulletAvailable();
             SubscribeBulletTotal();
+            SubscribeEndGame();
         }
 
         private void SubscribeGunModelCurrent()
@@ -50,16 +55,32 @@ namespace Sources.GamePlaySystem.Leader
             });
         }
 
+        private void SubscribeEndGame()
+        {
+            _gameResultSystem.IsEndGame += SetEndGame;
+        }
+
+        private void SetEndGame(bool isEndGame)
+        {
+            _isEndGame = isEndGame;
+        }
+
         protected abstract void SubscribeBulletTotal();
+
+        protected abstract void SubscribeBulletAvailable();
+
+        protected abstract void CountTimeToReLoad();
 
         protected virtual void OnDisable()
         {
             _disposableBulletTotal?.Dispose();
             _disposableGunModelCurrent?.Dispose();
+            _gameResultSystem.IsEndGame -= SetEndGame;
         }
 
-        protected abstract void SubscribeBulletAvailable();
-
-        protected abstract void CountTimeToReLoad();
+        private void OnDestroy()
+        {
+            OnDisable();
+        }
     }
 }
