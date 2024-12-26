@@ -21,12 +21,19 @@ namespace Game.Screens.MainMenuScreen
         [Header("Coin View Prefab")]
         [SerializeField] private EarnCoinView _buyCoinViewPrefab;
         [SerializeField] private Transform _holder;
+        [SerializeField] private GameObject _store;
 
-        private void Start()
+        private void Awake()
+        {
+            _store.SetActive(false);
+            OnSetUp();
+        }
+
+        private void OnSetUp()
         {
             _storeSystem.TabCurrent.Subscribe(value =>
-            { 
-                gameObject.SetActive(value == _tab);
+            {
+                _store.SetActive(value == _tab);
             }).AddTo(this);
 
             SetBuyCoinViews();
@@ -38,7 +45,7 @@ namespace Game.Screens.MainMenuScreen
 
             foreach (var buyCoinInfo in buyCoinInfos)
             {
-                var buyCoinView = Instantiate(_buyCoinViewPrefab, _holder);
+                var buyCoinView = Instantiate(_buyCoinViewPrefab, _holder, false);
                 buyCoinView.OnSetUp(buyCoinInfo, _posCoinTotal);
             }
         }
