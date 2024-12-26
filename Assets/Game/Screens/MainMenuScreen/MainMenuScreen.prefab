@@ -3728,10 +3728,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ftueViewModelKey: ViewModel/MM_Character
   _objectDatas:
-  - _object: {fileID: 7686840837486918042}
-    _holder: {fileID: 1658534816175408016}
+  - _object: {fileID: 3073951899145813478}
+    _holder: {fileID: 2547180438538830864}
     _isLanguageText: 0
-    _languageText: {fileID: 6302953498491574108}
+    _languageText: {fileID: 0}
+    IsActiveSelf: 0
+  - _object: {fileID: 2013604250847568149}
+    _holder: {fileID: 2547180438538830864}
+    _isLanguageText: 0
+    _languageText: {fileID: 0}
+    IsActiveSelf: 0
+  - _object: {fileID: 8542242127850545066}
+    _holder: {fileID: 2547180438538830864}
+    _isLanguageText: 0
+    _languageText: {fileID: 0}
+    IsActiveSelf: 0
+  - _object: {fileID: 6090337442311347786}
+    _holder: {fileID: 2547180438538830864}
+    _isLanguageText: 0
+    _languageText: {fileID: 0}
     IsActiveSelf: 0
 --- !u!1 &6090337442311347786
 GameObject:

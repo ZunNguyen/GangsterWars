@@ -13,12 +13,13 @@ namespace Game.CanvasInGamePlay
 {
     public class DamageFeed : MonoBehaviour
     {
+        private readonly Vector3 _targetScale = new Vector3(1.2f, 1.2f, 1.2f);
         private const float _offsetMovePosY = 30f;
-        private const float _duration = 1f;
+        private const float _duration = 0.8f;
 
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
 
-        private Tween _tween;
+        private Tween _sequence;
 
         [SerializeField] private RectTransform _rectTransformObject;
         [SerializeField] private TMP_Text _text;
@@ -35,19 +36,22 @@ namespace Game.CanvasInGamePlay
             ShowDamageFeed();
         }
 
-        private void ShowDamageFeed()
+        private async void ShowDamageFeed()
         {
             var targetMovePosY = _rectTransformObject.anchoredPosition.y + _offsetMovePosY;
-            _tween = _rectTransformObject.DOAnchorPosY(targetMovePosY, _duration).OnComplete(async () =>
-            {
-                await UniTask.Delay(200);
-                _spawnerManager.Release(this);
-            });
+
+            var _sequence = DOTween.Sequence();
+            _sequence.Append(_rectTransformObject.DOAnchorPosY(targetMovePosY, _duration));
+            _sequence.Join(_rectTransformObject.DOScale(_targetScale, _duration/2));
+            _sequence.Append(_rectTransformObject.DOScale(Vector3.one, _duration / 4));
+            await _sequence.Play();
+
+            _spawnerManager.Release(this);
         }
 
         private void OnDestroy()
         {
-            _tween?.Kill();
+            _sequence?.Kill();
         }
     }
 }

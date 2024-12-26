@@ -61,7 +61,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-02
-    TotalHp: 104
+    TotalHp: 88
     Turns:
     - Id: turn-01
       Phases:
@@ -73,7 +73,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -100,7 +100,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -123,7 +123,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-03
-    TotalHp: 210
+    TotalHp: 195
     Turns:
     - Id: turn-01
       Phases:
@@ -192,10 +192,10 @@ MonoBehaviour:
       - PhaseId: phase-07
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-04
-    TotalHp: 340
+    TotalHp: 310
     Turns:
     - Id: turn-01
       Phases:
@@ -239,7 +239,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-03
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -272,14 +272,14 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-05
-    TotalHp: 610
+    TotalHp: 440
     Turns:
     - Id: turn-01
       Phases:
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 0
       - PhaseId: phase-02
         Enemy:
@@ -289,7 +289,7 @@ MonoBehaviour:
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-02
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
@@ -299,7 +299,7 @@ MonoBehaviour:
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-03
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
     - Id: turn-02
       Phases:
@@ -311,7 +311,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -326,7 +326,7 @@ MonoBehaviour:
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
@@ -339,7 +339,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-06
-    TotalHp: 1150
+    TotalHp: 1100
     Turns:
     - Id: turn-01
       Phases:
@@ -361,7 +361,7 @@ MonoBehaviour:
       - PhaseId: phase-04
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-05
         Enemy:
@@ -426,7 +426,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-07
-    TotalHp: 2800
+    TotalHp: 2000
     Turns:
     - Id: turn-01
       Phases:
@@ -443,7 +443,7 @@ MonoBehaviour:
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-04
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
@@ -453,7 +453,7 @@ MonoBehaviour:
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-02
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
@@ -470,7 +470,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-02
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -503,14 +503,14 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-08
-    TotalHp: 5100
+    TotalHp: 4350
     Turns:
     - Id: turn-01
       Phases:
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-04
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 0
       - PhaseId: phase-02
         Enemy:
@@ -590,7 +590,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-09
-    TotalHp: 9000
+    TotalHp: 7000
     Turns:
     - Id: turn-01
       Phases:
@@ -602,7 +602,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-05
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -682,7 +682,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-10
-    TotalHp: 12600
+    TotalHp: 9200
     Turns:
     - Id: turn-01
       Phases:
@@ -694,7 +694,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-05
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -714,7 +714,7 @@ MonoBehaviour:
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-04
-          IndexPos: 0000000002000000
+          IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-07
         Enemy:
@@ -741,7 +741,7 @@ MonoBehaviour:
       - PhaseId: phase-04
         Enemy:
           EnemyId: enemy-04
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-05
         Enemy:
@@ -751,7 +751,7 @@ MonoBehaviour:
       - PhaseId: phase-06
         Enemy:
           EnemyId: enemy-02
-          IndexPos: 0000000002000000
+          IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-07
         Enemy:
@@ -759,7 +759,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-11
-    TotalHp: 15000
+    TotalHp: 14000
     Turns:
     - Id: turn-01
       Phases:
@@ -803,7 +803,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-06
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -836,7 +836,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-12
-    TotalHp: 25500
+    TotalHp: 21000
     Turns:
     - Id: turn-01
       Phases:
@@ -853,7 +853,7 @@ MonoBehaviour:
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-06
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
@@ -863,7 +863,7 @@ MonoBehaviour:
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-03
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
@@ -880,7 +880,7 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-06
-          IndexPos: 0000000002000000
+          IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
@@ -913,7 +913,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-13
-    TotalHp: 28000
+    TotalHp: 20500
     Turns:
     - Id: turn-01
       Phases:
@@ -982,17 +982,17 @@ MonoBehaviour:
       - PhaseId: phase-07
         Enemy:
           EnemyId: enemy-01
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-14
-    TotalHp: 42500
+    TotalHp: 30000
     Turns:
     - Id: turn-01
       Phases:
       - PhaseId: phase-01
         Enemy:
           EnemyId: enemy-07
-          IndexPos: 0000000002000000
+          IndexPos: 00000000
         SpawnAfterMiliSeccond: 0
       - PhaseId: phase-02
         Enemy:
@@ -1002,7 +1002,7 @@ MonoBehaviour:
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-06
-          IndexPos: 0000000002000000
+          IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
@@ -1012,7 +1012,7 @@ MonoBehaviour:
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-06
-          IndexPos: 0000000002000000
+          IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
     - Id: turn-02
       Phases:
@@ -1024,12 +1024,12 @@ MonoBehaviour:
       - PhaseId: phase-02
         Enemy:
           EnemyId: enemy-07
-          IndexPos: 0000000002000000
+          IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
           EnemyId: enemy-05
-          IndexPos: 01000000
+          IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
@@ -1039,7 +1039,7 @@ MonoBehaviour:
       - PhaseId: phase-05
         Enemy:
           EnemyId: enemy-05
-          IndexPos: 0000000002000000
+          IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-06
         Enemy:
@@ -1050,6 +1050,2188 @@ MonoBehaviour:
         Enemy:
           EnemyId: enemy-07
           IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-15
+    TotalHp: 48000
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-06
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-06
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-06
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-06
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-06
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-16
+    TotalHp: 58800
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-17
+    TotalHp: 47200
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-18
+    TotalHp: 59400
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-19
+    TotalHp: 77000
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-20
+    TotalHp: 93500
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-21
+    TotalHp: 82800
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-22
+    TotalHp: 93600
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-23
+    TotalHp: 96600
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-24
+    TotalHp: 118500
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-25
+    TotalHp: 140800
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-26
+    TotalHp: 88400
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-27
+    TotalHp: 138600
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-28
+    TotalHp: 144400
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-29
+    TotalHp: 118000
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-30
+    TotalHp: 165900
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-31
+    TotalHp: 178200
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-32
+    TotalHp: 158700
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-33
+    TotalHp: 117600
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-34
+    TotalHp: 205000
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-35
+    TotalHp: 218400
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-10
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-36
+    TotalHp: 118800
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-37
+    TotalHp: 207200
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-38
+    TotalHp: 185600
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-39
+    TotalHp: 255000
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 04000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: enemy-04
+          IndexPos: 00000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-08
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-09
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+  - Id: wave-40
+    TotalHp: 192200
+    Turns:
+    - Id: turn-01
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 0
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: enemy-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-07
+        Enemy:
+          EnemyId: boss-02
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+    - Id: turn-02
+      Phases:
+      - PhaseId: phase-01
+        Enemy:
+          EnemyId: enemy-05
+          IndexPos: 02000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-02
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-03
+        Enemy:
+          EnemyId: boss-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-04
+        Enemy:
+          EnemyId: boss-01
+          IndexPos: 03000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-05
+        Enemy:
+          EnemyId: enemy-03
+          IndexPos: 01000000
+        SpawnAfterMiliSeccond: 4000
+      - PhaseId: phase-06
+        Enemy:
+          EnemyId: enemy-02
+          IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   _waveMoreInfos:
   - WaveId: wave-01

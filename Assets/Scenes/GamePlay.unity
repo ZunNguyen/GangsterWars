@@ -464,11 +464,9 @@ MonoBehaviour:
   - {fileID: 390135279}
   - {fileID: 835838666}
   _targetPosToShoot:
-  - {fileID: 260888911}
-  - {fileID: 542056540}
-  - {fileID: 1146191059}
-  - {fileID: 390135278}
-  - {fileID: 835838665}
+  - {fileID: 1204743433}
+  - {fileID: 833809958}
+  - {fileID: 2031654187}
 --- !u!1 &709991385
 GameObject:
   m_ObjectHideFlags: 0

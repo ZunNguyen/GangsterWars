@@ -68,8 +68,6 @@ namespace Sources.GamePlaySystem.MainGamePlay
         {
             await PassFTUE();
 
-            await UniTask.Delay(2000);
-
             while (!_endWave)
             {
                 var phaseCurrent = _waveInfo.Turns[_turnIndexCurrent].Phases[_phaseIndexCurrent];
