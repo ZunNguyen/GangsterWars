@@ -88,9 +88,14 @@ namespace Game.Screens.MainMenuScreen
 
         public void OnCloseBoxClicked()
         {
+            CloseBox();
+            _unlockMe.gameObject.SetActive(true);
+        }
+
+        private void CloseBox()
+        {
             _audioManager.Play(AudioKey.SFX_CLICK_01);
             _blackBG.SetActive(false);
-            _unlockMe.gameObject.SetActive(true);
             _boxCharacter.transform.DOScale(Vector3.zero, _duration);
         }
 

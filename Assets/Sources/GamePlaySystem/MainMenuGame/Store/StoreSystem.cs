@@ -53,7 +53,7 @@ namespace Sources.GamePlaySystem.MainMenuGame
 
         public override async UniTask Init()
         {
-            StoreEarnCoinHandler.OnSetUp();
+            await StoreEarnCoinHandler.OnSetUp();
 
             OnSetUp();
         }

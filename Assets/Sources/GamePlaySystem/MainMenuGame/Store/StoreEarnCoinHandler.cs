@@ -27,7 +27,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         public ReactiveProperty<bool> IsAnyPackToEarn = new(false);
 
-        public async void OnSetUp()
+        public async UniTask OnSetUp()
         {
             await UniTask.WaitUntil(() => _timeManagerSystem.IsCompleteSetTimeLogin == true);
 
