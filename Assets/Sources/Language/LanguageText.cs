@@ -25,7 +25,9 @@ namespace Sources.Language
 
         private void UpdateLanguageItem()
         {
+#if UNITY_EDITOR
             _languageItem = LanguageTable.Instance.GetLanguageItem(_languageItemId);
+#endif
         }
 
         private void Awake()

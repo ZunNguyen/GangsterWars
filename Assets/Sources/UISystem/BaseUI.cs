@@ -30,7 +30,10 @@ namespace Sources.UI
 
         private List<string> FetchAllUILayers()
         {
+#if UNITY_EDITOR
             return UIData.ActiveUIData.GetUILayers();
+#endif
+            return null;
         }
 
         public virtual void OnSetUp(object paramater = null)
@@ -59,11 +62,13 @@ namespace Sources.UI
             await _uiManager.Close(_uiName);
         }
 
+#if UNITY_EDITOR
         [Button]
         public void UpdateToUIData()
         {
             UIData.ActiveUIData.AddBaseUI(GetComponent<BaseUI>());
         }
+#endif
     }
 }
 

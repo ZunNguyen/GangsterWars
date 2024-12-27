@@ -26,6 +26,7 @@ namespace Sources.UISystem
         [SerializeField] private List<BaseUI> _uis = new List<BaseUI>();
         [SerializeField] private List<string> _uiLayers;
 
+#if UNITY_EDITOR
         public static UIData ActiveUIData
         {
             get
@@ -43,6 +44,7 @@ namespace Sources.UISystem
                 return Locator<UIData>.Instance;
             }
         }
+#endif
 
         public List<BaseUI> GetAllUIs()
         {

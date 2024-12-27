@@ -72,10 +72,7 @@ namespace Game.Screens.JourneyScreen
             if (!_journeyPrefabs.ContainsKey(journeyItemId))
             {
                 var journeyInfo = _journeyMapConfig.GetJourneyItemInfo(journeyItemId);
-
-                var path = _journeyMapConfig.PathHolderJourneyItemPrefab + "/" + journeyInfo.JourneyItem.name + ".prefab";
-                var journeyItemPrefabSample = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-                _journeyPrefabs.Add(journeyItemId, journeyItemPrefabSample);
+                _journeyPrefabs.Add(journeyItemId, journeyInfo.JourneyItem);
             }
 
             var journeyItemPrefab = _journeyPrefabs[journeyItemId];

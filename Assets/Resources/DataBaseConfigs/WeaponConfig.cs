@@ -1,6 +1,8 @@
 using Sirenix.OdinInspector;
 using Sources.Language;
+using Sources.Utils;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -30,8 +32,9 @@ namespace Sources.DataBaseSystem
         [PropertyOrder(1)]
         public int UnlockFee;
 
-        [SerializeField, ValueDropdown("GetAllLanguageItem")]
+        [SerializeField, ValueDropdown(nameof(GetAllLanguageIds))]
         public string LanguageId;
+        private IEnumerable GetAllLanguageIds => IdGetter.GetAllLanguageIds();
 
         [PropertyOrder(2), ListDrawerSettings(ListElementLabelName = "GetDescription")]
         public List<LevelUpgradeInfo> LevelUpgrades;
@@ -55,11 +58,6 @@ namespace Sources.DataBaseSystem
         {
             var levelUpgradeInfo = LevelUpgrades.FirstOrDefault(level => level.Id == levelUpgradeId);
             return LevelUpgrades.IndexOf(levelUpgradeInfo);
-        }
-
-        private IEnumerable<string> GetAllLanguageItem()
-        {
-            return LanguageTable.Instance.LanguageItemIds;
         }
 
 #if UNITY_EDITOR

@@ -13,10 +13,7 @@ namespace Sources.AdMob
     {
         private AdMobReward _adMobReward = new();
 
-        public override async UniTask Init()
-        {
-            
-        }
+        public override async UniTask Init(){}
 
         public async Task<bool> ShowAdReward()
         {

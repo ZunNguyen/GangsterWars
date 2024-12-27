@@ -64,6 +64,7 @@ namespace Sources.Language
             OnChangeLanguageName?.Invoke();
         }
 
+#if UNITY_EDITOR
         private static LanguageTable _instance;
         public static LanguageTable Instance
         {
@@ -80,7 +81,6 @@ namespace Sources.Language
             }
         }
 
-#if UNITY_EDITOR
         private const string _defaultConfigPath = "Assets/Resources/Language/LanguageItem";
 
         [PropertySpace(20)]
