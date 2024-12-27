@@ -4,7 +4,6 @@ using Sources.Extension;
 using Sources.Utils;
 using Sources.Utils.Singleton;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 namespace Game.Character.Leader
 {

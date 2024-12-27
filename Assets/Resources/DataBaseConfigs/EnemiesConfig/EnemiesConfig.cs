@@ -1,5 +1,4 @@
-﻿using Resources.CSV;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using Sources.Utils.String;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using UnityEngine;
 namespace Sources.DataBaseSystem
 {
     [Serializable]
-    public class EnemyInfo : IReadCSVData, ISaveFileCSVData
+    public class EnemyInfo
     {
         public string Id;
         [PreviewField(100, ObjectFieldAlignment.Center)]

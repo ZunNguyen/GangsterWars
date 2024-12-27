@@ -1,4 +1,3 @@
-using Resources.CSV;
 using Sirenix.OdinInspector;
 using Sources.Utils.String;
 using System;
@@ -57,7 +56,7 @@ namespace Sources.DataBaseSystem
         }
     }
 
-    public class WavesConfig : DataBaseConfig , IReadCSVData
+    public class WavesConfig : DataBaseConfig
     {
         [TabGroup("Wave Spawn")]
         [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]

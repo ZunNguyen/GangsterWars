@@ -1,17 +1,15 @@
-﻿using Resources.CSV;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UniRx;
 using UnityEditor;
 using UnityEngine;
-using UniRx;
-using System.Text;
 
 namespace Sources.Language
 {
-    public class LanguageTable : ScriptableObject, IReadCSVData
+    public class LanguageTable : ScriptableObject
     {
         [SerializeField][ReadOnly]
         private List<string> _languages;
@@ -66,7 +64,6 @@ namespace Sources.Language
             OnChangeLanguageName?.Invoke();
         }
 
-#if UNITY_EDITOR
         private static LanguageTable _instance;
         public static LanguageTable Instance
         {
@@ -83,6 +80,7 @@ namespace Sources.Language
             }
         }
 
+#if UNITY_EDITOR
         private const string _defaultConfigPath = "Assets/Resources/Language/LanguageItem";
 
         [PropertySpace(20)]

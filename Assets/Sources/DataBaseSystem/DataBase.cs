@@ -1,13 +1,16 @@
-using UnityEngine;
-using UnityEditor;
 using Sirenix.OdinInspector;
-using System.Linq;
-using System;
-using System.IO;
-using UnityEditor.Compilation;
-using UnityEditor.Callbacks;
-using System.Collections.Generic;
 using Sources.Utils.Singleton;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor.Callbacks;
+using UnityEditor.Compilation;
+#endif
 
 namespace Sources.DataBaseSystem
 {
@@ -179,6 +182,6 @@ namespace Sources.DataBaseSystem
         {
             _configs.Clear();
         }
-    }
 #endif
+    }
 }

@@ -1,9 +1,6 @@
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
-using Sources.DataBaseSystem;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Sources.DataBaseSystem

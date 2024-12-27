@@ -1,6 +1,4 @@
-using Resources.CSV;
 using Sirenix.OdinInspector;
-using Sources.DataBaseSystem.Leader;
 using Sources.Language;
 using System;
 using System.Collections.Generic;
@@ -24,7 +22,7 @@ namespace Sources.DataBaseSystem
         }
     }
 
-    public abstract class WeaponInfoBase : IReadCSVData
+    public abstract class WeaponInfoBase
     {
         public string Id;
         [PreviewField(100, ObjectFieldAlignment.Left)]

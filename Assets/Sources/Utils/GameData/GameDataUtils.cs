@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -8,6 +7,7 @@ namespace Sources.Utils
 {
     public static class GameDataUtils
     {
+#if UNITY_EDITOR
         [MenuItem("Tools/Clear Game Data")]
         public static void ClearAllData()
         {
@@ -18,6 +18,7 @@ namespace Sources.Utils
                 UnityEngine.Debug.Log("Done");
             }
         }
+#endif
 
         public static void ClearData()
         {
@@ -38,11 +39,13 @@ namespace Sources.Utils
             }
         }
 
+#if UNITY_EDITOR
 
         [MenuItem("Tools/Open Persistant Folder")]
         public static void PersistantFolder()
         {
             Process.Start(Application.persistentDataPath);
         }
+#endif
     }
 }

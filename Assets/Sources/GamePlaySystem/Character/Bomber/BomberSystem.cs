@@ -3,7 +3,6 @@ using Sources.DataBaseSystem;
 using Sources.GameData;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
-using UnityEditorInternal;
 
 namespace Sources.GamePlaySystem.Character
 {

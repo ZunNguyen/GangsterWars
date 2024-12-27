@@ -1,17 +1,16 @@
-using UnityEngine;
-using UnityEditor;
-using Sirenix.OdinInspector;
-using UnityEditor.Callbacks;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
-using Sources.Utils.Singleton;
-using Sources.UI;
-using System.IO;
-using Sources.DataBaseSystem;
-using UnityEditor.Compilation;
 using Cysharp.Threading.Tasks;
-using System;
+using Sirenix.OdinInspector;
+using Sources.UI;
+using Sources.Utils.Singleton;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor.Callbacks;
+#endif
 
 namespace Sources.UISystem
 {
