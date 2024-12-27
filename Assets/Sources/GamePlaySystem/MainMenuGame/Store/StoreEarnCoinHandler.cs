@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
 using Sources.AdMob;
+using Sources.Audio;
 using Sources.DataBaseSystem;
+using Sources.Extension;
 using Sources.GameData;
 using Sources.TimeManager;
 using Sources.Utils.Singleton;
@@ -21,6 +23,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         private AdMobSystem _adMobSystem => Locator<AdMobSystem>.Instance;
         private TimeManagerSystem _timeManagerSystem => Locator<TimeManagerSystem>.Instance;
+        private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
         private Dictionary<string, PackEarnCoinViewHandler> _packEarnCoinViewHandlers = new();
         private Dictionary<string, bool> _listCanEarnCoins = new();
@@ -48,7 +51,11 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         public async Task<bool> ShowAdCoin()
         {
+            _audioManager.PauseAudio(AudioKey.MENU_SONG);
+
             var result = await _adMobSystem.ShowAdReward();
+
+            _audioManager.Play(AudioKey.MENU_SONG);
             return result;
         }
 

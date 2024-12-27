@@ -28,10 +28,9 @@ namespace Game.Character.Leader
             _audioManager.Play(AudioKey.SFX_SHOOT_PISTOL);
             SpawnMuzzleFlash();
 
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            clickPosition.z = -1;
+            GetInfoClick();
 
-            SpawnBullet(_posSpawns[0].transform, clickPosition);
+            SpawnBullet(_posSpawns[0].transform, _clickPosition);
         }
     }
 }

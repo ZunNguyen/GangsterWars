@@ -19,6 +19,7 @@ namespace Game.Character.Player.Abstract
 
         protected bool _isCanShoot = false;
         protected string _gunId;
+        protected Vector3 _clickPosition = new();
 
         [Header("Muzzle Flash")]
         [SerializeField] private GameObject _muzzleFlash;
@@ -62,6 +63,12 @@ namespace Game.Character.Player.Abstract
             bullet.transform.SetParent(_weaponHolders);
             bullet.transform.position = posSpawn.position;
             bullet.OnSetUp(_hitBulletEffectPrefab, posClick);
+        }
+
+        protected void GetInfoClick()
+        {
+            _clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            _clickPosition.z = -1;
         }
 
         private void OnDestroy()

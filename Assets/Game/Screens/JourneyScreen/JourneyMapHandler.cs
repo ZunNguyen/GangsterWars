@@ -13,8 +13,8 @@ namespace Game.Screens.JourneyScreen
     {
         private readonly Vector2 _anchorDefault = new Vector2(0, 0.5f);
         private readonly Vector2 _offsetBorder = new Vector2(400, 250);
-        private readonly Vector2 _linkBarItemHorizontal = new Vector2(600, 30);
-        private readonly Vector2 _linkBarItemVertical = new Vector2(30, 600);
+        private readonly Vector2 _linkBarItemHorizontal = new Vector2(600, 40);
+        private readonly Vector2 _linkBarItemVertical = new Vector2(40, 600);
 
         private const float _offsetItemX = 250;
         private const float _offsetItemY = -250;
@@ -33,7 +33,7 @@ namespace Game.Screens.JourneyScreen
         [SerializeField] private Transform _journeyItemViewHolder;
 
         [Header("Link Item")]
-        [SerializeField] private LinkBarItem _linkBarItemPrefab;
+        [SerializeField] private GameObject _linkBarItemPrefab;
         [SerializeField] private Transform _linkBarItemHolder;
 
         [Header("Star Collection")]

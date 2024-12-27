@@ -92,7 +92,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         private void OnApplicationQuit()
         {
-            //_packEarnCoinProfile.UpdateTimeNextEarn(_selfId, TimeRemain.Value);
+            _packEarnCoinProfile.UpdateTimeNextEarn(_selfId, TimeRemain.Value);
         }
 
 #if UNITY_EDITOR
@@ -100,7 +100,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             if (state == PlayModeStateChange.ExitingPlayMode)
             {
-                //_packEarnCoinProfile.UpdateTimeNextEarn(_selfId, TimeRemain.Value);
+                _packEarnCoinProfile.UpdateTimeNextEarn(_selfId, TimeRemain.Value);
             }
         }
 #endif

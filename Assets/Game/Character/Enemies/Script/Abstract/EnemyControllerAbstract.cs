@@ -107,7 +107,7 @@ namespace Game.Character.Enemy.Abstract
         {
             OnTriggerToStop(collision);
 
-            if (collision.tag == CollisionTagKey.BULLET_LEADER)
+            if (collision.tag == CollisionTagKey.BULLET_LEADER && gameObject.name == Leader.Action.Instance.NameObjectShoot)
             {
                 var bullet = collision.GetComponent<LeaderWeapon>();
                 bullet.ReleaseBullet();
