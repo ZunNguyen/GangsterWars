@@ -1,9 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using Game.Character.Enemy.Abstract;
-using Game.Weapon.Bullet;
 using Sources.Extension;
 using Sources.GamePlaySystem.Leader;
-using Sources.SpawnerSystem;
 using Sources.Utils.Singleton;
 using UniRx;
 using UnityEngine;
@@ -13,6 +11,8 @@ namespace Game.Character.Leader
 {
     public class Action : MonoBehaviour
     {
+        private const float _radiusRaycast = 0.2f;
+
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
         private static Action _instance;
@@ -56,14 +56,21 @@ namespace Game.Character.Leader
         private void SetNameObjectUserShoot()
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(ray.origin, _radiusRaycast, ray.direction);
 
-            if (hit.collider != null)
+            foreach (var hit in hits)
             {
-                EnemyControllerAbstract enemy = hit.collider.GetComponentInParent<EnemyControllerAbstract>();
-                if (enemy != null) NameObjectShoot = enemy.gameObject.name;
+                if (hit.collider != null)
+                {
+                    EnemyControllerAbstract enemy = hit.collider.GetComponentInParent<EnemyControllerAbstract>();
+                    if (enemy != null)
+                    {
+                        NameObjectShoot = enemy.gameObject.name;
+                        return;
+                    }
+                }
             }
-            else NameObjectShoot = "";
+            NameObjectShoot = "";
         }
 
         private async void CountTimePressMouse()
