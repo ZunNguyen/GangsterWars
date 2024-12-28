@@ -51,12 +51,15 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         public async Task<bool> ShowAdCoin()
         {
+#if UNITY_ANDROID || UNITY_IOS
             _audioManager.PauseAudio(AudioKey.MENU_SONG);
 
             var result = await _adMobSystem.ShowAdReward();
 
             _audioManager.Play(AudioKey.MENU_SONG);
             return result;
+#endif
+            return true;
         }
 
         public PackEarnCoinViewHandler GetPackEarnCoinViewHandler(string id)

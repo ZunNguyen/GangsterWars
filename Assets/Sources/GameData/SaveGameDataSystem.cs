@@ -11,10 +11,7 @@ namespace Sources.GameData
         private GameData _gameData => Locator<GameData>.Instance;
         private UserProfile _userProfile => _gameData.GetProfileData<UserProfile>();
 
-        public override async UniTask Init()
-        {
-            
-        }
+        public override async UniTask Init() {}
 
         private void OnApplicationQuit()
         {
