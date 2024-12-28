@@ -51,7 +51,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 
         public async Task<bool> ShowAdCoin()
         {
-#if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
             _audioManager.PauseAudio(AudioKey.MENU_SONG);
 
             var result = await _adMobSystem.ShowAdReward();

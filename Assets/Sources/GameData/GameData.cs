@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if !UNITY_WEBGL
+using System.IO;
+#endif
+
 namespace Sources.GameData
 {
     public class GameData

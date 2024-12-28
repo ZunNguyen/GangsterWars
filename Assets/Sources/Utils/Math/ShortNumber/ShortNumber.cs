@@ -29,5 +29,23 @@ namespace Sources.Utils
 
             return value.ToString();
         }
+
+        public static string GetShorter(int value)
+        {
+            if (value < 1000) return value.ToString();
+
+            foreach (var suffix in _suffixes)
+            {
+                if (value >= suffix.Key)
+                {
+                    var shortValue = (float)value / suffix.Key;
+                    shortValue = (float)Math.Floor(shortValue * 10f) / 10f;
+                    var format = "0";
+                    return shortValue.ToString(format) + suffix.Value;
+                }
+            }
+
+            return value.ToString();
+        }
     }
 }

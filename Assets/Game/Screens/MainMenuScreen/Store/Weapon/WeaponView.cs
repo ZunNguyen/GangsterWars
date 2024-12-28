@@ -200,13 +200,13 @@ namespace Game.Screens.MainMenuScreen
             _weaponViewModel.ReloadFee.Subscribe(value =>
             {
                 _reload.SetActive(value != 0);
-                _valueReload.text = ShortNumber.Get(value);
+                _valueReload.text = ShortNumber.GetShorter(value);
             }).AddTo(this);
         }
 
         private void SetUnlockFee()
         {
-            _valueUnlock.text = ShortNumber.Get(_weaponViewModel.UnlockFee);
+            _valueUnlock.text = ShortNumber.GetShorter(_weaponViewModel.UnlockFee);
         }
 
         private void GetOnCheckList()

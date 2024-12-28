@@ -15,6 +15,6 @@ MonoBehaviour:
   Id: Store_Reload
   LanguageInfos:
   - LanguageName: Vietnamese
-    Text: "N\u1EA1p \u0111\u1EA1n"
+    Text: "N\u1EA1p l\u1EA1i"
   - LanguageName: English
     Text: Reload
