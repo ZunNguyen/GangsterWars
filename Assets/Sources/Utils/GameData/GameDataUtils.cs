@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using BestHTTP.JSON.LitJson;
+using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -22,6 +23,9 @@ namespace Sources.Utils
 
         public static void ClearData()
         {
+#if UNITY_WEBGL
+            PlayerPrefs.DeleteAll();
+#else
             DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath);
          
             foreach (FileInfo fileInfo in directoryInfo.GetFiles())
@@ -37,6 +41,7 @@ namespace Sources.Utils
                 }
                 catch {}
             }
+#endif
         }
 
 #if UNITY_EDITOR
