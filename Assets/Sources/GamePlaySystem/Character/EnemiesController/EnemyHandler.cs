@@ -95,6 +95,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
                 if (value == ShieldState.Empty && ActionTypeCurrent.Value == ActionType.Hit)
                 {
                     _isHaveColliderInFace = false;
+                    IsAttacking.Value = false;
                     OnAction();
                 }
             });
@@ -126,6 +127,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             CoinsReward = GetRandom.GetCoinRandom(enemyWaveInfo.coinReward, enemyWaveInfo.PercentChance);
 
             if (_enemyInfo.IsCanShoot) _qualityWeaponShoot = _enemyInfo.QualityWeaponShoot;
+            else _qualityWeaponShoot = _enemyInfo.QualityHit;
         }
 
         private void OnAction()
@@ -145,7 +147,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             _isHaveColliderInFace = true;
 
             if (collisionKey == CollisionTagKey.STOP_POINT_SHOOT && _enemyInfo.IsCanShoot) 
-                ActionTypeCurrent.Value = Enemies.ActionType.Shoot; 
+                ActionTypeCurrent.Value = Enemies.ActionType.Shoot;
             
             if (collisionKey == CollisionTagKey.SHIELD_USER && _enemyInfo.IsCanHit) 
                 ActionTypeCurrent.Value = Enemies.ActionType.Hit;
@@ -177,10 +179,14 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
             Direction.Value = Vector2.left;
         }
 
-        public async void DamageUser(DamageUserType type)
+        public void DamageUser(DamageUserType type)
+        {
+            _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value, type);
+        }
+
+        public async void CompleteActionAttack()
         {
             AniamtionState.Value = AnimationState.Idle;
-            _mainGamePlaySystem.UserRecieveDamageHandler.SubstractHp(Damage.Value, type);
 
             SubstractWeaponShoot();
 

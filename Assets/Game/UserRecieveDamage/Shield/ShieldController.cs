@@ -1,16 +1,14 @@
 using Cysharp.Threading.Tasks;
-using Sources.DataBaseSystem;
-using Sources.GamePlaySystem.MainGamePlay;
-using Sources.Utils.Singleton;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UniRx;
 using DG.Tweening;
-using Sources.GamePlaySystem.MainGamePlay.Enemies;
-using Sources.Audio;
-using Sources.Extension;
 using Game.ShakeCamera;
+using Sources.Audio;
+using Sources.DataBaseSystem;
+using Sources.Extension;
+using Sources.GamePlaySystem.MainGamePlay;
+using Sources.GamePlaySystem.MainGamePlay.Enemies;
+using Sources.Utils.Singleton;
+using UniRx;
+using UnityEngine;
 
 namespace Game.UserReceiveDamage.Shield
 {
@@ -83,8 +81,8 @@ namespace Game.UserReceiveDamage.Shield
             _audioManager.Play(AudioKey.SFX_SHIELD_IMPACT);
 
             _iconShield.color = _targetColor;
-            await transform.DOMoveX(_targetMoveX, _duration);
-            transform.DOMoveX(_ogirinalX, _duration).OnComplete(() =>
+            await _iconShield.transform.DOMoveX(_targetMoveX, _duration);
+            _iconShield.transform.DOMoveX(_ogirinalX, _duration).OnComplete(() =>
             {
                 _iconShield.color = _originalColor;
             });

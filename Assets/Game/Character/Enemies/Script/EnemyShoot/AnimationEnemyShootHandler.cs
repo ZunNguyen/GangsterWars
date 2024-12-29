@@ -19,7 +19,7 @@ namespace Game.Character.Enemy.Shoot
         [SerializeField] private Transform _weaponHolder;
         [SerializeField] private Transform _posSpawnWeapon;
 
-        public override void OnAttack()
+        public void OnAttack()
         {
             SpawnBullet(_posSpawnWeapon);
             SpawnMuzzleFlash(_posSpawnWeapon);

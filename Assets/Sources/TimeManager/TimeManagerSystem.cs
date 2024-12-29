@@ -47,19 +47,23 @@ namespace Sources.TimeManager
         {
             UnityWebRequest request = UnityWebRequest.Get(_urlTimeRequest);
 
-            await request.SendWebRequest();
+            try
+            {
+                await request.SendWebRequest();
 
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogError($"Error: {request.error}");
-                return;
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError($"Error: {request.error}");
+                    return;
+                }
+                else
+                {
+                    var response = JsonConvert.DeserializeObject<TimeResponse>(request.downloadHandler.text);
+                    _timeLogin = DateTime.Parse(response.datetime);
+                    Debug.Log($"Server Time: {_timeLogin}");
+                }
             }
-            else
-            {
-                var response = JsonConvert.DeserializeObject<TimeResponse>(request.downloadHandler.text);
-                _timeLogin = DateTime.Parse(response.datetime);
-                Debug.Log($"Server Time: {_timeLogin}");
-            }
+            catch (Exception ex) { }
 
             IsCompleteSetTimeLogin = true;
         }

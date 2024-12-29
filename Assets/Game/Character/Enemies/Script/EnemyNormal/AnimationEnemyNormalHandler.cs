@@ -7,7 +7,7 @@ namespace Game.Character.Enemy.Normal
     {
         private readonly DamageUserType _typeDamage = DamageUserType.ShortRangeDamage; 
 
-        public override void OnAttack()
+        public void OnAttack()
         {
             _enemyHandler.DamageUser(_typeDamage);
         }

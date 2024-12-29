@@ -28,7 +28,10 @@ namespace Game.Character.Enemy.Abstract
             }).AddTo(this);
         }
 
-        public abstract void OnAttack();
+        public void CompleteActionAttack()
+        {
+            _enemyHandler.CompleteActionAttack();
+        }
 
         public void OnDisposable()
         {

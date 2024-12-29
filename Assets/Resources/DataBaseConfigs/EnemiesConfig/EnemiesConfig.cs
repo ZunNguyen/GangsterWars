@@ -16,6 +16,7 @@ namespace Sources.DataBaseSystem
         public GameObject EnemyPrefab;
 
         public bool IsCanHit;
+        [ShowIf(nameof(IsCanHit))] public int QualityHit;
         [ShowIf(nameof(IsCanHit))] public int TimeToReloadHit;
 
         public bool IsCanShoot;
