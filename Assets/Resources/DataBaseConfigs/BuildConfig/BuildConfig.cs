@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Sources.DataBaseSystem
 {
+#if UNITY_EDITOR
     [Serializable]
     public class EarnCoinBuildInfo
     {
@@ -77,4 +78,5 @@ namespace Sources.DataBaseSystem
             }
         }
     }
+#endif
 }
