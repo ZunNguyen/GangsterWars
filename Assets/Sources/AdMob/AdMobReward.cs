@@ -6,8 +6,8 @@ namespace Sources.AdMob
 {
     public class AdMobReward
     {
-        //  3940256099942544/5224354917
-        private string _adUnitId = "ca-app-pub-2771416781163214/4310340789";
+        // test ID: 3940256099942544/5224354917
+        private string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
 
         private RewardedAd _rewardedAd;
 
