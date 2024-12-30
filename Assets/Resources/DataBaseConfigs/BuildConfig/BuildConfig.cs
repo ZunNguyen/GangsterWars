@@ -22,6 +22,10 @@ namespace Sources.DataBaseSystem
         private DataBase _dataBase => DataBase.EditorInstance;
         private EarnCoinConfig _earnCoinConfig => _dataBase.GetConfig<EarnCoinConfig>();
 
+        // For Use Joystick
+        [Header("For Use Joystick")]
+        public bool IsJoystick;
+
         // For Ads
         [Header("For Ads")]
 
@@ -50,31 +54,6 @@ namespace Sources.DataBaseSystem
             {
                 BuildWithAds = false;
                 _earnCoinConfig.OnChangeBuildData(_forNoAds);
-            }
-        }
-
-        // For Seft Area
-        [Header("---------")]
-        [Header("For Seft Area")]
-        [OnValueChanged(nameof(OnBuilWithSeftArea))]
-        public bool BuildWithSeftArea;
-
-        [OnValueChanged(nameof(OnBuilNoSeftArea))]
-        public bool BuildWithNoSeftArea;
-
-        private void OnBuilWithSeftArea()
-        {
-            if (BuildWithSeftArea)
-            {
-                BuildWithNoSeftArea = false;
-            }
-        }
-
-        private void OnBuilNoSeftArea()
-        {
-            if (BuildWithNoSeftArea)
-            {
-                BuildWithSeftArea = false;
             }
         }
     }

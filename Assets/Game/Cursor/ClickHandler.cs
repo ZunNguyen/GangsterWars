@@ -1,40 +1,37 @@
-﻿using Cysharp.Threading.Tasks;
-using Game.Character.Enemy.Abstract;
+using Cysharp.Threading.Tasks;
+using Game.Character.Leader;
 using Sources.Extension;
+using Sources.GamePlaySystem.Joystick;
 using Sources.GamePlaySystem.Leader;
 using Sources.Utils.Singleton;
 using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Game.Character.Leader
+namespace Game.Cursor
 {
-    public class Action : MonoBehaviour
+    public class ClickHandler : MonoBehaviour
     {
         private const float _radiusRaycast = 0.2f;
 
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
-
-        private static Action _instance;
-        public static Action Instance => _instance;
+        private JoystickSystem _joystickSystem => Locator<JoystickSystem>.Instance;
 
         private bool _isShooting = false;
         private bool _isUseMachineGun = false;
         private bool _isCountingTimePressMouse = false;
-        
-        public string NameObjectShoot { get; private set; }
 
         [SerializeField] private Camera _camera;
 
         private void Awake()
         {
+            if (_joystickSystem.IsUseJoystick) enabled = false;
+
             _leaderSystem.GunHandler.GunModelCurrent.Subscribe(value =>
             {
                 if (value.GunId == LeaderKey.GunId_04 || value.GunId == LeaderKey.GunId_05) _isUseMachineGun = true;
                 else _isUseMachineGun = false;
             }).AddTo(this);
-
-            if (_instance == null) _instance = this;
         }
 
         private void Update()
@@ -48,7 +45,7 @@ namespace Game.Character.Leader
                     _isShooting = true;
                     if (!_isCountingTimePressMouse) CountTimePressMouse();
                 }
-                else _leaderSystem.GunHandler.Shooting();
+                else LeaderAction.Instance.LeaderShooting();
             }
             if (Input.GetMouseButtonUp(0)) _isShooting = false;
         }
@@ -56,21 +53,9 @@ namespace Game.Character.Leader
         private void SetNameObjectUserShoot()
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(ray.origin, _radiusRaycast, ray.direction);
+            RaycastHit2D[] raycastHits = Physics2D.CircleCastAll(ray.origin, _radiusRaycast, ray.direction);
 
-            foreach (var hit in hits)
-            {
-                if (hit.collider != null)
-                {
-                    EnemyControllerAbstract enemy = hit.collider.GetComponentInParent<EnemyControllerAbstract>();
-                    if (enemy != null)
-                    {
-                        NameObjectShoot = enemy.gameObject.name;
-                        return;
-                    }
-                }
-            }
-            NameObjectShoot = "";
+            LeaderAction.Instance.SetNameObjectUserShoot(raycastHits);
         }
 
         private async void CountTimePressMouse()

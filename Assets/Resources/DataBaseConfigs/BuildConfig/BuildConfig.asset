@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e17b97599e7d442b78d7c63d93e9b1, type: 3}
   m_Name: BuildConfig
   m_EditorClassIdentifier: 
-  BuildWithAds: 1
+  IsJoystick: 1
+  BuildWithAds: 0
   _forWithAds:
   - Id: pack-01
     Value: 50
@@ -26,7 +27,7 @@ MonoBehaviour:
   - Id: pack-04
     Value: 500
     TimeToReload: 3000
-  BuildNoAds: 0
+  BuildNoAds: 1
   _forNoAds:
   - Id: pack-01
     Value: 50
@@ -40,5 +41,3 @@ MonoBehaviour:
   - Id: pack-04
     Value: 300
     TimeToReload: 3000
-  BuildWithSeftArea: 0
-  BuildWithNoSeftArea: 0
