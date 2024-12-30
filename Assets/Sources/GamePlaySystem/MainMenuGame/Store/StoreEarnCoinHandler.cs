@@ -37,14 +37,14 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             SetPackEarnCoinViewModels();
         }
 
-        private void SetPackEarnCoinViewModels()
+        private async void SetPackEarnCoinViewModels()
         {
             var packEarnCoinDatas = _packEarnCoinProfile.PackEarnCoinDatas;
 
             foreach (var data in packEarnCoinDatas)
             {
                 PackEarnCoinViewHandler model = new ();
-                model.OnSetUp(data.Id);
+                await model.OnSetUp(data.Id);
                 _packEarnCoinViewHandlers.Add(data.Id, model);
             }
         }

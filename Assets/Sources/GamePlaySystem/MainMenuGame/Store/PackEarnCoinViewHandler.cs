@@ -30,11 +30,11 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         public ReactiveProperty<int> TimeRemain { get; private set; } = new();
         public ReactiveProperty<bool> IsCanClaim { get; private set; } = new();
 
-        public void OnSetUp(string id)
+        public async UniTask OnSetUp(string id)
         {
             _selfId = id;
 
-            SetValue();
+            await SetValue();
             SubscribeAddOneSecond();
 
 #if UNITY_EDITOR
@@ -42,10 +42,9 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 #endif
         }
 
-        private async void SetValue()
+        private async UniTask SetValue()
         {
             var packEarnCoinData = _packEarnCoinProfile.GetPackEarnCoinData(_selfId);
-            await UniTask.WaitUntil(() => _timeManagerSystem.DurationTimeOffline != 0);
             TimeRemain.Value = packEarnCoinData.TimeNextEarn - _timeManagerSystem.DurationTimeOffline;
             TimeRemain.Value = Math.Max(0, TimeRemain.Value);
 
