@@ -108,7 +108,7 @@ namespace Game.Screens.MainMenuScreen
                 _audioManager.Play(AudioKey.SFX_CLICK_01);
                 _imageCharacter.raycastTarget = false;
                 _unlockMe.gameObject.SetActive(false);
-                OnCloseBoxClicked();
+                CloseBox();
                 _imageCharacter.color = Color.white;
                 _tween?.Kill();
                 _isAldreadyOpen = true;
