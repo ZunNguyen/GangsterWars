@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,5 +39,17 @@ namespace Sources.DataBaseSystem
         {
             return _earnCoinInfos;
         }
+
+#if UNITY_EDITOR
+        public void OnChangeBuildData(List<EarnCoinBuildInfo> dataChanges)
+        {
+            foreach (var dataChange in dataChanges)
+            {
+                var earnIconInfo = GetEarnCoinInfo(dataChange.Id);
+                earnIconInfo.Value = dataChange.Value;
+                earnIconInfo.TimeToReload = dataChange.TimeToReload;
+            }
+        }
+#endif
     }
 }
