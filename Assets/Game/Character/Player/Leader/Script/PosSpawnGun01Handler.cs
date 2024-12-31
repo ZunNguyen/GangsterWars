@@ -28,9 +28,7 @@ namespace Game.Character.Leader
             _audioManager.Play(AudioKey.SFX_SHOOT_PISTOL);
             SpawnMuzzleFlash();
 
-            GetInfoClick();
-
-            SpawnBullet(_posSpawns[0].transform, _clickPosition);
+            SpawnBullet(_posSpawns[0].transform, LeaderAction.Instance.PosShoot);
         }
     }
 }

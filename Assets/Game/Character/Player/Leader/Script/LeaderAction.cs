@@ -14,12 +14,13 @@ namespace Game.Character.Leader
     {
         private const float _radiusRaycast = 0.2f;
 
-        private JoystickSystem _joystickSystem => Locator<JoystickSystem>.Instance;
-        private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
-
         private static LeaderAction _instance;
         public static LeaderAction Instance => _instance;
 
+        private JoystickSystem _joystickSystem => Locator<JoystickSystem>.Instance;
+        private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
+
+        public Vector3 PosShoot { get; private set; }
         public string NameObjectShoot { get; private set; }
 
         private void Awake()
@@ -47,6 +48,11 @@ namespace Game.Character.Leader
                 }
             }
             NameObjectShoot = "";
+        }
+
+        public void SetPosShoot(Vector3 pos)
+        {
+            PosShoot = pos;
         }
     }
 }

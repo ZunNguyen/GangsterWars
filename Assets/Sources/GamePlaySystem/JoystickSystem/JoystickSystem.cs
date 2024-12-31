@@ -8,6 +8,8 @@ using UnityEngine;
 
 namespace Sources.GamePlaySystem.Joystick
 {
+    public class InitJoystickSystemService : InitSystemService<JoystickSystem> { }
+
     public class JoystickSystem : BaseSystem
     {
         private DataBase _dataBase => Locator<DataBase>.Instance;
@@ -22,7 +24,7 @@ namespace Sources.GamePlaySystem.Joystick
 
         private void SetUseJoystick()
         {
-            IsUseJoystick = _buildConfig.IsJoystick;
+            IsUseJoystick = _buildConfig.UseJoystick;
         }
     }
 }

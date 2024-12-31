@@ -24,7 +24,7 @@ namespace Sources.DataBaseSystem
 
         // For Use Joystick
         [Header("For Use Joystick")]
-        public bool IsJoystick;
+        public bool UseJoystick;
 
         // For Ads
         [Header("For Ads")]

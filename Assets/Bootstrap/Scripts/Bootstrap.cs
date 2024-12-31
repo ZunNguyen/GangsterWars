@@ -8,6 +8,7 @@ using Sources.GamePlaySystem.Character;
 using Sources.GamePlaySystem.CoinController;
 using Sources.GamePlaySystem.GameResult;
 using Sources.GamePlaySystem.JourneyMap;
+using Sources.GamePlaySystem.Joystick;
 using Sources.GamePlaySystem.Leader;
 using Sources.GamePlaySystem.MainGamePlay;
 using Sources.GamePlaySystem.MainMenuGame;
@@ -76,6 +77,7 @@ namespace Game.Bootstrap
         {
             var serviceGroup = new BootstrapLoadingServiceGroup("Bootstrap Loading Service Group");
 
+            serviceGroup.Add(new InitJoystickSystemService());
             serviceGroup.Add(new InitSaveGameDataSystemService());
             serviceGroup.Add(new InitFTUESystemService());
             serviceGroup.Add(new InitOpenCharacterSystem());

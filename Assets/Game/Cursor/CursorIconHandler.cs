@@ -25,6 +25,11 @@ namespace Game.Cursor
         [SerializeField] private Joystick _joystick;
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
+        private void Awake()
+        {
+            if (!_joystickSystem.IsUseJoystick) enabled = false;
+        }
+
         private void FixedUpdate()
         {
             float horizontal = _joystick.Horizontal;
@@ -37,8 +42,7 @@ namespace Game.Cursor
 
         public void CursorClick()
         {
-            if (!_joystickSystem.IsUseJoystick) return;
-
+            SetPosShoot();
             SetNameObjectUserShoot();
             LeaderAction.Instance.LeaderShooting();
         }
@@ -49,6 +53,11 @@ namespace Game.Cursor
             RaycastHit2D[] raycastHits = Physics2D.CircleCastAll(origin, _radiusRaycast, Vector2.zero);
 
             LeaderAction.Instance.SetNameObjectUserShoot(raycastHits);
+        }
+
+        private void SetPosShoot()
+        {
+            LeaderAction.Instance.SetPosShoot(transform.position);
         }
     }
 }

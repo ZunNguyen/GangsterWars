@@ -20,6 +20,7 @@ namespace Game.Cursor
         private bool _isShooting = false;
         private bool _isUseMachineGun = false;
         private bool _isCountingTimePressMouse = false;
+        private Vector3 _clickPosition = new();
 
         [SerializeField] private Camera _camera;
 
@@ -45,7 +46,11 @@ namespace Game.Cursor
                     _isShooting = true;
                     if (!_isCountingTimePressMouse) CountTimePressMouse();
                 }
-                else LeaderAction.Instance.LeaderShooting();
+                else
+                {
+                    SetPosShoot();
+                    LeaderAction.Instance.LeaderShooting();
+                }
             }
             if (Input.GetMouseButtonUp(0)) _isShooting = false;
         }
@@ -64,6 +69,7 @@ namespace Game.Cursor
 
             while (_isShooting)
             {
+                SetPosShoot();
                 SetNameObjectUserShoot();
                 _leaderSystem.GunHandler.Shooting();
 
@@ -71,6 +77,13 @@ namespace Game.Cursor
             }
 
             _isCountingTimePressMouse = false;
+        }
+
+        private void SetPosShoot()
+        {
+            _clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            _clickPosition.z = -1;
+            LeaderAction.Instance.SetPosShoot(_clickPosition);
         }
     }
 }

@@ -23,17 +23,16 @@ namespace Game.Character.Leader
             if (!_isCanShoot) return;
 
             SpawnMuzzleFlash();
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            clickPosition.z = -1;
 
+            var posShoot = LeaderAction.Instance.PosShoot;
             _audioManager.Play(AudioKey.SFX_SHOOT_PISTOL);
-            SpawnBullet(_posSpawns[0].transform, clickPosition);
+            SpawnBullet(_posSpawns[0].transform, posShoot);
 
             await UniTask.DelayFrame(2);
 
             _audioManager.Play(AudioKey.SFX_SHOOT_PISTOL);
-            clickPosition += _offsetTargetPosMouseClick;
-            SpawnBullet(_posSpawns[1].transform, clickPosition);
+            posShoot += _offsetTargetPosMouseClick;
+            SpawnBullet(_posSpawns[1].transform, posShoot);
         }
     }
 }

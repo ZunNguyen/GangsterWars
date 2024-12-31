@@ -26,8 +26,7 @@ namespace Game.Character.Leader
             _audioManager.Play(AudioKey.SFX_SHOOT_GUN_MACHINE);
             SpawnMuzzleFlash();
 
-            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            clickPosition.z = -1;
+            var clickPosition = LeaderAction.Instance.PosShoot;
 
             clickPosition.x = GetRandom.GetRandomFloat(clickPosition.x - _offsetMousClickPosX, clickPosition.x + _offsetMousClickPosX);
             clickPosition.y = GetRandom.GetRandomFloat(clickPosition.y - _offsetMousClickPosY, clickPosition.y + _offsetMousClickPosY);

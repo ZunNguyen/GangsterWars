@@ -8,11 +8,11 @@ namespace Game.Character.Leader
 {
     public class PosSpawnGun03Handler : PosSpawnBulletHandlerAbstract
     {
-        private readonly Vector3 _offsetTargetPosMouseClick = new Vector3(0.2f, 0.2f, -1);
+        private readonly Vector3 _offsetTargetPosShoot = new Vector3(0.2f, 0.2f, -1);
 
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
-        private Vector3 _offsetTargetPosMouseClickCurrent = Vector3.zero;
+        private Vector3 _offsetTargetPosShootCurrent = Vector3.zero;
         private bool _isChangeSign = false;
         private int _countPosSpawn = 0;
 
@@ -30,31 +30,30 @@ namespace Game.Character.Leader
 
             foreach (var pos in _posSpawns)
             {
-                Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                clickPosition.z = -1;
+                var posShoot = LeaderAction.Instance.PosShoot;
 
-                clickPosition += _offsetTargetPosMouseClickCurrent;
+                posShoot += _offsetTargetPosShootCurrent;
 
-                SpawnBullet(pos, clickPosition);
+                SpawnBullet(pos, posShoot);
 
                 ++_countPosSpawn;
-                UpdateTargetPosMouseClick();
+                UpdateTargetPosShoot();
             }
 
             _countPosSpawn = 0;
-            _offsetTargetPosMouseClickCurrent = Vector3.zero;
+            _offsetTargetPosShootCurrent = Vector3.zero;
             _isChangeSign = false;
         }
 
-        private void UpdateTargetPosMouseClick()
+        private void UpdateTargetPosShoot()
         {
             if (_isChangeSign)
             {
-                _offsetTargetPosMouseClickCurrent -= _countPosSpawn * _offsetTargetPosMouseClick;
+                _offsetTargetPosShootCurrent -= _countPosSpawn * _offsetTargetPosShoot;
             }
             else
             {
-                _offsetTargetPosMouseClickCurrent += _countPosSpawn * _offsetTargetPosMouseClick;
+                _offsetTargetPosShootCurrent += _countPosSpawn * _offsetTargetPosShoot;
             }
 
             _isChangeSign = !_isChangeSign;
