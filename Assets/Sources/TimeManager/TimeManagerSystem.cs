@@ -98,6 +98,14 @@ namespace Sources.TimeManager
             }
         }
 
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if (pauseStatus)
+            {
+                _packEarnCoinProfile.SetLastTimeUserPlay(_timeLogin);
+            }
+        }
+
         private void OnApplicationQuit()
         {
             _packEarnCoinProfile.SetLastTimeUserPlay(_timeLogin);

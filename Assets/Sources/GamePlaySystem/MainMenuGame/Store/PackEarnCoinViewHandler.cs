@@ -6,6 +6,7 @@ using Sources.TimeManager;
 using Sources.Utils.Singleton;
 using System;
 using UniRx;
+using Unity.VisualScripting;
 using UnityEditor;
 
 namespace Sources.GamePlaySystem.MainMenuGame.Store
@@ -87,6 +88,11 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             _storeSystem.StoreEarnCoinHandler.SetCanEarnCoin(_selfId, false);
             IsCanClaim.Value = false;
             SubscribeAddOneSecond();
+        }
+
+        private void OnApplicationPause()
+        {
+            _packEarnCoinProfile.UpdateTimeNextEarn(_selfId, TimeRemain.Value);
         }
 
         private void OnApplicationQuit()

@@ -12,7 +12,7 @@ namespace Game.Cursor
 {
     public class ClickHandler : MonoBehaviour
     {
-        private const float _radiusRaycast = 0.2f;
+        private const float _radiusRaycast = 0.3f;
 
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
         private JoystickSystem _joystickSystem => Locator<JoystickSystem>.Instance;

@@ -436,7 +436,7 @@ MonoBehaviour:
   - Id: enemy-03
     EnemyPrefab: {fileID: 44199057889964456, guid: 9df3cbb0a1b61fd469455c985cbc89ca, type: 3}
     IsCanHit: 1
-    QualityHit: 0
+    QualityHit: 9999999
     TimeToReloadHit: 1000
     IsCanShoot: 0
     QualityWeaponShoot: 0
@@ -646,7 +646,7 @@ MonoBehaviour:
   - Id: enemy-04
     EnemyPrefab: {fileID: 6159979376426271357, guid: c7dff053761e1bd4d846f79b0fb86c74, type: 3}
     IsCanHit: 1
-    QualityHit: 0
+    QualityHit: 9999999
     TimeToReloadHit: 1000
     IsCanShoot: 0
     QualityWeaponShoot: 0
@@ -856,7 +856,7 @@ MonoBehaviour:
   - Id: enemy-05
     EnemyPrefab: {fileID: 180452731009248054, guid: fa1cdb717af73eb439d89584ba9c5cb5, type: 3}
     IsCanHit: 1
-    QualityHit: 0
+    QualityHit: 999999
     TimeToReloadHit: 500
     IsCanShoot: 0
     QualityWeaponShoot: 0
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   - Id: enemy-07
     EnemyPrefab: {fileID: 345816969573170895, guid: ab4ac09e1b5decb4e8af977768b6024f, type: 3}
     IsCanHit: 1
-    QualityHit: 0
+    QualityHit: 99999
     TimeToReloadHit: 1000
     IsCanShoot: 0
     QualityWeaponShoot: 0
@@ -1485,9 +1485,9 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 95548ce0ee8ef7c449a07d65262bf0aa, type: 3}
   - Id: boss-01
     EnemyPrefab: {fileID: 7357696925340996628, guid: d365fd14f41132e4cbcd8765e6e6e59a, type: 3}
-    IsCanHit: 0
-    QualityHit: 0
-    TimeToReloadHit: 0
+    IsCanHit: 1
+    QualityHit: 999999
+    TimeToReloadHit: 1000
     IsCanShoot: 0
     QualityWeaponShoot: 0
     TimeToReloadShoot: 0
@@ -1695,9 +1695,9 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: b36c73cb0ecb34748b196a835bdd551e, type: 3}
   - Id: boss-02
     EnemyPrefab: {fileID: 6955511236308158615, guid: 2b658d2dab17bcf4cb9ed8800804432f, type: 3}
-    IsCanHit: 0
-    QualityHit: 0
-    TimeToReloadHit: 0
+    IsCanHit: 1
+    QualityHit: 999999
+    TimeToReloadHit: 1000
     IsCanShoot: 0
     QualityWeaponShoot: 0
     TimeToReloadShoot: 0
@@ -1908,9 +1908,9 @@ MonoBehaviour:
     IsCanHit: 0
     QualityHit: 0
     TimeToReloadHit: 0
-    IsCanShoot: 0
-    QualityWeaponShoot: 0
-    TimeToReloadShoot: 0
+    IsCanShoot: 1
+    QualityWeaponShoot: 999999
+    TimeToReloadShoot: 1000
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -2325,9 +2325,9 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 636c021064e3ccf4ba6164039fad3afc, type: 3}
   - Id: boss-05
     EnemyPrefab: {fileID: 8646716340610159811, guid: df1a4c0d299044945a3ee9ffe2ae2c06, type: 3}
-    IsCanHit: 0
-    QualityHit: 0
-    TimeToReloadHit: 0
+    IsCanHit: 1
+    QualityHit: 999999
+    TimeToReloadHit: 1000
     IsCanShoot: 0
     QualityWeaponShoot: 0
     TimeToReloadShoot: 0
@@ -2538,9 +2538,9 @@ MonoBehaviour:
     IsCanHit: 0
     QualityHit: 0
     TimeToReloadHit: 0
-    IsCanShoot: 0
-    QualityWeaponShoot: 0
-    TimeToReloadShoot: 0
+    IsCanShoot: 1
+    QualityWeaponShoot: 99999
+    TimeToReloadShoot: 1500
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -2745,9 +2745,9 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: 21918da0ed17ee64a91aab969bb132c7, type: 3}
   - Id: boss-07
     EnemyPrefab: {fileID: 2738606599830832688, guid: ffc9a57fd37840848be819a707ee721a, type: 3}
-    IsCanHit: 0
-    QualityHit: 0
-    TimeToReloadHit: 0
+    IsCanHit: 1
+    QualityHit: 99999
+    TimeToReloadHit: 1000
     IsCanShoot: 0
     QualityWeaponShoot: 0
     TimeToReloadShoot: 0
@@ -2955,9 +2955,9 @@ MonoBehaviour:
     _csvFile: {fileID: 4900000, guid: cf3dee7b60c5c5141a61c5f039804729, type: 3}
   - Id: boss-08
     EnemyPrefab: {fileID: 4533735913268279485, guid: 4f3939168dfc9a148bf7293104538f9d, type: 3}
-    IsCanHit: 0
-    QualityHit: 0
-    TimeToReloadHit: 0
+    IsCanHit: 1
+    QualityHit: 99999
+    TimeToReloadHit: 1000
     IsCanShoot: 0
     QualityWeaponShoot: 0
     TimeToReloadShoot: 0
