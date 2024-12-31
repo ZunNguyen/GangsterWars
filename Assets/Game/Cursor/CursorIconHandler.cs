@@ -27,7 +27,7 @@ namespace Game.Cursor
 
         private void Awake()
         {
-            if (!_joystickSystem.IsUseJoystick) enabled = false;
+            if (!_joystickSystem.IsUseJoystick) gameObject.SetActive(false);
         }
 
         private void FixedUpdate()
