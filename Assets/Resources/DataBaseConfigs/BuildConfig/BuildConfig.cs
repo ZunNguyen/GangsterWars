@@ -16,15 +16,17 @@ namespace Sources.DataBaseSystem
         [Header("Seconds")]
         public int TimeToReload;
     }
+#endif
 
     public class BuildConfig : DataBaseConfig
     {
-        private DataBase _dataBase => DataBase.EditorInstance;
-        private EarnCoinConfig _earnCoinConfig => _dataBase.GetConfig<EarnCoinConfig>();
-
         // For Use Joystick
         [Header("For Use Joystick")]
         public bool UseJoystick;
+
+#if UNITY_EDITOR
+        private DataBase _dataBase => DataBase.EditorInstance;
+        private EarnCoinConfig _earnCoinConfig => _dataBase.GetConfig<EarnCoinConfig>();
 
         // For Ads
         [Header("For Ads")]
@@ -56,6 +58,6 @@ namespace Sources.DataBaseSystem
                 _earnCoinConfig.OnChangeBuildData(_forNoAds);
             }
         }
-    }
 #endif
+    }
 }
