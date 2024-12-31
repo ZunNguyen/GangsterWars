@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e17b97599e7d442b78d7c63d93e9b1, type: 3}
   m_Name: BuildConfig
   m_EditorClassIdentifier: 
-  UseJoystick: 1
+  UseJoystick: 0
   BuildWithAds: 0
   _forWithAds:
   - Id: pack-01
