@@ -95,8 +95,19 @@ namespace Sources.TimeManager
             {
                 await UniTask.Delay(TimeSpan.FromSeconds(1));
                 AddOneSecondTimeOnline?.Invoke();
+                _timeLogin = _timeLogin.AddSeconds(1);
+#if UNITY_WEBGL
+                UpdateTimeOnline();
+#endif
             }
         }
+
+#if UNITY_WEBGL
+        private void UpdateTimeOnline()
+        {
+            _packEarnCoinProfile.SetLastTimeUserPlay(_timeLogin);
+        }
+#endif
 
         private void OnApplicationPause(bool pauseStatus)
         {

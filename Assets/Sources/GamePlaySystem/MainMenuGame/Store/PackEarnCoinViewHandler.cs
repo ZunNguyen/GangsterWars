@@ -69,6 +69,10 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             }
 
             TimeRemain.Value--;
+
+#if UNITY_WEBGL
+            UpdateTimeWebLG();
+#endif
         }
 
         private void SubscribeAddOneSecond()
@@ -88,7 +92,18 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
             _storeSystem.StoreEarnCoinHandler.SetCanEarnCoin(_selfId, false);
             IsCanClaim.Value = false;
             SubscribeAddOneSecond();
+
+#if UNITY_WEBGL
+            UpdateTimeWebLG();
+#endif
         }
+
+#if UNITY_WEBGL
+        private void UpdateTimeWebLG()
+        {
+            _packEarnCoinProfile.UpdateTimeNextEarn(_selfId, TimeRemain.Value);
+        }
+#endif
 
         private void OnApplicationPause()
         {
