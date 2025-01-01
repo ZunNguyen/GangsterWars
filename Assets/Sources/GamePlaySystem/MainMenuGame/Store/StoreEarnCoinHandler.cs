@@ -34,19 +34,22 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             await UniTask.WaitUntil(() => _timeManagerSystem.IsCompleteSetTimeLogin == true);
 
-            SetPackEarnCoinViewModels();
+            await SetPackEarnCoinViewModels();
         }
 
-        private async void SetPackEarnCoinViewModels()
+        private async UniTask SetPackEarnCoinViewModels()
         {
             var packEarnCoinDatas = _packEarnCoinProfile.PackEarnCoinDatas;
 
+            var task = new List<UniTask>();
             foreach (var data in packEarnCoinDatas)
             {
                 PackEarnCoinViewHandler model = new ();
-                await model.OnSetUp(data.Id);
                 _packEarnCoinViewHandlers.Add(data.Id, model);
+                task.Add(model.OnSetUp(data.Id));
             }
+
+            await UniTask.WhenAll(task);
         }
 
         public async Task<bool> ShowAdCoin()

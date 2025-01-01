@@ -29,6 +29,7 @@ namespace Sources.TimeManager
 
         public int DurationTimeOffline { get; private set; }
         public bool IsCompleteSetTimeLogin { get; private set; } = false;
+        public bool IsCompleteSetDurationTime { get; private set; } = false;
         public Action AddOneSecondTimeOnline;
 
         public override async UniTask Init()
@@ -59,7 +60,7 @@ namespace Sources.TimeManager
                 else
                 {
                     var response = JsonConvert.DeserializeObject<TimeResponse>(request.downloadHandler.text);
-                    _timeLogin = DateTime.Parse(response.datetime);
+                    _timeLogin = DateTime.Parse(response.datetime).AddHours(7);
                     Debug.Log($"Server Time: {_timeLogin}");
                 }
             }
@@ -85,6 +86,7 @@ namespace Sources.TimeManager
 
             var durationTime = _timeLogin - _packEarnCoinProfile.LastTimeUserPlay;
             DurationTimeOffline = (int)durationTime.TotalSeconds;
+            IsCompleteSetDurationTime = true;
 
             Debug.Log($"DurationTimeOffline: {DurationTimeOffline}");
         }

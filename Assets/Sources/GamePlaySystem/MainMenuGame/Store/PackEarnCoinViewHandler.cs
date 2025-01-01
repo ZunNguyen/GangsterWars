@@ -35,7 +35,7 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
         {
             _selfId = id;
 
-            SetValue();
+            await SetValue();
             SubscribeAddOneSecond();
 
 #if UNITY_EDITOR
@@ -43,8 +43,10 @@ namespace Sources.GamePlaySystem.MainMenuGame.Store
 #endif
         }
 
-        private void SetValue()
+        private async UniTask SetValue()
         {
+            await UniTask.WaitUntil(() => _timeManagerSystem.IsCompleteSetDurationTime == true);
+
             var packEarnCoinData = _packEarnCoinProfile.GetPackEarnCoinData(_selfId);
             TimeRemain.Value = packEarnCoinData.TimeNextEarn - _timeManagerSystem.DurationTimeOffline;
             TimeRemain.Value = Math.Max(0, TimeRemain.Value);
