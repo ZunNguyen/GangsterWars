@@ -20,6 +20,7 @@ namespace Game.Character.Bomber
         private BomberConfig _bomberConfig => _dataBase.GetConfig<BomberConfig>();
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
+        private Sequence _sequence;
         private Vector3 _originalScale;
 
         [SerializeField] private SpriteRenderer _sprite;
@@ -67,9 +68,9 @@ namespace Game.Character.Bomber
 
             var duration = TweenUtils.GetTimeDuration(transform.position, enemyPos, _throwSpeed);
 
-            var sequence = DOTween.Sequence();
-            sequence.Append(transform.DOPath(path, duration, PathType.CatmullRom).SetEase(Ease.Linear).OnComplete(OnBombHit));
-            sequence.Join(transform.DORotate(new Vector3(0, 0, -360), duration, RotateMode.FastBeyond360)
+            _sequence = DOTween.Sequence();
+            _sequence.Append(transform.DOPath(path, duration, PathType.CatmullRom).SetEase(Ease.Linear).OnComplete(OnBombHit));
+            _sequence.Join(transform.DORotate(new Vector3(0, 0, -360), duration, RotateMode.FastBeyond360)
                     .SetEase(Ease.Linear));
         }
 
@@ -88,6 +89,11 @@ namespace Game.Character.Bomber
         public void OnRelease()
         {
             _spawnerManager.Release(this);
+        }
+
+        public void OnDestroy()
+        {
+            _sequence.Kill();
         }
     }
 }
