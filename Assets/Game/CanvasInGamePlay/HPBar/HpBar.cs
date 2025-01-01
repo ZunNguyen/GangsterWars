@@ -45,7 +45,8 @@ namespace Game.CanvasInGamePlay.HPBar
                 var isShowSlider = value != enemyHandler.HpMax && value > 0;
                 _hpBar.SetActive(isShowSlider);
                 
-                ChangeValue(value);
+                if (value > 0) ChangeValue(value);
+
                 if (value <= 0)
                 {
                     try
