@@ -75,9 +75,14 @@ namespace Game.Character.Bomber
 
         private async void OnBombHit()
         {
-            await UniTask.Delay(500);
-            _audioManager.Play(AudioKey.SFX_BOOM_01);
-            SetEnabled(true);
+            var _token = this.GetCancellationTokenOnDestroy();
+            try
+            {
+                await UniTask.Delay(500, cancellationToken: _token);
+                _audioManager.Play(AudioKey.SFX_BOOM_01);
+                SetEnabled(true);
+            }
+            catch{ }
         }
 
         public void OnRelease()
