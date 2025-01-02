@@ -86,6 +86,7 @@ namespace Sources.TimeManager
 
             var durationTime = _timeLogin - _packEarnCoinProfile.LastTimeUserPlay;
             DurationTimeOffline = (int)durationTime.TotalSeconds;
+            DurationTimeOffline = Math.Max(DurationTimeOffline, 0);
             IsCompleteSetDurationTime = true;
 
             Debug.Log($"DurationTimeOffline: {DurationTimeOffline}");
