@@ -9,10 +9,11 @@ namespace Sources.GamePlaySystem.MainGamePlay
 {
     public abstract class HpHandlerAbstract : MonoBehaviour
     {
-        private float _duration = 0.5f;
+        private const float _duration = 0.5f;
 
         protected MainGamePlaySystem _mainGamePlaySystem => Locator<MainGamePlaySystem>.Instance;
 
+        private float _valueCurrent;
         protected float _maxValue;
 
         [SerializeField] private Image _firstImage;
@@ -22,17 +23,19 @@ namespace Sources.GamePlaySystem.MainGamePlay
 
         protected async void ChangeValue(int value)
         {
-            ChangeFillAmount(value, _firstImage, _duration/4);
-            await UniTask.Delay(1000);
-            ChangeFillAmount(value, _secondImage, _duration);
+            _valueCurrent = value;
+
+            ChangeFillAmount(_firstImage);
+            await UniTask.Delay(800);
+            ChangeFillAmount(_secondImage);
         }
 
-        private void ChangeFillAmount(int value, Image image, float duration = 0)
+        private void ChangeFillAmount(Image image)
         {
             DOTween.To(() =>
                             image.fillAmount,
                             x => image.fillAmount = x,
-                            value / _maxValue,
+                            _valueCurrent / _maxValue,
                             _duration
                       ).SetEase(Ease.OutQuart);
         }
