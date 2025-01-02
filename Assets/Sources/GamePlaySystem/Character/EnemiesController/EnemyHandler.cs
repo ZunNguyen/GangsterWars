@@ -110,6 +110,7 @@ namespace Sources.GamePlaySystem.MainGamePlay.Enemies
         {
             _isHaveColliderInFace = false;
             _isEndGame = false;
+            IsAttacking.Value = false;
             _reloadTimeHandler.SetEnemyId(enemyId);
 
             GetEnemyInfo(enemyId);
