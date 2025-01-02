@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3277482205372726740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.38, y: 1.57, z: 0}
+  m_LocalPosition: {x: -1.2, y: 1.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -401,7 +401,7 @@ MonoBehaviour:
   _animator: {fileID: 3141933024051421551}
   _enemyController: {fileID: 1868990788147314544}
   _weaponPrefab: {fileID: 6148796955823961097, guid: 93863f3fd63d16544892972bee3c7fbd, type: 3}
-  _muzzleFlash: {fileID: 0}
+  _muzzleFlash: {fileID: 754109819966448338, guid: d793356b79c9c1e49980e436dc14e316, type: 3}
   _weaponHolder: {fileID: 8432689198941520761}
   _posSpawnWeapon: {fileID: 59397833328154823}
 --- !u!1 &8493911427500958365

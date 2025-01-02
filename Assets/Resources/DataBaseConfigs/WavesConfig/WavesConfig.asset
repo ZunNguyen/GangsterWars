@@ -20,44 +20,44 @@ MonoBehaviour:
       Phases:
       - PhaseId: phase-01
         Enemy:
-          EnemyId: enemy-06
+          EnemyId: enemy-01
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 0
       - PhaseId: phase-02
         Enemy:
-          EnemyId: enemy-06
+          EnemyId: enemy-01
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
-          EnemyId: enemy-06
+          EnemyId: enemy-01
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
-          EnemyId: enemy-06
+          EnemyId: enemy-01
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
     - Id: turn-02
       Phases:
       - PhaseId: phase-01
         Enemy:
-          EnemyId: enemy-06
+          EnemyId: enemy-01
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-02
         Enemy:
-          EnemyId: enemy-06
+          EnemyId: enemy-01
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-03
         Enemy:
-          EnemyId: enemy-06
+          EnemyId: enemy-01
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
       - PhaseId: phase-04
         Enemy:
-          EnemyId: enemy-06
+          EnemyId: enemy-01
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-02
@@ -339,7 +339,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-06
-    TotalHp: 1100
+    TotalHp: 950
     Turns:
     - Id: turn-01
       Phases:
@@ -426,7 +426,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-07
-    TotalHp: 2000
+    TotalHp: 1200
     Turns:
     - Id: turn-01
       Phases:
@@ -503,7 +503,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-08
-    TotalHp: 4350
+    TotalHp: 1775
     Turns:
     - Id: turn-01
       Phases:
@@ -590,7 +590,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-09
-    TotalHp: 7000
+    TotalHp: 2310
     Turns:
     - Id: turn-01
       Phases:
@@ -682,7 +682,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-10
-    TotalHp: 9200
+    TotalHp: 2900
     Turns:
     - Id: turn-01
       Phases:
@@ -759,7 +759,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-11
-    TotalHp: 14000
+    TotalHp: 3175
     Turns:
     - Id: turn-01
       Phases:
@@ -836,7 +836,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-12
-    TotalHp: 21000
+    TotalHp: 3900
     Turns:
     - Id: turn-01
       Phases:
@@ -913,7 +913,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-13
-    TotalHp: 20500
+    TotalHp: 3800
     Turns:
     - Id: turn-01
       Phases:
@@ -985,7 +985,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-14
-    TotalHp: 30000
+    TotalHp: 4300
     Turns:
     - Id: turn-01
       Phases:
@@ -1052,7 +1052,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-15
-    TotalHp: 48000
+    TotalHp: 9000
     Turns:
     - Id: turn-01
       Phases:
@@ -1139,7 +1139,7 @@ MonoBehaviour:
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-16
-    TotalHp: 58800
+    TotalHp: 26700
     Turns:
     - Id: turn-01
       Phases:
@@ -1236,7 +1236,7 @@ MonoBehaviour:
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-17
-    TotalHp: 47200
+    TotalHp: 31200
     Turns:
     - Id: turn-01
       Phases:
@@ -1308,7 +1308,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-18
-    TotalHp: 59400
+    TotalHp: 35650
     Turns:
     - Id: turn-01
       Phases:
@@ -1390,7 +1390,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-19
-    TotalHp: 77000
+    TotalHp: 35625
     Turns:
     - Id: turn-01
       Phases:
@@ -1477,7 +1477,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-20
-    TotalHp: 93500
+    TotalHp: 49700
     Turns:
     - Id: turn-01
       Phases:
@@ -1569,7 +1569,7 @@ MonoBehaviour:
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-21
-    TotalHp: 82800
+    TotalHp: 52825
     Turns:
     - Id: turn-01
       Phases:
@@ -1651,7 +1651,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-22
-    TotalHp: 93600
+    TotalHp: 40100
     Turns:
     - Id: turn-01
       Phases:
@@ -1733,7 +1733,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-23
-    TotalHp: 96600
+    TotalHp: 48425
     Turns:
     - Id: turn-01
       Phases:
@@ -1815,7 +1815,7 @@ MonoBehaviour:
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-24
-    TotalHp: 118500
+    TotalHp: 60200
     Turns:
     - Id: turn-01
       Phases:
@@ -1907,7 +1907,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-25
-    TotalHp: 140800
+    TotalHp: 103400
     Turns:
     - Id: turn-01
       Phases:
@@ -2014,7 +2014,7 @@ MonoBehaviour:
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-26
-    TotalHp: 88400
+    TotalHp: 47550
     Turns:
     - Id: turn-01
       Phases:
@@ -2076,7 +2076,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-27
-    TotalHp: 138600
+    TotalHp: 56025
     Turns:
     - Id: turn-01
       Phases:
@@ -2163,7 +2163,7 @@ MonoBehaviour:
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-28
-    TotalHp: 144400
+    TotalHp: 76350
     Turns:
     - Id: turn-01
       Phases:
@@ -2255,7 +2255,7 @@ MonoBehaviour:
           IndexPos: 02000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-29
-    TotalHp: 118000
+    TotalHp: 50250
     Turns:
     - Id: turn-01
       Phases:
@@ -2327,7 +2327,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-30
-    TotalHp: 165900
+    TotalHp: 74450
     Turns:
     - Id: turn-01
       Phases:
@@ -2419,7 +2419,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-31
-    TotalHp: 178200
+    TotalHp: 60200
     Turns:
     - Id: turn-01
       Phases:
@@ -2516,7 +2516,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-32
-    TotalHp: 158700
+    TotalHp: 48200
     Turns:
     - Id: turn-01
       Phases:
@@ -2598,7 +2598,7 @@ MonoBehaviour:
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-33
-    TotalHp: 117600
+    TotalHp: 57350
     Turns:
     - Id: turn-01
       Phases:
@@ -2660,7 +2660,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-34
-    TotalHp: 205000
+    TotalHp: 111250
     Turns:
     - Id: turn-01
       Phases:
@@ -2752,7 +2752,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-35
-    TotalHp: 218400
+    TotalHp: 129275
     Turns:
     - Id: turn-01
       Phases:
@@ -2849,7 +2849,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-36
-    TotalHp: 118800
+    TotalHp: 24800
     Turns:
     - Id: turn-01
       Phases:
@@ -2906,7 +2906,7 @@ MonoBehaviour:
           IndexPos: 00000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-37
-    TotalHp: 207200
+    TotalHp: 123575
     Turns:
     - Id: turn-01
       Phases:
@@ -2993,7 +2993,7 @@ MonoBehaviour:
           IndexPos: 04000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-38
-    TotalHp: 185600
+    TotalHp: 112600
     Turns:
     - Id: turn-01
       Phases:
@@ -3070,7 +3070,7 @@ MonoBehaviour:
           IndexPos: 03000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-39
-    TotalHp: 255000
+    TotalHp: 108150
     Turns:
     - Id: turn-01
       Phases:
@@ -3162,7 +3162,7 @@ MonoBehaviour:
           IndexPos: 01000000
         SpawnAfterMiliSeccond: 4000
   - Id: wave-40
-    TotalHp: 192200
+    TotalHp: 89450
     Turns:
     - Id: turn-01
       Phases:

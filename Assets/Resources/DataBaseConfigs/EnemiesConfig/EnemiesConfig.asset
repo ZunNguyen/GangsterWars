@@ -2120,7 +2120,7 @@ MonoBehaviour:
     TimeToReloadHit: 0
     IsCanShoot: 1
     QualityWeaponShoot: 9999
-    TimeToReloadShoot: 1000
+    TimeToReloadShoot: 700
     WaveEnemies:
     - Id: wave-01
       Damage: 1
@@ -2540,7 +2540,7 @@ MonoBehaviour:
     TimeToReloadHit: 0
     IsCanShoot: 1
     QualityWeaponShoot: 99999
-    TimeToReloadShoot: 1500
+    TimeToReloadShoot: 2000
     WaveEnemies:
     - Id: wave-01
       Damage: 1

@@ -43,7 +43,7 @@ namespace Game.Character.Enemy.Weapon
         {
             var targetPosX = transform.position.x - _offsetTargetX;
 
-            _tween = transform.DOMoveX(targetPosX, _duration).SetEase(Ease.InSine).OnComplete(() =>
+            _tween = transform.DOMoveX(targetPosX, _duration).SetEase(Ease.InOutSine).OnComplete(() =>
             {
                 OnRelease();
             });
