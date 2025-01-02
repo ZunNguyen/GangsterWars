@@ -13,10 +13,12 @@ namespace Game.Character.Enemy.Weapon
 {
     public class BomEnemy : Abstract.WeaponAbstract
     {
+        private readonly Vector3 _defaultScale = new Vector3(0.7f, 0.7f, 0.7f);
         private const float _throwSpeed = 20f;
         private const float _height = 2f;
         private const float _randomPosXMin = -1f;
         private const float _randomPosXMax = 1f;
+        private const float _defaultPosZ = -2f;
 
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
 
@@ -51,9 +53,18 @@ namespace Game.Character.Enemy.Weapon
         public override void OnSetUp(EnemyHandler enemyHandler, int indexPos)
         {
             SetEnabled(false);
+            SetPosZ();
+            transform.localScale = _defaultScale;
             _sprite.sprite = _spriteOrigin;
             GetTargetPos(indexPos);
             base.OnSetUp(enemyHandler, indexPos);
+        }
+
+        private void SetPosZ()
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.z = _defaultPosZ;
+            transform.position = newPosition;
         }
 
         private void GetTargetPos(int indexPos)

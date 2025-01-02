@@ -30,7 +30,7 @@ namespace Game.Character.Enemy.Shoot
             var newWeapon = _spawnerManager.Get(_weaponPrefab);
             newWeapon.gameObject.SetActive(false);
             newWeapon.transform.position = posSpawn.position;
-            newWeapon.transform.SetParent(_weaponHolder);
+            newWeapon.transform.SetParent(_weaponHolder, false);
             newWeapon.OnSetUp(_enemyHandler, _enemyController.IndexPos);
         }
 
