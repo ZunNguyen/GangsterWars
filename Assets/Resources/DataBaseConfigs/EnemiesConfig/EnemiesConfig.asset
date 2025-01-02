@@ -1492,31 +1492,11 @@ MonoBehaviour:
     QualityWeaponShoot: 0
     TimeToReloadShoot: 0
     WaveEnemies:
-    - Id: wave-01
-      Damage: 1
-      Hp: 3
-      coinReward: {x: 5, y: 10}
-      PercentChance: 100
-    - Id: wave-02
-      Damage: 2
-      Hp: 8
-      coinReward: {x: 6, y: 12}
-      PercentChance: 100
-    - Id: wave-03
-      Damage: 4
-      Hp: 15
-      coinReward: {x: 7, y: 15}
-      PercentChance: 50
-    - Id: wave-04
-      Damage: 6
-      Hp: 30
-      coinReward: {x: 8, y: 20}
-      PercentChance: 50
     - Id: wave-05
       Damage: 8
-      Hp: 50
-      coinReward: {x: 10, y: 23}
-      PercentChance: 50
+      Hp: 100
+      coinReward: {x: 50, y: 100}
+      PercentChance: 100
     - Id: wave-06
       Damage: 10
       Hp: 100
