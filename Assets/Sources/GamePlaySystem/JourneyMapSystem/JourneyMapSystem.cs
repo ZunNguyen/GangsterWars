@@ -41,6 +41,7 @@ namespace Sources.GamePlaySystem.JourneyMap
 
         private List<JourneyMapData> _journeyMapDatas = new();
 
+        private int _journeyItemMaxInOneGrid;
         public int StarCurrent { get; private set; }
         public int IndexGridMapCurrent { get; private set; }
         public int IndexGridMapMaxCurrent { get; private set; }
@@ -50,6 +51,22 @@ namespace Sources.GamePlaySystem.JourneyMap
         {
             GetAllMatrixMapAvailable();
             ChangeJourneyMap(IndexGridMapCurrent);
+        }
+
+        public void UpdateMatrixMap()
+        {
+            var countMaxWaveCurrent = _journeyProfile.WavesPassedDatas.Count;
+            var indexGridMax = countMaxWaveCurrent / _journeyItemMaxInOneGrid;
+
+            if (indexGridMax > IndexGridMapMaxCurrent)
+            {
+                IndexGridMapCurrent = IndexGridMapMaxCurrent = indexGridMax;
+
+                var journeyMapData = _journeyMapConfig.JourneyMapDatas[indexGridMax];
+                _journeyMapDatas.Add(journeyMapData);
+                
+                ChangeJourneyMap(IndexGridMapCurrent);
+            }
         }
 
         public void ChangeJourneyMap(int index)
@@ -63,8 +80,8 @@ namespace Sources.GamePlaySystem.JourneyMap
         {
             var countMaxWaveCurrent = _journeyProfile.WavesPassedDatas.Count;
 
-            var journeyItemMaxInOneGrid = _journeyMapConfig.JourneyItemViews.Count;
-            IndexGridMapCurrent = IndexGridMapMaxCurrent = countMaxWaveCurrent / journeyItemMaxInOneGrid;
+            _journeyItemMaxInOneGrid = _journeyMapConfig.JourneyItemViews.Count;
+            IndexGridMapCurrent = IndexGridMapMaxCurrent = countMaxWaveCurrent / _journeyItemMaxInOneGrid;
 
             for (int i = 0; i <= IndexGridMapCurrent; i++)
             {

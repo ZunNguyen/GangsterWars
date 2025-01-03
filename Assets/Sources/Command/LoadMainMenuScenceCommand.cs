@@ -7,6 +7,7 @@ using Game.Screens.MainMenuScreen;
 using Sources.Audio;
 using Sources.Command;
 using Sources.Extension;
+using Sources.GamePlaySystem.JourneyMap;
 using Sources.GamePlaySystem.MainMenuGame;
 using Sources.Services;
 using Sources.UISystem;
@@ -25,6 +26,7 @@ namespace Sources.Command
         private JourneyScreen _journeyScreen => _uiManager.GetUI<JourneyScreen>();
 
         private StoreSystem _storeSystem => Locator<StoreSystem>.Instance;
+        private JourneyMapSystem _journeyMapSystem => Locator<JourneyMapSystem>.Instance;
 
         public override async UniTask Execute()
         {
@@ -35,7 +37,7 @@ namespace Sources.Command
             var loadingScreen = await _uiManager.Show<BlackLoadingScreen>();
             
             await loadingScreen.PanelMoveIn();
-            _storeSystem.OnSetUp();
+            OnSetUp();
             CloseScreen();
             await sequenceGroup.Run();
             Time.timeScale = 1f;
@@ -43,6 +45,12 @@ namespace Sources.Command
             await loadingScreen.PanelMoveOut();
             
             loadingScreen.Close().Forget();
+        }
+
+        private void OnSetUp()
+        {
+            _storeSystem.OnSetUp();
+            _journeyMapSystem.UpdateMatrixMap();
         }
 
         private void CloseScreen()
