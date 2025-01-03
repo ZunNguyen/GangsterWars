@@ -13,7 +13,7 @@ namespace Game.Character.Sniper
 #if UNITY_ANDROID
         private const float _factorOffsetPos = 2f;
 #else
-        private const float _factorOffsetPos = 5f;
+        private const float _factorOffsetPos = 10f;
 #endif
         private const float _offsetEnemyTargetPosY = 2f;
 
