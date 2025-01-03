@@ -61,6 +61,7 @@ namespace Sources.DataBaseSystem
         [TabGroup("Wave Spawn")]
         [SerializeField, ListDrawerSettings(ListElementLabelName = "GetDescription")]
         private List<Wave> _waveSpawn;
+        public List<Wave> WaveSpawn => _waveSpawn;
         public Dictionary<string, Wave> WaveSpawnCache = new();
 
         [TabGroup("Wave Info")]
@@ -168,6 +169,8 @@ namespace Sources.DataBaseSystem
 
                     newWave.TotalHp = _totalHpInWave;
                     _totalHpInWave = 0;
+
+                    Debug.Log(startWaveId);
                 }
                 countSameWave++;
             }
@@ -244,6 +247,7 @@ namespace Sources.DataBaseSystem
 
             // Get TotalHp
             var enemyInfo = _enemiesConfig.GetEnemyInfo(phase.Enemy.EnemyId);
+            Debug.Log(enemyInfo.Id);
             var hpEnemy = enemyInfo.WaveEnemies[_waveSpawn.Count - 1].Hp;
             var countEnemy = phase.Enemy.IndexPos.Count;
             _totalHpInWave = _totalHpInWave + (hpEnemy * countEnemy);

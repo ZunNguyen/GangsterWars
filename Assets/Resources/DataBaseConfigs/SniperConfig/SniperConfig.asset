@@ -45,19 +45,19 @@ MonoBehaviour:
     - Id: level-07
       LevelUpFee: 1300
       ReloadFee: 1750
-      DamageOrHp: 300
+      DamageOrHp: 250
     - Id: level-08
       LevelUpFee: 1500
       ReloadFee: 2000
-      DamageOrHp: 500
+      DamageOrHp: 300
     - Id: level-09
       LevelUpFee: 1700
       ReloadFee: 2250
-      DamageOrHp: 700
+      DamageOrHp: 350
     - Id: level-10
       LevelUpFee: 1900
       ReloadFee: 2500
-      DamageOrHp: 1000
+      DamageOrHp: 400
     CSVFile: {fileID: 4900000, guid: 364f79ee4f83d164092484916b7484fb, type: 3}
     MaxBullet: 50
     BulletsPerClip: 1
