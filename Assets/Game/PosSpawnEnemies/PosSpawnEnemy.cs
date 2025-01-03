@@ -10,15 +10,16 @@ using Game.Character.Enemy.Abstract;
 using Sources.GamePlaySystem.MainGamePlay.Enemies;
 using Game.CanvasInGamePlay.Controller;
 using Sources.GamePlaySystem.GameResult;
+using DG.Tweening;
 
 namespace Game.PosSpawnEnemies
 {
     public class PosSpawnEnemy : MonoBehaviour
     {
 #if UNITY_ANDROID
-        private const float _posXSpawnEnemy = 18f;
+        private const float _posXSpawnEnemy = 13.5f;
 #else
-        private const float _posXSpawnEnemy = 15.5f;
+        private const float _posXSpawnEnemy = 11f;
 #endif
         private const float _offsetDefaultZ = 0.1f;
 
@@ -38,6 +39,7 @@ namespace Game.PosSpawnEnemies
 
         public void OnSetUp(int index)
         {
+            SetPosX();
             _indexPos = index;
             _offsetPos = transform.position;
 
@@ -48,6 +50,13 @@ namespace Game.PosSpawnEnemies
             }).AddTo(this);
 
             _gameResultSystem.IsUserWin += EndGame;
+        }
+
+        private void SetPosX()
+        {
+            var posEnemy = gameObject.transform.position;
+            posEnemy.x = _posXSpawnEnemy;
+            transform.position = posEnemy;
         }
 
         private void EndGame(bool isEndGame)
@@ -80,7 +89,7 @@ namespace Game.PosSpawnEnemies
             var newEnemy = _spawnerManager.Get(enemyController);
             _mainGamePlaySystem.SpawnEnemiesHandler.AddEnemyToList(newEnemy);
             newEnemy.OnSetUp(enemyId, _indexPos);
-            newEnemy.transform.SetParent(_enemiesHolder);
+            newEnemy.transform.SetParent(_enemiesHolder, false);
 
             _offsetPos.z -= _offsetDefaultZ;
             newEnemy.transform.position = _offsetPos;
