@@ -349,9 +349,9 @@ wave-25,turn-01,phase-02,boss-05,0,4000
 wave-25,turn-01,phase-03,enemy-05,1,4000
 wave-25,turn-01,phase-04,enemy-04,4,4000
 wave-25,turn-01,phase-05,enemy-05,1,4000
-wave-25,turn-01,phase-06,enemy-06,1,4000
+wave-25,turn-01,phase-06,enemy-06,2,4000
 wave-25,turn-01,phase-07,enemy-07,1,4000
-wave-25,turn-01,phase-08,enemy-04,1,4000
+wave-25,turn-01,phase-08,enemy-04,3,4000
 wave-25,turn-01,phase-09,enemy-05,0,4000
 wave-25,turn-01,phase-10,enemy-06,4,4000
 wave-25,turn-02,phase-01,enemy-04,4,4000

@@ -1,4 +1,5 @@
 WaveId, Damage, Hp, CoinRewardMin-CoinRewardMax, PercentChance
+wave-24,48,3800,250&350,100
 wave-25,48,3800,250&350,100
 wave-26,50,4000,275&375,50
 wave-27,52,4200,300&400,50

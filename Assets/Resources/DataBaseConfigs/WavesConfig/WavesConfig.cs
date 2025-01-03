@@ -113,9 +113,10 @@ namespace Sources.DataBaseSystem
 
         private int _totalHpInWave;
 
-        private string[] _datas;
         private int _rowCount;
         private int _columnCount;
+        private string _waveIdCurrent;
+        private string[] _datas;
 
         private EnemiesConfig _enemiesConfig;
 
@@ -156,6 +157,7 @@ namespace Sources.DataBaseSystem
                     var starIndexWave = row - countSameWave;
                     var endIndexWave = row;
 
+                    _waveIdCurrent = startWaveId;
                     var newWave = new Wave
                     {
                         Id = startWaveId,
@@ -169,8 +171,6 @@ namespace Sources.DataBaseSystem
 
                     newWave.TotalHp = _totalHpInWave;
                     _totalHpInWave = 0;
-
-                    Debug.Log(startWaveId);
                 }
                 countSameWave++;
             }
@@ -247,8 +247,8 @@ namespace Sources.DataBaseSystem
 
             // Get TotalHp
             var enemyInfo = _enemiesConfig.GetEnemyInfo(phase.Enemy.EnemyId);
-            Debug.Log(enemyInfo.Id);
-            var hpEnemy = enemyInfo.WaveEnemies[_waveSpawn.Count - 1].Hp;
+            var waveEnemy = enemyInfo.GetWaveEnemy(_waveIdCurrent);
+            var hpEnemy = waveEnemy.Hp;
             var countEnemy = phase.Enemy.IndexPos.Count;
             _totalHpInWave = _totalHpInWave + (hpEnemy * countEnemy);
         }

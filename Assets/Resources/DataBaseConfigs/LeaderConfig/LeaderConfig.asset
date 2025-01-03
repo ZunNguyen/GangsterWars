@@ -77,6 +77,10 @@ MonoBehaviour:
       LevelUpFee: 200
       ReloadFee: 80
       DamageOrHp: 4
+    - Id: level-03
+      LevelUpFee: 300
+      ReloadFee: 110
+      DamageOrHp: 6
     - Id: level-04
       LevelUpFee: 400
       ReloadFee: 140

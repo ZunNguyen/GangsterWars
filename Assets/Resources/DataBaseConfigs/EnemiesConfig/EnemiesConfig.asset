@@ -2127,6 +2127,11 @@ MonoBehaviour:
     QualityWeaponShoot: 0
     TimeToReloadShoot: 0
     WaveEnemies:
+    - Id: wave-24
+      Damage: 48
+      Hp: 3800
+      coinReward: {x: 250, y: 350}
+      PercentChance: 100
     - Id: wave-25
       Damage: 48
       Hp: 3800

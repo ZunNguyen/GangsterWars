@@ -56,7 +56,7 @@ MonoBehaviour:
       DamageOrHp: 45
     - Id: level-10
       LevelUpFee: 500
-      ReloadFee: 50
+      ReloadFee: 230
       DamageOrHp: 50
     CSVFile: {fileID: 4900000, guid: f0d8c9bf38ecb4241956e5eae1738f9b, type: 3}
     MaxBullet: 20
