@@ -37,7 +37,23 @@ namespace Game.Cursor
 
             moveDirection = new Vector3(horizontal, vertical, 0f);
 
-            transform.position += moveDirection * _speed * Time.deltaTime;
+            Vector3 newPosition = transform.position + moveDirection * _speed * Time.deltaTime;
+
+            Vector3 clampedPosition = ClampToScreen(newPosition);
+
+            transform.position = clampedPosition;
+        }
+
+        private Vector3 ClampToScreen(Vector3 position)
+        {
+            Vector3 viewportPosition = Camera.main.WorldToViewportPoint(position);
+
+            // viewportPosition(0, 0) is the lower left corner of the screen
+            // viewportPosition(1, 1) is the higher right corner of the screen
+            viewportPosition.x = Mathf.Clamp(viewportPosition.x, 0.2f, 0.95f);
+            viewportPosition.y = Mathf.Clamp(viewportPosition.y, 0.1f, 0.8f);
+
+            return Camera.main.ViewportToWorldPoint(viewportPosition);
         }
 
         public void CursorClick()
