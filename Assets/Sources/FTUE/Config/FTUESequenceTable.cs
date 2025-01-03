@@ -1,7 +1,10 @@
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
+using Sources.DataBaseSystem;
+using Sources.Extension;
 using Sources.FTUE.Command;
 using Sources.Utils;
+using Sources.Utils.Singleton;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,6 +45,11 @@ namespace Sources.FTUE.Config
 
         public async UniTask Execute()
         {
+            if (_completeTriggerKey == FTUEKey.CompleteTrigger_GP_ShowJoystick)
+            {
+                if (!IsCanShowFTUEJoystick()) return;
+            }
+
             int index = 0;
             foreach (var command in _ftueCommands)
             {
@@ -50,6 +58,15 @@ namespace Sources.FTUE.Config
                 Debug.Log($"End {index} {command.FullDescription}");
                 index++;
             }
+        }
+
+        private bool IsCanShowFTUEJoystick()
+        {
+            var dataBase = Locator<DataBase>.Instance;
+            var buildConfig = dataBase.GetConfig<BuildConfig>();
+
+            if (buildConfig.UseJoystick) return true;
+            return false;
         }
     }
 }

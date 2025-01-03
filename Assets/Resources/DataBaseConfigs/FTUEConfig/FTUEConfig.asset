@@ -102,6 +102,16 @@ MonoBehaviour:
       - rid: 4621832742194905092
       - rid: 4621832742194905093
       - rid: 4621832742194905097
+    - _completeTriggerKey: CompleteTrigger/GP_ShowJoystick
+      _ftueCommands:
+      - rid: 1759760743032422400
+      - rid: 1759760743032422401
+      - rid: 1759760743032422402
+      - rid: 1759760743032422405
+      - rid: 1759760743032422403
+      - rid: 1759760743032422404
+      - rid: 1759760743032422406
+      - rid: 1759760743032422407
     - _completeTriggerKey: CompleteTrigger/GP_DamageEnemey
       _ftueCommands:
       - rid: 4621832742194905101
@@ -143,6 +153,7 @@ MonoBehaviour:
       - JM_Stars
       - JM_End
       - GP_ShowEnemy
+      - GP_ShowJoystick
       - GP_DamageEnemey
       - GP_KillEnemy
       - GP_End
@@ -166,6 +177,8 @@ MonoBehaviour:
       - JM_Espision
       - JM_Stars
       - GP_BoxChat
+      - GP_Joystick
+      - GP_Cursor
     - Key: WaitToNextStep
       Values:
       - TapToNextStep
@@ -174,6 +187,54 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 1759760743032422400
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: GamePlayScreen
+        _languageId: FTUE_GP_ShowJoyStick_1
+    - rid: 1759760743032422401
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/GP_Joystick
+        _ftueViewModelKeysClose:
+        - ViewModel/GP_Joystick
+    - rid: 1759760743032422402
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 1759760743032422403
+      type: {class: FTUEShowTextCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _uiTypeName: GamePlayScreen
+        _languageId: FTUE_GP_ShowJoyStick_2
+    - rid: 1759760743032422404
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 1
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/GP_Cursor
+        _ftueViewModelKeysClose: []
+    - rid: 1759760743032422405
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow:
+        - ViewModel/GP_Cursor
+        _ftueViewModelKeysClose:
+        - ViewModel/GP_Joystick
+    - rid: 1759760743032422406
+      type: {class: FTUETapToNextStepCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+    - rid: 1759760743032422407
+      type: {class: FTUEShowViewModelCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
+      data:
+        _isShow: 0
+        _uiTypeName: GamePlayScreen
+        _ftueViewModelKeysShow: []
+        _ftueViewModelKeysClose:
+        - ViewModel/GP_Cursor
     - rid: 4621832708353687556
       type: {class: FTUEWaitAtPointCommand, ns: Sources.FTUE.Command, asm: Assembly-CSharp}
       data:
