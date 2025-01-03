@@ -15,6 +15,11 @@ namespace Game.PosSpawnEnemies
 {
     public class PosSpawnEnemy : MonoBehaviour
     {
+#if UNITY_ANDROID
+        private const float _posXSpawnEnemy = 18f;
+#else
+        private const float _posXSpawnEnemy = 15.5f;
+#endif
         private const float _offsetDefaultZ = 0.1f;
 
         private DataBase _dataBase => Locator<DataBase>.Instance;

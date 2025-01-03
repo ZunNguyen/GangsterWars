@@ -9,8 +9,12 @@ namespace Game.Character.Sniper
 {
     public class SniperWeapon : WeaponAbstract
     {
-        private const float _duration = 0.4f;
-        private const float _factorOffsetPos = 15f;
+        private const float _duration = 0.6f;
+#if UNITY_ANDROID
+        private const float _factorOffsetPos = 2f;
+#else
+        private const float _factorOffsetPos = 5f;
+#endif
         private const float _offsetEnemyTargetPosY = 2f;
 
         private AudioManager _audioManager => Locator<AudioManager>.Instance;
