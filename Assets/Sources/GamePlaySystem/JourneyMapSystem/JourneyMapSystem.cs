@@ -7,6 +7,7 @@ using Sources.GamePlaySystem.MainGamePlay;
 using Sources.SystemService;
 using Sources.Utils.Singleton;
 using Sources.Utils.String;
+using System;
 using System.Collections.Generic;
 
 namespace Sources.GamePlaySystem.JourneyMap
@@ -30,6 +31,7 @@ namespace Sources.GamePlaySystem.JourneyMap
 
     public class JourneyMapSystem : BaseSystem
     {
+        private const int _indexGridMax = 3;
         private const string _dataDefault = "";
 
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
@@ -56,13 +58,14 @@ namespace Sources.GamePlaySystem.JourneyMap
         public void UpdateMatrixMap()
         {
             var countMaxWaveCurrent = _journeyProfile.WavesPassedDatas.Count;
-            var indexGridMax = countMaxWaveCurrent / _journeyItemMaxInOneGrid;
+            var indexGrid = countMaxWaveCurrent / _journeyItemMaxInOneGrid;
+            indexGrid = Math.Min(indexGrid, _indexGridMax);
 
-            if (indexGridMax > IndexGridMapMaxCurrent)
+            if (indexGrid > IndexGridMapMaxCurrent)
             {
-                IndexGridMapCurrent = IndexGridMapMaxCurrent = indexGridMax;
+                IndexGridMapCurrent = IndexGridMapMaxCurrent = indexGrid;
 
-                var journeyMapData = _journeyMapConfig.JourneyMapDatas[indexGridMax];
+                var journeyMapData = _journeyMapConfig.JourneyMapDatas[indexGrid];
                 _journeyMapDatas.Add(journeyMapData);
                 
                 ChangeJourneyMap(IndexGridMapCurrent);
@@ -82,6 +85,7 @@ namespace Sources.GamePlaySystem.JourneyMap
 
             _journeyItemMaxInOneGrid = _journeyMapConfig.JourneyItemViews.Count;
             IndexGridMapCurrent = IndexGridMapMaxCurrent = countMaxWaveCurrent / _journeyItemMaxInOneGrid;
+            IndexGridMapCurrent = IndexGridMapMaxCurrent = Math.Min(IndexGridMapMaxCurrent, _indexGridMax);
 
             for (int i = 0; i <= IndexGridMapCurrent; i++)
             {
