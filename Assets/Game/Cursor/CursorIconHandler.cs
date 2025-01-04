@@ -14,7 +14,7 @@ namespace Game.Cursor
 {
     public class CursorIconHandler : MonoBehaviour
     {
-        private const float _radiusRaycast = 0.3f;
+        private const float _radiusRaycast = 0.5f;
 
         private float _speed = 5f;
         private Vector3 moveDirection;
