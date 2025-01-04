@@ -21,7 +21,7 @@ namespace Game.PosSpawnEnemies
 #else
         private const float _posXSpawnEnemy = 11f;
 #endif
-        private const float _offsetDefaultZ = 0.1f;
+        private const float _offsetDefaultZ = 0.01f;
 
         private DataBase _dataBase => Locator<DataBase>.Instance;
         private EnemiesConfig _enemiesConfig => _dataBase.GetConfig<EnemiesConfig>();
