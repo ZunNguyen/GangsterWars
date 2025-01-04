@@ -96,4 +96,8 @@ MonoBehaviour:
     AudioClips:
     - {fileID: 8300000, guid: 08e08c7f1df898e448150ee46a713f3d, type: 3}
     IsMusic: 0
+  - Id: sfx-dry-firing
+    AudioClips:
+    - {fileID: 8300000, guid: d76fbcfbf18a23944a43826e39d21231, type: 3}
+    IsMusic: 0
   _audioListInfos: []

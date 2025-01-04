@@ -9,15 +9,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UniRx;
+using DG.Tweening;
 
 namespace Game.Cursor
 {
     public class CursorIconHandler : MonoBehaviour
     {
+        private readonly Vector3 _targetScale = new Vector3(0.15f, 0.15f, 0.15f);
+        private const float _duration = 0.1f;
         private const float _radiusRaycast = 0.5f;
 
         private float _speed = 5f;
-        private Vector3 moveDirection;
+        private Vector3 _moveDirection;
+        private Vector3 _originalScale;
 
         private JoystickSystem _joystickSystem => Locator<JoystickSystem>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
@@ -39,6 +43,8 @@ namespace Game.Cursor
             {
                 _speed = value;
             }).AddTo(this);
+
+            _originalScale = transform.localScale;
         }
 
         private void FixedUpdate()
@@ -46,9 +52,9 @@ namespace Game.Cursor
             float horizontal = _joystick.Horizontal;
             float vertical = _joystick.Vertical;
 
-            moveDirection = new Vector3(horizontal, vertical, 0f);
+            _moveDirection = new Vector3(horizontal, vertical, 0f);
 
-            Vector3 newPosition = transform.position + moveDirection * _speed * Time.deltaTime;
+            Vector3 newPosition = transform.position + _moveDirection * _speed * Time.deltaTime;
 
             Vector3 clampedPosition = ClampToScreen(newPosition);
 
@@ -72,6 +78,15 @@ namespace Game.Cursor
             SetPosShoot();
             SetNameObjectUserShoot();
             LeaderAction.Instance.LeaderShooting();
+            Effect();
+        }
+
+        private void Effect()
+        {
+            transform.DOScale(_targetScale, _duration).OnComplete(() =>
+            {
+                transform.DOScale(_originalScale, _duration);
+            });
         }
 
         private void SetNameObjectUserShoot()

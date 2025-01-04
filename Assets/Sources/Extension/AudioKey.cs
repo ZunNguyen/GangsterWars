@@ -15,7 +15,10 @@ namespace Sources.Extension
         public static string SFX_CLICK_01 = "sfx-click-01";
         public static string SFX_CLICK_02 = "sfx-click-02";
         public static string SFX_CLICK_ERROR = "sfx-click-error";
-        
+
+        // Dry firing
+        public static string SFX_DRY_FIRING = "sfx-dry-firing";
+
         // Coin
         public static string SFX_EARN_COIN = "sfx-earn-gold";
         public static string SFX_DELETE_COIN = "sfx-delete-coin";

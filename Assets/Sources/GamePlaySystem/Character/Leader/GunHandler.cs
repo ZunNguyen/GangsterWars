@@ -147,7 +147,11 @@ namespace Sources.GamePlaySystem.Leader
 
         public void Shooting()
         {
-            if (!_isCanShoot) return;
+            if (!_isCanShoot)
+            {
+                _audioManager.Play(AudioKey.SFX_DRY_FIRING);
+                return;
+            }
             SubtractBullet();
         }
     }
