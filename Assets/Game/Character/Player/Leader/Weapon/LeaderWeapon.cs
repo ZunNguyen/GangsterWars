@@ -10,7 +10,13 @@ namespace Game.Weapon.Bullet
 {
     public class LeaderWeapon : MonoBehaviour
     {
+
+#if UNITY_ANDROID || UNITY_IOS
+        private const float _speed = 20f;
+#else
         private const float _speed = 30f;
+#endif
+
         private SpawnerManager _spawnerManager => Locator<SpawnerManager>.Instance;
         private LeaderSystem _leaderSystem => Locator<LeaderSystem>.Instance;
 
@@ -45,7 +51,7 @@ namespace Game.Weapon.Bullet
 
             var duration = Vector3.Distance(clickMousePos, _originalPos) / _speed;
 
-            _tween = transform.DOMove(clickMousePos, duration).SetEase(Ease.InSine)
+            _tween = transform.DOMove(clickMousePos, duration).SetEase(Ease.Linear)
                 .OnComplete(() => ReleaseBullet());
         }
 
