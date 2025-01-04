@@ -1,4 +1,5 @@
-﻿using Game.Character.Enemy.Abstract;
+﻿using Cysharp.Threading.Tasks;
+using Game.Character.Enemy.Abstract;
 using Game.Character.Leader;
 using Sources.GamePlaySystem.Joystick;
 using Sources.GamePlaySystem.Leader;
@@ -7,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UniRx;
 
 namespace Game.Cursor
 {
@@ -27,7 +29,16 @@ namespace Game.Cursor
 
         private void Awake()
         {
-            if (!_joystickSystem.IsUseJoystick) gameObject.SetActive(false);
+            if (!_joystickSystem.IsUseJoystick)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
+            _joystickSystem.CursorSensitivity.Subscribe(value =>
+            {
+                _speed = value;
+            }).AddTo(this);
         }
 
         private void FixedUpdate()

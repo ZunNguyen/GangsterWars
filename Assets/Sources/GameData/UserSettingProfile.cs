@@ -12,6 +12,10 @@ namespace Sources.GameData
         public float MusicVolume = 0.5f;
         public float SFXVolume = 0.5f;
 
+#if UNITY_ANDROID || UNITY_IOS
+        public float CursorSensitivity = 7f;
+#endif
+
         public void SetLanguageName(string languageName)
         {
             LanguageName = languageName;
@@ -29,5 +33,13 @@ namespace Sources.GameData
             SFXVolume = value;
             Save();
         }
+
+#if UNITY_ANDROID || UNITY_IOS
+        public void SetCursorSensitivity(float value)
+        {
+            CursorSensitivity = value;
+            Save();
+        }
+#endif
     }
 }
