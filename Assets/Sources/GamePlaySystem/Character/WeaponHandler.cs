@@ -10,12 +10,6 @@ using Unity.VisualScripting;
 
 namespace Sources.GamePlaySystem.Character
 {
-    public class WeaponView
-    {
-        public string WeaponId;
-        public int Damage;
-    }
-
     public class WeaponHandler
     {
         private GameData.GameData _gameData => Locator<GameData.GameData>.Instance;
@@ -44,12 +38,20 @@ namespace Sources.GamePlaySystem.Character
             _weaponConfig = weaponConfig;
 
             OnDestroy();
-            _isEndGame = false;
-            _isOutOfAmmor = false;
+            ResetValue();
             _reloadTimeHandler.IsReloading += SetCanAttack;
             _mainGamePlaySystem.SpawnEnemiesHandler.HaveEnemyToAttack += SetIsEnemyToAttack;
             _gameResultSystem.IsUserWin += EndGame;
         }
+
+        private void ResetValue()
+        {
+            _isReloading = false;
+            _isHaveEnemyToAttack = false;
+            _isAnimationComplete = true;
+            _isOutOfAmmor = false;
+            _isEndGame = false;
+    }
 
         private void EndGame(bool result)
         {
@@ -85,7 +87,7 @@ namespace Sources.GamePlaySystem.Character
             }
         }
 
-        public void SetCanAttack(bool status)
+        private void SetCanAttack(bool status)
         {
             _isReloading = status;
             CheckCanAttack();
